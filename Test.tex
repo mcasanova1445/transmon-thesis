@@ -1,0 +1,933 @@
+\documentclass[11pt, spanish]{report}
+\usepackage[spanish]{babel}
+\selectlanguage{spanish}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{qcircuit}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{dsfont}
+
+\newcommand{\qwxo}[2][-1]{\ar @{-} [#1,0]|*+<4pt,6pt>[Fo]{#2}}
+
+
+\begin{document}
+
+\begin{abstract}
+Your abstract goes here...
+...
+\end{abstract}
+...
+
+\chapter{Introducción}
+La computación cuántica es como chévere
+
+\section{Kets, bras y operadores}
+
+\section{Postulados de la mecánica cuántica}
+\begin{enumerate}
+\item Un estado puro en mecánica cuántica se representa en términos de
+  un vector normalizado $\ket{\psi}$ en un espacio de Hilbert
+  $\mathcal{H}$.
+\item Si $\mathcal{H}_1$ y $\mathcal{H}_2$ son los espacios de Hilbert
+  asociados a dos sistemas físicos, entonces el espacio del sistema
+  compuesto $\mathcal{H}$ estará dado por el producto tensoral de los
+  dos espacios de Hilbert
+  $\mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2$.
+\item Para todo observable $a$, existe un operador hermítico
+  correspondiente $A$ que actua sobre el espacio de Hilbert
+  $\mathcal{H}$, cuyos autovalores son los posibles resultados de una
+  medida de este observable.
+\item La evolución temporal del sistema sigue la ecuación de
+  Schrödinger
+  $i \hbar \frac{\partial \ket{\psi}}{\partial t} = H
+  \ket{\psi}$. Donde $\hbar$ es la constante de Planck reducida y $H$
+  es el Hamiltoniano del sistema, el cuál es el operador hermítico
+  correspondiente a la energía.
+\item Después de realizar una medida del observable $a$, el estado
+  $\ket{\psi}$ del sistema colapsa a al autoestado de $A$
+  correspondiente a la medida.
+\end{enumerate}
+
+\section{Computación cuántica}
+This section's content...
+
+\subsection{Qubits}
+Un qubit es un sistema físico de dos niveles, es decir, es un objeto cuyo estado es un elemento del espacio de Hilbert de dimensión $\dim (\mathcal{H})=2$ y puede ser escrito de la siguiente manera: $ \ket{\psi} = \alpha \ket{0} + \beta \ket{1} $, donde $ \{ \ket{0},\ket{1} \} $ forma una base de $\mathcal{H}$ y donde $ \alpha $ y $ \beta $ son números complejos, tales que $ | \alpha |^2 + | \beta |^2 = 1 $, conocidos como amplitudes de probabilidad.
+\vspace{0.5cm}
+
+El qubit se puede pensar como el equivalente en IC del bit, el cual, por sus propiedad cuánticas, puede estar no sólo puede estar en el estado $\ket{0}$ y en el estado $\ket{1}$, sino también en superposiciones de estos dos.
+\vspace{0.5cm}
+
+El estado de un qubit también se puede escribir de la siguiente manera: $ \ket{\psi} = e^{i \phi_0} \cos ( \theta ) \ket{0} + e^{i \phi_1} \sin ( \theta ) \ket{1}  = e^{i \phi_0} (\cos ( \theta ) \ket{0} + e^{i ( \phi1 - \phi_0 )} \sin ( \theta ) \ket{1}) $, donde $ \theta $, $\phi_0$ y $\phi_1$ son números reales. La fase global $\phi_0$ es ignorable, pues no tiene ningún efecto sobre las probabilidades. Entonces, sin pérdida de generalidad, $ \ket{\psi} = \cos ( \theta ) \ket{0} + \sin ( \theta ) e^{i \phi} \ket{1} $, donde $ \theta \in [0, \pi ] $ y $ \phi \in [0, 2 \pi ] $. De esta manera, podemos representar los qubits en una esfera unitaria, conocida como esfera de Bloch.
+
+\subsection{Compuertas cuánticas}
+Las operaciones unitarias con las que se opera sobre los qubits reciben el nombre de compuertas cuánticas.
+\vspace{0.5cm}
+
+Las compuertas de un sólo qubit pueden ser vistas como rotaciones en la esfera de Bloch.
+
+\subsubsection{Compuerta identidad}
+
+\begin{minipage}{0.5\textwidth}
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \gate{I} & \qw
+}
+\]
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\[
+\begin{pmatrix}
+1 & 0 \\
+0 & 1
+\end{pmatrix}
+\]
+\end{minipage}
+
+\subsubsection{Compuerta X}
+Este es el equivalente al NOT clásico, pues tránsforma los $\ket{0}$ en $\ket{1}$ y viceversa, ya que realiza una rotación de $\pi$ sobre el eje X en la esfera de Bloch. Su forma matricial viene dada por la matriz de Pauli $\sigma_x$
+\vspace{0.25cm}
+
+\begin{minipage}{0.5\textwidth}
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \gate{X} & \qw
+}
+\]
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\[
+\begin{pmatrix}
+0 & 1 \\
+1 & 0
+\end{pmatrix}
+\]
+\end{minipage}
+
+\subsubsection{Compuerta Z}
+Esta compuerta no tiene análogo clásico, pues lo que realiza es un cambio de fase. Esto equivale a una rotación de $\pi$ sobre el eje Z en la esfera de Bloch. Su forma matricial viene dada por la matriz de Pauli $\sigma_z$
+\vspace{0.25cm}
+
+\begin{minipage}{0.5\textwidth}
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \gate{Z} & \qw
+}
+\]
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\[
+\begin{pmatrix}
+1 & 0 \\
+0 & -1
+\end{pmatrix}
+\]
+\end{minipage}
+
+\subsubsection{Compuerta Y}
+Esta compuerta realiza una rotación de $\pi$ sobre el eje y de la esfera de Bloch. Su forma matricial viene dada por la matriz de Pauli $\sigma_y$
+\vspace{0.25cm}
+
+\begin{minipage}{0.5\textwidth}
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \gate{Y} & \qw
+}
+\]
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\[
+\begin{pmatrix}
+0 & -i \\
+i & 0
+\end{pmatrix}
+\]
+\end{minipage}
+
+\subsubsection{Compuerta de Hadamard}
+Esta compuerta realiza una rotación de $\frac{\pi}{2}$ sobre el eje y de la esfera de Bloch. Ella es de especial importancia, pues transforma los estados de la base computacional $\ket{0}$ y $\ket{1}$ en estados de superposiciones uniformes ($\ket{+}$ y $\ket{-}$). También se puede interpretar como el mapa de la base Z a la base X.
+\vspace{0.25cm}
+
+\begin{minipage}{0.5\textwidth}
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \gate{H} & \qw
+}
+\]
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\[
+\frac{1}{\sqrt{2}}
+\begin{pmatrix}
+1 & 1 \\
+1 & -1
+\end{pmatrix}
+\]
+\end{minipage}
+
+\subsubsection{Compuerta S}
+Esta compuerta es la raiz cuadrada de Z.
+\vspace{0.25cm}
+
+\begin{minipage}{0.5\textwidth}
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \gate{S} & \qw
+}
+\]
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\[
+\begin{pmatrix}
+1 & 0 \\
+0 & i
+\end{pmatrix}
+\]
+\end{minipage}
+
+\subsubsection{Compuerta T}
+Esta compuerta es la raiz cuadrada de S.
+\vspace{0.25cm}
+
+\begin{minipage}{0.5\textwidth}
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \gate{T} & \qw
+}
+\]
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\[
+\begin{pmatrix}
+1 & 0 \\
+0 & e^{\frac{i \pi}{4}}
+\end{pmatrix}
+\]
+\end{minipage}
+
+\subsubsection{Compuerta de cambio de fase}
+
+\begin{minipage}{0.5\textwidth}
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \gate{R_{\phi}} & \qw
+}
+\]
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\[
+\begin{pmatrix}
+1 & 0 \\
+0 & e^{i \phi}
+\end{pmatrix}
+\]
+\end{minipage}
+
+\subsubsection{Compuertas de rotación}
+
+\[
+R(\theta,\vec{r}) = e^{i \frac{\theta}{2} \vec{\sigma} \cdot \vec{r}} =
+\begin{pmatrix}
+\cos(\frac{\theta}{2}) + i z \sin(\frac{\theta}{2}) & \sin(\frac{\theta}{2}) (i x + y) \\
+\sin(\frac{\theta}{2}) (i x - y) & \cos(\frac{\theta}{2}) - i z \sin(\frac{\theta}{2})
+\end{pmatrix}
+\]
+
+\[
+R_y(\theta) =
+\begin{pmatrix}
+\cos(\frac{\theta}{2}) & \sin(\frac{\theta}{2}) \\
+-\sin(\frac{\theta}{2}) & \cos(\frac{\theta}{2})
+\end{pmatrix}
+\]
+
+\[
+R_z(\theta) =
+\begin{pmatrix}
+e^{i \frac{\theta}{2}} & 0 \\
+0 & e^{-i \frac{\theta}{2}}
+\end{pmatrix}
+\]
+
+\[
+R_x(\theta) =
+\begin{pmatrix}
+\cos(\frac{\theta}{2}) & i \sin(\frac{\theta}{2}) \\
+i\sin(\frac{\theta}{2}) & \cos(\frac{\theta}{2})
+\end{pmatrix}
+\]
+
+\[
+R_x(\theta) = R_z(\frac{\pi}{2}) R_y(\theta) R_z(\frac{-\pi}{2})
+\]
+
+\subsubsection{Compuerta CNOT}
+
+\begin{minipage}{0.5\textwidth}
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \ctrl{1} & \qw \\
+& \targ & \qw \\
+}
+\]
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\[
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 1 & 0
+\end{pmatrix}
+\]
+\end{minipage}
+
+\subsubsection{Compuerta SWAP}
+
+\begin{minipage}{0.5\textwidth}
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \qswap & \qw \\
+& \qswap \qwx & \qw \\
+}
+\]
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\[
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1
+\end{pmatrix}
+\]
+\end{minipage}
+
+\subsubsection{Compuerta $\sqrt{\text{SWAP}}$}
+
+\begin{minipage}{0.5\textwidth}
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \qswap & \qw \\
+& \qswap\qwxo{\scalebox{0.5}{$1\hspace{-1pt}/\hspace{-1pt}2$}} & \qw
+}
+\]
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\[
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & \frac{1}{2} (1+i) & \frac{1}{2} (1-i) & 0 \\
+0 & \frac{1}{2} (1-i) & \frac{1}{2} (1+i) & 0 \\
+0 & 0 & 0 & 1
+\end{pmatrix}
+\]
+\end{minipage}
+
+\subsubsection{Compuerta de Ising}
+
+\begin{minipage}{0.5\textwidth}
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \multigate{1}{\mathit{XX}_{\phi}} & \qw \\
+& \ghost{\mathit{XX}_{\phi}} & \qw
+}
+\]
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\[
+\frac{1}{\sqrt{2}}
+\begin{pmatrix}
+1 & 0 & 0 & -i e^{i \phi} \\
+0 & 1 & -i & 0 \\
+0 & -i & 1 & 0 \\
+-i e^{-i \phi} & 0 & 0 & 1
+\end{pmatrix}
+\]
+\end{minipage}
+
+\subsubsection{Compuerta de Toffoli}
+
+\begin{minipage}{0.5\textwidth}
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \ctrl{1} & \qw \\
+& \ctrl{1} & \qw \\
+& \targ & \qw \\
+}
+\]
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\[
+\begin{pmatrix}
+1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 & 0 & 0 & 1 & 0
+\end{pmatrix}
+\]
+\end{minipage}
+
+\subsubsection{Compuerta de Fredkin}
+
+\subsubsection{Compuerta de Deutsch}
+
+\begin{minipage}{0.5\textwidth}
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \multigate{2}{D(\theta)} & \qw \\
+& \ghost{D(\theta)} & \qw \\
+& \ghost{D(\theta)} & \qw
+}
+\]
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\[
+\begin{pmatrix}
+1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & i \cos(\theta) & \sin(\theta) \\
+0 & 0 & 0 & 0 & 0 & 0 & \sin(\theta) & i \cos(\theta)
+\end{pmatrix}
+\]
+\end{minipage}
+
+\[
+\ket{a,b,c} \rightarrow
+\begin{cases}
+i \cos(\theta) \ket{a,b,c} + \sin(\theta) \ket{a,b,c \oplus 1} & \text{si } a=b=1 \\
+\ket{a,b,c} & \text{en otro caso}
+\end{cases}
+\]
+
+\subsection{Correspondencia entre compuertas clásicas y cuánticas}
+
+\subsection{Conjuntos universales de compuertas cuánticas}
+Un conjunto universal de compuertas cuánticas (CUCC) es un conjunto finito de compuertas cuánticas con el cuál se puede aproximar cualquier operación unitaria arbitrariamente bien.
+\vspace{0.5cm}
+
+Cualquier operador unitario puede ser escrito en función de compuertas de uno y dos qubits [Barenco et al. 1995].
+\vspace{0.5cm}
+
+Un CUCC simple es $\{H,T,\mathit{CNOT}\}$.
+\vspace{0.5cm}
+
+Existe un CUCC de una sóla compuerta, la compuerta de Deutsch, $D(\theta)$.
+\vspace{0.5cm}
+
+La compuerta de Toffoli es un caso especial de la compuerta de Deutsch, $D(\frac{\pi}{2})$.
+\vspace{0.5cm}
+
+Otro CUCC consiste en la compuerta de Ising y la compuerta de cambio de fase, \{$\mathit{XX}_\phi,R_z(\theta)$\}. Este conjunto es nativo en algunas computadoras cuánticas de trampas de iones.
+
+\subsection{Compuertas no cliffordianas}
+Las compuertas cliffor
+
+
+\subsection{Circuitos cuánticos}
+
+\subsection{Paralelismo cuántico}
+
+\subsection{Algoritmos cuánticos}
+
+\subsection{Criterios de DiVincenzo}
+Para construir un computador cuántico, se deben cumplir las siguientes condiciones experimentales:
+
+\begin{enumerate}
+\item Un sistema físico escalable con qubits bien caracterizados.
+\item La habilidad de inicializar el estado de los qubits en un estado fiducial simple.
+\item Tiempos de coherencia relevantes largos.
+\item Un conjunto universal de compuertas cuánticas.
+\item La capacidad de medir qubits en específico.
+\end{enumerate}
+
+\chapter{Superconductividad}
+Los qubits superconductores se basan en circuitos osciladores no lineales, hechos a partir de uniones de Josephson (Josephson Junctions - JJ). [Wendin]
+\vspace{0.5cm}
+
+El Hamiltoniano de un oscilador armónico LC está dado por 
+
+\[
+\hat{H} = E_C \hat{n}^2 + E_L \frac{\hat{\phi}^2}{2},
+\]
+
+donde $\hat{n}$ es la cantidad de pares de Cooper inducidos en el capacitor (En otras parabras, la carga inducida en el capacitor, medida en unidades de $2e$), y $\hat{\phi}$ es la diferencia de fase sobre el inductor. La carga $\hat{n}$ y la fase $\hat{\phi}$ no conmutan, $\comm{\hat{\phi}}{\hat{n}}=i$, lo que significa que sus valores esperados no se pueden medir simultaneamente. $E_C=\frac{(2e)^2}{2C}$, $E_L=\frac{\hbar^2}{(2e)^2L}$ y la distancia entre niveles de energía del oscilador armónico $\hbar \omega = \frac{\hbar}{\sqrt{LC}}=\sqrt{2E_LE_C}$.
+\vspace{0.5cm}
+
+Para poder servir como qubit, el oscilador debe ser anarmónico, de manera que se pueda operar sobre un par específico de niveles de energía. Al agregar una JJ, el Hamiltoniano del circuito LCJ se convierte en:
+
+\[
+\hat{H} = E_C (\hat{n}-n_g)^2 - E_{J0} \cos( \hat{\phi} ) + E_L \frac{(\hat{\phi}-\phi_e)^2}{2},
+\]
+
+donde $n_g$ es la carga inducida por voltaje en el capacitor C (isla qubit) y $\phi_e$ es la fase inducida por flujo sobre la JJ. La energía de Josephson $E_{J0}$ está dada por $E_{J0}=\frac{\hbar}{2e}I_0$ en términos de la corriente crítica $I_0$ de la unión. Usualmente, la JJ es del tipo Superconductor-Aislante-Superconductor con corriente crítica fija.
+
+Con el fin de introducir la inductancia no lineal de Josephson, empezamos por 
+
+\[
+I_J = I_0 \sin(\phi)
+\]
+
+Combinado con la ley de Lenz:
+
+\[
+V = \frac{d\Phi}{dt} = \frac{\Phi_0}{2\pi} \frac{d\phi}{dt}, \hspace{20pt} \Phi_0=\frac{h}{2e}
+\]
+
+Se encuentra que:
+
+\[
+V = \frac{\Phi_0}{2\pi} \frac{1}{I_0\cos(\phi)} \frac{dI_J}{dt}
+\]
+
+Definiendo $L_J = V (\frac{dI_J}{dt})^{-1}$, se obtiene finalmente la inductancia de Josephson $L_{J0}$:
+
+\[
+L_J = \frac{\Phi_0}{2\pi} \frac{1}{I_0 \cos(\phi)} = L_{J0} \frac{1}{\cos(\phi)}
+\]
+
+Esto define la inductancia de Josephson de la JJ aislada y nos permite expresar la energía de Josephson como $E_{J0} = \frac{\hbar^2}{(2e)^2L_{J0}}$
+
+\begin{align*}
+[E_C (-i\hbar \frac{\partial}{\partial\phi}-n_g)^2 + U(\phi)] \psi = E \psi \\
+U(\phi) = -E_{J0} \cos(\phi) + E_L \frac{(\phi-\phi_e)^2}{2}
+\end{align*}
+
+\begin{enumerate}
+\item $E_L = 0 \quad (L \sim \infty)$ :
+\item $E_L \approx E_{J0}$ :
+\end{enumerate}
+
+\section{Transmonios}
+Tratando el transmonio como un sistema de dos niveles acoplado linealmente a un oscilador monomodo, su Hamiltoniano toma la siguiente forma:
+
+\[
+\hat{H} = \hat{H}_q + \hat{H}_{qr} + \hat{H}_r = -\frac{1}{2} \epsilon \sigma_z + g \sigma_x (a+a^\dag) + \hbar \omega (a^\dag a + \frac{1}{2})
+\]
+
+donde $\epsilon$ es la energía de excitación del qubit, $g$ es el acoplamiento qubit-oscilador y $\omega$ es la frecuencia del oscilador.
+\vspace{0.5cm}
+
+Introduciendo los operadores escalera del qubit, $\sigma_\pm = \frac{1}{2}(\sigma_x \pm i \sigma_y)$, el término de interacción $\hat{H}_{qr}$ se puede dividir en dos términos, el de Jaynes-Cummings (JC) y el anti-Jaynes-Cummings (AJC):
+
+\[
+\hat{H}_{qr} = \hat{H}_{qr}^{JC} + \hat{H}_{qr}^{AJC} = g(\sigma_+ a + \sigma_- a^\dag) + g(\sigma_+ a^\dag + \sigma_- a)
+\]
+
+Este Hamiltoniano describe el modelo cuántico canónico de Rabi (canonical quantum Rabi model - QRM). Las ecuaciones ()() son completamente generales y aplicables a cualquier sistema qubit-oscilador. Mantener sólo el término JC correponde a realizar la aproximación de onda rotativa (rotating wave approximation - RWA).
+
+\section{Hamiltonianos multiqubit de transmonios}
+Omitiendo el término del oscilador, el Hamiltoniano toma la siguiente forma general:
+
+\[
+\hat{H} = \hat{H}_q + \hat{H}_{qr} + \hat{H}_{qq} = -\frac{1}{2} \sum\limits_i \epsilon_i \sigma_{zi} + \sum\limits_i g_i \sigma_{xi} (a+a^\dag) + \frac{1}{2} \sum\limits_{i,j;\nu} \lambda_{\nu,ij} \sigma_{\nu i} \sigma_{\nu j}
+\]
+
+Por simplicidad, se considera que el término $\hat{H}_{qr}$ se refiere sólo a la lectura y las operaciones de bus, dejando la interacción indirecta qubit-qubit via el resonador ser incluidas en $\hat{H}_{qq}$ via la constante de acoplamiento $\lambda_{\nu,ij}$.
+
+\subsection{Acoplamiento capacitivo}
+\begin{align*}
+\hat{H}_{qq} = \lambda_{1 2} \sigma_{x1} \sigma_{x2} \\
+\lambda_{1 2} = \frac{1}{2} \sqrt{E_{1 0, 1} E_{1 0, 2}} \frac{\sqrt{E_{E_{C1}} E_{E_{C2}}}}{E_{Cc}} = \frac{1}{2} \sqrt{E_{1 0, 1} E_{1 0, 2}} \frac{Cc}{\sqrt{C_1 C_2}} \approx \frac{1}{2} E_{1 0} \frac{C_c}{C} \\
+\hat{H}_{qq} = \lambda_{1 2} (\sigma_{+1} \sigma_{-2}  + \sigma_{-1} \sigma_{+2})
+\end{align*}
+
+\subsection{Acoplamiento por el resonador}
+\begin{align*}
+\hat{H}_{qq} = \lambda_{1 2} \sigma_{x1} \sigma_{x2} \\
+\lambda{1 2} = \frac{1}{2} g_1 g_2 (\frac{1}{\Delta_1} + \frac{1}{\Delta_2} \equiv g_1 g_2 \frac{1}{\Delta}) \\
+\Delta_i = \epsilon_i - \hbar \omega
+\end{align*}
+
+\subsection{Acoplamiento de JJ}
+\begin{align*}
+\hat{H}_{qq} = \lambda_{1 2} \sigma_{y1} \sigma_{y2} \\
+\lambda_{1 2} \approx \frac{1}{2} E_{1 0} \frac{L_c}{L_J} \frac{\cos(\delta_c)}{2L_c \cos(\delta_c) + L_{J c}}
+\end{align*}
+
+\subsection{Acoplamiento afinable/calibrable}
+
+\section{Compuertas cuánticas en transmonios}
+
+\subsection{El operador de evolución temporal}
+La evolución temporal de un sistema complejo (many-body) puede ser descrita por la ecuación de Schrödinger para el vector de estado $\ket{\psi(t)}$:
+
+\[
+i \hbar \frac{\partial}{\partial t} \ket{\psi(t)} = \hat{H}(t) \ket{\phi(t)}
+\]
+
+en términos del operador evolución $\hat{U}(t,t_0)$
+
+\[
+\ket{\psi(t)} = \hat{U}(t,t_0) \ket{\psi(t_0)}
+\]
+
+determinado a partir del Hamiltoniano complejo (many-body) dependiente del tiempo del sistema:
+
+\[
+\hat{H} = \hat{H}_{syst} + \hat{H}_{ctrl}(t)
+\]
+
+describiendo el sistema intrínseco y las operaciones de control aplicadas. Las compuertas son el resultado de aplicar pulsos de control específicos a partes selectas de un circuito físico. Esto afecta varios términos del Hamiltoniano, haciéndolos dependientes del tiempo.
+
+Para el transmonio, el Hamiltoniano del sistema bajo la RWA toma la forma:
+
+\[
+\hat{H}_{syst} = -\frac{1}{2} \sum\limits_{\nu i} \epsilon_i \sigma_{z i} + \sum\limits_{i} g_i (\sigma_{+ i} a + \sigma_{- i} a^\dag) + \hbar \omega a^\dag a + \frac{1}{2} \sum\limits_{i,j;\nu} \lambda_{\nu, ij} (\sigma_{+ i} \sigma_{- j} + \sigma_{- i} \sigma_{+ j})
+\]
+
+y el término de control se puede escribir como:
+
+\[
+\hat{H}_{ctrl} = \sum\limits_{i; \nu} f_{\nu i}(t) \sigma_{\nu i} + \frac{1}{2} \sum\limits_{i,j;\nu} h_{\nu, ij}(t) \sigma_{\nu i} \sigma_{\nu j} + k(t) a^\dag a
+\]
+
+
+
+\chapter{Algoritmo de Grover}
+El algoritmo de Grover es un AC que encuentra con alta probabilidad la entrada única de una función de caja negra que produce un valor particular de salida, usando tan sólo $O(\sqrt{N})$ evaluaciones de la función, donde $N$ es el tamaño del dominio de la función. El análogo clásico de este algoritmo requiere $O(N)$ evaluaciones de la función, pues, el elemento correcto podría ser el $N$-ésimo en ser evaluado y se deben evaluar uno por uno. La aplicación directa de este algoritmo es como algoritmo de búsqueda en una base de datos. Sin embargo, su aplicación más eficiente es como subrutina en diversos procesos de optimización.
+
+\section{El operador de difusión de Grover}
+
+\begin{figure}[H]
+\centering \includegraphics[width=0.3\linewidth]{Grover/grover_geometry.png}
+\caption{Interpretación geométrica del operador difusión}
+\end{figure}
+
+$U_s = 2 \ket{s} \bra{s} - I$
+
+$U_{\omega} = I - 2 \ket{\omega} \bra{\omega}$
+
+\section{El algoritmo}
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+\lstick{\ket{0}} & {/^n} \qw & \gate{H^{\otimes n}} & \multigate{1}{U_{\omega}} & \gate{U_s} & \meter & \cw \\
+\lstick{\ket{1}} & \qw & \gate{H} & \ghost{U_{\omega}} & \qw & \qw & \qw \\
+& & & \rstick{\hspace{-13pt} \frac{\pi}{4} \sqrt{N} \text{ veces}}
+\gategroup{1}{4}{2}{5}{1.8em}{_\}}
+}
+\]
+
+\begin{enumerate}
+\item Inicializar el estado del sistema.
+\item Aplicar la transformada de Walsh-Hadamard.
+\item Realizar la iteración de Grover $\lfloor \frac{\pi}{4} \sqrt{N} \rfloor$ veces.
+\begin{enumerate}
+\item Aplicar $U_{\omega}$.
+\item Aplicar $U_s$.
+\end{enumerate}
+\item Realizar la medida $\Omega$.
+\end{enumerate}
+
+
+\chapter{Algoritmo de Shor}
+El algoritmo de Shor es un AC de factorización de enteros. Dado un entero $N=p \times q$, donde $p$ y $q$ son primos, el algoritmo de Shor encuentra $p$ y $q$ en $O((\log(N))^3)$ pasos. El algoritmo clásico más eficiente para factorizar enteros es la cibra general del cuerpo de números y funciona con una complejidad heurística de $O(e^{(\sqrt[3]{\frac{64}{9}}+o(1))(\ln(N))^{\frac{1}{3}}(\ln(\ln(N)))^{\frac{2}{3}}})$. Por su capacidad de factorizar números semiprimos, el algoritmo de Shor es capaz de violar el cifrado RSA y el protocolo Diffie-Hellman de intercambio de llaves, sobre los cuáles se basa virtualmente toda la criptografía actual.
+
+\section{Transformadas integrales}
+
+\section{Transformada cuántica de Fourier}
+
+\section{Estimación de fase}
+
+\section{Estimación de orden}
+
+\section{Algoritmo de Shor}
+
+\chapter{Google PageRank}
+% El PageRank, nombrado en honor a Larry Page, es una de las medidas de centralidad de los nodos de un grafo más conocidas. Ésta es utilizada para ordenar los sitios web en los resultados de búsqueda de Google, de acuerdo a su importancia.
+
+El algoritmo de PageRank fue desarrollado en 1996 en la Universidad de Stanford por Larry Page y Sergey Brin, los cuales fueron los fundadores de Google.
+
+Este algoritmo se basa en la idea de que sitios web importantes tienen muchos vínculos que apuntan hacia ellos, lo que conduce a pensar en la web como una red ponderada orientada.
+
+Existen muchos otros algoritmos, algunos más eficientes, pero la importancia de PageRank se sustenta en el poder económico de Googel.
+
+Ilustraremos el algoritmo de PageRank con un ejemplo sencillo:
+
+Ejemplo:
+
+Consideremos 5 páginas web distintas a las que denotaremos por 1, 2, 3, 4, y 5, y cuyo grafo es:
+\vspace{3cm}
+
+Pasos:
+\begin{enumerate}
+\item Determinar la matriz de adyacencia. Algunos autores denotan la matriz de de adyacencia por M en el protocolo de PageRank
+
+\[
+M = \begin{pmatrix}
+0 & 0 & 1 & 1 & 1 \\
+0 & 0 & 0 & 0 & 1 \\
+1 & 0 & 0 & 1 & 1 \\
+1 & 0 & 1 & 0 & 0 \\
+1 & 1 & 0 & 0 & 0
+\end{pmatrix}
+\]
+
+\item Sumamos los elementos de cada una de las columnas.
+
+\[
+\begin{matrix}
+3 & 1 & 2 & 2 & 3
+\end{matrix}
+\]
+
+Estas sumas representan el número de links que salen del nodo o vértice de la página $p_j$, es decir: 
+
+$I(p_j) \equiv \text{Importancia de la página j}$
+
+$\mathrm{outdeg}(p_j) \equiv \text{número de links que salen de la página } p_j$
+
+$I(p_i) \equiv \sum\limits_{j \in B_i} \frac{I(p_j}{\mathrm{outdeg}(p_j)}$
+
+$B_i \equiv \text{conjunto de páginas qeu son linkeadas}$
+
+\item Dividimos cada elemento de M por la suma de los elementos de la columna a la cual corresponde y llamaremos a la nueva matriz obtenida $M^\prime$
+
+\[
+M^\prime = \begin{pmatrix}
+0 & 0 & 1/2 & 1/2 & 1/3 \\
+0 & 0 & 0 & 0 & 1/3 \\
+1/3 & 0 & 0 & 1/2 & 1/3 \\
+1/3 & 0 & 1/2 & 0 & 0 \\
+1/3 & 1 & 0 & 0 & 0
+\end{pmatrix}
+\]
+
+\item El siguiente paso es encontrar un vector $\vec{v}$ (algunos autores lo llaman $\vec{I}$) que represente el PageRank de cada una de las páginas. Como tenemos 5 páginas web le asignamos a $\vec{v}$ como valores $\vec{v} = (a,b,c,d,e)^T$, obteniendo así un vector de dimensión $d=5$.
+
+\item Obtenemos los valores de $\{v_i\}$ a partir de los autovalores de $M^\prime$, tal que:
+
+\[
+M^\prime \vec{v} = \lambda \vec{v} \text{ con }\lambda \in R
+\]
+
+\item Determinamos los autovalores de $M^\prime$
+
+\[
+\lambda_1 = 1; \quad \lambda_2 = \frac{-2}{3}; \quad \lambda_3 = \frac{-1}{2}; \quad \lambda_4 = \frac{-1}{3}; \quad \lambda_5 = \frac{1}{3}
+\]
+
+Tomaremos sólo $\lambda = 1$ $\rightarrow M^\prime \vec{v} = \vec{v}$ (Ecuación autoconsistente)
+
+\item Hallamos el autovector asociado a $\lambda = 1$. Obteniendo:
+
+\[
+a = 6; \quad b = 1; \quad c = \frac{16}{3}; \quad d = \frac{14}{3}; \quad e = 3
+\]
+
+\item Finalmente, Google ordena de mayor a menor las componentes de $\vec{v}$, quedándonos:
+
+\[
+\begin{matrix}
+& & - & a \\
+& & - & c \\
+\text{Pantalla} & \rightarrow & - & d \\
+& & - & e \\
+& & - & b
+\end{matrix}
+\]
+\end{enumerate}
+
+La idea de PageRank de Google es que la importancia de una página viene dada por
+la cantidad de páginas que se enlazan con ella.
+
+Surgen varios problemas:
+
+\begin{enumerate}
+  \item Las matrices hyperlink (hiperenlace) pueden tener billones de entradas
+    en filas y columnas.
+  \item Calcular los autovectores es un absurdo computacional.
+  \item Los estudios muestran que un nodo (página web) tiene un promedio de 10
+    enlaces, y las demás entradas de la matriz son cero.
+  \item No se encuentra $\lambda = 1$ en la mayoría de los casos.
+\end{enumerate}
+
+Por esta razón, un remedio (Patching) del algoritmo de PageRank fue el método de
+las potencias, en el cual la matriz hiperenlace
+
+\[
+H_{ij} \equiv \begin{cases}
+\frac{1}{\mathrm{outdeg}(P_j)} & \text{si } P_j \in B_i \\
+0 & \text{en otro caso}
+\end{cases}
+\]
+
+debería converger a una solución autoconsistente
+
+\[
+I^{k+1} = H I^k
+\]
+
+donde se toma un vector $I^{0}$ y se hace interactuar unas 100 veces y el orden
+mostrado de las páginas es el de $I^{100}$, ordenadas de mayor a menor. Si se
+normalizan las columnas de la matriz hipervínculo (hiperenlace) $H$, obtenemos
+otra matriz hiperenlace normalizada E.
+
+\textbf{La matriz E:} se sabe de la teoría de matrices estocásticas que 1 es uno
+de sus autovalores. Además, también se sabe que la convergencia de $I^k = E
+I^{k-1}$ a $I = E I$ depende del segundo autovalor de $\lambda_2$ de E y es un
+hecho que $I^k = E I^{k-1}$ converge rápidamente si $\abs{\lambda_2}$ es
+cercano a cero.
+
+\subsection{El algoritmo de remiendo (parcheo) general}
+
+Asumamos que el caminante recorre el grafo siguiendo la web con una matriz
+estocástica E con probabilidad $\alpha$, y con probabilidad $1-\alpha$ podrá ir
+a cualquier página al azar que sea de su interés. La matriz web de este proceso
+será:
+
+\[
+G \equiv \alpha E + \frac{1-\alpha}{N} \mathds{I} \text{Matriz de Google}
+\]
+
+$\mathds{I}$ es una matriz en la cual todas las entradas están establecidas en
+1, y N el número de nodos.
+
+Propiedades de G:
+\begin{enumerate}
+\item Es estocástica
+\item Irreducible
+\item Primitiva
+\item El resultado de determinar el estado auto-consistente no depende del
+    vector Google inicial $I^0$
+\end{enumerate}
+
+\subsection{Interpretación como una caminata aleatoria}
+
+La asiganación de valores de importancia se puede replantear como la
+probabilidad de encontrar un caminante aleatorio en cierto nodo del grafo.
+
+\begin{minipage}{0.5\linewidth}
+Del proceso:
+\begin{align*}
+& Pr(x^{(n+1)}=p_i) \\
+& =\sum\limits_j G_{i j} Pr(x^{(n)}=p_j)
+\end{align*}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+De la ley de probabilidad total:
+\begin{align*}
+& Pr(x^{(n+1)}=p_i) \\
+& =\sum\limits_j Pr(x^{(n+1)}=p_i|x^{(n)}=p_j) Pr(x^{(n)}=p_j)
+\end{align*}
+\end{minipage}
+\[
+\implies G_{i j} = Pr(x^{(n+1)}=p_i | x^{(n)}=p_j)
+\]
+
+En el contexto del Internet, $G_{i j}$ es la probabilidad de qeu cierto
+internauta, que se encuentra en la página $p_i$, entre en la página $p_j$. El
+factor $\alpha E_{i j}$ es la probabilidad de que lo haga presionando un enlace presente en $p_i$, mientras que $\frac{1-\alpha}{N} \mathds{I}$ es la probabilidad
+de que lo haga introduciendo la URL directamente.
+
+El factor de amortiguamiento es libre y debe ser calibrado. Se suela usar
+$\alpha = 0.85$
+
+\subsection{Cuantizando las caminatas aleatorias}
+
+La forma obvia y directa de cuantizar una caminata aleatoria sería sustituir el
+conjunto de nodos $\{p_i\}$ por el conjunto de kets $\{\ket{i}\}$. Sin embargo,
+esto lleva a sistemas con operadores no unitarios y no es realizable.
+
+% INSERTAR EJEMPLO AQUÍ
+
+Esto nos obliga a buscar maneras alternativas de cuantizar las caminatas aleatorias. La cadena anterior se podría cuantizar agregando un espacio "moneda" al espacio de Hilbert generado por $\{\ket{i}\}$. En este caso, el operador de difusión se interpreta como "lanzar la moneda" para decidir en qué dirección ir.
+
+\begin{align*}
+U = \sqrt{p} \ketbra{i+1}{i} \otimes \ketbra{c}{c} + \sqrt{1-p}
+\ketbra{i-p}{i} \otimes \ketbra{s}{s} \\
+U^\dagger = \sqrt{p} \ketbra{i}{i+1} \otimes \ketbra{c}{c} + \sqrt{1-p}
+\ketbra{i}{i-p} \otimes \ketbra{s}{s} \\
+U U^\dagger = p \ketbra{i+1}{i+1} \otimes \ketbra{c}{c} + (1-p) \ketbra{i-1}{i-1} \otimes \ketbra{s}{s}
+\end{align*}
+
+Al realizar la suma sobre $i$ se tiene $\mathds{1}$, como se deseaba. Sin
+embargo, esta solución toavía no es satisfactoria, pues exige que $p_{i
+  j}=\frac{1}{outdeg(j)}$ para que $U U^\dagger=\mathds{1}$.
+
+Casi todas las cuantizaciones cometen estos dos pecados, aumentar la dimensión
+del espacio de Hilbert e imponer condiciones sobre el grafo; y en general, se
+debe cometer al menos uno de los dos.
+
+\textbf{Nota:} También existen caminatas cuánticas continuas, no sólo discretas.
+
+\subsection{Caminata cuántica de Szegedy}
+
+Existe un tipo particular de caminatas aleatorias conocido como caminatas
+bipartitas. En éstas se tiene dos conjuntos de nodos y sólo ocurren transiciones
+entre los dos conjuntos, no dentro del mismo.
+
+# INSERTAR EJEMPLO AQUÍ
+
+Szegedy desarrolló una cuantización de estas caminatas. Para esto utilizó
+operadores de reflexión ($W = \mathds{1} - 2 \ketbra{w}{w}$, similares a los
+utilizados en el algoritmo de Grover). Aprovechándose del hecho de que un par de
+reflexiones equivale a una rotación (como en el algoritmo de Grover), creó el
+siguiente operador de evolución de la caminata: $U = (\mathds{1} - 2
+B)(\mathds{1} - 2 A)$, donde A es el proyector sobre las transiciones de la
+primera partición a la segunda y B de la segunda a la primera.
+
+
+
+% \section{PageRank clásico}
+
+% La idea principal de este algoritmo es que la importancia de una página está dada por cuántas páginas contienen vínculos a ella.
+
+% Si defininimos $I(P_i)$ como la importancia de la página $P_i$ y $B_i$ como el conjunto de páginas que llevan a ella, entonces se podría expresar la idea anterior como:
+
+% \[
+% I(P_i) \equiv \sum\limits_{j \in B_i} \frac{I(P_j)}{\mathrm{outdeg}(P_j)}
+% \]
+
+% donde $\mathrm{outdeg}(P_j)$ es el \textit{outdegree} de la página $P_j$, es decir, la cantidad de vínculos salientes. Definamos ahora la matriz de hipervínculos:
+
+% \[
+% H_{ij} \equiv \begin{cases}
+% \frac{1}{\mathrm{outdeg}(P_j)} & \text{si } P_j \in B_i \\
+% 0 & \text{en otro caso}
+% \end{cases}
+% \]
+
+% y el vector de PageRank:
+
+% \[
+% I_i \equiv I(P_i)
+% \]
+
+% Así se puede definir el PageRank de forma matricial de la siguiente manera:
+
+% \[
+% I = H I
+% \]
+
+% \subsection{Saltos aleatorios}
+
+% \[
+% \mathrm{PageRank}(p_i) = \frac{\alpha}{N} + (1 - \alpha) \sum\limits_{p_j \in L(p_i)} \mathrm{PageRank}(p_j)
+% \]
+
+% donde $p_i$ es la página en consideración, $N$ es el número total de páginas, $\alpha$ es la constante de amortiguamiento y $L(p_i)$ es el conjunto de las páginas que llevan a $p_i$.
+
+% \subsection{El algoritmo visto como una caminata aleatoria}
+
+% \section{PageRank cuántico}
+
+% \subsection{Caminatas cuánticas de Szegedy}
+
+% \subsection{PageRank cuántico de Paparo}
+
+% \section{AC de SearchRank}
+
+\end{document}
+\grid
