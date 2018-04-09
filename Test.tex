@@ -985,6 +985,46 @@ cuantizar cualquier tipo de caminata. Sólo hay que pagar el precio de duplicar
 el espacio de Hilbert generado por $\{\ket{i}\}$: $\mathcal{H}^\prime = \mathcal{H} \otimes \mathcal{H}$.
 
 % INSERTAR EJEMPLO AQUÍ
+\begin{figure}[h]
+\begin{tabular}{c c c}
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,thick]
+\SetGraphUnit{2} 
+\tikzset{VertexStyle/.style = {draw,circle,thick,
+                               minimum size=0.5cm,
+                               font=\Large\bfseries},thick} 
+\Vertex{1} \SOWE(1){2} \SOEA(2){3} \SOEA(1){4} 
+\Edges(1,2,3) \Edge(1)(4)
+
+\tikzset{EdgeStyle/.style = {->, bend left}}
+\Edge(3)(2)
+% it's possible with \Edge but Tikz's syntax is allowed too.
+\end{tikzpicture} 
+&
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,thick]
+\tikzset{VertexStyle/.style = {draw,circle,thick,
+                               minimum size=0.5cm,
+                               font=\bfseries},thick} 
+\Vertex[x = 0, y = 0]{1a} \Vertex[x = 0, y = -1]{2a}
+\Vertex[x = 0, y = -2]{3a}\Vertex[x = 0, y = -3]{4a}
+\Vertex[x = 3, y = 0]{1b} \Vertex[x = 3, y = -1]{2b}
+\Vertex[x = 3, y = -2]{3b}\Vertex[x = 3, y = -3]{4b}
+\Edge(1a)(2b)	\Edge(1a)(3b)	\Edge(2a)(4b)
+\Edge(4a)(2b)
+\end{tikzpicture}
+&
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,thick]
+\tikzset{VertexStyle/.style = {draw,circle,thick,
+                               minimum size=0.5cm,
+                               font=\bfseries},thick} 
+\Vertex[x = 0, y = 0]{1a} \Vertex[x = 0, y = -1]{2a}
+\Vertex[x = 0, y = -2]{3a}\Vertex[x = 0, y = -3]{4a}
+\Vertex[x = 3, y = 0]{1b} \Vertex[x = 3, y = -1]{2b}
+\Vertex[x = 3, y = -2]{3b}\Vertex[x = 3, y = -3]{4b}
+\Edge(2b)(1a)	\Edge(3b)(1a)	\Edge(4b)(2a)
+\Edge(4b)(1a)
+\end{tikzpicture}
+\end{tabular}
+\end{figure}
 
 En estos casos, podemso escribir el operador de difusión en términos de sólo A,
 pues como la segunda partición es un reflejo de la primera, $B = A^T$. Entonces:
