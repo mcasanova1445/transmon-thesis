@@ -1,4 +1,4 @@
-\documentclass[11pt, spanish]{report}
+\message{ !name(Test.tex)}\documentclass[11pt, spanish]{report}
 \usepackage[spanish]{babel}
 \selectlanguage{spanish}
 \usepackage[utf8]{inputenc}
@@ -16,6 +16,9 @@
 
 \begin{document}
 
+\message{ !name(Test.tex) !offset(-3) }
+
+
 \begin{abstract}
 Your abstract goes here...
 ...
@@ -27,16 +30,13 @@ La computación cuántica es como chévere
 
 \section{Kets, bras y operadores}
 
-La notación bra-ket es la notación estándar en la mecánica cuántica para
-describir estados cuánticos.
-
 \section{Postulados de la mecánica cuántica}
 \begin{enumerate}
 \item Un estado puro en mecánica cuántica se representa en términos de
   un vector normalizado $\ket{\psi}$ en un espacio de Hilbert
   $\mathcal{H}$.
 \item Si $\mathcal{H}_1$ y $\mathcal{H}_2$ son los espacios de Hilbert
- ￼ asociados a dos sistemas físicos, entonces el espacio del sistema
+  asociados a dos sistemas físicos, entonces el espacio del sistema
   compuesto $\mathcal{H}$ estará dado por el producto tensoral de los
   dos espacios de Hilbert
   $\mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2$.
@@ -1113,3 +1113,5 @@ promediando $I_q$ sobre $m$: $\langle I_q(P_i) \rangle = \frac{1}{M}
 
 \end{document}
 \grid
+
+\message{ !name(Test.tex) !offset(-1117) }

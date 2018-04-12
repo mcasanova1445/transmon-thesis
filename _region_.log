@@ -1,0 +1,4667 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Arch Linux) (preloaded format=prv_Test 2018.4.9)  9 APR 2018 00:00
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**&prv_Test _region_.tex
+(./_region_.tex
+LaTeX2e <2017-04-15>
+Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
+
+ Xy-pic version 3.8.9 <2013/10/06>
+ Copyright (c) 1991-2013 by Kristoffer H. Rose <krisrose@tug.org> and others
+ Xy-pic is free software: see the User's Guide for details.
+
+CUSTOMISED FORMAT. Preloaded files:
+        .
+  report.cls    2014/09/29 v1.4h Standard LaTeX document class
+  size11.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
+   babel.sty    2018/02/14 3.18 The Babel package
+ spanish.ldf
+inputenc.sty    2015/03/17 v1.2c Input encoding file
+    utf8.def    2017/01/28 v1.1t UTF-8 support for inputenc
+   t1enc.dfu    2017/01/28 v1.1t UTF-8 support for inputenc
+  ot1enc.dfu    2017/01/28 v1.1t UTF-8 support for inputenc
+  omsenc.dfu    2017/01/28 v1.1t UTF-8 support for inputenc
+mathtools.sty    2018/01/08 v1.21 mathematical typesetting tools
+  keyval.sty    2014/10/28 v1.15 key=value parser (DPC)
+    calc.sty    2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+ mhsetup.sty    2017/03/31 v1.3 programming setup (MH)
+ amsmath.sty    2017/09/02 v2.17a AMS math features
+ amstext.sty    2000/06/29 v2.01 AMS text
+  amsgen.sty    1999/11/30 v2.0 generic functions
+  amsbsy.sty    1999/11/29 v1.2d Bold Symbols
+  amsopn.sty    2016/03/08 v2.02 operator names
+ physics.sty    
+  xparse.sty    2018/02/21 L3 Experimental document command parser
+   expl3.sty    2018/02/21 L3 programming layer (loader) 
+expl3-code.tex    2018/02/21 L3 programming layer 
+l3pdfmode.def    2017/03/18 v L3 Experimental driver: PDF mode
+qcircuit.sty    2016/12/29
+      xy.sty    2013/10/06 Xy-pic version 3.8.9
+   ifpdf.sty    2017/03/15 v3.2 Provides the ifpdf switch
+graphicx.sty    2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    2016/01/03 v1.10 sin cos tan (DPC)
+graphics.cfg    2016/06/04 v1.11 sample graphics configuration
+  pdftex.def    2018/01/08 v1.0l Graphics/color driver for pdftex
+   float.sty    2001/11/08 v1.3d Float enhancements (AL)
+  dsfont.sty    1995/08/01 v0.1 Double stroke roman fonts
+tkz-graph.sty    2011/06/01 ctan v 1.00 base for graphs
+    etex.sty    2016/08/01 v2.7 eTeX basic definition package (PEB,DPC)
+  ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+ xkeyval.sty    2014/12/03 v2.7a package option processing (HA)
+ xkeyval.tex    2014/12/03 v2.7a key=value parser (HA)
+    tikz.sty    2015/08/07 v3.0.1a (rcs-revision 1.151)
+     pgf.sty    2015/08/07 v3.0.1a (rcs-revision 1.15)
+  pgfrcs.sty    2015/08/07 v3.0.1a (rcs-revision 1.31)
+everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
+  pgfrcs.code.tex
+ pgfcore.sty    2010/04/11 v3.0.1a (rcs-revision 1.7)
+  pgfsys.sty    2014/07/09 v3.0.1a (rcs-revision 1.48)
+  pgfsys.code.tex
+pgfsyssoftpath.code.tex    2013/09/09  (rcs-revision 1.9)
+pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
+  xcolor.sty    2016/05/11 v2.12 LaTeX color extensions (UK)
+   color.cfg    2016/01/02 v1.6 sample color configuration
+ pgfcore.code.tex
+pgfcomp-version-0-65.sty    2007/07/03 v3.0.1a (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v3.0.1a (rcs-revision 1.1)
+  pgffor.sty    2013/12/13 v3.0.1a (rcs-revision 1.25)
+ pgfkeys.sty    
+ pgfkeys.code.tex
+ pgfmath.sty    
+ pgfmath.code.tex
+  pgffor.code.tex
+    tikz.code.tex
+        .
+No file _region_.aux.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+(/home/mcasanova/.emacs.d/elpa/auctex-12.1.1/latex/preview.sty
+Package: preview 2017/04/24 12.1 (AUCTeX/preview-latex)
+ (/usr/share/texmf-dist/tex/generic/luatex85/luatex85.sty
+Package: luatex85 2016/06/15 v1.4 pdftex aliases for luatex
+) (/home/mcasanova/.emacs.d/elpa/auctex-12.1.1/latex/prtightpage.def
+\PreviewBorder=\dimen291
+) (/home/mcasanova/.emacs.d/elpa/auctex-12.1.1/latex/prauctex.def
+No auxiliary output files.
+
+
+\hbadness=\count303
+\hfuzz=\dimen292
+(/home/mcasanova/.emacs.d/elpa/auctex-12.1.1/latex/prauctex.cfg)) (/home/mcasanova/.emacs.d/elpa/auctex-12.1.1/latex/prfootnotes.def)
+\pr@snippet=\count304
+\pr@box=\box61
+\pr@output=\toks46
+
+Preview: Fontsize 10.95pt
+Preview: PDFoutput 1
+)
+LaTeX Info: Redefining \. on input line 17.
+LaTeX Info: Redefining \% on input line 17.
+Package xypdf Info: Line width: 0.43799pt on input line 17.
+ (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count305
+\scratchdimen=\dimen293
+\scratchbox=\box62
+\nofMPsegments=\count306
+\nofMParguments=\count307
+\everyMPshowfont=\toks47
+\MPscratchCnt=\count308
+\MPscratchDim=\dimen294
+\MPnumerator=\count309
+\makeMPintoPDFobject=\count310
+\everyMPtoPDFconversion=\toks48
+) (/usr/share/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+ (/usr/share/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+) (/usr/share/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+ (/usr/share/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+ (/usr/share/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+))) (/usr/share/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+ (/usr/share/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+ (/usr/share/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+ (/usr/share/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+))) (/usr/share/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2018/01/21 v0.26 Utility functions of pdfTeX for LuaTeX (HO)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 438.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+ (/usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+)) ABD: EveryShipout initializing macros  !name(Test.tex) !offset(-3) 
+! Preview: Snippet 1 started.
+<-><->
+      
+l.28 \chapter
+             {Introducción}
+Not a real error.
+
+Cap\'{\i }tulo 1.
+Preview: Tightpage -32891 -32891 32891 32891
+! Preview: Snippet 1 ended.(8192000+0x23592960).
+<-><->
+      
+l.28 \chapter{Introducción}
+                            
+Not a real error.
+
+[1
+
+
+
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+! Preview: Snippet 2 started.
+<-><->
+      
+l.31 \section
+             {Kets, bras y operadores}
+Not a real error.
+
+! Preview: Snippet 2 ended.(655359+183500x23592960).
+<-><->
+      
+l.31 \section{Kets, bras y operadores}
+                                      
+Not a real error.
+
+[2
+
+]
+! Preview: Snippet 3 started.
+<-><->
+      
+l.33 \section
+             {Postulados de la mecánica cuántica}
+Not a real error.
+
+! Preview: Snippet 3 ended.(655359+0x23592960).
+<-><->
+      
+l.33 ...tion{Postulados de la mecánica cuántica}
+                                                  
+Not a real error.
+
+[3
+
+]
+! Preview: Snippet 4 started.
+<-><->
+      
+l.36   un vector normalizado $
+                              \ket{\psi}$ en un espacio de Hilbert
+Not a real error.
+
+! Preview: Snippet 4 ended.(538213+179405x971612).
+<-><->
+      
+l.36   un vector normalizado $\ket{\psi}$
+                                          en un espacio de Hilbert
+Not a real error.
+
+[4]
+! Preview: Snippet 5 started.
+<-><->
+      
+l.37   $
+        \mathcal{H}$.
+Not a real error.
+
+! Preview: Snippet 5 ended.(490372+0x612968).
+<-><->
+      
+l.37   $\mathcal{H}$
+                    .
+Not a real error.
+
+[5]
+! Preview: Snippet 6 started.
+<-><->
+      
+l.38 \item Si $
+               \mathcal{H}_1$ y $\mathcal{H}_2$ son los espacios de Hilbert
+Not a real error.
+
+! Preview: Snippet 6 ended.(490372+107642x917341).
+<-><->
+      
+l.38 \item Si $\mathcal{H}_1$
+                              y $\mathcal{H}_2$ son los espacios de Hilbert
+Not a real error.
+
+[6]
+! Preview: Snippet 7 started.
+<-><->
+      
+l.38 \item Si $\mathcal{H}_1$ y $
+                                 \mathcal{H}_2$ son los espacios de Hilbert
+Not a real error.
+
+! Preview: Snippet 7 ended.(490372+107642x917341).
+<-><->
+      
+l.38 \item Si $\mathcal{H}_1$ y $\mathcal{H}_2$
+                                                son los espacios de Hilbert
+Not a real error.
+
+[7]
+! Preview: Snippet 8 started.
+<-><->
+      
+l.40   compuesto $
+                  \mathcal{H}$ estará dado por el producto tensoral de los
+Not a real error.
+
+! Preview: Snippet 8 ended.(490372+0x612968).
+<-><->
+      
+l.40   compuesto $\mathcal{H}$
+                               estará dado por el producto tensoral de los
+Not a real error.
+
+[8]
+! Preview: Snippet 9 started.
+<-><->
+      
+l.42   $
+        \mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2$.
+Not a real error.
+
+! Preview: Snippet 9 ended.(490372+107642x4281556).
+<-><->
+      
+l.42 ...{H} = \mathcal{H}_1 \otimes \mathcal{H}_2$
+                                                  .
+Not a real error.
+
+[9]
+! Preview: Snippet 10 started.
+<-><->
+      
+l.43 \item Para todo observable $
+                                 a$, existe un operador hermítico
+Not a real error.
+
+! Preview: Snippet 10 ended.(308974+0x379326).
+<-><->
+      
+l.43 \item Para todo observable $a$
+                                   , existe un operador hermítico
+Not a real error.
+
+[10]
+! Preview: Snippet 11 started.
+<-><->
+      
+l.44   correspondiente $
+                        A$ que actua sobre el espacio de Hilbert
+Not a real error.
+
+! Preview: Snippet 11 ended.(490372+0x538215).
+<-><->
+      
+l.44   correspondiente $A$
+                           que actua sobre el espacio de Hilbert
+Not a real error.
+
+[11]
+! Preview: Snippet 12 started.
+<-><->
+      
+l.45   $
+        \mathcal{H}$, cuyos autovalores son los posibles resultados de una
+Not a real error.
+
+! Preview: Snippet 12 ended.(490372+0x612968).
+<-><->
+      
+l.45   $\mathcal{H}$
+                    , cuyos autovalores son los posibles resultados de una
+Not a real error.
+
+[12]
+! Preview: Snippet 13 started.
+<-><->
+      
+l.49   $
+        i \hbar \frac{\partial \ket{\psi}}{\partial t} = H
+Not a real error.
+
+! Preview: Snippet 13 ended.(746748+247464x4599531).
+<-><->
+      
+l.50   \ket{\psi}$
+                  . Donde $\hbar$ es la constante de Planck reducida y $H$
+Not a real error.
+
+[13]
+! Preview: Snippet 14 started.
+<-><->
+      
+l.50   \ket{\psi}$. Donde $
+                           \hbar$ es la constante de Planck reducida y $H$
+Not a real error.
+
+! Preview: Snippet 14 ended.(498346+0x413469).
+<-><->
+      
+l.50   \ket{\psi}$. Donde $\hbar$
+                                  es la constante de Planck reducida y $H$
+Not a real error.
+
+[14]
+! Preview: Snippet 15 started.
+<-><->
+      
+l.50 ...ar$ es la constante de Planck reducida y $
+                                                  H$
+Not a real error.
+
+! Preview: Snippet 15 ended.(490372+0x654826).
+<-><->
+      
+l.50 ...$ es la constante de Planck reducida y $H$
+                                                  
+Not a real error.
+
+[15]
+! Preview: Snippet 16 started.
+<-><->
+      
+l.53 ...�s de realizar una medida del observable $
+                                                  a$, el estado
+Not a real error.
+
+! Preview: Snippet 16 ended.(308974+0x379326).
+<-><->
+      
+l.53 ... de realizar una medida del observable $a$
+                                                  , el estado
+Not a real error.
+
+[16]
+! Preview: Snippet 17 started.
+<-><->
+      
+l.54   $
+        \ket{\psi}$ del sistema colapsa a al autoestado de $A$
+Not a real error.
+
+! Preview: Snippet 17 ended.(538213+179405x971612).
+<-><->
+      
+l.54   $\ket{\psi}$
+                    del sistema colapsa a al autoestado de $A$
+Not a real error.
+
+[17]
+! Preview: Snippet 18 started.
+<-><->
+      
+l.54 ...$ del sistema colapsa a al autoestado de $
+                                                  A$
+Not a real error.
+
+! Preview: Snippet 18 ended.(490372+0x538215).
+<-><->
+      
+l.54 ...del sistema colapsa a al autoestado de $A$
+                                                  
+Not a real error.
+
+[18]
+! Preview: Snippet 19 started.
+<-><->
+      
+l.58 \section
+             {Computación cuántica}
+Not a real error.
+
+! Preview: Snippet 19 ended.(655359+183500x23592960).
+<-><->
+      
+l.58 \section{Computación cuántica}
+                                     
+Not a real error.
+
+[19
+
+]
+! Preview: Snippet 20 started.
+<-><->
+      
+l.61 \subsection
+                {Qubits}
+Not a real error.
+
+! Preview: Snippet 20 ended.(546132+152916x23592960).
+<-><->
+      
+l.61 \subsection{Qubits}
+                        
+Not a real error.
+
+[20
+
+]
+! Preview: Snippet 21 started.
+<-><->
+      
+l.62 ...nto del espacio de Hilbert de dimensión $
+                                                  \dim (\mathcal{H})=2$ y pu...
+Not a real error.
+
+! Preview: Snippet 21 ended.(538214+179404x3682782).
+<-><->
+      
+l.62 ...lbert de dimensión $\dim (\mathcal{H})=2$
+                                                   y puede ser escrito de la...
+Not a real error.
+
+[21]
+! Preview: Snippet 22 started.
+<-><->
+      
+l.62 ...uede ser escrito de la siguiente manera: $
+                                                   \ket{\psi} = \alpha \ket{...
+Not a real error.
+
+! Preview: Snippet 22 ended.(538213+179405x5624664).
+<-><->
+      
+l.62 ...t{\psi} = \alpha \ket{0} + \beta \ket{1} $
+                                                  , donde $ \{ \ket{0},\ket{...
+Not a real error.
+
+[22]
+! Preview: Snippet 23 started.
+<-><->
+      
+l.62 ... \alpha \ket{0} + \beta \ket{1} $, donde $
+                                                   \{ \ket{0},\ket{1} \} $ f...
+Not a real error.
+
+! Preview: Snippet 23 ended.(538214+179405x2830609).
+<-><->
+      
+l.62 ...\ket{1} $, donde $ \{ \ket{0},\ket{1} \} $
+                                                   forma una base de $\mathc...
+Not a real error.
+
+[23]
+! Preview: Snippet 24 started.
+<-><->
+      
+l.62 ...{ \ket{0},\ket{1} \} $ forma una base de $
+                                                  \mathcal{H}$ y donde $ \al...
+Not a real error.
+
+! Preview: Snippet 24 ended.(490372+0x612968).
+<-><->
+      
+l.62 ...et{1} \} $ forma una base de $\mathcal{H}$
+                                                   y donde $ \alpha $ y $ \b...
+Not a real error.
+
+[24]
+! Preview: Snippet 25 started.
+<-><->
+      
+l.62 ... forma una base de $\mathcal{H}$ y donde $
+                                                   \alpha $ y $ \beta $ son ...
+Not a real error.
+
+! Preview: Snippet 25 ended.(308974+0x461718).
+<-><->
+      
+l.62 ...a base de $\mathcal{H}$ y donde $ \alpha $
+                                                   y $ \beta $ son números ...
+Not a real error.
+
+[25]
+! Preview: Snippet 26 started.
+<-><->
+      
+l.62 ...se de $\mathcal{H}$ y donde $ \alpha $ y $
+                                                   \beta $ son números comp...
+Not a real error.
+
+! Preview: Snippet 26 ended.(498346+139537x443778).
+<-><->
+      
+l.62 ...mathcal{H}$ y donde $ \alpha $ y $ \beta $
+                                                   son números complejos, t...
+Not a real error.
+
+[26]
+! Preview: Snippet 27 started.
+<-><->
+      
+l.62 ...beta $ son números complejos, tales que $
+                                                   | \alpha |^2 + | \beta |^...
+Not a real error.
+
+! Preview: Snippet 27 ended.(598293+179404x4518168).
+<-><->
+      
+l.62 ...les que $ | \alpha |^2 + | \beta |^2 = 1 $
+                                                  , conocidos como amplitude...
+Not a real error.
+
+[27]
+! Preview: Snippet 28 started.
+<-><->
+      
+l.65 ... estar no sólo puede estar en el estado $
+                                                  \ket{0}$ y en el estado $\...
+Not a real error.
+
+! Preview: Snippet 28 ended.(538213+179405x837224).
+<-><->
+      
+l.65 ...o sólo puede estar en el estado $\ket{0}$
+                                                   y en el estado $\ket{1}$,...
+Not a real error.
+
+[28]
+! Preview: Snippet 29 started.
+<-><->
+      
+l.65 ...ar en el estado $\ket{0}$ y en el estado $
+                                                  \ket{1}$, sino también en...
+Not a real error.
+
+! Preview: Snippet 29 ended.(538213+179405x837224).
+<-><->
+      
+l.65 ... estado $\ket{0}$ y en el estado $\ket{1}$
+                                                  , sino también en superpo...
+Not a real error.
+
+[29]
+! Preview: Snippet 30 started.
+<-><->
+      
+l.68 ...e puede escribir de la siguiente manera: $
+                                                   \ket{\psi} = e^{i \phi_0}...
+Not a real error.
+
+! Preview: Snippet 30 ended.(653634+179405x22846643).
+<-><->
+      
+l.68 ...hi1 - \phi_0 )} \sin ( \theta ) \ket{1}) $
+                                                  , donde $ \theta $, $\phi_...
+Not a real error.
+
+[30]
+! Preview: Snippet 31 started.
+<-><->
+      
+l.68 ...i_0 )} \sin ( \theta ) \ket{1}) $, donde $
+                                                   \theta $, $\phi_0$ y $\ph...
+Not a real error.
+
+! Preview: Snippet 31 ended.(498346+0x356816).
+<-><->
+      
+l.68 ...in ( \theta ) \ket{1}) $, donde $ \theta $
+                                                  , $\phi_0$ y $\phi_1$ son ...
+Not a real error.
+
+[31]
+! Preview: Snippet 32 started.
+<-><->
+      
+l.68 ...( \theta ) \ket{1}) $, donde $ \theta $, $
+                                                  \phi_0$ y $\phi_1$ son nú...
+Not a real error.
+
+! Preview: Snippet 32 ended.(498346+139537x738882).
+<-><->
+      
+l.68 ...a ) \ket{1}) $, donde $ \theta $, $\phi_0$
+                                                   y $\phi_1$ son números r...
+Not a real error.
+
+[32]
+! Preview: Snippet 33 started.
+<-><->
+      
+l.68 ...\ket{1}) $, donde $ \theta $, $\phi_0$ y $
+                                                  \phi_1$ son números reale...
+Not a real error.
+
+! Preview: Snippet 33 ended.(498346+139537x738882).
+<-><->
+      
+l.68 ...) $, donde $ \theta $, $\phi_0$ y $\phi_1$
+                                                   son números reales. La f...
+Not a real error.
+
+[33]
+! Preview: Snippet 34 started.
+<-><->
+      
+l.68 ...i_1$ son números reales. La fase global $
+                                                  \phi_0$ es ignorable, pues...
+Not a real error.
+
+! Preview: Snippet 34 ended.(498346+139537x738882).
+<-><->
+      
+l.68 ...n números reales. La fase global $\phi_0$
+                                                   es ignorable, pues no tie...
+Not a real error.
+
+[34]
+! Preview: Snippet 35 started.
+<-><->
+      
+l.68 .... Entonces, sin pérdida de generalidad, $
+                                                   \ket{\psi} = \cos ( \thet...
+Not a real error.
+
+! Preview: Snippet 35 ended.(624507+179405x9278703).
+<-><->
+      
+l.68 ...{0} + \sin ( \theta ) e^{i \phi} \ket{1} $
+                                                  , donde $ \theta \in [0, \...
+Not a real error.
+
+[35]
+! Preview: Snippet 36 started.
+<-><->
+      
+l.68 ...n ( \theta ) e^{i \phi} \ket{1} $, donde $
+                                                   \theta \in [0, \pi ] $ y ...
+Not a real error.
+
+! Preview: Snippet 36 ended.(538214+179404x2745137).
+<-><->
+      
+l.68 ... \ket{1} $, donde $ \theta \in [0, \pi ] $
+                                                   y $ \phi \in [0, 2 \pi ] ...
+Not a real error.
+
+[36]
+! Preview: Snippet 37 started.
+<-><->
+      
+l.68 ...t{1} $, donde $ \theta \in [0, \pi ] $ y $
+                                                   \phi \in [0, 2 \pi ] $. D...
+Not a real error.
+
+! Preview: Snippet 37 ended.(538214+179404x3174713).
+<-><->
+      
+l.68 ...\in [0, \pi ] $ y $ \phi \in [0, 2 \pi ] $
+                                                  . De esta manera, podemos ...
+Not a real error.
+
+[37]
+! Preview: Snippet 38 started.
+<-><->
+      
+l.70 \subsection
+                {Compuertas cuánticas}
+Not a real error.
+
+! Preview: Snippet 38 ended.(546132+152916x23592960).
+<-><->
+      
+l.70 \subsection{Compuertas cuánticas}
+                                       
+Not a real error.
+
+[38
+
+]
+! Preview: Snippet 39 started.
+<-><->
+      
+l.76 \subsubsection
+                   {Compuerta identidad}
+Not a real error.
+
+! Preview: Snippet 39 ended.(498346+139537x23592960).
+<-><->
+      
+l.76 \subsubsection{Compuerta identidad}
+                                        
+Not a real error.
+
+[39
+
+]
+! Preview: Snippet 40 started.
+<-><->
+      
+l.81 \[
+       
+Not a real error.
+
+<xymatrix 3x1 143>
+! Preview: Snippet 40 ended.(920948+0x7304076).
+<-><->
+      
+l.85 \]
+       
+Not a real error.
+
+[40]
+! Preview: Snippet 41 started.
+<-><->
+      
+l.88 \[
+       
+Not a real error.
+
+! Preview: Snippet 41 ended.(1782578+0x7112979).
+<-><->
+      
+l.93 \]
+       
+Not a real error.
+
+[41]
+! Preview: Snippet 42 started.
+<-><->
+      
+l.96 \subsubsection
+                   {Compuerta X}
+Not a real error.
+
+! Preview: Snippet 42 ended.(492366+139537x23592960).
+<-><->
+      
+l.96 \subsubsection{Compuerta X}
+                                
+Not a real error.
+
+[42
+
+]
+! Preview: Snippet 43 started.
+<-><->
+      
+l.97 ...te al NOT clásico, pues tránsforma los $
+                                                  \ket{0}$ en $\ket{1}$ y vi...
+Not a real error.
+
+! Preview: Snippet 43 ended.(538213+179405x837224).
+<-><->
+      
+l.97 ...T clásico, pues tránsforma los $\ket{0}$
+                                                   en $\ket{1}$ y viceversa,...
+Not a real error.
+
+[43]
+! Preview: Snippet 44 started.
+<-><->
+      
+l.97 ...�sico, pues tránsforma los $\ket{0}$ en $
+                                                  \ket{1}$ y viceversa, ya q...
+Not a real error.
+
+! Preview: Snippet 44 ended.(538213+179405x837224).
+<-><->
+      
+l.97 ...ues tránsforma los $\ket{0}$ en $\ket{1}$
+                                                   y viceversa, ya que reali...
+Not a real error.
+
+[44]
+! Preview: Snippet 45 started.
+<-><->
+      
+l.97 ...ceversa, ya que realiza una rotación de $
+                                                  \pi$ sobre el eje X en la ...
+Not a real error.
+
+! Preview: Snippet 45 ended.(308974+0x434809).
+<-><->
+      
+l.97 ...rsa, ya que realiza una rotación de $\pi$
+                                                   sobre el eje X en la esfe...
+Not a real error.
+
+[45]
+! Preview: Snippet 46 started.
+<-><->
+      
+l.97 ...ricial viene dada por la matriz de Pauli $
+                                                  \sigma_x$
+Not a real error.
+
+! Preview: Snippet 46 ended.(308974+107642x756400).
+<-><->
+      
+l.97 ...ene dada por la matriz de Pauli $\sigma_x$
+                                                  
+Not a real error.
+
+[46]
+! Preview: Snippet 47 started.
+<-><->
+      
+l.101 \[
+        
+Not a real error.
+
+<xymatrix 3x1 143>
+! Preview: Snippet 47 ended.(920948+0x7443613).
+<-><->
+      
+l.105 \]
+        
+Not a real error.
+
+[47]
+! Preview: Snippet 48 started.
+<-><->
+      
+l.108 \[
+        
+Not a real error.
+
+! Preview: Snippet 48 ended.(1782578+0x7112979).
+<-><->
+      
+l.113 \]
+        
+Not a real error.
+
+[48]
+! Preview: Snippet 49 started.
+<-><->
+      
+l.116 \subsubsection
+                    {Compuerta Z}
+Not a real error.
+
+! Preview: Snippet 49 ended.(492366+139537x23592960).
+<-><->
+      
+l.116 \subsubsection{Compuerta Z}
+                                 
+Not a real error.
+
+[49
+
+]
+! Preview: Snippet 50 started.
+<-><->
+      
+l.117 ... fase. Esto equivale a una rotación de $
+                                                  \pi$ sobre el eje Z en la ...
+Not a real error.
+
+! Preview: Snippet 50 ended.(308974+0x434809).
+<-><->
+      
+l.117 ...e. Esto equivale a una rotación de $\pi$
+                                                   sobre el eje Z en la esfe...
+Not a real error.
+
+[50]
+! Preview: Snippet 51 started.
+<-><->
+      
+l.117 ...icial viene dada por la matriz de Pauli $
+                                                  \sigma_z$
+Not a real error.
+
+! Preview: Snippet 51 ended.(308974+107642x724087).
+<-><->
+      
+l.117 ...ne dada por la matriz de Pauli $\sigma_z$
+                                                  
+Not a real error.
+
+[51]
+! Preview: Snippet 52 started.
+<-><->
+      
+l.121 \[
+        
+Not a real error.
+
+<xymatrix 3x1 143>
+! Preview: Snippet 52 ended.(920948+0x7388795).
+<-><->
+      
+l.125 \]
+        
+Not a real error.
+
+[52]
+! Preview: Snippet 53 started.
+<-><->
+      
+l.128 \[
+        
+Not a real error.
+
+! Preview: Snippet 53 ended.(1782578+0x7392054).
+<-><->
+      
+l.133 \]
+        
+Not a real error.
+
+[53]
+! Preview: Snippet 54 started.
+<-><->
+      
+l.136 \subsubsection
+                    {Compuerta Y}
+Not a real error.
+
+! Preview: Snippet 54 ended.(492366+139537x23592960).
+<-><->
+      
+l.136 \subsubsection{Compuerta Y}
+                                 
+Not a real error.
+
+[54
+
+]
+! Preview: Snippet 55 started.
+<-><->
+      
+l.137 Esta compuerta realiza una rotación de $
+                                               \pi$ sobre el eje y de la esf...
+Not a real error.
+
+! Preview: Snippet 55 ended.(308974+0x434809).
+<-><->
+      
+l.137 ... compuerta realiza una rotación de $\pi$
+                                                   sobre el eje y de la esfe...
+Not a real error.
+
+[55]
+! Preview: Snippet 56 started.
+<-><->
+      
+l.137 ...icial viene dada por la matriz de Pauli $
+                                                  \sigma_y$
+Not a real error.
+
+! Preview: Snippet 56 ended.(308974+209587x736982).
+<-><->
+      
+l.137 ...ne dada por la matriz de Pauli $\sigma_y$
+                                                  
+Not a real error.
+
+[56]
+! Preview: Snippet 57 started.
+<-><->
+      
+l.141 \[
+        
+Not a real error.
+
+<xymatrix 3x1 143>
+! Preview: Snippet 57 ended.(920948+0x7406237).
+<-><->
+      
+l.145 \]
+        
+Not a real error.
+
+[57]
+! Preview: Snippet 58 started.
+<-><->
+      
+l.148 \[
+        
+Not a real error.
+
+! Preview: Snippet 58 ended.(1782578+0x7336264).
+<-><->
+      
+l.153 \]
+        
+Not a real error.
+
+[58]
+! Preview: Snippet 59 started.
+<-><->
+      
+l.156 \subsubsection
+                    {Compuerta de Hadamard}
+Not a real error.
+
+! Preview: Snippet 59 ended.(498346+139537x23592960).
+<-><->
+      
+l.156 \subsubsection{Compuerta de Hadamard}
+                                           
+Not a real error.
+
+[59
+
+]
+! Preview: Snippet 60 started.
+<-><->
+      
+l.158 ...ma los estados de la base computacional $
+                                                  \ket{0}$ y $\ket{1}$ en es...
+Not a real error.
+
+! Preview: Snippet 60 ended.(538213+179405x837224).
+<-><->
+      
+l.158 ...stados de la base computacional $\ket{0}$
+                                                   y $\ket{1}$ en estados de...
+Not a real error.
+
+[60]
+! Preview: Snippet 61 started.
+<-><->
+      
+l.158 ...os de la base computacional $\ket{0}$ y $
+                                                  \ket{1}$ en estados de sup...
+Not a real error.
+
+! Preview: Snippet 61 ended.(538213+179405x837224).
+<-><->
+      
+l.158 ... base computacional $\ket{0}$ y $\ket{1}$
+                                                   en estados de superposici...
+Not a real error.
+
+[61]
+! Preview: Snippet 62 started.
+<-><->
+      
+l.158 ...n estados de superposiciones uniformes ($
+                                                  \ket{+}$ y $\ket{-}$). Tam...
+Not a real error.
+
+! Preview: Snippet 62 ended.(538213+179405x1036564).
+<-><->
+      
+l.158 ...s de superposiciones uniformes ($\ket{+}$
+                                                   y $\ket{-}$). También se...
+Not a real error.
+
+[62]
+! Preview: Snippet 63 started.
+<-><->
+      
+l.158 ... superposiciones uniformes ($\ket{+}$ y $
+                                                  \ket{-}$). También se pue...
+Not a real error.
+
+! Preview: Snippet 63 ended.(538213+179405x1036564).
+<-><->
+      
+l.158 ...siciones uniformes ($\ket{+}$ y $\ket{-}$
+                                                  ). También se puede inter...
+Not a real error.
+
+[63]
+! Preview: Snippet 64 started.
+<-><->
+      
+l.162 \[
+        
+Not a real error.
+
+<xymatrix 3x1 143>
+! Preview: Snippet 64 ended.(920948+0x7445606).
+<-><->
+      
+l.166 \]
+        
+Not a real error.
+
+[64]
+! Preview: Snippet 65 started.
+<-><->
+      
+l.169 \[
+        
+Not a real error.
+
+! Preview: Snippet 65 ended.(1782578+0x8008911).
+<-><->
+      
+l.175 \]
+        
+Not a real error.
+
+[65]
+! Preview: Snippet 66 started.
+<-><->
+      
+l.178 \subsubsection
+                    {Compuerta S}
+Not a real error.
+
+! Preview: Snippet 66 ended.(492366+139537x23592960).
+<-><->
+      
+l.178 \subsubsection{Compuerta S}
+                                 
+Not a real error.
+
+[66
+
+]
+! Preview: Snippet 67 started.
+<-><->
+      
+l.183 \[
+        
+Not a real error.
+
+<xymatrix 3x1 143>
+! Preview: Snippet 67 ended.(920948+0x7358894).
+<-><->
+      
+l.187 \]
+        
+Not a real error.
+
+[67]
+! Preview: Snippet 68 started.
+<-><->
+      
+l.190 \[
+        
+Not a real error.
+
+! Preview: Snippet 68 ended.(1782578+0x7112979).
+<-><->
+      
+l.195 \]
+        
+Not a real error.
+
+[68]
+! Preview: Snippet 69 started.
+<-><->
+      
+l.198 \subsubsection
+                    {Compuerta T}
+Not a real error.
+
+! Preview: Snippet 69 ended.(492366+139537x23592960).
+<-><->
+      
+l.198 \subsubsection{Compuerta T}
+                                 
+Not a real error.
+
+[69
+
+]
+! Preview: Snippet 70 started.
+<-><->
+      
+l.203 \[
+        
+Not a real error.
+
+<xymatrix 3x1 143>
+! Preview: Snippet 70 ended.(920948+0x7377707).
+<-><->
+      
+l.207 \]
+        
+Not a real error.
+
+[70]
+! Preview: Snippet 71 started.
+<-><->
+      
+l.210 \[
+        
+Not a real error.
+
+! Preview: Snippet 71 ended.(2152878+0x7473085).
+<-><->
+      
+l.215 \]
+        
+Not a real error.
+
+[71]
+! Preview: Snippet 72 started.
+<-><->
+      
+l.218 \subsubsection
+                    {Compuerta de cambio de fase}
+Not a real error.
+
+! Preview: Snippet 72 ended.(498346+139537x23592960).
+<-><->
+      
+l.218 \subsubsection{Compuerta de cambio de fase}
+                                                 
+Not a real error.
+
+[72
+
+]
+! Preview: Snippet 73 started.
+<-><->
+      
+l.221 \[
+        
+Not a real error.
+
+<xymatrix 3x1 143>
+! Preview: Snippet 73 ended.(1139803+0x7572589).
+<-><->
+      
+l.225 \]
+        
+Not a real error.
+
+[73]
+! Preview: Snippet 74 started.
+<-><->
+      
+l.228 \[
+        
+Not a real error.
+
+! Preview: Snippet 74 ended.(1783185+0x7377430).
+<-><->
+      
+l.233 \]
+        
+Not a real error.
+
+[74]
+! Preview: Snippet 75 started.
+<-><->
+      
+l.236 \subsubsection
+                    {Compuertas de rotación}
+Not a real error.
+
+! Preview: Snippet 75 ended.(498346+139537x23592960).
+<-><->
+      
+l.236 \subsubsection{Compuertas de rotación}
+                                             
+Not a real error.
+
+[75
+
+]
+! Preview: Snippet 76 started.
+<-><->
+      
+l.238 \[
+        
+Not a real error.
+
+! Preview: Snippet 76 ended.(1828054+0x21170336).
+<-><->
+      
+l.244 \]
+        
+Not a real error.
+
+[76]
+! Preview: Snippet 77 started.
+<-><->
+      
+l.246 \[
+        
+Not a real error.
+
+! Preview: Snippet 77 ended.(1828054+0x16377664).
+<-><->
+      
+l.252 \]
+        
+Not a real error.
+
+[77]
+! Preview: Snippet 78 started.
+<-><->
+      
+l.254 \[
+        
+Not a real error.
+
+! Preview: Snippet 78 ended.(2152878+0x15232965).
+<-><->
+      
+l.260 \]
+        
+Not a real error.
+
+[78]
+! Preview: Snippet 79 started.
+<-><->
+      
+l.262 \[
+        
+Not a real error.
+
+! Preview: Snippet 79 ended.(1828054+0x16375460).
+<-><->
+      
+l.268 \]
+        
+Not a real error.
+
+[79]
+! Preview: Snippet 80 started.
+<-><->
+      
+l.270 \[
+        
+Not a real error.
+
+! Preview: Snippet 80 ended.(1396336+0x16359600).
+<-><->
+      
+l.272 \]
+        
+Not a real error.
+
+[80]
+! Preview: Snippet 81 started.
+<-><->
+      
+l.274 \subsubsection
+                    {Compuerta CNOT}
+Not a real error.
+
+! Preview: Snippet 81 ended.(492366+139537x23592960).
+<-><->
+      
+l.274 \subsubsection{Compuerta CNOT}
+                                    
+Not a real error.
+
+[81
+
+]
+! Preview: Snippet 82 started.
+<-><->
+      
+l.277 \[
+        
+Not a real error.
+
+<xymatrix 3x2 196>
+! Preview: Snippet 82 ended.(2045646+0x7197126).
+<-><->
+      
+l.282 \]
+        
+Not a real error.
+
+[82]
+! Preview: Snippet 83 started.
+<-><->
+      
+l.285 \[
+        
+Not a real error.
+
+! Preview: Snippet 83 ended.(3565156+0x8226818).
+<-><->
+      
+l.292 \]
+        
+Not a real error.
+
+[83]
+! Preview: Snippet 84 started.
+<-><->
+      
+l.295 \subsubsection
+                    {Compuerta SWAP}
+Not a real error.
+
+! Preview: Snippet 84 ended.(492366+139537x23592960).
+<-><->
+      
+l.295 \subsubsection{Compuerta SWAP}
+                                    
+Not a real error.
+
+[84
+
+]
+! Preview: Snippet 85 started.
+<-><->
+      
+l.298 \[
+        
+Not a real error.
+
+<xymatrix 3x2 196>
+! Preview: Snippet 85 ended.(1291719+0x6902905).
+<-><->
+      
+l.303 \]
+        
+Not a real error.
+
+[85]
+! Preview: Snippet 86 started.
+<-><->
+      
+l.306 \[
+        
+Not a real error.
+
+! Preview: Snippet 86 ended.(3565156+0x8226818).
+<-><->
+      
+l.313 \]
+        
+Not a real error.
+
+[86]
+! Preview: Snippet 87 started.
+<-><->
+      
+l.316 \subsubsection
+                    {Compuerta $\sqrt{\text{SWAP}}$}
+Not a real error.
+
+! Preview: Snippet 87 ended.(665988+139537x23592960).
+<-><->
+      
+l.316 ...ubsection{Compuerta $\sqrt{\text{SWAP}}$}
+                                                  
+Not a real error.
+
+[87
+
+]
+! Preview: Snippet 88 started.
+<-><->
+      
+l.319 \[
+        
+Not a real error.
+
+<xymatrix 3x2 195>
+! Preview: Snippet 88 ended.(1291719+0x6902905).
+<-><->
+      
+l.324 \]
+        
+Not a real error.
+
+[88]
+! Preview: Snippet 89 started.
+<-><->
+      
+l.327 \[
+        
+Not a real error.
+
+! Preview: Snippet 89 ended.(3565156+0x10345101).
+<-><->
+      
+l.334 \]
+        
+Not a real error.
+
+[89]
+! Preview: Snippet 90 started.
+<-><->
+      
+l.337 \subsubsection
+                    {Compuerta de Ising}
+Not a real error.
+
+! Preview: Snippet 90 ended.(498346+139537x23592960).
+<-><->
+      
+l.337 \subsubsection{Compuerta de Ising}
+                                        
+Not a real error.
+
+[90
+
+]
+! Preview: Snippet 91 started.
+<-><->
+      
+l.340 \[
+        
+Not a real error.
+
+<xymatrix 3x2 242>
+! Preview: Snippet 91 ended.(2583427+0x8033810).
+<-><->
+      
+l.345 \]
+        
+Not a real error.
+
+[91]
+! Preview: Snippet 92 started.
+<-><->
+      
+l.348 \[
+        
+Not a real error.
+
+! Preview: Snippet 92 ended.(3566370+0x10841161).
+<-><->
+      
+l.356 \]
+        
+Not a real error.
+
+[92]
+! Preview: Snippet 93 started.
+<-><->
+      
+l.359 \subsubsection
+                    {Compuerta de Toffoli}
+Not a real error.
+
+! Preview: Snippet 93 ended.(498346+139537x23592960).
+<-><->
+      
+l.359 \subsubsection{Compuerta de Toffoli}
+                                          
+Not a real error.
+
+[93
+
+]
+! Preview: Snippet 94 started.
+<-><->
+      
+l.362 \[
+        
+Not a real error.
+
+<xymatrix 3x3 310>
+! Preview: Snippet 94 ended.(3512785+0x7197126).
+<-><->
+      
+l.368 \]
+        
+Not a real error.
+
+[94]
+! Preview: Snippet 95 started.
+<-><->
+      
+l.371 \[
+        
+Not a real error.
+
+! Preview: Snippet 95 ended.(7130312+0x10255158).
+<-><->
+      
+l.382 \]
+        
+Not a real error.
+
+[95]
+! Preview: Snippet 96 started.
+<-><->
+      
+l.385 \subsubsection
+                    {Compuerta de Fredkin}
+Not a real error.
+
+! Preview: Snippet 96 ended.(498346+139537x23592960).
+<-><->
+      
+l.385 \subsubsection{Compuerta de Fredkin}
+                                          
+Not a real error.
+
+[96
+
+]
+! Preview: Snippet 97 started.
+<-><->
+      
+l.387 \subsubsection
+                    {Compuerta de Deutsch}
+Not a real error.
+
+! Preview: Snippet 97 ended.(498346+139537x23592960).
+<-><->
+      
+l.387 \subsubsection{Compuerta de Deutsch}
+                                          
+Not a real error.
+
+[97
+
+]
+! Preview: Snippet 98 started.
+<-><->
+      
+l.390 \[
+        
+Not a real error.
+
+<xymatrix 3x3 322>
+! Preview: Snippet 98 ended.(4521000+0x8026230).
+<-><->
+      
+l.396 \]
+        
+Not a real error.
+
+[98]
+! Preview: Snippet 99 started.
+<-><->
+      
+l.399 \[
+        
+Not a real error.
+
+! Preview: Snippet 99 ended.(7130312+0x11796480).
+<-><->
+      
+l.410 \]
+        
+Not a real error.
+
+[99]
+! Preview: Snippet 100 started.
+<-><->
+      
+l.413 \[
+        
+Not a real error.
+
+! Preview: Snippet 100 ended.(2152878+0x21305156).
+<-><->
+      
+l.419 \]
+        
+Not a real error.
+
+[100]
+! Preview: Snippet 101 started.
+<-><->
+      
+l.421 \subsection
+                 {Correspondencia entre compuertas clásicas y cuánticas}
+Not a real error.
+
+! Preview: Snippet 101 ended.(1463636+0x23592960).
+<-><->
+      
+l.421 ... entre compuertas clásicas y cuánticas}
+                                                  
+Not a real error.
+
+[101
+
+]
+! Preview: Snippet 102 started.
+<-><->
+      
+l.423 \subsection
+                 {Conjuntos universales de compuertas cuánticas}
+Not a real error.
+
+! Preview: Snippet 102 ended.(546132+152916x23592960).
+<-><->
+      
+l.423 ...tos universales de compuertas cuánticas}
+                                                  
+Not a real error.
+
+[102
+
+]
+! Preview: Snippet 103 started.
+<-><->
+      
+l.430 Un CUCC simple es $
+                         \{H,T,\mathit{CNOT}\}$.
+Not a real error.
+
+! Preview: Snippet 103 ended.(538214+179404x4655685).
+<-><->
+      
+l.430 Un CUCC simple es $\{H,T,\mathit{CNOT}\}$
+                                               .
+Not a real error.
+
+[103]
+! Preview: Snippet 104 started.
+<-><->
+      
+l.433 ...�la compuerta, la compuerta de Deutsch, $
+                                                  D(\theta)$.
+Not a real error.
+
+! Preview: Snippet 104 ended.(538214+179404x1529029).
+<-><->
+      
+l.433 ...rta, la compuerta de Deutsch, $D(\theta)$
+                                                  .
+Not a real error.
+
+[104]
+! Preview: Snippet 105 started.
+<-><->
+      
+l.436 ...so especial de la compuerta de Deutsch, $
+                                                  D(\frac{\pi}{2})$.
+Not a real error.
+
+! Preview: Snippet 105 ended.(538214+247464x1668197).
+<-><->
+      
+l.436 ... compuerta de Deutsch, $D(\frac{\pi}{2})$
+                                                  .
+Not a real error.
+
+[105]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 439.
+ (/usr/share/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 439.
+
+! Preview: Snippet 106 started.
+<-><->
+      
+l.439 ...ing y la compuerta de cambio de fase, \{$
+                                                  \mathit{XX}_\phi,R_z(\thet...
+Not a real error.
+
+! Preview: Snippet 106 ended.(538214+218855x3637005).
+<-><->
+      
+l.439 ...de fase, \{$\mathit{XX}_\phi,R_z(\theta)$
+                                                  \}. Este conjunto es nativ...
+Not a real error.
+
+[106]
+! Preview: Snippet 107 started.
+<-><->
+      
+l.441 \subsection
+                 {Compuertas no cliffordianas}
+Not a real error.
+
+! Preview: Snippet 107 ended.(546132+152916x23592960).
+<-><->
+      
+l.441 \subsection{Compuertas no cliffordianas}
+                                              
+Not a real error.
+
+[107
+
+]
+! Preview: Snippet 108 started.
+<-><->
+      
+l.445 \subsection
+                 {Circuitos cuánticos}
+Not a real error.
+
+! Preview: Snippet 108 ended.(546132+0x23592960).
+<-><->
+      
+l.445 \subsection{Circuitos cuánticos}
+                                       
+Not a real error.
+
+[108
+
+]
+! Preview: Snippet 109 started.
+<-><->
+      
+l.447 \subsection
+                 {Paralelismo cuántico}
+Not a real error.
+
+! Preview: Snippet 109 ended.(546132+0x23592960).
+<-><->
+      
+l.447 \subsection{Paralelismo cuántico}
+                                        
+Not a real error.
+
+[109
+
+]
+! Preview: Snippet 110 started.
+<-><->
+      
+l.449 \subsection
+                 {Algoritmos cuánticos}
+Not a real error.
+
+! Preview: Snippet 110 ended.(546132+152916x23592960).
+<-><->
+      
+l.449 \subsection{Algoritmos cuánticos}
+                                        
+Not a real error.
+
+[110
+
+]
+! Preview: Snippet 111 started.
+<-><->
+      
+l.451 \subsection
+                 {Criterios de DiVincenzo}
+Not a real error.
+
+! Preview: Snippet 111 ended.(546132+0x23592960).
+<-><->
+      
+l.451 \subsection{Criterios de DiVincenzo}
+                                          
+Not a real error.
+
+[111
+
+]
+! Preview: Snippet 112 started.
+<-><->
+      
+l.462 \chapter
+              {Superconductividad}
+Not a real error.
+
+Cap\'{\i }tulo 2.
+! Preview: Snippet 112 ended.(8192000+317047x23592960).
+<-><->
+      
+l.462 \chapter{Superconductividad}
+                                  
+Not a real error.
+
+[112
+
+
+
+
+]
+! Preview: Snippet 113 started.
+<-><->
+      
+l.468 \[
+        
+Not a real error.
+
+! Preview: Snippet 113 ended.(1665443+0x14928587).
+<-><->
+      
+l.470 \]
+        
+Not a real error.
+
+[113]
+! Preview: Snippet 114 started.
+<-><->
+      
+l.472 donde $
+             \hat{n}$ es la cantidad de pares de Cooper inducidos en el capa...
+Not a real error.
+
+! Preview: Snippet 114 ended.(498346+0x430740).
+<-><->
+      
+l.472 donde $\hat{n}$
+                      es la cantidad de pares de Cooper inducidos en el capa...
+Not a real error.
+
+[114]
+! Preview: Snippet 115 started.
+<-><->
+      
+l.472 ... en el capacitor, medida en unidades de $
+                                                  2e$), y $\hat{\phi}$ es la...
+Not a real error.
+
+! Preview: Snippet 115 ended.(462465+0x692952).
+<-><->
+      
+l.472 ... el capacitor, medida en unidades de $2e$
+                                                  ), y $\hat{\phi}$ es la di...
+Not a real error.
+
+[115]
+! Preview: Snippet 116 started.
+<-><->
+      
+l.472 ...pacitor, medida en unidades de $2e$), y $
+                                                  \hat{\phi}$ es la diferenc...
+Not a real error.
+
+! Preview: Snippet 116 ended.(687718+139537x427582).
+<-><->
+      
+l.472 ...dida en unidades de $2e$), y $\hat{\phi}$
+                                                   es la diferencia de fase ...
+Not a real error.
+
+[116]
+! Preview: Snippet 117 started.
+<-><->
+      
+l.472 ...cia de fase sobre el inductor. La carga $
+                                                  \hat{n}$ y la fase $\hat{\...
+Not a real error.
+
+! Preview: Snippet 117 ended.(498346+0x430740).
+<-><->
+      
+l.472 ...ase sobre el inductor. La carga $\hat{n}$
+                                                   y la fase $\hat{\phi}$ no...
+Not a real error.
+
+[117]
+! Preview: Snippet 118 started.
+<-><->
+      
+l.472 ... inductor. La carga $\hat{n}$ y la fase $
+                                                  \hat{\phi}$ no conmutan, $...
+Not a real error.
+
+! Preview: Snippet 118 ended.(687718+139537x427582).
+<-><->
+      
+l.472 ...La carga $\hat{n}$ y la fase $\hat{\phi}$
+                                                   no conmutan, $\comm{\hat{...
+Not a real error.
+
+[118]
+! Preview: Snippet 119 started.
+<-><->
+      
+l.472 ...n}$ y la fase $\hat{\phi}$ no conmutan, $
+                                                  \comm{\hat{\phi}}{\hat{n}}...
+Not a real error.
+
+! Preview: Snippet 119 ended.(825267+466460x3059065).
+<-><->
+      
+l.472 ... conmutan, $\comm{\hat{\phi}}{\hat{n}}=i$
+                                                  , lo que significa que sus...
+Not a real error.
+
+[119]
+! Preview: Snippet 120 started.
+<-><->
+      
+l.472 ...dos no se pueden medir simultaneamente. $
+                                                  E_C=\frac{(2e)^2}{2C}$, $E...
+Not a real error.
+
+! Preview: Snippet 120 ended.(791967+247464x3353972).
+<-><->
+      
+l.472 ... simultaneamente. $E_C=\frac{(2e)^2}{2C}$
+                                                  , $E_L=\frac{\hbar^2}{(2e)...
+Not a real error.
+
+[120]
+! Preview: Snippet 121 started.
+<-><->
+      
+l.472 ...multaneamente. $E_C=\frac{(2e)^2}{2C}$, $
+                                                  E_L=\frac{\hbar^2}{(2e)^2L...
+Not a real error.
+
+! Preview: Snippet 121 ended.(738025+397405x3677580).
+<-><->
+      
+l.472 ...e)^2}{2C}$, $E_L=\frac{\hbar^2}{(2e)^2L}$
+                                                   y la distancia entre nive...
+Not a real error.
+
+[121]
+! Preview: Snippet 122 started.
+<-><->
+      
+l.472 ...les de energía del oscilador armónico $
+                                                  \hbar \omega = \frac{\hbar...
+Not a real error.
+
+! Preview: Snippet 122 ended.(646638+411533x7128720).
+<-><->
+      
+l.472 ...= \frac{\hbar}{\sqrt{LC}}=\sqrt{2E_LE_C}$
+                                                  .
+Not a real error.
+
+[122]
+! Preview: Snippet 123 started.
+<-><->
+      
+l.477 \[
+        
+Not a real error.
+
+! Preview: Snippet 123 ended.(1665443+0x19315319).
+<-><->
+      
+l.479 \]
+        
+Not a real error.
+
+[123]
+! Preview: Snippet 124 started.
+<-><->
+      
+l.481 donde $
+             n_g$ es la carga inducida por voltaje en el capacitor C (isla q...
+Not a real error.
+
+! Preview: Snippet 124 ended.(308974+209587x747410).
+<-><->
+      
+l.481 donde $n_g$
+                  es la carga inducida por voltaje en el capacitor C (isla q...
+Not a real error.
+
+[124]
+! Preview: Snippet 125 started.
+<-><->
+      
+l.481 ...oltaje en el capacitor C (isla qubit) y $
+                                                  \phi_e$ es la fase inducid...
+Not a real error.
+
+! Preview: Snippet 125 ended.(498346+139537x718766).
+<-><->
+      
+l.481 ...en el capacitor C (isla qubit) y $\phi_e$
+                                                   es la fase inducida por f...
+Not a real error.
+
+[125]
+! Preview: Snippet 126 started.
+<-><->
+      
+l.481 ...o sobre la JJ. La energía de Josephson $
+                                                  E_{J0}$ está dada por $E_...
+Not a real error.
+
+! Preview: Snippet 126 ended.(490372+111084x1194577).
+<-><->
+      
+l.481 ... la JJ. La energía de Josephson $E_{J0}$
+                                                   está dada por $E_{J0}=\f...
+Not a real error.
+
+[126]
+! Preview: Snippet 127 started.
+<-><->
+      
+l.481 ...�a de Josephson $E_{J0}$ está dada por $
+                                                  E_{J0}=\frac{\hbar}{2e}I_0...
+Not a real error.
+
+! Preview: Snippet 127 ended.(646638+247464x3472385).
+<-><->
+      
+l.481 ...tá dada por $E_{J0}=\frac{\hbar}{2e}I_0$
+                                                   en términos de la corrie...
+Not a real error.
+
+[127]
+! Preview: Snippet 128 started.
+<-><->
+      
+l.481 ...$ en términos de la corriente crítica $
+                                                  I_0$ de la unión. Usualme...
+Not a real error.
+
+! Preview: Snippet 128 ended.(490372+107642x626754).
+<-><->
+      
+l.481 ... términos de la corriente crítica $I_0$
+                                                   de la unión. Usualmente,...
+Not a real error.
+
+[128]
+! Preview: Snippet 129 started.
+<-><->
+      
+l.485 \[
+        
+Not a real error.
+
+! Preview: Snippet 129 ended.(717618+0x13932351).
+<-><->
+      
+l.487 \]
+        
+Not a real error.
+
+[129]
+! Preview: Snippet 130 started.
+<-><->
+      
+l.491 \[
+        
+Not a real error.
+
+! Preview: Snippet 130 ended.(1476071+0x16672653).
+<-><->
+      
+l.493 \]
+        
+Not a real error.
+
+[130]
+! Preview: Snippet 131 started.
+<-><->
+      
+l.497 \[
+        
+Not a real error.
+
+! Preview: Snippet 131 ended.(1655476+0x15098734).
+<-><->
+      
+l.499 \]
+        
+Not a real error.
+
+[131]
+! Preview: Snippet 132 started.
+<-><->
+      
+l.501 Definiendo $
+                  L_J = V (\frac{dI_J}{dt})^{-1}$, se obtiene finalmente la ...
+Not a real error.
+
+! Preview: Snippet 132 ended.(674659+247464x4735721).
+<-><->
+      
+l.501 Definiendo $L_J = V (\frac{dI_J}{dt})^{-1}$
+                                                 , se obtiene finalmente la ...
+Not a real error.
+
+[132]
+! Preview: Snippet 133 started.
+<-><->
+      
+l.501 ... finalmente la inductancia de Josephson $
+                                                  L_{J0}$:
+Not a real error.
+
+! Preview: Snippet 133 ended.(490372+111084x1153214).
+<-><->
+      
+l.501 ...ente la inductancia de Josephson $L_{J0}$
+                                                  :
+Not a real error.
+
+[133]
+! Preview: Snippet 134 started.
+<-><->
+      
+l.503 \[
+        
+Not a real error.
+
+! Preview: Snippet 134 ended.(1647502+0x16737690).
+<-><->
+      
+l.505 \]
+        
+Not a real error.
+
+[134]
+! Preview: Snippet 135 started.
+<-><->
+      
+l.507 ... expresar la energía de Josephson como $
+                                                  E_{J0} = \frac{\hbar^2}{(2...
+Not a real error.
+
+! Preview: Snippet 135 ended.(738025+397405x4509067).
+<-><->
+      
+l.507 ...o $E_{J0} = \frac{\hbar^2}{(2e)^2L_{J0}}$
+                                                  
+Not a real error.
+
+[135]
+! Preview: Snippet 136 started.
+<-><->
+      
+l.509 \begin{align*}
+                    
+Not a real error.
+
+! Preview: Snippet 136 ended.(3453770+0x17395602).
+<-><->
+      
+l.512 \end{align*}
+                  
+Not a real error.
+
+[136]
+! Preview: Snippet 137 started.
+<-><->
+      
+l.515 \item $
+             E_L = 0 \quad (L \sim \infty)$ :
+Not a real error.
+
+! Preview: Snippet 137 ended.(538214+179404x5695573).
+<-><->
+      
+l.515 \item $E_L = 0 \quad (L \sim \infty)$
+                                            :
+Not a real error.
+
+[137]
+! Preview: Snippet 138 started.
+<-><->
+      
+l.516 \item $
+             E_L \approx E_{J0}$ :
+Not a real error.
+
+! Preview: Snippet 138 ended.(490372+111084x3092748).
+<-><->
+      
+l.516 \item $E_L \approx E_{J0}$
+                                 :
+Not a real error.
+
+[138]
+! Preview: Snippet 139 started.
+<-><->
+      
+l.519 \section
+              {Transmonios}
+Not a real error.
+
+! Preview: Snippet 139 ended.(655359+0x23592960).
+<-><->
+      
+l.519 \section{Transmonios}
+                           
+Not a real error.
+
+[139
+
+]
+! Preview: Snippet 140 started.
+<-><->
+      
+l.522 \[
+        
+Not a real error.
+
+! Preview: Snippet 140 ended.(1440190+0x21095448).
+<-><->
+      
+l.524 \]
+        
+Not a real error.
+
+[140]
+! Preview: Snippet 141 started.
+<-><->
+      
+l.526 donde $
+             \epsilon$ es la energía de excitación del qubit, $g$ es el ac...
+Not a real error.
+
+! Preview: Snippet 141 ended.(308974+0x291284).
+<-><->
+      
+l.526 donde $\epsilon$
+                       es la energía de excitación del qubit, $g$ es el ac...
+Not a real error.
+
+[141]
+! Preview: Snippet 142 started.
+<-><->
+      
+l.526 ...s la energía de excitación del qubit, $
+                                                  g$ es el acoplamiento qubi...
+Not a real error.
+
+! Preview: Snippet 142 ended.(308974+139537x368028).
+<-><->
+      
+l.526 ...la energía de excitación del qubit, $g$
+                                                   es el acoplamiento qubit-...
+Not a real error.
+
+[142]
+! Preview: Snippet 143 started.
+<-><->
+      
+l.526 ...g$ es el acoplamiento qubit-oscilador y $
+                                                  \omega$ es la frecuencia d...
+Not a real error.
+
+! Preview: Snippet 143 ended.(308974+0x472432).
+<-><->
+      
+l.526 ...l acoplamiento qubit-oscilador y $\omega$
+                                                   es la frecuencia del osci...
+Not a real error.
+
+[143]
+! Preview: Snippet 144 started.
+<-><->
+      
+l.529 ...endo los operadores escalera del qubit, $
+                                                  \sigma_\pm = \frac{1}{2}(\...
+Not a real error.
+
+! Preview: Snippet 144 ended.(620424+247464x5444582).
+<-><->
+      
+l.529 ...m = \frac{1}{2}(\sigma_x \pm i \sigma_y)$
+                                                  , el término de interacci...
+Not a real error.
+
+[144]
+! Preview: Snippet 145 started.
+<-><->
+      
+l.529 ...\sigma_y)$, el término de interacción $
+                                                  \hat{H}_{qr}$ se puede div...
+Not a real error.
+
+! Preview: Snippet 145 ended.(679744+209587x1163657).
+<-><->
+      
+l.529 ...l término de interacción $\hat{H}_{qr}$
+                                                   se puede dividir en dos t...
+Not a real error.
+
+[145]
+! Preview: Snippet 146 started.
+<-><->
+      
+l.531 \[
+        
+Not a real error.
+
+! Preview: Snippet 146 ended.(959096+0x20490503).
+<-><->
+      
+l.533 \]
+        
+Not a real error.
+
+[146]
+! Preview: Snippet 147 started.
+<-><->
+      
+l.537 \section
+              {Hamiltonianos multiqubit de transmonios}
+Not a real error.
+
+! Preview: Snippet 147 ended.(655359+183500x23592960).
+<-><->
+      
+l.537 ...{Hamiltonianos multiqubit de transmonios}
+                                                  
+Not a real error.
+
+[147
+
+]
+! Preview: Snippet 148 started.
+<-><->
+      
+l.540 \[
+        
+Not a real error.
+
+! Preview: Snippet 148 ended.(1982545+0x23453359).
+<-><->
+      
+l.542 \]
+        
+Not a real error.
+
+[148]
+! Preview: Snippet 149 started.
+<-><->
+      
+l.544 ...mplicidad, se considera que el término $
+                                                  \hat{H}_{qr}$ se refiere s...
+Not a real error.
+
+! Preview: Snippet 149 ended.(679744+209587x1163657).
+<-><->
+      
+l.544 ... considera que el término $\hat{H}_{qr}$
+                                                   se refiere sólo a la lec...
+Not a real error.
+
+[149]
+! Preview: Snippet 150 started.
+<-><->
+      
+l.544 ...qubit via el resonador ser incluidas en $
+                                                  \hat{H}_{qq}$ via la const...
+Not a real error.
+
+! Preview: Snippet 150 ended.(679744+209587x1164325).
+<-><->
+      
+l.544 ...resonador ser incluidas en $\hat{H}_{qq}$
+                                                   via la constante de acopl...
+Not a real error.
+
+[150]
+! Preview: Snippet 151 started.
+<-><->
+      
+l.544 ..._{qq}$ via la constante de acoplamiento $
+                                                  \lambda_{\nu,ij}$.
+Not a real error.
+
+! Preview: Snippet 151 ended.(498346+209587x1328442).
+<-><->
+      
+l.544 ...stante de acoplamiento $\lambda_{\nu,ij}$
+                                                  .
+Not a real error.
+
+[151]
+! Preview: Snippet 152 started.
+<-><->
+      
+l.546 \subsection
+                 {Acoplamiento capacitivo}
+Not a real error.
+
+! Preview: Snippet 152 ended.(546132+152916x23592960).
+<-><->
+      
+l.546 \subsection{Acoplamiento capacitivo}
+                                          
+Not a real error.
+
+[152
+
+]
+! Preview: Snippet 153 started.
+<-><->
+      
+l.547 \begin{align*}
+                    
+Not a real error.
+
+! Preview: Snippet 153 ended.(4255659+0x22623106).
+<-><->
+      
+l.551 \end{align*}
+                  
+Not a real error.
+
+[153]
+! Preview: Snippet 154 started.
+<-><->
+      
+l.553 \subsection
+                 {Acoplamiento por el resonador}
+Not a real error.
+
+! Preview: Snippet 154 ended.(546132+152916x23592960).
+<-><->
+      
+l.553 \subsection{Acoplamiento por el resonador}
+                                                
+Not a real error.
+
+[154
+
+]
+! Preview: Snippet 155 started.
+<-><->
+      
+l.554 \begin{align*}
+                    
+Not a real error.
+
+! Preview: Snippet 155 ended.(3910542+0x17048498).
+<-><->
+      
+l.558 \end{align*}
+                  
+Not a real error.
+
+[155]
+! Preview: Snippet 156 started.
+<-><->
+      
+l.560 \subsection
+                 {Acoplamiento de JJ}
+Not a real error.
+
+! Preview: Snippet 156 ended.(546132+152916x23592960).
+<-><->
+      
+l.560 \subsection{Acoplamiento de JJ}
+                                     
+Not a real error.
+
+[156
+
+]
+! Preview: Snippet 157 started.
+<-><->
+      
+l.561 \begin{align*}
+                    
+Not a real error.
+
+! Preview: Snippet 157 ended.(2904620+0x16864483).
+<-><->
+      
+l.564 \end{align*}
+                  
+Not a real error.
+
+[157]
+! Preview: Snippet 158 started.
+<-><->
+      
+l.566 \subsection
+                 {Acoplamiento afinable/calibrable}
+Not a real error.
+
+! Preview: Snippet 158 ended.(589824+196608x23592960).
+<-><->
+      
+l.566 ...section{Acoplamiento afinable/calibrable}
+                                                  
+Not a real error.
+
+[158
+
+]
+! Preview: Snippet 159 started.
+<-><->
+      
+l.568 \section
+              {Compuertas cuánticas en transmonios}
+Not a real error.
+
+! Preview: Snippet 159 ended.(655359+183500x23592960).
+<-><->
+      
+l.568 ...ion{Compuertas cuánticas en transmonios}
+                                                  
+Not a real error.
+
+[159
+
+]
+! Preview: Snippet 160 started.
+<-><->
+      
+l.570 \subsection
+                 {El operador de evolución temporal}
+Not a real error.
+
+! Preview: Snippet 160 ended.(546132+152916x23592960).
+<-><->
+      
+l.570 ...ction{El operador de evolución temporal}
+                                                  
+Not a real error.
+
+[160
+
+]
+! Preview: Snippet 161 started.
+<-><->
+      
+l.571 ...e Schrödinger para el vector de estado $
+                                                  \ket{\psi(t)}$:
+Not a real error.
+
+! Preview: Snippet 161 ended.(538214+179405x1788903).
+<-><->
+      
+l.571 ... para el vector de estado $\ket{\psi(t)}$
+                                                  :
+Not a real error.
+
+[161]
+! Preview: Snippet 162 started.
+<-><->
+      
+l.573 \[
+        
+Not a real error.
+
+! Preview: Snippet 162 ended.(1476071+0x15635634).
+<-><->
+      
+l.575 \]
+        
+Not a real error.
+
+[162]
+! Preview: Snippet 163 started.
+<-><->
+      
+l.577 en términos del operador evolución $
+                                            \hat{U}(t,t_0)$
+Not a real error.
+
+! Preview: Snippet 163 ended.(679744+179404x2274885).
+<-><->
+      
+l.577 ... del operador evolución $\hat{U}(t,t_0)$
+                                                  
+Not a real error.
+
+[163]
+! Preview: Snippet 164 started.
+<-><->
+      
+l.579 \[
+        
+Not a real error.
+
+! Preview: Snippet 164 ended.(859149+0x15416686).
+<-><->
+      
+l.581 \]
+        
+Not a real error.
+
+[164]
+! Preview: Snippet 165 started.
+<-><->
+      
+l.585 \[
+        
+Not a real error.
+
+! Preview: Snippet 165 ended.(889331+0x15024923).
+<-><->
+      
+l.587 \]
+        
+Not a real error.
+
+[165]
+! Preview: Snippet 166 started.
+<-><->
+      
+l.593 \[
+        
+Not a real error.
+
+! Preview: Snippet 166 ended.(1982545+0x23592960).
+<-><->
+      
+l.595 \]
+        
+Not a real error.
+
+[166]
+! Preview: Snippet 167 started.
+<-><->
+      
+l.599 \[
+        
+Not a real error.
+
+! Preview: Snippet 167 ended.(1982545+0x19884544).
+<-><->
+      
+l.601 \]
+        
+Not a real error.
+
+[167]
+! Preview: Snippet 168 started.
+<-><->
+      
+l.605 \chapter
+              {Algoritmo de Grover}
+Not a real error.
+
+Cap\'{\i }tulo 3.
+! Preview: Snippet 168 ended.(8192000+317047x23592960).
+<-><->
+      
+l.605 \chapter{Algoritmo de Grover}
+                                   
+Not a real error.
+
+[168
+
+
+
+
+]
+! Preview: Snippet 169 started.
+<-><->
+      
+l.606 ... particular de salida, usando tan sólo $
+                                                  O(\sqrt{N})$ evaluaciones ...
+Not a real error.
+
+! Preview: Snippet 169 ended.(664991+179404x2378309).
+<-><->
+      
+l.606 ...de salida, usando tan sólo $O(\sqrt{N})$
+                                                   evaluaciones de la funci�...
+Not a real error.
+
+[169]
+! Preview: Snippet 170 started.
+<-><->
+      
+l.606 ...N})$ evaluaciones de la función, donde $
+                                                  N$ es el tamaño del domin...
+Not a real error.
+
+! Preview: Snippet 170 ended.(490372+0x654826).
+<-><->
+      
+l.606 ...)$ evaluaciones de la función, donde $N$
+                                                   es el tamaño del dominio...
+Not a real error.
+
+[170]
+! Preview: Snippet 171 started.
+<-><->
+      
+l.606 ...ogo clásico de este algoritmo requiere $
+                                                  O(N)$ evaluaciones de la f...
+Not a real error.
+
+! Preview: Snippet 171 ended.(538214+179404x1780292).
+<-><->
+      
+l.606 ...lásico de este algoritmo requiere $O(N)$
+                                                   evaluaciones de la funci�...
+Not a real error.
+
+[171]
+! Preview: Snippet 172 started.
+<-><->
+      
+l.606 ...es, el elemento correcto podría ser el $
+                                                  N$-ésimo en ser evaluado ...
+Not a real error.
+
+! Preview: Snippet 172 ended.(490372+0x654826).
+<-><->
+      
+l.606 ..., el elemento correcto podría ser el $N$
+                                                  -ésimo en ser evaluado y ...
+Not a real error.
+
+[172]
+! Preview: Snippet 173 started.
+<-><->
+      
+l.608 \section
+              {El operador de difusión de Grover}
+Not a real error.
+
+! Preview: Snippet 173 ended.(655359+183500x23592960).
+<-><->
+      
+l.608 \section{El operador de difusión de Grover}
+                                                  
+Not a real error.
+
+[173
+
+]
+! Preview: Snippet 174 started.
+<-><->
+      
+l.610 \begin{figure}
+                    [H]
+Not a real error.
+
+
+! LaTeX Error: Unknown float option `H'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.610 \begin{figure}[H]
+                       
+Option `H' ignored and `p' used.
+
+<Grover/grover_geometry.png, id=570, 374.68137pt x 388.71437pt>
+File: Grover/grover_geometry.png Graphic file (type png)
+<use Grover/grover_geometry.png>
+Package pdftex.def Info: Grover/grover_geometry.png  used on input line 611.
+(pdftex.def)             Requested size: 108.0011pt x 112.04218pt.
+! Preview: Snippet 174 ended.(8889446+139537x23592960).
+<-><->
+      
+l.613 \end{figure}
+                  
+Not a real error.
+
+[174
+
+ <./Grover/grover_geometry.png>]
+! Preview: Snippet 175 started.
+<-><->
+      
+l.615 $
+       U_s = 2 \ket{s} \bra{s} - I$
+Not a real error.
+
+! Preview: Snippet 175 ended.(538213+179405x5213616).
+<-><->
+      
+l.615 $U_s = 2 \ket{s} \bra{s} - I$
+                                   
+Not a real error.
+
+[175]
+! Preview: Snippet 176 started.
+<-><->
+      
+l.617 $
+       U_{\omega} = I - 2 \ket{\omega} \bra{\omega}$
+Not a real error.
+
+! Preview: Snippet 176 ended.(538213+179405x5593304).
+<-><->
+      
+l.617 ...omega} = I - 2 \ket{\omega} \bra{\omega}$
+                                                  
+Not a real error.
+
+[176]
+! Preview: Snippet 177 started.
+<-><->
+      
+l.619 \section
+              {El algoritmo}
+Not a real error.
+
+! Preview: Snippet 177 ended.(655359+183500x23592960).
+<-><->
+      
+l.619 \section{El algoritmo}
+                            
+Not a real error.
+
+[177
+
+]
+! Preview: Snippet 178 started.
+<-><->
+      
+l.621 \[
+        
+Not a real error.
+
+<xymatrix 7x3 824>
+! Preview: Snippet 178 ended.(5178835+0x17809286).
+<-><->
+      
+l.628 \]
+        
+Not a real error.
+
+[178]
+! Preview: Snippet 179 started.
+<-><->
+      
+l.633 \item Realizar la iteración de Grover $
+                                              \lfloor \frac{\pi}{4} \sqrt{N}...
+Not a real error.
+
+! Preview: Snippet 179 ended.(664991+247464x2386711).
+<-><->
+      
+l.633 ... $\lfloor \frac{\pi}{4} \sqrt{N} \rfloor$
+                                                   veces.
+Not a real error.
+
+[179]
+! Preview: Snippet 180 started.
+<-><->
+      
+l.635 \item Aplicar $
+                     U_{\omega}$.
+Not a real error.
+
+! Preview: Snippet 180 ended.(490372+107642x887928).
+<-><->
+      
+l.635 \item Aplicar $U_{\omega}$
+                                .
+Not a real error.
+
+[180]
+! Preview: Snippet 181 started.
+<-><->
+      
+l.636 \item Aplicar $
+                     U_s$.
+Not a real error.
+
+! Preview: Snippet 181 ended.(490372+107642x780338).
+<-><->
+      
+l.636 \item Aplicar $U_s$
+                         .
+Not a real error.
+
+[181]
+! Preview: Snippet 182 started.
+<-><->
+      
+l.638 \item Realizar la medida $
+                                \Omega$.
+Not a real error.
+
+! Preview: Snippet 182 ended.(490372+0x518281).
+<-><->
+      
+l.638 \item Realizar la medida $\Omega$
+                                       .
+Not a real error.
+
+[182]
+! Preview: Snippet 183 started.
+<-><->
+      
+l.642 \chapter
+              {Algoritmo de Shor}
+Not a real error.
+
+Cap\'{\i }tulo 4.
+! Preview: Snippet 183 ended.(8192000+317047x23592960).
+<-><->
+      
+l.642 \chapter{Algoritmo de Shor}
+                                 
+Not a real error.
+
+[183
+
+
+
+
+]
+! Preview: Snippet 184 started.
+<-><->
+      
+l.643 ...ctorización de enteros. Dado un entero $
+                                                  N=p \times q$, donde $p$ y...
+Not a real error.
+
+! Preview: Snippet 184 ended.(490372+139537x3195886).
+<-><->
+      
+l.643 ...de enteros. Dado un entero $N=p \times q$
+                                                  , donde $p$ y $q$ son prim...
+Not a real error.
+
+[184]
+! Preview: Snippet 185 started.
+<-><->
+      
+l.643 ...s. Dado un entero $N=p \times q$, donde $
+                                                  p$ y $q$ son primos, el al...
+Not a real error.
+
+! Preview: Snippet 185 ended.(308974+139537x361052).
+<-><->
+      
+l.643 ... Dado un entero $N=p \times q$, donde $p$
+                                                   y $q$ son primos, el algo...
+Not a real error.
+
+[185]
+! Preview: Snippet 186 started.
+<-><->
+      
+l.643 ...o un entero $N=p \times q$, donde $p$ y $
+                                                  q$ son primos, el algoritm...
+Not a real error.
+
+! Preview: Snippet 186 ended.(308974+139537x346102).
+<-><->
+      
+l.643 ...un entero $N=p \times q$, donde $p$ y $q$
+                                                   son primos, el algoritmo ...
+Not a real error.
+
+[186]
+! Preview: Snippet 187 started.
+<-><->
+      
+l.643 ... primos, el algoritmo de Shor encuentra $
+                                                  p$ y $q$ en $O((\log(N))^3...
+Not a real error.
+
+! Preview: Snippet 187 ended.(308974+139537x361052).
+<-><->
+      
+l.643 ...rimos, el algoritmo de Shor encuentra $p$
+                                                   y $q$ en $O((\log(N))^3)$...
+Not a real error.
+
+[187]
+! Preview: Snippet 188 started.
+<-><->
+      
+l.643 ...s, el algoritmo de Shor encuentra $p$ y $
+                                                  q$ en $O((\log(N))^3)$ pas...
+Not a real error.
+
+! Preview: Snippet 188 ended.(308974+139537x346102).
+<-><->
+      
+l.643 ... el algoritmo de Shor encuentra $p$ y $q$
+                                                   en $O((\log(N))^3)$ pasos...
+Not a real error.
+
+[188]
+! Preview: Snippet 189 started.
+<-><->
+      
+l.643 ...lgoritmo de Shor encuentra $p$ y $q$ en $
+                                                  O((\log(N))^3)$ pasos. El ...
+Not a real error.
+
+! Preview: Snippet 189 ended.(598293+179405x4134817).
+<-><->
+      
+l.643 ...r encuentra $p$ y $q$ en $O((\log(N))^3)$
+                                                   pasos. El algoritmo clás...
+Not a real error.
+
+[189]
+! Preview: Snippet 190 started.
+<-><->
+      
+l.643 ...iona con una complejidad heurística de $
+                                                  O(e^{(\sqrt[3]{\frac{64}{9...
+Not a real error.
+
+! Preview: Snippet 190 ended.(1044564+179404x10036161).
+<-><->
+      
+l.643 ...frac{1}{3}}(\ln(\ln(N)))^{\frac{2}{3}}})$
+                                                  . Por su capacidad de fact...
+Not a real error.
+
+[190]
+! Preview: Snippet 191 started.
+<-><->
+      
+l.645 \section
+              {Transformadas integrales}
+Not a real error.
+
+! Preview: Snippet 191 ended.(655359+183500x23592960).
+<-><->
+      
+l.645 \section{Transformadas integrales}
+                                        
+Not a real error.
+
+[191
+
+]
+! Preview: Snippet 192 started.
+<-><->
+      
+l.647 \section
+              {Transformada cuántica de Fourier}
+Not a real error.
+
+! Preview: Snippet 192 ended.(655359+0x23592960).
+<-><->
+      
+l.647 \section{Transformada cuántica de Fourier}
+                                                 
+Not a real error.
+
+[192
+
+]
+! Preview: Snippet 193 started.
+<-><->
+      
+l.649 \section
+              {Estimación de fase}
+Not a real error.
+
+! Preview: Snippet 193 ended.(655359+0x23592960).
+<-><->
+      
+l.649 \section{Estimación de fase}
+                                   
+Not a real error.
+
+[193
+
+]
+! Preview: Snippet 194 started.
+<-><->
+      
+l.651 \section
+              {Estimación de orden}
+Not a real error.
+
+! Preview: Snippet 194 ended.(655359+0x23592960).
+<-><->
+      
+l.651 \section{Estimación de orden}
+                                    
+Not a real error.
+
+[194
+
+]
+! Preview: Snippet 195 started.
+<-><->
+      
+l.653 \section
+              {Algoritmo de Shor}
+Not a real error.
+
+! Preview: Snippet 195 ended.(655359+183500x23592960).
+<-><->
+      
+l.653 \section{Algoritmo de Shor}
+                                 
+Not a real error.
+
+[195
+
+]
+! Preview: Snippet 196 started.
+<-><->
+      
+l.655 \chapter
+              {Google PageRank}
+Not a real error.
+
+Cap\'{\i }tulo 5.
+! Preview: Snippet 196 ended.(8192000+317047x23592960).
+<-><->
+      
+l.655 \chapter{Google PageRank}
+                               
+Not a real error.
+
+[196
+
+
+
+
+]
+! Preview: Snippet 197 started.
+<-><->
+      
+l.675 \[
+        
+Not a real error.
+
+! Preview: Snippet 197 ended.(4456445+0x15497768).
+<-><->
+      
+l.683 \]
+        
+Not a real error.
+
+[197]
+! Preview: Snippet 198 started.
+<-><->
+      
+l.687 \[
+        
+Not a real error.
+
+! Preview: Snippet 198 ended.(891289+0x14004225).
+<-><->
+      
+l.691 \]
+        
+Not a real error.
+
+[198]
+! Preview: Snippet 199 started.
+<-><->
+      
+l.693 ...salen del nodo o vértice de la página $
+                                                  p_j$, es decir:
+Not a real error.
+
+! Preview: Snippet 199 ended.(308974+209587x649318).
+<-><->
+      
+l.693 ...n del nodo o vértice de la página $p_j$
+                                                  , es decir:
+Not a real error.
+
+[199]
+! Preview: Snippet 200 started.
+<-><->
+      
+l.695 $
+       I(p_j) \equiv \text{Importancia de la página j}$
+Not a real error.
+
+! Preview: Snippet 200 ended.(538214+209587x10890346).
+<-><->
+      
+l.695 ...equiv \text{Importancia de la página j}$
+                                                  
+Not a real error.
+
+[200]
+! Preview: Snippet 201 started.
+<-><->
+      
+l.697 $
+       \mathrm{outdeg}(p_j) \equiv \text{número de links que salen de la p�...
+Not a real error.
+
+! Preview: Snippet 201 ended.(538214+209587x17385275).
+<-><->
+      
+l.697 ...o de links que salen de la página } p_j$
+                                                  
+Not a real error.
+
+[201]
+! Preview: Snippet 202 started.
+<-><->
+      
+l.699 $
+       I(p_i) \equiv \sum\limits_{j \in B_i} \frac{I(p_j}{\mathrm{outdeg}(p_...
+Not a real error.
+
+! Preview: Snippet 202 ended.(772065+830983x6620522).
+<-><->
+      
+l.699 ... B_i} \frac{I(p_j}{\mathrm{outdeg}(p_j)}$
+                                                  
+Not a real error.
+
+[202]
+! Preview: Snippet 203 started.
+<-><->
+      
+l.701 $
+       B_i \equiv \text{conjunto de páginas qeu son linkeadas}$
+Not a real error.
+
+! Preview: Snippet 203 ended.(498346+139537x13715790).
+<-><->
+      
+l.701 ...{conjunto de páginas qeu son linkeadas}$
+                                                  
+Not a real error.
+
+[203]
+! Preview: Snippet 204 started.
+<-><->
+      
+l.703 ...y llamaremos a la nueva matriz obtenida $
+                                                  M^\prime$
+Not a real error.
+
+! Preview: Snippet 204 ended.(551690+0x958295).
+<-><->
+      
+l.703 ...mos a la nueva matriz obtenida $M^\prime$
+                                                  
+Not a real error.
+
+[204]
+! Preview: Snippet 205 started.
+<-><->
+      
+l.705 \[
+        
+Not a real error.
+
+! Preview: Snippet 205 ended.(4456445+0x17024941).
+<-><->
+      
+l.713 \]
+        
+Not a real error.
+
+[205]
+! Preview: Snippet 206 started.
+<-><->
+      
+l.715 ...l siguiente paso es encontrar un vector $
+                                                  \vec{v}$ (algunos autores ...
+Not a real error.
+
+! Preview: Snippet 206 ended.(512698+0x373594).
+<-><->
+      
+l.715 ...nte paso es encontrar un vector $\vec{v}$
+                                                   (algunos autores lo llama...
+Not a real error.
+
+[206]
+! Preview: Snippet 207 started.
+<-><->
+      
+l.715 ...or $\vec{v}$ (algunos autores lo llaman $
+                                                  \vec{I}$) que represente e...
+Not a real error.
+
+! Preview: Snippet 207 ended.(694096+0x371766).
+<-><->
+      
+l.715 ...{v}$ (algunos autores lo llaman $\vec{I}$
+                                                  ) que represente el PageRa...
+Not a real error.
+
+[207]
+! Preview: Snippet 208 started.
+<-><->
+      
+l.715 ...o tenemos 5 páginas web le asignamos a $
+                                                  \vec{v}$ como valores $\ve...
+Not a real error.
+
+! Preview: Snippet 208 ended.(512698+0x373594).
+<-><->
+      
+l.715 ...s 5 páginas web le asignamos a $\vec{v}$
+                                                   como valores $\vec{v} = (...
+Not a real error.
+
+[208]
+! Preview: Snippet 209 started.
+<-><->
+      
+l.715 ...b le asignamos a $\vec{v}$ como valores $
+                                                  \vec{v} = (a,b,c,d,e)^T$, ...
+Not a real error.
+
+! Preview: Snippet 209 ended.(618681+179404x5304290).
+<-><->
+      
+l.715 ...}$ como valores $\vec{v} = (a,b,c,d,e)^T$
+                                                  , obteniendo así un vecto...
+Not a real error.
+
+[209]
+! Preview: Snippet 210 started.
+<-><->
+      
+l.715 ...obteniendo así un vector de dimensión $
+                                                  d=5$.
+Not a real error.
+
+! Preview: Snippet 210 ended.(498346+0x1689141).
+<-><->
+      
+l.715 ...niendo así un vector de dimensión $d=5$
+                                                  .
+Not a real error.
+
+[210]
+! Preview: Snippet 211 started.
+<-><->
+      
+l.717 \item Obtenemos los valores de $
+                                      \{v_i\}$ a partir de los autovalores d...
+Not a real error.
+
+! Preview: Snippet 211 ended.(538214+179404x1287893).
+<-><->
+      
+l.717 \item Obtenemos los valores de $\{v_i\}$
+                                               a partir de los autovalores d...
+Not a real error.
+
+[211]
+! Preview: Snippet 212 started.
+<-><->
+      
+l.717 ...\{v_i\}$ a partir de los autovalores de $
+                                                  M^\prime$, tal que:
+Not a real error.
+
+! Preview: Snippet 212 ended.(551690+0x958295).
+<-><->
+      
+l.717 ...a partir de los autovalores de $M^\prime$
+                                                  , tal que:
+Not a real error.
+
+[212]
+! Preview: Snippet 213 started.
+<-><->
+      
+l.719 \[
+        
+Not a real error.
+
+! Preview: Snippet 213 ended.(615628+0x15037419).
+<-><->
+      
+l.721 \]
+        
+Not a real error.
+
+[213]
+! Preview: Snippet 214 started.
+<-><->
+      
+l.723 \item Determinamos los autovalores de $
+                                             M^\prime$
+Not a real error.
+
+! Preview: Snippet 214 ended.(551690+0x958295).
+<-><->
+      
+l.723 ...eterminamos los autovalores de $M^\prime$
+                                                  
+Not a real error.
+
+[214]
+! Preview: Snippet 215 started.
+<-><->
+      
+l.725 \[
+        
+Not a real error.
+
+! Preview: Snippet 215 ended.(1440190+0x20135254).
+<-><->
+      
+l.727 \]
+        
+Not a real error.
+
+[215]
+! Preview: Snippet 216 started.
+<-><->
+      
+l.729 Tomaremos sólo $
+                       \lambda = 1$ $\rightarrow M^\prime \vec{v} = \vec{v}$...
+Not a real error.
+
+! Preview: Snippet 216 ended.(498346+0x1734242).
+<-><->
+      
+l.729 Tomaremos sólo $\lambda = 1$
+                                    $\rightarrow M^\prime \vec{v} = \vec{v}$...
+Not a real error.
+
+[216]
+! Preview: Snippet 217 started.
+<-><->
+      
+l.729 Tomaremos sólo $\lambda = 1$ $
+                                     \rightarrow M^\prime \vec{v} = \vec{v}$...
+Not a real error.
+
+! Preview: Snippet 217 ended.(551690+0x3579259).
+<-><->
+      
+l.729 ... $\rightarrow M^\prime \vec{v} = \vec{v}$
+                                                   (Ecuación autoconsistente)
+Not a real error.
+
+[217]
+! Preview: Snippet 218 started.
+<-><->
+      
+l.731 \item Hallamos el autovector asociado a $
+                                               \lambda = 1$. Obteniendo:
+Not a real error.
+
+! Preview: Snippet 218 ended.(498346+0x1734242).
+<-><->
+      
+l.731 ...os el autovector asociado a $\lambda = 1$
+                                                  . Obteniendo:
+Not a real error.
+
+[218]
+! Preview: Snippet 219 started.
+<-><->
+      
+l.733 \[
+        
+Not a real error.
+
+! Preview: Snippet 219 ended.(1440190+0x18527529).
+<-><->
+      
+l.735 \]
+        
+Not a real error.
+
+[219]
+! Preview: Snippet 220 started.
+<-><->
+      
+l.737 ...ena de mayor a menor las componentes de $
+                                                  \vec{v}$, quedándonos:
+Not a real error.
+
+! Preview: Snippet 220 ended.(512698+0x373594).
+<-><->
+      
+l.737 ...ayor a menor las componentes de $\vec{v}$
+                                                  , quedándonos:
+Not a real error.
+
+[220]
+! Preview: Snippet 221 started.
+<-><->
+      
+l.739 \[
+        
+Not a real error.
+
+! Preview: Snippet 221 ended.(4456445+0x14907754).
+<-><->
+      
+l.747 \]
+        
+Not a real error.
+
+[221]
+! Preview: Snippet 222 started.
+<-><->
+      
+l.761   \item No se encuentra $
+                               \lambda = 1$ en la mayoría de los casos.
+Not a real error.
+
+! Preview: Snippet 222 ended.(498346+0x1734242).
+<-><->
+      
+l.761   \item No se encuentra $\lambda = 1$
+                                            en la mayoría de los casos.
+Not a real error.
+
+[222]
+! Preview: Snippet 223 started.
+<-><->
+      
+l.767 \[
+        
+Not a real error.
+
+! Preview: Snippet 223 ended.(2231478+0x16820216).
+<-><->
+      
+l.772 \]
+        
+Not a real error.
+
+[223]
+! Preview: Snippet 224 started.
+<-><->
+      
+l.776 \[
+        
+Not a real error.
+
+! Preview: Snippet 224 ended.(660388+0x13666757).
+<-><->
+      
+l.778 \]
+        
+Not a real error.
+
+[224]
+! Preview: Snippet 225 started.
+<-><->
+      
+l.780 donde se toma un vector $
+                               I^{0}$ y se hace interactuar unas 100 veces y...
+Not a real error.
+
+! Preview: Snippet 225 ended.(598293+0x683066).
+<-><->
+      
+l.780 donde se toma un vector $I^{0}$
+                                      y se hace interactuar unas 100 veces y...
+Not a real error.
+
+[225]
+! Preview: Snippet 226 started.
+<-><->
+      
+l.781 mostrado de las páginas es el de $
+                                         I^{100}$, ordenadas de mayor a meno...
+Not a real error.
+
+! Preview: Snippet 226 ended.(598293+0x1240130).
+<-><->
+      
+l.781 mostrado de las páginas es el de $I^{100}$
+                                                 , ordenadas de mayor a meno...
+Not a real error.
+
+[226]
+! Preview: Snippet 227 started.
+<-><->
+      
+l.782 ...e la matriz hipervínculo (hiperenlace) $
+                                                  H$, obtenemos
+Not a real error.
+
+! Preview: Snippet 227 ended.(490372+0x654826).
+<-><->
+      
+l.782 ...la matriz hipervínculo (hiperenlace) $H$
+                                                  , obtenemos
+Not a real error.
+
+[227]
+! Preview: Snippet 228 started.
+<-><->
+      
+l.786 ...también se sabe que la convergencia de $
+                                                  I^k = E
+Not a real error.
+
+! Preview: Snippet 228 ended.(624507+0x3656833).
+<-><->
+      
+l.787 I^{k-1}$
+               a $I = E I$ depende del segundo autovalor de $\lambda_2$ de E...
+Not a real error.
+
+[228]
+! Preview: Snippet 229 started.
+<-><->
+      
+l.787 I^{k-1}$ a $
+                  I = E I$ depende del segundo autovalor de $\lambda_2$ de E...
+Not a real error.
+
+! Preview: Snippet 229 ended.(490372+0x2271457).
+<-><->
+      
+l.787 I^{k-1}$ a $I = E I$
+                           depende del segundo autovalor de $\lambda_2$ de E...
+Not a real error.
+
+[229]
+! Preview: Snippet 230 started.
+<-><->
+      
+l.787 ...= E I$ depende del segundo autovalor de $
+                                                  \lambda_2$ de E y es un
+Not a real error.
+
+! Preview: Snippet 230 ended.(498346+107642x729912).
+<-><->
+      
+l.787 ...ende del segundo autovalor de $\lambda_2$
+                                                   de E y es un
+Not a real error.
+
+[230]
+! Preview: Snippet 231 started.
+<-><->
+      
+l.788 hecho que $
+                 I^k = E I^{k-1}$ converge rápidamente si $\abs{\lambda_2}$ es
+Not a real error.
+
+! Preview: Snippet 231 ended.(624507+0x3656833).
+<-><->
+      
+l.788 hecho que $I^k = E I^{k-1}$
+                                  converge rápidamente si $\abs{\lambda_2}$ es
+Not a real error.
+
+[231]
+! Preview: Snippet 232 started.
+<-><->
+      
+l.788 ...k = E I^{k-1}$ converge rápidamente si $
+                                                  \abs{\lambda_2}$ es
+Not a real error.
+
+! Preview: Snippet 232 ended.(538213+179405x1128590).
+<-><->
+      
+l.788 ...onverge rápidamente si $\abs{\lambda_2}$
+                                                   es
+Not a real error.
+
+[232]
+! Preview: Snippet 233 started.
+<-><->
+      
+l.791 \subsection
+                 {El algoritmo de remiendo (parcheo) general}
+Not a real error.
+
+! Preview: Snippet 233 ended.(589824+196608x23592960).
+<-><->
+      
+l.791 ... algoritmo de remiendo (parcheo) general}
+                                                  
+Not a real error.
+
+[233
+
+]
+! Preview: Snippet 234 started.
+<-><->
+      
+l.794 estocástica E con probabilidad $
+                                       \alpha$, y con probabilidad $1-\alpha...
+Not a real error.
+
+! Preview: Snippet 234 ended.(308974+0x461718).
+<-><->
+      
+l.794 estocástica E con probabilidad $\alpha$
+                                              , y con probabilidad $1-\alpha...
+Not a real error.
+
+[234]
+! Preview: Snippet 235 started.
+<-><->
+      
+l.794 ...obabilidad $\alpha$, y con probabilidad $
+                                                  1-\alpha$ podrá ir
+Not a real error.
+
+! Preview: Snippet 235 ended.(462465+59802x1697614).
+<-><->
+      
+l.794 ...d $\alpha$, y con probabilidad $1-\alpha$
+                                                   podrá ir
+Not a real error.
+
+[235]
+! Preview: Snippet 236 started.
+<-><->
+      
+l.798 \[
+        
+Not a real error.
+
+LaTeX Font Info:    Try loading font information for U+dsrom on input line 799.
+(/usr/share/texmf-dist/tex/latex/doublestroke/Udsrom.fd
+File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
+)
+! Preview: Snippet 236 ended.(1440190+0x17333311).
+<-><->
+      
+l.800 \]
+        
+Not a real error.
+
+[236]
+! Preview: Snippet 237 started.
+<-><->
+      
+l.802 $
+       \mathds{I}$ es una matriz en la cual todas las entradas están establ...
+Not a real error.
+
+! Preview: Snippet 237 ended.(490372+0x318942).
+<-><->
+      
+l.802 $\mathds{I}$
+                   es una matriz en la cual todas las entradas están establ...
+Not a real error.
+
+[237]
+! Preview: Snippet 238 started.
+<-><->
+      
+l.811     vector Google inicial $
+                                 I^0$
+Not a real error.
+
+! Preview: Snippet 238 ended.(598293+0x683066).
+<-><->
+      
+l.811     vector Google inicial $I^0$
+                                     
+Not a real error.
+
+[238]
+! Preview: Snippet 239 started.
+<-><->
+      
+l.814 \begin{figure}
+                    [H]
+Not a real error.
+
+
+! LaTeX Error: Unknown float option `H'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.814 \begin{figure}[H]
+                       
+Option `H' ignored and `p' used.
+
+
+! Package tikz Error: Sorry, some package has redefined the meaning of the math-mode dollar sign. This is incompatible with tikz and its calc library and might cause unrecoverable errors.
+
+See the tikz package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.821 \Vertex[a = 90, d = 2.75]{1}
+                                    \Vertex[a = 162, d = 2.75]{2}
+This error message was generated by an \errmessage
+command, so I can't give any explicit help.
+Pretend that you're Hercule Poirot: Examine all clues,
+and deduce the truth by order and method.
+
+! Preview: Snippet 239 ended.(18002636+247464x23592960).
+<-><->
+      
+l.872 \end{figure}
+                  
+Not a real error.
+
+[239
+
+]
+! Preview: Snippet 240 started.
+<-><->
+      
+l.875 \subsection
+                 {Interpretación como una caminata aleatoria}
+Not a real error.
+
+! Preview: Snippet 240 ended.(546132+152916x23592960).
+<-><->
+      
+l.875 ...erpretación como una caminata aleatoria}
+                                                  
+Not a real error.
+
+[240
+
+]
+! Preview: Snippet 241 started.
+<-><->
+      
+l.882 \begin{align*}
+                    
+Not a real error.
+
+! Preview: Snippet 241 ended.(3007157+0x9617083).
+<-><->
+      
+l.885 \end{align*}
+                  
+Not a real error.
+
+[241]
+! Preview: Snippet 242 started.
+<-><->
+      
+l.889 \begin{align*}
+                    
+Not a real error.
+
+! Preview: Snippet 242 ended.(3007157+0x14343708).
+<-><->
+      
+l.892 \end{align*}
+                  
+Not a real error.
+
+[242]
+! Preview: Snippet 243 started.
+<-><->
+      
+l.894 \[
+        
+Not a real error.
+
+! Preview: Snippet 243 ended.(899102+0x17647139).
+<-><->
+      
+l.896 \]
+        
+Not a real error.
+
+[243]
+! Preview: Snippet 244 started.
+<-><->
+      
+l.898 En el contexto del Internet, $
+                                    G_{i j}$ es la probabilidad de qeu cierto
+Not a real error.
+
+! Preview: Snippet 244 ended.(490372+209587x1042151).
+<-><->
+      
+l.898 En el contexto del Internet, $G_{i j}$
+                                             es la probabilidad de qeu cierto
+Not a real error.
+
+[244]
+! Preview: Snippet 245 started.
+<-><->
+      
+l.899 internauta, que se encuentra en la página $
+                                                  p_i$, entre en la página ...
+Not a real error.
+
+! Preview: Snippet 245 ended.(308974+139537x583478).
+<-><->
+      
+l.899 ...uta, que se encuentra en la página $p_i$
+                                                  , entre en la página $p_j...
+Not a real error.
+
+[245]
+! Preview: Snippet 246 started.
+<-><->
+      
+l.899 ...n la página $p_i$, entre en la página $
+                                                  p_j$. El
+Not a real error.
+
+! Preview: Snippet 246 ended.(308974+209587x649318).
+<-><->
+      
+l.899 ... página $p_i$, entre en la página $p_j$
+                                                  . El
+Not a real error.
+
+[246]
+! Preview: Snippet 247 started.
+<-><->
+      
+l.900 factor $
+              \alpha E_{i j}$ es la probabilidad de que lo haga presionando ...
+Not a real error.
+
+! Preview: Snippet 247 ended.(490372+209587x1469385).
+<-><->
+      
+l.900 factor $\alpha E_{i j}$
+                              es la probabilidad de que lo haga presionando ...
+Not a real error.
+
+[247]
+! Preview: Snippet 248 started.
+<-><->
+      
+l.900 ... haga presionando un enlace presente en $
+                                                  p_i$, mientras que $\frac{...
+Not a real error.
+
+! Preview: Snippet 248 ended.(308974+139537x583478).
+<-><->
+      
+l.900 ...a presionando un enlace presente en $p_i$
+                                                  , mientras que $\frac{1-\a...
+Not a real error.
+
+[248]
+! Preview: Snippet 249 started.
+<-><->
+      
+l.900 ... enlace presente en $p_i$, mientras que $
+                                                  \frac{1-\alpha}{N} \mathds...
+Not a real error.
+
+! Preview: Snippet 249 ended.(620424+247464x1545815).
+<-><->
+      
+l.900 ...ntras que $\frac{1-\alpha}{N} \mathds{I}$
+                                                   es la probabilidad
+Not a real error.
+
+[249]
+! Preview: Snippet 250 started.
+<-><->
+      
+l.904 $
+       \alpha = 0.85$
+Not a real error.
+
+! Preview: Snippet 250 ended.(462465+139537x2694307).
+<-><->
+      
+l.904 $\alpha = 0.85$
+                     
+Not a real error.
+
+[250]
+! Preview: Snippet 251 started.
+<-><->
+      
+l.906 \subsection
+                 {Cuantizando las caminatas aleatorias}
+Not a real error.
+
+! Preview: Snippet 251 ended.(546132+0x23592960).
+<-><->
+      
+l.906 ...ion{Cuantizando las caminatas aleatorias}
+                                                  
+Not a real error.
+
+[251
+
+]
+! Preview: Snippet 252 started.
+<-><->
+      
+l.909 conjunto de nodos $
+                         \{p_i\}$ por el conjunto de kets $\{\ket{i}\}$. Sin...
+Not a real error.
+
+! Preview: Snippet 252 ended.(538214+179404x1301098).
+<-><->
+      
+l.909 conjunto de nodos $\{p_i\}$
+                                  por el conjunto de kets $\{\ket{i}\}$. Sin...
+Not a real error.
+
+[252]
+! Preview: Snippet 253 started.
+<-><->
+      
+l.909 ...nodos $\{p_i\}$ por el conjunto de kets $
+                                                  \{\ket{i}\}$. Sin embargo,
+Not a real error.
+
+! Preview: Snippet 253 ended.(538214+179405x1443263).
+<-><->
+      
+l.909 ...\}$ por el conjunto de kets $\{\ket{i}\}$
+                                                  . Sin embargo,
+Not a real error.
+
+[253]
+! Preview: Snippet 254 started.
+<-><->
+      
+l.913 \begin{figure}
+                    [H]
+Not a real error.
+
+
+! LaTeX Error: Unknown float option `H'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.913 \begin{figure}[H]
+                       
+Option `H' ignored and `p' used.
+
+! Preview: Snippet 254 ended.(1271652+912843x21816228).
+<-><->
+      
+l.934 \end{figure}
+                  
+Not a real error.
+
+[254]
+! Preview: Snippet 255 started.
+<-><->
+      
+l.936 ...eda" al espacio de Hilbert generado por $
+                                                  \{\ket{i}\}$. En este caso...
+Not a real error.
+
+! Preview: Snippet 255 ended.(538214+179405x1443263).
+<-><->
+      
+l.936 ...cio de Hilbert generado por $\{\ket{i}\}$
+                                                  . En este caso, el operado...
+Not a real error.
+
+[255]
+! Preview: Snippet 256 started.
+<-><->
+      
+l.938 \begin{align*}
+                    
+Not a real error.
+
+! Preview: Snippet 256 ended.(3362981+0x20964225).
+<-><->
+      
+l.944 \end{align*}
+                  
+Not a real error.
+
+[256]
+! Preview: Snippet 257 started.
+<-><->
+      
+l.946 Al realizar la suma sobre $
+                                 i$ se tiene $\mathds{1}$, como se deseaba. Sin
+Not a real error.
+
+! Preview: Snippet 257 ended.(473287+0x247229).
+<-><->
+      
+l.946 Al realizar la suma sobre $i$
+                                    se tiene $\mathds{1}$, como se deseaba. Sin
+Not a real error.
+
+[257]
+! Preview: Snippet 258 started.
+<-><->
+      
+l.946 Al realizar la suma sobre $i$ se tiene $
+                                              \mathds{1}$, como se deseaba. Sin
+Not a real error.
+
+! Preview: Snippet 258 ended.(462465+0x438546).
+<-><->
+      
+l.946 ...r la suma sobre $i$ se tiene $\mathds{1}$
+                                                  , como se deseaba. Sin
+Not a real error.
+
+[258]
+! Preview: Snippet 259 started.
+<-><->
+      
+l.947 ...ía no es satisfactoria, pues exige que $
+                                                  p_{i
+Not a real error.
+
+! Preview: Snippet 259 ended.(620424+387940x4263738).
+<-><->
+      
+l.948   j}=\frac{1}{outdeg(j)}$
+                                para que $U U^\dagger=\mathds{1}$.
+Not a real error.
+
+[259]
+! Preview: Snippet 260 started.
+<-><->
+      
+l.948   j}=\frac{1}{outdeg(j)}$ para que $
+                                          U U^\dagger=\mathds{1}$.
+Not a real error.
+
+! Preview: Snippet 260 ended.(624507+0x2812144).
+<-><->
+      
+l.948 ...eg(j)}$ para que $U U^\dagger=\mathds{1}$
+                                                  .
+Not a real error.
+
+[260]
+! Preview: Snippet 261 started.
+<-><->
+      
+l.956 \subsection
+                 {Caminata cuántica de Szegedy}
+Not a real error.
+
+! Preview: Snippet 261 ended.(546132+152916x23592960).
+<-><->
+      
+l.956 \subsection{Caminata cuántica de Szegedy}
+                                                
+Not a real error.
+
+[261
+
+]
+! Preview: Snippet 262 started.
+<-><->
+      
+l.965 operadores de reflexión ($
+                                 W = \mathds{1} - 2 \ketbra{w}{w}$, similare...
+Not a real error.
+
+! Preview: Snippet 262 ended.(538213+179405x5431644).
+<-><->
+      
+l.965 ...xión ($W = \mathds{1} - 2 \ketbra{w}{w}$
+                                                  , similares a los
+Not a real error.
+
+[262]
+! Preview: Snippet 263 started.
+<-><->
+      
+l.968 ... operador de evolución de la caminata: $
+                                                  U = (\mathds{1} - 2
+Not a real error.
+
+! Preview: Snippet 263 ended.(538214+179404x7108756).
+<-><->
+      
+l.969 B)(\mathds{1} - 2 A)$
+                           , donde A es el proyector sobre las transiciones ...
+Not a real error.
+
+[263]
+! Preview: Snippet 264 started.
+<-><->
+      
+l.973 \begin{align*}
+                    
+Not a real error.
+
+! Preview: Snippet 264 ended.(3736417+0x9837345).
+<-><->
+      
+l.976 \end{align*}
+                  
+Not a real error.
+
+[264]
+! Preview: Snippet 265 started.
+<-><->
+      
+l.979 \begin{align*}
+                    
+Not a real error.
+
+! Preview: Snippet 265 ended.(3736417+0x9792660).
+<-><->
+      
+l.982 \end{align*}
+                  
+Not a real error.
+
+[265]
+! Preview: Snippet 266 started.
+<-><->
+      
+l.988 el espacio de Hilbert generado por $
+                                          \{\ket{i}\}$: $\mathcal{H}^\prime ...
+Not a real error.
+
+! Preview: Snippet 266 ended.(538214+179405x1443263).
+<-><->
+      
+l.988 ...cio de Hilbert generado por $\{\ket{i}\}$
+                                                  : $\mathcal{H}^\prime = \m...
+Not a real error.
+
+[266]
+! Preview: Snippet 267 started.
+<-><->
+      
+l.988 ... de Hilbert generado por $\{\ket{i}\}$: $
+                                                  \mathcal{H}^\prime = \math...
+Not a real error.
+
+! Preview: Snippet 267 ended.(551690+59802x3856675).
+<-><->
+      
+l.988 ...\prime = \mathcal{H} \otimes \mathcal{H}$
+                                                  .
+Not a real error.
+
+[267]
+! Preview: Snippet 268 started.
+<-><->
+      
+l.991 \begin{figure}
+                    [h]
+Not a real error.
+
+! Preview: Snippet 268 ended.(4804511+4445702x25886250).
+<-><->
+      
+l.1030 \end{figure}
+                   
+Not a real error.
+
+[268]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+! Preview: Snippet 269 started.
+<-><->
+      
+l.1033 ...artición es un reflejo de la primera, $
+                                                  B = A^T$. Entonces:
+Not a real error.
+
+! Preview: Snippet 269 ended.(618681+0x2509814).
+<-><->
+      
+l.1033 ...n es un reflejo de la primera, $B = A^T$
+                                                  . Entonces:
+Not a real error.
+
+[269]
+! Preview: Snippet 270 started.
+<-><->
+      
+l.1034 $
+        U = (2 A^T - \mathds{1})(2 A - \mathds{1})$
+Not a real error.
+
+! Preview: Snippet 270 ended.(618681+179404x7501102).
+<-><->
+      
+l.1034 ... (2 A^T - \mathds{1})(2 A - \mathds{1})$
+                                                  
+Not a real error.
+
+[270]
+! Preview: Snippet 271 started.
+<-><->
+      
+l.1036 \[
+         
+Not a real error.
+
+! Preview: Snippet 271 ended.(813578+0x22394974).
+<-><->
+      
+l.1039 \]
+         
+Not a real error.
+
+[271]
+! Preview: Snippet 272 started.
+<-><->
+      
+l.1041 Donde $
+              S$ es el operador SWAP, $S = \sum\limits_{i j} \ketbra{j i}{i j}$
+Not a real error.
+
+! Preview: Snippet 272 ended.(490372+0x481402).
+<-><->
+      
+l.1041 Donde $S$
+                 es el operador SWAP, $S = \sum\limits_{i j} \ketbra{j i}{i j}$
+Not a real error.
+
+[272]
+! Preview: Snippet 273 started.
+<-><->
+      
+l.1041 Donde $S$ es el operador SWAP, $
+                                       S = \sum\limits_{i j} \ketbra{j i}{i j}$
+Not a real error.
+
+! Preview: Snippet 273 ended.(538218+819320x4320193).
+<-><->
+      
+l.1041 ...S = \sum\limits_{i j} \ketbra{j i}{i j}$
+                                                  
+Not a real error.
+
+[273]
+! Preview: Snippet 274 started.
+<-><->
+      
+l.1043 \subsection
+                  {PageRank cuántico}
+Not a real error.
+
+! Preview: Snippet 274 ended.(546132+152916x23592960).
+<-><->
+      
+l.1043 \subsection{PageRank cuántico}
+                                      
+Not a real error.
+
+[274
+
+]
+! Preview: Snippet 275 started.
+<-><->
+      
+l.1048 procedimiento de Szegedy, sustituyendo $
+                                               p_{i j}$ por $G_{i j}$.
+Not a real error.
+
+! Preview: Snippet 275 ended.(308974+209587x838976).
+<-><->
+      
+l.1048 ...iento de Szegedy, sustituyendo $p_{i j}$
+                                                   por $G_{i j}$.
+Not a real error.
+
+[275]
+! Preview: Snippet 276 started.
+<-><->
+      
+l.1048 ...de Szegedy, sustituyendo $p_{i j}$ por $
+                                                  G_{i j}$.
+Not a real error.
+
+! Preview: Snippet 276 ended.(490372+209587x1042151).
+<-><->
+      
+l.1048 ...dy, sustituyendo $p_{i j}$ por $G_{i j}$
+                                                  .
+Not a real error.
+
+[276]
+! Preview: Snippet 277 started.
+<-><->
+      
+l.1050 ...valor de PageRank cuántico en el paso $
+                                                  m$ como:
+Not a real error.
+
+! Preview: Snippet 277 ended.(308974+0x630079).
+<-><->
+      
+l.1050 ...lor de PageRank cuántico en el paso $m$
+                                                   como:
+Not a real error.
+
+[277]
+! Preview: Snippet 278 started.
+<-><->
+      
+l.1052 \begin{align*}
+                     
+Not a real error.
+
+! Preview: Snippet 278 ended.(3434471+0x16290180).
+<-><->
+      
+l.1055 \end{align*}
+                   
+Not a real error.
+
+[278]
+! Preview: Snippet 279 started.
+<-><->
+      
+l.1057 Esto equivale a realizar $
+                                 m$ pasos de la caminata con $\ket{\psi_0}$ ...
+Not a real error.
+
+! Preview: Snippet 279 ended.(308974+0x630079).
+<-><->
+      
+l.1057 Esto equivale a realizar $m$
+                                    pasos de la caminata con $\ket{\psi_0}$ ...
+Not a real error.
+
+[279]
+! Preview: Snippet 280 started.
+<-><->
+      
+l.1057 ... realizar $m$ pasos de la caminata con $
+                                                  \ket{\psi_0}$ como estado
+Not a real error.
+
+! Preview: Snippet 280 ended.(538213+179405x1257165).
+<-><->
+      
+l.1057 ... pasos de la caminata con $\ket{\psi_0}$
+                                                   como estado
+Not a real error.
+
+[280]
+! Preview: Snippet 281 started.
+<-><->
+      
+l.1058 ... y realizar una medida proyeciva sobre $
+                                                  \ket{i}_2$.
+Not a real error.
+
+! Preview: Snippet 281 ended.(538213+212173x1036943).
+<-><->
+      
+l.1058 ...r una medida proyeciva sobre $\ket{i}_2$
+                                                  .
+Not a real error.
+
+[281]
+! Preview: Snippet 282 started.
+<-><->
+      
+l.1060 Nota: $
+              I_q$ no converge, sino que oscila, así que se toma el centro ...
+Not a real error.
+
+! Preview: Snippet 282 ended.(490372+209587x615740).
+<-><->
+      
+l.1060 Nota: $I_q$
+                   no converge, sino que oscila, así que se toma el centro ...
+Not a real error.
+
+[282]
+! Preview: Snippet 283 started.
+<-><->
+      
+l.1062 promediando $
+                    I_q$ sobre $m$: $\langle I_q(P_i) \rangle = \frac{1}{M}
+Not a real error.
+
+! Preview: Snippet 283 ended.(490372+209587x615740).
+<-><->
+      
+l.1062 promediando $I_q$
+                         sobre $m$: $\langle I_q(P_i) \rangle = \frac{1}{M}
+Not a real error.
+
+[283]
+! Preview: Snippet 284 started.
+<-><->
+      
+l.1062 promediando $I_q$ sobre $
+                                m$: $\langle I_q(P_i) \rangle = \frac{1}{M}
+Not a real error.
+
+! Preview: Snippet 284 ended.(308974+0x630079).
+<-><->
+      
+l.1062 promediando $I_q$ sobre $m$
+                                  : $\langle I_q(P_i) \rangle = \frac{1}{M}
+Not a real error.
+
+[284]
+! Preview: Snippet 285 started.
+<-><->
+      
+l.1062 promediando $I_q$ sobre $m$: $
+                                     \langle I_q(P_i) \rangle = \frac{1}{M}
+Not a real error.
+
+! Preview: Snippet 285 ended.(1111766+708650x8468019).
+<-><->
+      
+l.1063 \sum\limits_{m=0}^{M-1} I_q(P_i,m)$
+                                          
+Not a real error.
+
+[285] ) 
+Here is how much of TeX's memory you used:
+ 1396 strings out of 467616
+ 21720 string characters out of 5659813
+ 601447 words of memory out of 5000000
+ 29917 multiletter control sequences out of 15000+600000
+ 540748 words of font info for 62 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 41i,26n,66p,739b,1224s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public/doublestroke/dsrom10.pfb></usr/share/texmf-dist/fonts/type1/public/xypic/xyatip10.pfb></usr/share/texmf-dist/f
+onts/type1/public/xypic/xybtip10.pfb>
+Output written on _region_.pdf (285 pages, 317669 bytes).
+PDF statistics:
+ 994 PDF objects out of 1000 (max. 8388607)
+ 682 compressed objects within 7 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 18 words of extra memory for PDF output out of 10000 (max. 10000000)
+
