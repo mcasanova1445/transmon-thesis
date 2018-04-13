@@ -3,6 +3,16 @@ title:
 - Primer avance
 author:
 - Miguel Casanova
+header-includes:
+   - \usepackage{physics}
+   - \usepackage{mathtools}
+   - \usepackage{physics}
+   - \usepackage{qcircuit}
+   - \usepackage{graphicx}
+   - \usepackage{float}
+   - \usepackage{dsfont}
+   - \usepackage{tkz-graph}
+   - \usetikzlibrary{arrows}
 theme:
 - Copenhagen
 ---
@@ -175,7 +185,7 @@ Ahora introducimos el término de la unión Josephson
 $\hat{H} = \frac{(2e)^2}{2C} (\hat{n}-n_g)^2 + \frac{\hbar^2}{(2e)^2L} 
  \frac{\hat{(\delta-\delta_e)^2}}{2} - \frac{\hbar I_0}{2e} \cos(\delta)
  = E_C (\hat{n}-n_g)^2 + E_L \frac{(\hat{\delta}-\delta_e)^2}{2}
- - E_{J0} \cos(\delta)$
+ - E_{J0} \cos(\hat{\delta})$
 
 # Ecuación de Schrödinger del circuito LCJ
 
@@ -188,15 +198,81 @@ $$U(\phi) = -E_{J0} \cos(\phi)+E_L \frac{(\phi-\phi_e)^2}{2}$$
 
 # Arquetipos de qubits superconductores
 
-* Qubit de carga: Si $E_L$ tiende a cero, la carga almacenada en la isla superconductora entre el capacitor y  la unión Josephson se puede usar como qubit.
+* Qubit de carga: Si $E_L$ tiende a cero, la carga almacenada en la isla superconductora entre el capacitor y  la unión Josephson se puede usar como qubit. El potencial de este tipo de qubit es de forma de coseno.
 
-* Qubit de flujo: Si $E_L$ es comparable con $E_{J0}$, el flujo a través del lazo formado por el inductor y la unión Josephson se puede usar como qubit.
+* Qubit de flujo: Si $E_L$ es comparable con $E_{J0}$, el flujo a través del lazo formado por el inductor y la unión Josephson se puede usar como qubit. El potencial de este tipo de qubit es de forma cuártica.
 
-* Qubit de flujo: Si se polariza la unión Josephson con una fuente de corriente, la fase en ambos extermos de la unión Josephson se puede usar como qubit.
+* Qubit de fase: Si se polariza la unión Josephson con una fuente de corriente, la fase en ambos extermos de la unión Josephson se puede usar como qubit. El potencial de este tipo de qubit es de forma cúbica.
+
+# Qubits de carga
+
+$[\hat{\delta},\hat{n}]=i \implies e^{\pm i \hat{\delta}} \ket{n} = \ket{n\pm 1}$
+
+$\hat{H} = E_C (\hat{n}-n_g)^2 - E_{J0} \cos(\hat{\delta}) =
+ E_C (\hat{n}-n_g)^2 - E_{J0} (e^{i \hat{\delta}} + e^{-i \hat{\delta}}) =
+ \sum(E_C(N-N_g)^2 \ketbra{n}{n} - \frac{E_{J0}}{2}(\ketbra{n}{n+1}+\ketbra{n+1}{n}))$
+
+# Caja de pares de Cooper 
+
+Dimensiones típicas de la isla: 1000nm x 50nm x 20nm
+
+![Circuito de una caja de pares de Cooper](Avance1/cooperpairbox.png){#id .class width=45%} ![Niveles de energía](Avance1/cooperenergy.png){#id .class width=45%}
 
 # Transmon
 
-Los transmones son un caso especial de los qubits de carga.
+Intercambiamos anarmonicidad por independencia de $n_g$
+
+![Circuito de un transmon](Avance1/transmon.png){#id .class width=45%} ![Niveles de energía](Avance1/transmonenergy.png){#id .class width=45%}
+
+# Modelo de Rabi
+
+$$\hat{H} = \hat{H}_q + \hat{H}_{qr} + \hat{H}_r = -\frac{1}{2} \epsilon \sigma_z + g \sigma_x (a+a^\dag) + \hbar \omega (a^\dag a + \frac{1}{2})$$
+
+# Aproximación de onda rotacional
+
+$$\hat{H}_{qr} = \hat{H}_{qr}^{JC} + \hat{H}_{qr}^{AJC} = g(\sigma_+ a + \sigma_- a^\dag) + g(\sigma_+ a^\dag + \sigma_- a)$$
+
+$$\hat{H} = \hat{H}_q + \hat{H}_{qr} + \hat{H}_r = -\frac{1}{2} \epsilon \sigma_z + g(\sigma_+ a + \sigma_- a^\dag) + \hbar \omega (a^\dag a + \frac{1}{2})$$
+
+# Hamiltoniano multiquibit
+
+$$\hat{H} = \hat{H}_q + \hat{H}_{qr} + \hat{H}_{qq} = -\frac{1}{2} \sum\limits_i \epsilon_i \sigma_{zi} + \sum\limits_i g_i \sigma_{xi} (a+a^\dag) + \frac{1}{2} \sum\limits_{i,j;\nu} \lambda_{\nu,ij} \sigma_{\nu i} \sigma_{\nu j}$$
+
+\begin{align*}
+\hat{H}_{qq} = \lambda_{1 2} \sigma_{x1} \sigma_{x2} \\
+\lambda{1 2} = \frac{1}{2} g_1 g_2 (\frac{1}{\Delta_1} + \frac{1}{\Delta_2} \equiv g_1 g_2 \frac{1}{\Delta}) \\
+\Delta_i = \epsilon_i - \hbar \omega
+\end{align*}
+
+# Regimen dispersivo
+
+$\frac{g}{\Delta} << 1$
+$U = exp[\frac{g}{\Delta} (a \sigma_+ + a^\dagger \sigma_-)]$
+$\hat{H}=\hbar(\omega+\chi \sigma_z)(a^\dagger a + \frac{1}{2}) + \frac{\hbar}{2}(\epsilon+\chi)\sigma_z$
+
+$\chi=\frac{g^2}{\Delta}$
+
+# Pulsos de microondas
+
+$\hat{H}_d = \sum (a+a^\dagger) (\xi_k e^{-i\omega_d^{(k)}t} + \xi_k^*e^{i\omega_d^{(k)}t})$
+
+RWA: $\hat{H}_d=\sum a\xi_k^*e^{i\omega_d^{(k)}t}+a^\dagger\xi_ke^{-i\omega_d^{(k)}}$
+
+# Compuertas de un qubit en transmones
+
+Se aplica la siguiente transformación $U(t)=exp[i \omega_d t(a^\dagger a + \sum \ket{j} j \bra{j}$
+
+$H=U(H+H_d)U^\dagger-i U U^\dagger$
+$D(\alpha)=exp[\alpha(t)a^\dagger-\alpha^*(t)a]$
+$-i\dot{\alpha}+\Delta_r \alpha(t) + \xi(t) =0$
+
+$\hat{H} = \frac{\hbar}{2} \Delta_q \sigma_z + \hbar(\Delta_r + \chi \sigma_z) a^\dagger a + (\Omega^*(t)\sigma_- + \Omega(t) \sigma_+$
+
+# Rotaciones X-Y
+
+$\Omega(t) = \Omega^x(t) \cos(\omega_d t) + \Omega^y \sin(\omega_d t), \qquad 0<t<t_g$
+
+$\hat{H} = \frac{\hbar}{2} \Delta_q \sigma_z + \hbar (\Delta_r + \chi \sigma_z) a^\dagger a + \frac{\hbar}{2} (\Omega^x(t) \sigma_x + \Omega^y(t) \sigma_y)
 
 
 # The end

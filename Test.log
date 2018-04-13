@@ -1,7 +1,6 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Arch Linux) (preloaded format=pdflatex 2018.4.8)  9 APR 2018 00:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Arch Linux) (preloaded format=pdflatex 2018.4.8)  12 APR 2018 22:41
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
 **Test.tex
 (./Test.tex
@@ -2099,94 +2098,94 @@ Cap\'{\i }tulo 1.
 [2
 
 ] <xymatrix 3x1 143>
-Overfull \hbox (19.43333pt too wide) in paragraph at lines 77--92
-[]$[]$ $[]$ 
- []
-
-<xymatrix 3x1 143>
-Overfull \hbox (19.43333pt too wide) in paragraph at lines 97--112
+Overfull \hbox (19.43333pt too wide) in paragraph at lines 79--94
 []$[]$ $[]$ 
  []
 
 [3] <xymatrix 3x1 143>
-Overfull \hbox (19.43333pt too wide) in paragraph at lines 117--132
+Overfull \hbox (19.43333pt too wide) in paragraph at lines 99--114
 []$[]$ $[]$ 
  []
 
 <xymatrix 3x1 143>
-Overfull \hbox (19.43333pt too wide) in paragraph at lines 137--152
+Overfull \hbox (19.43333pt too wide) in paragraph at lines 119--134
 []$[]$ $[]$ 
  []
 
 <xymatrix 3x1 143>
-Overfull \hbox (19.43333pt too wide) in paragraph at lines 158--174
+Overfull \hbox (19.43333pt too wide) in paragraph at lines 139--154
 []$[]$ $[]$ 
  []
 
 <xymatrix 3x1 143>
-Overfull \hbox (19.43333pt too wide) in paragraph at lines 179--194
+Overfull \hbox (19.43333pt too wide) in paragraph at lines 160--176
 []$[]$ $[]$ 
  []
 
 <xymatrix 3x1 143>
-Overfull \hbox (19.43333pt too wide) in paragraph at lines 199--214
+Overfull \hbox (19.43333pt too wide) in paragraph at lines 181--196
 []$[]$ $[]$ 
  []
 
 <xymatrix 3x1 143>
-Overfull \hbox (19.43333pt too wide) in paragraph at lines 217--232
+Overfull \hbox (19.43333pt too wide) in paragraph at lines 201--216
 []$[]$ $[]$ 
  []
 
-[4] <xymatrix 3x2 196>
-Overfull \hbox (19.43333pt too wide) in paragraph at lines 273--291
+[4] <xymatrix 3x1 143>
+Overfull \hbox (19.43333pt too wide) in paragraph at lines 219--234
 []$[]$ $[]$ 
  []
 
 <xymatrix 3x2 196>
-Overfull \hbox (19.43333pt too wide) in paragraph at lines 294--312
+Overfull \hbox (19.43333pt too wide) in paragraph at lines 275--293
+[]$[]$ $[]$ 
+ []
+
+<xymatrix 3x2 196>
+Overfull \hbox (19.43333pt too wide) in paragraph at lines 296--314
 []$[]$ $[]$ 
  []
 
 <xymatrix 3x2 203>
-Overfull \hbox (19.43333pt too wide) in paragraph at lines 315--333
+Overfull \hbox (19.43333pt too wide) in paragraph at lines 317--335
 []$[]$ $[]$ 
  []
 
-<xymatrix 3x2 242>
-Overfull \hbox (19.43333pt too wide) in paragraph at lines 336--355
+[5] <xymatrix 3x2 242>
+Overfull \hbox (19.43333pt too wide) in paragraph at lines 338--357
 []$[]$ $[]$ 
  []
 
-[5] <xymatrix 3x3 310>
-Overfull \hbox (19.43333pt too wide) in paragraph at lines 358--381
+<xymatrix 3x3 310>
+Overfull \hbox (19.43333pt too wide) in paragraph at lines 360--383
 []$[]$ $[]$ 
  []
 
 <xymatrix 3x3 322>
-Overfull \hbox (10.45157pt too wide) detected at line 407
+Overfull \hbox (10.45157pt too wide) detected at line 409
 []
  []
 
 
-Overfull \hbox (19.43333pt too wide) in paragraph at lines 386--409
+Overfull \hbox (19.43333pt too wide) in paragraph at lines 388--411
 []$[]$ $[]$ 
  []
 
 [6]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 436.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 438.
 
  (/usr/share/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 436.
- [7]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 438.
+ [7] [8]
 Cap\'{\i }tulo 2.
-[8
+[9
 
-] [9] [10]
-Overfull \hbox (15.95544pt too wide) detected at line 592
+] [10] [11]
+Overfull \hbox (15.95544pt too wide) detected at line 594
 [] \OT1/cmr/m/n/10.95 = \OMS/cmsy/m/n/10.95 ^^@[] [] \OML/cmm/m/it/10.95 ^^O[]^
 ^[[] \OT1/cmr/m/n/10.95 + [] \OML/cmm/m/it/10.95 g[]\OT1/cmr/m/n/10.95 (\OML/cm
 m/m/it/10.95 ^^[[]a \OT1/cmr/m/n/10.95 + \OML/cmm/m/it/10.95 ^^[[]a[]\OT1/cmr/m
@@ -2195,54 +2194,54 @@ it/10.95 ^^U[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 ^^[[]^^[[] \OT1/cmr/m/n/1
 0.95 + \OML/cmm/m/it/10.95 ^^[[]^^[[]\OT1/cmr/m/n/10.95 )
  []
 
-[11] [12]
+[12] [13]
 Cap\'{\i }tulo 3.
-<Grover/grover_geometry.png, id=59, 374.68137pt x 388.71437pt>
+<Grover/grover_geometry.png, id=62, 374.68137pt x 388.71437pt>
 File: Grover/grover_geometry.png Graphic file (type png)
 <use Grover/grover_geometry.png>
-Package pdftex.def Info: Grover/grover_geometry.png  used on input line 608.
+Package pdftex.def Info: Grover/grover_geometry.png  used on input line 610.
 (pdftex.def)             Requested size: 108.0011pt x 112.04218pt.
-<xymatrix 7x3 824> [13
+<xymatrix 7x3 824> [14
 
- <./Grover/grover_geometry.png>] [14]
+ <./Grover/grover_geometry.png>] [15]
 Cap\'{\i }tulo 4.
-[15
+[16
 
 ]
 Cap\'{\i }tulo 5.
-[16
+[17
 
-] [17] [18]
-LaTeX Font Info:    Try loading font information for U+dsrom on input line 796.
+] [18] [19]
+LaTeX Font Info:    Try loading font information for U+dsrom on input line 798.
 
  (/usr/share/texmf-dist/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
 )
-Overfull \hbox (59.47433pt too wide) in paragraph at lines 813--867
+Overfull \hbox (59.47433pt too wide) in paragraph at lines 815--869
  [] 
  []
 
-[19]
-Overfull \hbox (38.86761pt too wide) detected at line 889
+[20]
+Overfull \hbox (38.86761pt too wide) detected at line 891
 []
  []
 
 
-Overfull \hbox (58.30095pt too wide) in paragraph at lines 877--891
-[]$[]$ $[]$ 
- []
-
-[20]
-Overfull \hbox (19.43333pt too wide) in paragraph at lines 969--981
+Overfull \hbox (58.30095pt too wide) in paragraph at lines 879--893
 []$[]$ $[]$ 
  []
 
 [21]
-Overfull \hbox (34.99283pt too wide) in paragraph at lines 989--1027
+Overfull \hbox (19.43333pt too wide) in paragraph at lines 971--983
+[]$[]$ $[]$ 
+ []
+
+[22]
+Overfull \hbox (34.99283pt too wide) in paragraph at lines 991--1029
 [][] 
  []
 
-[22] [23] (./Test.aux
+[23] [24] (./Test.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 LaTeX Info: Redefining \. on input line 7.
@@ -2251,7 +2250,7 @@ LaTeX Info: Redefining \% on input line 7.
 Here is how much of TeX's memory you used:
  26569 strings out of 492982
  497305 string characters out of 6138580
- 597972 words of memory out of 5000000
+ 598978 words of memory out of 5000000
  29759 multiletter control sequences out of 15000+600000
  539617 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -2268,10 +2267,10 @@ fonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
 pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fo
 nts/type1/public/doublestroke/dsrom10.pfb>
-Output written on Test.pdf (24 pages, 287682 bytes).
+Output written on Test.pdf (25 pages, 288140 bytes).
 PDF statistics:
- 143 PDF objects out of 1000 (max. 8388607)
- 100 compressed objects within 1 object stream
+ 148 PDF objects out of 1000 (max. 8388607)
+ 103 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 

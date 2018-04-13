@@ -172,17 +172,98 @@ una corriente AC a través de ellas.
 \begin{frame}{Energía e inductancia de Josephson}
 \protect\hypertarget{energuxeda-e-inductancia-de-josephson}{}
 
-\[E_J = \int\limits_0^t I_0 \sin(\delta) \frac{\hbar}{2e} \frac{d\delta}{dt} dt
- = \frac{\hbar I_0}{2e} \int\limits_0^\delta \sin(\delta) dt
- = \frac{\hbar I_0}{2e} (1 - \cos(\delta))\]
+\[E_J = \int I_0 \sin(\delta) \frac{\hbar}{2e} \frac{d\delta}{dt} dt
+ = \frac{\hbar I_0}{2e} \int \sin(\delta) dt
+ = - \frac{\hbar I_0}{2e} \cos(\delta)\]
 
-\(\frac{dI_J}{dt} = I_0 \cos(\delta) \frac{d\delta){dt} = I_0 \cos(\delta)  \frac{2e}{\hbar} V_J\)
+\(\frac{dI_J}{dt} = I_0 \cos(\delta) \frac{d \delta}{dt} = I_0 \cos(\delta)  \frac{2e}{\hbar} V_J\)
 
 \[L_J = \frac{\hbar}{2e I_0 \cos(\delta)}\]
 
 \(E_C = \frac{(2e)^2}{2C}\)
 
-\(E_L = \frac{\hbar^2}{4e^2L}\)
+\(E_L = \frac{\hbar^2}{(2e)^2L}\)
+
+\end{frame}
+
+\begin{frame}{Circuito LCJ}
+\protect\hypertarget{circuito-lcj}{}
+
+Primero, reescribimos el Hamiltoniano del circuito LC en términos de la
+cantidad de pares de Cooper y de la diferencia de fase en los extremos
+del inductor, en lugar de la carga y el flujo
+
+\[\hat{H} = \frac{(2e)^2}{2C} \hat{n}^2 + \frac{\hbar^2}{(2e)^2L} 
+ \frac{\hat{\delta^2}}{2}\]
+
+De aquí \(\hat{q}=2e\hat{n}\) y
+\(\hat{\phi}=\frac{\hbar}{2e}\hat{\delta}\)
+
+Ahora introducimos el término de la unión Josephson
+
+\(\hat{H} = \frac{(2e)^2}{2C} (\hat{n}-n_g)^2 + \frac{\hbar^2}{(2e)^2L}  \frac{\hat{(\delta-\delta_e)^2}}{2} - \frac{\hbar I_0}{2e} \cos(\delta)  = E_C (\hat{n}-n_g)^2 + E_L \frac{(\hat{\delta}-\delta_e)^2}{2}  - E_{J0} \cos(\hat{\delta})\)
+
+\end{frame}
+
+\begin{frame}{Ecuación de Schrödinger del circuito LCJ}
+\protect\hypertarget{ecuaciuxf3n-de-schruxf6dinger-del-circuito-lcj}{}
+
+Para describir el sistema en términos de la ecuación de Schrödinger en
+función de la diferencia de fase \(\delta\), se introduce
+\(\hat{n}=-i\hbar \frac{\partial}{\partial \phi}\)
+
+\[E_C (-i\hbar \frac{\partial}{\partial\phi}-n_g)^2+U(\phi))\psi = E \psi\]
+\[U(\phi) = -E_{J0} \cos(\phi)+E_L \frac{(\phi-\phi_e)^2}{2}\]
+
+\end{frame}
+
+\begin{frame}{Arquetipos de qubits superconductores}
+\protect\hypertarget{arquetipos-de-qubits-superconductores}{}
+
+\begin{itemize}
+\item
+  Qubit de carga: Si \(E_L\) tiende a cero, la carga almacenada en la
+  isla superconductora entre el capacitor y la unión Josephson se puede
+  usar como qubit. El potencial de este tipo de qubit es de forma de
+  coseno.
+\item
+  Qubit de flujo: Si \(E_L\) es comparable con \(E_{J0}\), el flujo a
+  través del lazo formado por el inductor y la unión Josephson se puede
+  usar como qubit. El potencial de este tipo de qubit es de forma
+  cuártica.
+\item
+  Qubit de fase: Si se polariza la unión Josephson con una fuente de
+  corriente, la fase en ambos extermos de la unión Josephson se puede
+  usar como qubit. El potencial de este tipo de qubit es de forma
+  cúbica.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Qubits de carga}
+\protect\hypertarget{qubits-de-carga}{}
+
+\([\hat{\delta},\hat{n}]=i \implies e^{\pm i \hat{\delta}} \ket{n} = \ket{n\pm 1}\)
+
+\(\hat{H} = E_C (\hat{n}-n_g)^2 - E_{J0} \cos(\hat{\delta}) =  E_C (\hat{n}-n_g)^2 - E_{J0} (e^{i \hat{\delta}} + e^{-i \hat{\delta}}) =  \sum(E_C(N-N_g)^2 \ketbra{n}{n} - \frac{E_{J0}}{2}(\ketbra{n}{n+1}+\ketbra{n+1}{n}))\)
+
+\end{frame}
+
+\begin{frame}{Caja de pares de Cooper}
+\protect\hypertarget{caja-de-pares-de-cooper}{}
+
+Dimensiones típicas de la isla: 1000nm x 50nm x 20nm
+
+\includegraphics[width=0.3125in,height=\textheight]{Avance1/cooperpairbox.png}
+\includegraphics[width=0.3125in,height=\textheight]{cooperenergy.png}
+
+\end{frame}
+
+\begin{frame}{Transmon}
+\protect\hypertarget{transmon}{}
+
+\includegraphics{Avance1/transmon.png}\{:height=“36px” width=“36px”\}
+\includegraphics{transmonenergy.png}
 
 \end{frame}
 
