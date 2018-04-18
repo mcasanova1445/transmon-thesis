@@ -1,3 +1,9 @@
 * TODO
 ** X-Y rotation gates
 ** Organizar resultados PageRank
+
+* A discutir con Castro
+** Cuenta del desplazamiento del Hamiltoniano
+** PageRank de grafo árbol
+
+

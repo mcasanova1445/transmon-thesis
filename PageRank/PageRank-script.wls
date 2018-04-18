@@ -4,18 +4,22 @@
 SetDirectory["~/Documents/transmon-thesis/PageRank"]
 
 
-g=Graph[{1->2,1->3,1->4,2->1,2->4,3->4,4->3}]; (*Grafo*)
+(*g=Graph[{1->2,1->3,1->4,2->1,2->4,3->4,4->3}];*) (*Grafo*)
+(*g=Graph[{1->2,1->3,2->4}];*) (*Grafo \[AAcute]rbol*)
+g=Graph[{1->2,2->3,3->4,4->1}]; (*Grafo c\[IAcute]clico*)
+
 Export["grafo.png",g]
 
 
 Em=AdjacencyMatrix[g]; 
-For[j=1,j<=4,j++,Em[[j]]=Em[[j]]/Sum[Em[[j,i]],{i,1,4}];]
+For[j=1,j<=4,j++, Em[[j]]=Em[[j]]/(Sum[Em[[j,i]],{i,1,4}]+0.0000000000001);]
 Em=Transpose[Em]; (*Matriz de adyacencia ponderada del grafo*)
 "Matriz de adyacencia ponderada: " >> "output.txt"
 Em >>> "output.txt"
 
 
 
+\[Alpha]=0.85;
 G=\[Alpha] Em + (1-\[Alpha])/Dimensions[Em][[1]] Table[1,{Dimensions[Em][[1]]},{Dimensions[Em][[1]]}]; (*Matriz de Google*)
 "Matriz de Google: " >>> "output.txt"
 G >>> "output.txt"
@@ -28,7 +32,7 @@ Ivl3={0};
 Ivl4={0};
 Iv={{1},{0},{0},{0}}; (*Vector de PageRank inicial*)
 For[i=1,i<=30,i++,
-	Iv=(G/.{\[Alpha]->0.85}).Iv; (*Iterar con la matriz de Google*)
+	Iv=G.Iv; (*Iterar con la matriz de Google*)
 	(*Iv=Iv/Norm[Iv];*)
 	AppendTo[Ivl1,Iv[[1,1]]];
 	AppendTo[Ivl2,Iv[[2,1]]];
@@ -47,7 +51,7 @@ Export["Nodo4-PRC.png",ListLinePlot[Ivl4,PlotRange->{0,1},DataRange->{0,30}]]
 
 
 "PageRank dado por la funci\[OAcute]n de Mathematica:" >>> "output.txt"
-PageRankCentrality[g,0.85] >>> "output.txt" (*Comparar con el PageRank dado por la funci\[OAcute]n de Mathematica*)
+PageRankCentrality[g,\[Alpha]] >>> "output.txt" (*Comparar con el PageRank dado por la funci\[OAcute]n de Mathematica*)
 
 
 
@@ -77,10 +81,10 @@ W=MatrixPower[Ux,2]; (*Operador de difusi\[OAcute]n 1*)
 
 a=0.85;
 NSteps = 50;
-qIvl1=Table[((\[Phi]x0\[ConjugateTranspose]/.{\[Alpha]->a}).MatrixPower[(W\[ConjugateTranspose]/.{\[Alpha]->a}),m].KroneckerProduct[IdentityMatrix[4],ket[0,4].ket[0,4]\[ConjugateTranspose]].MatrixPower[(W/.{\[Alpha]->a}),m].(\[Phi]x0/.{\[Alpha]->a}))[[1,1]],{m,0,NSteps}];
-qIvl2=Table[((\[Phi]x0\[ConjugateTranspose]/.{\[Alpha]->a}).MatrixPower[(W\[ConjugateTranspose]/.{\[Alpha]->a}),m].KroneckerProduct[IdentityMatrix[4],ket[1,4].ket[1,4]\[ConjugateTranspose]].MatrixPower[(W/.{\[Alpha]->a}),m].(\[Phi]x0/.{\[Alpha]->a}))[[1,1]],{m,0,NSteps}];
-qIvl3=Table[((\[Phi]x0\[ConjugateTranspose]/.{\[Alpha]->a}).MatrixPower[(W\[ConjugateTranspose]/.{\[Alpha]->a}),m].KroneckerProduct[IdentityMatrix[4],ket[2,4].ket[2,4]\[ConjugateTranspose]].MatrixPower[(W/.{\[Alpha]->a}),m].(\[Phi]x0/.{\[Alpha]->a}))[[1,1]],{m,0,NSteps}];
-qIvl4=Table[((\[Phi]x0\[ConjugateTranspose]/.{\[Alpha]->a}).MatrixPower[(W\[ConjugateTranspose]/.{\[Alpha]->a}),m].KroneckerProduct[IdentityMatrix[4],ket[3,4].ket[3,4]\[ConjugateTranspose]].MatrixPower[(W/.{\[Alpha]->a}),m].(\[Phi]x0/.{\[Alpha]->a}))[[1,1]],{m,0,NSteps}];
+qIvl1=Table[((\[Phi]x0\[ConjugateTranspose]).MatrixPower[(W\[ConjugateTranspose]),m].KroneckerProduct[IdentityMatrix[4],ket[0,4].ket[0,4]\[ConjugateTranspose]].MatrixPower[(W),m].(\[Phi]x0))[[1,1]],{m,0,NSteps}];
+qIvl2=Table[((\[Phi]x0\[ConjugateTranspose]).MatrixPower[(W\[ConjugateTranspose]),m].KroneckerProduct[IdentityMatrix[4],ket[1,4].ket[1,4]\[ConjugateTranspose]].MatrixPower[(W),m].(\[Phi]x0))[[1,1]],{m,0,NSteps}];
+qIvl3=Table[((\[Phi]x0\[ConjugateTranspose]).MatrixPower[(W\[ConjugateTranspose]),m].KroneckerProduct[IdentityMatrix[4],ket[2,4].ket[2,4]\[ConjugateTranspose]].MatrixPower[(W),m].(\[Phi]x0))[[1,1]],{m,0,NSteps}];
+qIvl4=Table[((\[Phi]x0\[ConjugateTranspose]).MatrixPower[(W\[ConjugateTranspose]),m].KroneckerProduct[IdentityMatrix[4],ket[3,4].ket[3,4]\[ConjugateTranspose]].MatrixPower[(W),m].(\[Phi]x0))[[1,1]],{m,0,NSteps}];
 
 
 
