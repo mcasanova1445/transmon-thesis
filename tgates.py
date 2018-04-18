@@ -169,33 +169,6 @@ def H(psi0, target):
     res = Ry(psi0, target, np.pi/2)
     return X(res.states[-1], target)
 
-def RxS(psi0, target, theta):
-    ts = 0
-    tf = 10
-    tlist = np.linspace(ts, tf, 5000)
-
-    wd = wq[target] + chi[target]
-
-    Dr = wr-wd
-    Dq = wq-wd
-
-    Hsyst = wr*(a.dag()*a + Id/2)
-    for i in range(4): #MELCSCELDQ
-        Hsyst = Hsyst - wq[i]*qop('sz',i)/2 + g[i]*qop('sx',i)*(a+a.dag())
-
-    for i in range(4):
-        for j in range(4):
-            Hsyst = Hsyst + (g[i]*g[j]*((1/D[i]) + (1/D[j]))/2)*qop('sx',i)*qop('sx',j)/2
-
-    H_t = [[a, ksiS_tm],[a.dag(),ksiS_tp], Hsyst]
-
-    args = {'A' : theta*(Dr/g[target]), 'ts' : ts, 'tf' : tf, 'w' : wq[target] + chi[target]}
-    res = mesolve(H_t, psi0, tlist, [], [], args = args)
-
-    plot_drive_expect(res,args)
-
-    return res
-
 def Dis(psi0):
     tf = 0.05
     tlist = np.linspace(0, tf, 5000)

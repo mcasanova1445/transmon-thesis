@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Arch Linux) (preloaded format=prv_Test 2018.4.9)  9 APR 2018 00:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Arch Linux) (preloaded format=prv_Test 2018.4.15)  15 APR 2018 21:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -203,14 +203,14 @@ Not a real error.
 ! Preview: Snippet 3 started.
 <-><->
       
-l.33 \section
+l.36 \section
              {Postulados de la mecánica cuántica}
 Not a real error.
 
 ! Preview: Snippet 3 ended.(655359+0x23592960).
 <-><->
       
-l.33 ...tion{Postulados de la mecánica cuántica}
+l.36 ...tion{Postulados de la mecánica cuántica}
                                                   
 Not a real error.
 
@@ -220,14 +220,14 @@ Not a real error.
 ! Preview: Snippet 4 started.
 <-><->
       
-l.36   un vector normalizado $
+l.39   un vector normalizado $
                               \ket{\psi}$ en un espacio de Hilbert
 Not a real error.
 
 ! Preview: Snippet 4 ended.(538213+179405x971612).
 <-><->
       
-l.36   un vector normalizado $\ket{\psi}$
+l.39   un vector normalizado $\ket{\psi}$
                                           en un espacio de Hilbert
 Not a real error.
 
@@ -235,14 +235,14 @@ Not a real error.
 ! Preview: Snippet 5 started.
 <-><->
       
-l.37   $
+l.40   $
         \mathcal{H}$.
 Not a real error.
 
 ! Preview: Snippet 5 ended.(490372+0x612968).
 <-><->
       
-l.37   $\mathcal{H}$
+l.40   $\mathcal{H}$
                     .
 Not a real error.
 
@@ -250,44 +250,44 @@ Not a real error.
 ! Preview: Snippet 6 started.
 <-><->
       
-l.38 \item Si $
-               \mathcal{H}_1$ y $\mathcal{H}_2$ son los espacios de Hilbert
+l.41 \item Si $
+               \mathcal{H}_1$ y $\mathcal{H}_2$ son los espacios de Hilbert ...
 Not a real error.
 
 ! Preview: Snippet 6 ended.(490372+107642x917341).
 <-><->
       
-l.38 \item Si $\mathcal{H}_1$
-                              y $\mathcal{H}_2$ son los espacios de Hilbert
+l.41 \item Si $\mathcal{H}_1$
+                              y $\mathcal{H}_2$ son los espacios de Hilbert ...
 Not a real error.
 
 [6]
 ! Preview: Snippet 7 started.
 <-><->
       
-l.38 \item Si $\mathcal{H}_1$ y $
-                                 \mathcal{H}_2$ son los espacios de Hilbert
+l.41 \item Si $\mathcal{H}_1$ y $
+                                 \mathcal{H}_2$ son los espacios de Hilbert ...
 Not a real error.
 
 ! Preview: Snippet 7 ended.(490372+107642x917341).
 <-><->
       
-l.38 \item Si $\mathcal{H}_1$ y $\mathcal{H}_2$
-                                                son los espacios de Hilbert
+l.41 \item Si $\mathcal{H}_1$ y $\mathcal{H}_2$
+                                                son los espacios de Hilbert ...
 Not a real error.
 
 [7]
 ! Preview: Snippet 8 started.
 <-><->
       
-l.40   compuesto $
+l.42   compuesto $
                   \mathcal{H}$ estará dado por el producto tensoral de los
 Not a real error.
 
 ! Preview: Snippet 8 ended.(490372+0x612968).
 <-><->
       
-l.40   compuesto $\mathcal{H}$
+l.42   compuesto $\mathcal{H}$
                                estará dado por el producto tensoral de los
 Not a real error.
 
@@ -295,14 +295,14 @@ Not a real error.
 ! Preview: Snippet 9 started.
 <-><->
       
-l.42   $
+l.44   $
         \mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2$.
 Not a real error.
 
 ! Preview: Snippet 9 ended.(490372+107642x4281556).
 <-><->
       
-l.42 ...{H} = \mathcal{H}_1 \otimes \mathcal{H}_2$
+l.44 ...{H} = \mathcal{H}_1 \otimes \mathcal{H}_2$
                                                   .
 Not a real error.
 
@@ -310,14 +310,14 @@ Not a real error.
 ! Preview: Snippet 10 started.
 <-><->
       
-l.43 \item Para todo observable $
+l.45 \item Para todo observable $
                                  a$, existe un operador hermítico
 Not a real error.
 
 ! Preview: Snippet 10 ended.(308974+0x379326).
 <-><->
       
-l.43 \item Para todo observable $a$
+l.45 \item Para todo observable $a$
                                    , existe un operador hermítico
 Not a real error.
 
@@ -325,14 +325,14 @@ Not a real error.
 ! Preview: Snippet 11 started.
 <-><->
       
-l.44   correspondiente $
+l.46   correspondiente $
                         A$ que actua sobre el espacio de Hilbert
 Not a real error.
 
 ! Preview: Snippet 11 ended.(490372+0x538215).
 <-><->
       
-l.44   correspondiente $A$
+l.46   correspondiente $A$
                            que actua sobre el espacio de Hilbert
 Not a real error.
 
@@ -340,14 +340,14 @@ Not a real error.
 ! Preview: Snippet 12 started.
 <-><->
       
-l.45   $
+l.47   $
         \mathcal{H}$, cuyos autovalores son los posibles resultados de una
 Not a real error.
 
 ! Preview: Snippet 12 ended.(490372+0x612968).
 <-><->
       
-l.45   $\mathcal{H}$
+l.47   $\mathcal{H}$
                     , cuyos autovalores son los posibles resultados de una
 Not a real error.
 
@@ -355,14 +355,14 @@ Not a real error.
 ! Preview: Snippet 13 started.
 <-><->
       
-l.49   $
+l.51   $
         i \hbar \frac{\partial \ket{\psi}}{\partial t} = H
 Not a real error.
 
 ! Preview: Snippet 13 ended.(746748+247464x4599531).
 <-><->
       
-l.50   \ket{\psi}$
+l.52   \ket{\psi}$
                   . Donde $\hbar$ es la constante de Planck reducida y $H$
 Not a real error.
 
@@ -370,14 +370,14 @@ Not a real error.
 ! Preview: Snippet 14 started.
 <-><->
       
-l.50   \ket{\psi}$. Donde $
+l.52   \ket{\psi}$. Donde $
                            \hbar$ es la constante de Planck reducida y $H$
 Not a real error.
 
 ! Preview: Snippet 14 ended.(498346+0x413469).
 <-><->
       
-l.50   \ket{\psi}$. Donde $\hbar$
+l.52   \ket{\psi}$. Donde $\hbar$
                                   es la constante de Planck reducida y $H$
 Not a real error.
 
@@ -385,14 +385,14 @@ Not a real error.
 ! Preview: Snippet 15 started.
 <-><->
       
-l.50 ...ar$ es la constante de Planck reducida y $
+l.52 ...ar$ es la constante de Planck reducida y $
                                                   H$
 Not a real error.
 
 ! Preview: Snippet 15 ended.(490372+0x654826).
 <-><->
       
-l.50 ...$ es la constante de Planck reducida y $H$
+l.52 ...$ es la constante de Planck reducida y $H$
                                                   
 Not a real error.
 
@@ -400,14 +400,14 @@ Not a real error.
 ! Preview: Snippet 16 started.
 <-><->
       
-l.53 ...�s de realizar una medida del observable $
+l.55 ...�s de realizar una medida del observable $
                                                   a$, el estado
 Not a real error.
 
 ! Preview: Snippet 16 ended.(308974+0x379326).
 <-><->
       
-l.53 ... de realizar una medida del observable $a$
+l.55 ... de realizar una medida del observable $a$
                                                   , el estado
 Not a real error.
 
@@ -415,14 +415,14 @@ Not a real error.
 ! Preview: Snippet 17 started.
 <-><->
       
-l.54   $
+l.56   $
         \ket{\psi}$ del sistema colapsa a al autoestado de $A$
 Not a real error.
 
 ! Preview: Snippet 17 ended.(538213+179405x971612).
 <-><->
       
-l.54   $\ket{\psi}$
+l.56   $\ket{\psi}$
                     del sistema colapsa a al autoestado de $A$
 Not a real error.
 
@@ -430,14 +430,14 @@ Not a real error.
 ! Preview: Snippet 18 started.
 <-><->
       
-l.54 ...$ del sistema colapsa a al autoestado de $
+l.56 ...$ del sistema colapsa a al autoestado de $
                                                   A$
 Not a real error.
 
 ! Preview: Snippet 18 ended.(490372+0x538215).
 <-><->
       
-l.54 ...del sistema colapsa a al autoestado de $A$
+l.56 ...del sistema colapsa a al autoestado de $A$
                                                   
 Not a real error.
 
@@ -445,14 +445,14 @@ Not a real error.
 ! Preview: Snippet 19 started.
 <-><->
       
-l.58 \section
+l.60 \section
              {Computación cuántica}
 Not a real error.
 
 ! Preview: Snippet 19 ended.(655359+183500x23592960).
 <-><->
       
-l.58 \section{Computación cuántica}
+l.60 \section{Computación cuántica}
                                      
 Not a real error.
 
@@ -462,14 +462,14 @@ Not a real error.
 ! Preview: Snippet 20 started.
 <-><->
       
-l.61 \subsection
+l.63 \subsection
                 {Qubits}
 Not a real error.
 
 ! Preview: Snippet 20 ended.(546132+152916x23592960).
 <-><->
       
-l.61 \subsection{Qubits}
+l.63 \subsection{Qubits}
                         
 Not a real error.
 
@@ -479,14 +479,14 @@ Not a real error.
 ! Preview: Snippet 21 started.
 <-><->
       
-l.62 ...nto del espacio de Hilbert de dimensión $
+l.64 ...nto del espacio de Hilbert de dimensión $
                                                   \dim (\mathcal{H})=2$ y pu...
 Not a real error.
 
 ! Preview: Snippet 21 ended.(538214+179404x3682782).
 <-><->
       
-l.62 ...lbert de dimensión $\dim (\mathcal{H})=2$
+l.64 ...lbert de dimensión $\dim (\mathcal{H})=2$
                                                    y puede ser escrito de la...
 Not a real error.
 
@@ -494,14 +494,14 @@ Not a real error.
 ! Preview: Snippet 22 started.
 <-><->
       
-l.62 ...uede ser escrito de la siguiente manera: $
+l.64 ...uede ser escrito de la siguiente manera: $
                                                    \ket{\psi} = \alpha \ket{...
 Not a real error.
 
 ! Preview: Snippet 22 ended.(538213+179405x5624664).
 <-><->
       
-l.62 ...t{\psi} = \alpha \ket{0} + \beta \ket{1} $
+l.64 ...t{\psi} = \alpha \ket{0} + \beta \ket{1} $
                                                   , donde $ \{ \ket{0},\ket{...
 Not a real error.
 
@@ -509,14 +509,14 @@ Not a real error.
 ! Preview: Snippet 23 started.
 <-><->
       
-l.62 ... \alpha \ket{0} + \beta \ket{1} $, donde $
+l.64 ... \alpha \ket{0} + \beta \ket{1} $, donde $
                                                    \{ \ket{0},\ket{1} \} $ f...
 Not a real error.
 
 ! Preview: Snippet 23 ended.(538214+179405x2830609).
 <-><->
       
-l.62 ...\ket{1} $, donde $ \{ \ket{0},\ket{1} \} $
+l.64 ...\ket{1} $, donde $ \{ \ket{0},\ket{1} \} $
                                                    forma una base de $\mathc...
 Not a real error.
 
@@ -524,14 +524,14 @@ Not a real error.
 ! Preview: Snippet 24 started.
 <-><->
       
-l.62 ...{ \ket{0},\ket{1} \} $ forma una base de $
+l.64 ...{ \ket{0},\ket{1} \} $ forma una base de $
                                                   \mathcal{H}$ y donde $ \al...
 Not a real error.
 
 ! Preview: Snippet 24 ended.(490372+0x612968).
 <-><->
       
-l.62 ...et{1} \} $ forma una base de $\mathcal{H}$
+l.64 ...et{1} \} $ forma una base de $\mathcal{H}$
                                                    y donde $ \alpha $ y $ \b...
 Not a real error.
 
@@ -539,14 +539,14 @@ Not a real error.
 ! Preview: Snippet 25 started.
 <-><->
       
-l.62 ... forma una base de $\mathcal{H}$ y donde $
+l.64 ... forma una base de $\mathcal{H}$ y donde $
                                                    \alpha $ y $ \beta $ son ...
 Not a real error.
 
 ! Preview: Snippet 25 ended.(308974+0x461718).
 <-><->
       
-l.62 ...a base de $\mathcal{H}$ y donde $ \alpha $
+l.64 ...a base de $\mathcal{H}$ y donde $ \alpha $
                                                    y $ \beta $ son números ...
 Not a real error.
 
@@ -554,14 +554,14 @@ Not a real error.
 ! Preview: Snippet 26 started.
 <-><->
       
-l.62 ...se de $\mathcal{H}$ y donde $ \alpha $ y $
+l.64 ...se de $\mathcal{H}$ y donde $ \alpha $ y $
                                                    \beta $ son números comp...
 Not a real error.
 
 ! Preview: Snippet 26 ended.(498346+139537x443778).
 <-><->
       
-l.62 ...mathcal{H}$ y donde $ \alpha $ y $ \beta $
+l.64 ...mathcal{H}$ y donde $ \alpha $ y $ \beta $
                                                    son números complejos, t...
 Not a real error.
 
@@ -569,14 +569,14 @@ Not a real error.
 ! Preview: Snippet 27 started.
 <-><->
       
-l.62 ...beta $ son números complejos, tales que $
+l.64 ...beta $ son números complejos, tales que $
                                                    | \alpha |^2 + | \beta |^...
 Not a real error.
 
 ! Preview: Snippet 27 ended.(598293+179404x4518168).
 <-><->
       
-l.62 ...les que $ | \alpha |^2 + | \beta |^2 = 1 $
+l.64 ...les que $ | \alpha |^2 + | \beta |^2 = 1 $
                                                   , conocidos como amplitude...
 Not a real error.
 
@@ -584,14 +584,14 @@ Not a real error.
 ! Preview: Snippet 28 started.
 <-><->
       
-l.65 ... estar no sólo puede estar en el estado $
+l.67 ... estar no sólo puede estar en el estado $
                                                   \ket{0}$ y en el estado $\...
 Not a real error.
 
 ! Preview: Snippet 28 ended.(538213+179405x837224).
 <-><->
       
-l.65 ...o sólo puede estar en el estado $\ket{0}$
+l.67 ...o sólo puede estar en el estado $\ket{0}$
                                                    y en el estado $\ket{1}$,...
 Not a real error.
 
@@ -599,14 +599,14 @@ Not a real error.
 ! Preview: Snippet 29 started.
 <-><->
       
-l.65 ...ar en el estado $\ket{0}$ y en el estado $
+l.67 ...ar en el estado $\ket{0}$ y en el estado $
                                                   \ket{1}$, sino también en...
 Not a real error.
 
 ! Preview: Snippet 29 ended.(538213+179405x837224).
 <-><->
       
-l.65 ... estado $\ket{0}$ y en el estado $\ket{1}$
+l.67 ... estado $\ket{0}$ y en el estado $\ket{1}$
                                                   , sino también en superpo...
 Not a real error.
 
@@ -614,14 +614,14 @@ Not a real error.
 ! Preview: Snippet 30 started.
 <-><->
       
-l.68 ...e puede escribir de la siguiente manera: $
+l.70 ...e puede escribir de la siguiente manera: $
                                                    \ket{\psi} = e^{i \phi_0}...
 Not a real error.
 
 ! Preview: Snippet 30 ended.(653634+179405x22846643).
 <-><->
       
-l.68 ...hi1 - \phi_0 )} \sin ( \theta ) \ket{1}) $
+l.70 ...hi1 - \phi_0 )} \sin ( \theta ) \ket{1}) $
                                                   , donde $ \theta $, $\phi_...
 Not a real error.
 
@@ -629,14 +629,14 @@ Not a real error.
 ! Preview: Snippet 31 started.
 <-><->
       
-l.68 ...i_0 )} \sin ( \theta ) \ket{1}) $, donde $
+l.70 ...i_0 )} \sin ( \theta ) \ket{1}) $, donde $
                                                    \theta $, $\phi_0$ y $\ph...
 Not a real error.
 
 ! Preview: Snippet 31 ended.(498346+0x356816).
 <-><->
       
-l.68 ...in ( \theta ) \ket{1}) $, donde $ \theta $
+l.70 ...in ( \theta ) \ket{1}) $, donde $ \theta $
                                                   , $\phi_0$ y $\phi_1$ son ...
 Not a real error.
 
@@ -644,14 +644,14 @@ Not a real error.
 ! Preview: Snippet 32 started.
 <-><->
       
-l.68 ...( \theta ) \ket{1}) $, donde $ \theta $, $
+l.70 ...( \theta ) \ket{1}) $, donde $ \theta $, $
                                                   \phi_0$ y $\phi_1$ son nú...
 Not a real error.
 
 ! Preview: Snippet 32 ended.(498346+139537x738882).
 <-><->
       
-l.68 ...a ) \ket{1}) $, donde $ \theta $, $\phi_0$
+l.70 ...a ) \ket{1}) $, donde $ \theta $, $\phi_0$
                                                    y $\phi_1$ son números r...
 Not a real error.
 
@@ -659,14 +659,14 @@ Not a real error.
 ! Preview: Snippet 33 started.
 <-><->
       
-l.68 ...\ket{1}) $, donde $ \theta $, $\phi_0$ y $
+l.70 ...\ket{1}) $, donde $ \theta $, $\phi_0$ y $
                                                   \phi_1$ son números reale...
 Not a real error.
 
 ! Preview: Snippet 33 ended.(498346+139537x738882).
 <-><->
       
-l.68 ...) $, donde $ \theta $, $\phi_0$ y $\phi_1$
+l.70 ...) $, donde $ \theta $, $\phi_0$ y $\phi_1$
                                                    son números reales. La f...
 Not a real error.
 
@@ -674,14 +674,14 @@ Not a real error.
 ! Preview: Snippet 34 started.
 <-><->
       
-l.68 ...i_1$ son números reales. La fase global $
+l.70 ...i_1$ son números reales. La fase global $
                                                   \phi_0$ es ignorable, pues...
 Not a real error.
 
 ! Preview: Snippet 34 ended.(498346+139537x738882).
 <-><->
       
-l.68 ...n números reales. La fase global $\phi_0$
+l.70 ...n números reales. La fase global $\phi_0$
                                                    es ignorable, pues no tie...
 Not a real error.
 
@@ -689,14 +689,14 @@ Not a real error.
 ! Preview: Snippet 35 started.
 <-><->
       
-l.68 .... Entonces, sin pérdida de generalidad, $
+l.70 .... Entonces, sin pérdida de generalidad, $
                                                    \ket{\psi} = \cos ( \thet...
 Not a real error.
 
 ! Preview: Snippet 35 ended.(624507+179405x9278703).
 <-><->
       
-l.68 ...{0} + \sin ( \theta ) e^{i \phi} \ket{1} $
+l.70 ...{0} + \sin ( \theta ) e^{i \phi} \ket{1} $
                                                   , donde $ \theta \in [0, \...
 Not a real error.
 
@@ -704,14 +704,14 @@ Not a real error.
 ! Preview: Snippet 36 started.
 <-><->
       
-l.68 ...n ( \theta ) e^{i \phi} \ket{1} $, donde $
+l.70 ...n ( \theta ) e^{i \phi} \ket{1} $, donde $
                                                    \theta \in [0, \pi ] $ y ...
 Not a real error.
 
 ! Preview: Snippet 36 ended.(538214+179404x2745137).
 <-><->
       
-l.68 ... \ket{1} $, donde $ \theta \in [0, \pi ] $
+l.70 ... \ket{1} $, donde $ \theta \in [0, \pi ] $
                                                    y $ \phi \in [0, 2 \pi ] ...
 Not a real error.
 
@@ -719,14 +719,14 @@ Not a real error.
 ! Preview: Snippet 37 started.
 <-><->
       
-l.68 ...t{1} $, donde $ \theta \in [0, \pi ] $ y $
+l.70 ...t{1} $, donde $ \theta \in [0, \pi ] $ y $
                                                    \phi \in [0, 2 \pi ] $. D...
 Not a real error.
 
 ! Preview: Snippet 37 ended.(538214+179404x3174713).
 <-><->
       
-l.68 ...\in [0, \pi ] $ y $ \phi \in [0, 2 \pi ] $
+l.70 ...\in [0, \pi ] $ y $ \phi \in [0, 2 \pi ] $
                                                   . De esta manera, podemos ...
 Not a real error.
 
@@ -734,14 +734,14 @@ Not a real error.
 ! Preview: Snippet 38 started.
 <-><->
       
-l.70 \subsection
+l.72 \subsection
                 {Compuertas cuánticas}
 Not a real error.
 
 ! Preview: Snippet 38 ended.(546132+152916x23592960).
 <-><->
       
-l.70 \subsection{Compuertas cuánticas}
+l.72 \subsection{Compuertas cuánticas}
                                        
 Not a real error.
 
@@ -751,14 +751,14 @@ Not a real error.
 ! Preview: Snippet 39 started.
 <-><->
       
-l.76 \subsubsection
+l.78 \subsubsection
                    {Compuerta identidad}
 Not a real error.
 
 ! Preview: Snippet 39 ended.(498346+139537x23592960).
 <-><->
       
-l.76 \subsubsection{Compuerta identidad}
+l.78 \subsubsection{Compuerta identidad}
                                         
 Not a real error.
 
@@ -768,7 +768,7 @@ Not a real error.
 ! Preview: Snippet 40 started.
 <-><->
       
-l.81 \[
+l.83 \[
        
 Not a real error.
 
@@ -776,7 +776,7 @@ Not a real error.
 ! Preview: Snippet 40 ended.(920948+0x7304076).
 <-><->
       
-l.85 \]
+l.87 \]
        
 Not a real error.
 
@@ -784,14 +784,14 @@ Not a real error.
 ! Preview: Snippet 41 started.
 <-><->
       
-l.88 \[
+l.90 \[
        
 Not a real error.
 
 ! Preview: Snippet 41 ended.(1782578+0x7112979).
 <-><->
       
-l.93 \]
+l.95 \]
        
 Not a real error.
 
@@ -799,14 +799,14 @@ Not a real error.
 ! Preview: Snippet 42 started.
 <-><->
       
-l.96 \subsubsection
+l.98 \subsubsection
                    {Compuerta X}
 Not a real error.
 
 ! Preview: Snippet 42 ended.(492366+139537x23592960).
 <-><->
       
-l.96 \subsubsection{Compuerta X}
+l.98 \subsubsection{Compuerta X}
                                 
 Not a real error.
 
@@ -816,14 +816,14 @@ Not a real error.
 ! Preview: Snippet 43 started.
 <-><->
       
-l.97 ...te al NOT clásico, pues tránsforma los $
+l.99 ...te al NOT clásico, pues tránsforma los $
                                                   \ket{0}$ en $\ket{1}$ y vi...
 Not a real error.
 
 ! Preview: Snippet 43 ended.(538213+179405x837224).
 <-><->
       
-l.97 ...T clásico, pues tránsforma los $\ket{0}$
+l.99 ...T clásico, pues tránsforma los $\ket{0}$
                                                    en $\ket{1}$ y viceversa,...
 Not a real error.
 
@@ -831,14 +831,14 @@ Not a real error.
 ! Preview: Snippet 44 started.
 <-><->
       
-l.97 ...�sico, pues tránsforma los $\ket{0}$ en $
+l.99 ...�sico, pues tránsforma los $\ket{0}$ en $
                                                   \ket{1}$ y viceversa, ya q...
 Not a real error.
 
 ! Preview: Snippet 44 ended.(538213+179405x837224).
 <-><->
       
-l.97 ...ues tránsforma los $\ket{0}$ en $\ket{1}$
+l.99 ...ues tránsforma los $\ket{0}$ en $\ket{1}$
                                                    y viceversa, ya que reali...
 Not a real error.
 
@@ -846,14 +846,14 @@ Not a real error.
 ! Preview: Snippet 45 started.
 <-><->
       
-l.97 ...ceversa, ya que realiza una rotación de $
+l.99 ...ceversa, ya que realiza una rotación de $
                                                   \pi$ sobre el eje X en la ...
 Not a real error.
 
 ! Preview: Snippet 45 ended.(308974+0x434809).
 <-><->
       
-l.97 ...rsa, ya que realiza una rotación de $\pi$
+l.99 ...rsa, ya que realiza una rotación de $\pi$
                                                    sobre el eje X en la esfe...
 Not a real error.
 
@@ -861,14 +861,14 @@ Not a real error.
 ! Preview: Snippet 46 started.
 <-><->
       
-l.97 ...ricial viene dada por la matriz de Pauli $
+l.99 ...ricial viene dada por la matriz de Pauli $
                                                   \sigma_x$
 Not a real error.
 
 ! Preview: Snippet 46 ended.(308974+107642x756400).
 <-><->
       
-l.97 ...ene dada por la matriz de Pauli $\sigma_x$
+l.99 ...ene dada por la matriz de Pauli $\sigma_x$
                                                   
 Not a real error.
 
@@ -876,7 +876,7 @@ Not a real error.
 ! Preview: Snippet 47 started.
 <-><->
       
-l.101 \[
+l.103 \[
         
 Not a real error.
 
@@ -884,7 +884,7 @@ Not a real error.
 ! Preview: Snippet 47 ended.(920948+0x7443613).
 <-><->
       
-l.105 \]
+l.107 \]
         
 Not a real error.
 
@@ -892,14 +892,14 @@ Not a real error.
 ! Preview: Snippet 48 started.
 <-><->
       
-l.108 \[
+l.110 \[
         
 Not a real error.
 
 ! Preview: Snippet 48 ended.(1782578+0x7112979).
 <-><->
       
-l.113 \]
+l.115 \]
         
 Not a real error.
 
@@ -907,14 +907,14 @@ Not a real error.
 ! Preview: Snippet 49 started.
 <-><->
       
-l.116 \subsubsection
+l.118 \subsubsection
                     {Compuerta Z}
 Not a real error.
 
 ! Preview: Snippet 49 ended.(492366+139537x23592960).
 <-><->
       
-l.116 \subsubsection{Compuerta Z}
+l.118 \subsubsection{Compuerta Z}
                                  
 Not a real error.
 
@@ -924,14 +924,14 @@ Not a real error.
 ! Preview: Snippet 50 started.
 <-><->
       
-l.117 ... fase. Esto equivale a una rotación de $
+l.119 ... fase. Esto equivale a una rotación de $
                                                   \pi$ sobre el eje Z en la ...
 Not a real error.
 
 ! Preview: Snippet 50 ended.(308974+0x434809).
 <-><->
       
-l.117 ...e. Esto equivale a una rotación de $\pi$
+l.119 ...e. Esto equivale a una rotación de $\pi$
                                                    sobre el eje Z en la esfe...
 Not a real error.
 
@@ -939,14 +939,14 @@ Not a real error.
 ! Preview: Snippet 51 started.
 <-><->
       
-l.117 ...icial viene dada por la matriz de Pauli $
+l.119 ...icial viene dada por la matriz de Pauli $
                                                   \sigma_z$
 Not a real error.
 
 ! Preview: Snippet 51 ended.(308974+107642x724087).
 <-><->
       
-l.117 ...ne dada por la matriz de Pauli $\sigma_z$
+l.119 ...ne dada por la matriz de Pauli $\sigma_z$
                                                   
 Not a real error.
 
@@ -954,7 +954,7 @@ Not a real error.
 ! Preview: Snippet 52 started.
 <-><->
       
-l.121 \[
+l.123 \[
         
 Not a real error.
 
@@ -962,7 +962,7 @@ Not a real error.
 ! Preview: Snippet 52 ended.(920948+0x7388795).
 <-><->
       
-l.125 \]
+l.127 \]
         
 Not a real error.
 
@@ -970,14 +970,14 @@ Not a real error.
 ! Preview: Snippet 53 started.
 <-><->
       
-l.128 \[
+l.130 \[
         
 Not a real error.
 
 ! Preview: Snippet 53 ended.(1782578+0x7392054).
 <-><->
       
-l.133 \]
+l.135 \]
         
 Not a real error.
 
@@ -985,14 +985,14 @@ Not a real error.
 ! Preview: Snippet 54 started.
 <-><->
       
-l.136 \subsubsection
+l.138 \subsubsection
                     {Compuerta Y}
 Not a real error.
 
 ! Preview: Snippet 54 ended.(492366+139537x23592960).
 <-><->
       
-l.136 \subsubsection{Compuerta Y}
+l.138 \subsubsection{Compuerta Y}
                                  
 Not a real error.
 
@@ -1002,14 +1002,14 @@ Not a real error.
 ! Preview: Snippet 55 started.
 <-><->
       
-l.137 Esta compuerta realiza una rotación de $
+l.139 Esta compuerta realiza una rotación de $
                                                \pi$ sobre el eje y de la esf...
 Not a real error.
 
 ! Preview: Snippet 55 ended.(308974+0x434809).
 <-><->
       
-l.137 ... compuerta realiza una rotación de $\pi$
+l.139 ... compuerta realiza una rotación de $\pi$
                                                    sobre el eje y de la esfe...
 Not a real error.
 
@@ -1017,14 +1017,14 @@ Not a real error.
 ! Preview: Snippet 56 started.
 <-><->
       
-l.137 ...icial viene dada por la matriz de Pauli $
+l.139 ...icial viene dada por la matriz de Pauli $
                                                   \sigma_y$
 Not a real error.
 
 ! Preview: Snippet 56 ended.(308974+209587x736982).
 <-><->
       
-l.137 ...ne dada por la matriz de Pauli $\sigma_y$
+l.139 ...ne dada por la matriz de Pauli $\sigma_y$
                                                   
 Not a real error.
 
@@ -1032,7 +1032,7 @@ Not a real error.
 ! Preview: Snippet 57 started.
 <-><->
       
-l.141 \[
+l.143 \[
         
 Not a real error.
 
@@ -1040,7 +1040,7 @@ Not a real error.
 ! Preview: Snippet 57 ended.(920948+0x7406237).
 <-><->
       
-l.145 \]
+l.147 \]
         
 Not a real error.
 
@@ -1048,14 +1048,14 @@ Not a real error.
 ! Preview: Snippet 58 started.
 <-><->
       
-l.148 \[
+l.150 \[
         
 Not a real error.
 
 ! Preview: Snippet 58 ended.(1782578+0x7336264).
 <-><->
       
-l.153 \]
+l.155 \]
         
 Not a real error.
 
@@ -1063,14 +1063,14 @@ Not a real error.
 ! Preview: Snippet 59 started.
 <-><->
       
-l.156 \subsubsection
+l.158 \subsubsection
                     {Compuerta de Hadamard}
 Not a real error.
 
 ! Preview: Snippet 59 ended.(498346+139537x23592960).
 <-><->
       
-l.156 \subsubsection{Compuerta de Hadamard}
+l.158 \subsubsection{Compuerta de Hadamard}
                                            
 Not a real error.
 
@@ -1080,14 +1080,14 @@ Not a real error.
 ! Preview: Snippet 60 started.
 <-><->
       
-l.158 ...ma los estados de la base computacional $
+l.160 ...ma los estados de la base computacional $
                                                   \ket{0}$ y $\ket{1}$ en es...
 Not a real error.
 
 ! Preview: Snippet 60 ended.(538213+179405x837224).
 <-><->
       
-l.158 ...stados de la base computacional $\ket{0}$
+l.160 ...stados de la base computacional $\ket{0}$
                                                    y $\ket{1}$ en estados de...
 Not a real error.
 
@@ -1095,14 +1095,14 @@ Not a real error.
 ! Preview: Snippet 61 started.
 <-><->
       
-l.158 ...os de la base computacional $\ket{0}$ y $
+l.160 ...os de la base computacional $\ket{0}$ y $
                                                   \ket{1}$ en estados de sup...
 Not a real error.
 
 ! Preview: Snippet 61 ended.(538213+179405x837224).
 <-><->
       
-l.158 ... base computacional $\ket{0}$ y $\ket{1}$
+l.160 ... base computacional $\ket{0}$ y $\ket{1}$
                                                    en estados de superposici...
 Not a real error.
 
@@ -1110,14 +1110,14 @@ Not a real error.
 ! Preview: Snippet 62 started.
 <-><->
       
-l.158 ...n estados de superposiciones uniformes ($
+l.160 ...n estados de superposiciones uniformes ($
                                                   \ket{+}$ y $\ket{-}$). Tam...
 Not a real error.
 
 ! Preview: Snippet 62 ended.(538213+179405x1036564).
 <-><->
       
-l.158 ...s de superposiciones uniformes ($\ket{+}$
+l.160 ...s de superposiciones uniformes ($\ket{+}$
                                                    y $\ket{-}$). También se...
 Not a real error.
 
@@ -1125,14 +1125,14 @@ Not a real error.
 ! Preview: Snippet 63 started.
 <-><->
       
-l.158 ... superposiciones uniformes ($\ket{+}$ y $
+l.160 ... superposiciones uniformes ($\ket{+}$ y $
                                                   \ket{-}$). También se pue...
 Not a real error.
 
 ! Preview: Snippet 63 ended.(538213+179405x1036564).
 <-><->
       
-l.158 ...siciones uniformes ($\ket{+}$ y $\ket{-}$
+l.160 ...siciones uniformes ($\ket{+}$ y $\ket{-}$
                                                   ). También se puede inter...
 Not a real error.
 
@@ -1140,7 +1140,7 @@ Not a real error.
 ! Preview: Snippet 64 started.
 <-><->
       
-l.162 \[
+l.164 \[
         
 Not a real error.
 
@@ -1148,7 +1148,7 @@ Not a real error.
 ! Preview: Snippet 64 ended.(920948+0x7445606).
 <-><->
       
-l.166 \]
+l.168 \]
         
 Not a real error.
 
@@ -1156,14 +1156,14 @@ Not a real error.
 ! Preview: Snippet 65 started.
 <-><->
       
-l.169 \[
+l.171 \[
         
 Not a real error.
 
 ! Preview: Snippet 65 ended.(1782578+0x8008911).
 <-><->
       
-l.175 \]
+l.177 \]
         
 Not a real error.
 
@@ -1171,14 +1171,14 @@ Not a real error.
 ! Preview: Snippet 66 started.
 <-><->
       
-l.178 \subsubsection
+l.180 \subsubsection
                     {Compuerta S}
 Not a real error.
 
 ! Preview: Snippet 66 ended.(492366+139537x23592960).
 <-><->
       
-l.178 \subsubsection{Compuerta S}
+l.180 \subsubsection{Compuerta S}
                                  
 Not a real error.
 
@@ -1188,7 +1188,7 @@ Not a real error.
 ! Preview: Snippet 67 started.
 <-><->
       
-l.183 \[
+l.185 \[
         
 Not a real error.
 
@@ -1196,7 +1196,7 @@ Not a real error.
 ! Preview: Snippet 67 ended.(920948+0x7358894).
 <-><->
       
-l.187 \]
+l.189 \]
         
 Not a real error.
 
@@ -1204,14 +1204,14 @@ Not a real error.
 ! Preview: Snippet 68 started.
 <-><->
       
-l.190 \[
+l.192 \[
         
 Not a real error.
 
 ! Preview: Snippet 68 ended.(1782578+0x7112979).
 <-><->
       
-l.195 \]
+l.197 \]
         
 Not a real error.
 
@@ -1219,14 +1219,14 @@ Not a real error.
 ! Preview: Snippet 69 started.
 <-><->
       
-l.198 \subsubsection
+l.200 \subsubsection
                     {Compuerta T}
 Not a real error.
 
 ! Preview: Snippet 69 ended.(492366+139537x23592960).
 <-><->
       
-l.198 \subsubsection{Compuerta T}
+l.200 \subsubsection{Compuerta T}
                                  
 Not a real error.
 
@@ -1236,7 +1236,7 @@ Not a real error.
 ! Preview: Snippet 70 started.
 <-><->
       
-l.203 \[
+l.205 \[
         
 Not a real error.
 
@@ -1244,7 +1244,7 @@ Not a real error.
 ! Preview: Snippet 70 ended.(920948+0x7377707).
 <-><->
       
-l.207 \]
+l.209 \]
         
 Not a real error.
 
@@ -1252,14 +1252,14 @@ Not a real error.
 ! Preview: Snippet 71 started.
 <-><->
       
-l.210 \[
+l.212 \[
         
 Not a real error.
 
 ! Preview: Snippet 71 ended.(2152878+0x7473085).
 <-><->
       
-l.215 \]
+l.217 \]
         
 Not a real error.
 
@@ -1267,14 +1267,14 @@ Not a real error.
 ! Preview: Snippet 72 started.
 <-><->
       
-l.218 \subsubsection
+l.220 \subsubsection
                     {Compuerta de cambio de fase}
 Not a real error.
 
 ! Preview: Snippet 72 ended.(498346+139537x23592960).
 <-><->
       
-l.218 \subsubsection{Compuerta de cambio de fase}
+l.220 \subsubsection{Compuerta de cambio de fase}
                                                  
 Not a real error.
 
@@ -1284,7 +1284,7 @@ Not a real error.
 ! Preview: Snippet 73 started.
 <-><->
       
-l.221 \[
+l.223 \[
         
 Not a real error.
 
@@ -1292,7 +1292,7 @@ Not a real error.
 ! Preview: Snippet 73 ended.(1139803+0x7572589).
 <-><->
       
-l.225 \]
+l.227 \]
         
 Not a real error.
 
@@ -1300,14 +1300,14 @@ Not a real error.
 ! Preview: Snippet 74 started.
 <-><->
       
-l.228 \[
+l.230 \[
         
 Not a real error.
 
 ! Preview: Snippet 74 ended.(1783185+0x7377430).
 <-><->
       
-l.233 \]
+l.235 \]
         
 Not a real error.
 
@@ -1315,14 +1315,14 @@ Not a real error.
 ! Preview: Snippet 75 started.
 <-><->
       
-l.236 \subsubsection
+l.238 \subsubsection
                     {Compuertas de rotación}
 Not a real error.
 
 ! Preview: Snippet 75 ended.(498346+139537x23592960).
 <-><->
       
-l.236 \subsubsection{Compuertas de rotación}
+l.238 \subsubsection{Compuertas de rotación}
                                              
 Not a real error.
 
@@ -1332,14 +1332,14 @@ Not a real error.
 ! Preview: Snippet 76 started.
 <-><->
       
-l.238 \[
+l.240 \[
         
 Not a real error.
 
 ! Preview: Snippet 76 ended.(1828054+0x21170336).
 <-><->
       
-l.244 \]
+l.246 \]
         
 Not a real error.
 
@@ -1347,14 +1347,14 @@ Not a real error.
 ! Preview: Snippet 77 started.
 <-><->
       
-l.246 \[
+l.248 \[
         
 Not a real error.
 
 ! Preview: Snippet 77 ended.(1828054+0x16377664).
 <-><->
       
-l.252 \]
+l.254 \]
         
 Not a real error.
 
@@ -1362,14 +1362,14 @@ Not a real error.
 ! Preview: Snippet 78 started.
 <-><->
       
-l.254 \[
+l.256 \[
         
 Not a real error.
 
 ! Preview: Snippet 78 ended.(2152878+0x15232965).
 <-><->
       
-l.260 \]
+l.262 \]
         
 Not a real error.
 
@@ -1377,14 +1377,14 @@ Not a real error.
 ! Preview: Snippet 79 started.
 <-><->
       
-l.262 \[
+l.264 \[
         
 Not a real error.
 
 ! Preview: Snippet 79 ended.(1828054+0x16375460).
 <-><->
       
-l.268 \]
+l.270 \]
         
 Not a real error.
 
@@ -1392,14 +1392,14 @@ Not a real error.
 ! Preview: Snippet 80 started.
 <-><->
       
-l.270 \[
+l.272 \[
         
 Not a real error.
 
 ! Preview: Snippet 80 ended.(1396336+0x16359600).
 <-><->
       
-l.272 \]
+l.274 \]
         
 Not a real error.
 
@@ -1407,14 +1407,14 @@ Not a real error.
 ! Preview: Snippet 81 started.
 <-><->
       
-l.274 \subsubsection
+l.276 \subsubsection
                     {Compuerta CNOT}
 Not a real error.
 
 ! Preview: Snippet 81 ended.(492366+139537x23592960).
 <-><->
       
-l.274 \subsubsection{Compuerta CNOT}
+l.276 \subsubsection{Compuerta CNOT}
                                     
 Not a real error.
 
@@ -1424,7 +1424,7 @@ Not a real error.
 ! Preview: Snippet 82 started.
 <-><->
       
-l.277 \[
+l.279 \[
         
 Not a real error.
 
@@ -1432,7 +1432,7 @@ Not a real error.
 ! Preview: Snippet 82 ended.(2045646+0x7197126).
 <-><->
       
-l.282 \]
+l.284 \]
         
 Not a real error.
 
@@ -1440,14 +1440,14 @@ Not a real error.
 ! Preview: Snippet 83 started.
 <-><->
       
-l.285 \[
+l.287 \[
         
 Not a real error.
 
 ! Preview: Snippet 83 ended.(3565156+0x8226818).
 <-><->
       
-l.292 \]
+l.294 \]
         
 Not a real error.
 
@@ -1455,14 +1455,14 @@ Not a real error.
 ! Preview: Snippet 84 started.
 <-><->
       
-l.295 \subsubsection
+l.297 \subsubsection
                     {Compuerta SWAP}
 Not a real error.
 
 ! Preview: Snippet 84 ended.(492366+139537x23592960).
 <-><->
       
-l.295 \subsubsection{Compuerta SWAP}
+l.297 \subsubsection{Compuerta SWAP}
                                     
 Not a real error.
 
@@ -1472,7 +1472,7 @@ Not a real error.
 ! Preview: Snippet 85 started.
 <-><->
       
-l.298 \[
+l.300 \[
         
 Not a real error.
 
@@ -1480,7 +1480,7 @@ Not a real error.
 ! Preview: Snippet 85 ended.(1291719+0x6902905).
 <-><->
       
-l.303 \]
+l.305 \]
         
 Not a real error.
 
@@ -1488,14 +1488,14 @@ Not a real error.
 ! Preview: Snippet 86 started.
 <-><->
       
-l.306 \[
+l.308 \[
         
 Not a real error.
 
 ! Preview: Snippet 86 ended.(3565156+0x8226818).
 <-><->
       
-l.313 \]
+l.315 \]
         
 Not a real error.
 
@@ -1503,14 +1503,14 @@ Not a real error.
 ! Preview: Snippet 87 started.
 <-><->
       
-l.316 \subsubsection
+l.318 \subsubsection
                     {Compuerta $\sqrt{\text{SWAP}}$}
 Not a real error.
 
 ! Preview: Snippet 87 ended.(665988+139537x23592960).
 <-><->
       
-l.316 ...ubsection{Compuerta $\sqrt{\text{SWAP}}$}
+l.318 ...ubsection{Compuerta $\sqrt{\text{SWAP}}$}
                                                   
 Not a real error.
 
@@ -1520,7 +1520,7 @@ Not a real error.
 ! Preview: Snippet 88 started.
 <-><->
       
-l.319 \[
+l.321 \[
         
 Not a real error.
 
@@ -1528,7 +1528,7 @@ Not a real error.
 ! Preview: Snippet 88 ended.(1291719+0x6902905).
 <-><->
       
-l.324 \]
+l.326 \]
         
 Not a real error.
 
@@ -1536,14 +1536,14 @@ Not a real error.
 ! Preview: Snippet 89 started.
 <-><->
       
-l.327 \[
+l.329 \[
         
 Not a real error.
 
 ! Preview: Snippet 89 ended.(3565156+0x10345101).
 <-><->
       
-l.334 \]
+l.336 \]
         
 Not a real error.
 
@@ -1551,14 +1551,14 @@ Not a real error.
 ! Preview: Snippet 90 started.
 <-><->
       
-l.337 \subsubsection
+l.339 \subsubsection
                     {Compuerta de Ising}
 Not a real error.
 
 ! Preview: Snippet 90 ended.(498346+139537x23592960).
 <-><->
       
-l.337 \subsubsection{Compuerta de Ising}
+l.339 \subsubsection{Compuerta de Ising}
                                         
 Not a real error.
 
@@ -1568,7 +1568,7 @@ Not a real error.
 ! Preview: Snippet 91 started.
 <-><->
       
-l.340 \[
+l.342 \[
         
 Not a real error.
 
@@ -1576,7 +1576,7 @@ Not a real error.
 ! Preview: Snippet 91 ended.(2583427+0x8033810).
 <-><->
       
-l.345 \]
+l.347 \]
         
 Not a real error.
 
@@ -1584,14 +1584,14 @@ Not a real error.
 ! Preview: Snippet 92 started.
 <-><->
       
-l.348 \[
+l.350 \[
         
 Not a real error.
 
 ! Preview: Snippet 92 ended.(3566370+0x10841161).
 <-><->
       
-l.356 \]
+l.358 \]
         
 Not a real error.
 
@@ -1599,14 +1599,14 @@ Not a real error.
 ! Preview: Snippet 93 started.
 <-><->
       
-l.359 \subsubsection
+l.361 \subsubsection
                     {Compuerta de Toffoli}
 Not a real error.
 
 ! Preview: Snippet 93 ended.(498346+139537x23592960).
 <-><->
       
-l.359 \subsubsection{Compuerta de Toffoli}
+l.361 \subsubsection{Compuerta de Toffoli}
                                           
 Not a real error.
 
@@ -1616,7 +1616,7 @@ Not a real error.
 ! Preview: Snippet 94 started.
 <-><->
       
-l.362 \[
+l.364 \[
         
 Not a real error.
 
@@ -1624,7 +1624,7 @@ Not a real error.
 ! Preview: Snippet 94 ended.(3512785+0x7197126).
 <-><->
       
-l.368 \]
+l.370 \]
         
 Not a real error.
 
@@ -1632,14 +1632,14 @@ Not a real error.
 ! Preview: Snippet 95 started.
 <-><->
       
-l.371 \[
+l.373 \[
         
 Not a real error.
 
 ! Preview: Snippet 95 ended.(7130312+0x10255158).
 <-><->
       
-l.382 \]
+l.384 \]
         
 Not a real error.
 
@@ -1647,14 +1647,14 @@ Not a real error.
 ! Preview: Snippet 96 started.
 <-><->
       
-l.385 \subsubsection
+l.387 \subsubsection
                     {Compuerta de Fredkin}
 Not a real error.
 
 ! Preview: Snippet 96 ended.(498346+139537x23592960).
 <-><->
       
-l.385 \subsubsection{Compuerta de Fredkin}
+l.387 \subsubsection{Compuerta de Fredkin}
                                           
 Not a real error.
 
@@ -1664,14 +1664,14 @@ Not a real error.
 ! Preview: Snippet 97 started.
 <-><->
       
-l.387 \subsubsection
+l.389 \subsubsection
                     {Compuerta de Deutsch}
 Not a real error.
 
 ! Preview: Snippet 97 ended.(498346+139537x23592960).
 <-><->
       
-l.387 \subsubsection{Compuerta de Deutsch}
+l.389 \subsubsection{Compuerta de Deutsch}
                                           
 Not a real error.
 
@@ -1681,7 +1681,7 @@ Not a real error.
 ! Preview: Snippet 98 started.
 <-><->
       
-l.390 \[
+l.392 \[
         
 Not a real error.
 
@@ -1689,7 +1689,7 @@ Not a real error.
 ! Preview: Snippet 98 ended.(4521000+0x8026230).
 <-><->
       
-l.396 \]
+l.398 \]
         
 Not a real error.
 
@@ -1697,14 +1697,14 @@ Not a real error.
 ! Preview: Snippet 99 started.
 <-><->
       
-l.399 \[
+l.401 \[
         
 Not a real error.
 
 ! Preview: Snippet 99 ended.(7130312+0x11796480).
 <-><->
       
-l.410 \]
+l.412 \]
         
 Not a real error.
 
@@ -1712,14 +1712,14 @@ Not a real error.
 ! Preview: Snippet 100 started.
 <-><->
       
-l.413 \[
+l.415 \[
         
 Not a real error.
 
 ! Preview: Snippet 100 ended.(2152878+0x21305156).
 <-><->
       
-l.419 \]
+l.421 \]
         
 Not a real error.
 
@@ -1727,14 +1727,14 @@ Not a real error.
 ! Preview: Snippet 101 started.
 <-><->
       
-l.421 \subsection
+l.423 \subsection
                  {Correspondencia entre compuertas clásicas y cuánticas}
 Not a real error.
 
 ! Preview: Snippet 101 ended.(1463636+0x23592960).
 <-><->
       
-l.421 ... entre compuertas clásicas y cuánticas}
+l.423 ... entre compuertas clásicas y cuánticas}
                                                   
 Not a real error.
 
@@ -1744,14 +1744,14 @@ Not a real error.
 ! Preview: Snippet 102 started.
 <-><->
       
-l.423 \subsection
+l.425 \subsection
                  {Conjuntos universales de compuertas cuánticas}
 Not a real error.
 
 ! Preview: Snippet 102 ended.(546132+152916x23592960).
 <-><->
       
-l.423 ...tos universales de compuertas cuánticas}
+l.425 ...tos universales de compuertas cuánticas}
                                                   
 Not a real error.
 
@@ -1761,14 +1761,14 @@ Not a real error.
 ! Preview: Snippet 103 started.
 <-><->
       
-l.430 Un CUCC simple es $
+l.432 Un CUCC simple es $
                          \{H,T,\mathit{CNOT}\}$.
 Not a real error.
 
 ! Preview: Snippet 103 ended.(538214+179404x4655685).
 <-><->
       
-l.430 Un CUCC simple es $\{H,T,\mathit{CNOT}\}$
+l.432 Un CUCC simple es $\{H,T,\mathit{CNOT}\}$
                                                .
 Not a real error.
 
@@ -1776,14 +1776,14 @@ Not a real error.
 ! Preview: Snippet 104 started.
 <-><->
       
-l.433 ...�la compuerta, la compuerta de Deutsch, $
+l.435 ...�la compuerta, la compuerta de Deutsch, $
                                                   D(\theta)$.
 Not a real error.
 
 ! Preview: Snippet 104 ended.(538214+179404x1529029).
 <-><->
       
-l.433 ...rta, la compuerta de Deutsch, $D(\theta)$
+l.435 ...rta, la compuerta de Deutsch, $D(\theta)$
                                                   .
 Not a real error.
 
@@ -1791,36 +1791,36 @@ Not a real error.
 ! Preview: Snippet 105 started.
 <-><->
       
-l.436 ...so especial de la compuerta de Deutsch, $
+l.438 ...so especial de la compuerta de Deutsch, $
                                                   D(\frac{\pi}{2})$.
 Not a real error.
 
 ! Preview: Snippet 105 ended.(538214+247464x1668197).
 <-><->
       
-l.436 ... compuerta de Deutsch, $D(\frac{\pi}{2})$
+l.438 ... compuerta de Deutsch, $D(\frac{\pi}{2})$
                                                   .
 Not a real error.
 
 [105]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 439.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 441.
  (/usr/share/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 439.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 441.
 
 ! Preview: Snippet 106 started.
 <-><->
       
-l.439 ...ing y la compuerta de cambio de fase, \{$
+l.441 ...ing y la compuerta de cambio de fase, \{$
                                                   \mathit{XX}_\phi,R_z(\thet...
 Not a real error.
 
 ! Preview: Snippet 106 ended.(538214+218855x3637005).
 <-><->
       
-l.439 ...de fase, \{$\mathit{XX}_\phi,R_z(\theta)$
+l.441 ...de fase, \{$\mathit{XX}_\phi,R_z(\theta)$
                                                   \}. Este conjunto es nativ...
 Not a real error.
 
@@ -1828,14 +1828,14 @@ Not a real error.
 ! Preview: Snippet 107 started.
 <-><->
       
-l.441 \subsection
+l.443 \subsection
                  {Compuertas no cliffordianas}
 Not a real error.
 
 ! Preview: Snippet 107 ended.(546132+152916x23592960).
 <-><->
       
-l.441 \subsection{Compuertas no cliffordianas}
+l.443 \subsection{Compuertas no cliffordianas}
                                               
 Not a real error.
 
@@ -1845,14 +1845,14 @@ Not a real error.
 ! Preview: Snippet 108 started.
 <-><->
       
-l.445 \subsection
+l.447 \subsection
                  {Circuitos cuánticos}
 Not a real error.
 
 ! Preview: Snippet 108 ended.(546132+0x23592960).
 <-><->
       
-l.445 \subsection{Circuitos cuánticos}
+l.447 \subsection{Circuitos cuánticos}
                                        
 Not a real error.
 
@@ -1862,14 +1862,14 @@ Not a real error.
 ! Preview: Snippet 109 started.
 <-><->
       
-l.447 \subsection
+l.449 \subsection
                  {Paralelismo cuántico}
 Not a real error.
 
 ! Preview: Snippet 109 ended.(546132+0x23592960).
 <-><->
       
-l.447 \subsection{Paralelismo cuántico}
+l.449 \subsection{Paralelismo cuántico}
                                         
 Not a real error.
 
@@ -1879,14 +1879,14 @@ Not a real error.
 ! Preview: Snippet 110 started.
 <-><->
       
-l.449 \subsection
+l.451 \subsection
                  {Algoritmos cuánticos}
 Not a real error.
 
 ! Preview: Snippet 110 ended.(546132+152916x23592960).
 <-><->
       
-l.449 \subsection{Algoritmos cuánticos}
+l.451 \subsection{Algoritmos cuánticos}
                                         
 Not a real error.
 
@@ -1896,14 +1896,14 @@ Not a real error.
 ! Preview: Snippet 111 started.
 <-><->
       
-l.451 \subsection
+l.453 \subsection
                  {Criterios de DiVincenzo}
 Not a real error.
 
 ! Preview: Snippet 111 ended.(546132+0x23592960).
 <-><->
       
-l.451 \subsection{Criterios de DiVincenzo}
+l.453 \subsection{Criterios de DiVincenzo}
                                           
 Not a real error.
 
@@ -1913,7 +1913,7 @@ Not a real error.
 ! Preview: Snippet 112 started.
 <-><->
       
-l.462 \chapter
+l.464 \chapter
               {Superconductividad}
 Not a real error.
 
@@ -1921,7 +1921,7 @@ Cap\'{\i }tulo 2.
 ! Preview: Snippet 112 ended.(8192000+317047x23592960).
 <-><->
       
-l.462 \chapter{Superconductividad}
+l.464 \chapter{Superconductividad}
                                   
 Not a real error.
 
@@ -1934,14 +1934,14 @@ Not a real error.
 ! Preview: Snippet 113 started.
 <-><->
       
-l.468 \[
+l.470 \[
         
 Not a real error.
 
 ! Preview: Snippet 113 ended.(1665443+0x14928587).
 <-><->
       
-l.470 \]
+l.472 \]
         
 Not a real error.
 
@@ -1949,14 +1949,14 @@ Not a real error.
 ! Preview: Snippet 114 started.
 <-><->
       
-l.472 donde $
+l.474 donde $
              \hat{n}$ es la cantidad de pares de Cooper inducidos en el capa...
 Not a real error.
 
 ! Preview: Snippet 114 ended.(498346+0x430740).
 <-><->
       
-l.472 donde $\hat{n}$
+l.474 donde $\hat{n}$
                       es la cantidad de pares de Cooper inducidos en el capa...
 Not a real error.
 
@@ -1964,14 +1964,14 @@ Not a real error.
 ! Preview: Snippet 115 started.
 <-><->
       
-l.472 ... en el capacitor, medida en unidades de $
+l.474 ... en el capacitor, medida en unidades de $
                                                   2e$), y $\hat{\phi}$ es la...
 Not a real error.
 
 ! Preview: Snippet 115 ended.(462465+0x692952).
 <-><->
       
-l.472 ... el capacitor, medida en unidades de $2e$
+l.474 ... el capacitor, medida en unidades de $2e$
                                                   ), y $\hat{\phi}$ es la di...
 Not a real error.
 
@@ -1979,14 +1979,14 @@ Not a real error.
 ! Preview: Snippet 116 started.
 <-><->
       
-l.472 ...pacitor, medida en unidades de $2e$), y $
+l.474 ...pacitor, medida en unidades de $2e$), y $
                                                   \hat{\phi}$ es la diferenc...
 Not a real error.
 
 ! Preview: Snippet 116 ended.(687718+139537x427582).
 <-><->
       
-l.472 ...dida en unidades de $2e$), y $\hat{\phi}$
+l.474 ...dida en unidades de $2e$), y $\hat{\phi}$
                                                    es la diferencia de fase ...
 Not a real error.
 
@@ -1994,14 +1994,14 @@ Not a real error.
 ! Preview: Snippet 117 started.
 <-><->
       
-l.472 ...cia de fase sobre el inductor. La carga $
+l.474 ...cia de fase sobre el inductor. La carga $
                                                   \hat{n}$ y la fase $\hat{\...
 Not a real error.
 
 ! Preview: Snippet 117 ended.(498346+0x430740).
 <-><->
       
-l.472 ...ase sobre el inductor. La carga $\hat{n}$
+l.474 ...ase sobre el inductor. La carga $\hat{n}$
                                                    y la fase $\hat{\phi}$ no...
 Not a real error.
 
@@ -2009,14 +2009,14 @@ Not a real error.
 ! Preview: Snippet 118 started.
 <-><->
       
-l.472 ... inductor. La carga $\hat{n}$ y la fase $
+l.474 ... inductor. La carga $\hat{n}$ y la fase $
                                                   \hat{\phi}$ no conmutan, $...
 Not a real error.
 
 ! Preview: Snippet 118 ended.(687718+139537x427582).
 <-><->
       
-l.472 ...La carga $\hat{n}$ y la fase $\hat{\phi}$
+l.474 ...La carga $\hat{n}$ y la fase $\hat{\phi}$
                                                    no conmutan, $\comm{\hat{...
 Not a real error.
 
@@ -2024,14 +2024,14 @@ Not a real error.
 ! Preview: Snippet 119 started.
 <-><->
       
-l.472 ...n}$ y la fase $\hat{\phi}$ no conmutan, $
+l.474 ...n}$ y la fase $\hat{\phi}$ no conmutan, $
                                                   \comm{\hat{\phi}}{\hat{n}}...
 Not a real error.
 
 ! Preview: Snippet 119 ended.(825267+466460x3059065).
 <-><->
       
-l.472 ... conmutan, $\comm{\hat{\phi}}{\hat{n}}=i$
+l.474 ... conmutan, $\comm{\hat{\phi}}{\hat{n}}=i$
                                                   , lo que significa que sus...
 Not a real error.
 
@@ -2039,14 +2039,14 @@ Not a real error.
 ! Preview: Snippet 120 started.
 <-><->
       
-l.472 ...dos no se pueden medir simultaneamente. $
+l.474 ...dos no se pueden medir simultaneamente. $
                                                   E_C=\frac{(2e)^2}{2C}$, $E...
 Not a real error.
 
 ! Preview: Snippet 120 ended.(791967+247464x3353972).
 <-><->
       
-l.472 ... simultaneamente. $E_C=\frac{(2e)^2}{2C}$
+l.474 ... simultaneamente. $E_C=\frac{(2e)^2}{2C}$
                                                   , $E_L=\frac{\hbar^2}{(2e)...
 Not a real error.
 
@@ -2054,14 +2054,14 @@ Not a real error.
 ! Preview: Snippet 121 started.
 <-><->
       
-l.472 ...multaneamente. $E_C=\frac{(2e)^2}{2C}$, $
+l.474 ...multaneamente. $E_C=\frac{(2e)^2}{2C}$, $
                                                   E_L=\frac{\hbar^2}{(2e)^2L...
 Not a real error.
 
 ! Preview: Snippet 121 ended.(738025+397405x3677580).
 <-><->
       
-l.472 ...e)^2}{2C}$, $E_L=\frac{\hbar^2}{(2e)^2L}$
+l.474 ...e)^2}{2C}$, $E_L=\frac{\hbar^2}{(2e)^2L}$
                                                    y la distancia entre nive...
 Not a real error.
 
@@ -2069,14 +2069,14 @@ Not a real error.
 ! Preview: Snippet 122 started.
 <-><->
       
-l.472 ...les de energía del oscilador armónico $
+l.474 ...les de energía del oscilador armónico $
                                                   \hbar \omega = \frac{\hbar...
 Not a real error.
 
 ! Preview: Snippet 122 ended.(646638+411533x7128720).
 <-><->
       
-l.472 ...= \frac{\hbar}{\sqrt{LC}}=\sqrt{2E_LE_C}$
+l.474 ...= \frac{\hbar}{\sqrt{LC}}=\sqrt{2E_LE_C}$
                                                   .
 Not a real error.
 
@@ -2084,14 +2084,14 @@ Not a real error.
 ! Preview: Snippet 123 started.
 <-><->
       
-l.477 \[
+l.479 \[
         
 Not a real error.
 
 ! Preview: Snippet 123 ended.(1665443+0x19315319).
 <-><->
       
-l.479 \]
+l.481 \]
         
 Not a real error.
 
@@ -2099,14 +2099,14 @@ Not a real error.
 ! Preview: Snippet 124 started.
 <-><->
       
-l.481 donde $
+l.483 donde $
              n_g$ es la carga inducida por voltaje en el capacitor C (isla q...
 Not a real error.
 
 ! Preview: Snippet 124 ended.(308974+209587x747410).
 <-><->
       
-l.481 donde $n_g$
+l.483 donde $n_g$
                   es la carga inducida por voltaje en el capacitor C (isla q...
 Not a real error.
 
@@ -2114,14 +2114,14 @@ Not a real error.
 ! Preview: Snippet 125 started.
 <-><->
       
-l.481 ...oltaje en el capacitor C (isla qubit) y $
+l.483 ...oltaje en el capacitor C (isla qubit) y $
                                                   \phi_e$ es la fase inducid...
 Not a real error.
 
 ! Preview: Snippet 125 ended.(498346+139537x718766).
 <-><->
       
-l.481 ...en el capacitor C (isla qubit) y $\phi_e$
+l.483 ...en el capacitor C (isla qubit) y $\phi_e$
                                                    es la fase inducida por f...
 Not a real error.
 
@@ -2129,14 +2129,14 @@ Not a real error.
 ! Preview: Snippet 126 started.
 <-><->
       
-l.481 ...o sobre la JJ. La energía de Josephson $
+l.483 ...o sobre la JJ. La energía de Josephson $
                                                   E_{J0}$ está dada por $E_...
 Not a real error.
 
 ! Preview: Snippet 126 ended.(490372+111084x1194577).
 <-><->
       
-l.481 ... la JJ. La energía de Josephson $E_{J0}$
+l.483 ... la JJ. La energía de Josephson $E_{J0}$
                                                    está dada por $E_{J0}=\f...
 Not a real error.
 
@@ -2144,14 +2144,14 @@ Not a real error.
 ! Preview: Snippet 127 started.
 <-><->
       
-l.481 ...�a de Josephson $E_{J0}$ está dada por $
+l.483 ...�a de Josephson $E_{J0}$ está dada por $
                                                   E_{J0}=\frac{\hbar}{2e}I_0...
 Not a real error.
 
 ! Preview: Snippet 127 ended.(646638+247464x3472385).
 <-><->
       
-l.481 ...tá dada por $E_{J0}=\frac{\hbar}{2e}I_0$
+l.483 ...tá dada por $E_{J0}=\frac{\hbar}{2e}I_0$
                                                    en términos de la corrie...
 Not a real error.
 
@@ -2159,14 +2159,14 @@ Not a real error.
 ! Preview: Snippet 128 started.
 <-><->
       
-l.481 ...$ en términos de la corriente crítica $
+l.483 ...$ en términos de la corriente crítica $
                                                   I_0$ de la unión. Usualme...
 Not a real error.
 
 ! Preview: Snippet 128 ended.(490372+107642x626754).
 <-><->
       
-l.481 ... términos de la corriente crítica $I_0$
+l.483 ... términos de la corriente crítica $I_0$
                                                    de la unión. Usualmente,...
 Not a real error.
 
@@ -2174,14 +2174,14 @@ Not a real error.
 ! Preview: Snippet 129 started.
 <-><->
       
-l.485 \[
+l.487 \[
         
 Not a real error.
 
 ! Preview: Snippet 129 ended.(717618+0x13932351).
 <-><->
       
-l.487 \]
+l.489 \]
         
 Not a real error.
 
@@ -2189,14 +2189,14 @@ Not a real error.
 ! Preview: Snippet 130 started.
 <-><->
       
-l.491 \[
+l.493 \[
         
 Not a real error.
 
 ! Preview: Snippet 130 ended.(1476071+0x16672653).
 <-><->
       
-l.493 \]
+l.495 \]
         
 Not a real error.
 
@@ -2204,14 +2204,14 @@ Not a real error.
 ! Preview: Snippet 131 started.
 <-><->
       
-l.497 \[
+l.499 \[
         
 Not a real error.
 
 ! Preview: Snippet 131 ended.(1655476+0x15098734).
 <-><->
       
-l.499 \]
+l.501 \]
         
 Not a real error.
 
@@ -2219,14 +2219,14 @@ Not a real error.
 ! Preview: Snippet 132 started.
 <-><->
       
-l.501 Definiendo $
+l.503 Definiendo $
                   L_J = V (\frac{dI_J}{dt})^{-1}$, se obtiene finalmente la ...
 Not a real error.
 
 ! Preview: Snippet 132 ended.(674659+247464x4735721).
 <-><->
       
-l.501 Definiendo $L_J = V (\frac{dI_J}{dt})^{-1}$
+l.503 Definiendo $L_J = V (\frac{dI_J}{dt})^{-1}$
                                                  , se obtiene finalmente la ...
 Not a real error.
 
@@ -2234,14 +2234,14 @@ Not a real error.
 ! Preview: Snippet 133 started.
 <-><->
       
-l.501 ... finalmente la inductancia de Josephson $
+l.503 ... finalmente la inductancia de Josephson $
                                                   L_{J0}$:
 Not a real error.
 
 ! Preview: Snippet 133 ended.(490372+111084x1153214).
 <-><->
       
-l.501 ...ente la inductancia de Josephson $L_{J0}$
+l.503 ...ente la inductancia de Josephson $L_{J0}$
                                                   :
 Not a real error.
 
@@ -2249,14 +2249,14 @@ Not a real error.
 ! Preview: Snippet 134 started.
 <-><->
       
-l.503 \[
+l.505 \[
         
 Not a real error.
 
 ! Preview: Snippet 134 ended.(1647502+0x16737690).
 <-><->
       
-l.505 \]
+l.507 \]
         
 Not a real error.
 
@@ -2264,14 +2264,14 @@ Not a real error.
 ! Preview: Snippet 135 started.
 <-><->
       
-l.507 ... expresar la energía de Josephson como $
+l.509 ... expresar la energía de Josephson como $
                                                   E_{J0} = \frac{\hbar^2}{(2...
 Not a real error.
 
 ! Preview: Snippet 135 ended.(738025+397405x4509067).
 <-><->
       
-l.507 ...o $E_{J0} = \frac{\hbar^2}{(2e)^2L_{J0}}$
+l.509 ...o $E_{J0} = \frac{\hbar^2}{(2e)^2L_{J0}}$
                                                   
 Not a real error.
 
@@ -2279,14 +2279,14 @@ Not a real error.
 ! Preview: Snippet 136 started.
 <-><->
       
-l.509 \begin{align*}
+l.511 \begin{align*}
                     
 Not a real error.
 
 ! Preview: Snippet 136 ended.(3453770+0x17395602).
 <-><->
       
-l.512 \end{align*}
+l.514 \end{align*}
                   
 Not a real error.
 
@@ -2294,14 +2294,14 @@ Not a real error.
 ! Preview: Snippet 137 started.
 <-><->
       
-l.515 \item $
+l.517 \item $
              E_L = 0 \quad (L \sim \infty)$ :
 Not a real error.
 
 ! Preview: Snippet 137 ended.(538214+179404x5695573).
 <-><->
       
-l.515 \item $E_L = 0 \quad (L \sim \infty)$
+l.517 \item $E_L = 0 \quad (L \sim \infty)$
                                             :
 Not a real error.
 
@@ -2309,14 +2309,14 @@ Not a real error.
 ! Preview: Snippet 138 started.
 <-><->
       
-l.516 \item $
+l.518 \item $
              E_L \approx E_{J0}$ :
 Not a real error.
 
 ! Preview: Snippet 138 ended.(490372+111084x3092748).
 <-><->
       
-l.516 \item $E_L \approx E_{J0}$
+l.518 \item $E_L \approx E_{J0}$
                                  :
 Not a real error.
 
@@ -2324,14 +2324,14 @@ Not a real error.
 ! Preview: Snippet 139 started.
 <-><->
       
-l.519 \section
+l.521 \section
               {Transmonios}
 Not a real error.
 
 ! Preview: Snippet 139 ended.(655359+0x23592960).
 <-><->
       
-l.519 \section{Transmonios}
+l.521 \section{Transmonios}
                            
 Not a real error.
 
@@ -2341,14 +2341,14 @@ Not a real error.
 ! Preview: Snippet 140 started.
 <-><->
       
-l.522 \[
+l.524 \[
         
 Not a real error.
 
 ! Preview: Snippet 140 ended.(1440190+0x21095448).
 <-><->
       
-l.524 \]
+l.526 \]
         
 Not a real error.
 
@@ -2356,14 +2356,14 @@ Not a real error.
 ! Preview: Snippet 141 started.
 <-><->
       
-l.526 donde $
+l.528 donde $
              \epsilon$ es la energía de excitación del qubit, $g$ es el ac...
 Not a real error.
 
 ! Preview: Snippet 141 ended.(308974+0x291284).
 <-><->
       
-l.526 donde $\epsilon$
+l.528 donde $\epsilon$
                        es la energía de excitación del qubit, $g$ es el ac...
 Not a real error.
 
@@ -2371,14 +2371,14 @@ Not a real error.
 ! Preview: Snippet 142 started.
 <-><->
       
-l.526 ...s la energía de excitación del qubit, $
+l.528 ...s la energía de excitación del qubit, $
                                                   g$ es el acoplamiento qubi...
 Not a real error.
 
 ! Preview: Snippet 142 ended.(308974+139537x368028).
 <-><->
       
-l.526 ...la energía de excitación del qubit, $g$
+l.528 ...la energía de excitación del qubit, $g$
                                                    es el acoplamiento qubit-...
 Not a real error.
 
@@ -2386,14 +2386,14 @@ Not a real error.
 ! Preview: Snippet 143 started.
 <-><->
       
-l.526 ...g$ es el acoplamiento qubit-oscilador y $
+l.528 ...g$ es el acoplamiento qubit-oscilador y $
                                                   \omega$ es la frecuencia d...
 Not a real error.
 
 ! Preview: Snippet 143 ended.(308974+0x472432).
 <-><->
       
-l.526 ...l acoplamiento qubit-oscilador y $\omega$
+l.528 ...l acoplamiento qubit-oscilador y $\omega$
                                                    es la frecuencia del osci...
 Not a real error.
 
@@ -2401,14 +2401,14 @@ Not a real error.
 ! Preview: Snippet 144 started.
 <-><->
       
-l.529 ...endo los operadores escalera del qubit, $
+l.531 ...endo los operadores escalera del qubit, $
                                                   \sigma_\pm = \frac{1}{2}(\...
 Not a real error.
 
 ! Preview: Snippet 144 ended.(620424+247464x5444582).
 <-><->
       
-l.529 ...m = \frac{1}{2}(\sigma_x \pm i \sigma_y)$
+l.531 ...m = \frac{1}{2}(\sigma_x \pm i \sigma_y)$
                                                   , el término de interacci...
 Not a real error.
 
@@ -2416,14 +2416,14 @@ Not a real error.
 ! Preview: Snippet 145 started.
 <-><->
       
-l.529 ...\sigma_y)$, el término de interacción $
+l.531 ...\sigma_y)$, el término de interacción $
                                                   \hat{H}_{qr}$ se puede div...
 Not a real error.
 
 ! Preview: Snippet 145 ended.(679744+209587x1163657).
 <-><->
       
-l.529 ...l término de interacción $\hat{H}_{qr}$
+l.531 ...l término de interacción $\hat{H}_{qr}$
                                                    se puede dividir en dos t...
 Not a real error.
 
@@ -2431,14 +2431,14 @@ Not a real error.
 ! Preview: Snippet 146 started.
 <-><->
       
-l.531 \[
+l.533 \[
         
 Not a real error.
 
 ! Preview: Snippet 146 ended.(959096+0x20490503).
 <-><->
       
-l.533 \]
+l.535 \]
         
 Not a real error.
 
@@ -2446,14 +2446,14 @@ Not a real error.
 ! Preview: Snippet 147 started.
 <-><->
       
-l.537 \section
+l.539 \section
               {Hamiltonianos multiqubit de transmonios}
 Not a real error.
 
 ! Preview: Snippet 147 ended.(655359+183500x23592960).
 <-><->
       
-l.537 ...{Hamiltonianos multiqubit de transmonios}
+l.539 ...{Hamiltonianos multiqubit de transmonios}
                                                   
 Not a real error.
 
@@ -2463,14 +2463,14 @@ Not a real error.
 ! Preview: Snippet 148 started.
 <-><->
       
-l.540 \[
+l.542 \[
         
 Not a real error.
 
 ! Preview: Snippet 148 ended.(1982545+0x23453359).
 <-><->
       
-l.542 \]
+l.544 \]
         
 Not a real error.
 
@@ -2478,14 +2478,14 @@ Not a real error.
 ! Preview: Snippet 149 started.
 <-><->
       
-l.544 ...mplicidad, se considera que el término $
+l.546 ...mplicidad, se considera que el término $
                                                   \hat{H}_{qr}$ se refiere s...
 Not a real error.
 
 ! Preview: Snippet 149 ended.(679744+209587x1163657).
 <-><->
       
-l.544 ... considera que el término $\hat{H}_{qr}$
+l.546 ... considera que el término $\hat{H}_{qr}$
                                                    se refiere sólo a la lec...
 Not a real error.
 
@@ -2493,14 +2493,14 @@ Not a real error.
 ! Preview: Snippet 150 started.
 <-><->
       
-l.544 ...qubit via el resonador ser incluidas en $
+l.546 ...qubit via el resonador ser incluidas en $
                                                   \hat{H}_{qq}$ via la const...
 Not a real error.
 
 ! Preview: Snippet 150 ended.(679744+209587x1164325).
 <-><->
       
-l.544 ...resonador ser incluidas en $\hat{H}_{qq}$
+l.546 ...resonador ser incluidas en $\hat{H}_{qq}$
                                                    via la constante de acopl...
 Not a real error.
 
@@ -2508,14 +2508,14 @@ Not a real error.
 ! Preview: Snippet 151 started.
 <-><->
       
-l.544 ..._{qq}$ via la constante de acoplamiento $
+l.546 ..._{qq}$ via la constante de acoplamiento $
                                                   \lambda_{\nu,ij}$.
 Not a real error.
 
 ! Preview: Snippet 151 ended.(498346+209587x1328442).
 <-><->
       
-l.544 ...stante de acoplamiento $\lambda_{\nu,ij}$
+l.546 ...stante de acoplamiento $\lambda_{\nu,ij}$
                                                   .
 Not a real error.
 
@@ -2523,14 +2523,14 @@ Not a real error.
 ! Preview: Snippet 152 started.
 <-><->
       
-l.546 \subsection
+l.548 \subsection
                  {Acoplamiento capacitivo}
 Not a real error.
 
 ! Preview: Snippet 152 ended.(546132+152916x23592960).
 <-><->
       
-l.546 \subsection{Acoplamiento capacitivo}
+l.548 \subsection{Acoplamiento capacitivo}
                                           
 Not a real error.
 
@@ -2540,14 +2540,14 @@ Not a real error.
 ! Preview: Snippet 153 started.
 <-><->
       
-l.547 \begin{align*}
+l.549 \begin{align*}
                     
 Not a real error.
 
 ! Preview: Snippet 153 ended.(4255659+0x22623106).
 <-><->
       
-l.551 \end{align*}
+l.553 \end{align*}
                   
 Not a real error.
 
@@ -2555,14 +2555,14 @@ Not a real error.
 ! Preview: Snippet 154 started.
 <-><->
       
-l.553 \subsection
+l.555 \subsection
                  {Acoplamiento por el resonador}
 Not a real error.
 
 ! Preview: Snippet 154 ended.(546132+152916x23592960).
 <-><->
       
-l.553 \subsection{Acoplamiento por el resonador}
+l.555 \subsection{Acoplamiento por el resonador}
                                                 
 Not a real error.
 
@@ -2572,14 +2572,14 @@ Not a real error.
 ! Preview: Snippet 155 started.
 <-><->
       
-l.554 \begin{align*}
+l.556 \begin{align*}
                     
 Not a real error.
 
 ! Preview: Snippet 155 ended.(3910542+0x17048498).
 <-><->
       
-l.558 \end{align*}
+l.560 \end{align*}
                   
 Not a real error.
 
@@ -2587,14 +2587,14 @@ Not a real error.
 ! Preview: Snippet 156 started.
 <-><->
       
-l.560 \subsection
+l.562 \subsection
                  {Acoplamiento de JJ}
 Not a real error.
 
 ! Preview: Snippet 156 ended.(546132+152916x23592960).
 <-><->
       
-l.560 \subsection{Acoplamiento de JJ}
+l.562 \subsection{Acoplamiento de JJ}
                                      
 Not a real error.
 
@@ -2604,14 +2604,14 @@ Not a real error.
 ! Preview: Snippet 157 started.
 <-><->
       
-l.561 \begin{align*}
+l.563 \begin{align*}
                     
 Not a real error.
 
 ! Preview: Snippet 157 ended.(2904620+0x16864483).
 <-><->
       
-l.564 \end{align*}
+l.566 \end{align*}
                   
 Not a real error.
 
@@ -2619,14 +2619,14 @@ Not a real error.
 ! Preview: Snippet 158 started.
 <-><->
       
-l.566 \subsection
+l.568 \subsection
                  {Acoplamiento afinable/calibrable}
 Not a real error.
 
 ! Preview: Snippet 158 ended.(589824+196608x23592960).
 <-><->
       
-l.566 ...section{Acoplamiento afinable/calibrable}
+l.568 ...section{Acoplamiento afinable/calibrable}
                                                   
 Not a real error.
 
@@ -2636,14 +2636,14 @@ Not a real error.
 ! Preview: Snippet 159 started.
 <-><->
       
-l.568 \section
+l.570 \section
               {Compuertas cuánticas en transmonios}
 Not a real error.
 
 ! Preview: Snippet 159 ended.(655359+183500x23592960).
 <-><->
       
-l.568 ...ion{Compuertas cuánticas en transmonios}
+l.570 ...ion{Compuertas cuánticas en transmonios}
                                                   
 Not a real error.
 
@@ -2653,14 +2653,14 @@ Not a real error.
 ! Preview: Snippet 160 started.
 <-><->
       
-l.570 \subsection
+l.572 \subsection
                  {El operador de evolución temporal}
 Not a real error.
 
 ! Preview: Snippet 160 ended.(546132+152916x23592960).
 <-><->
       
-l.570 ...ction{El operador de evolución temporal}
+l.572 ...ction{El operador de evolución temporal}
                                                   
 Not a real error.
 
@@ -2670,14 +2670,14 @@ Not a real error.
 ! Preview: Snippet 161 started.
 <-><->
       
-l.571 ...e Schrödinger para el vector de estado $
+l.573 ...e Schrödinger para el vector de estado $
                                                   \ket{\psi(t)}$:
 Not a real error.
 
 ! Preview: Snippet 161 ended.(538214+179405x1788903).
 <-><->
       
-l.571 ... para el vector de estado $\ket{\psi(t)}$
+l.573 ... para el vector de estado $\ket{\psi(t)}$
                                                   :
 Not a real error.
 
@@ -2685,14 +2685,14 @@ Not a real error.
 ! Preview: Snippet 162 started.
 <-><->
       
-l.573 \[
+l.575 \[
         
 Not a real error.
 
 ! Preview: Snippet 162 ended.(1476071+0x15635634).
 <-><->
       
-l.575 \]
+l.577 \]
         
 Not a real error.
 
@@ -2700,14 +2700,14 @@ Not a real error.
 ! Preview: Snippet 163 started.
 <-><->
       
-l.577 en términos del operador evolución $
+l.579 en términos del operador evolución $
                                             \hat{U}(t,t_0)$
 Not a real error.
 
 ! Preview: Snippet 163 ended.(679744+179404x2274885).
 <-><->
       
-l.577 ... del operador evolución $\hat{U}(t,t_0)$
+l.579 ... del operador evolución $\hat{U}(t,t_0)$
                                                   
 Not a real error.
 
@@ -2715,14 +2715,14 @@ Not a real error.
 ! Preview: Snippet 164 started.
 <-><->
       
-l.579 \[
+l.581 \[
         
 Not a real error.
 
 ! Preview: Snippet 164 ended.(859149+0x15416686).
 <-><->
       
-l.581 \]
+l.583 \]
         
 Not a real error.
 
@@ -2730,14 +2730,14 @@ Not a real error.
 ! Preview: Snippet 165 started.
 <-><->
       
-l.585 \[
+l.587 \[
         
 Not a real error.
 
 ! Preview: Snippet 165 ended.(889331+0x15024923).
 <-><->
       
-l.587 \]
+l.589 \]
         
 Not a real error.
 
@@ -2745,14 +2745,14 @@ Not a real error.
 ! Preview: Snippet 166 started.
 <-><->
       
-l.593 \[
+l.595 \[
         
 Not a real error.
 
 ! Preview: Snippet 166 ended.(1982545+0x23592960).
 <-><->
       
-l.595 \]
+l.597 \]
         
 Not a real error.
 
@@ -2760,14 +2760,14 @@ Not a real error.
 ! Preview: Snippet 167 started.
 <-><->
       
-l.599 \[
+l.601 \[
         
 Not a real error.
 
 ! Preview: Snippet 167 ended.(1982545+0x19884544).
 <-><->
       
-l.601 \]
+l.603 \]
         
 Not a real error.
 
@@ -2775,7 +2775,7 @@ Not a real error.
 ! Preview: Snippet 168 started.
 <-><->
       
-l.605 \chapter
+l.607 \chapter
               {Algoritmo de Grover}
 Not a real error.
 
@@ -2783,7 +2783,7 @@ Cap\'{\i }tulo 3.
 ! Preview: Snippet 168 ended.(8192000+317047x23592960).
 <-><->
       
-l.605 \chapter{Algoritmo de Grover}
+l.607 \chapter{Algoritmo de Grover}
                                    
 Not a real error.
 
@@ -2796,14 +2796,14 @@ Not a real error.
 ! Preview: Snippet 169 started.
 <-><->
       
-l.606 ... particular de salida, usando tan sólo $
+l.608 ... particular de salida, usando tan sólo $
                                                   O(\sqrt{N})$ evaluaciones ...
 Not a real error.
 
 ! Preview: Snippet 169 ended.(664991+179404x2378309).
 <-><->
       
-l.606 ...de salida, usando tan sólo $O(\sqrt{N})$
+l.608 ...de salida, usando tan sólo $O(\sqrt{N})$
                                                    evaluaciones de la funci�...
 Not a real error.
 
@@ -2811,14 +2811,14 @@ Not a real error.
 ! Preview: Snippet 170 started.
 <-><->
       
-l.606 ...N})$ evaluaciones de la función, donde $
+l.608 ...N})$ evaluaciones de la función, donde $
                                                   N$ es el tamaño del domin...
 Not a real error.
 
 ! Preview: Snippet 170 ended.(490372+0x654826).
 <-><->
       
-l.606 ...)$ evaluaciones de la función, donde $N$
+l.608 ...)$ evaluaciones de la función, donde $N$
                                                    es el tamaño del dominio...
 Not a real error.
 
@@ -2826,14 +2826,14 @@ Not a real error.
 ! Preview: Snippet 171 started.
 <-><->
       
-l.606 ...ogo clásico de este algoritmo requiere $
+l.608 ...ogo clásico de este algoritmo requiere $
                                                   O(N)$ evaluaciones de la f...
 Not a real error.
 
 ! Preview: Snippet 171 ended.(538214+179404x1780292).
 <-><->
       
-l.606 ...lásico de este algoritmo requiere $O(N)$
+l.608 ...lásico de este algoritmo requiere $O(N)$
                                                    evaluaciones de la funci�...
 Not a real error.
 
@@ -2841,14 +2841,14 @@ Not a real error.
 ! Preview: Snippet 172 started.
 <-><->
       
-l.606 ...es, el elemento correcto podría ser el $
+l.608 ...es, el elemento correcto podría ser el $
                                                   N$-ésimo en ser evaluado ...
 Not a real error.
 
 ! Preview: Snippet 172 ended.(490372+0x654826).
 <-><->
       
-l.606 ..., el elemento correcto podría ser el $N$
+l.608 ..., el elemento correcto podría ser el $N$
                                                   -ésimo en ser evaluado y ...
 Not a real error.
 
@@ -2856,14 +2856,14 @@ Not a real error.
 ! Preview: Snippet 173 started.
 <-><->
       
-l.608 \section
+l.610 \section
               {El operador de difusión de Grover}
 Not a real error.
 
 ! Preview: Snippet 173 ended.(655359+183500x23592960).
 <-><->
       
-l.608 \section{El operador de difusión de Grover}
+l.610 \section{El operador de difusión de Grover}
                                                   
 Not a real error.
 
@@ -2873,7 +2873,7 @@ Not a real error.
 ! Preview: Snippet 174 started.
 <-><->
       
-l.610 \begin{figure}
+l.612 \begin{figure}
                     [H]
 Not a real error.
 
@@ -2884,19 +2884,19 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.610 \begin{figure}[H]
+l.612 \begin{figure}[H]
                        
 Option `H' ignored and `p' used.
 
 <Grover/grover_geometry.png, id=570, 374.68137pt x 388.71437pt>
 File: Grover/grover_geometry.png Graphic file (type png)
 <use Grover/grover_geometry.png>
-Package pdftex.def Info: Grover/grover_geometry.png  used on input line 611.
+Package pdftex.def Info: Grover/grover_geometry.png  used on input line 613.
 (pdftex.def)             Requested size: 108.0011pt x 112.04218pt.
 ! Preview: Snippet 174 ended.(8889446+139537x23592960).
 <-><->
       
-l.613 \end{figure}
+l.615 \end{figure}
                   
 Not a real error.
 
@@ -2906,14 +2906,14 @@ Not a real error.
 ! Preview: Snippet 175 started.
 <-><->
       
-l.615 $
+l.617 $
        U_s = 2 \ket{s} \bra{s} - I$
 Not a real error.
 
 ! Preview: Snippet 175 ended.(538213+179405x5213616).
 <-><->
       
-l.615 $U_s = 2 \ket{s} \bra{s} - I$
+l.617 $U_s = 2 \ket{s} \bra{s} - I$
                                    
 Not a real error.
 
@@ -2921,14 +2921,14 @@ Not a real error.
 ! Preview: Snippet 176 started.
 <-><->
       
-l.617 $
+l.619 $
        U_{\omega} = I - 2 \ket{\omega} \bra{\omega}$
 Not a real error.
 
 ! Preview: Snippet 176 ended.(538213+179405x5593304).
 <-><->
       
-l.617 ...omega} = I - 2 \ket{\omega} \bra{\omega}$
+l.619 ...omega} = I - 2 \ket{\omega} \bra{\omega}$
                                                   
 Not a real error.
 
@@ -2936,14 +2936,14 @@ Not a real error.
 ! Preview: Snippet 177 started.
 <-><->
       
-l.619 \section
+l.621 \section
               {El algoritmo}
 Not a real error.
 
 ! Preview: Snippet 177 ended.(655359+183500x23592960).
 <-><->
       
-l.619 \section{El algoritmo}
+l.621 \section{El algoritmo}
                             
 Not a real error.
 
@@ -2953,7 +2953,7 @@ Not a real error.
 ! Preview: Snippet 178 started.
 <-><->
       
-l.621 \[
+l.623 \[
         
 Not a real error.
 
@@ -2961,7 +2961,7 @@ Not a real error.
 ! Preview: Snippet 178 ended.(5178835+0x17809286).
 <-><->
       
-l.628 \]
+l.630 \]
         
 Not a real error.
 
@@ -2969,14 +2969,14 @@ Not a real error.
 ! Preview: Snippet 179 started.
 <-><->
       
-l.633 \item Realizar la iteración de Grover $
+l.635 \item Realizar la iteración de Grover $
                                               \lfloor \frac{\pi}{4} \sqrt{N}...
 Not a real error.
 
 ! Preview: Snippet 179 ended.(664991+247464x2386711).
 <-><->
       
-l.633 ... $\lfloor \frac{\pi}{4} \sqrt{N} \rfloor$
+l.635 ... $\lfloor \frac{\pi}{4} \sqrt{N} \rfloor$
                                                    veces.
 Not a real error.
 
@@ -2984,14 +2984,14 @@ Not a real error.
 ! Preview: Snippet 180 started.
 <-><->
       
-l.635 \item Aplicar $
+l.637 \item Aplicar $
                      U_{\omega}$.
 Not a real error.
 
 ! Preview: Snippet 180 ended.(490372+107642x887928).
 <-><->
       
-l.635 \item Aplicar $U_{\omega}$
+l.637 \item Aplicar $U_{\omega}$
                                 .
 Not a real error.
 
@@ -2999,14 +2999,14 @@ Not a real error.
 ! Preview: Snippet 181 started.
 <-><->
       
-l.636 \item Aplicar $
+l.638 \item Aplicar $
                      U_s$.
 Not a real error.
 
 ! Preview: Snippet 181 ended.(490372+107642x780338).
 <-><->
       
-l.636 \item Aplicar $U_s$
+l.638 \item Aplicar $U_s$
                          .
 Not a real error.
 
@@ -3014,14 +3014,14 @@ Not a real error.
 ! Preview: Snippet 182 started.
 <-><->
       
-l.638 \item Realizar la medida $
+l.640 \item Realizar la medida $
                                 \Omega$.
 Not a real error.
 
 ! Preview: Snippet 182 ended.(490372+0x518281).
 <-><->
       
-l.638 \item Realizar la medida $\Omega$
+l.640 \item Realizar la medida $\Omega$
                                        .
 Not a real error.
 
@@ -3029,7 +3029,7 @@ Not a real error.
 ! Preview: Snippet 183 started.
 <-><->
       
-l.642 \chapter
+l.644 \chapter
               {Algoritmo de Shor}
 Not a real error.
 
@@ -3037,7 +3037,7 @@ Cap\'{\i }tulo 4.
 ! Preview: Snippet 183 ended.(8192000+317047x23592960).
 <-><->
       
-l.642 \chapter{Algoritmo de Shor}
+l.644 \chapter{Algoritmo de Shor}
                                  
 Not a real error.
 
@@ -3050,14 +3050,14 @@ Not a real error.
 ! Preview: Snippet 184 started.
 <-><->
       
-l.643 ...ctorización de enteros. Dado un entero $
+l.645 ...ctorización de enteros. Dado un entero $
                                                   N=p \times q$, donde $p$ y...
 Not a real error.
 
 ! Preview: Snippet 184 ended.(490372+139537x3195886).
 <-><->
       
-l.643 ...de enteros. Dado un entero $N=p \times q$
+l.645 ...de enteros. Dado un entero $N=p \times q$
                                                   , donde $p$ y $q$ son prim...
 Not a real error.
 
@@ -3065,14 +3065,14 @@ Not a real error.
 ! Preview: Snippet 185 started.
 <-><->
       
-l.643 ...s. Dado un entero $N=p \times q$, donde $
+l.645 ...s. Dado un entero $N=p \times q$, donde $
                                                   p$ y $q$ son primos, el al...
 Not a real error.
 
 ! Preview: Snippet 185 ended.(308974+139537x361052).
 <-><->
       
-l.643 ... Dado un entero $N=p \times q$, donde $p$
+l.645 ... Dado un entero $N=p \times q$, donde $p$
                                                    y $q$ son primos, el algo...
 Not a real error.
 
@@ -3080,14 +3080,14 @@ Not a real error.
 ! Preview: Snippet 186 started.
 <-><->
       
-l.643 ...o un entero $N=p \times q$, donde $p$ y $
+l.645 ...o un entero $N=p \times q$, donde $p$ y $
                                                   q$ son primos, el algoritm...
 Not a real error.
 
 ! Preview: Snippet 186 ended.(308974+139537x346102).
 <-><->
       
-l.643 ...un entero $N=p \times q$, donde $p$ y $q$
+l.645 ...un entero $N=p \times q$, donde $p$ y $q$
                                                    son primos, el algoritmo ...
 Not a real error.
 
@@ -3095,14 +3095,14 @@ Not a real error.
 ! Preview: Snippet 187 started.
 <-><->
       
-l.643 ... primos, el algoritmo de Shor encuentra $
+l.645 ... primos, el algoritmo de Shor encuentra $
                                                   p$ y $q$ en $O((\log(N))^3...
 Not a real error.
 
 ! Preview: Snippet 187 ended.(308974+139537x361052).
 <-><->
       
-l.643 ...rimos, el algoritmo de Shor encuentra $p$
+l.645 ...rimos, el algoritmo de Shor encuentra $p$
                                                    y $q$ en $O((\log(N))^3)$...
 Not a real error.
 
@@ -3110,14 +3110,14 @@ Not a real error.
 ! Preview: Snippet 188 started.
 <-><->
       
-l.643 ...s, el algoritmo de Shor encuentra $p$ y $
+l.645 ...s, el algoritmo de Shor encuentra $p$ y $
                                                   q$ en $O((\log(N))^3)$ pas...
 Not a real error.
 
 ! Preview: Snippet 188 ended.(308974+139537x346102).
 <-><->
       
-l.643 ... el algoritmo de Shor encuentra $p$ y $q$
+l.645 ... el algoritmo de Shor encuentra $p$ y $q$
                                                    en $O((\log(N))^3)$ pasos...
 Not a real error.
 
@@ -3125,14 +3125,14 @@ Not a real error.
 ! Preview: Snippet 189 started.
 <-><->
       
-l.643 ...lgoritmo de Shor encuentra $p$ y $q$ en $
+l.645 ...lgoritmo de Shor encuentra $p$ y $q$ en $
                                                   O((\log(N))^3)$ pasos. El ...
 Not a real error.
 
 ! Preview: Snippet 189 ended.(598293+179405x4134817).
 <-><->
       
-l.643 ...r encuentra $p$ y $q$ en $O((\log(N))^3)$
+l.645 ...r encuentra $p$ y $q$ en $O((\log(N))^3)$
                                                    pasos. El algoritmo clás...
 Not a real error.
 
@@ -3140,14 +3140,14 @@ Not a real error.
 ! Preview: Snippet 190 started.
 <-><->
       
-l.643 ...iona con una complejidad heurística de $
+l.645 ...iona con una complejidad heurística de $
                                                   O(e^{(\sqrt[3]{\frac{64}{9...
 Not a real error.
 
 ! Preview: Snippet 190 ended.(1044564+179404x10036161).
 <-><->
       
-l.643 ...frac{1}{3}}(\ln(\ln(N)))^{\frac{2}{3}}})$
+l.645 ...frac{1}{3}}(\ln(\ln(N)))^{\frac{2}{3}}})$
                                                   . Por su capacidad de fact...
 Not a real error.
 
@@ -3155,14 +3155,14 @@ Not a real error.
 ! Preview: Snippet 191 started.
 <-><->
       
-l.645 \section
+l.647 \section
               {Transformadas integrales}
 Not a real error.
 
 ! Preview: Snippet 191 ended.(655359+183500x23592960).
 <-><->
       
-l.645 \section{Transformadas integrales}
+l.647 \section{Transformadas integrales}
                                         
 Not a real error.
 
@@ -3172,14 +3172,14 @@ Not a real error.
 ! Preview: Snippet 192 started.
 <-><->
       
-l.647 \section
+l.649 \section
               {Transformada cuántica de Fourier}
 Not a real error.
 
 ! Preview: Snippet 192 ended.(655359+0x23592960).
 <-><->
       
-l.647 \section{Transformada cuántica de Fourier}
+l.649 \section{Transformada cuántica de Fourier}
                                                  
 Not a real error.
 
@@ -3189,14 +3189,14 @@ Not a real error.
 ! Preview: Snippet 193 started.
 <-><->
       
-l.649 \section
+l.651 \section
               {Estimación de fase}
 Not a real error.
 
 ! Preview: Snippet 193 ended.(655359+0x23592960).
 <-><->
       
-l.649 \section{Estimación de fase}
+l.651 \section{Estimación de fase}
                                    
 Not a real error.
 
@@ -3206,14 +3206,14 @@ Not a real error.
 ! Preview: Snippet 194 started.
 <-><->
       
-l.651 \section
+l.653 \section
               {Estimación de orden}
 Not a real error.
 
 ! Preview: Snippet 194 ended.(655359+0x23592960).
 <-><->
       
-l.651 \section{Estimación de orden}
+l.653 \section{Estimación de orden}
                                     
 Not a real error.
 
@@ -3223,14 +3223,14 @@ Not a real error.
 ! Preview: Snippet 195 started.
 <-><->
       
-l.653 \section
+l.655 \section
               {Algoritmo de Shor}
 Not a real error.
 
 ! Preview: Snippet 195 ended.(655359+183500x23592960).
 <-><->
       
-l.653 \section{Algoritmo de Shor}
+l.655 \section{Algoritmo de Shor}
                                  
 Not a real error.
 
@@ -3240,7 +3240,7 @@ Not a real error.
 ! Preview: Snippet 196 started.
 <-><->
       
-l.655 \chapter
+l.657 \chapter
               {Google PageRank}
 Not a real error.
 
@@ -3248,7 +3248,7 @@ Cap\'{\i }tulo 5.
 ! Preview: Snippet 196 ended.(8192000+317047x23592960).
 <-><->
       
-l.655 \chapter{Google PageRank}
+l.657 \chapter{Google PageRank}
                                
 Not a real error.
 
@@ -3261,14 +3261,14 @@ Not a real error.
 ! Preview: Snippet 197 started.
 <-><->
       
-l.675 \[
+l.677 \[
         
 Not a real error.
 
 ! Preview: Snippet 197 ended.(4456445+0x15497768).
 <-><->
       
-l.683 \]
+l.685 \]
         
 Not a real error.
 
@@ -3276,14 +3276,14 @@ Not a real error.
 ! Preview: Snippet 198 started.
 <-><->
       
-l.687 \[
+l.689 \[
         
 Not a real error.
 
 ! Preview: Snippet 198 ended.(891289+0x14004225).
 <-><->
       
-l.691 \]
+l.693 \]
         
 Not a real error.
 
@@ -3291,14 +3291,14 @@ Not a real error.
 ! Preview: Snippet 199 started.
 <-><->
       
-l.693 ...salen del nodo o vértice de la página $
+l.695 ...salen del nodo o vértice de la página $
                                                   p_j$, es decir:
 Not a real error.
 
 ! Preview: Snippet 199 ended.(308974+209587x649318).
 <-><->
       
-l.693 ...n del nodo o vértice de la página $p_j$
+l.695 ...n del nodo o vértice de la página $p_j$
                                                   , es decir:
 Not a real error.
 
@@ -3306,14 +3306,14 @@ Not a real error.
 ! Preview: Snippet 200 started.
 <-><->
       
-l.695 $
+l.697 $
        I(p_j) \equiv \text{Importancia de la página j}$
 Not a real error.
 
 ! Preview: Snippet 200 ended.(538214+209587x10890346).
 <-><->
       
-l.695 ...equiv \text{Importancia de la página j}$
+l.697 ...equiv \text{Importancia de la página j}$
                                                   
 Not a real error.
 
@@ -3321,14 +3321,14 @@ Not a real error.
 ! Preview: Snippet 201 started.
 <-><->
       
-l.697 $
+l.699 $
        \mathrm{outdeg}(p_j) \equiv \text{número de links que salen de la p�...
 Not a real error.
 
 ! Preview: Snippet 201 ended.(538214+209587x17385275).
 <-><->
       
-l.697 ...o de links que salen de la página } p_j$
+l.699 ...o de links que salen de la página } p_j$
                                                   
 Not a real error.
 
@@ -3336,14 +3336,14 @@ Not a real error.
 ! Preview: Snippet 202 started.
 <-><->
       
-l.699 $
+l.701 $
        I(p_i) \equiv \sum\limits_{j \in B_i} \frac{I(p_j}{\mathrm{outdeg}(p_...
 Not a real error.
 
 ! Preview: Snippet 202 ended.(772065+830983x6620522).
 <-><->
       
-l.699 ... B_i} \frac{I(p_j}{\mathrm{outdeg}(p_j)}$
+l.701 ... B_i} \frac{I(p_j}{\mathrm{outdeg}(p_j)}$
                                                   
 Not a real error.
 
@@ -3351,14 +3351,14 @@ Not a real error.
 ! Preview: Snippet 203 started.
 <-><->
       
-l.701 $
+l.703 $
        B_i \equiv \text{conjunto de páginas qeu son linkeadas}$
 Not a real error.
 
 ! Preview: Snippet 203 ended.(498346+139537x13715790).
 <-><->
       
-l.701 ...{conjunto de páginas qeu son linkeadas}$
+l.703 ...{conjunto de páginas qeu son linkeadas}$
                                                   
 Not a real error.
 
@@ -3366,14 +3366,14 @@ Not a real error.
 ! Preview: Snippet 204 started.
 <-><->
       
-l.703 ...y llamaremos a la nueva matriz obtenida $
+l.705 ...y llamaremos a la nueva matriz obtenida $
                                                   M^\prime$
 Not a real error.
 
 ! Preview: Snippet 204 ended.(551690+0x958295).
 <-><->
       
-l.703 ...mos a la nueva matriz obtenida $M^\prime$
+l.705 ...mos a la nueva matriz obtenida $M^\prime$
                                                   
 Not a real error.
 
@@ -3381,14 +3381,14 @@ Not a real error.
 ! Preview: Snippet 205 started.
 <-><->
       
-l.705 \[
+l.707 \[
         
 Not a real error.
 
 ! Preview: Snippet 205 ended.(4456445+0x17024941).
 <-><->
       
-l.713 \]
+l.715 \]
         
 Not a real error.
 
@@ -3396,14 +3396,14 @@ Not a real error.
 ! Preview: Snippet 206 started.
 <-><->
       
-l.715 ...l siguiente paso es encontrar un vector $
+l.717 ...l siguiente paso es encontrar un vector $
                                                   \vec{v}$ (algunos autores ...
 Not a real error.
 
 ! Preview: Snippet 206 ended.(512698+0x373594).
 <-><->
       
-l.715 ...nte paso es encontrar un vector $\vec{v}$
+l.717 ...nte paso es encontrar un vector $\vec{v}$
                                                    (algunos autores lo llama...
 Not a real error.
 
@@ -3411,14 +3411,14 @@ Not a real error.
 ! Preview: Snippet 207 started.
 <-><->
       
-l.715 ...or $\vec{v}$ (algunos autores lo llaman $
+l.717 ...or $\vec{v}$ (algunos autores lo llaman $
                                                   \vec{I}$) que represente e...
 Not a real error.
 
 ! Preview: Snippet 207 ended.(694096+0x371766).
 <-><->
       
-l.715 ...{v}$ (algunos autores lo llaman $\vec{I}$
+l.717 ...{v}$ (algunos autores lo llaman $\vec{I}$
                                                   ) que represente el PageRa...
 Not a real error.
 
@@ -3426,14 +3426,14 @@ Not a real error.
 ! Preview: Snippet 208 started.
 <-><->
       
-l.715 ...o tenemos 5 páginas web le asignamos a $
+l.717 ...o tenemos 5 páginas web le asignamos a $
                                                   \vec{v}$ como valores $\ve...
 Not a real error.
 
 ! Preview: Snippet 208 ended.(512698+0x373594).
 <-><->
       
-l.715 ...s 5 páginas web le asignamos a $\vec{v}$
+l.717 ...s 5 páginas web le asignamos a $\vec{v}$
                                                    como valores $\vec{v} = (...
 Not a real error.
 
@@ -3441,14 +3441,14 @@ Not a real error.
 ! Preview: Snippet 209 started.
 <-><->
       
-l.715 ...b le asignamos a $\vec{v}$ como valores $
+l.717 ...b le asignamos a $\vec{v}$ como valores $
                                                   \vec{v} = (a,b,c,d,e)^T$, ...
 Not a real error.
 
 ! Preview: Snippet 209 ended.(618681+179404x5304290).
 <-><->
       
-l.715 ...}$ como valores $\vec{v} = (a,b,c,d,e)^T$
+l.717 ...}$ como valores $\vec{v} = (a,b,c,d,e)^T$
                                                   , obteniendo así un vecto...
 Not a real error.
 
@@ -3456,14 +3456,14 @@ Not a real error.
 ! Preview: Snippet 210 started.
 <-><->
       
-l.715 ...obteniendo así un vector de dimensión $
+l.717 ...obteniendo así un vector de dimensión $
                                                   d=5$.
 Not a real error.
 
 ! Preview: Snippet 210 ended.(498346+0x1689141).
 <-><->
       
-l.715 ...niendo así un vector de dimensión $d=5$
+l.717 ...niendo así un vector de dimensión $d=5$
                                                   .
 Not a real error.
 
@@ -3471,14 +3471,14 @@ Not a real error.
 ! Preview: Snippet 211 started.
 <-><->
       
-l.717 \item Obtenemos los valores de $
+l.719 \item Obtenemos los valores de $
                                       \{v_i\}$ a partir de los autovalores d...
 Not a real error.
 
 ! Preview: Snippet 211 ended.(538214+179404x1287893).
 <-><->
       
-l.717 \item Obtenemos los valores de $\{v_i\}$
+l.719 \item Obtenemos los valores de $\{v_i\}$
                                                a partir de los autovalores d...
 Not a real error.
 
@@ -3486,14 +3486,14 @@ Not a real error.
 ! Preview: Snippet 212 started.
 <-><->
       
-l.717 ...\{v_i\}$ a partir de los autovalores de $
+l.719 ...\{v_i\}$ a partir de los autovalores de $
                                                   M^\prime$, tal que:
 Not a real error.
 
 ! Preview: Snippet 212 ended.(551690+0x958295).
 <-><->
       
-l.717 ...a partir de los autovalores de $M^\prime$
+l.719 ...a partir de los autovalores de $M^\prime$
                                                   , tal que:
 Not a real error.
 
@@ -3501,14 +3501,14 @@ Not a real error.
 ! Preview: Snippet 213 started.
 <-><->
       
-l.719 \[
+l.721 \[
         
 Not a real error.
 
 ! Preview: Snippet 213 ended.(615628+0x15037419).
 <-><->
       
-l.721 \]
+l.723 \]
         
 Not a real error.
 
@@ -3516,14 +3516,14 @@ Not a real error.
 ! Preview: Snippet 214 started.
 <-><->
       
-l.723 \item Determinamos los autovalores de $
+l.725 \item Determinamos los autovalores de $
                                              M^\prime$
 Not a real error.
 
 ! Preview: Snippet 214 ended.(551690+0x958295).
 <-><->
       
-l.723 ...eterminamos los autovalores de $M^\prime$
+l.725 ...eterminamos los autovalores de $M^\prime$
                                                   
 Not a real error.
 
@@ -3531,14 +3531,14 @@ Not a real error.
 ! Preview: Snippet 215 started.
 <-><->
       
-l.725 \[
+l.727 \[
         
 Not a real error.
 
 ! Preview: Snippet 215 ended.(1440190+0x20135254).
 <-><->
       
-l.727 \]
+l.729 \]
         
 Not a real error.
 
@@ -3546,14 +3546,14 @@ Not a real error.
 ! Preview: Snippet 216 started.
 <-><->
       
-l.729 Tomaremos sólo $
+l.731 Tomaremos sólo $
                        \lambda = 1$ $\rightarrow M^\prime \vec{v} = \vec{v}$...
 Not a real error.
 
 ! Preview: Snippet 216 ended.(498346+0x1734242).
 <-><->
       
-l.729 Tomaremos sólo $\lambda = 1$
+l.731 Tomaremos sólo $\lambda = 1$
                                     $\rightarrow M^\prime \vec{v} = \vec{v}$...
 Not a real error.
 
@@ -3561,14 +3561,14 @@ Not a real error.
 ! Preview: Snippet 217 started.
 <-><->
       
-l.729 Tomaremos sólo $\lambda = 1$ $
+l.731 Tomaremos sólo $\lambda = 1$ $
                                      \rightarrow M^\prime \vec{v} = \vec{v}$...
 Not a real error.
 
 ! Preview: Snippet 217 ended.(551690+0x3579259).
 <-><->
       
-l.729 ... $\rightarrow M^\prime \vec{v} = \vec{v}$
+l.731 ... $\rightarrow M^\prime \vec{v} = \vec{v}$
                                                    (Ecuación autoconsistente)
 Not a real error.
 
@@ -3576,14 +3576,14 @@ Not a real error.
 ! Preview: Snippet 218 started.
 <-><->
       
-l.731 \item Hallamos el autovector asociado a $
+l.733 \item Hallamos el autovector asociado a $
                                                \lambda = 1$. Obteniendo:
 Not a real error.
 
 ! Preview: Snippet 218 ended.(498346+0x1734242).
 <-><->
       
-l.731 ...os el autovector asociado a $\lambda = 1$
+l.733 ...os el autovector asociado a $\lambda = 1$
                                                   . Obteniendo:
 Not a real error.
 
@@ -3591,14 +3591,14 @@ Not a real error.
 ! Preview: Snippet 219 started.
 <-><->
       
-l.733 \[
+l.735 \[
         
 Not a real error.
 
 ! Preview: Snippet 219 ended.(1440190+0x18527529).
 <-><->
       
-l.735 \]
+l.737 \]
         
 Not a real error.
 
@@ -3606,14 +3606,14 @@ Not a real error.
 ! Preview: Snippet 220 started.
 <-><->
       
-l.737 ...ena de mayor a menor las componentes de $
+l.739 ...ena de mayor a menor las componentes de $
                                                   \vec{v}$, quedándonos:
 Not a real error.
 
 ! Preview: Snippet 220 ended.(512698+0x373594).
 <-><->
       
-l.737 ...ayor a menor las componentes de $\vec{v}$
+l.739 ...ayor a menor las componentes de $\vec{v}$
                                                   , quedándonos:
 Not a real error.
 
@@ -3621,14 +3621,14 @@ Not a real error.
 ! Preview: Snippet 221 started.
 <-><->
       
-l.739 \[
+l.741 \[
         
 Not a real error.
 
 ! Preview: Snippet 221 ended.(4456445+0x14907754).
 <-><->
       
-l.747 \]
+l.749 \]
         
 Not a real error.
 
@@ -3636,14 +3636,14 @@ Not a real error.
 ! Preview: Snippet 222 started.
 <-><->
       
-l.761   \item No se encuentra $
+l.763   \item No se encuentra $
                                \lambda = 1$ en la mayoría de los casos.
 Not a real error.
 
 ! Preview: Snippet 222 ended.(498346+0x1734242).
 <-><->
       
-l.761   \item No se encuentra $\lambda = 1$
+l.763   \item No se encuentra $\lambda = 1$
                                             en la mayoría de los casos.
 Not a real error.
 
@@ -3651,14 +3651,14 @@ Not a real error.
 ! Preview: Snippet 223 started.
 <-><->
       
-l.767 \[
+l.769 \[
         
 Not a real error.
 
 ! Preview: Snippet 223 ended.(2231478+0x16820216).
 <-><->
       
-l.772 \]
+l.774 \]
         
 Not a real error.
 
@@ -3666,14 +3666,14 @@ Not a real error.
 ! Preview: Snippet 224 started.
 <-><->
       
-l.776 \[
+l.778 \[
         
 Not a real error.
 
 ! Preview: Snippet 224 ended.(660388+0x13666757).
 <-><->
       
-l.778 \]
+l.780 \]
         
 Not a real error.
 
@@ -3681,14 +3681,14 @@ Not a real error.
 ! Preview: Snippet 225 started.
 <-><->
       
-l.780 donde se toma un vector $
+l.782 donde se toma un vector $
                                I^{0}$ y se hace interactuar unas 100 veces y...
 Not a real error.
 
 ! Preview: Snippet 225 ended.(598293+0x683066).
 <-><->
       
-l.780 donde se toma un vector $I^{0}$
+l.782 donde se toma un vector $I^{0}$
                                       y se hace interactuar unas 100 veces y...
 Not a real error.
 
@@ -3696,14 +3696,14 @@ Not a real error.
 ! Preview: Snippet 226 started.
 <-><->
       
-l.781 mostrado de las páginas es el de $
+l.783 mostrado de las páginas es el de $
                                          I^{100}$, ordenadas de mayor a meno...
 Not a real error.
 
 ! Preview: Snippet 226 ended.(598293+0x1240130).
 <-><->
       
-l.781 mostrado de las páginas es el de $I^{100}$
+l.783 mostrado de las páginas es el de $I^{100}$
                                                  , ordenadas de mayor a meno...
 Not a real error.
 
@@ -3711,14 +3711,14 @@ Not a real error.
 ! Preview: Snippet 227 started.
 <-><->
       
-l.782 ...e la matriz hipervínculo (hiperenlace) $
+l.784 ...e la matriz hipervínculo (hiperenlace) $
                                                   H$, obtenemos
 Not a real error.
 
 ! Preview: Snippet 227 ended.(490372+0x654826).
 <-><->
       
-l.782 ...la matriz hipervínculo (hiperenlace) $H$
+l.784 ...la matriz hipervínculo (hiperenlace) $H$
                                                   , obtenemos
 Not a real error.
 
@@ -3726,14 +3726,14 @@ Not a real error.
 ! Preview: Snippet 228 started.
 <-><->
       
-l.786 ...también se sabe que la convergencia de $
+l.788 ...también se sabe que la convergencia de $
                                                   I^k = E
 Not a real error.
 
 ! Preview: Snippet 228 ended.(624507+0x3656833).
 <-><->
       
-l.787 I^{k-1}$
+l.789 I^{k-1}$
                a $I = E I$ depende del segundo autovalor de $\lambda_2$ de E...
 Not a real error.
 
@@ -3741,14 +3741,14 @@ Not a real error.
 ! Preview: Snippet 229 started.
 <-><->
       
-l.787 I^{k-1}$ a $
+l.789 I^{k-1}$ a $
                   I = E I$ depende del segundo autovalor de $\lambda_2$ de E...
 Not a real error.
 
 ! Preview: Snippet 229 ended.(490372+0x2271457).
 <-><->
       
-l.787 I^{k-1}$ a $I = E I$
+l.789 I^{k-1}$ a $I = E I$
                            depende del segundo autovalor de $\lambda_2$ de E...
 Not a real error.
 
@@ -3756,14 +3756,14 @@ Not a real error.
 ! Preview: Snippet 230 started.
 <-><->
       
-l.787 ...= E I$ depende del segundo autovalor de $
+l.789 ...= E I$ depende del segundo autovalor de $
                                                   \lambda_2$ de E y es un
 Not a real error.
 
 ! Preview: Snippet 230 ended.(498346+107642x729912).
 <-><->
       
-l.787 ...ende del segundo autovalor de $\lambda_2$
+l.789 ...ende del segundo autovalor de $\lambda_2$
                                                    de E y es un
 Not a real error.
 
@@ -3771,14 +3771,14 @@ Not a real error.
 ! Preview: Snippet 231 started.
 <-><->
       
-l.788 hecho que $
+l.790 hecho que $
                  I^k = E I^{k-1}$ converge rápidamente si $\abs{\lambda_2}$ es
 Not a real error.
 
 ! Preview: Snippet 231 ended.(624507+0x3656833).
 <-><->
       
-l.788 hecho que $I^k = E I^{k-1}$
+l.790 hecho que $I^k = E I^{k-1}$
                                   converge rápidamente si $\abs{\lambda_2}$ es
 Not a real error.
 
@@ -3786,14 +3786,14 @@ Not a real error.
 ! Preview: Snippet 232 started.
 <-><->
       
-l.788 ...k = E I^{k-1}$ converge rápidamente si $
+l.790 ...k = E I^{k-1}$ converge rápidamente si $
                                                   \abs{\lambda_2}$ es
 Not a real error.
 
 ! Preview: Snippet 232 ended.(538213+179405x1128590).
 <-><->
       
-l.788 ...onverge rápidamente si $\abs{\lambda_2}$
+l.790 ...onverge rápidamente si $\abs{\lambda_2}$
                                                    es
 Not a real error.
 
@@ -3801,14 +3801,14 @@ Not a real error.
 ! Preview: Snippet 233 started.
 <-><->
       
-l.791 \subsection
+l.793 \subsection
                  {El algoritmo de remiendo (parcheo) general}
 Not a real error.
 
 ! Preview: Snippet 233 ended.(589824+196608x23592960).
 <-><->
       
-l.791 ... algoritmo de remiendo (parcheo) general}
+l.793 ... algoritmo de remiendo (parcheo) general}
                                                   
 Not a real error.
 
@@ -3818,14 +3818,14 @@ Not a real error.
 ! Preview: Snippet 234 started.
 <-><->
       
-l.794 estocástica E con probabilidad $
+l.796 estocástica E con probabilidad $
                                        \alpha$, y con probabilidad $1-\alpha...
 Not a real error.
 
 ! Preview: Snippet 234 ended.(308974+0x461718).
 <-><->
       
-l.794 estocástica E con probabilidad $\alpha$
+l.796 estocástica E con probabilidad $\alpha$
                                               , y con probabilidad $1-\alpha...
 Not a real error.
 
@@ -3833,14 +3833,14 @@ Not a real error.
 ! Preview: Snippet 235 started.
 <-><->
       
-l.794 ...obabilidad $\alpha$, y con probabilidad $
+l.796 ...obabilidad $\alpha$, y con probabilidad $
                                                   1-\alpha$ podrá ir
 Not a real error.
 
 ! Preview: Snippet 235 ended.(462465+59802x1697614).
 <-><->
       
-l.794 ...d $\alpha$, y con probabilidad $1-\alpha$
+l.796 ...d $\alpha$, y con probabilidad $1-\alpha$
                                                    podrá ir
 Not a real error.
 
@@ -3848,18 +3848,18 @@ Not a real error.
 ! Preview: Snippet 236 started.
 <-><->
       
-l.798 \[
+l.800 \[
         
 Not a real error.
 
-LaTeX Font Info:    Try loading font information for U+dsrom on input line 799.
+LaTeX Font Info:    Try loading font information for U+dsrom on input line 801.
 (/usr/share/texmf-dist/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
 )
 ! Preview: Snippet 236 ended.(1440190+0x17333311).
 <-><->
       
-l.800 \]
+l.802 \]
         
 Not a real error.
 
@@ -3867,14 +3867,14 @@ Not a real error.
 ! Preview: Snippet 237 started.
 <-><->
       
-l.802 $
+l.804 $
        \mathds{I}$ es una matriz en la cual todas las entradas están establ...
 Not a real error.
 
 ! Preview: Snippet 237 ended.(490372+0x318942).
 <-><->
       
-l.802 $\mathds{I}$
+l.804 $\mathds{I}$
                    es una matriz en la cual todas las entradas están establ...
 Not a real error.
 
@@ -3882,14 +3882,14 @@ Not a real error.
 ! Preview: Snippet 238 started.
 <-><->
       
-l.811     vector Google inicial $
+l.813     vector Google inicial $
                                  I^0$
 Not a real error.
 
 ! Preview: Snippet 238 ended.(598293+0x683066).
 <-><->
       
-l.811     vector Google inicial $I^0$
+l.813     vector Google inicial $I^0$
                                      
 Not a real error.
 
@@ -3897,7 +3897,7 @@ Not a real error.
 ! Preview: Snippet 239 started.
 <-><->
       
-l.814 \begin{figure}
+l.816 \begin{figure}
                     [H]
 Not a real error.
 
@@ -3908,7 +3908,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.814 \begin{figure}[H]
+l.816 \begin{figure}[H]
                        
 Option `H' ignored and `p' used.
 
@@ -3919,7 +3919,7 @@ See the tikz package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.821 \Vertex[a = 90, d = 2.75]{1}
+l.823 \Vertex[a = 90, d = 2.75]{1}
                                     \Vertex[a = 162, d = 2.75]{2}
 This error message was generated by an \errmessage
 command, so I can't give any explicit help.
@@ -3929,7 +3929,7 @@ and deduce the truth by order and method.
 ! Preview: Snippet 239 ended.(18002636+247464x23592960).
 <-><->
       
-l.872 \end{figure}
+l.874 \end{figure}
                   
 Not a real error.
 
@@ -3939,14 +3939,14 @@ Not a real error.
 ! Preview: Snippet 240 started.
 <-><->
       
-l.875 \subsection
+l.877 \subsection
                  {Interpretación como una caminata aleatoria}
 Not a real error.
 
 ! Preview: Snippet 240 ended.(546132+152916x23592960).
 <-><->
       
-l.875 ...erpretación como una caminata aleatoria}
+l.877 ...erpretación como una caminata aleatoria}
                                                   
 Not a real error.
 
@@ -3956,14 +3956,14 @@ Not a real error.
 ! Preview: Snippet 241 started.
 <-><->
       
-l.882 \begin{align*}
+l.884 \begin{align*}
                     
 Not a real error.
 
 ! Preview: Snippet 241 ended.(3007157+0x9617083).
 <-><->
       
-l.885 \end{align*}
+l.887 \end{align*}
                   
 Not a real error.
 
@@ -3971,14 +3971,14 @@ Not a real error.
 ! Preview: Snippet 242 started.
 <-><->
       
-l.889 \begin{align*}
+l.891 \begin{align*}
                     
 Not a real error.
 
 ! Preview: Snippet 242 ended.(3007157+0x14343708).
 <-><->
       
-l.892 \end{align*}
+l.894 \end{align*}
                   
 Not a real error.
 
@@ -3986,14 +3986,14 @@ Not a real error.
 ! Preview: Snippet 243 started.
 <-><->
       
-l.894 \[
+l.896 \[
         
 Not a real error.
 
 ! Preview: Snippet 243 ended.(899102+0x17647139).
 <-><->
       
-l.896 \]
+l.898 \]
         
 Not a real error.
 
@@ -4001,14 +4001,14 @@ Not a real error.
 ! Preview: Snippet 244 started.
 <-><->
       
-l.898 En el contexto del Internet, $
+l.900 En el contexto del Internet, $
                                     G_{i j}$ es la probabilidad de qeu cierto
 Not a real error.
 
 ! Preview: Snippet 244 ended.(490372+209587x1042151).
 <-><->
       
-l.898 En el contexto del Internet, $G_{i j}$
+l.900 En el contexto del Internet, $G_{i j}$
                                              es la probabilidad de qeu cierto
 Not a real error.
 
@@ -4016,14 +4016,14 @@ Not a real error.
 ! Preview: Snippet 245 started.
 <-><->
       
-l.899 internauta, que se encuentra en la página $
+l.901 internauta, que se encuentra en la página $
                                                   p_i$, entre en la página ...
 Not a real error.
 
 ! Preview: Snippet 245 ended.(308974+139537x583478).
 <-><->
       
-l.899 ...uta, que se encuentra en la página $p_i$
+l.901 ...uta, que se encuentra en la página $p_i$
                                                   , entre en la página $p_j...
 Not a real error.
 
@@ -4031,14 +4031,14 @@ Not a real error.
 ! Preview: Snippet 246 started.
 <-><->
       
-l.899 ...n la página $p_i$, entre en la página $
+l.901 ...n la página $p_i$, entre en la página $
                                                   p_j$. El
 Not a real error.
 
 ! Preview: Snippet 246 ended.(308974+209587x649318).
 <-><->
       
-l.899 ... página $p_i$, entre en la página $p_j$
+l.901 ... página $p_i$, entre en la página $p_j$
                                                   . El
 Not a real error.
 
@@ -4046,14 +4046,14 @@ Not a real error.
 ! Preview: Snippet 247 started.
 <-><->
       
-l.900 factor $
+l.902 factor $
               \alpha E_{i j}$ es la probabilidad de que lo haga presionando ...
 Not a real error.
 
 ! Preview: Snippet 247 ended.(490372+209587x1469385).
 <-><->
       
-l.900 factor $\alpha E_{i j}$
+l.902 factor $\alpha E_{i j}$
                               es la probabilidad de que lo haga presionando ...
 Not a real error.
 
@@ -4061,14 +4061,14 @@ Not a real error.
 ! Preview: Snippet 248 started.
 <-><->
       
-l.900 ... haga presionando un enlace presente en $
+l.902 ... haga presionando un enlace presente en $
                                                   p_i$, mientras que $\frac{...
 Not a real error.
 
 ! Preview: Snippet 248 ended.(308974+139537x583478).
 <-><->
       
-l.900 ...a presionando un enlace presente en $p_i$
+l.902 ...a presionando un enlace presente en $p_i$
                                                   , mientras que $\frac{1-\a...
 Not a real error.
 
@@ -4076,14 +4076,14 @@ Not a real error.
 ! Preview: Snippet 249 started.
 <-><->
       
-l.900 ... enlace presente en $p_i$, mientras que $
+l.902 ... enlace presente en $p_i$, mientras que $
                                                   \frac{1-\alpha}{N} \mathds...
 Not a real error.
 
 ! Preview: Snippet 249 ended.(620424+247464x1545815).
 <-><->
       
-l.900 ...ntras que $\frac{1-\alpha}{N} \mathds{I}$
+l.902 ...ntras que $\frac{1-\alpha}{N} \mathds{I}$
                                                    es la probabilidad
 Not a real error.
 
@@ -4091,14 +4091,14 @@ Not a real error.
 ! Preview: Snippet 250 started.
 <-><->
       
-l.904 $
+l.906 $
        \alpha = 0.85$
 Not a real error.
 
 ! Preview: Snippet 250 ended.(462465+139537x2694307).
 <-><->
       
-l.904 $\alpha = 0.85$
+l.906 $\alpha = 0.85$
                      
 Not a real error.
 
@@ -4106,14 +4106,14 @@ Not a real error.
 ! Preview: Snippet 251 started.
 <-><->
       
-l.906 \subsection
+l.908 \subsection
                  {Cuantizando las caminatas aleatorias}
 Not a real error.
 
 ! Preview: Snippet 251 ended.(546132+0x23592960).
 <-><->
       
-l.906 ...ion{Cuantizando las caminatas aleatorias}
+l.908 ...ion{Cuantizando las caminatas aleatorias}
                                                   
 Not a real error.
 
@@ -4123,14 +4123,14 @@ Not a real error.
 ! Preview: Snippet 252 started.
 <-><->
       
-l.909 conjunto de nodos $
+l.911 conjunto de nodos $
                          \{p_i\}$ por el conjunto de kets $\{\ket{i}\}$. Sin...
 Not a real error.
 
 ! Preview: Snippet 252 ended.(538214+179404x1301098).
 <-><->
       
-l.909 conjunto de nodos $\{p_i\}$
+l.911 conjunto de nodos $\{p_i\}$
                                   por el conjunto de kets $\{\ket{i}\}$. Sin...
 Not a real error.
 
@@ -4138,14 +4138,14 @@ Not a real error.
 ! Preview: Snippet 253 started.
 <-><->
       
-l.909 ...nodos $\{p_i\}$ por el conjunto de kets $
+l.911 ...nodos $\{p_i\}$ por el conjunto de kets $
                                                   \{\ket{i}\}$. Sin embargo,
 Not a real error.
 
 ! Preview: Snippet 253 ended.(538214+179405x1443263).
 <-><->
       
-l.909 ...\}$ por el conjunto de kets $\{\ket{i}\}$
+l.911 ...\}$ por el conjunto de kets $\{\ket{i}\}$
                                                   . Sin embargo,
 Not a real error.
 
@@ -4153,7 +4153,7 @@ Not a real error.
 ! Preview: Snippet 254 started.
 <-><->
       
-l.913 \begin{figure}
+l.915 \begin{figure}
                     [H]
 Not a real error.
 
@@ -4164,14 +4164,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.913 \begin{figure}[H]
+l.915 \begin{figure}[H]
                        
 Option `H' ignored and `p' used.
 
 ! Preview: Snippet 254 ended.(1271652+912843x21816228).
 <-><->
       
-l.934 \end{figure}
+l.936 \end{figure}
                   
 Not a real error.
 
@@ -4179,14 +4179,14 @@ Not a real error.
 ! Preview: Snippet 255 started.
 <-><->
       
-l.936 ...eda" al espacio de Hilbert generado por $
+l.938 ...eda" al espacio de Hilbert generado por $
                                                   \{\ket{i}\}$. En este caso...
 Not a real error.
 
 ! Preview: Snippet 255 ended.(538214+179405x1443263).
 <-><->
       
-l.936 ...cio de Hilbert generado por $\{\ket{i}\}$
+l.938 ...cio de Hilbert generado por $\{\ket{i}\}$
                                                   . En este caso, el operado...
 Not a real error.
 
@@ -4194,14 +4194,14 @@ Not a real error.
 ! Preview: Snippet 256 started.
 <-><->
       
-l.938 \begin{align*}
+l.940 \begin{align*}
                     
 Not a real error.
 
 ! Preview: Snippet 256 ended.(3362981+0x20964225).
 <-><->
       
-l.944 \end{align*}
+l.946 \end{align*}
                   
 Not a real error.
 
@@ -4209,14 +4209,14 @@ Not a real error.
 ! Preview: Snippet 257 started.
 <-><->
       
-l.946 Al realizar la suma sobre $
+l.948 Al realizar la suma sobre $
                                  i$ se tiene $\mathds{1}$, como se deseaba. Sin
 Not a real error.
 
 ! Preview: Snippet 257 ended.(473287+0x247229).
 <-><->
       
-l.946 Al realizar la suma sobre $i$
+l.948 Al realizar la suma sobre $i$
                                     se tiene $\mathds{1}$, como se deseaba. Sin
 Not a real error.
 
@@ -4224,14 +4224,14 @@ Not a real error.
 ! Preview: Snippet 258 started.
 <-><->
       
-l.946 Al realizar la suma sobre $i$ se tiene $
+l.948 Al realizar la suma sobre $i$ se tiene $
                                               \mathds{1}$, como se deseaba. Sin
 Not a real error.
 
 ! Preview: Snippet 258 ended.(462465+0x438546).
 <-><->
       
-l.946 ...r la suma sobre $i$ se tiene $\mathds{1}$
+l.948 ...r la suma sobre $i$ se tiene $\mathds{1}$
                                                   , como se deseaba. Sin
 Not a real error.
 
@@ -4239,14 +4239,14 @@ Not a real error.
 ! Preview: Snippet 259 started.
 <-><->
       
-l.947 ...ía no es satisfactoria, pues exige que $
+l.949 ...ía no es satisfactoria, pues exige que $
                                                   p_{i
 Not a real error.
 
 ! Preview: Snippet 259 ended.(620424+387940x4263738).
 <-><->
       
-l.948   j}=\frac{1}{outdeg(j)}$
+l.950   j}=\frac{1}{outdeg(j)}$
                                 para que $U U^\dagger=\mathds{1}$.
 Not a real error.
 
@@ -4254,14 +4254,14 @@ Not a real error.
 ! Preview: Snippet 260 started.
 <-><->
       
-l.948   j}=\frac{1}{outdeg(j)}$ para que $
+l.950   j}=\frac{1}{outdeg(j)}$ para que $
                                           U U^\dagger=\mathds{1}$.
 Not a real error.
 
 ! Preview: Snippet 260 ended.(624507+0x2812144).
 <-><->
       
-l.948 ...eg(j)}$ para que $U U^\dagger=\mathds{1}$
+l.950 ...eg(j)}$ para que $U U^\dagger=\mathds{1}$
                                                   .
 Not a real error.
 
@@ -4269,14 +4269,14 @@ Not a real error.
 ! Preview: Snippet 261 started.
 <-><->
       
-l.956 \subsection
+l.958 \subsection
                  {Caminata cuántica de Szegedy}
 Not a real error.
 
 ! Preview: Snippet 261 ended.(546132+152916x23592960).
 <-><->
       
-l.956 \subsection{Caminata cuántica de Szegedy}
+l.958 \subsection{Caminata cuántica de Szegedy}
                                                 
 Not a real error.
 
@@ -4286,14 +4286,14 @@ Not a real error.
 ! Preview: Snippet 262 started.
 <-><->
       
-l.965 operadores de reflexión ($
+l.967 operadores de reflexión ($
                                  W = \mathds{1} - 2 \ketbra{w}{w}$, similare...
 Not a real error.
 
 ! Preview: Snippet 262 ended.(538213+179405x5431644).
 <-><->
       
-l.965 ...xión ($W = \mathds{1} - 2 \ketbra{w}{w}$
+l.967 ...xión ($W = \mathds{1} - 2 \ketbra{w}{w}$
                                                   , similares a los
 Not a real error.
 
@@ -4301,14 +4301,14 @@ Not a real error.
 ! Preview: Snippet 263 started.
 <-><->
       
-l.968 ... operador de evolución de la caminata: $
+l.970 ... operador de evolución de la caminata: $
                                                   U = (\mathds{1} - 2
 Not a real error.
 
 ! Preview: Snippet 263 ended.(538214+179404x7108756).
 <-><->
       
-l.969 B)(\mathds{1} - 2 A)$
+l.971 B)(\mathds{1} - 2 A)$
                            , donde A es el proyector sobre las transiciones ...
 Not a real error.
 
@@ -4316,14 +4316,14 @@ Not a real error.
 ! Preview: Snippet 264 started.
 <-><->
       
-l.973 \begin{align*}
+l.975 \begin{align*}
                     
 Not a real error.
 
 ! Preview: Snippet 264 ended.(3736417+0x9837345).
 <-><->
       
-l.976 \end{align*}
+l.978 \end{align*}
                   
 Not a real error.
 
@@ -4331,14 +4331,14 @@ Not a real error.
 ! Preview: Snippet 265 started.
 <-><->
       
-l.979 \begin{align*}
+l.981 \begin{align*}
                     
 Not a real error.
 
 ! Preview: Snippet 265 ended.(3736417+0x9792660).
 <-><->
       
-l.982 \end{align*}
+l.984 \end{align*}
                   
 Not a real error.
 
@@ -4346,14 +4346,14 @@ Not a real error.
 ! Preview: Snippet 266 started.
 <-><->
       
-l.988 el espacio de Hilbert generado por $
+l.990 el espacio de Hilbert generado por $
                                           \{\ket{i}\}$: $\mathcal{H}^\prime ...
 Not a real error.
 
 ! Preview: Snippet 266 ended.(538214+179405x1443263).
 <-><->
       
-l.988 ...cio de Hilbert generado por $\{\ket{i}\}$
+l.990 ...cio de Hilbert generado por $\{\ket{i}\}$
                                                   : $\mathcal{H}^\prime = \m...
 Not a real error.
 
@@ -4361,14 +4361,14 @@ Not a real error.
 ! Preview: Snippet 267 started.
 <-><->
       
-l.988 ... de Hilbert generado por $\{\ket{i}\}$: $
+l.990 ... de Hilbert generado por $\{\ket{i}\}$: $
                                                   \mathcal{H}^\prime = \math...
 Not a real error.
 
 ! Preview: Snippet 267 ended.(551690+59802x3856675).
 <-><->
       
-l.988 ...\prime = \mathcal{H} \otimes \mathcal{H}$
+l.990 ...\prime = \mathcal{H} \otimes \mathcal{H}$
                                                   .
 Not a real error.
 
@@ -4376,14 +4376,14 @@ Not a real error.
 ! Preview: Snippet 268 started.
 <-><->
       
-l.991 \begin{figure}
+l.993 \begin{figure}
                     [h]
 Not a real error.
 
 ! Preview: Snippet 268 ended.(4804511+4445702x25886250).
 <-><->
       
-l.1030 \end{figure}
+l.1032 \end{figure}
                    
 Not a real error.
 
@@ -4394,14 +4394,14 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 ! Preview: Snippet 269 started.
 <-><->
       
-l.1033 ...artición es un reflejo de la primera, $
+l.1035 ...artición es un reflejo de la primera, $
                                                   B = A^T$. Entonces:
 Not a real error.
 
 ! Preview: Snippet 269 ended.(618681+0x2509814).
 <-><->
       
-l.1033 ...n es un reflejo de la primera, $B = A^T$
+l.1035 ...n es un reflejo de la primera, $B = A^T$
                                                   . Entonces:
 Not a real error.
 
@@ -4409,14 +4409,14 @@ Not a real error.
 ! Preview: Snippet 270 started.
 <-><->
       
-l.1034 $
+l.1036 $
         U = (2 A^T - \mathds{1})(2 A - \mathds{1})$
 Not a real error.
 
 ! Preview: Snippet 270 ended.(618681+179404x7501102).
 <-><->
       
-l.1034 ... (2 A^T - \mathds{1})(2 A - \mathds{1})$
+l.1036 ... (2 A^T - \mathds{1})(2 A - \mathds{1})$
                                                   
 Not a real error.
 
@@ -4424,14 +4424,14 @@ Not a real error.
 ! Preview: Snippet 271 started.
 <-><->
       
-l.1036 \[
+l.1038 \[
          
 Not a real error.
 
 ! Preview: Snippet 271 ended.(813578+0x22394974).
 <-><->
       
-l.1039 \]
+l.1041 \]
          
 Not a real error.
 
@@ -4439,14 +4439,14 @@ Not a real error.
 ! Preview: Snippet 272 started.
 <-><->
       
-l.1041 Donde $
+l.1043 Donde $
               S$ es el operador SWAP, $S = \sum\limits_{i j} \ketbra{j i}{i j}$
 Not a real error.
 
 ! Preview: Snippet 272 ended.(490372+0x481402).
 <-><->
       
-l.1041 Donde $S$
+l.1043 Donde $S$
                  es el operador SWAP, $S = \sum\limits_{i j} \ketbra{j i}{i j}$
 Not a real error.
 
@@ -4454,14 +4454,14 @@ Not a real error.
 ! Preview: Snippet 273 started.
 <-><->
       
-l.1041 Donde $S$ es el operador SWAP, $
+l.1043 Donde $S$ es el operador SWAP, $
                                        S = \sum\limits_{i j} \ketbra{j i}{i j}$
 Not a real error.
 
 ! Preview: Snippet 273 ended.(538218+819320x4320193).
 <-><->
       
-l.1041 ...S = \sum\limits_{i j} \ketbra{j i}{i j}$
+l.1043 ...S = \sum\limits_{i j} \ketbra{j i}{i j}$
                                                   
 Not a real error.
 
@@ -4469,14 +4469,14 @@ Not a real error.
 ! Preview: Snippet 274 started.
 <-><->
       
-l.1043 \subsection
+l.1045 \subsection
                   {PageRank cuántico}
 Not a real error.
 
 ! Preview: Snippet 274 ended.(546132+152916x23592960).
 <-><->
       
-l.1043 \subsection{PageRank cuántico}
+l.1045 \subsection{PageRank cuántico}
                                       
 Not a real error.
 
@@ -4486,14 +4486,14 @@ Not a real error.
 ! Preview: Snippet 275 started.
 <-><->
       
-l.1048 procedimiento de Szegedy, sustituyendo $
+l.1050 procedimiento de Szegedy, sustituyendo $
                                                p_{i j}$ por $G_{i j}$.
 Not a real error.
 
 ! Preview: Snippet 275 ended.(308974+209587x838976).
 <-><->
       
-l.1048 ...iento de Szegedy, sustituyendo $p_{i j}$
+l.1050 ...iento de Szegedy, sustituyendo $p_{i j}$
                                                    por $G_{i j}$.
 Not a real error.
 
@@ -4501,14 +4501,14 @@ Not a real error.
 ! Preview: Snippet 276 started.
 <-><->
       
-l.1048 ...de Szegedy, sustituyendo $p_{i j}$ por $
+l.1050 ...de Szegedy, sustituyendo $p_{i j}$ por $
                                                   G_{i j}$.
 Not a real error.
 
 ! Preview: Snippet 276 ended.(490372+209587x1042151).
 <-><->
       
-l.1048 ...dy, sustituyendo $p_{i j}$ por $G_{i j}$
+l.1050 ...dy, sustituyendo $p_{i j}$ por $G_{i j}$
                                                   .
 Not a real error.
 
@@ -4516,14 +4516,14 @@ Not a real error.
 ! Preview: Snippet 277 started.
 <-><->
       
-l.1050 ...valor de PageRank cuántico en el paso $
+l.1052 ...valor de PageRank cuántico en el paso $
                                                   m$ como:
 Not a real error.
 
 ! Preview: Snippet 277 ended.(308974+0x630079).
 <-><->
       
-l.1050 ...lor de PageRank cuántico en el paso $m$
+l.1052 ...lor de PageRank cuántico en el paso $m$
                                                    como:
 Not a real error.
 
@@ -4531,14 +4531,14 @@ Not a real error.
 ! Preview: Snippet 278 started.
 <-><->
       
-l.1052 \begin{align*}
+l.1054 \begin{align*}
                      
 Not a real error.
 
 ! Preview: Snippet 278 ended.(3434471+0x16290180).
 <-><->
       
-l.1055 \end{align*}
+l.1057 \end{align*}
                    
 Not a real error.
 
@@ -4546,14 +4546,14 @@ Not a real error.
 ! Preview: Snippet 279 started.
 <-><->
       
-l.1057 Esto equivale a realizar $
+l.1059 Esto equivale a realizar $
                                  m$ pasos de la caminata con $\ket{\psi_0}$ ...
 Not a real error.
 
 ! Preview: Snippet 279 ended.(308974+0x630079).
 <-><->
       
-l.1057 Esto equivale a realizar $m$
+l.1059 Esto equivale a realizar $m$
                                     pasos de la caminata con $\ket{\psi_0}$ ...
 Not a real error.
 
@@ -4561,14 +4561,14 @@ Not a real error.
 ! Preview: Snippet 280 started.
 <-><->
       
-l.1057 ... realizar $m$ pasos de la caminata con $
+l.1059 ... realizar $m$ pasos de la caminata con $
                                                   \ket{\psi_0}$ como estado
 Not a real error.
 
 ! Preview: Snippet 280 ended.(538213+179405x1257165).
 <-><->
       
-l.1057 ... pasos de la caminata con $\ket{\psi_0}$
+l.1059 ... pasos de la caminata con $\ket{\psi_0}$
                                                    como estado
 Not a real error.
 
@@ -4576,14 +4576,14 @@ Not a real error.
 ! Preview: Snippet 281 started.
 <-><->
       
-l.1058 ... y realizar una medida proyeciva sobre $
+l.1060 ... y realizar una medida proyeciva sobre $
                                                   \ket{i}_2$.
 Not a real error.
 
 ! Preview: Snippet 281 ended.(538213+212173x1036943).
 <-><->
       
-l.1058 ...r una medida proyeciva sobre $\ket{i}_2$
+l.1060 ...r una medida proyeciva sobre $\ket{i}_2$
                                                   .
 Not a real error.
 
@@ -4591,14 +4591,14 @@ Not a real error.
 ! Preview: Snippet 282 started.
 <-><->
       
-l.1060 Nota: $
+l.1062 Nota: $
               I_q$ no converge, sino que oscila, así que se toma el centro ...
 Not a real error.
 
 ! Preview: Snippet 282 ended.(490372+209587x615740).
 <-><->
       
-l.1060 Nota: $I_q$
+l.1062 Nota: $I_q$
                    no converge, sino que oscila, así que se toma el centro ...
 Not a real error.
 
@@ -4606,14 +4606,14 @@ Not a real error.
 ! Preview: Snippet 283 started.
 <-><->
       
-l.1062 promediando $
+l.1064 promediando $
                     I_q$ sobre $m$: $\langle I_q(P_i) \rangle = \frac{1}{M}
 Not a real error.
 
 ! Preview: Snippet 283 ended.(490372+209587x615740).
 <-><->
       
-l.1062 promediando $I_q$
+l.1064 promediando $I_q$
                          sobre $m$: $\langle I_q(P_i) \rangle = \frac{1}{M}
 Not a real error.
 
@@ -4621,14 +4621,14 @@ Not a real error.
 ! Preview: Snippet 284 started.
 <-><->
       
-l.1062 promediando $I_q$ sobre $
+l.1064 promediando $I_q$ sobre $
                                 m$: $\langle I_q(P_i) \rangle = \frac{1}{M}
 Not a real error.
 
 ! Preview: Snippet 284 ended.(308974+0x630079).
 <-><->
       
-l.1062 promediando $I_q$ sobre $m$
+l.1064 promediando $I_q$ sobre $m$
                                   : $\langle I_q(P_i) \rangle = \frac{1}{M}
 Not a real error.
 
@@ -4636,22 +4636,22 @@ Not a real error.
 ! Preview: Snippet 285 started.
 <-><->
       
-l.1062 promediando $I_q$ sobre $m$: $
+l.1064 promediando $I_q$ sobre $m$: $
                                      \langle I_q(P_i) \rangle = \frac{1}{M}
 Not a real error.
 
 ! Preview: Snippet 285 ended.(1111766+708650x8468019).
 <-><->
       
-l.1063 \sum\limits_{m=0}^{M-1} I_q(P_i,m)$
+l.1065 \sum\limits_{m=0}^{M-1} I_q(P_i,m)$
                                           
 Not a real error.
 
 [285] ) 
 Here is how much of TeX's memory you used:
  1396 strings out of 467616
- 21720 string characters out of 5659813
- 601447 words of memory out of 5000000
+ 21720 string characters out of 5659812
+ 597006 words of memory out of 5000000
  29917 multiletter control sequences out of 15000+600000
  540748 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191

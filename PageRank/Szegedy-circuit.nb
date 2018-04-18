@@ -1,0 +1,183 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6517,        175]
+NotebookOptionsPosition[      6121,        159]
+NotebookOutlinePosition[      6454,        174]
+CellTagsIndexPosition[      6411,        171]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ket0", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", "1", "}"}], ",", 
+     RowBox[{"{", "0", "}"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ket1", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", "0", "}"}], ",", 
+     RowBox[{"{", "1", "}"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Id", "=", 
+   RowBox[{"IdentityMatrix", "[", "2", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"X", "=", 
+   RowBox[{"PauliMatrix", "[", "1", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Y", "=", 
+   RowBox[{"PauliMatrix", "[", "2", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Z", "=", 
+   RowBox[{"PauliMatrix", "[", "3", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"H", "=", 
+   RowBox[{"HadamardMatrix", "[", "2", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"CNOT", "[", 
+    RowBox[{"c_", ",", "t_", ",", "n_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"KroneckerProduct", "[", 
+     RowBox[{
+      RowBox[{"IdentityMatrix", "[", 
+       SuperscriptBox["2", "c"], "]"}], ",", 
+      RowBox[{"ket0", ".", 
+       RowBox[{"ket0", "\[ConjugateTranspose]"}]}], ",", 
+      RowBox[{"IdentityMatrix", "[", 
+       SuperscriptBox["2", 
+        RowBox[{"n", "-", "1", "-", "c"}]], "]"}]}], "]"}], "+", 
+    RowBox[{
+     RowBox[{"KroneckerProduct", "[", 
+      RowBox[{
+       RowBox[{"IdentityMatrix", "[", 
+        SuperscriptBox["2", "c"], "]"}], ",", 
+       RowBox[{"ket1", ".", 
+        RowBox[{"ket1", "\[ConjugateTranspose]"}]}], ",", 
+       RowBox[{"IdentityMatrix", "[", 
+        SuperscriptBox["2", 
+         RowBox[{"n", "-", "1", "-", "c"}]], "]"}]}], "]"}], ".", 
+     RowBox[{"KroneckerProduct", "[", 
+      RowBox[{
+       RowBox[{"IdentityMatrix", "[", 
+        SuperscriptBox["2", "t"], "]"}], ",", "X", ",", 
+       RowBox[{"IdentityMatrix", "[", 
+        SuperscriptBox["2", 
+         RowBox[{"n", "-", "1", "-", "t"}]], "]"}]}], "]"}]}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"CU", "[", 
+    RowBox[{"c_", ",", "t_", ",", "n_", ",", "U_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"KroneckerProduct", "[", 
+     RowBox[{
+      RowBox[{"IdentityMatrix", "[", 
+       SuperscriptBox["2", "c"], "]"}], ",", 
+      RowBox[{"ket0", ".", 
+       RowBox[{"ket0", "\[ConjugateTranspose]"}]}], ",", 
+      RowBox[{"IdentityMatrix", "[", 
+       SuperscriptBox["2", 
+        RowBox[{"n", "-", "1", "-", "c"}]], "]"}]}], "]"}], "+", 
+    RowBox[{
+     RowBox[{"KroneckerProduct", "[", 
+      RowBox[{
+       RowBox[{"IdentityMatrix", "[", 
+        SuperscriptBox["2", "c"], "]"}], ",", 
+       RowBox[{"ket1", ".", 
+        RowBox[{"ket1", "\[ConjugateTranspose]"}]}], ",", 
+       RowBox[{"IdentityMatrix", "[", 
+        SuperscriptBox["2", 
+         RowBox[{"n", "-", "1", "-", "c"}]], "]"}]}], "]"}], ".", 
+     RowBox[{"KroneckerProduct", "[", 
+      RowBox[{
+       RowBox[{"IdentityMatrix", "[", 
+        SuperscriptBox["2", "t"], "]"}], ",", "U", ",", 
+       RowBox[{"IdentityMatrix", "[", 
+        SuperscriptBox["2", 
+         RowBox[{"n", "-", 
+          RowBox[{"Log2", "[", 
+           RowBox[{
+            RowBox[{"Dimensions", "[", "U", "]"}], "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "]"}], "-", "t"}]], "]"}]}], 
+      "]"}]}]}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.730113599149494*^9, 3.7301136666994534`*^9}, {
+   3.730113869911767*^9, 3.7301138822249613`*^9}, {3.730113931637169*^9, 
+   3.730114038922988*^9}, {3.73011408189678*^9, 3.730114117529072*^9}, {
+   3.730114185561558*^9, 3.7301142917560587`*^9}, {3.730114330787953*^9, 
+   3.730114351549685*^9}, {3.730114496675715*^9, 3.7301145268291883`*^9}, {
+   3.7301147265997677`*^9, 3.7301147876739893`*^9}, {3.7301152547584343`*^9, 
+   3.730115294294981*^9}, 3.730115421929269*^9, 3.7301154635293093`*^9, 
+   3.730116318699031*^9},ExpressionUUID->"2c646e93-15f2-48d0-9314-\
+11fb2beb718b"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"R", "=", 
+   RowBox[{
+    RowBox[{"KroneckerProduct", "[", 
+     RowBox[{"Id", ",", "Id", ",", "X"}], "]"}], ".", 
+    RowBox[{"CNOT", "[", 
+     RowBox[{"2", ",", "1", ",", "3"}], "]"}], ".", 
+    RowBox[{"CU", "[", 
+     RowBox[{"2", ",", "0", ",", "3", ",", 
+      RowBox[{"CNOT", "[", 
+       RowBox[{"1", ",", "0", ",", "3"}], "]"}]}], "]"}]}]}], ";"}]], "Input",\
+
+ CellChangeTimes->{{3.7301145385709*^9, 3.730114688315775*^9}, {
+   3.7301147572803497`*^9, 3.730114757704302*^9}, {3.730115304822813*^9, 
+   3.730115341062173*^9}, {3.7301153736390333`*^9, 3.730115379783176*^9}, {
+   3.73011542954315*^9, 3.730115754094206*^9}, {3.730115786103381*^9, 
+   3.730115852217299*^9}, {3.730115885506195*^9, 3.73011588775483*^9}, {
+   3.730115937802437*^9, 3.730115963899096*^9}, {3.730116013996915*^9, 
+   3.730116063757502*^9}, {3.730116093985505*^9, 3.7301161384899054`*^9}, {
+   3.730116180435317*^9, 3.730116333337854*^9}, {3.730116370388648*^9, 
+   3.7301163808679333`*^9}, 3.7301169144042253`*^9, {3.730164008225378*^9, 
+   3.730164018713851*^9}, {3.730164080922509*^9, 3.730164199484578*^9}, {
+   3.730164237310018*^9, 3.7301643615578203`*^9}, {3.7301649435577374`*^9, 
+   3.730164951117639*^9}, {3.730165022646625*^9, 3.730165036861291*^9}, 
+   3.7301654108515167`*^9, {3.730165449867169*^9, 3.730165462739787*^9}, {
+   3.730165548829482*^9, 3.7301656359094353`*^9}, {3.7301657314081163`*^9, 
+   3.730165750151689*^9}, {3.730165925042837*^9, 
+   3.730166027907443*^9}},ExpressionUUID->"36f555b4-7a93-4f4b-845a-\
+d7e39a44f170"]
+},
+WindowSize->{808, 781},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"11.1 for Linux x86 (64-bit) (March 13, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 3988, 106, 292, "Input", "ExpressionUUID" -> \
+"2c646e93-15f2-48d0-9314-11fb2beb718b"],
+Cell[4549, 128, 1568, 29, 91, "Input", "ExpressionUUID" -> \
+"36f555b4-7a93-4f4b-845a-d7e39a44f170"]
+}
+]
+*)
+

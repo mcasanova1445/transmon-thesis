@@ -272,8 +272,7 @@ $\hat{H} = \frac{\hbar}{2} \Delta_q \sigma_z + \hbar(\Delta_r + \chi \sigma_z) a
 
 $\Omega(t) = \Omega^x(t) \cos(\omega_d t) + \Omega^y \sin(\omega_d t), \qquad 0<t<t_g$
 
-$\hat{H} = \frac{\hbar}{2} \Delta_q \sigma_z + \hbar (\Delta_r + \chi \sigma_z) a^\dagger a + \frac{\hbar}{2} (\Omega^x(t) \sigma_x + \Omega^y(t) \sigma_y)
-
+$\hat{H} = \frac{\hbar}{2} \Delta_q \sigma_z + \hbar (\Delta_r + \chi \sigma_z) a^\dagger a + \frac{\hbar}{2} (\Omega^x(t) \sigma_x + \Omega^y(t) \sigma_y)$
 
 # The end
 
