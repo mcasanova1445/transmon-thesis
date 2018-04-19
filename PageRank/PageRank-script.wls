@@ -6,13 +6,17 @@ SetDirectory["~/Documents/transmon-thesis/PageRank"]
 
 (*g=Graph[{1->2,1->3,1->4,2->1,2->4,3->4,4->3}];*) (*Grafo*)
 (*g=Graph[{1->2,1->3,2->4}];*) (*Grafo \[AAcute]rbol*)
-g=Graph[{1->2,2->3,3->4,4->1}]; (*Grafo c\[IAcute]clico*)
+(*g=Graph[{1->2,2->3,3->4,4\[Rule]1}];*) (*Grafo c\[IAcute]clico*)
+(*g=Graph[{1->2,1->3,1->4}];*) (*Grafo estrella*)
+g=Graph[{1->2,1->3,1->4,2->1,2->3,2->4,3->1,3->2,3->4,4->1,4->2,4->3}]; (*Grafo completo*)
 
 Export["grafo.png",g]
 
 
 Em=AdjacencyMatrix[g]; 
-For[j=1,j<=4,j++, Em[[j]]=Em[[j]]/(Sum[Em[[j,i]],{i,1,4}]+0.0000000000001);]
+For[j=1,j<=4,j++,
+	OutDeg=Sum[Em[[j,i]],{i,1,4}];
+	If[OutDeg!=0, Em[[j]]=Em[[j]]/OutDeg, Em[[j]]={1/4,1/4,1/4,1/4};]]
 Em=Transpose[Em]; (*Matriz de adyacencia ponderada del grafo*)
 "Matriz de adyacencia ponderada: " >> "output.txt"
 Em >>> "output.txt"
@@ -26,11 +30,11 @@ G >>> "output.txt"
 
 
 
-Ivl1={1}; (*PageRank inicial de cada nodo*)
-Ivl2={0};
-Ivl3={0};
-Ivl4={0};
-Iv={{1},{0},{0},{0}}; (*Vector de PageRank inicial*)
+Ivl1={1/4}; (*PageRank inicial de cada nodo*)
+Ivl2={1/4};
+Ivl3={1/4};
+Ivl4={1/4};
+Iv={{1/4},{1/4},{1/4},{1/4}}; (*Vector de PageRank inicial*)
 For[i=1,i<=30,i++,
 	Iv=G.Iv; (*Iterar con la matriz de Google*)
 	(*Iv=Iv/Norm[Iv];*)
@@ -97,6 +101,10 @@ Export["Nodo1-PRQ.csv",qIvl1]
 Export["Nodo2-PRQ.csv",qIvl2]
 Export["Nodo3-PRQ.csv",qIvl3]
 Export["Nodo4-PRQ.csv",qIvl4]
+
+"PageRank cu\[AAcute]ntico: " >>> "output.txt"
+{Mean[qIvl1],Mean[qIvl2],Mean[qIvl3],Mean[qIvl4]} >>> "output.txt"
+
 
 
 
