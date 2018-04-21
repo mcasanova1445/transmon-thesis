@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6517,        175]
-NotebookOptionsPosition[      6121,        159]
-NotebookOutlinePosition[      6454,        174]
-CellTagsIndexPosition[      6411,        171]
+NotebookDataLength[      8425,        234]
+NotebookOptionsPosition[      7792,        212]
+NotebookOutlinePosition[      8126,        227]
+CellTagsIndexPosition[      8083,        224]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -47,6 +47,21 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"H", "=", 
    RowBox[{"HadamardMatrix", "[", "2", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Ry", "[", "\[Theta]_", "]"}], ":=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Cos", "[", "\[Theta]", "]"}], ",", 
+       RowBox[{"-", 
+        RowBox[{"Sin", "[", "\[Theta]", "]"}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Sin", "[", "\[Theta]", "]"}], ",", 
+       RowBox[{"Cos", "[", "\[Theta]", "]"}]}], "}"}]}], "}"}]}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
@@ -123,10 +138,13 @@ Cell[BoxData[{
    3.730114351549685*^9}, {3.730114496675715*^9, 3.7301145268291883`*^9}, {
    3.7301147265997677`*^9, 3.7301147876739893`*^9}, {3.7301152547584343`*^9, 
    3.730115294294981*^9}, 3.730115421929269*^9, 3.7301154635293093`*^9, 
-   3.730116318699031*^9},ExpressionUUID->"2c646e93-15f2-48d0-9314-\
+   3.730116318699031*^9, {3.733187694407299*^9, 
+   3.733187737413876*^9}},ExpressionUUID->"2c646e93-15f2-48d0-9314-\
 11fb2beb718b"],
 
-Cell[BoxData[
+Cell[CellGroupData[{
+
+Cell[BoxData[{
  RowBox[{
   RowBox[{"R", "=", 
    RowBox[{
@@ -137,8 +155,11 @@ Cell[BoxData[
     RowBox[{"CU", "[", 
      RowBox[{"2", ",", "0", ",", "3", ",", 
       RowBox[{"CNOT", "[", 
-       RowBox[{"1", ",", "0", ",", "3"}], "]"}]}], "]"}]}]}], ";"}]], "Input",\
-
+       RowBox[{"1", ",", "0", ",", "3"}], "]"}]}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"R", ".", 
+  RowBox[{"KroneckerProduct", "[", 
+   RowBox[{"ket1", ",", "ket1", ",", "ket1"}], "]"}]}]}], "Input",
  CellChangeTimes->{{3.7301145385709*^9, 3.730114688315775*^9}, {
    3.7301147572803497`*^9, 3.730114757704302*^9}, {3.730115304822813*^9, 
    3.730115341062173*^9}, {3.7301153736390333`*^9, 3.730115379783176*^9}, {
@@ -153,12 +174,44 @@ Cell[BoxData[
    3.730164951117639*^9}, {3.730165022646625*^9, 3.730165036861291*^9}, 
    3.7301654108515167`*^9, {3.730165449867169*^9, 3.730165462739787*^9}, {
    3.730165548829482*^9, 3.7301656359094353`*^9}, {3.7301657314081163`*^9, 
-   3.730165750151689*^9}, {3.730165925042837*^9, 
-   3.730166027907443*^9}},ExpressionUUID->"36f555b4-7a93-4f4b-845a-\
-d7e39a44f170"]
+   3.730165750151689*^9}, {3.730165925042837*^9, 3.730166027907443*^9}, {
+   3.7331620433782473`*^9, 3.733162058449387*^9}, {3.733162094009636*^9, 
+   3.733162144808011*^9}},ExpressionUUID->"36f555b4-7a93-4f4b-845a-\
+d7e39a44f170"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "1", "}"}], ",", 
+   RowBox[{"{", "0", "}"}], ",", 
+   RowBox[{"{", "0", "}"}], ",", 
+   RowBox[{"{", "0", "}"}], ",", 
+   RowBox[{"{", "0", "}"}], ",", 
+   RowBox[{"{", "0", "}"}], ",", 
+   RowBox[{"{", "0", "}"}], ",", 
+   RowBox[{"{", "0", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.7331620592178297`*^9, {3.7331621098763847`*^9, 
+   3.7331621452325983`*^9}},ExpressionUUID->"9a4d8820-4b21-4e45-9bd1-\
+6318abea6ee2"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"R2", "=", 
+    RowBox[{
+     RowBox[{"KroneckerProduct", "[", 
+      RowBox[{"Id", ",", "X"}], "]"}], ".", 
+     RowBox[{"CNOT", "[", 
+      RowBox[{"1", ",", "0", ",", "2"}], "]"}]}]}], ";"}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.733187786013287*^9, 
+  3.733187913706037*^9}},ExpressionUUID->"fa1a4507-7ce9-417f-8b5b-\
+150c496152a4"]
 },
 WindowSize->{808, 781},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowMargins->{{0, Automatic}, {Automatic, 28}},
 FrontEndVersion->"11.1 for Linux x86 (64-bit) (March 13, 2017)",
 StyleDefinitions->"Default.nb"
 ]
@@ -173,10 +226,16 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 3988, 106, 292, "Input", "ExpressionUUID" -> \
+Cell[558, 20, 4495, 122, 444, "Input", "ExpressionUUID" -> \
 "2c646e93-15f2-48d0-9314-11fb2beb718b"],
-Cell[4549, 128, 1568, 29, 91, "Input", "ExpressionUUID" -> \
-"36f555b4-7a93-4f4b-845a-d7e39a44f170"]
+Cell[CellGroupData[{
+Cell[5078, 146, 1805, 33, 59, "Input", "ExpressionUUID" -> \
+"36f555b4-7a93-4f4b-845a-d7e39a44f170"],
+Cell[6886, 181, 483, 14, 35, "Output", "ExpressionUUID" -> \
+"9a4d8820-4b21-4e45-9bd1-6318abea6ee2"]
+}, Open  ]],
+Cell[7384, 198, 404, 12, 58, "Input", "ExpressionUUID" -> \
+"fa1a4507-7ce9-417f-8b5b-150c496152a4"]
 }
 ]
 *)
