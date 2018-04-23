@@ -169,6 +169,8 @@ def H(psi0, target):
     res = Ry(psi0, target, np.pi/2)
     return X(res.states[-1], target)
 
+def sqrtSWAP
+
 def Dis(psi0):
     tf = 0.05
     tlist = np.linspace(0, tf, 5000)

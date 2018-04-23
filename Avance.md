@@ -13,6 +13,7 @@ header-includes:
    - \usepackage{dsfont}
    - \usepackage{tkz-graph}
    - \usetikzlibrary{arrows}
+   - \usepackage{ragged2e}
 theme:
 - Copenhagen
 ---
@@ -226,54 +227,101 @@ Intercambiamos anarmonicidad por independencia de $n_g$
 
 # Modelo de Rabi
 
-$$\hat{H} = \hat{H}_q + \hat{H}_{qr} + \hat{H}_r = -\frac{1}{2} \epsilon \sigma_z + g \sigma_x (a+a^\dag) + \hbar \omega (a^\dag a + \frac{1}{2})$$
+$$\hat{H} = \hat{H}_c + \hat{H}_q + \hat{H}_{qc} = \hbar \omega_c (a^\dag a + \frac{1}{2}) + \frac{1}{2} \hbar \omega_q \sigma_z + \hbar g \sigma_x (a+a^\dag)$$
+
+De ahora en adelante $\hbar = 1$ y despreciaré los términos constantes, pues sólo contribuyen en fases globales a la evolución del sistema.
 
 # Aproximación de onda rotacional
 
-$$\hat{H}_{qr} = \hat{H}_{qr}^{JC} + \hat{H}_{qr}^{AJC} = g(\sigma_+ a + \sigma_- a^\dag) + g(\sigma_+ a^\dag + \sigma_- a)$$
+$$\hat{H}_{qc} = \hat{H}_{qc}^{JC} + \hat{H}_{qc}^{AJC} = g(a \sigma_+ + a^\dag\sigma_-) + g(a^\dag \sigma_+ + a \sigma_-)$$
 
-$$\hat{H} = \hat{H}_q + \hat{H}_{qr} + \hat{H}_r = -\frac{1}{2} \epsilon \sigma_z + g(\sigma_+ a + \sigma_- a^\dag) + \hbar \omega (a^\dag a + \frac{1}{2})$$
+$$\hat{H} = \hat{H}_c + \hat{H}_q + \hat{H}_{qc} = \omega_c a^\dag a + \frac{1}{2} \omega_q \sigma_z + g(a \sigma_+ + a^\dag \sigma_-)$$
 
 # Hamiltoniano multiquibit
 
-$$\hat{H} = \hat{H}_q + \hat{H}_{qr} + \hat{H}_{qq} = -\frac{1}{2} \sum\limits_i \epsilon_i \sigma_{zi} + \sum\limits_i g_i \sigma_{xi} (a+a^\dag) + \frac{1}{2} \sum\limits_{i,j;\nu} \lambda_{\nu,ij} \sigma_{\nu i} \sigma_{\nu j}$$
-
-\begin{align*}
-\hat{H}_{qq} = \lambda_{1 2} \sigma_{x1} \sigma_{x2} \\
-\lambda{1 2} = \frac{1}{2} g_1 g_2 (\frac{1}{\Delta_1} + \frac{1}{\Delta_2} \equiv g_1 g_2 \frac{1}{\Delta}) \\
-\Delta_i = \epsilon_i - \hbar \omega
-\end{align*}
-
-# Regimen dispersivo
-
-$\frac{g}{\Delta} << 1$
-$U = exp[\frac{g}{\Delta} (a \sigma_+ + a^\dagger \sigma_-)]$
-$\hat{H}=\hbar(\omega+\chi \sigma_z)(a^\dagger a + \frac{1}{2}) + \frac{\hbar}{2}(\epsilon+\chi)\sigma_z$
-
-$\chi=\frac{g^2}{\Delta}$
+$$\hat{H} = \hat{H}_q + \hat{H}_{qc} = \frac{1}{2} \sum\limits_i \omega_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i})$$
 
 # Pulsos de microondas
 
-$\hat{H}_d = \sum (a+a^\dagger) (\xi_k e^{-i\omega_d^{(k)}t} + \xi_k^*e^{i\omega_d^{(k)}t})$
+$$\hat{H}_d = \sum\limits_k (a+a^\dagger) (\xi_k e^{-i\omega_d^{(k)}t} + \xi_k^*e^{i\omega_d^{(k)}t})$$
 
-RWA: $\hat{H}_d=\sum a\xi_k^*e^{i\omega_d^{(k)}t}+a^\dagger\xi_ke^{-i\omega_d^{(k)}}$
+RWA: $$\hat{H}_d=\sum\limits_k a\xi_k^*e^{i\omega_d^{(k)}t}+a^\dagger\xi_ke^{-i\omega_d^{(k)}t}$$
 
-# Compuertas de un qubit en transmones
+# Régimen rotacional del pulso
 
-Se aplica la siguiente transformación $U(t)=exp[i \omega_d t(a^\dagger a + \sum \ket{j} j \bra{j}$
+Trabajando con un sólo modo a la vez, se aplica la siguiente transformación $U(t) = exp[-i \omega_d t(a^\dagger a + \sum\limits_i \sigma_{z i})]$ para entrar en el régimen rotacional del pulso de control.
 
-$H=U(H+H_d)U^\dagger-i U U^\dagger$
-$D(\alpha)=exp[\alpha(t)a^\dagger-\alpha^*(t)a]$
-$-i\dot{\alpha}+\Delta_r \alpha(t) + \xi(t) =0$
+$$\hat{H} = U^\dagger (\hat{H}_{syst} + \hat{H}_d) U - i U^\dagger \dot{U}$$
+$$ \hat{H} = \Delta_c a^\dagger a + \frac{1}{2} \sum\limits_i \Delta_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}) + (a\xi^*e^{i\omega_d t}+a^\dagger\xi e^{-i\omega_d t})$$
 
-$\hat{H} = \frac{\hbar}{2} \Delta_q \sigma_z + \hbar(\Delta_r + \chi \sigma_z) a^\dagger a + (\Omega^*(t)\sigma_- + \Omega(t) \sigma_+$
+$\Delta_c = \omega_c - \omega_d \qquad \quad \Delta_{qi} = \omega_{qi} - \omega_d$
+
+# Efecto del pulso sobre el qubit
+
+\justify
+Luego se aplica el operador de desplazamineto $D(\alpha) = exp[\alpha a^\dagger - \alpha^* a]$ sobre el campo $a$ con $\dot{\alpha} = -i \Delta_c \alpha -i \xi e^{-i \omega_d t}$ para eliminar el efecto directo del pulso sobre la cavidad.
+
+$$\hat{H} = D^\dagger (\alpha) \hat{H}_{old} D(\alpha) -i D^\dagger(\alpha) \dot{D}(\alpha)$$
+
+$$\hat{H} = \Delta_c a^\dagger a + \frac{1}{2} \sum\limits_i \Delta_{qi} 
+  \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+i} + a^\dagger \sigma_{-i})$$
+$$ + \sum\limits_i g_i (\alpha \sigma_{+i} + \alpha^* \sigma_{-i}) - \Delta_c
+  \alpha \alpha^* $$
+
+El término $-\Delta_c \alpha \alpha^*$ se desprecia, ya que sólo representa 
+una fase global en la evolución del sistema.
+
+# Régimen dispersivo
+
+\justify
+Finalmente, aplicamos la transformación $U = exp[\sum\limits_i \frac{g_i}
+{\Delta_i} (a^\dagger \sigma_{-i} - a \sigma_{+i})]$, donde $\Delta_i = 
+\omega_{qi} - \omega_c$ y realizamos la aproximación de segundo grado sobre
+los términos $\frac{g_i}{\Delta_i} \ll 1$.
+
+$$\hat{H} = U^\dagger \hat{H}_{old} U$$
+$$\hat{H} \approx \tilde{\Delta}_c a^\dagger a + \frac{1}{2} \sum\limits_i
+  \tilde{\Delta}_{qi} \sigma_{zi} + \sum\limits_i (\Omega_i \sigma_{+i} +
+  \Omega_i^* \sigma_{-i})$$
+$$+ \sum\limits_{i \neq j} \frac{g_i g_j}{2 \Delta_i} 
+  (\sigma_{-i} \sigma_{+j}+\sigma_{+i} \sigma_{-j})$$
+
+$\tilde{\Delta}_c = (\omega_c + \sum\limits_i \chi_i \sigma_{zi}) - \omega_d
+ \qquad
+ \tilde{\Delta}_{qi} = (\omega_{qi} + \chi_i) - \omega_d
+ \qquad
+ \chi_i = \frac{g_i^2}{\Delta_i}$
 
 # Rotaciones X-Y
 
-$\Omega(t) = \Omega^x(t) \cos(\omega_d t) + \Omega^y \sin(\omega_d t), \qquad 0<t<t_g$
+\justify
+Tomando $\Omega(t) = \Omega^x(t) \cos(\omega_d t) + \Omega^y \sin(\omega_d t)$,
+donde $\omega_d$ es igual a la frecuencia de resonancia de uno de los qubits
+logramos rotaciones sobre los ejes X e Y. Las amplitudes de estas rotaciones
+vienen dadas por $\int_0^{t_0} \Omega^x(t) dt$ y $\int_0^{t_0} \Omega^y(t)
+dt$, respectivamente, donde $t_0$ es la duración del pulso.
 
-$\hat{H} = \frac{\hbar}{2} \Delta_q \sigma_z + \hbar (\Delta_r + \chi \sigma_z) a^\dagger a + \frac{\hbar}{2} (\Omega^x(t) \sigma_x + \Omega^y(t) \sigma_y)$
+$$\hat{H} \approx \tilde{\Delta}_c a^\dagger a + \frac{1}{2} \tilde{\Delta}_q 
+  \sigma_z + \frac{1}{2} (\Omega^x(t) \sigma_x + \Omega^y(t) \sigma_y)$$
+
+# Compuerta de entrelazamiento
+
+Ejemplo con sólo dos qubits
+
+$$\hat{H} \approx \frac{1}{2} \tilde{\Delta}_{q_1} \sigma_{z_1} + 
+  \frac{1}{2} \tilde{\Delta}_{q_2} \sigma_{z_2} + 
+  \frac{g_1 g_2 (\Delta_1 + \Delta_2)}{2 \Delta_1 \Delta_2} 
+  (\sigma_{-_1} \sigma_{+_2} + \sigma_{+_1} \sigma_{-_2})$$
+
+Variando la frecuencia de resonacia de los qubit, se puede variar el 
+acoplamiento entre estos. 
 
 # The end
 
-Has ended sooner
+Has ended sooner... Help
+
+$$\hat{H} \approx \frac{1}{2} \sum\limits_i \tilde{\Delta}_{qi} \sigma_{zi} + 
+  \sum\limits_i (\Omega_i \sigma_{+i} + \Omega_i^* \sigma_{-i}) + \sum
+  \limits_{i \neq j} \frac{g_i g_j}{2 \Delta_i} \sigma_{-i} \sigma_{+j}$$
+
+

@@ -1,0 +1,8 @@
+pandoc Avance.md -t beamer -o Avance.pdf
+
+while pgrep -x pandoc >/dev/null;
+do
+	sleep 1;
+done
+
+pkill -HUP mupdf

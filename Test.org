@@ -2,6 +2,7 @@
 ** X-Y rotation gates
 ** Organizar resultados PageRank
 
+** Calcular restricciones sobre la amplitud y la duración de los pulsos tal que \[Delta]_r >> \[Ksi(t)]
 * A discutir con Castro
 ** Cuenta del desplazamiento del Hamiltoniano
 ** PageRank de grafo árbol
