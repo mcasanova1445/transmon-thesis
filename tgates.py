@@ -73,8 +73,9 @@ def plot_drive_expect(res,args):
 
 N = 50
 
-wr = 7.0 * 2 * np.pi
-wq = np.array([5.0 * 2 * np.pi, 6.0 * 2 * np.pi, 8.0 * 2 * np.pi, 9.0 * 2 * np.pi])
+wr = 10.0 * 2 * np.pi
+wq = np.array([5.0 * 2 * np.pi, 6.0 * 2 * np.pi, 7.0 * 2 * np.pi, 8.0 * 2 * np.pi])
+wq_swap = 9.0 * 2 * np.pi
 
 g = np.array([0.1 * 2*np.pi, 0.1 * 2*np.pi, 0.1 * 2*np.pi, 0.1 * 2*np.pi])
 
@@ -97,7 +98,9 @@ Id = tensor(qeye(N), qeye(2), qeye(2), qeye(2), qeye(2))
 
 def qop_part(operator, target):
     if target == 0:
-        qop_dict = {'sm' : destroy(2), 'sx' : sigmax(), 'sy' : sigmay(), 'sz' : sigmaz(), 'n' : (destroy(2)).dag() * destroy(2)}
+        qop_dict = {'sm' : destroy(2), 'sp' : (destroy(2)).dag(), 
+                    'sx' : sigmax(), 'sy' : sigmay(), 'sz' : sigmaz(),
+                    'n' : (destroy(2)).dag() * destroy(2)}
         return qop_dict[operator]
     else:
         return qeye(2)
@@ -169,7 +172,36 @@ def H(psi0, target):
     res = Ry(psi0, target, np.pi/2)
     return X(res.states[-1], target)
 
-def sqrtSWAP
+def sqrtSWAP(psi0, target1, target2):
+    wqt1 = wq[target1]
+    wq[target1] = wq_swap
+    
+    wqt2 = wq[target2]
+    wq[target2] = wq_swap
+
+    D = wq - wr
+
+    J = np.abs(g[target1] * g[target2] * (D[target1] + D[target2]) / (2 * D[target1] * D[target2]))
+
+    tf = np.pi/(4*J)
+    tlist = np.linspace(0, 4*tf, 4*5000)
+
+    Hsyst = wr*n + wq[0]*qop('sz',0)/2 + wq[1]*qop('sz',1)/2 + wq[2]*qop('sz',2)/2 + wq[3]*qop('sz',3)/2 #MELCSCELDQ
+
+    for i in range(4):
+        for j in range(4):
+            Hsyst = Hsyst + (g[i]*g[j]*((1/D[i]))/2)*qop('sp',i)*qop('sm',j)/2
+
+    res = mesolve(Hsyst, psi0, tlist, [], [])
+
+    wq[target1] = wqt1
+    wq[target2] = wqt2
+    D = wq - wr
+
+    args = {'A' : 0, 'ts' : 0, 'tf' : tf, 'w' : wq[target1]}
+    plot_drive_expect(res,args)
+
+    return res
 
 def Dis(psi0):
     tf = 0.05
@@ -181,10 +213,7 @@ def Dis(psi0):
     for i in range(4): #MELCSCELDQ
         Hsyst = Hsyst - wq[i]*qop('sz',i)/2 + g[i]*qop('sx',i)*(a+a.dag())
 
-    for i in range(4):
-        for j in range(4):
-            Hsyst = Hsyst + (g[i]*g[j]*((1/D[i]) + (1/D[j]))/2)*qop('sx',i)*qop('sx',j)/2
-
+    
     H_t = [[a, ksi_tm],[a.dag(),ksi_tp], Hsyst]
 
     args = {'A' : wr/(3*np.pi), 'ts' : 0, 'tf' : tf, 'w' : wd}
