@@ -34,6 +34,7 @@ Tradicionalmente, p y q representan posición y momentum, respectivamente.
 
 # Mecánica Hamiltoniana
 
+\justify
 En la mecánica Hamiltoniana, la evolución dinámica de un sistema clásico
 está descrito por un conjunto de variables canónicas conjugadas $r=(q,p)$
 de la siguiente manera:
@@ -41,6 +42,7 @@ de la siguiente manera:
 $$\frac{dp}{dt}=-\frac{\partial H}{\partial q} \qquad \quad 
  \frac{dq}{dt}=+\frac{\partial H}{\partial p}$$
 
+\justify
 Donde el Hamiltoniano $H$ es la suma de la energía potencial $V$ y
 la energía cinética $T$, $H=T+V$.
 
@@ -68,15 +70,18 @@ $\{q,p\} = \frac{\partial q}{\partial q_i}
 
 # Cuantización canónica
 
+\justify
 Paul Dirac introdujo en su tesis doctoral en 1926 el "método de analogía
 clásica" para la cuantización de sistemas físicos.
 
+\justify
 Este método consiste en cuantizar las teorías clásicas intentando mantener
 las estructuras formales de la teoría clásica en la mayor medida posible.
 
 Dirac propuso la siguiente relación: $\{q,p\} \rightarrow \frac{1}{i\hbar}
 [\hat{q},\hat{p}]$
 
+\justify
 Luego se demostró que esta relación no se para todo sistema físico,
 sino que es un caso especial de una relación más general. Sin embargo,
 para los casos a estudiar en esta presentación, sí se cumple.
@@ -92,6 +97,7 @@ El procedimientro a seguir será:
 
 # Oscilador armónico LC: Hamiltoniano clásico
 
+\justify
 Un ejemplo de variables canónicamente conjugades son la carga y el flujo
 magnético. Por esto, podemos cuántizar un oscilador armónico LC con la
 cuantización canónica.
@@ -110,6 +116,7 @@ $\frac{\partial H}{\partial Q} = \frac{Q}{C} = -L \frac{dI}{dt} =
  -\frac{d\phi}{dt}; \qquad \quad
  \frac{\partial H}{\partial \phi} = \frac{\phi}{L} = I = \frac{dQ}{dt}$
 
+\justify
 Esto demuestra que $\phi$ y $Q$ son coordenadas canónicas. Donde $\phi$ y $Q$
 son posición y momentum generalizados, respectivamente. Así que procedemos
 a sustituirlas por los operadores $\hat{\phi}$ y $\hat{q}$ y escribimos el
@@ -128,29 +135,35 @@ $\hbar \omega$
 
 # Efecto Josephson
 
+\justify
 Se tienen dos placas superconductoras A y B, separadas por un aislante.
 Las funciones de onda de las placas superconductoras son:
 $\psi_A = \sqrt{\rho_1} e^{i \phi_1}, \psi_B = \sqrt{\rho_2} e^{i \phi_2}$ 
 
-En principio, no debería haber una supercorriente entre ambas placas.
-Sin embargo, ese no es el caso. Por el efecto tunel, pares de electrones
-(pares de Cooper) pueden pasar de una placa a la otra sin disipación.
+\justify
+En principio, no debería haber conducción entre ambas placas.
+Sin embargo, ese no es el caso. Por el efecto tunel, una supercorriente (corriente
+sin disipación) de pares de Cooper (pares de electrones con spines opuestos)
+pueden pasar de una placa a la otra sin disipación.
 
 $$V_J = \frac{\hbar}{2e} \frac{d\delta}{dt}$$
 
 $$I_J = I_0 \sin(\delta)$$
 
+\justify
 Donde $\delta=\phi_2-\phi_1$ es la diferencia de fase entre las dos placas superconductoras.
 
 # Efecto Josephson DC y AC
 
 * Efecto Josephson DC
 
+\justify
 Si las placas se encuentran sin alimentación, entonces correrá una
 supercorriente constante a través de ellas.
 
 * Efecto Josephson AC
 
+\justify
 Si las placas se alimentan con un voltaje DC externo, entonces la diferencia
 de fase entre ellas variará linealmente con el tiempo y habrá una corriente AC
 a través de ellas.
@@ -172,6 +185,7 @@ $E_L = \frac{\hbar^2}{(2e)^2L}$
 
 # Circuito LCJ
 
+\justify
 Primero, reescribimos el Hamiltoniano del circuito LC en términos de la
 cantidad de pares de Cooper y de la diferencia de fase en los extremos
 del inductor, en lugar de la carga y el flujo
@@ -190,6 +204,7 @@ $\hat{H} = \frac{(2e)^2}{2C} (\hat{n}-n_g)^2 + \frac{\hbar^2}{(2e)^2L}
 
 # Ecuación de Schrödinger del circuito LCJ
 
+\justify
 Para describir el sistema en términos de la ecuación de Schrödinger en
 función de la diferencia de fase $\delta$, se introduce $\hat{n}=-i\hbar
 \frac{\partial}{\partial \phi}$
@@ -199,11 +214,20 @@ $$U(\phi) = -E_{J0} \cos(\phi)+E_L \frac{(\phi-\phi_e)^2}{2}$$
 
 # Arquetipos de qubits superconductores
 
-* Qubit de carga: Si $E_L$ tiende a cero, la carga almacenada en la isla superconductora entre el capacitor y  la unión Josephson se puede usar como qubit. El potencial de este tipo de qubit es de forma de coseno.
+\justify
+* Qubit de carga: Si $E_L$ tiende a cero, la carga almacenada en la isla 
+    superconductora entre el capacitor y  la unión Josephson se puede usar 
+    como qubit. El potencial de este tipo de qubit es de forma de coseno.
 
-* Qubit de flujo: Si $E_L$ es comparable con $E_{J0}$, el flujo a través del lazo formado por el inductor y la unión Josephson se puede usar como qubit. El potencial de este tipo de qubit es de forma cuártica.
+\justify
+* Qubit de flujo: Si $E_L$ es comparable con $E_{J0}$, el flujo a través 
+    del lazo formado por el inductor y la unión Josephson se puede usar como 
+    qubit. El potencial de este tipo de qubit es de forma cuártica.
 
-* Qubit de fase: Si se polariza la unión Josephson con una fuente de corriente, la fase en ambos extermos de la unión Josephson se puede usar como qubit. El potencial de este tipo de qubit es de forma cúbica.
+\justify
+* Qubit de fase: Si se polariza la unión Josephson con una fuente de 
+    corriente, la fase en ambos extermos de la unión Josephson se puede 
+    usar como qubit. El potencial de este tipo de qubit es de forma cúbica.
 
 # Qubits de carga
 
@@ -211,7 +235,8 @@ $[\hat{\delta},\hat{n}]=i \implies e^{\pm i \hat{\delta}} \ket{n} = \ket{n\pm 1}
 
 $\hat{H} = E_C (\hat{n}-n_g)^2 - E_{J0} \cos(\hat{\delta}) =
  E_C (\hat{n}-n_g)^2 - E_{J0} (e^{i \hat{\delta}} + e^{-i \hat{\delta}}) =
- \sum(E_C(N-N_g)^2 \ketbra{n}{n} - \frac{E_{J0}}{2}(\ketbra{n}{n+1}+\ketbra{n+1}{n}))$
+ \sum(E_C(N-N_g)^2 \ketbra{n}{n} - \frac{E_{J0}}{2}(\ketbra{n}{n+1}+
+ \ketbra{n+1}{n}))$
 
 # Caja de pares de Cooper 
 
@@ -227,39 +252,54 @@ Intercambiamos anarmonicidad por independencia de $n_g$
 
 # Modelo de Rabi
 
-$$\hat{H} = \hat{H}_c + \hat{H}_q + \hat{H}_{qc} = \hbar \omega_c (a^\dag a + \frac{1}{2}) + \frac{1}{2} \hbar \omega_q \sigma_z + \hbar g \sigma_x (a+a^\dag)$$
+$$\hat{H} = \hat{H}_c + \hat{H}_q + \hat{H}_{qc} = \hbar \omega_c (a^\dag a + 
+  \frac{1}{2}) + \frac{1}{2} \hbar \omega_q \sigma_z + \hbar g \sigma_x (a+a^\dag)$$
 
-De ahora en adelante $\hbar = 1$ y despreciaré los términos constantes, pues sólo contribuyen en fases globales a la evolución del sistema.
+\justify
+De ahora en adelante $\hbar = 1$ y despreciaré los términos constantes, pues 
+sólo contribuyen en fases globales a la evolución del sistema.
 
 # Aproximación de onda rotacional
 
-$$\hat{H}_{qc} = \hat{H}_{qc}^{JC} + \hat{H}_{qc}^{AJC} = g(a \sigma_+ + a^\dag\sigma_-) + g(a^\dag \sigma_+ + a \sigma_-)$$
+$$\hat{H}_{qc} = \hat{H}_{qc}^{JC} + \hat{H}_{qc}^{AJC} = g(a \sigma_+ + 
+  a^\dag\sigma_-) + g(a^\dag \sigma_+ + a \sigma_-)$$
 
-$$\hat{H} = \hat{H}_c + \hat{H}_q + \hat{H}_{qc} = \omega_c a^\dag a + \frac{1}{2} \omega_q \sigma_z + g(a \sigma_+ + a^\dag \sigma_-)$$
+$$\hat{H} = \hat{H}_c + \hat{H}_q + \hat{H}_{qc} = \omega_c a^\dag a +
+  \frac{1}{2} \omega_q \sigma_z + g(a \sigma_+ + a^\dag \sigma_-)$$
 
 # Hamiltoniano multiquibit
 
-$$\hat{H} = \hat{H}_q + \hat{H}_{qc} = \frac{1}{2} \sum\limits_i \omega_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i})$$
+$$\hat{H} = \hat{H}_q + \hat{H}_{qc} = \frac{1}{2} \sum\limits_i \omega_{qi} 
+  \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i})$$
 
 # Pulsos de microondas
 
-$$\hat{H}_d = \sum\limits_k (a+a^\dagger) (\xi_k e^{-i\omega_d^{(k)}t} + \xi_k^*e^{i\omega_d^{(k)}t})$$
+$$\hat{H}_d = \sum\limits_k (a+a^\dagger) (\xi_k e^{-i\omega_d^{(k)}t} + 
+  \xi_k^*e^{i\omega_d^{(k)}t})$$
 
-RWA: $$\hat{H}_d=\sum\limits_k a\xi_k^*e^{i\omega_d^{(k)}t}+a^\dagger\xi_ke^{-i\omega_d^{(k)}t}$$
+RWA: $$\hat{H}_d=\sum\limits_k a\xi_k^*e^{i\omega_d^{(k)}t}+
+  a^\dagger\xi_ke^{-i\omega_d^{(k)}t}$$
 
 # Régimen rotacional del pulso
 
-Trabajando con un sólo modo a la vez, se aplica la siguiente transformación $U(t) = exp[-i \omega_d t(a^\dagger a + \sum\limits_i \sigma_{z i})]$ para entrar en el régimen rotacional del pulso de control.
+\justify
+Trabajando con un sólo modo a la vez, se aplica la siguiente transformación $U(t) 
+= exp[-i \omega_d t(a^\dagger a + \sum\limits_i \sigma_{z i})]$ para entrar en 
+el régimen rotacional del pulso de control.
 
 $$\hat{H} = U^\dagger (\hat{H}_{syst} + \hat{H}_d) U - i U^\dagger \dot{U}$$
-$$ \hat{H} = \Delta_c a^\dagger a + \frac{1}{2} \sum\limits_i \Delta_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}) + (a\xi^*e^{i\omega_d t}+a^\dagger\xi e^{-i\omega_d t})$$
+$$ \hat{H} = \Delta_c a^\dagger a + \frac{1}{2} \sum\limits_i \Delta_{qi} 
+  \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}) + 
+  (a\xi^*e^{i\omega_d t}+a^\dagger\xi e^{-i\omega_d t})$$
 
 $\Delta_c = \omega_c - \omega_d \qquad \quad \Delta_{qi} = \omega_{qi} - \omega_d$
 
 # Efecto del pulso sobre el qubit
 
 \justify
-Luego se aplica el operador de desplazamineto $D(\alpha) = exp[\alpha a^\dagger - \alpha^* a]$ sobre el campo $a$ con $\dot{\alpha} = -i \Delta_c \alpha -i \xi e^{-i \omega_d t}$ para eliminar el efecto directo del pulso sobre la cavidad.
+Luego se aplica el operador de desplazamineto $D(\alpha) = exp[\alpha a^\dagger - 
+\alpha^* a]$ sobre el campo $a$ con $\dot{\alpha} = -i \Delta_c \alpha -i \xi 
+e^{-i \omega_d t}$ para eliminar el efecto directo del pulso sobre la cavidad.
 
 $$\hat{H} = D^\dagger (\alpha) \hat{H}_{old} D(\alpha) -i D^\dagger(\alpha) \dot{D}(\alpha)$$
 
@@ -315,13 +355,4 @@ $$\hat{H} \approx \frac{1}{2} \tilde{\Delta}_{q_1} \sigma_{z_1} +
 
 Variando la frecuencia de resonacia de los qubit, se puede variar el 
 acoplamiento entre estos. 
-
-# The end
-
-Has ended sooner... Help
-
-$$\hat{H} \approx \frac{1}{2} \sum\limits_i \tilde{\Delta}_{qi} \sigma_{zi} + 
-  \sum\limits_i (\Omega_i \sigma_{+i} + \Omega_i^* \sigma_{-i}) + \sum
-  \limits_{i \neq j} \frac{g_i g_j}{2 \Delta_i} \sigma_{-i} \sigma_{+j}$$
-
 
