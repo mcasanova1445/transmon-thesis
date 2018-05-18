@@ -172,7 +172,7 @@ def H(psi0, target):
     res = Ry(psi0, target, np.pi/2)
     return X(res.states[-1], target)
 
-def sqrtSWAP(psi0, target1, target2):
+def sqrtiSWAP(psi0, target1, target2):
     wqt1 = wq[target1]
     wq[target1] = wq_swap
     
