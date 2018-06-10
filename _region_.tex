@@ -661,7 +661,7 @@ El algoritmo de PageRank fue desarrollado en 1996 en la Universidad de Stanford 
 
 Este algoritmo se basa en la idea de que sitios web importantes tienen muchos vínculos que apuntan hacia ellos, lo que conduce a pensar en la web como una red ponderada orientada.
 
-Existen muchos otros algoritmos, algunos más eficientes, pero la importancia de PageRank se sustenta en el poder económico de Googel.
+Existen muchos otros algoritmos, algunos más eficientes, pero la importancia de PageRank se sustenta en el poder económico de Google.
 
 Ilustraremos el algoritmo de PageRank con un ejemplo sencillo:
 
@@ -749,22 +749,18 @@ a = 6; \quad b = 1; \quad c = \frac{16}{3}; \quad d = \frac{14}{3}; \quad e = 3
 \]
 \end{enumerate}
 
-La idea de PageRank de Google es que la importancia de una página viene dada por
-la cantidad de páginas que se enlazan con ella.
+La idea de PageRank de Google es que la importancia de una página viene dada por la cantidad de páginas que se enlazan con ella.
 
 Surgen varios problemas:
 
 \begin{enumerate}
-  \item Las matrices hyperlink (hiperenlace) pueden tener billones de entradas
-    en filas y columnas.
+  \item Las matrices hyperlink (hiperenlace) pueden tener billones de entradas en filas y columnas.
   \item Calcular los autovectores es un absurdo computacional.
-  \item Los estudios muestran que un nodo (página web) tiene un promedio de 10
-    enlaces, y las demás entradas de la matriz son cero.
+  \item Los estudios muestran que un nodo (página web) tiene un promedio de 10 enlaces, y las demás entradas de la matriz son cero.
   \item No se encuentra $\lambda = 1$ en la mayoría de los casos.
 \end{enumerate}
 
-Por esta razón, un remedio (Patching) del algoritmo de PageRank fue el método de
-las potencias, en el cual la matriz hiperenlace
+Por esta razón, un remedio (Patching) del algoritmo de PageRank fue el método de las potencias, en el cual la matriz hiperenlace
 
 \[
 H_{ij} \equiv \begin{cases}
@@ -779,38 +775,27 @@ debería converger a una solución autoconsistente
 I^{k+1} = H I^k
 \]
 
-donde se toma un vector $I^{0}$ y se hace interactuar unas 100 veces y el orden
-mostrado de las páginas es el de $I^{100}$, ordenadas de mayor a menor. Si se
-normalizan las columnas de la matriz hipervínculo (hiperenlace) $H$, obtenemos
-otra matriz hiperenlace normalizada E.
+donde se toma un vector $I^{0}$ y se hace interactuar unas 100 veces y el orden mostrado de las páginas es el de $I^{100}$, ordenadas de mayor a menor. Si se normalizan las columnas de la matriz hipervínculo (hiperenlace) $H$, obtenemos otra matriz hiperenlace normalizada E.
 
-\textbf{La matriz E:} se sabe de la teoría de matrices estocásticas que 1 es uno
-de sus autovalores. Además, también se sabe que la convergencia de $I^k = E
-I^{k-1}$ a $I = E I$ depende del segundo autovalor de $\lambda_2$ de E y es un
-hecho que $I^k = E I^{k-1}$ converge rápidamente si $\abs{\lambda_2}$ es
+\textbf{La matriz E:} se sabe de la teoría de matrices estocásticas que 1 es uno de sus autovalores. Además, también se sabe que la convergencia de $I^k = E I^{k-1}$ a $I = E I$ depende del segundo autovalor de $\lambda_2$ de E y es un hecho que $I^k = E I^{k-1}$ converge rápidamente si $\abs{\lambda_2}$ es
 cercano a cero.
 
 \subsection{El algoritmo de remiendo (parcheo) general}
 
-Asumamos que el caminante recorre el grafo siguiendo la web con una matriz
-estocástica E con probabilidad $\alpha$, y con probabilidad $1-\alpha$ podrá ir
-a cualquier página al azar que sea de su interés. La matriz web de este proceso
-será:
+Asumamos que el caminante recorre el grafo siguiendo la web con una matriz estocástica E con probabilidad $\alpha$, y con probabilidad $1-\alpha$ podrá ir a cualquier página al azar que sea de su interés. La matriz web de este proceso será:
 
 \[
 G \equiv \alpha E + \frac{1-\alpha}{N} \mathds{I} \text{Matriz de Google}
 \]
 
-$\mathds{I}$ es una matriz en la cual todas las entradas están establecidas en
-1, y N el número de nodos.
+$\mathds{I}$ es una matriz en la cual todas las entradas están establecidas en 1, y N el número de nodos.
 
 Propiedades de G:
 \begin{enumerate}
 \item Es estocástica
 \item Irreducible
 \item Primitiva
-\item El resultado de determinar el estado auto-consistente no depende del
-    vector Google inicial $I^0$
+\item El resultado de determinar el estado auto-consistente no depende del vector Google inicial $I^0$
 \end{enumerate}
 
 \begin{figure}[H]
@@ -868,16 +853,14 @@ Propiedades de G:
  \\
 (a) & (b)
 \end{tabular}
-\caption{Grafo correspondiente a la matriz de adyacencia (a) de la red E (b)
-  remendada de Google G con $\alpha=\frac{1}{2}$}
+\caption{Grafo correspondiente a la matriz de adyacencia (a) de la red E (b) remendada de Google G con $\alpha=\frac{1}{2}$}
 \end{center}
 \end{figure}
 
 
 \subsection{Interpretación como una caminata aleatoria}
 
-La asiganación de valores de importancia se puede replantear como la
-probabilidad de encontrar un caminante aleatorio en cierto nodo del grafo.
+La asiganación de valores de importancia se puede replantear como la probabilidad de encontrar un caminante aleatorio en cierto nodo del grafo.
 
 \begin{minipage}{0.5\linewidth}
 Del proceso:
@@ -897,19 +880,13 @@ De la ley de probabilidad total:
 \implies G_{i j} = Pr(x^{(n+1)}=p_i | x^{(n)}=p_j)
 \]
 
-En el contexto del Internet, $G_{i j}$ es la probabilidad de qeu cierto
-internauta, que se encuentra en la página $p_i$, entre en la página $p_j$. El
-factor $\alpha E_{i j}$ es la probabilidad de que lo haga presionando un enlace presente en $p_i$, mientras que $\frac{1-\alpha}{N} \mathds{I}$ es la probabilidad
-de que lo haga introduciendo la URL directamente.
+En el contexto del Internet, $G_{i j}$ es la probabilidad de que cierto internauta, que se encuentra en la página $p_i$, entre en la página $p_j$. El factor $\alpha E_{i j}$ es la probabilidad de que lo haga presionando un enlace presente en $p_i$, mientras que $\frac{1-\alpha}{N} \mathds{I}$ es la probabilidad de que lo haga introduciendo la URL directamente.
 
-El factor de amortiguamiento es libre y debe ser calibrado. Se suela usar
-$\alpha = 0.85$
+El factor de amortiguamiento es libre y debe ser calibrado. Se suela usar $\alpha = 0.85$
 
 \subsection{Cuantizando las caminatas aleatorias}
 
-La forma obvia y directa de cuantizar una caminata aleatoria sería sustituir el
-conjunto de nodos $\{p_i\}$ por el conjunto de kets $\{\ket{i}\}$. Sin embargo,
-esto lleva a sistemas con operadores no unitarios y no es realizable.
+La forma obvia y directa de cuantizar una caminata aleatoria sería sustituir el conjunto de nodos $\{p_i\}$ por el conjunto de kets $\{\ket{i}\}$. Sin embargo, esto lleva a sistemas con operadores no unitarios y no es realizable.
 
 % INSERTAR EJEMPLO AQUÍ
 \begin{figure}[H]
@@ -945,31 +922,19 @@ U^\dagger = \sqrt{p} \ketbra{i}{i+1} \otimes \ketbra{c}{c} + \sqrt{1-p}
 U U^\dagger = p \ketbra{i+1}{i+1} \otimes \ketbra{c}{c} + (1-p) \ketbra{i-1}{i-1} \otimes \ketbra{s}{s}
 \end{align*}
 
-Al realizar la suma sobre $i$ se tiene $\mathds{1}$, como se deseaba. Sin
-embargo, esta solución toavía no es satisfactoria, pues exige que $p_{i
-  j}=\frac{1}{outdeg(j)}$ para que $U U^\dagger=\mathds{1}$.
+Al realizar la suma sobre $i$ se tiene $\mathds{1}$, como se deseaba. Sin embargo, esta solución toavía no es satisfactoria, pues exige que $p_{i j}=\frac{1}{outdeg(j)}$ para que $U U^\dagger=\mathds{1}$.
 
-Casi todas las cuantizaciones cometen estos dos pecados, aumentar la dimensión
-del espacio de Hilbert e imponer condiciones sobre el grafo; y en general, se
-debe cometer al menos uno de los dos.
+Casi todas las cuantizaciones cometen estos dos pecados, aumentar la dimensión del espacio de Hilbert e imponer condiciones sobre el grafo; y en general, se debe cometer al menos uno de los dos.
 
 \textbf{Nota:} También existen caminatas cuánticas continuas, no sólo discretas.
 
 \subsection{Caminata cuántica de Szegedy}
 
-Existe un tipo particular de caminatas aleatorias conocido como caminatas
-bipartitas. En éstas se tiene dos conjuntos de nodos y sólo ocurren transiciones
-entre los dos conjuntos, no dentro del mismo.
+Existe un tipo particular de caminatas aleatorias conocido como caminatas bipartitas. En éstas se tiene dos conjuntos de nodos y sólo ocurren transiciones entre los dos conjuntos, no dentro del mismo.
 
 % INSERTAR EJEMPLO AQUÍ
 
-Szegedy desarrolló una cuantización de estas caminatas. Para esto utilizó
-operadores de reflexión ($W = \mathds{1} - 2 \ketbra{w}{w}$, similares a los
-utilizados en el algoritmo de Grover). Aprovechándose del hecho de que un par de
-reflexiones equivale a una rotación (como en el algoritmo de Grover), creó el
-siguiente operador de evolución de la caminata: $U = (\mathds{1} - 2
-B)(\mathds{1} - 2 A)$, donde A es el proyector sobre las transiciones de la
-primera partición a la segunda y B de la segunda a la primera.
+Szegedy desarrolló una cuantización de estas caminatas. Para esto utilizó operadores de reflexión ($W = \mathds{1} - 2 \ketbra{w}{w}$, similares a los utilizados en el algoritmo de Grover). Aprovechándose del hecho de que un par de reflexiones equivale a una rotación (como en el algoritmo de Grover), creó el siguiente operador de evolución de la caminata: $U = (\mathds{1} - 2 B)(\mathds{1} - 2 A)$, donde A es el proyector sobre las transiciones de la primera partición a la segunda y B de la segunda a la primera.
 
 \begin{minipage}{0.5\linewidth}
 \begin{align*}
@@ -984,10 +949,7 @@ B &= \sum\limits_j \ketbra{\phi_j}{\phi_j}
 \end{align*}
 \end{minipage}
 
-Si tomamos un grafo cualquiera y lo duplicamos en la forma de un grafo bipartito
-con ambas particiones iguales y transiciones iguales en ambos sentidos, podemos
-cuantizar cualquier tipo de caminata. Sólo hay que pagar el precio de duplicar
-el espacio de Hilbert generado por $\{\ket{i}\}$: $\mathcal{H}^\prime = \mathcal{H} \otimes \mathcal{H}$.
+Si tomamos un grafo cualquiera y lo duplicamos en la forma de un grafo bipartito con ambas particiones iguales y transiciones iguales en ambos sentidos, podemos cuantizar cualquier tipo de caminata. Sólo hay que pagar el precio de duplicar el espacio de Hilbert generado por $\{\ket{i}\}$: $\mathcal{H}^\prime = \mathcal{H} \otimes \mathcal{H}$.
 
 % INSERTAR EJEMPLO AQUÍ
 \begin{figure}[h]
@@ -1031,9 +993,7 @@ el espacio de Hilbert generado por $\{\ket{i}\}$: $\mathcal{H}^\prime = \mathcal
 \end{tabular}
 \end{figure}
 
-En estos casos, podemso escribir el operador de difusión en términos de sólo A,
-pues como la segunda partición es un reflejo de la primera, $B = A^T$. Entonces:
-$U = (2 A^T - \mathds{1})(2 A - \mathds{1})$
+En estos casos, podemso escribir el operador de difusión en términos de sólo A, pues como la segunda partición es un reflejo de la primera, $B = A^T$. Entonces: $U = (2 A^T - \mathds{1})(2 A - \mathds{1})$
 
 \[
 \implies = (2 S A S - \mathds{1})(2 A - \mathds{1}) = S (2 A - \mathds{1}) S (2
@@ -1044,10 +1004,7 @@ Donde $S$ es el operador SWAP, $S = \sum\limits_{i j} \ketbra{j i}{i j}$
 
 \subsection{PageRank cuántico}
 
-Finalmente, procedemos a cuántizar el algoritmo de PageRank. Partimos del hecho
-de que el algoritmo de PageRank se puede formular como una caminata algeatoria,
-cuya matriz de probabilidades es la matriz de Google, G. Entonces seguimos el
-procedimiento de Szegedy, sustituyendo $p_{i j}$ por $G_{i j}$.
+Finalmente, procedemos a cuántizar el algoritmo de PageRank. Partimos del hecho de que el algoritmo de PageRank se puede formular como una caminata algeatoria, cuya matriz de probabilidades es la matriz de Google, G. Entonces seguimos el procedimiento de Szegedy, sustituyendo $p_{i j}$ por $G_{i j}$.
 
 Ahora, definimos el valor de PageRank cuántico en el paso $m$ como:
 
@@ -1056,64 +1013,177 @@ I_q(P_i,m) &= \ket{U^{\dagger m}(\mathds{1} \otimes \ketbra{i}{i})} \\
 \ket{\psi_0} &= \frac{1}{\sqrt{N}} \sum\limits_i \ket{\psi_i}
 \end{align*}
 
-Esto equivale a realizar $m$ pasos de la caminata con $\ket{\psi_0}$ como estado
-inicial y realizar una medida proyeciva sobre $\ket{i}_2$.
+Esto equivale a realizar $m$ pasos de la caminata con $\ket{\psi_0}$ como estado inicial y realizar una medida proyeciva sobre $\ket{i}_2$.
 
-Nota: $I_q$ no converge, sino que oscila, así que se toma el centro de las
-oscilacioens como la medida de importancia de las páginas. Esto se hace
-promediando $I_q$ sobre $m$: $\langle I_q(P_i) \rangle = \frac{1}{M}
-\sum\limits_{m=0}^{M-1} I_q(P_i,m)$ 
+Nota: $I_q$ no converge, sino que oscila, así que se toma el centro de las oscilacioens como la medida de importancia de las páginas. Esto se hace promediando $I_q$ sobre $m$: $\langle I_q(P_i) \rangle = \frac{1}{M} \sum\limits_{m=0}^{M-1} I_q(P_i,m)$ 
 
-% \section{PageRank clásico}
 
-% La idea principal de este algoritmo es que la importancia de una página está dada por cuántas páginas contienen vínculos a ella.
+\appendix
+\chapter{Cálculos de Hamiltonianos}
 
-% Si defininimos $I(P_i)$ como la importancia de la página $P_i$ y $B_i$ como el conjunto de páginas que llevan a ella, entonces se podría expresar la idea anterior como:
+\section{Hamiltoniano de Jaynes-Cummings}
 
-% \[
-% I(P_i) \equiv \sum\limits_{j \in B_i} \frac{I(P_j)}{\mathrm{outdeg}(P_j)}
-% \]
+El Hamiltoniano de Jaynes-Cummings es un Hamiltoniano diagonal que representa un
+sistema de dos niveles interactuando con un modo cuantizado de una cavidad óptica.
 
-% donde $\mathrm{outdeg}(P_j)$ es el \textit{outdegree} de la página $P_j$, es decir, la cantidad de vínculos salientes. Definamos ahora la matriz de hipervínculos:
+$$\hat{H}_{JC} = \hat{H}_r + \hat{H}_q + \hat{H}_{qr} = \omega_r a^\dag a - \frac{1}{2} \omega_q \sigma_z + g(a \sigma_+ + a^\dag \sigma_-)$$
 
-% \[
-% H_{ij} \equiv \begin{cases}
-% \frac{1}{\mathrm{outdeg}(P_j)} & \text{si } P_j \in B_i \\
-% 0 & \text{en otro caso}
-% \end{cases}
-% \]
+\section{Hamiltoniano multiquibit}
 
-% y el vector de PageRank:
+El modelo de Jaynes-Cummings para varios qubits sin el término de la energía de la cavidad es el siguiente:
 
-% \[
-% I_i \equiv I(P_i)
-% \]
+$$\hat{H} = \hat{H}_q + \hat{H}_{qr} = - \frac{1}{2} \sum\limits_i \omega_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i})$$
 
-% Así se puede definir el PageRank de forma matricial de la siguiente manera:
+\section{Pulsos de microondas}
 
-% \[
-% I = H I
-% \]
+Para operar sobre los qubits se aplican pulsos de microondas.
 
-% \subsection{Saltos aleatorios}
+$$\hat{H}_d = \sum\limits_k (a+a^\dagger) (\xi_k e^{-i\omega_d^{(k)}t} + \xi_k^*e^{i\omega_d^{(k)}t})$$
 
-% \[
-% \mathrm{PageRank}(p_i) = \frac{\alpha}{N} + (1 - \alpha) \sum\limits_{p_j \in L(p_i)} \mathrm{PageRank}(p_j)
-% \]
+RWA: $$\hat{H}_d=\sum\limits_k a\xi_k^*e^{i\omega_d^{(k)}t}+ a^\dagger\xi_ke^{-i\omega_d^{(k)}t}$$
 
-% donde $p_i$ es la página en consideración, $N$ es el número total de páginas, $\alpha$ es la constante de amortiguamiento y $L(p_i)$ es el conjunto de las páginas que llevan a $p_i$.
+\section{Régimen rotacional del pulso}
 
-% \subsection{El algoritmo visto como una caminata aleatoria}
+Trabajando con un sólo modo a la vez, se aplica la siguiente transformación
+$U(t) = exp[-i \omega_d t(a^\dagger a - \frac{1}{2} \sum\limits_i \sigma_{z i})]$ para entrar en el régimen rotacional del pulso de control.
 
-% \section{PageRank cuántico}
+$$\hat{H} = U^\dagger (\hat{H}_{syst} + \hat{H}_d) U - i U^\dagger \dot{U}$$
 
-% \subsection{Caminatas cuánticas de Szegedy}
+------------------------------
+$e^{-\lambda X} H e^{\lambda X} = H + \lambda [H,X] +
+\frac{\lambda^2}{2!}[[H,X],X] + ...$
 
-% \subsection{PageRank cuántico de Paparo}
 
-% \section{AC de SearchRank}
+$$\hat{H} = U^\dagger (\omega_r a^\dag a - \frac{1}{2} \sum\limits_i \omega_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}) + \sum\limits_k (a\xi_k^*e^{i\omega_d^{(k)}t}+ a^\dagger\xi_ke^{-i\omega_d^{(k)}t})) U - i U^\dagger \dot{U}$$
+
+$[\omega_r a^\dag a, -i \omega_d t(a^\dagger a - \frac{1}{2} \sum\limits_i \sigma_{z i})] = 0$
+
+$[- \frac{1}{2} \sum\limits_i \omega_{qi} \sigma_{zi} , -i \omega_d t(a^\dagger
+a - \frac{1}{2} \sum\limits_i \sigma_{z i})] = 0$
+
+$[\sigma_+, \sigma_z] = 2 \sigma_+$
+
+$[\sigma_-, \sigma_z] = - 2 \sigma_-$
+
+$[\sigma_-, \sigma_+] = \sigma_z$
+
+$[a, a^\dagger] = 1$
+
+$[a, a^\dagger a] = a a^\dagger a - a^\dagger a a = (a a^\dagger - a^\dagger a) a = [a, a^\dagger] a = a$
+
+$[a^\dagger, a^\dagger a] = a^\dagger a^\dagger a - a^\dagger a a^\dagger = a^\dagger (a^\dagger a - a a^\dagger) = a^\dagger [a^\dagger, a] = -a^\dagger$
+
+
+$[\sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}), -i \omega_d t(a^\dagger a - \frac{1}{2} \sum\limits_i \sigma_{z i})] =
+-i \omega_d t [\sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}), (a^\dagger a)] 
+-i \omega_d t [\sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}), (- \frac{1}{2} \sum\limits_i \sigma_{z i})] =
+-i \omega_d t \sum\limits_i g_i (a \sigma_{+ i} - a^\dagger \sigma_{- i})
++i \omega_d t \sum\limits_i g_i (a \sigma_{+ i} - a^\dagger \sigma_{- i}) = 0 $
+
+$[\sum\limits_k (a\xi_k^*e^{i\omega_d^{(k)}t}+ a^\dagger\xi_ke^{-i\omega_d^{(k)}t}), -i \omega_d t(a^\dagger a - \frac{1}{2} \sum\limits_i \sigma_{z i})] =
+-i \omega_d t \sum\limits_k (a\xi_k^*e^{i\omega_d^{(k)}t} - a^\dagger\xi_ke^{-i\omega_d^{(k)}t})
+$
+
+$[-i \omega_d t \sum\limits_k (a\xi_k^*e^{i\omega_d^{(k)}t} - a^\dagger\xi_ke^{-i\omega_d^{(k)}t}), -i \omega_d t(a^\dagger a - \frac{1}{2} \sum\limits_i \sigma_{z i})] =
+- (\omega_d t)^2 \sum\limits_k (a\xi_k^*e^{i\omega_d^{(k)}t} + a^\dagger\xi_ke^{-i\omega_d^{(k)}t}) $
+
+
+
+
+
+
+
+
+
+
+
+$$ [\omega_r a^\dagger a + \frac{1}{2} \sum\limits_i \omega_{q i} \sigma_{z i} ,
+-i \omega_d t (a^\dagger a + \frac{1}{2} \sum\limits_i \sigma_{z i})] = 0$$
+
+\begin{align*}
+  [\sum\limits_i (a \sigma_{+_i} + a^\dagger \sigma_{-_i}) , (a^\dagger a + \frac{1}{2} \sum\limits_i \sigma_{z i})] &= \\
+  [\sum\limits_i (a \sigma_{+_i} + a^\dagger \sigma_{-_i}) , a^\dagger a] + [\sum\limits_i (a \sigma_{+_i} + a^\dagger \sigma_{-_i}) , \frac{1}{2} \sum\limits_i \sigma_{z i}] &= \\
+  \sum\limits_i (a \sigma_{+_i} - a^\dagger \sigma_{-_i}) + \sum\limits_i (- a \sigma_{+_i} + a^\dagger \sigma_{-_i})  &= 0
+\end{align*}
+
+$$\hat{H} = \hat{H}_{syst} + U^\dagger \hat{H}_d U - i U^\dagger \dot{U}$$
+
+\begin{align*}
+  [\sum\limits_k a\xi_k^*e^{i\omega_d^{(k)}t} + a^\dagger\xi_ke^{-i\omega_d^{(k)}t}, (a^\dagger a + \frac{1}{2} \sum\limits_i \sigma_{z i})] &= \\
+  [\sum\limits_k \xi_k^*e^{i\omega_d^{(k)}t}a + \xi_ke^{-i\omega_d^{(k)}t}a^\dagger, a^\dagger a] &= \sum\limits_k \xi_k^*e^{i\omega_d^{(k)}t}a - \xi_ke^{-i\omega_d^{(k)}t}a^\dagger
+\end{align*}
+
+\begin{align*}
+  [\sum\limits_k \xi_k^*e^{i\omega_d^{(k)}t}a - \xi_ke^{-i\omega_d^{(k)}t}a^\dagger , (a^\dagger a + \frac{1}{2} \sum\limits_i \sigma_{z i})] &= \\
+  [\sum\limits_k \xi_k^*e^{i\omega_d^{(k)}t}a - \xi_ke^{-i\omega_d^{(k)}t}a^\dagger, a^\dagger a] &= \sum\limits_k a\xi_k^*e^{i\omega_d^{(k)}t} + a^\dagger\xi_ke^{-i\omega_d^{(k)}t}
+\end{align*}
+
+
+------------------------------
+
+
+$$ \hat{H} = \Delta_c a^\dagger a + \frac{1}{2} \sum\limits_i \Delta_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}) + (a\xi^*e^{i\omega_d t}+a^\dagger\xi e^{-i\omega_d t})$$
+
+$\Delta_c = \omega_c - \omega_d \qquad \quad \Delta_{qi} = \omega_{qi} - \omega_d$
+
+\section{Efecto del pulso sobre el qubit}
+
+Luego se aplica el operador de desplazamineto $D(\alpha) = exp[\alpha a^\dagger - \alpha^* a]$ sobre el campo $a$ con $\dot{\alpha} = -i \Delta_c \alpha -i \xi e^{-i \omega_d t}$ para eliminar el efecto directo del pulso sobre la cavidad.
+
+$$\hat{H} = D^\dagger (\alpha) \hat{H}_{old} D(\alpha) -i D^\dagger(\alpha) \dot{D}(\alpha)$$
+
+------------------------------
+$$ \hat{H} = \Delta_c a^\dagger a + \frac{1}{2} \sum\limits_i \Delta_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}) + (a\xi^*e^{i\omega_d t}+a^\dagger\xi e^{-i\omega_d t})$$
+
+\begin{align*}
+  \hat{H} = \Delta_c (a^\dagger + \alpha^*) (a + \alpha) + \frac{1}{2} \sum\limits_i \Delta_{qi} \sigma_{zi} + \sum\limits_i g_i ((a+\alpha) \sigma_{+ i} + (a^\dagger+\alpha^*) \sigma_{- i}) \\
+  + ((a+\alpha)\xi^*e^{i\omega_d t}+(a^\dagger+\alpha^*)\xi e^{-i\omega_d t}) -i(\dot{\alpha} (a^\dagger + \alpha^*) - \dot{\alpha}^* (a + \alpha))
+\end{align*}
+
+
+------------------------------
+
+$$\hat{H} = \Delta_c a^\dagger a + \frac{1}{2} \sum\limits_i \Delta_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+i} + a^\dagger \sigma_{-i})$$
+$$ + \sum\limits_i g_i (\alpha \sigma_{+i} + \alpha^* \sigma_{-i}) - \Delta_c \alpha \alpha^* $$
+
+El término $-\Delta_c \alpha \alpha^*$ se desprecia, ya que sólo representa una fase global en la evolución del sistema.
+
+\section{Régimen dispersivo}
+
+Finalmente, aplicamos la transformación $U = exp[\sum\limits_i \frac{g_i}
+{\Delta_i} (a^\dagger \sigma_{-i} - a \sigma_{+i})]$, donde $\Delta_i =
+\omega_{qi} - \omega_c$ y realizamos la expansión de Baker-Campbell-Hausdorff de segundo grado sobre los términos $\frac{g_i}{\Delta_i} \ll 1$.
+
+$$\hat{H} = U^\dagger \hat{H}_{old} U$$
+$$\hat{H} \approx \tilde{\Delta}_c a^\dagger a + \frac{1}{2} \sum\limits_i \tilde{\Delta}_{qi} \sigma_{zi} + \sum\limits_i (\Omega_i \sigma_{+i} + \Omega_i^* \sigma_{-i})$$
+$$+ \sum\limits_{i \neq j} \frac{g_i g_j}{2 \Delta_i} (\sigma_{-i} \sigma_{+j}+\sigma_{+i} \sigma_{-j})$$
+
+$\tilde{\Delta}_c = (\omega_c + \sum\limits_i \chi_i \sigma_{zi}) - \omega_d \qquad \tilde{\Delta}_{qi} = (\omega_{qi} + \chi_i) - \omega_d \qquad \chi_i = \frac{g_i^2}{\Delta_i}$
+
+\section{Rotaciones X-Y}
+
+Tomando $\Omega(t) = \Omega^x(t) \cos(\omega_d t) + \Omega^y \sin(\omega_d t)$, donde $\omega_d$ es igual a la frecuencia de resonancia de uno de los qubits logramos rotaciones sobre los ejes X e Y. Las amplitudes de estas rotaciones vienen dadas por $\int_0^{t_0} \Omega^x(t) dt$ y $\int_0^{t_0} \Omega^y(t) dt$, respectivamente, donde $t_0$ es la duración del pulso.
+
+------------------------
+$$ \Omega \sigma_+ + \Omega^* \sigma_- $$
+
+$$ e^{i(x+\pi/2)}-e^{-i(x+\pi/2)} = e^{i\pi/2}e^{ix}-e^{-i\pi/2}e^{-ix} =
+e^{i\pi/2}e^{ix}+e^{i\pi}e^{-i\pi/2}e^{-ix} = e^{i\pi/2}e^{ix}+e^{i\pi/2}e^{-ix} = e^{i\pi/2}(e^{ix}+e^{-ix})$$
+------------------------
+
+$$\hat{H} \approx \tilde{\Delta}_c a^\dagger a + \frac{1}{2} \tilde{\Delta}_q \sigma_z + \frac{1}{2} (\Omega^x(t) \sigma_x + \Omega^y(t) \sigma_y)$$
+
+\section{Compuerta de entrelazamiento}
+
+Ejemplo con sólo dos qubits
+
+$$\hat{H} \approx \frac{1}{2} \tilde{\Delta}_{q_1} \sigma_{z_1} + \frac{1}{2} \tilde{\Delta}_{q_2} \sigma_{z_2} + \frac{g_1 g_2 (\Delta_1 + \Delta_2)}{2 \Delta_1 \Delta_2} (\sigma_{-_1} \sigma_{+_2} + \sigma_{+_1} \sigma_{-_2})$$
+
+Variando la frecuencia de resonacia de los qubit, se puede variar el acoplamiento entre estos. 
+
+\chapter{Cálculos de matrices de adyacencia}
 
 \end{document}
-\grid
 
-\message{ !name(Test.tex) !offset(-1119) }
+
+\message{ !name(Test.tex) !offset(-1189) }

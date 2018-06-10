@@ -39,6 +39,10 @@ def plot_drive_expect(res,args):
         axes[1].plot(tlist, np.real(expect(qop('n',1), res.states)), 'g', linewidth=2, label="qubit 1")
         axes[1].plot(tlist, np.real(expect(qop('n',2), res.states)), 'c', linewidth=2, label="qubit 2") #MELCSCELDQ
         axes[1].plot(tlist, np.real(expect(qop('n',3), res.states)), 'm', linewidth=2, label="qubit 3") #MELCSCELDQ
+        axes[1].plot(tlist, np.real(expect(qop('n',4), res.states)), 'r', linewidth=2, label="qubit 4") #MELCSCELDQ
+        axes[1].plot(tlist, np.real(expect(qop('n',5), res.states)), 'y', linewidth=2, label="qubit 5") #MELCSCELDQ
+        axes[1].plot(tlist, np.real(expect(qop('n',6), res.states)), 'k', linewidth=2, label="qubit 6") #MELCSCELDQ
+        axes[1].plot(tlist, np.real(expect(qop('n',7), res.states)), 'w', linewidth=2, label="qubit 7") #MELCSCELDQ
         axes[1].set_ylim(0, 1)
 
         axes[1].set_xlabel("Time (ns)", fontsize=16)
@@ -61,6 +65,10 @@ def plot_drive_expect(res,args):
         axes[2].plot(tlist, np.real(expect(qop('n',1), res.states)), 'g', linewidth=2, label="qubit 1")
         axes[2].plot(tlist, np.real(expect(qop('n',2), res.states)), 'c', linewidth=2, label="qubit 2") #MELCSCELDQ
         axes[2].plot(tlist, np.real(expect(qop('n',3), res.states)), 'm', linewidth=2, label="qubit 3") #MELCSCELDQ
+        axes[2].plot(tlist, np.real(expect(qop('n',4), res.states)), 'r', linewidth=2, label="qubit 4") #MELCSCELDQ
+        axes[2].plot(tlist, np.real(expect(qop('n',5), res.states)), 'y', linewidth=2, label="qubit 5") #MELCSCELDQ
+        axes[2].plot(tlist, np.real(expect(qop('n',6), res.states)), 'k', linewidth=2, label="qubit 6") #MELCSCELDQ
+        axes[2].plot(tlist, np.real(expect(qop('n',7), res.states)), 'w', linewidth=2, label="qubit 7") #MELCSCELDQ
         axes[2].set_ylim(0, 1)
 
         axes[2].set_xlabel("Time (ns)", fontsize=16)
@@ -71,13 +79,14 @@ def plot_drive_expect(res,args):
 
 # Parametros del sistema
 
-N = 50
+N = 100
 
 wr = 10.0 * 2 * np.pi
-wq = np.array([5.0 * 2 * np.pi, 6.0 * 2 * np.pi, 7.0 * 2 * np.pi, 8.0 * 2 * np.pi])
+# wq = np.array([5.0 * 2 * np.pi, 6.0 * 2 * np.pi, 7.0 * 2 * np.pi, 8.0 * 2 * np.pi])
+wq = np.array([5.0 * 2 * np.pi, 6.0 * 2 * np.pi, 7.0 * 2 * np.pi, 8.0 * 2 * np.pi, 11.0 * 2 * np.pi, 12.0 * 2 * np.pi, 13.0 * 2 * np.pi, 14.0 * 2 * np.pi])
 wq_swap = 9.0 * 2 * np.pi
 
-g = np.array([0.1 * 2*np.pi, 0.1 * 2*np.pi, 0.1 * 2*np.pi, 0.1 * 2*np.pi])
+g = np.array([0.1 * 2*np.pi, 0.1 * 2*np.pi, 0.1 * 2*np.pi, 0.1 * 2*np.pi, 0.1 * 2*np.pi, 0.1 * 2*np.pi, 0.1 * 2*np.pi, 0.1 * 2*np.pi])
 
 D = wq - wr
 
@@ -92,7 +101,8 @@ L = np.matrix(L)
 '''
 
 # cavity operators
-a = tensor(destroy(N), qeye(2), qeye(2), qeye(2), qeye(2)) # Modificar esta linea cuando se cambie el numero de qubits #MELCSCELDQ
+# a = tensor(destroy(N), qeye(2), qeye(2), qeye(2), qeye(2)) # Modificar esta linea cuando se cambie el numero de qubits #MELCSCELDQ
+a = tensor(destroy(N), qeye(2), qeye(2), qeye(2), qeye(2), qeye(2), qeye(2), qeye(2), qeye(2)) # Modificar esta linea cuando se cambie el numero de qubits #MELCSCELDQ
 n = a.dag() * a
 Id = tensor(qeye(N), qeye(2), qeye(2), qeye(2), qeye(2))
 
@@ -105,8 +115,11 @@ def qop_part(operator, target):
     else:
         return qeye(2)
 
+# def qop(operator, target):
+    # return tensor(qeye(N), qop_part(operator, target-0), qop_part(operator, target-1), qop_part(operator, target-2), qop_part(operator, target-3)) #MELCSCELDQ
+    
 def qop(operator, target):
-    return tensor(qeye(N), qop_part(operator, target-0), qop_part(operator, target-1), qop_part(operator, target-2), qop_part(operator, target-3)) #MELCSCELDQ
+    return tensor(qeye(N), qop_part(operator, target-0), qop_part(operator, target-1), qop_part(operator, target-2), qop_part(operator, target-3), qop_part(operator, target-4), qop_part(operator, target-5), qop_part(operator, target-6), qop_part(operator, target-7)) #MELCSCELDQ
 
 def ksi_t(t, args):
     return args['A'] * gaussianpulse(t,args['ts'],args['tf'])
@@ -134,7 +147,8 @@ def Rx(psi0, target, theta):
     Dr = wr-wd
     Dq = wq-wd
 
-    Hsyst = Dr*n + Dq[0]*qop('sz',0)/2 + Dq[1]*qop('sz',1)/2 + Dq[2]*qop('sz',2)/2 + Dq[3]*qop('sz',3)/2 #MELCSCELDQ
+    # Hsyst = Dr*n + Dq[0]*qop('sz',0)/2 + Dq[1]*qop('sz',1)/2 + Dq[2]*qop('sz',2)/2 + Dq[3]*qop('sz',3)/2 #MELCSCELDQ
+    Hsyst = Dr*n + Dq[0]*qop('sz',0)/2 + Dq[1]*qop('sz',1)/2 + Dq[2]*qop('sz',2)/2 + Dq[3]*qop('sz',3)/2 + Dq[4]*qop('sz',4)/2 + Dq[5]*qop('sz',5)/2 + Dq[6]*qop('sz',6)/2 + Dq[7]*qop('sz',7)/2 #MELCSCELDQ
     H_t = [[qop('sx',target)/2, ksi_t], Hsyst]
 
     args = {'A' : theta, 'ts' : 0, 'tf' : 10, 'w' : wq[target]}

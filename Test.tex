@@ -1023,13 +1023,13 @@ Nota: $I_q$ no converge, sino que oscila, así que se toma el centro de las osci
 El Hamiltoniano de Jaynes-Cummings es un Hamiltoniano diagonal que representa un
 sistema de dos niveles interactuando con un modo cuantizado de una cavidad óptica.
 
-$$\hat{H}_{JC} = \hat{H}_c + \hat{H}_q + \hat{H}_{qc} = \omega_c a^\dag a + \frac{1}{2} \omega_q \sigma_z + g(a \sigma_+ + a^\dag \sigma_-)$$
+$$\hat{H}_{JC} = \hat{H}_r + \hat{H}_q + \hat{H}_{qr} = \omega_r a^\dag a - \frac{1}{2} \omega_q \sigma_z + g(a \sigma_+ + a^\dag \sigma_-)$$
 
 \section{Hamiltoniano multiquibit}
 
 El modelo de Jaynes-Cummings para varios qubits sin el término de la energía de la cavidad es el siguiente:
 
-$$\hat{H} = \hat{H}_q + \hat{H}_{qc} = \frac{1}{2} \sum\limits_i \omega_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i})$$
+$$\hat{H} = \hat{H}_q + \hat{H}_{qr} = - \frac{1}{2} \sum\limits_i \omega_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i})$$
 
 \section{Pulsos de microondas}
 
@@ -1042,11 +1042,58 @@ RWA: $$\hat{H}_d=\sum\limits_k a\xi_k^*e^{i\omega_d^{(k)}t}+ a^\dagger\xi_ke^{-i
 \section{Régimen rotacional del pulso}
 
 Trabajando con un sólo modo a la vez, se aplica la siguiente transformación
-$U(t) = exp[-i \omega_d t(a^\dagger a + \frac{1}{2} \sum\limits_i \sigma_{z i})]$ para entrar en el régimen rotacional del pulso de control.
+$U(t) = exp[-i \omega_d t(a^\dagger a - \frac{1}{2} \sum\limits_i \sigma_{z i})]$ para entrar en el régimen rotacional del pulso de control.
 
 $$\hat{H} = U^\dagger (\hat{H}_{syst} + \hat{H}_d) U - i U^\dagger \dot{U}$$
 
 ------------------------------
+$e^{-\lambda X} H e^{\lambda X} = H + \lambda [H,X] +
+\frac{\lambda^2}{2!}[[H,X],X] + ...$
+
+
+$$\hat{H} = U^\dagger (\omega_r a^\dag a - \frac{1}{2} \sum\limits_i \omega_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}) + \sum\limits_k (a\xi_k^*e^{i\omega_d^{(k)}t}+ a^\dagger\xi_ke^{-i\omega_d^{(k)}t})) U - i U^\dagger \dot{U}$$
+
+$[\omega_r a^\dag a, -i \omega_d t(a^\dagger a - \frac{1}{2} \sum\limits_i \sigma_{z i})] = 0$
+
+$[- \frac{1}{2} \sum\limits_i \omega_{qi} \sigma_{zi} , -i \omega_d t(a^\dagger
+a - \frac{1}{2} \sum\limits_i \sigma_{z i})] = 0$
+
+$[\sigma_+, \sigma_z] = 2 \sigma_+$
+
+$[\sigma_-, \sigma_z] = - 2 \sigma_-$
+
+$[\sigma_-, \sigma_+] = \sigma_z$
+
+$[a, a^\dagger] = 1$
+
+$[a, a^\dagger a] = a a^\dagger a - a^\dagger a a = (a a^\dagger - a^\dagger a) a = [a, a^\dagger] a = a$
+
+$[a^\dagger, a^\dagger a] = a^\dagger a^\dagger a - a^\dagger a a^\dagger = a^\dagger (a^\dagger a - a a^\dagger) = a^\dagger [a^\dagger, a] = -a^\dagger$
+
+
+$[\sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}), -i \omega_d t(a^\dagger a - \frac{1}{2} \sum\limits_i \sigma_{z i})] =
+-i \omega_d t [\sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}), (a^\dagger a)] 
+-i \omega_d t [\sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}), (- \frac{1}{2} \sum\limits_i \sigma_{z i})] =
+-i \omega_d t \sum\limits_i g_i (a \sigma_{+ i} - a^\dagger \sigma_{- i})
++i \omega_d t \sum\limits_i g_i (a \sigma_{+ i} - a^\dagger \sigma_{- i}) = 0 $
+
+$[\sum\limits_k (a\xi_k^*e^{i\omega_d^{(k)}t}+ a^\dagger\xi_ke^{-i\omega_d^{(k)}t}), -i \omega_d t(a^\dagger a - \frac{1}{2} \sum\limits_i \sigma_{z i})] =
+-i \omega_d t \sum\limits_k (a\xi_k^*e^{i\omega_d^{(k)}t} - a^\dagger\xi_ke^{-i\omega_d^{(k)}t})
+$
+
+$[-i \omega_d t \sum\limits_k (a\xi_k^*e^{i\omega_d^{(k)}t} - a^\dagger\xi_ke^{-i\omega_d^{(k)}t}), -i \omega_d t(a^\dagger a - \frac{1}{2} \sum\limits_i \sigma_{z i})] =
+- (\omega_d t)^2 \sum\limits_k (a\xi_k^*e^{i\omega_d^{(k)}t} + a^\dagger\xi_ke^{-i\omega_d^{(k)}t}) $
+
+
+
+
+
+
+
+
+
+
+
 $$ [\omega_r a^\dagger a + \frac{1}{2} \sum\limits_i \omega_{q i} \sigma_{z i} ,
 -i \omega_d t (a^\dagger a + \frac{1}{2} \sum\limits_i \sigma_{z i})] = 0$$
 
@@ -1113,6 +1160,13 @@ $\tilde{\Delta}_c = (\omega_c + \sum\limits_i \chi_i \sigma_{zi}) - \omega_d \qq
 \section{Rotaciones X-Y}
 
 Tomando $\Omega(t) = \Omega^x(t) \cos(\omega_d t) + \Omega^y \sin(\omega_d t)$, donde $\omega_d$ es igual a la frecuencia de resonancia de uno de los qubits logramos rotaciones sobre los ejes X e Y. Las amplitudes de estas rotaciones vienen dadas por $\int_0^{t_0} \Omega^x(t) dt$ y $\int_0^{t_0} \Omega^y(t) dt$, respectivamente, donde $t_0$ es la duración del pulso.
+
+------------------------
+$$ \Omega \sigma_+ + \Omega^* \sigma_- $$
+
+$$ e^{i(x+\pi/2)}-e^{-i(x+\pi/2)} = e^{i\pi/2}e^{ix}-e^{-i\pi/2}e^{-ix} =
+e^{i\pi/2}e^{ix}+e^{i\pi}e^{-i\pi/2}e^{-ix} = e^{i\pi/2}e^{ix}+e^{i\pi/2}e^{-ix} = e^{i\pi/2}(e^{ix}+e^{-ix})$$
+------------------------
 
 $$\hat{H} \approx \tilde{\Delta}_c a^\dagger a + \frac{1}{2} \tilde{\Delta}_q \sigma_z + \frac{1}{2} (\Omega^x(t) \sigma_x + \Omega^y(t) \sigma_y)$$
 
