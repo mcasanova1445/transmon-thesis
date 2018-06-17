@@ -1045,7 +1045,7 @@ RWA: $$\hat{H}_d=\sum\limits_k a\xi_k^*e^{i\omega_d^{(k)}t}+ a^\dagger\xi_ke^{-i
 \section{Régimen rotacional del pulso}
 
 Trabajando con un sólo modo a la vez, se aplica la siguiente transformación
-$U(t) = exp[-i \omega_d t(a^\dagger a - \frac{1}{2} \sum\limits_i \sigma_{z i})]$ para entrar en el régimen rotacional del pulso de control.
+$U(t) = exp[\sum\limits_n-i \omega_d^{(n)} t(a^\dagger a - \frac{1}{2} \sum\limits_i \sigma_{z i})]$ para entrar en el régimen rotacional del pulso de control.
 
 $$\hat{H} = U^\dagger (\hat{H}_{syst} + \hat{H}_d) U - i U^\dagger \dot{U}$$
 
@@ -1054,7 +1054,10 @@ $e^{-\lambda X} H e^{\lambda X} = H + \lambda [H,X] +
 \frac{\lambda^2}{2!}[[H,X],X] + ...$
 
 
-$$\hat{H} = U^\dagger (\omega_r a^\dag a - \frac{1}{2} \sum\limits_i \omega_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}) + \sum\limits_k (a\xi_k^*e^{i\omega_d^{(k)}t}+ a^\dagger\xi_ke^{-i\omega_d^{(k)}t})) U - i U^\dagger \dot{U}$$
+$$\hat{H} = U^\dagger (\omega_r a^\dag a - \frac{1}{2} \sum\limits_i \omega_{qi}
+\sigma_{zi} + \sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}) +
+\sum\limits_k (a\xi_k^*e^{i\sum\limits_k \omega_d^{(k)}t}+
+a^\dagger\xi_ke^{-i\sum\limits_k \omega_d^{(k)}t})) U - i U^\dagger \dot{U}$$
 
 $[\omega_r a^\dag a, -i \omega_d t(a^\dagger a - \frac{1}{2} \sum\limits_i \sigma_{z i})] = 0$
 
@@ -1074,76 +1077,75 @@ $[a, a^\dagger a] = a a^\dagger a - a^\dagger a a = (a a^\dagger - a^\dagger a) 
 $[a^\dagger, a^\dagger a] = a^\dagger a^\dagger a - a^\dagger a a^\dagger = a^\dagger (a^\dagger a - a a^\dagger) = a^\dagger [a^\dagger, a] = -a^\dagger$
 
 
-$[\sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}), -i \omega_d t(a^\dagger a - \frac{1}{2} \sum\limits_i \sigma_{z i})] =
--i \omega_d t [\sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}), (a^\dagger a)] 
--i \omega_d t [\sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}), (- \frac{1}{2} \sum\limits_i \sigma_{z i})] =
--i \omega_d t \sum\limits_i g_i (a \sigma_{+ i} - a^\dagger \sigma_{- i})
-+i \omega_d t \sum\limits_i g_i (a \sigma_{+ i} - a^\dagger \sigma_{- i}) = 0 $
+$[\sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}), \sum\limits_n-i \omega_d^{(n)} t(a^\dagger a - \frac{1}{2} \sum\limits_i \sigma_{z i})] =
+\sum\limits_n-i \omega_d^{(n)} t [\sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}), (a^\dagger a)] 
++ \sum\limits_n-i \omega_d^{(n)} t [\sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}), (- \frac{1}{2} \sum\limits_i \sigma_{z i})] =
+\sum\limits_n-i \omega_d^{(n)} t \sum\limits_i g_i (a \sigma_{+ i} - a^\dagger \sigma_{- i})
+- \sum\limits_n-i \omega_d^{(n)} t \sum\limits_i g_i (a \sigma_{+ i} - a^\dagger \sigma_{- i}) = 0 $
 
-$[\sum\limits_k (a\xi_k^*e^{i\omega_d^{(k)}t}+ a^\dagger\xi_ke^{-i\omega_d^{(k)}t}), -i \omega_d t(a^\dagger a - \frac{1}{2} \sum\limits_i \sigma_{z i})] =
--i \omega_d t \sum\limits_k (a\xi_k^*e^{i\omega_d^{(k)}t} - a^\dagger\xi_ke^{-i\omega_d^{(k)}t})
+$$\hat{H} = U^\dagger (\hat{H}_{syst}) U = \hat{H}_{syst} $$
+
+$[\sum\limits_k (a\xi_k^*e^{i\sum\limits_k \omega_d^{(k)}t}+
+a^\dagger\xi_ke^{-i\sum\limits_k \omega_d^{(k)}t}), \sum\limits_n-i \omega_d^{(n)} t(a^\dagger a - \frac{1}{2} \sum\limits_i \sigma_{z i})] =
+(\sum\limits_n-i \omega_d^{(n)} t) \sum\limits_k (a\xi_k^*e^{i\sum\limits_k
+  \omega_d^{(k)}t} - a^\dagger\xi_ke^{-i\sum\limits_k \omega_d^{(k)}t})
 $
 
-$[-i \omega_d t \sum\limits_k (a\xi_k^*e^{i\omega_d^{(k)}t} - a^\dagger\xi_ke^{-i\omega_d^{(k)}t}), -i \omega_d t(a^\dagger a - \frac{1}{2} \sum\limits_i \sigma_{z i})] =
-- (\omega_d t)^2 \sum\limits_k (a\xi_k^*e^{i\omega_d^{(k)}t} + a^\dagger\xi_ke^{-i\omega_d^{(k)}t}) $
+$[(\sum\limits_n-i \omega_d^{(n)} t) \sum\limits_k (a\xi_k^*e^{i\sum\limits_k
+  \omega_d^{(k)}t} - a^\dagger\xi_ke^{-i\sum\limits_k \omega_d^{(k)}t}), \sum\limits_n-i \omega_d^{(n)} t(a^\dagger a - \frac{1}{2} \sum\limits_i \sigma_{z i})] =
+(\sum\limits_n-i \omega_d^{(n)} t)^2 \sum\limits_k (a\xi_k^*e^{i\sum\limits_k
+  \omega_d^{(k)}t} + a^\dagger\xi_ke^{-i\sum\limits_k \omega_d^{(k)}t}) $
+ 
+$[(\sum\limits_n-i \omega_d^{(n)} t)^2 \sum\limits_k (a\xi_k^*e^{i\sum\limits_k
+  \omega_d^{(k)}t}+ a^\dagger\xi_ke^{-i\sum\limits_k \omega_d^{(k)}t}), (\sum\limits_n-i \omega_d^{(n)} t)(a^\dagger a - \frac{1}{2} \sum\limits_i \sigma_{z i})] =
+(\sum\limits_n-i \omega_d^{(n)} t)^3 \sum\limits_k (a\xi_k^*e^{i\sum\limits_k
+  \omega_d^{(k)}t} - a^\dagger\xi_ke^{-i\sum\limits_k \omega_d^{(k)}t})
+$
+
+$[(\sum\limits_n-i \omega_d^{(n)} t)^3 \sum\limits_k (a\xi_k^*e^{i\sum\limits_k
+  \omega_d^{(k)}t} - a^\dagger\xi_ke^{-i\sum\limits_k \omega_d^{(k)}t}), (\sum\limits_n-i \omega_d^{(n)} t)(a^\dagger a - \frac{1}{2} \sum\limits_i \sigma_{z i})] =
+(\sum\limits_n-i \omega_d^{(n)} t)^4 \sum\limits_k (a\xi_k^*e^{i\sum\limits_k
+  \omega_d^{(k)}t} + a^\dagger\xi_ke^{-i\sum\limits_k \omega_d^{(k)}t}) $
 
 
+$e^{-X} H e^{X} = H + [H,X] +
+\frac{1}{2!}[[H,X],X] + ...$
 
+% 1 + a + a^2/2! + a^3/3! + a^4/4! + ...
+% 1 + (-b) + (-b)^2/2! + (-b)^3/3! + (-b)^4/4! - ...
 
+$$\hat{H} = U^\dagger (\hat{H}_d) U = \sum\limits_k (e^{\sum\limits_n-i \omega_d^{(n)} t}
+a\xi_k^*e^{i\sum\limits_k \omega_d^{(k)}t}+ e^{-\sum\limits_n-i \omega_d^{(n)} t}
+a^\dagger\xi_ke^{i\sum\limits_k \omega_d^{(k)}t}) = \sum\limits_k (a\xi_k^* + a^\dagger\xi_k)$$
 
-
-
-
-
-
-
-$$ [\omega_r a^\dagger a + \frac{1}{2} \sum\limits_i \omega_{q i} \sigma_{z i} ,
--i \omega_d t (a^\dagger a + \frac{1}{2} \sum\limits_i \sigma_{z i})] = 0$$
-
-\begin{align*}
-  [\sum\limits_i (a \sigma_{+_i} + a^\dagger \sigma_{-_i}) , (a^\dagger a + \frac{1}{2} \sum\limits_i \sigma_{z i})] &= \\
-  [\sum\limits_i (a \sigma_{+_i} + a^\dagger \sigma_{-_i}) , a^\dagger a] + [\sum\limits_i (a \sigma_{+_i} + a^\dagger \sigma_{-_i}) , \frac{1}{2} \sum\limits_i \sigma_{z i}] &= \\
-  \sum\limits_i (a \sigma_{+_i} - a^\dagger \sigma_{-_i}) + \sum\limits_i (- a \sigma_{+_i} + a^\dagger \sigma_{-_i})  &= 0
-\end{align*}
-
-$$\hat{H} = \hat{H}_{syst} + U^\dagger \hat{H}_d U - i U^\dagger \dot{U}$$
-
-\begin{align*}
-  [\sum\limits_k a\xi_k^*e^{i\omega_d^{(k)}t} + a^\dagger\xi_ke^{-i\omega_d^{(k)}t}, (a^\dagger a + \frac{1}{2} \sum\limits_i \sigma_{z i})] &= \\
-  [\sum\limits_k \xi_k^*e^{i\omega_d^{(k)}t}a + \xi_ke^{-i\omega_d^{(k)}t}a^\dagger, a^\dagger a] &= \sum\limits_k \xi_k^*e^{i\omega_d^{(k)}t}a - \xi_ke^{-i\omega_d^{(k)}t}a^\dagger
-\end{align*}
-
-\begin{align*}
-  [\sum\limits_k \xi_k^*e^{i\omega_d^{(k)}t}a - \xi_ke^{-i\omega_d^{(k)}t}a^\dagger , (a^\dagger a + \frac{1}{2} \sum\limits_i \sigma_{z i})] &= \\
-  [\sum\limits_k \xi_k^*e^{i\omega_d^{(k)}t}a - \xi_ke^{-i\omega_d^{(k)}t}a^\dagger, a^\dagger a] &= \sum\limits_k a\xi_k^*e^{i\omega_d^{(k)}t} + a^\dagger\xi_ke^{-i\omega_d^{(k)}t}
-\end{align*}
-
+$$- i U^\dagger \dot{U} = - \sum\limits_n \omega_d^{(n)}(a^\dagger a - \frac{1}{2} \sum\limits_i \sigma_{z i})$$
 
 ------------------------------
 
+En caso de un sólo drive:
 
-$$ \hat{H} = \Delta_c a^\dagger a + \frac{1}{2} \sum\limits_i \Delta_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}) + (a\xi^*e^{i\omega_d t}+a^\dagger\xi e^{-i\omega_d t})$$
+$$ \hat{H} = \Delta_c a^\dagger a - \frac{1}{2} \sum\limits_i \Delta_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}) + (a\xi^*+a^\dagger\xi )$$
 
 $\Delta_c = \omega_c - \omega_d \qquad \quad \Delta_{qi} = \omega_{qi} - \omega_d$
 
 \section{Efecto del pulso sobre el qubit}
 
-Luego se aplica el operador de desplazamineto $D(\alpha) = exp[\alpha a^\dagger - \alpha^* a]$ sobre el campo $a$ con $\dot{\alpha} = -i \Delta_c \alpha -i \xi e^{-i \omega_d t}$ para eliminar el efecto directo del pulso sobre la cavidad.
+Luego se aplica el operador de desplazamineto $D(\alpha) = exp[\alpha a^\dagger - \alpha^* a]$ sobre el campo $a$ con $\dot{\alpha} = -i \Delta_c \alpha -i \xi $ para eliminar el efecto directo del pulso sobre la cavidad.
 
 $$\hat{H} = D^\dagger (\alpha) \hat{H}_{old} D(\alpha) -i D^\dagger(\alpha) \dot{D}(\alpha)$$
 
 ------------------------------
-$$ \hat{H} = \Delta_c a^\dagger a + \frac{1}{2} \sum\limits_i \Delta_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}) + (a\xi^*e^{i\omega_d t}+a^\dagger\xi e^{-i\omega_d t})$$
+$$ \hat{H} = \Delta_c a^\dagger a - \frac{1}{2} \sum\limits_i \Delta_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}) + (a\xi^*+a^\dagger\xi )$$
 
 \begin{align*}
-  \hat{H} = \Delta_c (a^\dagger + \alpha^*) (a + \alpha) + \frac{1}{2} \sum\limits_i \Delta_{qi} \sigma_{zi} + \sum\limits_i g_i ((a+\alpha) \sigma_{+ i} + (a^\dagger+\alpha^*) \sigma_{- i}) \\
-  + ((a+\alpha)\xi^*e^{i\omega_d t}+(a^\dagger+\alpha^*)\xi e^{-i\omega_d t}) -i(\dot{\alpha} (a^\dagger + \alpha^*) - \dot{\alpha}^* (a + \alpha))
+  \hat{H} = \Delta_c (a^\dagger + \alpha^*) (a + \alpha) - \frac{1}{2} \sum\limits_i \Delta_{qi} \sigma_{zi} + \sum\limits_i g_i ((a+\alpha) \sigma_{+ i} + (a^\dagger+\alpha^*) \sigma_{- i}) \\
+  + ((a+\alpha)\xi^*+(a^\dagger+\alpha^*)\xi ) -i(\dot{\alpha} (a^\dagger + \alpha^*) - \dot{\alpha}^* (a + \alpha))
 \end{align*}
 
 
 ------------------------------
 
-$$\hat{H} = \Delta_c a^\dagger a + \frac{1}{2} \sum\limits_i \Delta_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+i} + a^\dagger \sigma_{-i})$$
+$$\hat{H} = \Delta_c a^\dagger a - \frac{1}{2} \sum\limits_i \Delta_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+i} + a^\dagger \sigma_{-i})$$
 $$ + \sum\limits_i g_i (\alpha \sigma_{+i} + \alpha^* \sigma_{-i}) - \Delta_c \alpha \alpha^* $$
 
 El término $-\Delta_c \alpha \alpha^*$ se desprecia, ya que sólo representa una fase global en la evolución del sistema.
@@ -1155,7 +1157,109 @@ Finalmente, aplicamos la transformación $U = exp[\sum\limits_i \frac{g_i}
 \omega_{qi} - \omega_c$ y realizamos la expansión de Baker-Campbell-Hausdorff de segundo grado sobre los términos $\frac{g_i}{\Delta_i} \ll 1$.
 
 $$\hat{H} = U^\dagger \hat{H}_{old} U$$
-$$\hat{H} \approx \tilde{\Delta}_c a^\dagger a + \frac{1}{2} \sum\limits_i \tilde{\Delta}_{qi} \sigma_{zi} + \sum\limits_i (\Omega_i \sigma_{+i} + \Omega_i^* \sigma_{-i})$$
+
+------------------------------
+
+$[\sigma_+, \sigma_z] = 2 \sigma_+$
+
+$[\sigma_-, \sigma_z] = - 2 \sigma_-$
+
+$[\sigma_-, \sigma_+] = \sigma_z$
+
+$[a, a^\dagger] = 1$
+
+$[a, a^\dagger a] = a$
+
+$[a^\dagger, a^\dagger a] = -a^\dagger$
+
+$$\hat{H} = \Delta_r a^\dagger a - \frac{1}{2} \sum\limits_i \Delta_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+i} + a^\dagger \sigma_{-i})$$
+$$ + \sum\limits_i g_i (\alpha \sigma_{+i} + \alpha^* \sigma_{-i})$$
+
+$[\Delta_r a^\dagger a, \sum\limits_i \frac{g_i} {\Delta_i} (a^\dagger
+\sigma_{-i} - a \sigma_{+i})] = \Delta_r \sum\limits_i \frac{g_i} {\Delta_i} (a^\dagger \sigma_{-i} + a \sigma_{+i})$
+
+$[- \frac{1}{2} \sum\limits_i \Delta_{qi} \sigma_{zi}, \sum\limits_i \frac{g_i} {\Delta_i} (a^\dagger \sigma_{-i} - a \sigma_{+i})] = 
+- \sum\limits_i \frac{g_i} {\Delta_i} \Delta_{qi} (a^\dagger \sigma_{-i} + a \sigma_{+i}) $
+
+$[\sum\limits_i g_i (a \sigma_{+i} + a^\dagger \sigma_{-i}), \sum\limits_j \frac{g_j} {\Delta_j} (a^\dagger \sigma_{-j} - a \sigma_{+j})] = 
+[\sum\limits_i g_i (a \sigma_{+i}), \sum\limits_j \frac{g_j} {\Delta_j} (a^\dagger \sigma_{-j})] +
+[\sum\limits_i g_i (a \sigma_{+i}), \sum\limits_j \frac{g_j} {\Delta_j} (- a \sigma_{+j})] +
+[\sum\limits_i g_i (a^\dagger \sigma_{-i}), \sum\limits_j \frac{g_j} {\Delta_j} (a^\dagger \sigma_{-j})] +
+[\sum\limits_i g_i (a^\dagger \sigma_{-i}), \sum\limits_j \frac{g_j} {\Delta_j} (- a \sigma_{+j})] =
+\sum\limits_{ij} g_i (a \sigma_{+i}) \frac{g_j} {\Delta_j} (a^\dagger \sigma_{-j}) -
+\sum\limits_{ij} \frac{g_j} {\Delta_j} (a^\dagger \sigma_{-j}) g_i (a \sigma_{+i}) +
+\sum\limits_{ij} g_i (a^\dagger \sigma_{-i}) \frac{g_j} {\Delta_j} (- a \sigma_{+j}) -
+\sum\limits_{ij} \frac{g_j} {\Delta_j} (- a \sigma_{+j}) g_i (a^\dagger \sigma_{-i}) = 
+\sum\limits_{ij} g_i \frac{g_j} {\Delta_j} a a^\dagger \sigma_{+i} \sigma_{-j} -
+\sum\limits_{ij} g_i \frac{g_j} {\Delta_j} a^\dagger a \sigma_{-j} \sigma_{+i} -
+\sum\limits_{ij} g_i \frac{g_j} {\Delta_j} a^\dagger a \sigma_{-i} \sigma_{+j} +
+\sum\limits_{ij} g_i \frac{g_j} {\Delta_j} a a^\dagger \sigma_{+j} \sigma_{-i} = 
+2 \sum\limits_{i \neq j} g_i \frac{g_j} {\Delta_j} \sigma_{+i} \sigma_{-j} +
+\sum\limits_{i} g_i \frac{g_i} {\Delta_i} \sigma_{+i} \sigma_{-i} +
+\sum\limits_{i} g_i \frac{g_i} {\Delta_i} \sigma_{+i} \sigma_{-i} -
+2 \sum\limits_{i} g_i \frac{g_i} {\Delta_i} a^\dagger a \sigma_{zi} = $
+
+---
+$[\sum\limits_i g_i (a \sigma_{+i} + a^\dagger \sigma_{-i}), \sum\limits_j \frac{g_j} {\Delta_j} (a^\dagger \sigma_{-j} - a \sigma_{+j})] = 
+[\sum\limits_i g_i (a \sigma_{+i}), \sum\limits_j \frac{g_j} {\Delta_j} (a^\dagger \sigma_{-j})] +
+[\sum\limits_i g_i (a \sigma_{+i}), \sum\limits_j \frac{g_j} {\Delta_j} (- a \sigma_{+j})] +
+[\sum\limits_i g_i (a^\dagger \sigma_{-i}), \sum\limits_j \frac{g_j} {\Delta_j} (a^\dagger \sigma_{-j})] +
+[\sum\limits_i g_i (a^\dagger \sigma_{-i}), \sum\limits_j \frac{g_j} {\Delta_j} (- a \sigma_{+j})] $
+
+$i \neq j$
+
+$ \sum\limits_{i \neq j} g_i \frac{g_j} {\Delta_j} \sigma_{+i} \sigma_{-j} + \sigma_{-i} \sigma_{+j} $
+
+$i = j$
+
+$ 
+2 \sum\limits_i g_i \frac{g_i} {\Delta_i} (a a^\dagger \sigma_{+i} \sigma_{-i} - a^\dagger a \sigma_{-i} \sigma_{+i}) =
+2 \sum\limits_i g_i \frac{g_i} {\Delta_i} (a a^\dagger \sigma_{+i} \sigma_{-i} - a^\dagger a (\sigma_{zi} + \sigma_{+i} \sigma_{-i})) =
+2 \sum\limits_i g_i \frac{g_i} {\Delta_i} (\sigma_{+i} \sigma_{-i} - a^\dagger a \sigma_{zi}) =
+$
+
+$ 2 \sum\limits_i g_i \frac{g_i} {\Delta_i} (a a^\dagger \sigma_{+i} \sigma_{-i} - a^\dagger a \sigma_{-i} \sigma_{+i}) =
+2 \sum\limits_i g_i \frac{g_i} {\Delta_i} ((a a^\dagger + 1/2 - 1/2) \sigma_{+i} \sigma_{-i} - (a^\dagger a + 1/2 - 1/2) \sigma_{-i} \sigma_{+i}) =
+\sum\limits_i g_i \frac{g_i} {\Delta_i} (\sigma_{+i} \sigma_{-i} + \sigma_{-i} \sigma_{+i}) -
+2 \sum\limits_i g_i \frac{g_i} {\Delta_i} (a^\dagger a + 1/2) \sigma_{zi} =
+\sum\limits_i (g_i \frac{g_i} {\Delta_i} - 2 g_i \frac{g_i} {\Delta_i} (a^\dagger a + 1/2) \sigma_{zi}) $
+---
+
+
+$ [\sum\limits_i g_i (\alpha \sigma_{+i} + \alpha^* \sigma_{-i}), \sum\limits_i \frac{g_i} {\Delta_i} (a^\dagger \sigma_{-i} - a \sigma_{+i})] =
+[\sum\limits_i g_i (\alpha \sigma_{+i}), \sum\limits_i \frac{g_i} {\Delta_i} (a^\dagger \sigma_{-i})] +
+[\sum\limits_i g_i (\alpha^* \sigma_{-i}), \sum\limits_i \frac{g_i} {\Delta_i} (- a \sigma_{+i})] =
+- \sum\limits_i g_i \frac{g_i} {\Delta_i} (\alpha a^\dagger + \alpha^* a) \sigma_{zi} $
+
+
+$\hat{H} = \Delta_r a^\dagger a - \frac{1}{2} \sum\limits_i \Delta_{qi}
+\sigma_{zi} + \sum\limits_i g_i (a \sigma_{+i} + a^\dagger \sigma_{-i}) +
+\sum\limits_i g_i (\alpha \sigma_{+i} + \alpha^* \sigma_{-i}) +
+\Delta_r \sum\limits_i \frac{g_i} {\Delta_i} (a^\dagger \sigma_{-i} + a \sigma_{+i}) -
+\sum\limits_i \frac{g_i} {\Delta_i} \Delta_{qi} (a^\dagger \sigma_{-i} + a \sigma_{+i}) +
+\sum\limits_{i \neq j} g_i \frac{g_j} {\Delta_j} \sigma_{+i} \sigma_{-j} + \sigma_{-i} \sigma_{+j} +
+\sum\limits_i (g_i \frac{g_i} {\Delta_i} - 2 g_i \frac{g_i} {\Delta_i} (a^\dagger a + 1/2) \sigma_{zi}) -
+\sum\limits_i g_i \frac{g_i} {\Delta_i} (\alpha a^\dagger + \alpha^* a) \sigma_{zi} 
+$
+
+$\hat{H} = \Delta_r a^\dagger a - \sum\limits_i \Delta_{qi} (1/2 + 2 g_i \frac{g_i} {\Delta_i} (a^\dagger a + 1/2))
+\sigma_{zi} + \sum\limits_i g_i (a \sigma_{+i} + a^\dagger \sigma_{-i}) +
+\Delta_r \sum\limits_i \frac{g_i} {\Delta_i} (a^\dagger \sigma_{-i} + a \sigma_{+i}) -
+\sum\limits_i \frac{g_i} {\Delta_i} \Delta_{qi} (a^\dagger \sigma_{-i} + a \sigma_{+i}) +
+\sum\limits_{i \neq j} g_i \frac{g_j} {\Delta_j} \sigma_{+i} \sigma_{-j} + \sigma_{-i} \sigma_{+j} +
+\sum\limits_i g_i (\alpha \sigma_{+i} + \alpha^* \sigma_{-i}) -
+\sum\limits_i g_i \frac{g_i} {\Delta_i} (\alpha a^\dagger + \alpha^* a) \sigma_{zi} 
+$
+
+
+$\hat{H} = \Delta_r a^\dagger a - \sum\limits_i \Delta_{qi} (\frac{1}{2} + 2 \frac{g_i^2} {\Delta_i} (a^\dagger a + \frac{1}{2})) \sigma_{zi} +
+\sum\limits_{i \neq j} \frac{g_i g_j} {\Delta_j} (\sigma_{+i} \sigma_{-j} +
+\sigma_{-i} \sigma_{+j}) +
+\sum\limits_i g_i (\alpha \sigma_{+i} + \alpha^* \sigma_{-i}) -
+\sum\limits_i \frac{g_i^2} {\Delta_i} (\alpha a^\dagger + \alpha^* a) \sigma_{zi} $ 
+------------------------------
+
+$$\hat{H} \approx \tilde{\Delta}_c a^\dagger a - \frac{1}{2} \sum\limits_i \tilde{\Delta}_{qi} \sigma_{zi} + \sum\limits_i (\Omega_i \sigma_{+i} + \Omega_i^* \sigma_{-i})$$
 $$+ \sum\limits_{i \neq j} \frac{g_i g_j}{2 \Delta_i} (\sigma_{-i} \sigma_{+j}+\sigma_{+i} \sigma_{-j})$$
 
 $\tilde{\Delta}_c = (\omega_c + \sum\limits_i \chi_i \sigma_{zi}) - \omega_d \qquad \tilde{\Delta}_{qi} = (\omega_{qi} + \chi_i) - \omega_d \qquad \chi_i = \frac{g_i^2}{\Delta_i}$
@@ -1186,4 +1290,4 @@ Variando la frecuencia de resonacia de los qubit, se puede variar el acoplamient
 \end{document}
 
 
-\message{ !name(Test.tex) !offset(-1189) }
+\message{ !name(Test.tex) !offset(-1293) }
