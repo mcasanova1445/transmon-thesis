@@ -16,23 +16,32 @@ def squarepulse(x,ts,tf):
     m = (ts+tf)/2
     return (np.heaviside(x-m+3*s,1)-np.heaviside(x-m-3*s,1))/(6*s)
 
-def plot_wigner_2d(res):
-    #fig, axes = plt.subplots(1, 2, subplot_kw={'projection': '3d'}, figsize=(12, 6))
-    fig = plt.figure(figsize=(8, 8))
-
-    ax = fig.add_subplot(1, 1, 1)
-    plot_wigner(ptrace(res.states[-1],0), fig=fig, ax=ax, alpha_max=10);
-
-    fig.tight_layout()
-
 def plot_drive_expect(res,args):
     tlist = res.times
 
     if args == 0:
+        fig, axes = plt.subplots(1, 1, sharex=True, figsize=(12,4))
+
+        axes.plot(tlist, np.real(expect(qop('n',0), res.states)), 'b', linewidth=2, label="qubit 0")
+        axes.plot(tlist, np.real(expect(qop('n',1), res.states)), 'g', linewidth=2, label="qubit 1")
+        axes.plot(tlist, np.real(expect(qop('n',2), res.states)), 'c', linewidth=2, label="qubit 2") #MELCSCELDQ
+        axes.plot(tlist, np.real(expect(qop('n',3), res.states)), 'm', linewidth=2, label="qubit 3") #MELCSCELDQ
+        # axes[1].plot(tlist, np.real(expect(qop('n',4), res.states)), 'r', linewidth=2, label="qubit 4") #MELCSCELDQ
+        # axes[1].plot(tlist, np.real(expect(qop('n',5), res.states)), 'y', linewidth=2, label="qubit 5") #MELCSCELDQ
+        # axes[1].plot(tlist, np.real(expect(qop('n',6), res.states)), 'k', linewidth=2, label="qubit 6") #MELCSCELDQ
+        # axes[1].plot(tlist, np.real(expect(qop('n',7), res.states)), 'w', linewidth=2, label="qubit 7") #MELCSCELDQ
+        axes.set_ylim(0, 1)
+
+        axes.set_xlabel("Time (ns)", fontsize=16)
+        axes.set_ylabel("Occupation probability", fontsize=16)
+        axes.legend()
+
+    else:
         fig, axes = plt.subplots(2, 1, sharex=True, figsize=(12,8))
 
-        axes[0].plot(tlist, np.real(expect(n, res.states)), 'r', linewidth=2, label="cavity")
-        axes[0].set_ylabel("Occupation probability", fontsize=16)
+        axes[0].plot(tlist, np.array(list(ksi_t(tlist,args))) / (2*np.pi), 'b', linewidth=2, label="drive envelope")
+        #axes[0].set_ylim(-0.3, 0.3) # *np.cos(wd*(tlist))
+        axes[0].set_ylabel("Energy (GHz)", fontsize=16)
         axes[0].legend()
 
         axes[1].plot(tlist, np.real(expect(qop('n',0), res.states)), 'b', linewidth=2, label="qubit 0")
@@ -48,32 +57,6 @@ def plot_drive_expect(res,args):
         axes[1].set_xlabel("Time (ns)", fontsize=16)
         axes[1].set_ylabel("Occupation probability", fontsize=16)
         axes[1].legend()
-
-    else:
-        fig, axes = plt.subplots(3, 1, sharex=True, figsize=(12,12))
-
-        axes[0].plot(tlist, np.array(list(ksi_t(tlist,args))) / (2*np.pi), 'b', linewidth=2, label="drive envelope")
-        #axes[0].set_ylim(-0.3, 0.3) # *np.cos(wd*(tlist))
-        axes[0].set_ylabel("Energy (GHz)", fontsize=16)
-        axes[0].legend()
-
-        axes[1].plot(tlist, np.real(expect(n, res.states)), 'r', linewidth=2, label="cavity")
-        axes[1].set_ylabel("Occupation probability", fontsize=16)
-        axes[1].legend()
-
-        axes[2].plot(tlist, np.real(expect(qop('n',0), res.states)), 'b', linewidth=2, label="qubit 0")
-        axes[2].plot(tlist, np.real(expect(qop('n',1), res.states)), 'g', linewidth=2, label="qubit 1")
-        axes[2].plot(tlist, np.real(expect(qop('n',2), res.states)), 'c', linewidth=2, label="qubit 2") #MELCSCELDQ
-        axes[2].plot(tlist, np.real(expect(qop('n',3), res.states)), 'm', linewidth=2, label="qubit 3") #MELCSCELDQ
-        # axes[2].plot(tlist, np.real(expect(qop('n',4), res.states)), 'r', linewidth=2, label="qubit 4") #MELCSCELDQ
-        # axes[2].plot(tlist, np.real(expect(qop('n',5), res.states)), 'y', linewidth=2, label="qubit 5") #MELCSCELDQ
-        # axes[2].plot(tlist, np.real(expect(qop('n',6), res.states)), 'k', linewidth=2, label="qubit 6") #MELCSCELDQ
-        # axes[2].plot(tlist, np.real(expect(qop('n',7), res.states)), 'w', linewidth=2, label="qubit 7") #MELCSCELDQ
-        axes[2].set_ylim(0, 1)
-
-        axes[2].set_xlabel("Time (ns)", fontsize=16)
-        axes[2].set_ylabel("Occupation probability", fontsize=16)
-        axes[2].legend()
 
     fig.tight_layout()
 
@@ -93,7 +76,7 @@ D = wq - wr
 chi = g**2 / abs(wr-wq)
 
 kappa = 0.0001
-gamma = np.array([0.005, 0.005, 0.005, 0.005])
+gamma = np.array([0.0002, 0.0002, 0.0002, 0.0002])
 
 '''
 for i in range(4):
@@ -104,10 +87,10 @@ L = np.matrix(L)
 '''
 
 # cavity operators
-a = tensor(destroy(N), qeye(2), qeye(2), qeye(2), qeye(2)) # Modificar esta linea cuando se cambie el numero de qubits #MELCSCELDQ
+a = destroy(N) # Modificar esta linea cuando se cambie el numero de qubits #MELCSCELDQ
 # a = tensor(destroy(N), qeye(2), qeye(2), qeye(2), qeye(2), qeye(2), qeye(2), qeye(2), qeye(2)) # Modificar esta linea cuando se cambie el numero de qubits #MELCSCELDQ
 n = a.dag() * a
-Id = tensor(qeye(N), qeye(2), qeye(2), qeye(2), qeye(2))
+Id_r = qeye(N)
 
 def qop_part(operator, target):
     if target == 0:
@@ -119,12 +102,12 @@ def qop_part(operator, target):
         return qeye(2)
 
 def qop(operator, target):
-    return tensor(qeye(N), qop_part(operator, target-0), qop_part(operator, target-1), qop_part(operator, target-2), qop_part(operator, target-3)) #MELCSCELDQ
+    return tensor(qop_part(operator, target-0), qop_part(operator, target-1), qop_part(operator, target-2), qop_part(operator, target-3)) #MELCSCELDQ
     
 # def qop(operator, target):
     # return tensor(qeye(N), qop_part(operator, target-0), qop_part(operator, target-1), qop_part(operator, target-2), qop_part(operator, target-3), qop_part(operator, target-4), qop_part(operator, target-5), qop_part(operator, target-6), qop_part(operator, target-7)) #MELCSCELDQ
 
-c_ops = [np.sqrt(kappa) * a, np.sqrt(gamma[0]) * qop('sm', 0), np.sqrt(gamma[1]) * qop('sm', 1), np.sqrt(gamma[2]) * qop('sm', 2), np.sqrt(gamma[3]) * qop('sm', 3)]
+c_ops = [np.sqrt(gamma[0]) * qop('sm', 0), np.sqrt(gamma[1]) * qop('sm', 1), np.sqrt(gamma[2]) * qop('sm', 2), np.sqrt(gamma[3]) * qop('sm', 3)]
 
 def ksi_t(t, args):
     return args['A'] * gaussianpulse(t,args['ts'],args['tf'])
@@ -145,14 +128,14 @@ def ksiS_tp(t, args):
     return args['A'] * np.exp(1j*args['w']*(t-args['ts']))
 
 def Rx(psi0, target, theta):
-    tlist = np.linspace(0, 10, 5000)
+    tlist = np.linspace(0, 10, 200)
 
     wd = wq[target]
 
     Dr = wr-wd
     Dq = wq-wd
 
-    Hsyst = Dr*n #+ Dq[0]*qop('sz',0)/2 + Dq[1]*qop('sz',1)/2 + Dq[2]*qop('sz',2)/2 + Dq[3]*qop('sz',3)/2 #MELCSCELDQ
+    Hsyst = 0 #+ Dq[0]*qop('sz',0)/2 + Dq[1]*qop('sz',1)/2 + Dq[2]*qop('sz',2)/2 + Dq[3]*qop('sz',3)/2 #MELCSCELDQ
     for i in range(4): #MELCSCELDQ
         Hsyst = Hsyst - Dq[i]*qop('sz',i)/2
 
@@ -160,28 +143,28 @@ def Rx(psi0, target, theta):
     H_t = [[qop('sx',target)/2, ksi_t], Hsyst]
 
     args = {'A' : theta, 'ts' : 0, 'tf' : 10, 'w' : wq[target]}
-    res = mesolve(H_t, psi0, tlist, [], [], args = args)
+    res = mesolve(H_t, psi0, tlist, c_ops, [], args = args)
 
     # plot_drive_expect(res,args)
 
     return res
 
 def Ry(psi0, target, theta):
-    tlist = np.linspace(0, 10, 5000)
+    tlist = np.linspace(0, 10, 200)
 
     wd = wq[target]
 
     Dr = wr-wd
     Dq = wq-wd
 
-    Hsyst = Dr*n #+ Dq[0]*qop('sz',0)/2 + Dq[1]*qop('sz',1)/2 + Dq[2]*qop('sz',2)/2 + Dq[3]*qop('sz',3)/2 #MELCSCELDQ
+    Hsyst = 0 #+ Dq[0]*qop('sz',0)/2 + Dq[1]*qop('sz',1)/2 + Dq[2]*qop('sz',2)/2 + Dq[3]*qop('sz',3)/2 #MELCSCELDQ
     for i in range(4): #MELCSCELDQ
         Hsyst = Hsyst - Dq[i]*qop('sz',i)/2
 
     H_t = [[qop('sy',target)/2, ksi_t], Hsyst]
 
     args = {'A' : theta, 'ts' : 0, 'tf' : 10, 'w' : wq[target]}
-    res = mesolve(H_t, psi0, tlist, [], [], args = args)
+    res = mesolve(H_t, psi0, tlist, c_ops, [], args = args)
 
     # plot_drive_expect(res,args)
 
@@ -220,9 +203,9 @@ def sqrtiSWAP(psi0, target1, target2):
     J = np.abs(g[target1] * g[target2] * (D[target1] + D[target2]) / (D[target1] * D[target2]))/2 # Revisar Hamiltoniano #RH
 
     tf = np.pi/(4*J)
-    tlist = np.linspace(0, tf, 5000)
+    tlist = np.linspace(0, tf, 250)
 
-    Hsyst = wr*n #+ Dq[0]*qop('sz',0)/2 + Dq[1]*qop('sz',1)/2 + Dq[2]*qop('sz',2)/2 + Dq[3]*qop('sz',3)/2 #MELCSCELDQ
+    Hsyst = 0 #+ Dq[0]*qop('sz',0)/2 + Dq[1]*qop('sz',1)/2 + Dq[2]*qop('sz',2)/2 + Dq[3]*qop('sz',3)/2 #MELCSCELDQ
     for i in range(4): #MELCSCELDQ
         # Hsyst = Hsyst - wq[i]*(Id/2 + 2 * (g[i]**2/D[i])*(n + Id/2))*qop('sz',i) #RH
         Hsyst = Hsyst - wq[i]*qop('sz',i)/2 #RH
@@ -233,7 +216,7 @@ def sqrtiSWAP(psi0, target1, target2):
                 # Hsyst = Hsyst + (g[i]*g[j]/D[j])*(qop('sp',i)*qop('sm',j) + qop('sm',i)*qop('sp',j)) #RH
                 Hsyst = Hsyst + (g[i]*g[j]/D[j])*(qop('sp',i)*qop('sm',j) + qop('sm',i)*qop('sp',j))/2 #RH
 
-    res = mesolve(Hsyst, psi0, tlist, [], [])
+    res = mesolve(Hsyst, psi0, tlist, c_ops, [])
 
     wq[target1] = wqt1
     wq[target2] = wqt2
@@ -256,10 +239,10 @@ def iSWAP(psi0, target1, target2):
     # J = np.abs(g[target1] * g[target2] * (D[target1] + D[target2]) / (D[target1] * D[target2])) # Revisar Hamiltoniano #RH
     J = np.abs(g[target1] * g[target2] * (D[target1] + D[target2]) / (D[target1] * D[target2]))/2 # Revisar Hamiltoniano #RH
 
-    tf = 0.9*np.pi/(2*J)
-    tlist = np.linspace(0, tf, 2*5000)
+    tf = np.pi/(2*J)
+    tlist = np.linspace(0, tf, 500)
 
-    Hsyst = wr*n #+ Dq[0]*qop('sz',0)/2 + Dq[1]*qop('sz',1)/2 + Dq[2]*qop('sz',2)/2 + Dq[3]*qop('sz',3)/2 #MELCSCELDQ
+    Hsyst = 0 #+ Dq[0]*qop('sz',0)/2 + Dq[1]*qop('sz',1)/2 + Dq[2]*qop('sz',2)/2 + Dq[3]*qop('sz',3)/2 #MELCSCELDQ
     for i in range(4): #MELCSCELDQ
         # Hsyst = Hsyst - wq[i]*(Id/2 + 2 * (g[i]**2/D[i])*(n + Id/2))*qop('sz',i) #RH
         Hsyst = Hsyst - wq[i]*qop('sz',i)/2 #RH
@@ -270,14 +253,14 @@ def iSWAP(psi0, target1, target2):
                 # Hsyst = Hsyst + (g[i]*g[j]/D[j])*(qop('sp',i)*qop('sm',j) + qop('sm',i)*qop('sp',j)) #RH
                 Hsyst = Hsyst + (g[i]*g[j]/D[j])*(qop('sp',i)*qop('sm',j) + qop('sm',i)*qop('sp',j))/2 #RH
 
-    res = mcsolve(Hsyst, psi0, tlist, c_ops, [])
+    res = mesolve(Hsyst, psi0, tlist, c_ops, [])
 
     wq[target1] = wqt1
     wq[target2] = wqt2
     D = wq - wr
 
     args = {'A' : 0, 'ts' : 0, 'tf' : tf, 'w' : wq[target1]}
-    plot_drive_expect(res,args)
+    # plot_drive_expect(res,args)
 
     return res
 
@@ -306,43 +289,4 @@ def CRz(psi0, control, target, theta): #Las rotaciones aqui son al reves que las
     res = Rz(res.states[-1],target,-theta/2)
     return CNOT(res.states[-1],control,target)
 
-def Dis(psi0):
-    tf = 0.05
-    tlist = np.linspace(0, tf, 5000)
 
-    wd = wr
-
-    Hsyst = wr*(a.dag()*a + Id/2)
-    for i in range(4): #MELCSCELDQ
-        Hsyst = Hsyst - wq[i]*qop('sz',i)/2 + g[i]*qop('sx',i)*(a+a.dag())
-
-    
-    H_t = [[a, ksi_tm],[a.dag(),ksi_tp], Hsyst]
-
-    args = {'A' : wr/(3*np.pi), 'ts' : 0, 'tf' : tf, 'w' : wd}
-    res = mesolve(H_t, psi0, tlist, [], [], args = args)
-
-    # plot_drive_expect(res,args)
-
-    plot_wigner_2d(res)
-
-    return res
-
-def Dis_wait(psi0):
-    tlist = np.linspace(0, 2*np.pi/chi[0], 50000)
-
-    Hsyst = wr*(a.dag()*a + Id/2)
-    for i in range(4): #MELCSCELDQ
-        Hsyst = Hsyst - wq[i]*qop('sz',i)/2 + g[i]*qop('sx',i)*(a+a.dag())
-
-    for i in range(4):
-        for j in range(4):
-            Hsyst = Hsyst + (g[i]*g[j]*((1/D[i]) + (1/D[j]))/2)*qop('sx',i)*qop('sx',j)/2
-
-    res = mesolve(Hsyst, psi0, tlist, [], [])
-
-    # plot_drive_expect(res,0)
-
-    plot_wigner_2d(res)
-
-    return res
