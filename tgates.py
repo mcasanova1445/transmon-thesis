@@ -299,6 +299,33 @@ def CH(psi0, control, target):
     res = CNOT(res.states[-1], control, target)
     return Ry(psi0, target, -np.pi/4)
 
+def CP(psi0, control, target, theta, b = 0b11):
+    if b == 0b00:
+        res = Rz(res.states[-1], control, -3*theta/4)
+        res = Rz(res.states[-1], target, -3*theta/4)
+        res = CRz(res.states[-1], control, target, theta/2)
+        res = CRz(res.states[-1], target, control, theta/2)
+
+    elif b == 0b01:
+        res = Rz(res.states[-1], control, -3*theta/4)
+        res = Rz(res.states[-1], target, 5*theta/4)
+        res = CRz(res.states[-1], control, target, -3*theta/2)
+        res = CRz(res.states[-1], target, control, theta/2)
+
+    elif b == 0b10:
+        res = Rz(res.states[-1], control, theta/4)
+        res = Rz(res.states[-1], target, theta/4)
+        res = CRz(res.states[-1], control, target, -3*theta/2)
+        res = CRz(res.states[-1], target, control, theta/2)
+
+    elif b == 0b11:
+        res = Rz(res.states[-1], control, theta/4)
+        res = Rz(res.states[-1], target, theta/4)
+        res = CRz(res.states[-1], control, target, theta/2)
+        res = CRz(res.states[-1], target, control, theta/2)
+
+    return res
+
 def Toffoli(psi0, control1, control2, target):
     res = H(psi0, target)
     res = CRz(res.states[-1], control2, target, -np.pi/2)
@@ -307,10 +334,7 @@ def Toffoli(psi0, control1, control2, target):
     res = CNOT(res.states[-1], control1, control2)
     res = CRz(res.states[-1], control1, target, -np.pi/2)
     res = H(res.states[-1], target)
-    res = Rz(res.states[-1], control1, -np.pi/8)
-    res = Rz(res.states[-1], control2, -np.pi/8)
-    res = CRz(res.states[-1], control1, control2, -np.pi/4)
-    return CRz(res.states[-1], control2, control1, -np.pi/4)
+    return CRz(res.states[-1], control1, control2, -np.pi/2, b = 0b11)
 
 def CCRz(psi0, control1, control2, target, theta):
     res = CRz(psi0, control2, target, theta/2)
@@ -328,13 +352,7 @@ def CCRy(psi0, control1, control2, target, theta):
 
 def CCNOT(psi0, control1, control2, target):
     return Toffoli(psi0, control1, control2, target)
-'''
-def CP(psi0, control, target, theta):
-    res = Rz(res.states[-1], control, theta/4)
-    res = Rz(res.states[-1], target, theta/4)
-    res = CRz(res.states[-1], control, target, theta/2)
-    return CRz(res.states[-1], target, control, theta/2)
-'''
+
 def Z(psi0, target):
     res = Ry(psi0, target, np.pi)
     return Rx(res.states[-1], target, -np.pi)
