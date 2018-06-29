@@ -301,25 +301,25 @@ def CH(psi0, control, target):
 
 def CP(psi0, control, target, theta, b = 0b11):
     if b == 0b00:
-        res = Rz(res.states[-1], control, -3*theta/4)
+        res = Rz(psi0, control, -3*theta/4)
         res = Rz(res.states[-1], target, -3*theta/4)
         res = CRz(res.states[-1], control, target, theta/2)
         res = CRz(res.states[-1], target, control, theta/2)
 
     elif b == 0b01:
-        res = Rz(res.states[-1], control, -3*theta/4)
+        res = Rz(psi0, control, -3*theta/4)
         res = Rz(res.states[-1], target, 5*theta/4)
         res = CRz(res.states[-1], control, target, -3*theta/2)
         res = CRz(res.states[-1], target, control, theta/2)
 
     elif b == 0b10:
-        res = Rz(res.states[-1], control, theta/4)
+        res = Rz(psi0, control, theta/4)
         res = Rz(res.states[-1], target, theta/4)
         res = CRz(res.states[-1], control, target, -3*theta/2)
         res = CRz(res.states[-1], target, control, theta/2)
 
     elif b == 0b11:
-        res = Rz(res.states[-1], control, theta/4)
+        res = Rz(psi0, control, theta/4)
         res = Rz(res.states[-1], target, theta/4)
         res = CRz(res.states[-1], control, target, theta/2)
         res = CRz(res.states[-1], target, control, theta/2)
@@ -363,18 +363,28 @@ def mZ(psi0, target):
 
 def CCCNOT(psi0, control1, control2, control3, target):
     res = H(psi0, target)
+    print(1)
     res = CCRz(res.states[-1], control2, control3, target, -np.pi/2)
-    res = CNOT(res.states[-1], control1, control2, target)
+    print(2)
+    res = CNOT(res.states[-1], control1, control2)
+    print(3)
     res = CCRz(res.states[-1], control2, control3, target, np.pi/2)
-    res = CNOT(res.states[-1], control1, control2, target)
+    print(4)
+    res = CNOT(res.states[-1], control1, control2)
+    print(5)
     res = CCRz(res.states[-1], control1, control3, target, -np.pi/2)
+    print(6)
     res = H(res.states[-1], target)
+    print(7)
     res = CP(res.states[-1], control2, control3, -np.pi/4)
-    res = CNOT(res.states[-1], control1, control2, target)
+    print(8)
+    res = CNOT(res.states[-1], control1, control2)
+    print(9)
     res = CP(res.states[-1], control2, control3, np.pi/4)
-    res = CNOT(res.states[-1], control1, control2, target)
-    res = CP(res.states[-1], control1, control3, -np.pi/4)
-    return 
+    print(10)
+    res = CNOT(res.states[-1], control1, control2)
+    print(11)
+    return CP(res.states[-1], control1, control3, -np.pi/4)
 
 def CCCRy(psi0, control1, control2, control3, target, theta):
     res = CRy(psi0, control3, target, theta/2)
