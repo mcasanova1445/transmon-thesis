@@ -334,7 +334,7 @@ def Toffoli(psi0, control1, control2, target):
     res = CNOT(res.states[-1], control1, control2)
     res = CRz(res.states[-1], control1, target, -np.pi/2)
     res = H(res.states[-1], target)
-    return CRz(res.states[-1], control1, control2, -np.pi/2, b = 0b11)
+    return CP(res.states[-1], control1, control2, -np.pi/2, b = 0b11)
 
 def CCRz(psi0, control1, control2, target, theta):
     res = CRz(psi0, control2, target, theta/2)
@@ -362,4 +362,31 @@ def mZ(psi0, target):
     return Rx(res.states[-1], target, np.pi)
 
 def CCCNOT(psi0, control1, control2, control3, target):
+    res = H(psi0, target)
+    res = CCRz(res.states[-1], control2, control3, target, -np.pi/2)
+    res = CNOT(res.states[-1], control1, control2, target)
+    res = CCRz(res.states[-1], control2, control3, target, np.pi/2)
+    res = CNOT(res.states[-1], control1, control2, target)
+    res = CCRz(res.states[-1], control1, control3, target, -np.pi/2)
+    res = H(res.states[-1], target)
+    res = CP(res.states[-1], control2, control3, -np.pi/4)
+    res = CNOT(res.states[-1], control1, control2, target)
+    res = CP(res.states[-1], control2, control3, np.pi/4)
+    res = CNOT(res.states[-1], control1, control2, target)
+    res = CP(res.states[-1], control1, control3, -np.pi/4)
     return 
+
+def CCCRy(psi0, control1, control2, control3, target, theta):
+    res = CRy(psi0, control3, target, theta/2)
+    res = CCNOT(res.states[-1], control1, control2, control3)
+    res = CRy(res.states[-1], control3, target, -theta/2)
+    res = CCNOT(res.states[-1], control1, control2, control3)
+    return CCRy(res.states[-1], control1, control2, target, theta/2)
+
+def CCCRz(psi0, control1, control2, control3, target, theta):
+    res = CRz(psi0, control3, target, theta/2)
+    res = CCNOT(res.states[-1], control1, control2, control3)
+    res = CRz(res.states[-1], control3, target, -theta/2)
+    res = CCNOT(res.states[-1], control1, control2, control3)
+    return CCRz(res.states[-1], control1, control2, target, theta/2)
+
