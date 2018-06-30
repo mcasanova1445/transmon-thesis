@@ -76,7 +76,7 @@ D = wq - wr
 chi = g**2 / abs(wr-wq)
 
 kappa = 0.0001
-gamma = np.array([0.0002, 0.0002, 0.0002, 0.0002])
+gamma = np.array([0.000002, 0.000002, 0.000002, 0.000002])
 
 '''
 for i in range(4):
@@ -363,27 +363,16 @@ def mZ(psi0, target):
 
 def CCCNOT(psi0, control1, control2, control3, target):
     res = H(psi0, target)
-    print(1)
     res = CCRz(res.states[-1], control2, control3, target, -np.pi/2)
-    print(2)
     res = CNOT(res.states[-1], control1, control2)
-    print(3)
     res = CCRz(res.states[-1], control2, control3, target, np.pi/2)
-    print(4)
     res = CNOT(res.states[-1], control1, control2)
-    print(5)
     res = CCRz(res.states[-1], control1, control3, target, -np.pi/2)
-    print(6)
     res = H(res.states[-1], target)
-    print(7)
     res = CP(res.states[-1], control2, control3, -np.pi/4)
-    print(8)
     res = CNOT(res.states[-1], control1, control2)
-    print(9)
     res = CP(res.states[-1], control2, control3, np.pi/4)
-    print(10)
     res = CNOT(res.states[-1], control1, control2)
-    print(11)
     return CP(res.states[-1], control1, control3, -np.pi/4)
 
 def CCCRy(psi0, control1, control2, control3, target, theta):
