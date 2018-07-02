@@ -129,26 +129,24 @@ def L2(psi0, c1, c2):                 # 1: black; 0: white; -1: none
     return res
 
 def T1(psi0):
-    res = L2(psi0, 0, 1)
-    return L2(res.states[-1], 1, 0)
+    return psi0
 
 def T1d(psi0):
-    res = R2(psi0, 1, 0)
-    return R2(res.states[-1], 0, 1)
+    return psi0
 
-def Kb2(psi0):                          #CCHH
+def Kb1(psi0):                          #CCHH
     res = tgates.CCRy(psi0, 0, 1, 2, np.pi/2)
     res = tgates.CCNOT(res.states[-1], 0, 1, 2)
     res = tgates.CCRy(res.states[-1], 0, 1, 3, np.pi/2)
     return tgates.CCNOT(res.states[-1], 0, 1, 3)
 
-def Kb2d(psi0):                          #CCHH
+def Kb1d(psi0):                          #CCHH
     return Kb2(psi0)
 
-def Kb1(psi0):
-    thetay00 = -1.900220607202805
-    thetay01 = -2.212560440981948
-    thetay10 = -0.75 * np.pi
+def Kb2(psi0):
+    thetay00 = -2.212560440971914
+    thetay10 = -1.9002206072069958
+    thetay11 = -0.75 * np.pi
 
     res = tgates.X(psi0, 3)
     res = tgates.CRy(res.states[-1], 3, 2, thetay01)
@@ -166,9 +164,9 @@ def Kb1(psi0):
     res = tgates.CCCRy(res.states[-1], 0, 1, 3, 2, -thetay01)
     return tgates.CCNOT(res.states[-1], 0, 1, 3)
 
-def Kb1d(psi0):
-    thetay00 = 1.900220607202805
-    thetay01 = 2.212560440981948
+def Kb2d(psi0):
+    thetay00 = 2.212560440971914
+    thetay01 = 1.9002206072069958
     thetay10 = 0.75 * np.pi
 
     res = tgates.CCNOT(psi0, 0, 1, 3)
