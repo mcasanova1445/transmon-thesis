@@ -350,6 +350,13 @@ def CCRy(psi0, control1, control2, target, theta):
     res = CNOT(res.states[-1], control1, control2)
     return CRy(res.states[-1], control1, target, theta/2)
 
+def CCP(psi0, control1, control2, target, theta, b = 0b11):
+    res = CP(psi0, control2, target, theta/2, b = b)
+    res = CNOT(res.states[-1], control1, control2)
+    res = CP(res.states[-1], control2, target, -theta/2, b = b)
+    res = CNOT(res.states[-1], control1, control2)
+    return CP(res.states[-1], control1, target, theta/2, b = b)
+
 def CCNOT(psi0, control1, control2, target):
     return Toffoli(psi0, control1, control2, target)
 
@@ -389,3 +396,9 @@ def CCCRz(psi0, control1, control2, control3, target, theta):
     res = CCNOT(res.states[-1], control1, control2, control3)
     return CCRz(res.states[-1], control1, control2, target, theta/2)
 
+def CCCP(psi0, control1, control2, control3, target, theta, b = 0b11):
+    res = CP(psi0, control3, target, theta/2, b = b)
+    res = CCNOT(res.states[-1], control1, control2, control3)
+    res = CP(res.states[-1], control3, target, -theta/2, b = b)
+    res = CCNOT(res.states[-1], control1, control2, control3)
+    return CCP(res.states[-1], control1, control2, target, theta/2, b = b)
