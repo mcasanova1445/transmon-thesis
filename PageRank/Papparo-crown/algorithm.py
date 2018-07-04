@@ -200,33 +200,37 @@ def reg_SWAP(psi0):
 print('Preparando estado fiducial...\t {}/{}/{} - {}:{}:{}'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
 psi0 = tensor(basis(2,0), basis(2,0), basis(2,0), basis(2,0))
 
+'''
 # Preparación del estado inicial
 print('Preparando estado inicial (1/2)...\t {}/{}/{} - {}:{}:{}'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
 res = Kb1(psi0)
 print('Preparando estado inicial (2/2)...\t {}/{}/{} - {}:{}:{}'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
 res = Kb2(res.states[-1])
+'''
+
+res = qload('it_15')
 
 for i in range(21):
     
-    print('Iteración {}: Aplicando T1...\t {}/{}/{} - {}:{}:{}'.format(i+1, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+    print('Iteración {}: Aplicando T1...\t {}/{}/{} - {}:{}:{}'.format(i+16, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
     res = T1(res.states[-1])
-    print('Iteración {}: Aplicando Kb2^dag...\t {}/{}/{} - {}:{}:{}'.format(i+1, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+    print('Iteración {}: Aplicando Kb2^dag...\t {}/{}/{} - {}:{}:{}'.format(i+16, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
     res = Kb2d(res.states[-1])
-    print('Iteración {}: Aplicando Kb1^dag...\t {}/{}/{} - {}:{}:{}'.format(i+1, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+    print('Iteración {}: Aplicando Kb1^dag...\t {}/{}/{} - {}:{}:{}'.format(i+16, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
     res = Kb1d(res.states[-1])
-    print('Iteración {}: Aplicando Dd...\t {}/{}/{} - {}:{}:{}'.format(i+1, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+    print('Iteración {}: Aplicando Dd...\t {}/{}/{} - {}:{}:{}'.format(i+16, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
     res = Dd(res.states[-1])
-    print('Iteración {}: Aplicando Kb1...\t {}/{}/{} - {}:{}:{}'.format(i+1, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+    print('Iteración {}: Aplicando Kb1...\t {}/{}/{} - {}:{}:{}'.format(i+16, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
     res = Kb1(res.states[-1])
-    print('Iteración {}: Aplicando Kb2...\t {}/{}/{} - {}:{}:{}'.format(i+1, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+    print('Iteración {}: Aplicando Kb2...\t {}/{}/{} - {}:{}:{}'.format(i+16, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
     res = Kb2(res.states[-1])
-    print('Iteración {}: Aplicando T1^dag...\t {}/{}/{} - {}:{}:{}'.format(i+1, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+    print('Iteración {}: Aplicando T1^dag...\t {}/{}/{} - {}:{}:{}'.format(i+16, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
     res = T1d(res.states[-1])
-    print('Iteración {}: Aplicando reg_SWAP...\t {}/{}/{} - {}:{}:{}'.format(i+1, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+    print('Iteración {}: Aplicando reg_SWAP...\t {}/{}/{} - {}:{}:{}'.format(i+16, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
     res = reg_SWAP(res.states[-1])
     
-    print('Iteración {}: Guardando resultado de iteración...\t {}/{}/{} - {}:{}:{}'.format(i+1, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
-    qsave(res, 'it_{}'.format(i+1))
+    print('Iteración {}: Guardando resultado de iteración...\t {}/{}/{} - {}:{}:{}'.format(i+16, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+    qsave(res, 'itj_{}'.format(i+16))
 
-    print('Iteración {}: Terminada\t {}/{}/{} - {}:{}:{}'.format(i+1, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+    print('Iteración {}: Terminada\t {}/{}/{} - {}:{}:{}'.format(i+16, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
 
