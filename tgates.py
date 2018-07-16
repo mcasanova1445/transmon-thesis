@@ -72,11 +72,12 @@ wq_swap = 9 * 2 * np.pi
 g = np.array([0.1 * 2*np.pi, 0.1 * 2*np.pi, 0.1 * 2*np.pi, 0.1 * 2*np.pi, 0.1 * 2*np.pi, 0.1 * 2*np.pi, 0.1 * 2*np.pi, 0.1 * 2*np.pi])
 
 D = wq - wr
+D_swap = wq_swap - wr
 
 chi = g**2 / abs(wr-wq)
 
-kappa = 0.0001
-gamma = np.array([0.000002, 0.000002, 0.000002, 0.000002])
+kappa = 0.001
+gamma = np.array([5e-6, 5e-6, 5e-6, 5e-6])
 
 '''
 for i in range(4):
@@ -182,9 +183,7 @@ def Y(psi0, target):
     return Ry(psi0, target, np.pi)
 
 def Z(psi0, target, theta):
-    res = Rx(psi0, target, np.pi/2)
-    res = Y(res.states[-1], target)
-    return Rx(res.states[-1], target, -np.pi/2)
+    return Rz(psi0, target, np.pi)
 
 def H(psi0, target):
     res = Ry(psi0, target, np.pi/2)
@@ -205,6 +204,7 @@ def sqrtiSWAP(psi0, target1, target2):
     tf = np.pi/(4*J)
     tlist = np.linspace(0, tf, 250)
 
+    '''
     Hsyst = 0 #+ Dq[0]*qop('sz',0)/2 + Dq[1]*qop('sz',1)/2 + Dq[2]*qop('sz',2)/2 + Dq[3]*qop('sz',3)/2 #MELCSCELDQ
     for i in range(4): #MELCSCELDQ
         # Hsyst = Hsyst - wq[i]*(Id/2 + 2 * (g[i]**2/D[i])*(n + Id/2))*qop('sz',i) #RH
@@ -215,6 +215,9 @@ def sqrtiSWAP(psi0, target1, target2):
             if i!=j:
                 # Hsyst = Hsyst + (g[i]*g[j]/D[j])*(qop('sp',i)*qop('sm',j) + qop('sm',i)*qop('sp',j)) #RH
                 Hsyst = Hsyst + (g[i]*g[j]/D[j])*(qop('sp',i)*qop('sm',j) + qop('sm',i)*qop('sp',j))/2 #RH
+    '''
+
+    Hsyst = g[target1]*g[target2] * (qop('sp',target1)*qop('sm',target2) + qop('sm',target1)*qop('sp',target2)) / (D_swap)
 
     res = mesolve(Hsyst, psi0, tlist, c_ops, [])
 
@@ -242,6 +245,7 @@ def iSWAP(psi0, target1, target2):
     tf = np.pi/(2*J)
     tlist = np.linspace(0, tf, 500)
 
+    '''
     Hsyst = 0 #+ Dq[0]*qop('sz',0)/2 + Dq[1]*qop('sz',1)/2 + Dq[2]*qop('sz',2)/2 + Dq[3]*qop('sz',3)/2 #MELCSCELDQ
     for i in range(4): #MELCSCELDQ
         # Hsyst = Hsyst - wq[i]*(Id/2 + 2 * (g[i]**2/D[i])*(n + Id/2))*qop('sz',i) #RH
@@ -252,6 +256,9 @@ def iSWAP(psi0, target1, target2):
             if i!=j:
                 # Hsyst = Hsyst + (g[i]*g[j]/D[j])*(qop('sp',i)*qop('sm',j) + qop('sm',i)*qop('sp',j)) #RH
                 Hsyst = Hsyst + (g[i]*g[j]/D[j])*(qop('sp',i)*qop('sm',j) + qop('sm',i)*qop('sp',j))/2 #RH
+    '''
+
+    Hsyst = g[target1]*g[target2] * (qop('sp',target1)*qop('sm',target2) + qop('sm',target1)*qop('sp',target2)) / (D_swap)
 
     res = mesolve(Hsyst, psi0, tlist, c_ops, [])
 
