@@ -604,6 +604,113 @@ y el término de control se puede escribir como:
 \chapter{Algoritmo de Grover}
 El algoritmo de Grover es un AC que encuentra con alta probabilidad la entrada única de una función de caja negra que produce un valor particular de salida, usando tan sólo $O(\sqrt{N})$ evaluaciones de la función, donde $N$ es el tamaño del dominio de la función. El análogo clásico de este algoritmo requiere $O(N)$ evaluaciones de la función, pues, el elemento correcto podría ser el $N$-ésimo en ser evaluado y se deben evaluar uno por uno. La aplicación directa de este algoritmo es como algoritmo de búsqueda en una base de datos. Sin embargo, su aplicación más eficiente es como subrutina en diversos procesos de optimización.
 
+El algoritmo de Grover es un AC que realiza una búsqueda en una secuencia no
+ordenada de datos con N componentes en un número de pasos $O(\sqrt{N})$, y con
+una necesidad de almacenamiento de $O(\log_2 N)$.
+
+Es decir, asumamos $N \equiv 2^n$. Clásicamente necesitariamos $O(N)$ pasos.
+
+Introducción:
+
+Dada $f:{0,1}^n \rightarrow {0,1}$, es decir; $f:{0,1,2,...,N-1} \rightarrow
+{0,1}$, se tiene la promesa de que 
+\[
+  f(x) = 
+\begin{cases}
+1 & \text{si } x = x_0 \\
+0 & \text{si } x \neq x_0
+\end{cases}
+\]
+
+Hay que determinar $x$.
+
+Clásicamente hay que evaluar la función $N=2^n$ veces. Cuánticamente sólo se
+requiere evaluar $\sqrt{2^n}$ veces.
+
+El análisis usual del algoritmo de Grover se basa en un hecho bien conocido de
+la geometría plana elemental: ``El producto de dos reflexiones es una rotación''
+
+Veamos qué significa esto:
+
+Supongamos que tenemos el oráculo
+
+\[U_f \ket{x} = (-1)^{f(x)} \ket{x} =
+    \begin{cases}
+      \ket{x} & \text{si } x \neq x_0 \\
+      - \ket{x} & \text{si } x = x_0
+    \end{cases}\]
+
+Es decir: $U_f = \mathds{1} - 2 \ketbra{x_0}{x_0}$
+  
+El efecto de $U_f$ es invertir la componente de $\ket{\phi}$ en la dirección
+$\ket{x_0}$.
+
+Además, podemos definir otro operador unitario $U_s = -\mathds{1} + 2
+\ketbra{s}{s}$ donde $\ket{s} = H^{\otimes n} \ket{0} = \frac{1}{\sqrt{2^n}}
+\sum\limits_x \ket{x}$
+
+El efecto de $U_s$ es invertir todas las componentes en direcciones
+perpendiculares a $\ket{s}$. Es decir, refleja respecto de $\ket{s}$.
+
+Hagamos ahora el siguiente ejercicio:
+
+Cosidremos el estado inicial $\ket{\psi}$
+
+\begin{enumerate}
+\item Aplicamos $U_\omega$, que invierte la componente $\ket{x_0}$.
+\item Aplicamos $U_s$, que refleja respecto de $\ket{s}$
+\end{enumerate}
+
+La combinación de estas dos inversiones es una rotación en un ángulo $2\alpha$.
+
+%%%%%% INSERTAR GRÁFICAS DEL EJEMPLO %%%%%%
+
+Una vez entendido esto empecemos el algoritmo de Grover.
+
+Algoritmo de Grover:
+
+Asumamos que el tamaño de nuestra base de datos es $2^n \equiv N$, donde $n$ es cualquier número entero distinto de creo.
+
+Consideremos un observable $\Omega \in H$ de dimensión $N \geq 2$. Este
+observable define un conjunto de bases ortogonales $\ket{x} = \{\ket{0},
+\ket{1}, \ket{2},...,\ket{N-1}\}$ con autovalores conocidos $\lambda_0,
+\lambda_1, \lambda_2,..., \lambda_{N-1}$, tal que $\hat{\Omega} \ket{j} =
+\lambda_j \ket{j}$, $j \in {0,...,N-1}$.
+
+Entonces podemos asociar un único autoestado $\ket{x_j}$, o autovalor
+$\lambda_j$, con cada item en la base de datos.
+
+El problema de buscar en la base de datos se convierte ahora en el problema de
+medir un autovalor de interés al que llamaremos $\lambda_\omega$, asociado con
+el estado $\ket{\omega}$, el cual representa algún específico item $\omega$ en
+nuestra base de datos y el cuál deseamos encontrar usando el algoritmo de
+búsqueda de Grover.
+
+Entonces:
+
+$$\{\ket{x}\}_{x=0,1,...,N-1} \text{es ortonormal }\rightarrow \ket{s} =
+\frac{1}{\sqrt{N}} \sum\limits_{x=0}^{N-1} \ket{x} = \text{autoestado asociado a
+  la base de datos}$$
+
+$$\braket{s}{s} = 1 \text{ ya que } \braket{i}{j} = \delta_{ij}$$
+
+Cualquier autoestado $\ket{\omega}$ tiene la misma proyección
+$\braket{\omega}{s} = \frac{1}{sqrt{N}}$, y dado un item $\omega$ la
+probabilidad de medir $\lambda_\omega$ (que es equivaletne a encontrar $\ket{s}$
+en el estado $\ket{\omega}$) es $|\braket{\omega}{s}|^2 = \frac{1}{N}$,
+consistentemente con lo que ocurre con una base de datos clásica.
+
+Consideremos ahora el oráculo unitario $U_\omega$ definido como:
+
+$$U_\omega \equiv \mathds{1} - 2\ketbra{\omega}{\omega}$$
+
+Entonces $U_\omega \ket{x} = (\mathds{1} - 2\ketbra{\omega}{\omega}) \ket{x} =
+\ket{x} - 2 \braket{\omega}{x} \ket{\omega} = \ket{x} - 2 \delta_{ij} \ket{\omega}$
+ Si $x \neq \omega \rightarrow U_\omega \ket{x} = \ket{x}$ 
+ Si $x = \omega \rightarrow U_\omega \ket{x} = -\ket{\omega}$ 
+
+ De manera tal que
+
 \section{El operador de difusión de Grover}
 
 \begin{figure}[H]
