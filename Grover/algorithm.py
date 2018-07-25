@@ -20,7 +20,7 @@ def Us(psi0):
     return Htrans(res.states[-1])
 
 def Uomega(psi0):
-    return tgates.CCCP(psi0, 2, 0, 3, 1, np.pi, b = 0b10)
+    return tgates.CCCP(psi0, 0, 1, 2, 3, np.pi, b = 0b11)
 
 qN = 2**4
 

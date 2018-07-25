@@ -1,0 +1,425 @@
+\documentclass[11pt, spanish]{report}
+\usepackage[spanish]{babel}
+\selectlanguage{spanish}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{qcircuit}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{dsfont}
+\usepackage{tkz-graph}
+\usetikzlibrary{arrows}
+
+\newcommand{\qwxo}[2][-1]{\ar @{-} [#1,0]|*+<4pt,6pt>[Fo]{#2}}
+
+\begin{document}
+
+Matriz de Z:
+
+\[
+\begin{pmatrix}
+1 & 0 \\
+0 & -1
+\end{pmatrix}
+\]
+
+
+Circuito de Grover:
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+\lstick{\ket{0}} & {/^n} \qw & \gate{H^{\otimes n}} & \multigate{1}{U_{\omega}} & \gate{U_s} & \meter & \cw \\
+\lstick{\ket{1}} & \qw       & \gate{H}             & \ghost{U_{\omega}}        & \qw        & \qw    & \qw \\
+                                & & & \rstick{\hspace{-13pt} \frac{\pi}{4} \sqrt{N} \text{ veces}}
+                                        \gategroup{1}{4}{2}{5}{1.8em}{_\}}
+}
+\]
+
+
+
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \gate{Rz({\theta})} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \gate{Ry(\frac{\pi}{2})} & \gate{Rx({\theta})} & \gate{Ry(\frac{-\pi}{2})} & \qw 
+}
+\]
+
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \gate{X} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \gate{Rx({\pi})} & \qw 
+}
+\]
+
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \gate{Y} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \gate{Ry({\pi})} & \qw 
+}
+\]
+
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \gate{Z} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \gate{Rz({\pi})} & \qw 
+}
+\]
+
+
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \gate{H} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \gate{Ry(\frac{\pi}{2})} & \gate{X} & \qw 
+}
+\]
+
+
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \ctrl{1} & \qw \\
+    \qw & \targ    & \qw 
+}\]
+
+\[
+\Qcircuit @C=0.4em @R=0.6em {
+\qw & \qw & \gate{Rz(\frac{-\pi}{2})} & \multigate{1}{\text{iSWAP}} & \gate{H} & \multigate{1}{\text{iSWAP}} & \qw  & \multigate{1}{\text{iSWAP}} &  \gate{Rx(\frac{\pi}{2})} &\multigate{1}{\text{iSWAP}} & \qw & \qw \\
+\qw & \gate{H} & \gate{Rz(\frac{-\pi}{2})} & \ghost{\text{iSWAP}} & \qw & \ghost{\text{iSWAP}}  & \gate{Rx(\frac{-\pi}{2})} & \ghost{\text{iSWAP}} & \qw & \ghost{\text{iSWAP}} & \gate{Rx(\frac{\pi}{2})} & \qw
+}
+\]
+
+
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \ctrl{1} & \qw \\
+    \qw & \gate{Ry(\theta)} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \qw                         & \ctrl{1} & \qw                          & \ctrl{1} & \qw \\
+    \qw & \gate{Ry(\frac{\theta}{2})} & \targ    & \gate{Ry(\frac{-\theta}{2})} & \targ    & \qw 
+} 
+\]
+
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \ctrl{1} & \qw \\
+    \qw & \gate{Rz(\theta)} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \qw                         & \ctrl{1} & \qw                          & \ctrl{1} & \qw \\
+    \qw & \gate{Rz(\frac{\theta}{2})} & \targ    & \gate{Rz(\frac{-\theta}{2})} & \targ    & \qw 
+} 
+\]
+
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \qswap     & \qw \\
+    \qw & \qswap\qwx & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \ctrl{1} & \targ     & \ctrl{1} & \qw \\
+    \qw & \targ    & \ctrl{-1} & \targ    & \qw 
+} 
+\]
+
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \ctrl{1} & \qw \\
+    \qw & \gate{H} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \qw                         & \ctrl{1} & \qw                          & \qw \\
+    \qw & \gate{Ry(\frac{\theta}{2})} & \targ    & \gate{Ry(\frac{-\theta}{2})} & \qw 
+} 
+\]
+
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \ctrlo{1} & \qw \\
+    \qw & \gate{R^\theta} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \gate{Rz(\frac{-3\theta}{4})} & \ctrl{1}                    & \gate{Rz(\frac{\theta}{2})} & \qw \\
+    \qw & \gate{Rz(\frac{-3\theta}{4})} & \gate{Rz(\frac{\theta}{2})} & \ctrl{-1}                    & \qw 
+} 
+\]
+
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \ctrlo{1} & \qw \\
+    \qw & \gate{R_\theta} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \gate{Rz(\frac{-3\theta}{4})} & \ctrl{1}                    & \gate{Rz(\frac{\theta}{2})} & \qw \\
+    \qw & \gate{Rz(\frac{5\theta}{4})} & \gate{Rz(\frac{-3\theta}{2})} & \ctrl{-1}                   & \qw 
+} 
+\]
+
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \ctrl{1} & \qw \\
+    \qw & \gate{R^\theta} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \gate{Rz(\frac{\theta}{4})} & \ctrl{1}                    & \gate{Rz(\frac{\theta}{2})} & \qw \\
+    \qw & \gate{Rz(\frac{\theta}{4})} & \gate{Rz(\frac{-3\theta}{2})} & \ctrl{-1}                  & \qw 
+} 
+\]
+
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \ctrl{1}        & \qw \\
+    \qw & \gate{R_\theta} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \gate{Rz(\frac{\theta}{4})} & \ctrl{1}                    & \gate{Rz(\frac{\theta}{2})} & \qw \\
+    \qw & \gate{Rz(\frac{\theta}{4})} & \gate{Rz(\frac{\theta}{2})} & \ctrl{-1}                    & \qw 
+} 
+\]
+
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \ctrl{1} & \qw \\
+    \qw & \ctrl{1} & \qw \\
+    \qw & \targ    & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \qw      & \qw                       & \ctrl{1} & \qw                      & \ctrl{1} & \ctrl{2}                  & \qw & \ctrl{1}          & \qw \\
+    \qw & \qw      & \ctrl{1}                  & \targ    & \ctrl{1}                 & \targ    & \qw                       & \qw & \gate{R_{-\frac{\pi}{2}}} & \qw \\
+    \qw & \gate{H} & \gate{Rz(\frac{-\pi}{2})} & \qw      & \gate{Rz(\frac{\pi}{2})} & \qw      & \gate{Rz(\frac{-\pi}{2})} & \gate{H} & \qw & \qw 
+} 
+\]
+
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \ctrl{1} & \qw \\
+    \qw & \ctrl{1} & \qw \\
+    \qw & \gate{Rz(\theta)}    & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \qw                       & \ctrl{1} & \qw                      & \ctrl{1} & \ctrl{2}                  & \qw \\
+    \qw & \ctrl{1}                  & \targ    & \ctrl{1}                 & \targ    & \qw                       & \qw \\
+    \qw & \gate{Rz(\frac{\theta}{2})} & \qw      & \gate{Rz(\frac{-\theta}{2})} & \qw      & \gate{Rz(\frac{\theta}{2})} & \qw 
+} 
+\]
+
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \ctrl{1} & \qw \\
+    \qw & \ctrl{1} & \qw \\
+    \qw & \gate{Ry(\theta)}    & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \qw                       & \ctrl{1} & \qw                      & \ctrl{1} & \ctrl{2}                  & \qw \\
+    \qw & \ctrl{1}                  & \targ    & \ctrl{1}                 & \targ    & \qw                       & \qw \\
+    \qw & \gate{Ry(\frac{\theta}{2})} & \qw      & \gate{Ry(\frac{-\theta}{2})} & \qw      & \gate{Ry(\frac{\theta}{2})} & \qw 
+} 
+\]
+
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \ctrlo{1} & \qw \\
+    \qw & \ctrlo{1} & \qw \\
+    \qw & \gate{R^\theta}    & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \qw                       & \ctrlo{1} & \qw                      & \ctrlo{1} & \ctrlo{2}                  & \qw \\
+    \qw & \ctrlo{1}                  & \targ    & \ctrlo{1}                 & \targ    & \qw                       & \qw \\
+    \qw & \gate{R^\frac{\theta}{2}} & \qw      & \gate{R^\frac{-\theta}{2}} & \qw      & \gate{R^\frac{\theta}{2}} & \qw 
+} 
+\]
+
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \ctrlo{1} & \qw \\
+    \qw & \ctrlo{1} & \qw \\
+    \qw & \gate{R_\theta}    & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \qw                       & \ctrlo{1} & \qw                      & \ctrlo{1} & \ctrlo{2}                  & \qw \\
+    \qw & \ctrlo{1}                  & \targ    & \ctrlo{1}                 & \targ    & \qw                       & \qw \\
+    \qw & \gate{R_\frac{\theta}{2}} & \qw      & \gate{R_\frac{-\theta}{2}} & \qw      & \gate{R_\frac{\theta}{2}} & \qw 
+} 
+\]
+
+
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \ctrl{1} & \qw \\
+    \qw & \ctrl{1} & \qw \\
+    \qw & \gate{R^\theta}    & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \qw                       & \ctrl{1} & \qw                      & \ctrl{1} & \ctrl{2}                  & \qw \\
+    \qw & \ctrl{1}                  & \targ    & \ctrl{1}                 & \targ    & \qw                       & \qw \\
+    \qw & \gate{R^\frac{\theta}{2}} & \qw      & \gate{R^\frac{-\theta}{2}} & \qw      & \gate{R^\frac{\theta}{2}} & \qw 
+} 
+\]
+
+
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \ctrl{1} & \qw \\
+    \qw & \ctrl{1} & \qw \\
+    \qw & \gate{R_\theta}    & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \qw                       & \ctrl{1} & \qw                      & \ctrl{1} & \ctrl{2}                  & \qw \\
+    \qw & \ctrl{1}                  & \targ    & \ctrl{1}                 & \targ    & \qw                       & \qw \\
+    \qw & \gate{R_\frac{\theta}{2}} & \qw      & \gate{R_\frac{-\theta}{2}} & \qw      & \gate{R_\frac{\theta}{2}} & \qw 
+} 
+\]
+
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \ctrl{1} & \qw \\
+    \qw & \ctrl{1} & \qw \\
+    \qw & \ctrl{1} & \qw \\
+    \qw & \targ    & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \qw      & \qw                       & \ctrl{1} & \qw                      & \ctrl{1} & \ctrl{2}                  & \qw      & \ctrl{1}                  & \qw \\
+    \qw & \qw      & \ctrl{1}                  & \targ    & \ctrl{1}                 & \targ    & \qw                       & \qw      & \ctrl{1}                  & \qw \\
+    \qw & \qw      & \ctrl{1}                  & \qw      & \ctrl{1}                 & \qw      & \ctrl{1}                  & \qw      & \gate{R_\frac{-\pi}{2}} & \qw \\
+    \qw & \gate{H} & \gate{Rz(\frac{-\pi}{2})} & \qw      & \gate{Rz(\frac{\pi}{2})} & \qw      & \gate{Rz(\frac{-\pi}{2})} & \gate{H} & \qw                       & \qw 
+} 
+\]
+
+
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \ctrl{1} & \qw \\
+    \qw & \ctrl{1} & \qw \\
+    \qw & \ctrl{1} & \qw \\
+    \qw & \gate{Ry(\theta)} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \qw                         & \ctrl{1} & \qw                          & \ctrl{1} & \ctrl{1}                    & \qw \\
+    \qw & \qw                         & \ctrl{1} & \qw                          & \ctrl{1} & \ctrl{2}                    & \qw \\
+    \qw & \ctrl{1}                    & \targ    & \ctrl{1}                     & \targ    & \qw                         & \qw \\
+    \qw & \gate{Ry(\frac{\theta}{2})} & \qw      & \gate{Ry(\frac{-\theta}{2})} & \qw      & \gate{Ry(\frac{\theta}{2})} & \qw 
+} 
+\]
+
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \ctrl{1} & \qw \\
+    \qw & \ctrl{1} & \qw \\
+    \qw & \ctrl{1} & \qw \\
+    \qw & \gate{Rz(\theta)} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \qw                         & \ctrl{1} & \qw                          & \ctrl{1} & \ctrl{1}                    & \qw \\
+    \qw & \qw                         & \ctrl{1} & \qw                          & \ctrl{1} & \ctrl{2}                    & \qw \\
+    \qw & \ctrl{1}                    & \targ    & \ctrl{1}                     & \targ    & \qw                         & \qw \\
+    \qw & \gate{Rz(\frac{\theta}{2})} & \qw      & \gate{Rz(\frac{-\theta}{2})} & \qw      & \gate{Rz(\frac{\theta}{2})} & \qw 
+} 
+\]
+
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \ctrlo{1} & \qw \\
+    \qw & \ctrlo{1} & \qw \\
+    \qw & \ctrlo{1} & \qw \\
+    \qw & \gate{R^\theta} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \qw                       & \ctrlo{1} & \qw                        & \ctrlo{1} & \ctrlo{1}                 & \qw \\
+    \qw & \qw                       & \ctrlo{1} & \qw                        & \ctrlo{1} & \ctrlo{2}                 & \qw \\
+    \qw & \ctrlo{1}                 & \targ     & \ctrlo{1}                  & \targ     & \qw                       & \qw \\
+    \qw & \gate{R^\frac{\theta}{2}} & \qw       & \gate{R^\frac{-\theta}{2}} & \qw       & \gate{R^\frac{\theta}{2}} & \qw 
+} 
+\]
+
+
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \ctrlo{1} & \qw \\
+    \qw & \ctrlo{1} & \qw \\
+    \qw & \ctrlo{1} & \qw \\
+    \qw & \gate{R_\theta} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \qw                       & \ctrlo{1} & \qw                        & \ctrlo{1} & \ctrlo{1}                 & \qw \\
+    \qw & \qw                       & \ctrlo{1} & \qw                        & \ctrlo{1} & \ctrlo{2}                 & \qw \\
+    \qw & \ctrlo{1}                 & \targ     & \ctrlo{1}                  & \targ     & \qw                       & \qw \\
+    \qw & \gate{R_\frac{\theta}{2}} & \qw       & \gate{R_\frac{-\theta}{2}} & \qw       & \gate{R_\frac{\theta}{2}} & \qw 
+} 
+\]
+
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \ctrl{1} & \qw \\
+    \qw & \ctrl{1} & \qw \\
+    \qw & \ctrl{1} & \qw \\
+    \qw & \gate{R^\theta} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \qw                       & \ctrl{1} & \qw                        & \ctrl{1} & \ctrl{1}                 & \qw \\
+    \qw & \qw                       & \ctrl{1} & \qw                        & \ctrl{1} & \ctrl{2}                 & \qw \\
+    \qw & \ctrl{1}                 & \targ     & \ctrl{1}                  & \targ     & \qw                       & \qw \\
+    \qw & \gate{R^\frac{\theta}{2}} & \qw       & \gate{R^\frac{-\theta}{2}} & \qw       & \gate{R^\frac{\theta}{2}} & \qw 
+} 
+\]
+
+
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \ctrl{1} & \qw \\
+    \qw & \ctrl{1} & \qw \\
+    \qw & \ctrl{1} & \qw \\
+    \qw & \gate{R_\theta} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+    \qw & \qw                       & \ctrl{1} & \qw                        & \ctrl{1} & \ctrl{1}                 & \qw \\
+    \qw & \qw                       & \ctrl{1} & \qw                        & \ctrl{1} & \ctrl{2}                 & \qw \\
+    \qw & \ctrl{1}                 & \targ     & \ctrl{1}                  & \targ     & \qw                       & \qw \\
+    \qw & \gate{R_\frac{\theta}{2}} & \qw       & \gate{R_\frac{-\theta}{2}} & \qw       & \gate{R_\frac{\theta}{2}} & \qw 
+} 
+\]
+
+
+
+
+
+
+
+\end{document}

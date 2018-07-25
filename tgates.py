@@ -108,7 +108,8 @@ def qop(operator, target):
 # def qop(operator, target):
     # return tensor(qeye(N), qop_part(operator, target-0), qop_part(operator, target-1), qop_part(operator, target-2), qop_part(operator, target-3), qop_part(operator, target-4), qop_part(operator, target-5), qop_part(operator, target-6), qop_part(operator, target-7)) #MELCSCELDQ
 
-c_ops = [np.sqrt(gamma[0]) * qop('sm', 0), np.sqrt(gamma[1]) * qop('sm', 1), np.sqrt(gamma[2]) * qop('sm', 2), np.sqrt(gamma[3]) * qop('sm', 3)]
+#c_ops = [np.sqrt(gamma[0]) * qop('sm', 0), np.sqrt(gamma[1]) * qop('sm', 1), np.sqrt(gamma[2]) * qop('sm', 2), np.sqrt(gamma[3]) * qop('sm', 3)]
+c_ops = []
 
 def ksi_t(t, args):
     return args['A'] * gaussianpulse(t,args['ts'],args['tf'])
@@ -359,9 +360,17 @@ def CCRy(psi0, control1, control2, target, theta):
 
 def CCP(psi0, control1, control2, target, theta, b = 0b11):
     res = CP(psi0, control2, target, theta/2, b = b)
+    if b == 0b00 or b == 0b01:
+        res = X(res.states[-1], control1)
     res = CNOT(res.states[-1], control1, control2)
+    if b == 0b00 or b == 0b01:
+        res = X(res.states[-1], control1)
     res = CP(res.states[-1], control2, target, -theta/2, b = b)
+    if b == 0b00 or b == 0b01:
+        res = X(res.states[-1], control1)
     res = CNOT(res.states[-1], control1, control2)
+    if b == 0b00 or b == 0b01:
+        res = X(res.states[-1], control1)
     return CP(res.states[-1], control1, target, theta/2, b = b)
 
 def CCNOT(psi0, control1, control2, target):
@@ -405,7 +414,19 @@ def CCCRz(psi0, control1, control2, control3, target, theta):
 
 def CCCP(psi0, control1, control2, control3, target, theta, b = 0b11):
     res = CP(psi0, control3, target, theta/2, b = b)
+    if b == 0b00 or b == 0b01:
+        res = X(res.states[-1], control1)
+        res = X(res.states[-1], control2)
     res = CCNOT(res.states[-1], control1, control2, control3)
+    if b == 0b00 or b == 0b01:
+        res = X(res.states[-1], control1)
+        res = X(res.states[-1], control2)
     res = CP(res.states[-1], control3, target, -theta/2, b = b)
+    if b == 0b00 or b == 0b01:
+        res = X(res.states[-1], control1)
+        res = X(res.states[-1], control2)
     res = CCNOT(res.states[-1], control1, control2, control3)
+    if b == 0b00 or b == 0b01:
+        res = X(res.states[-1], control1)
+        res = X(res.states[-1], control2)
     return CCP(res.states[-1], control1, control2, target, theta/2, b = b)
