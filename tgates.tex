@@ -24,20 +24,7 @@ Matriz de Z:
 \end{pmatrix}
 \]
 
-
-Circuito de Grover:
-
-\[
-\Qcircuit @C=1.4em @R=1.8em {
-\lstick{\ket{0}} & {/^n} \qw & \gate{H^{\otimes n}} & \multigate{1}{U_{\omega}} & \gate{U_s} & \meter & \cw \\
-\lstick{\ket{1}} & \qw       & \gate{H}             & \ghost{U_{\omega}}        & \qw        & \qw    & \qw \\
-                                & & & \rstick{\hspace{-13pt} \frac{\pi}{4} \sqrt{N} \text{ veces}}
-                                        \gategroup{1}{4}{2}{5}{1.8em}{_\}}
-}
-\]
-
-
-
+Rotaciones en Z:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
@@ -48,6 +35,7 @@ Circuito de Grover:
 }
 \]
 
+Compuerta X:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
@@ -58,6 +46,7 @@ Circuito de Grover:
 }
 \]
 
+Compuerta Y:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
@@ -68,6 +57,7 @@ Circuito de Grover:
 }
 \]
 
+Compuerta Z:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
@@ -78,7 +68,7 @@ Circuito de Grover:
 }
 \]
 
-
+Compuerta H:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
@@ -89,14 +79,13 @@ Circuito de Grover:
 }
 \]
 
-
+Compuerta CNOT:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
     \qw & \ctrl{1} & \qw \\
     \qw & \targ    & \qw 
 }\]
-
 \[
 \Qcircuit @C=0.4em @R=0.6em {
 \qw & \qw & \gate{Rz(\frac{-\pi}{2})} & \multigate{1}{\text{iSWAP}} & \gate{H} & \multigate{1}{\text{iSWAP}} & \qw  & \multigate{1}{\text{iSWAP}} &  \gate{Rx(\frac{\pi}{2})} &\multigate{1}{\text{iSWAP}} & \qw & \qw \\
@@ -105,6 +94,7 @@ Circuito de Grover:
 \]
 
 
+Compuerta CRy:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
@@ -117,6 +107,7 @@ Circuito de Grover:
 } 
 \]
 
+Compuerta CRz:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
@@ -129,6 +120,7 @@ Circuito de Grover:
 } 
 \]
 
+Compuerta SWAP:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
@@ -141,6 +133,7 @@ Circuito de Grover:
 } 
 \]
 
+Compuerta CH:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
@@ -153,6 +146,7 @@ Circuito de Grover:
 } 
 \]
 
+Compuerta $CR^\theta$ blanca:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
@@ -165,6 +159,7 @@ Circuito de Grover:
 } 
 \]
 
+Compuerta $CR_\theta$ blanca:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
@@ -177,6 +172,7 @@ Circuito de Grover:
 } 
 \]
 
+Compuerta $CR^\theta$ negra:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
@@ -189,6 +185,7 @@ Circuito de Grover:
 } 
 \]
 
+Compuerta $CR_\theta$ negra:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
@@ -201,6 +198,7 @@ Circuito de Grover:
 } 
 \]
 
+Compuerta de Toffoli (CCNOT):
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
@@ -215,6 +213,7 @@ Circuito de Grover:
 } 
 \]
 
+Compuerta CCRz:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
@@ -229,6 +228,7 @@ Circuito de Grover:
 } 
 \]
 
+Compuerta CCRy:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
@@ -243,6 +243,7 @@ Circuito de Grover:
 } 
 \]
 
+Compuerta $CCR^\theta$ blanca:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
@@ -257,6 +258,7 @@ Circuito de Grover:
 } 
 \]
 
+Compuerta $CCR_\theta$ blanca:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
@@ -271,7 +273,7 @@ Circuito de Grover:
 } 
 \]
 
-
+Compuerta $CCR^\theta$ negra:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
@@ -286,7 +288,7 @@ Circuito de Grover:
 } 
 \]
 
-
+Compuerta $CCR_\theta$ negra:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
@@ -301,6 +303,7 @@ Circuito de Grover:
 } 
 \]
 
+Compuerta CCCNOT:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
@@ -317,7 +320,7 @@ Circuito de Grover:
 } 
 \]
 
-
+Compuerta CCCRy:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
@@ -334,6 +337,7 @@ Circuito de Grover:
 } 
 \]
 
+Compuerta CCCRz:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
@@ -350,6 +354,7 @@ Circuito de Grover:
 } 
 \]
 
+Compuerta $CCCR^\theta$ blanca:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
@@ -366,7 +371,7 @@ Circuito de Grover:
 } 
 \]
 
-
+Compuerta $CCCR_\theta$ blanca:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
@@ -383,6 +388,7 @@ Circuito de Grover:
 } 
 \]
 
+Compuerta $CCCR^\theta$ negra:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
@@ -399,7 +405,7 @@ Circuito de Grover:
 } 
 \]
 
-
+Compuerta $CCCR_\theta$ negra:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
@@ -415,11 +421,6 @@ Circuito de Grover:
     \qw & \gate{R_\frac{\theta}{2}} & \qw       & \gate{R_\frac{-\theta}{2}} & \qw       & \gate{R_\frac{\theta}{2}} & \qw 
 } 
 \]
-
-
-
-
-
 
 
 \end{document}
