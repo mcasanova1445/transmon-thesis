@@ -130,10 +130,12 @@ def L2(psi0, c1, c2):                 # 1: black; 0: white; -1: none
 
 def T1(psi0):
     res = L2(psi0, 0, 1)
+    res = L2(res.states[-1], 1, 0)
     return L2(res.states[-1], 1, 0)
 
 def T1d(psi0):
     res = R2(psi0, 1, 0)
+    res = R2(res.states[-1], 1, 0)
     return R2(res.states[-1], 0, 1)
 
 def Kb2(psi0):                          #CCHH
