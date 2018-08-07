@@ -95,7 +95,8 @@ def qop_part(operator, target):
 def qop(operator, target):
     return tensor(qop_part(operator, target-0), qop_part(operator, target-1), qop_part(operator, target-2), qop_part(operator, target-3), qop_part(operator, target-4), qop_part(operator, target-5), qop_part(operator, target-6), qop_part(operator, target-7)) #MELCSCELDQ
 
-c_ops = [np.sqrt(gamma[0]) * qop('sm', 0), np.sqrt(gamma[1]) * qop('sm', 1), np.sqrt(gamma[2]) * qop('sm', 2), np.sqrt(gamma[3]) * qop('sm', 3), np.sqrt(gamma[4]) * qop('sm', 4), np.sqrt(gamma[5]) * qop('sm', 5), np.sqrt(gamma[6]) * qop('sm', 6), np.sqrt(gamma[7]) * qop('sm', 7)]
+# c_ops = [np.sqrt(gamma[0]) * qop('sm', 0), np.sqrt(gamma[1]) * qop('sm', 1), np.sqrt(gamma[2]) * qop('sm', 2), np.sqrt(gamma[3]) * qop('sm', 3), np.sqrt(gamma[4]) * qop('sm', 4), np.sqrt(gamma[5]) * qop('sm', 5), np.sqrt(gamma[6]) * qop('sm', 6), np.sqrt(gamma[7]) * qop('sm', 7)]
+c_ops = []
 
 def ksi_t(t, args):
     return args['A'] * gaussianpulse(t,args['ts'],args['tf'])
