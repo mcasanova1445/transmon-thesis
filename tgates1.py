@@ -341,11 +341,7 @@ class QuantumChip:
         res = self.CNOT(control1, control2)
         res = self.CCRz(control1, control3, target, -np.pi/2)
         res = self.H(target)
-        res = self.CP(control2, control3, -np.pi/4)
-        res = self.CNOT(control1, control2)
-        res = self.CP(control2, control3, np.pi/4)
-        res = self.CNOT(control1, control2)
-        return self.CP(control1, control3, -np.pi/4)
+        return self.CCP(control1, control2, control3, -np.pi/2, b = 0b11)
 
     def CCCRy(self, control1, control2, control3, target, theta):
         res = self.CRy(control3, target, theta/2)
@@ -379,6 +375,115 @@ class QuantumChip:
             res = self.X(control1)
             res = self.X(control2)
         return self.CCP(control1, control2, target, theta/2, b = b)
+
+    def gCNOT(self, control_list, target):
+        if len(control_list) == 1:
+            res = self.CNOT(control[0], target)
+        
+        elif len(control_list) == 2:
+            res = self.Toffoli(control[0], control[1], target)
+
+        else:
+            control1 = control_list[0]
+            control2 = control_list[1]
+            control_list1 = control_list[1:]
+            control_list2 = [control1] + control_list[2:]
+            res = self.H(target)
+            res = self.gCRz(control_list1, target, -np.pi/2)
+            res = self.CNOT(control1, control2)
+            res = self.gCRz(control_list1, target, np.pi/2)
+            res = self.CNOT(control1, control2)
+            res = self.gCRz(control_list2, target, -np.pi/2)
+            res = self.H(target)
+            res = self.gCP(control_list, -np.pi/2, b = 0b11)
+
+        return res
+
+    def gCRz1(self, control_list, target, theta):
+        if len(control_list) == 1:
+            res = self.CRz(control[0], target, theta)
+        
+        elif len(control_list) == 2:
+            res = self.CCRz(control[0], control[1], target, theta)
+
+        else:
+            control1 = control_list[0]
+            control2 = control_list[1]
+            control_list1 = control_list[1:]
+            control_list2 = [control1] + control_list[2:]
+            res = self.gCRz(control_list1, target, -np.pi/2)
+            res = self.CNOT(control1, control2)
+            res = self.gCRz(control_list1, target, np.pi/2)
+            res = self.CNOT(control1, control2)
+            res = self.gCRz(control_list2, target, -np.pi/2)
+
+        return res
+
+    def gCRz(self, control_list, target, theta):
+        if len(control_list) == 1:
+            res = self.CRz(control[0], target, theta)
+        
+        elif len(control_list) == 2:
+            res = self.CCRz(control[0], control[1], target, theta)
+
+        else:
+            control3 = control_list[-1]
+            control_list3 = control_list[:-1]
+            res = self.CRz(control3, target, theta/2)
+            res = self.gCNOT(control_list3, control3)
+            res = self.CRz(control3, target, -theta/2)
+            res = self.gCNOT(control_list3, control3)
+            res = self.gCRz(control_list3, target, theta/2)
+
+        return res
+
+    def gCRy(self, control_list, target, theta):
+        if len(control_list) == 1:
+            res = self.CRy(control[0], target, theta)
+        
+        elif len(control_list) == 2:
+            res = self.CCRy(control[0], control[1], target, theta)
+
+        else:
+            control3 = control_list[-1]
+            control_list3 = control_list[:-1]
+            res = self.CRy(control3, target, theta/2)
+            res = self.gCNOT(control_list3, control3)
+            res = self.CRy(control3, target, -theta/2)
+            res = self.gCNOT(control_list3, control3)
+            res = self.gCRy(control_list3, target, theta/2)
+
+        return res
+
+    def gCP(self, control_list, target, theta, b = 0b11):
+        if len(control_list) == 1:
+            res = self.CP(control[0], target, theta)
+
+        elif len(control_list) == 2:
+            res = self.CCP(control[0], control[1], target, theta)
+
+        else:
+            control3 = control_list[-1]
+            control_list3 = control_list[:-1]
+            res = self.CP(control3, target, theta/2, b = b)
+            if b == 0b00 or b == 0b01:
+                for control in control_list3:
+                    res = self.X(control)
+            res = self.gCNOT(control_list3, control3)
+            if b == 0b00 or b == 0b01:
+                for control in control_list3:
+                    res = self.X(control)
+            res = self.CP(control3, target, -theta/2, b = b)
+            if b == 0b00 or b == 0b01:
+                for control in control_list3:
+                    res = self.X(control)
+            res = self.gCNOT(control_list3, control3)
+            if b == 0b00 or b == 0b01:
+                for control in control_list3:
+                    res = self.X(control)
+            res = self.gCP(control_list3, target, theta/2, b = b)
+
+        return res
 
 
 # Funciones de los pulsos
