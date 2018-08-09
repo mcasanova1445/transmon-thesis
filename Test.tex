@@ -2,6 +2,7 @@
 \usepackage[spanish]{babel}
 \selectlanguage{spanish}
 \usepackage[utf8]{inputenc}
+\usepackage{amssymb}
 \usepackage{mathtools}
 \usepackage{physics}
 \usepackage{qcircuit}
@@ -1001,23 +1002,23 @@ Ejemplo:
 
  \[\begin{matrix}
          p  &   4^p & 4^p = 13 q                    + R    &   R   \\
-         0  $   1   & 4^0 = 13 0                    + 1    & 1     \\
-         1  $   4   & 4^1 = 13 0                    + 4    & 4     \\
-         2  $   16  & 4^2 = 13 1                    + 3    & 3     \\
-         3  $   64  & 4^3 = 13 4                    + 12   & 12    \\
-         4  $   256  & 4^4 = 13 19                  + 9    & 9     \\
-         5  $   1024  & 4^5 = 13 78                 + 10   & 10    \\ % Revisar tabla | Error en la clase
-         6  $   4096  & 4^6 = 13 315                + 1    & 1     \\
-         7  $   16384  & 4^7 = 13 1260              + 4    & 4     \\
-         8  $   65536  & 4^8 = 13 5041              + 3    & 3     \\
-         9  $   262144  & 4^9 = 13 20164            + 12   & 12    \\
-         10 $   1048576  & 4^10 = 13 80659          + 9    & 9     \\
-         11 $   4194304  & 4^11 = 13 322638         + 10   & 10    \\
-         12 $   16777216  & 4^12 = 13 1290555       + 1    & 1     \\
-         13 $   67108864  & 4^13 = 13 5162220       + 4    & 4     \\
-         14 $   268435456  & 4^14 = 13 20648881     + 3    & 3     \\
-         15 $   1073741824  & 4^15 = 13 82595524    + 12   & 12    \\
-         16 $   4294967296  & 4^16 = 13 330382099   + 9    & 9     
+         0  &   1   & 4^0 = 13 0                    + 1    & 1     \\
+         1  &   4   & 4^1 = 13 0                    + 4    & 4     \\
+         2  &   16  & 4^2 = 13 1                    + 3    & 3     \\
+         3  &   64  & 4^3 = 13 4                    + 12   & 12    \\
+         4  &   256  & 4^4 = 13 19                  + 9    & 9     \\
+         5  &   1024  & 4^5 = 13 78                 + 10   & 10    \\ % Revisar tabla | Error en la clase
+         6  &   4096  & 4^6 = 13 315                + 1    & 1     \\
+         7  &   16384  & 4^7 = 13 1260              + 4    & 4     \\
+         8  &   65536  & 4^8 = 13 5041              + 3    & 3     \\
+         9  &   262144  & 4^9 = 13 20164            + 12   & 12    \\
+         10 &   1048576  & 4^10 = 13 80659          + 9    & 9     \\
+         11 &   4194304  & 4^11 = 13 322638         + 10   & 10    \\
+         12 &   16777216  & 4^12 = 13 1290555       + 1    & 1     \\
+         13 &   67108864  & 4^13 = 13 5162220       + 4    & 4     \\
+         14 &   268435456  & 4^14 = 13 20648881     + 3    & 3     \\
+         15 &   1073741824  & 4^15 = 13 82595524    + 12   & 12    \\
+         16 &   4294967296  & 4^16 = 13 330382099   + 9    & 9     
      \end{matrix}
  \]
 
@@ -1101,7 +1102,7 @@ Entonces:
 
 * Estimación de fase:
 
-Asumamos que tenemos un operador U, con autoestados $\ket{u}$ de dimensión L, y con autovalore complejos dessconocidos $\lambda_\phi = e^{2 i \pi \phi}$, donde $\hi$ es un número real tal que $0 \leq \phi \leq 1$, a ser determinado.
+Asumamos que tenemos un operador U, con autoestados $\ket{u}$ de dimensión L, y con autovalore complejos dessconocidos $\lambda_\phi = e^{2 i \pi \phi}$, donde $\phi$ es un número real tal que $0 \leq \phi \leq 1$, a ser determinado.
 
 Asumamos también que somos capaces de construir una familia de operadores $controlled-U^p$, donde $p = 2^0, 2^1, 2^2, ..., 2^{k-1}$
 
@@ -1226,6 +1227,175 @@ Asumamos que dados dos enteros x y N que satisfacen que x<N, siendo x coprimo de
 $U_{x,N} \ket{y} = \ket{x y mod N}$
 
 Asumamos $\{ \ket{u_s}\}_{s = 0, 1, ..., r-1}$ el conjunto de r autoestados de U, asociados con los autovalores $e^{i 2 \pi s/r}$ tal que $U \ket{u_s} = e^{2 i \pi s /r} \ket{u_s}$ en el cual la fase es $\phi_s = s/r$ con $0 \leq \phi_s \leq 1$
+
+Tales autoestados $\ket{u_s}$ se definen acorde a: $\ket{u_s} = \frac{1}{\sqrt{r}} \sum\limits_{k=0}^{r-1} e^{\frac{-2 i \pi k s}{r}} \ket{x^k mod N}$, siendo r a determinar.
+
+Con las siguientes propiedades:
+
+$\frac{1}{\sqrt{r}} \sum_{s=0}{r-1} \ket{u_s} = \ket{1}$
+
+$\frac{1}{\sqrt{r}} \sum\limits_{s=0}^{r-1} e^{\frac{2 i \pi k s}{r}} \ket{u_s} = \ket{x^k mod N}$
+
+$p(s) = |c_s|^2 = \frac{1}{r}$
+
+El circuito para la estimación de orden es el siguiente:
+
+%%%%%% Circuito aqui%%%%%%
+
+Entonces:
+
+$U_{x,y} \ket{y} = \ket{x y mod N}$
+
+$j = 2^0, 2^1, 2^2, ..., 2^{k-1}$
+
+$CU^j (\ket{0} \otimes \ket{1}) = \ket{0} \otimes \ket{1}$
+
+$CU^j \ket{j} \otimes \ket{1} = \ket{j} \otimes \ket{x^{j_1 2^{k-1}} mod N} \ket{x^{j_2 2^{k-2}} mod N} ... \ket{x^{j_k 2^0} mod N}$
+
+$CU^j \ket{j} \otimes \ket{1} = \ket{j} \otimes \ket{x^{j_1 2^k-1} x^{j_2 2^{k-2}} ... x^{j_k 2^0} mod N}$
+
+$\therefore CU^j \ket{j} \otimes \ket{1} = \ket{j} \otimes \ket{x^j mod N}$
+
+Con este paso entendido vamos ahora a analizar el circuito para determinar el orden:
+
+1) $\ket{\psi_1} = \ket{0}^{\otimes k} \otimes \ket{1}$
+
+2) $\ket{psi_2} = \frac{1}{\sqrt{M}} (\ket{0} + \ket{1})^{\otimes k} \otimes \ket{1}; M=2^k$
+
+$\ket{psi_2} = \frac{1}{\sqrt{M}} \sum_{j=0}^{M-1} CU^j (\ket{j} \otimes \ket{1})$
+
+3) $\ket{\psi_3} = CU^j \ket{\psi_2} = \frac{1}{\sqrt{M}} \sum\limits_{j=0}^{M-1} CU^j (\ket{j} \otimes \ket{1}) = \frac{1}{\sqrt{M}} \sum\limits_{j=0}^{M-1} (\ket{j} \otimes \ket{x^j mod N})$
+
+Pero ya vimos que: $\ket{x^j mod N} = \frac{1}{\sqrt{r}} \sum\limits_{s=0}^{r-1} e^{\frac{2 i \pi k s}{r}} \ket{u_s}$
+
+$\therefore \ket{\psi_3} = \frac{1}{\sqrt{M}} \sum\limits_{k=0}^{M-1} \ket{k} \otimes \frac{1}{\sqrt{r}} e^{2 i \pi k s/r} \ket{u_s}$
+
+$\ket{\psi_3} = \sum\limits_{s=0}^{r-1} (\frac{1}{\sqrt{M}} \sum_{k=0}^{M-1} e^{2 i \pi k s/r} \ket{k}) \otimes \frac{1}{\sqrt{r}} \ket{u_s}$
+
+4) Aplicamos la transformada inversa de Fourier al primer registro $\ket{\psi_4} = (QFT^\dagger \otimes \mathds{1}) \ket{\psi_3} = \frac{1}{\sqrt{r}} \sum\limits_{s=0}^{r-1} \ket{\tilde{\psi}_s} \otimes \ket{u_s}$
+
+Finalmente: Al medir el primer registro proyectamos la superposición que conforma $\ket{\psi_4}$ en uno de los r estados de $\ket{\psi_s}$
+
+$p(s) = |(\bra{\tilde{\psi}_s} \otimes \bra{u_s}) \ket{\psi_4}|^2 = \frac{1}{r}$
+
+lo que nos da $\frac{s}{r}$ correspondiendo a la estimación de fase $\tilde{\psi} = \frac{s}{r}$
+
+Posteriormente aplicamos el algoritmo clásico de fracciones continuas y determinamos los co-primos.
+
+Ejemplo:
+
+Determinemos la factorización para N=15.
+
+Asumamos, el número compuesto N=15 (no primo). Tomemos L = log2 N = 9 para el segundo registro (tamaño del target) y pongamos un error de probabilidad grande $\epsilon = 0.25$.
+
+$k = 2L + 1 + \log_2(2 + \frac{1}{2 \varepsilon} = 11$ (ver libro: tamaño del primer registro de control)
+
+$M = 2^k = 2^{11} = 2048$
+
+tomemos un número x aleatorio entre $[2, N-1] \rightarrow x = 8$ lo cual cumple que m.c.d(8,15) = 1
+
+Pasos cuánticos:
+
+.) $\ket{\psi_1} = \ket{0}^{\otimes k} \otimes \ket{1}$
+
+.) $\ket{\psi_2} = \frac{1}{\sqrt{M}} \sum\limits_{j=0}^{M-1} (\ket{j} \otimes \ket{1}) = \frac{1}{\sqrt{2^M}} (\ket{0} + \ket{1} + \ket{2} + ... + \ket{M-1})$
+
+.) Aplicamos la compuerta $Controlled-U^j$ $\ket{\psi_3} = \frac{1}{\sqrt{M}} \ket{j} \otimes \ket{x^j mod N} = \frac{1}{\sqrt{M}} \sum\limits_{j=0}^{M-1} \ket{1} \otimes \ket{8^j mod 15}$
+
+$\ket{\psi_3} = \frac{1}{\sqrt{M}} (\ket{0}\ket{1} + \ket{1}\ket{8} + \ket{2}\ket{4} + \ket{3}\ket{2} + \ket{4}\ket{1} + \ket{5}\ket{8} + \ket{6}\ket{4} + \ket{7}\ket{2} + \ket{8}\ket{1} + \ket{9}\ket{8} + \ket{0}\ket{4} + \ket{1}\ket{2} + ...)$
+
+$\ket{\psi_3} = \frac{1}{\sqrt{M}} ((\ket{0} + \ket{4} + \ket{8} + ...)\ket{1} + (\ket{1} + \ket{5} + \ket{9} + ...) \ket{8} + (\ket{2} + \ket{6} + \ket{10} + ...) \ket{4} + (\ket{3} + \ket{7} + \ket{11} + ...) \ket{2})$
+
+Definamos: $\ket{u_1} = \frac{1}{\sqrt{M}} (\ket{0} + \ket{4} + \ket{8} + ...)$
+
+$\ket{u_2} = \frac{1}{\sqrt{M}} (\ket{1} + \ket{5} + \ket{9} + ...)$
+
+$\ket{u_3} = \frac{1}{\sqrt{M}} (\ket{2} + \ket{6} + \ket{10} + ...)$
+
+$\ket{u_4} = \frac{1}{\sqrt{M}} (\ket{3} + \ket{7} + \ket{11} + ...)$
+
+y obtenemos: $\ket{\psi_3} = \ket{u_1} \otimes \ket{1} + \ket{u_2} \otimes \ket{8} + \ket{u_3} \otimes \ket{4} + \ket{u_4} \otimes \ket{2}$
+
+Consideremos el primer registro $\ket{u_2} \otimes \ket{8}$, es decir $\ket{u_2}$, y apliquemos la $QFT^\dagger$ sobre él.
+
+$QFT^\dagger \ket{u_2} = \frac{1}{\sqrt{M}} QFT^\dagger (\ket{1} + \ket{5} + \ket{9} + \ket{13} + ...)$
+
+Recordemos que $QFT^\dagger \ket{n} = \frac{1}{\sqrt{4 M}} \sum\limits_{k=0}^{M-1} e^{-2 i \pi k n /M} \ket{k}$
+
+Luego: $QFT^\dagger \ket{u_2} = \frac{1}{\sqrt{M}} QFT^\dagger (\ket{1} + \ket{5} + \ket{9} + \ket{13} + ...)$
+
+$QFT^\dagger \ket{u_2} = \frac{1}{2M} \sum\limits_{k=0}^{M-1} (e^{- \frac{k 2 i \pi}{M} 1} \ket{k} + e^{- \frac{k 2 i \pi}{M} 5} \ket{k} + e^{- \frac{k 2 i \pi}{M} 9} \ket{k} + e^{- \frac{k 2 i \pi}{M} 13} \ket{k} + ...)$
+
+
+$QFT^\dagger \ket{u_2} = \frac{1}{2M} \sum\limits_{k=0}^{M-1} (e^{- \frac{k 2 i \pi}{M} 1} + e^{- \frac{k 2 i \pi}{M} 5} + e^{- \frac{k 2 i \pi}{M} 9} + e^{- \frac{k 2 i \pi}{M} 13} + ...) \ket{k}$
+
+$QFT^\dagger \ket{u_2} = \frac{1}{2M} \sum\limits_{k=0}^{M-1} e^{- \frac{k 2 i \pi}{M} 1} ((e^{- \frac{k 8 i \pi}{M}})^0 + (e^{- \frac{k 8 i \pi}{M}})^1 + (e^{- \frac{k 8 i \pi}{M}})^2 + ...) \ket{k}$
+
+$QFT^\dagger \ket{u_2} = \frac{1}{2M} \sum\limits_{k=0}^{M-1} e^{-k \frac{2 i \pi}{M}} \sum\limits_{m=0}^{M-1} (e^{-k \frac{8 i \pi}{M}})^m \ket{m}$
+
+$QFT^\dagger \sum\limits_{k=0}^{M-1} e^{-k \frac{2 i \pi}{M}} \frac{(1-e^{-8 i \pi k})}{(1 - e^{-k \frac{8 i \pi}{M}})} \ket{k}$
+
+$QFT^\dagger \ket{u_2} = \frac{1}{2M} \sum_{k=0}^{M-1} e^{-k \frac{2 \pi i}{M}} \frac{(1 - e^{-8 i \pi k}}{e^{-k \frac{4 i \pi}{M}} (e^{k \frac{4 i \pi}{M}} - e^{-k \frac{4 i \pi}{M}})} \ket{k}$
+
+$QFT^\dagger \ket{u_2} = \frac{1}{4 i M} \sum_{k=0}^{M-1} e^{k \frac{2 \pi i}{M}} \frac{(1 - e^{-8 i \pi k})}{\sin(\frac{4\pi k}{M})} \ket{k}$
+
+$QFT^\dagger \ket{u_2} = \frac{1}{4 i M} \sum_{k=0}^{M-1} e^{k \frac{2 \pi i}{M}} \frac{e^{-4 i \pi k} (e^{4 i \pi k} - e^{-4 i \pi k})}{\sin(\frac{4\pi k}{M})} \ket{k}$
+
+$QFT^\dagger \ket{u_2} = \frac{1}{2M} \sum_{k=0}^{M-1} e^{-k \frac{2 \pi i}{M} (2M-1)} \frac{\sin(4\pi k)}{\sin(\frac{4\pi k}{M})} \ket{k}$
+
+Este resultado se puede reescribir de la forma:
+
+$QFT^\dagger \ket{u_2} = \sum\limits_{k=0}^{M-1} \alpha_k \ket{k}$
+
+siendo $\alpha_k = \frac{1}{2M} e^{-k \frac{2 i \pi}{M} (2M-1)} \frac{\sin(4 \pi k)}{\sin(k \frac{4 \pi}{M})}$
+
+correspondiendo $p(k) = |\bra{k} QFT^\dagger \ket{u_2}|^2 = |\alpha_k|^2 = \frac{1}{4M^2} \frac{\sin^(4\pi k)}{\sin^2(\frac{4 \pi k}{M})}$
+
+Como podemos observar para todo entero k=0,1,...,M-1 el número de $\alpha_k$ es cero, pero para $\frac{4 \pi k}{M} = n \pi \rightarrow k = n \frac{M}{4} = n 2^7 = n 512$, n entero
+
+el denominador es cero y $\alpha_k$ es indeterminado, luego:
+
+$\lim_{\epsilon \to 0} \frac{\sin^2(4 \pi k)}{\sin^2(\frac{4\pi k}{M})} = \lim_{\epsilon \to 0} \frac{\sin^2(4 \pi (\frac{n M}{4} + \epsilon))}{\sin^2(\frac{4\pi}{M} (\frac{n M}{4} + \epsilon))} = \lim_{\epsilon \to 0} \frac{\sin^2(n M \pi + 4 \pi \epsilon)}{\sin^2(n \pi + \frac{4\pi}{M} \epsilon} = \lim_{\epsilon \to 0} \frac{\sin^2(4 \pi \epsilon)}{\sin^2(\frac{4 \pi}{M} \epsilon)} = \frac{(4 \pi \epsilon)}{(\frac{4 \pi}{M} \epsilon)^2} = M^2$
+
+luego: $p(k)_{\text{Máximo}} = \frac{1}{4M^2} M^2 \rightarrow p_{Maximo}(k) = \frac{1}{4}$
+
+En el rango k=0,1,...,M-1 los máximos de p(k) están localizados en:
+
+$k=0 \rightarrow n=0$
+$k=512 \rightarrow n=1$
+$k=1024 \rightarrow n=2$
+$k=1536 \rightarrow n=3$
+
+%%%%%%%%%% Grafico aqui %%%%%%%%%%%
+
+Al medir obtenemos: $\frac{k_i}{M} = \frac{k_i}{2^k} = \frac{k_i}{2^{13}} = \frac{k_i}{2048}$
+
+las cuatro posibles determinaciones de $\tilde{\phi}$ son:
+
+$\left. \frac{0}{2048} \right|_{k_i=0}; \left. \frac{512}{2048} \right|_{k_i=512}; \left. \frac{1024}{2048} \right|_{k_i=1024}; \left. \frac{1536}{2048} \right|_{k_i=1536};$
+
+$k_i = 0$ no aporta nada
+$k_1 = \frac{512}{2048} = \frac{1}{4}$ \} no satisfacen $|\frac{s}{r} - x| \leq \frac{1}{r^2}$
+$k_2 = \frac{1024}{2048} = \frac{1}{2}$ \} no satisfacen $|\frac{s}{r} - x| \leq \frac{1}{r^2}$
+$k_3 = \frac{1536}{2048} = \frac{1}{1+\frac{1}{3}}$
+
+ya que $\frac{p_0}{1_0} = \frac{0}{1}; \frac{p_1}{q_1} = \frac{1}{1}; \frac{p_2}{q_2} = \frac{3}{4}$
+
+3 y 4 son co-primos.
+
+La fracción 3/4 es un convergente de $\phi$ y $r = q_2 = 4$ es el orden de x
+
+Normalmente se suele asociar con que existen 2 $N^\prime$ y $N^{\prime\prime}$ de N=15 tales que
+
+$N^\prime = MCD(x^{r/2} - 1, N) = MCD(63, 15) = 3$
+$N^{\prime\prime} = MCD(x^{r/2} + 1, N) = MCD(65, 15) = 5$
+
+
+
+
+
+
+
 
 
 
