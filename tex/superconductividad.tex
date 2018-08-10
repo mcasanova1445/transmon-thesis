@@ -1,0 +1,144 @@
+\chapter{Superconductividad}
+Los qubits superconductores se basan en circuitos osciladores no lineales, hechos a partir de uniones de Josephson (Josephson Junctions - JJ). [Wendin]
+\vspace{0.5cm}
+
+El Hamiltoniano de un oscilador armónico LC está dado por 
+
+\[
+\hat{H} = E_C \hat{n}^2 + E_L \frac{\hat{\phi}^2}{2},
+\]
+
+donde $\hat{n}$ es la cantidad de pares de Cooper inducidos en el capacitor (En otras parabras, la carga inducida en el capacitor, medida en unidades de $2e$), y $\hat{\phi}$ es la diferencia de fase sobre el inductor. La carga $\hat{n}$ y la fase $\hat{\phi}$ no conmutan, $\comm{\hat{\phi}}{\hat{n}}=i$, lo que significa que sus valores esperados no se pueden medir simultaneamente. $E_C=\frac{(2e)^2}{2C}$, $E_L=\frac{\hbar^2}{(2e)^2L}$ y la distancia entre niveles de energía del oscilador armónico $\hbar \omega = \frac{\hbar}{\sqrt{LC}}=\sqrt{2E_LE_C}$.
+\vspace{0.5cm}
+
+Para poder servir como qubit, el oscilador debe ser anarmónico, de manera que se pueda operar sobre un par específico de niveles de energía. Al agregar una JJ, el Hamiltoniano del circuito LCJ se convierte en:
+
+\[
+\hat{H} = E_C (\hat{n}-n_g)^2 - E_{J0} \cos( \hat{\phi} ) + E_L \frac{(\hat{\phi}-\phi_e)^2}{2},
+\]
+
+donde $n_g$ es la carga inducida por voltaje en el capacitor C (isla qubit) y $\phi_e$ es la fase inducida por flujo sobre la JJ. La energía de Josephson $E_{J0}$ está dada por $E_{J0}=\frac{\hbar}{2e}I_0$ en términos de la corriente crítica $I_0$ de la unión. Usualmente, la JJ es del tipo Superconductor-Aislante-Superconductor con corriente crítica fija.
+
+Con el fin de introducir la inductancia no lineal de Josephson, empezamos por 
+
+\[
+I_J = I_0 \sin(\phi)
+\]
+
+Combinado con la ley de Lenz:
+
+\[
+V = \frac{d\Phi}{dt} = \frac{\Phi_0}{2\pi} \frac{d\phi}{dt}, \hspace{20pt} \Phi_0=\frac{h}{2e}
+\]
+
+Se encuentra que:
+
+\[
+V = \frac{\Phi_0}{2\pi} \frac{1}{I_0\cos(\phi)} \frac{dI_J}{dt}
+\]
+
+Definiendo $L_J = V (\frac{dI_J}{dt})^{-1}$, se obtiene finalmente la inductancia de Josephson $L_{J0}$:
+
+\[
+L_J = \frac{\Phi_0}{2\pi} \frac{1}{I_0 \cos(\phi)} = L_{J0} \frac{1}{\cos(\phi)}
+\]
+
+Esto define la inductancia de Josephson de la JJ aislada y nos permite expresar la energía de Josephson como $E_{J0} = \frac{\hbar^2}{(2e)^2L_{J0}}$
+
+\begin{align*}
+[E_C (-i\hbar \frac{\partial}{\partial\phi}-n_g)^2 + U(\phi)] \psi = E \psi \\
+U(\phi) = -E_{J0} \cos(\phi) + E_L \frac{(\phi-\phi_e)^2}{2}
+\end{align*}
+
+\begin{enumerate}
+\item $E_L = 0 \quad (L \sim \infty)$ :
+\item $E_L \approx E_{J0}$ :
+\end{enumerate}
+
+\section{Transmonios}
+Tratando el transmonio como un sistema de dos niveles acoplado linealmente a un oscilador monomodo, su Hamiltoniano toma la siguiente forma:
+
+\[
+\hat{H} = \hat{H}_q + \hat{H}_{qr} + \hat{H}_r = -\frac{1}{2} \epsilon \sigma_z + g \sigma_x (a+a^\dag) + \hbar \omega (a^\dag a + \frac{1}{2})
+\]
+
+donde $\epsilon$ es la energía de excitación del qubit, $g$ es el acoplamiento qubit-oscilador y $\omega$ es la frecuencia del oscilador.
+\vspace{0.5cm}
+
+Introduciendo los operadores escalera del qubit, $\sigma_\pm = \frac{1}{2}(\sigma_x \pm i \sigma_y)$, el término de interacción $\hat{H}_{qr}$ se puede dividir en dos términos, el de Jaynes-Cummings (JC) y el anti-Jaynes-Cummings (AJC):
+
+\[
+\hat{H}_{qr} = \hat{H}_{qr}^{JC} + \hat{H}_{qr}^{AJC} = g(\sigma_+ a + \sigma_- a^\dag) + g(\sigma_+ a^\dag + \sigma_- a)
+\]
+
+Este Hamiltoniano describe el modelo cuántico canónico de Rabi (canonical quantum Rabi model - QRM). Las ecuaciones ()() son completamente generales y aplicables a cualquier sistema qubit-oscilador. Mantener sólo el término JC correponde a realizar la aproximación de onda rotativa (rotating wave approximation - RWA).
+
+\section{Hamiltonianos multiqubit de transmonios}
+Omitiendo el término del oscilador, el Hamiltoniano toma la siguiente forma general:
+
+\[
+\hat{H} = \hat{H}_q + \hat{H}_{qr} + \hat{H}_{qq} = -\frac{1}{2} \sum\limits_i \epsilon_i \sigma_{zi} + \sum\limits_i g_i \sigma_{xi} (a+a^\dag) + \frac{1}{2} \sum\limits_{i,j;\nu} \lambda_{\nu,ij} \sigma_{\nu i} \sigma_{\nu j}
+\]
+
+Por simplicidad, se considera que el término $\hat{H}_{qr}$ se refiere sólo a la lectura y las operaciones de bus, dejando la interacción indirecta qubit-qubit via el resonador ser incluidas en $\hat{H}_{qq}$ via la constante de acoplamiento $\lambda_{\nu,ij}$.
+
+\subsection{Acoplamiento capacitivo}
+\begin{align*}
+\hat{H}_{qq} = \lambda_{1 2} \sigma_{x1} \sigma_{x2} \\
+\lambda_{1 2} = \frac{1}{2} \sqrt{E_{1 0, 1} E_{1 0, 2}} \frac{\sqrt{E_{E_{C1}} E_{E_{C2}}}}{E_{Cc}} = \frac{1}{2} \sqrt{E_{1 0, 1} E_{1 0, 2}} \frac{Cc}{\sqrt{C_1 C_2}} \approx \frac{1}{2} E_{1 0} \frac{C_c}{C} \\
+\hat{H}_{qq} = \lambda_{1 2} (\sigma_{+1} \sigma_{-2}  + \sigma_{-1} \sigma_{+2})
+\end{align*}
+
+\subsection{Acoplamiento por el resonador}
+\begin{align*}
+\hat{H}_{qq} = \lambda_{1 2} \sigma_{x1} \sigma_{x2} \\
+\lambda{1 2} = \frac{1}{2} g_1 g_2 (\frac{1}{\Delta_1} + \frac{1}{\Delta_2} \equiv g_1 g_2 \frac{1}{\Delta}) \\
+\Delta_i = \epsilon_i - \hbar \omega
+\end{align*}
+
+\subsection{Acoplamiento de JJ}
+\begin{align*}
+\hat{H}_{qq} = \lambda_{1 2} \sigma_{y1} \sigma_{y2} \\
+\lambda_{1 2} \approx \frac{1}{2} E_{1 0} \frac{L_c}{L_J} \frac{\cos(\delta_c)}{2L_c \cos(\delta_c) + L_{J c}}
+\end{align*}
+
+\subsection{Acoplamiento afinable/calibrable}
+
+\section{Compuertas cuánticas en transmonios}
+
+\subsection{El operador de evolución temporal}
+La evolución temporal de un sistema complejo (many-body) puede ser descrita por la ecuación de Schrödinger para el vector de estado $\ket{\psi(t)}$:
+
+\[
+i \hbar \frac{\partial}{\partial t} \ket{\psi(t)} = \hat{H}(t) \ket{\phi(t)}
+\]
+
+en términos del operador evolución $\hat{U}(t,t_0)$
+
+\[
+\ket{\psi(t)} = \hat{U}(t,t_0) \ket{\psi(t_0)}
+\]
+
+determinado a partir del Hamiltoniano complejo (many-body) dependiente del tiempo del sistema:
+
+\[
+\hat{H} = \hat{H}_{syst} + \hat{H}_{ctrl}(t)
+\]
+
+describiendo el sistema intrínseco y las operaciones de control aplicadas. Las compuertas son el resultado de aplicar pulsos de control específicos a partes selectas de un circuito físico. Esto afecta varios términos del Hamiltoniano, haciéndolos dependientes del tiempo.
+
+Para el transmonio, el Hamiltoniano del sistema bajo la RWA toma la forma:
+
+\[
+\hat{H}_{syst} = -\frac{1}{2} \sum\limits_{\nu i} \epsilon_i \sigma_{z i} + \sum\limits_{i} g_i (\sigma_{+ i} a + \sigma_{- i} a^\dag) + \hbar \omega a^\dag a + \frac{1}{2} \sum\limits_{i,j;\nu} \lambda_{\nu, ij} (\sigma_{+ i} \sigma_{- j} + \sigma_{- i} \sigma_{+ j})
+\]
+
+y el término de control se puede escribir como:
+
+\[
+\hat{H}_{ctrl} = \sum\limits_{i; \nu} f_{\nu i}(t) \sigma_{\nu i} + \frac{1}{2} \sum\limits_{i,j;\nu} h_{\nu, ij}(t) \sigma_{\nu i} \sigma_{\nu j} + k(t) a^\dag a
+\]
+
+
+
+

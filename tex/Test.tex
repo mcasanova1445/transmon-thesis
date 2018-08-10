@@ -26,10 +26,21 @@ Your abstract goes here...
 \chapter{Introducción}
 La computación cuántica es como chévere
 
+\chapter{Información cuántica}
+
 \section{Kets, bras y operadores}
 
-La notación bra-ket es la notación estándar en la mecánica cuántica para
-describir estados cuánticos.
+La notación bra-ket es la notación estándar en la mecánica cuántica para describir estados cuánticos. En el caso de la computación cuántica, se utilizan los kets $\ket{0}$ y $\ket{1}$ para describir los qubits en la base computacional. Este par de estados sería el equivalente a los bits 0 y 1 en la computación clásica. En su representación matricial, los kets $\ket{0}$ y $\ket{1}$ se representan de la siguiente manera:
+
+\[\ket{0} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}\]
+
+\[\ket{1} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}\]
+
+Un bra es el operador adjunto de un ket. Los bras de la base computacional son $\bra{0}$ y $\bra{1}$. En la representación matricial estos son la transpuesta conjugada de los kets y se representan de la siguiente manera:
+
+\[\bra{0} = \begin{pmatrix} 1 & 0 \end{pmatrix}\]
+
+\[\bra{1} = \begin{pmatrix} 0 & 1 \end{pmatrix}\]
 
 \section{Postulados de la mecánica cuántica}
 \begin{enumerate}
@@ -603,13 +614,9 @@ y el término de control se puede escribir como:
 
 
 \chapter{Algoritmo de Grover}
-El algoritmo de Grover es un AC que encuentra con alta probabilidad la entrada única de una función de caja negra que produce un valor particular de salida, usando tan sólo $O(\sqrt{N})$ evaluaciones de la función, donde $N$ es el tamaño del dominio de la función. El análogo clásico de este algoritmo requiere $O(N)$ evaluaciones de la función, pues, el elemento correcto podría ser el $N$-ésimo en ser evaluado y se deben evaluar uno por uno. La aplicación directa de este algoritmo es como algoritmo de búsqueda en una base de datos. Sin embargo, su aplicación más eficiente es como subrutina en diversos procesos de optimización.
+%El algoritmo de Grover es un AC que encuentra con alta probabilidad la entrada única de una función de caja negra que produce un valor particular de salida, usando tan sólo $O(\sqrt{N})$ evaluaciones de la función, donde $N$ es el tamaño del dominio de la función. El análogo clásico de este algoritmo requiere $O(N)$ evaluaciones de la función, pues, el elemento correcto podría ser el $N$-ésimo en ser evaluado y se deben evaluar uno por uno. La aplicación directa de este algoritmo es como algoritmo de búsqueda en una base de datos. Sin embargo, su aplicación más eficiente es como subrutina en diversos procesos de optimización.
 
-El algoritmo de Grover es un AC que realiza una búsqueda en una secuencia no
-ordenada de datos con N componentes en un número de pasos $O(\sqrt{N})$, y con
-una necesidad de almacenamiento de $O(\log_2 N)$.
-
-Es decir, asumamos $N \equiv 2^n$. Clásicamente necesitariamos $O(N)$ pasos.
+El algoritmo de Grover es un AC que realiza una búsqueda en una secuencia no ordenada de datos con $N=2^n$ entradas. Clásicamente esta búsqueda tendría un orden de complejidad de $O(N)$, pues, como los datos no están ordenados, la cantidad promedio de evaluaciones que se deben realizar crece linealmente con la cantidad de entradas. En el caso del algoritmo de Grover, la complejidad de la búsqueda es de $O(\sqrt{N})$, pues se requieren aproximadamente $\frac{\pi\sqrt{N}}{4}$ iteraciones para hallar la entrada deseada. En cuanto a la cantidad de qubits requeridos, se necesitan $O(\log_2 N)$ qubits, pues se debe realizar un estado superpuesto donde cada componente de la superposición represente una entrada de la secuencia de datos.
 
 Introducción:
 
@@ -926,7 +933,7 @@ Además, si $x = \{0, 1, ... , N-1\} \implies \begin{cases} f(x) = 1 \text{ si }
 \section{El operador de difusión de Grover}
 
 \begin{figure}[H]
-\centering \includegraphics[width=0.3\linewidth]{Grover/grover_geometry.png}
+\centering \includegraphics[width=0.3\linewidth]{../img/grover_geometry.png}
 \caption{Interpretación geométrica del operador difusión}
 \end{figure}
 
@@ -2055,6 +2062,9 @@ $$\hat{H} \approx \frac{1}{2} \tilde{\Delta}_{q_1} \sigma_{z_1} + \frac{1}{2} \t
 Variando la frecuencia de resonacia de los qubit, se puede variar el acoplamiento entre estos. 
 
 \chapter{Cálculos de matrices de adyacencia}
+
+\bibliographystyle{unsrt}
+\bibliography{references}
 
 \end{document}
 

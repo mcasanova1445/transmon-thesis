@@ -1,0 +1,12 @@
+pdflatex libro.tex
+wait
+bibtex libro.aux
+wait
+pdflatex libro.tex
+wait
+pdflatex libro.tex
+wait
+rm libro.log
+rm libro.aux
+rm libro.bbl
+rm libro.blg
