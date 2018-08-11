@@ -147,7 +147,7 @@ Ahora escribimos las componentes de $\ket{s}$ en función del ángulo inicial $\
 Finalmente, lo que se quiere es que:
 
 \begin{equation}
-    \theta_0 + k \Delta\theta \to \frac{\pi}{2}
+    \theta_0 + k \Delta\theta &\to \frac{\pi}{2}
 \end{equation}
 
 Es decir, que:
