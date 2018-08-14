@@ -59,21 +59,21 @@ def QFT4(psi0, target1, target2, target3, target4):
     return tgates8.H(res.states[-1], target4)
 
 def QFT4d(psi0, target1, target2, target3, target4):
-    res = tgates8.H(res.states[-1], target4)
-    res = tgates8.CP(res.states[-1], target4, target3, 2*np.pi/2**2)
+    res = tgates8.H(psi0, target4)
+    res = tgates8.CP(res.states[-1], target4, target3, -2*np.pi/2**2)
     res = tgates8.H(res.states[-1], target3)
-    res = tgates8.CP(res.states[-1], target4, target2, 2*np.pi/2**3)
-    res = tgates8.CP(res.states[-1], target3, target2, 2*np.pi/2**2)
+    res = tgates8.CP(res.states[-1], target4, target2, -2*np.pi/2**3)
+    res = tgates8.CP(res.states[-1], target3, target2, -2*np.pi/2**2)
     res = tgates8.H(res.states[-1], target2)
-    res = tgates8.CP(res.states[-1], target4, target1, 2*np.pi/2**4)
-    res = tgates8.CP(res.states[-1], target3, target1, 2*np.pi/2**3)
-    res = tgates8.CP(res.states[-1], target2, target1, 2*np.pi/2**2)
-    return tgates8.H(psi0, target1)
+    res = tgates8.CP(res.states[-1], target4, target1, -2*np.pi/2**4)
+    res = tgates8.CP(res.states[-1], target3, target1, -2*np.pi/2**3)
+    res = tgates8.CP(res.states[-1], target2, target1, -2*np.pi/2**2)
+    return tgates8.H(res.states[-1], target1)
 
 def CSWAP(psi0, control, target1, target2):
-    res = CNOT(psi0, control, target1, target2)
-    res = CNOT(psi0, control, target2, target1)
-    return CNOT(psi0, control, target1, target2)
+    res = tgates8.CCNOT(psi0, control, target1, target2)
+    res = tgates8.CCNOT(psi0, control, target2, target1)
+    return tgates8.CCNOT(psi0, control, target1, target2)
 
 def MUL7(psi0, target1, target2, target3, target4):
     res = tgates8.X(psi0, target1)
@@ -89,13 +89,14 @@ def CMUL7(psi0, control, target1, target2, target3, target4):
     res = tgates8.CNOT(res.states[-1], control, target2)
     res = tgates8.CNOT(res.states[-1], control, target3)
     res = tgates8.CNOT(res.states[-1], control, target4)
-    res = tgates8.CSWAP(res.states[-1], control, target2, target3)
-    res = tgates8.CSWAP(res.states[-1], control, target1, target2)
-    return tgates8.CSWAP(res.states[-1], control, target1, target4)
+    res = CSWAP(res.states[-1], control, target2, target3)
+    res = CSWAP(res.states[-1], control, target1, target2)
+    return CSWAP(res.states[-1], control, target1, target4)
 
 qN = 2**8
 
 
+'''
 # El algoritmo
 # Estado fiducial
 print('{}/{}/{} - {}:{}:{}\t Preparando estado fiducial...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
@@ -161,6 +162,9 @@ print('{}/{}/{} - {}:{}:{}\t Aplicando CMUL7(c=0)^4 (8/8)...'.format(time.localt
 res = CMUL7(res.states[-1], 0, 4, 5, 6, 7)
 
 qsave(res, 'rp_5')
+'''
+
+res = qload('rp_5')
 
 # Aplicando la transformada cuántica inversa de Fourier sobre el primer registro
 print('{}/{}/{} - {}:{}:{}\t Aplicando QFT4d...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
