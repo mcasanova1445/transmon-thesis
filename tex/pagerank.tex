@@ -1,0 +1,365 @@
+\chapter{Google PageRank}
+% El PageRank, nombrado en honor a Larry Page, es una de las medidas de centralidad de los nodos de un grafo más conocidas. Ésta es utilizada para ordenar los sitios web en los resultados de búsqueda de Google, de acuerdo a su importancia.
+
+El algoritmo de PageRank fue desarrollado en 1996 en la Universidad de Stanford por Larry Page y Sergey Brin, los cuales fueron los fundadores de Google.
+
+Este algoritmo se basa en la idea de que sitios web importantes tienen muchos vínculos que apuntan hacia ellos, lo que conduce a pensar en la web como una red ponderada orientada.
+
+Existen muchos otros algoritmos, algunos más eficientes, pero la importancia de PageRank se sustenta en el poder económico de Google.
+
+Ilustraremos el algoritmo de PageRank con un ejemplo sencillo:
+
+Ejemplo:
+
+Consideremos 5 páginas web distintas a las que denotaremos por 1, 2, 3, 4, y 5, y cuyo grafo es:
+\vspace{3cm}
+
+Pasos:
+\begin{enumerate}
+\item Determinar la matriz de adyacencia. Algunos autores denotan la matriz de de adyacencia por M en el protocolo de PageRank
+
+\[
+M = \begin{pmatrix}
+0 & 0 & 1 & 1 & 1 \\
+0 & 0 & 0 & 0 & 1 \\
+1 & 0 & 0 & 1 & 1 \\
+1 & 0 & 1 & 0 & 0 \\
+1 & 1 & 0 & 0 & 0
+\end{pmatrix}
+\]
+
+\item Sumamos los elementos de cada una de las columnas.
+
+\[
+\begin{matrix}
+3 & 1 & 2 & 2 & 3
+\end{matrix}
+\]
+
+Estas sumas representan el número de links que salen del nodo o vértice de la página $p_j$, es decir: 
+
+$I(p_j) \equiv \text{Importancia de la página j}$
+
+$\mathrm{outdeg}(p_j) \equiv \text{número de links que salen de la página } p_j$
+
+$I(p_i) \equiv \sum\limits_{j \in B_i} \frac{I(p_j}{\mathrm{outdeg}(p_j)}$
+
+$B_i \equiv \text{conjunto de páginas qeu son linkeadas}$
+
+\item Dividimos cada elemento de M por la suma de los elementos de la columna a la cual corresponde y llamaremos a la nueva matriz obtenida $M^\prime$
+
+\[
+M^\prime = \begin{pmatrix}
+0 & 0 & 1/2 & 1/2 & 1/3 \\
+0 & 0 & 0 & 0 & 1/3 \\
+1/3 & 0 & 0 & 1/2 & 1/3 \\
+1/3 & 0 & 1/2 & 0 & 0 \\
+1/3 & 1 & 0 & 0 & 0
+\end{pmatrix}
+\]
+
+\item El siguiente paso es encontrar un vector $\vec{v}$ (algunos autores lo llaman $\vec{I}$) que represente el PageRank de cada una de las páginas. Como tenemos 5 páginas web le asignamos a $\vec{v}$ como valores $\vec{v} = (a,b,c,d,e)^T$, obteniendo así un vector de dimensión $d=5$.
+
+\item Obtenemos los valores de $\{v_i\}$ a partir de los autovalores de $M^\prime$, tal que:
+
+\[
+M^\prime \vec{v} = \lambda \vec{v} \text{ con }\lambda \in R
+\]
+
+\item Determinamos los autovalores de $M^\prime$
+
+\[
+\lambda_1 = 1; \quad \lambda_2 = \frac{-2}{3}; \quad \lambda_3 = \frac{-1}{2}; \quad \lambda_4 = \frac{-1}{3}; \quad \lambda_5 = \frac{1}{3}
+\]
+
+Tomaremos sólo $\lambda = 1$ $\rightarrow M^\prime \vec{v} = \vec{v}$ (Ecuación autoconsistente)
+
+\item Hallamos el autovector asociado a $\lambda = 1$. Obteniendo:
+
+\[
+a = 6; \quad b = 1; \quad c = \frac{16}{3}; \quad d = \frac{14}{3}; \quad e = 3
+\]
+
+\item Finalmente, Google ordena de mayor a menor las componentes de $\vec{v}$, quedándonos:
+
+\[
+\begin{matrix}
+& & - & a \\
+& & - & c \\
+\text{Pantalla} & \rightarrow & - & d \\
+& & - & e \\
+& & - & b
+\end{matrix}
+\]
+\end{enumerate}
+
+La idea de PageRank de Google es que la importancia de una página viene dada por la cantidad de páginas que se enlazan con ella.
+
+Surgen varios problemas:
+
+\begin{enumerate}
+  \item Las matrices hyperlink (hiperenlace) pueden tener billones de entradas en filas y columnas.
+  \item Calcular los autovectores es un absurdo computacional.
+  \item Los estudios muestran que un nodo (página web) tiene un promedio de 10 enlaces, y las demás entradas de la matriz son cero.
+  \item No se encuentra $\lambda = 1$ en la mayoría de los casos.
+\end{enumerate}
+
+Por esta razón, un remedio (Patching) del algoritmo de PageRank fue el método de las potencias, en el cual la matriz hiperenlace
+
+\[
+H_{ij} \equiv \begin{cases}
+\frac{1}{\mathrm{outdeg}(P_j)} & \text{si } P_j \in B_i \\
+0 & \text{en otro caso}
+\end{cases}
+\]
+
+debería converger a una solución autoconsistente
+
+\[
+I^{k+1} = H I^k
+\]
+
+donde se toma un vector $I^{0}$ y se hace interactuar unas 100 veces y el orden mostrado de las páginas es el de $I^{100}$, ordenadas de mayor a menor. Si se normalizan las columnas de la matriz hipervínculo (hiperenlace) $H$, obtenemos otra matriz hiperenlace normalizada E.
+
+\textbf{La matriz E:} se sabe de la teoría de matrices estocásticas que 1 es uno de sus autovalores. Además, también se sabe que la convergencia de $I^k = E I^{k-1}$ a $I = E I$ depende del segundo autovalor de $\lambda_2$ de E y es un hecho que $I^k = E I^{k-1}$ converge rápidamente si $\abs{\lambda_2}$ es
+cercano a cero.
+
+\subsection{El algoritmo de remiendo (parcheo) general}
+
+Asumamos que el caminante recorre el grafo siguiendo la web con una matriz estocástica E con probabilidad $\alpha$, y con probabilidad $1-\alpha$ podrá ir a cualquier página al azar que sea de su interés. La matriz web de este proceso será:
+
+\[
+G \equiv \alpha E + \frac{1-\alpha}{N} \mathds{I} \text{Matriz de Google}
+\]
+
+$\mathds{I}$ es una matriz en la cual todas las entradas están establecidas en 1, y N el número de nodos.
+
+Propiedades de G:
+\begin{enumerate}
+\item Es estocástica
+\item Irreducible
+\item Primitiva
+\item El resultado de determinar el estado auto-consistente no depende del vector Google inicial $I^0$
+\end{enumerate}
+
+\begin{figure}[H]
+\begin{center}
+\begin{tabular}{c c c}
+ \begin{tikzpicture}[->,>=stealth',shorten >=1pt,thick]
+\tikzset{VertexStyle/.style = {draw,circle,thick,
+                               minimum size=0.5cm,
+                               font=\bfseries},thick} 
+\Vertex[a = 90, d = 2.75]{1}  \Vertex[a = 162, d = 2.75]{2}
+\Vertex[a = 234, d = 2.75]{3} \Vertex[a = 306, d = 2.75]{4}
+\Vertex[a = 18, d = 2.75]{5}
+\Edge[label=$1$](2)(1)
+\Edge[label=$1$](1)(5)
+\Edge[label=$\frac{1}{2}$](3)(1)
+\Edge[label=$\frac{1}{2}$](3)(4)
+\Edge[label=$1$](4)(5)
+\tikzset{EdgeStyle/.style = {->, bend left}}
+\Edge[label=$1$](1)(3)
+\end{tikzpicture} 
+& \begin{tikzpicture}[->,>=stealth',shorten >=1pt,thick]
+\tikzset{VertexStyle/.style = {draw,circle,thick,
+                               minimum size=0.5cm,
+                               font=\bfseries},thick} 
+\Vertex[a = 90, d = 2.75]{1}  \Vertex[a = 162, d = 2.75]{2}
+\Vertex[a = 234, d = 2.75]{3} \Vertex[a = 306, d = 2.75]{4}
+\Vertex[a = 18, d = 2.75]{5}
+\Edge[label=$\frac{1}{10}$](5)(4)
+\Edge[label=$\frac{1}{10}$](4)(3)
+\Edge[label=$\frac{1}{10}$](3)(2)
+\Edge[label=$\frac{3}{5}$](2)(1)
+\Edge[label=$\frac{3}{5}$](1)(5)
+\Edge[label=$\frac{1}{10}$](1)(4)
+\Edge[label=$\frac{1}{10}$](4)(2)
+\Edge[label=$\frac{1}{10}$](2)(5)
+\Edge[label=$\frac{1}{10}$](5)(3)
+\Edge[label=$\frac{7}{20}$](3)(1)
+\Loop[dist=1cm,dir=NO,label=$\frac{1}{10}$,labelstyle=above](1)  
+\Loop[dist=1cm,dir=NOWE,label=$\frac{1}{10}$,labelstyle=above left](2)  
+\Loop[dist=1cm,dir=SOWE,label=$\frac{1}{10}$,labelstyle=below left](3)  
+\Loop[dist=1cm,dir=SOEA,label=$\frac{1}{10}$,labelstyle=below right](4)  
+\Loop[dist=1cm,dir=NOEA,label=$\frac{1}{10}$,labelstyle=above right](5)  
+\tikzset{EdgeStyle/.style = {->, bend right}}
+\Edge[label=$\frac{1}{10}$,labelstyle=above left](1)(2)
+\Edge[label=$\frac{1}{10}$,labelstyle=below left](2)(3)
+\Edge[label=$\frac{7}{20}$,labelstyle=below](3)(4)
+\Edge[label=$\frac{3}{5}$,labelstyle=below right](4)(5)
+\Edge[label=$\frac{1}{10}$,labelstyle=above right](5)(1)
+\Edge[label=$\frac{3}{5}$](1)(3)
+\Edge[label=$\frac{1}{10}$](3)(5)
+\Edge[label=$\frac{1}{10}$](5)(2)
+\Edge[label=$\frac{1}{10}$](2)(4)
+\Edge[label=$\frac{1}{10}$](4)(1)
+\end{tikzpicture} 
+ \\
+(a) & (b)
+\end{tabular}
+\caption{Grafo correspondiente a la matriz de adyacencia (a) de la red E (b) remendada de Google G con $\alpha=\frac{1}{2}$}
+\end{center}
+\end{figure}
+
+
+\subsection{Interpretación como una caminata aleatoria}
+
+La asiganación de valores de importancia se puede replantear como la probabilidad de encontrar un caminante aleatorio en cierto nodo del grafo.
+
+\begin{minipage}{0.5\linewidth}
+Del proceso:
+\begin{align*}
+& Pr(x^{(n+1)}=p_i) \\
+& =\sum\limits_j G_{i j} Pr(x^{(n)}=p_j)
+\end{align*}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+De la ley de probabilidad total:
+\begin{align*}
+& Pr(x^{(n+1)}=p_i) \\
+& =\sum\limits_j Pr(x^{(n+1)}=p_i|x^{(n)}=p_j) Pr(x^{(n)}=p_j)
+\end{align*}
+\end{minipage}
+\[
+\implies G_{i j} = Pr(x^{(n+1)}=p_i | x^{(n)}=p_j)
+\]
+
+En el contexto del Internet, $G_{i j}$ es la probabilidad de que cierto internauta, que se encuentra en la página $p_i$, entre en la página $p_j$. El factor $\alpha E_{i j}$ es la probabilidad de que lo haga presionando un enlace presente en $p_i$, mientras que $\frac{1-\alpha}{N} \mathds{I}$ es la probabilidad de que lo haga introduciendo la URL directamente.
+
+El factor de amortiguamiento es libre y debe ser calibrado. Se suela usar $\alpha = 0.85$
+
+\subsection{Cuantizando las caminatas aleatorias}
+
+La forma obvia y directa de cuantizar una caminata aleatoria sería sustituir el conjunto de nodos $\{p_i\}$ por el conjunto de kets $\{\ket{i}\}$. Sin embargo, esto lleva a sistemas con operadores no unitarios y no es realizable.
+
+% INSERTAR EJEMPLO AQUÍ
+\begin{figure}[H]
+\begin{tabular}{c c}
+\begin{tikzpicture}[,>=stealth',shorten >=1pt,thick]
+\tikzset{VertexStyle/.style = {draw,circle,thick,
+                               minimum size=1cm,
+                               font=\bfseries},thick} 
+\Vertex[x = -2.2, y = 0]{-2}  \Vertex[x = -1.1, y = 0]{-1}
+\Vertex[x = 0, y = 0]{0} \Vertex[x = 1.1, y = 0]{1}
+\Vertex[x = 2.2, y = 0]{2}
+\Edges(-2,-1,0,1,2)
+\end{tikzpicture} &
+\begin{tikzpicture}[,>=stealth',shorten >=1pt,thick]
+\tikzset{VertexStyle/.style = {draw,circle,thick,
+                               minimum size=1cm,
+                               font=\scriptsize\bfseries},thick} 
+\Vertex[x = -2.2, y = 0, L = $\ket{-2}$]{-2}  \Vertex[x = -1.1, y = 0, L = $\ket{-1}$]{-1}
+\Vertex[x = 0, y = 0, L = $\ket{0}$]{0} \Vertex[x = 1.1, y = 0, L = $\ket{1}$]{1}
+\Vertex[x = 2.2, y = 0, L = $\ket{2}$]{2}
+\Edges(-2,-1,0,1,2)
+\end{tikzpicture}
+\end{tabular}
+\end{figure}
+
+Esto nos obliga a buscar maneras alternativas de cuantizar las caminatas aleatorias. La cadena anterior se podría cuantizar agregando un espacio "moneda" al espacio de Hilbert generado por $\{\ket{i}\}$. En este caso, el operador de difusión se interpreta como "lanzar la moneda" para decidir en qué dirección ir.
+
+\begin{align*}
+U = \sqrt{p} \ketbra{i+1}{i} \otimes \ketbra{c}{c} + \sqrt{1-p}
+\ketbra{i-p}{i} \otimes \ketbra{s}{s} \\
+U^\dagger = \sqrt{p} \ketbra{i}{i+1} \otimes \ketbra{c}{c} + \sqrt{1-p}
+\ketbra{i}{i-p} \otimes \ketbra{s}{s} \\
+U U^\dagger = p \ketbra{i+1}{i+1} \otimes \ketbra{c}{c} + (1-p) \ketbra{i-1}{i-1} \otimes \ketbra{s}{s}
+\end{align*}
+
+Al realizar la suma sobre $i$ se tiene $\mathds{1}$, como se deseaba. Sin embargo, esta solución toavía no es satisfactoria, pues exige que $p_{i j}=\frac{1}{outdeg(j)}$ para que $U U^\dagger=\mathds{1}$.
+
+Casi todas las cuantizaciones cometen estos dos pecados, aumentar la dimensión del espacio de Hilbert e imponer condiciones sobre el grafo; y en general, se debe cometer al menos uno de los dos.
+
+\textbf{Nota:} También existen caminatas cuánticas continuas, no sólo discretas.
+
+\subsection{Caminata cuántica de Szegedy}
+
+Existe un tipo particular de caminatas aleatorias conocido como caminatas bipartitas. En éstas se tiene dos conjuntos de nodos y sólo ocurren transiciones entre los dos conjuntos, no dentro del mismo.
+
+% INSERTAR EJEMPLO AQUÍ
+
+Szegedy desarrolló una cuantización de estas caminatas. Para esto utilizó operadores de reflexión ($W = \mathds{1} - 2 \ketbra{w}{w}$, similares a los utilizados en el algoritmo de Grover). Aprovechándose del hecho de que un par de reflexiones equivale a una rotación (como en el algoritmo de Grover), creó el siguiente operador de evolución de la caminata: $U = (\mathds{1} - 2 B)(\mathds{1} - 2 A)$, donde A es el proyector sobre las transiciones de la primera partición a la segunda y B de la segunda a la primera.
+
+\begin{minipage}{0.5\linewidth}
+\begin{align*}
+\ket{\psi_i} &= \ket{i}_1 \otimes \sum\limits_j \sqrt{p_{j i}} \ket{j}_2 \\
+A &= \sum\limits_i \ketbra{\psi_i}{\psi_i}
+\end{align*}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+\begin{align*}
+\ket{\psi_i} &= \sum\limits_i \sqrt{p_{i j}} \ket{i}_1 \otimes \ket{i}_2 \\
+B &= \sum\limits_j \ketbra{\phi_j}{\phi_j}
+\end{align*}
+\end{minipage}
+
+Si tomamos un grafo cualquiera y lo duplicamos en la forma de un grafo bipartito con ambas particiones iguales y transiciones iguales en ambos sentidos, podemos cuantizar cualquier tipo de caminata. Sólo hay que pagar el precio de duplicar el espacio de Hilbert generado por $\{\ket{i}\}$: $\mathcal{H}^\prime = \mathcal{H} \otimes \mathcal{H}$.
+
+% INSERTAR EJEMPLO AQUÍ
+\begin{figure}[h]
+\begin{tabular}{c c c}
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,thick]
+\SetGraphUnit{2} 
+\tikzset{VertexStyle/.style = {draw,circle,thick,
+                               minimum size=0.5cm,
+                               font=\Large\bfseries},thick} 
+\Vertex{1} \SOWE(1){2} \SOEA(2){3} \SOEA(1){4} 
+\Edges(1,2,3) \Edge(1)(4)
+
+\tikzset{EdgeStyle/.style = {->, bend left}}
+\Edge(3)(2)
+% it's possible with \Edge but Tikz's syntax is allowed too.
+\end{tikzpicture} 
+&
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,thick]
+\tikzset{VertexStyle/.style = {draw,circle,thick,
+                               minimum size=0.5cm,
+                               font=\bfseries},thick} 
+\Vertex[x = 0, y = 0]{1a} \Vertex[x = 0, y = -1]{2a}
+\Vertex[x = 0, y = -2]{3a}\Vertex[x = 0, y = -3]{4a}
+\Vertex[x = 3, y = 0]{1b} \Vertex[x = 3, y = -1]{2b}
+\Vertex[x = 3, y = -2]{3b}\Vertex[x = 3, y = -3]{4b}
+\Edge(1a)(2b)	\Edge(1a)(3b)	\Edge(2a)(4b)
+\Edge(4a)(2b)
+\end{tikzpicture}
+&
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,thick]
+\tikzset{VertexStyle/.style = {draw,circle,thick,
+                               minimum size=0.5cm,
+                               font=\bfseries},thick} 
+\Vertex[x = 0, y = 0]{1a} \Vertex[x = 0, y = -1]{2a}
+\Vertex[x = 0, y = -2]{3a}\Vertex[x = 0, y = -3]{4a}
+\Vertex[x = 3, y = 0]{1b} \Vertex[x = 3, y = -1]{2b}
+\Vertex[x = 3, y = -2]{3b}\Vertex[x = 3, y = -3]{4b}
+\Edge(2b)(1a)	\Edge(3b)(1a)	\Edge(4b)(2a)
+\Edge(4b)(1a)
+\end{tikzpicture}
+\end{tabular}
+\end{figure}
+
+En estos casos, podemso escribir el operador de difusión en términos de sólo A, pues como la segunda partición es un reflejo de la primera, $B = A^T$. Entonces: $U = (2 A^T - \mathds{1})(2 A - \mathds{1})$
+
+\[
+\implies = (2 S A S - \mathds{1})(2 A - \mathds{1}) = S (2 A - \mathds{1}) S (2
+A - \mathds{1}) = [S (2 A - \mathds{1})]^2
+\]
+
+Donde $S$ es el operador SWAP, $S = \sum\limits_{i j} \ketbra{j i}{i j}$
+
+\subsection{PageRank cuántico}
+
+Finalmente, procedemos a cuántizar el algoritmo de PageRank. Partimos del hecho de que el algoritmo de PageRank se puede formular como una caminata algeatoria, cuya matriz de probabilidades es la matriz de Google, G. Entonces seguimos el procedimiento de Szegedy, sustituyendo $p_{i j}$ por $G_{i j}$.
+
+Ahora, definimos el valor de PageRank cuántico en el paso $m$ como:
+
+\begin{align*}
+I_q(P_i,m) &= \ket{U^{\dagger m}(\mathds{1} \otimes \ketbra{i}{i})} \\
+\ket{\psi_0} &= \frac{1}{\sqrt{N}} \sum\limits_i \ket{\psi_i}
+\end{align*}
+
+Esto equivale a realizar $m$ pasos de la caminata con $\ket{\psi_0}$ como estado inicial y realizar una medida proyeciva sobre $\ket{i}_2$.
+
+Nota: $I_q$ no converge, sino que oscila, así que se toma el centro de las oscilacioens como la medida de importancia de las páginas. Esto se hace promediando $I_q$ sobre $m$: $\langle I_q(P_i) \rangle = \frac{1}{M} \sum\limits_{m=0}^{M-1} I_q(P_i,m)$ 
+
+
+

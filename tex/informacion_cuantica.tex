@@ -1,0 +1,445 @@
+\chapter{Información cuántica}
+
+\section{Kets, bras y operadores}
+
+La notación bra-ket es la notación estándar en la mecánica cuántica para describir estados cuánticos. En el caso de la computación cuántica, se utilizan los kets $\ket{0}$ y $\ket{1}$ para describir los qubits en la base computacional. Este par de estados sería el equivalente a los bits 0 y 1 en la computación clásica. En su representación matricial, los kets $\ket{0}$ y $\ket{1}$ se representan de la siguiente manera:
+
+\[\ket{0} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}\]
+
+\[\ket{1} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}\]
+
+Un bra es el operador adjunto de un ket. Los bras de la base computacional son $\bra{0}$ y $\bra{1}$. En la representación matricial estos son la transpuesta conjugada de los kets y se representan de la siguiente manera:
+
+\[\bra{0} = \begin{pmatrix} 1 & 0 \end{pmatrix}\]
+
+\[\bra{1} = \begin{pmatrix} 0 & 1 \end{pmatrix}\]
+
+\section{Postulados de la mecánica cuántica}
+\begin{enumerate}
+\item Un estado puro en mecánica cuántica se representa en términos de
+  un vector normalizado $\ket{\psi}$ en un espacio de Hilbert
+  $\mathcal{H}$.
+\item Si $\mathcal{H}_1$ y $\mathcal{H}_2$ son los espacios de Hilbert asociados a dos sistemas físicos, entonces el espacio del sistema
+  compuesto $\mathcal{H}$ estará dado por el producto tensoral de los
+  dos espacios de Hilbert
+  $\mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2$.
+\item Para todo observable $a$, existe un operador hermítico
+  correspondiente $A$ que actua sobre el espacio de Hilbert
+  $\mathcal{H}$, cuyos autovalores son los posibles resultados de una
+  medida de este observable.
+\item La evolución temporal del sistema sigue la ecuación de
+  Schrödinger
+  $i \hbar \frac{\partial \ket{\psi}}{\partial t} = H
+  \ket{\psi}$. Donde $\hbar$ es la constante de Planck reducida y $H$
+  es el Hamiltoniano del sistema, el cuál es el operador hermítico
+  correspondiente a la energía.
+\item Después de realizar una medida del observable $a$, el estado
+  $\ket{\psi}$ del sistema colapsa a al autoestado de $A$
+  correspondiente a la medida.
+\end{enumerate}
+
+\section{Computación cuántica}
+This section's content...
+
+\subsection{Qubits}
+Un qubit es un sistema físico de dos niveles, es decir, es un objeto cuyo estado es un elemento del espacio de Hilbert de dimensión $\dim (\mathcal{H})=2$ y puede ser escrito de la siguiente manera: $ \ket{\psi} = \alpha \ket{0} + \beta \ket{1} $, donde $ \{ \ket{0},\ket{1} \} $ forma una base de $\mathcal{H}$ y donde $ \alpha $ y $ \beta $ son números complejos, tales que $ | \alpha |^2 + | \beta |^2 = 1 $, conocidos como amplitudes de probabilidad.
+\vspace{0.5cm}
+
+El qubit se puede pensar como el equivalente en IC del bit, el cual, por sus propiedad cuánticas, puede estar no sólo puede estar en el estado $\ket{0}$ y en el estado $\ket{1}$, sino también en superposiciones de estos dos.
+\vspace{0.5cm}
+
+El estado de un qubit también se puede escribir de la siguiente manera: $ \ket{\psi} = e^{i \phi_0} \cos ( \theta ) \ket{0} + e^{i \phi_1} \sin ( \theta ) \ket{1}  = e^{i \phi_0} (\cos ( \theta ) \ket{0} + e^{i ( \phi1 - \phi_0 )} \sin ( \theta ) \ket{1}) $, donde $ \theta $, $\phi_0$ y $\phi_1$ son números reales. La fase global $\phi_0$ es ignorable, pues no tiene ningún efecto sobre las probabilidades. Entonces, sin pérdida de generalidad, $ \ket{\psi} = \cos ( \theta ) \ket{0} + \sin ( \theta ) e^{i \phi} \ket{1} $, donde $ \theta \in [0, \pi ] $ y $ \phi \in [0, 2 \pi ] $. De esta manera, podemos representar los qubits en una esfera unitaria, conocida como esfera de Bloch.
+
+\subsection{Compuertas cuánticas}
+Las operaciones unitarias con las que se opera sobre los qubits reciben el nombre de compuertas cuánticas.
+\vspace{0.5cm}
+
+Las compuertas de un sólo qubit pueden ser vistas como rotaciones en la esfera de Bloch.
+
+\subsubsection{Compuerta identidad}
+
+Esta operación es equivalente a \textit{no-operation} en una computadora clásica.
+
+\begin{minipage}{0.5\textwidth}
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \gate{I} & \qw
+}
+\]
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\[
+\begin{pmatrix}
+1 & 0 \\
+0 & 1
+\end{pmatrix}
+\]
+\end{minipage}
+
+\subsubsection{Compuerta X}
+Este es el equivalente al NOT clásico, pues tránsforma los $\ket{0}$ en $\ket{1}$ y viceversa, ya que realiza una rotación de $\pi$ sobre el eje X en la esfera de Bloch. Su forma matricial viene dada por la matriz de Pauli $\sigma_x$
+\vspace{0.25cm}
+
+\begin{minipage}{0.5\textwidth}
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \gate{X} & \qw
+}
+\]
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\[
+\begin{pmatrix}
+0 & 1 \\
+1 & 0
+\end{pmatrix}
+\]
+\end{minipage}
+
+\subsubsection{Compuerta Z}
+Esta compuerta no tiene análogo clásico, pues lo que realiza es un cambio de fase. Esto equivale a una rotación de $\pi$ sobre el eje Z en la esfera de Bloch. Su forma matricial viene dada por la matriz de Pauli $\sigma_z$
+\vspace{0.25cm}
+
+\begin{minipage}{0.5\textwidth}
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \gate{Z} & \qw
+}
+\]
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\[
+\begin{pmatrix}
+1 & 0 \\
+0 & -1
+\end{pmatrix}
+\]
+\end{minipage}
+
+\subsubsection{Compuerta Y}
+Esta compuerta realiza una rotación de $\pi$ sobre el eje y de la esfera de Bloch. Su forma matricial viene dada por la matriz de Pauli $\sigma_y$
+\vspace{0.25cm}
+
+\begin{minipage}{0.5\textwidth}
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \gate{Y} & \qw
+}
+\]
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\[
+\begin{pmatrix}
+0 & -i \\
+i & 0
+\end{pmatrix}
+\]
+\end{minipage}
+
+\subsubsection{Compuerta de Hadamard}
+%Esta compuerta realiza una rotación de $\frac{\pi}{2}$ sobre el eje y de la esfera de Bloch. Ella es de especial importancia, pues transforma los estados de la base computacional $\ket{0}$ y $\ket{1}$ en estados de superposiciones uniformes ($\ket{+}$ y $\ket{-}$). También se puede interpretar como el mapa de la base Z a la base X.
+Esta compuerta transforma los estados de la base computacional $\ket{0}$ y $\ket{1}$ en estados de superposiciones uniformes ($\ket{+}$ y $\ket{-}$). También se puede interpretar como el mapa de la base Z a la base X.
+\vspace{0.25cm}
+
+\begin{minipage}{0.5\textwidth}
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \gate{H} & \qw
+}
+\]
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\[
+\frac{1}{\sqrt{2}}
+\begin{pmatrix}
+1 & 1 \\
+1 & -1
+\end{pmatrix}
+\]
+\end{minipage}
+
+\subsubsection{Compuerta S}
+Esta compuerta es la raiz cuadrada de Z.
+\vspace{0.25cm}
+
+\begin{minipage}{0.5\textwidth}
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \gate{S} & \qw
+}
+\]
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\[
+\begin{pmatrix}
+1 & 0 \\
+0 & i
+\end{pmatrix}
+\]
+\end{minipage}
+
+\subsubsection{Compuerta T}
+Esta compuerta es la raiz cuadrada de S.
+\vspace{0.25cm}
+
+\begin{minipage}{0.5\textwidth}
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \gate{T} & \qw
+}
+\]
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\[
+\begin{pmatrix}
+1 & 0 \\
+0 & e^{\frac{i \pi}{4}}
+\end{pmatrix}
+\]
+\end{minipage}
+
+\subsubsection{Compuerta de cambio de fase}
+
+\begin{minipage}{0.5\textwidth}
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \gate{R_{\phi}} & \qw
+}
+\]
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\[
+\begin{pmatrix}
+1 & 0 \\
+0 & e^{i \phi}
+\end{pmatrix}
+\]
+\end{minipage}
+
+\subsubsection{Compuertas de rotación}
+
+\[
+R(\theta,\vec{r}) = e^{i \frac{\theta}{2} \vec{\sigma} \cdot \vec{r}} =
+\begin{pmatrix}
+\cos(\frac{\theta}{2}) + i z \sin(\frac{\theta}{2}) & \sin(\frac{\theta}{2}) (i x + y) \\
+\sin(\frac{\theta}{2}) (i x - y) & \cos(\frac{\theta}{2}) - i z \sin(\frac{\theta}{2})
+\end{pmatrix}
+\]
+
+\[
+R_y(\theta) =
+\begin{pmatrix}
+\cos(\frac{\theta}{2}) & \sin(\frac{\theta}{2}) \\
+-\sin(\frac{\theta}{2}) & \cos(\frac{\theta}{2})
+\end{pmatrix}
+\]
+
+\[
+R_z(\theta) =
+\begin{pmatrix}
+e^{i \frac{\theta}{2}} & 0 \\
+0 & e^{-i \frac{\theta}{2}}
+\end{pmatrix}
+\]
+
+\[
+R_x(\theta) =
+\begin{pmatrix}
+\cos(\frac{\theta}{2}) & i \sin(\frac{\theta}{2}) \\
+i\sin(\frac{\theta}{2}) & \cos(\frac{\theta}{2})
+\end{pmatrix}
+\]
+
+\[
+R_x(\theta) = R_z(\frac{\pi}{2}) R_y(\theta) R_z(\frac{-\pi}{2})
+\]
+
+\subsubsection{Compuerta CNOT}
+
+\begin{minipage}{0.5\textwidth}
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \ctrl{1} & \qw \\
+& \targ & \qw \\
+}
+\]
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\[
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 1 & 0
+\end{pmatrix}
+\]
+\end{minipage}
+
+\subsubsection{Compuerta SWAP}
+
+\begin{minipage}{0.5\textwidth}
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \qswap & \qw \\
+& \qswap \qwx & \qw \\
+}
+\]
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\[
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1
+\end{pmatrix}
+\]
+\end{minipage}
+
+\subsubsection{Compuerta $\sqrt{\text{SWAP}}$}
+
+\begin{minipage}{0.5\textwidth}
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \qswap & \qw \\
+& \qswap\qwxo{\scalebox{0.5}{$1\hspace{-1pt}/\hspace{-1pt}2$}} & \qw
+}
+\]
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\[
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & \frac{1}{2} (1+i) & \frac{1}{2} (1-i) & 0 \\
+0 & \frac{1}{2} (1-i) & \frac{1}{2} (1+i) & 0 \\
+0 & 0 & 0 & 1
+\end{pmatrix}
+\]
+\end{minipage}
+
+\subsubsection{Compuerta de Ising}
+
+\begin{minipage}{0.5\textwidth}
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \multigate{1}{\mathit{XX}_{\phi}} & \qw \\
+& \ghost{\mathit{XX}_{\phi}} & \qw
+}
+\]
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\[
+\frac{1}{\sqrt{2}}
+\begin{pmatrix}
+1 & 0 & 0 & -i e^{i \phi} \\
+0 & 1 & -i & 0 \\
+0 & -i & 1 & 0 \\
+-i e^{-i \phi} & 0 & 0 & 1
+\end{pmatrix}
+\]
+\end{minipage}
+
+\subsubsection{Compuerta de Toffoli}
+
+\begin{minipage}{0.5\textwidth}
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \ctrl{1} & \qw \\
+& \ctrl{1} & \qw \\
+& \targ & \qw \\
+}
+\]
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\[
+\begin{pmatrix}
+1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 & 0 & 0 & 1 & 0
+\end{pmatrix}
+\]
+\end{minipage}
+
+\subsubsection{Compuerta de Fredkin}
+
+\subsubsection{Compuerta de Deutsch}
+
+\begin{minipage}{0.5\textwidth}
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \multigate{2}{D(\theta)} & \qw \\
+& \ghost{D(\theta)} & \qw \\
+& \ghost{D(\theta)} & \qw
+}
+\]
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\[
+\begin{pmatrix}
+1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & i \cos(\theta) & \sin(\theta) \\
+0 & 0 & 0 & 0 & 0 & 0 & \sin(\theta) & i \cos(\theta)
+\end{pmatrix}
+\]
+\end{minipage}
+
+\[
+\ket{a,b,c} \rightarrow
+\begin{cases}
+i \cos(\theta) \ket{a,b,c} + \sin(\theta) \ket{a,b,c \oplus 1} & \text{si } a=b=1 \\
+\ket{a,b,c} & \text{en otro caso}
+\end{cases}
+\]
+
+\subsection{Correspondencia entre compuertas clásicas y cuánticas}
+
+\subsection{Conjuntos universales de compuertas cuánticas}
+Un conjunto universal de compuertas cuánticas (CUCC) es un conjunto finito de compuertas cuánticas con el cuál se puede aproximar cualquier operación unitaria arbitrariamente bien.
+\vspace{0.5cm}
+
+Cualquier operador unitario puede ser escrito en función de compuertas de uno y dos qubits [Barenco et al. 1995].
+\vspace{0.5cm}
+
+Un CUCC simple es $\{H,T,\mathit{CNOT}\}$.
+\vspace{0.5cm}
+
+Existe un CUCC de una sóla compuerta, la compuerta de Deutsch, $D(\theta)$.
+\vspace{0.5cm}
+
+La compuerta de Toffoli es un caso especial de la compuerta de Deutsch, $D(\frac{\pi}{2})$.
+\vspace{0.5cm}
+
+Otro CUCC consiste en la compuerta de Ising y la compuerta de cambio de fase, \{$\mathit{XX}_\phi,R_z(\theta)$\}. Este conjunto es nativo en algunas computadoras cuánticas de trampas de iones.
+
+\subsection{Compuertas no cliffordianas}
+Las compuertas cliffor
+
+
+\subsection{Circuitos cuánticos}
+
+\subsection{Paralelismo cuántico}
+
+\subsection{Algoritmos cuánticos}
+
+\subsection{Criterios de DiVincenzo}
+Para construir un computador cuántico, se deben cumplir las siguientes condiciones experimentales:
+
+\begin{enumerate}
+\item Un sistema físico escalable con qubits bien caracterizados.
+\item La habilidad de inicializar el estado de los qubits en un estado fiducial simple.
+\item Tiempos de coherencia relevantes largos.
+\item Un conjunto universal de compuertas cuánticas.
+\item La capacidad de medir qubits en específico.
+\end{enumerate}
+
+
