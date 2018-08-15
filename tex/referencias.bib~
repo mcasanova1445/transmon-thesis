@@ -22,7 +22,7 @@
     url       = {https://journals.aps.org/pra/abstract/10.1103/PhysRevA.75.032329},
 }
 
-@article{gross,
+@article{blais,
     author    = {Rudolf Gross and Achim Marx},
     title     = {Applied Superconductivity: Josephson Effect and Superconducting Electronics},
     journal   = {Walther-Meißner-Institut},

@@ -1,7 +1,7 @@
 \documentclass[11pt, spanish]{report}
 \usepackage{estilo}
 
-%\includeonly{./tex/grover}
+\includeonly{./tex/superconductividad, ./tex/shor}
 
 \begin{document}
 

@@ -60,14 +60,14 @@ def QFT4(psi0, target1, target2, target3, target4):
 
 def QFT4d(psi0, target1, target2, target3, target4):
     res = tgates8.H(res.states[-1], target4)
-    res = tgates8.CP(res.states[-1], target4, target3, 2*np.pi/2**2)
+    res = tgates8.CP(res.states[-1], target4, target3, -2*np.pi/2**2)
     res = tgates8.H(res.states[-1], target3)
-    res = tgates8.CP(res.states[-1], target4, target2, 2*np.pi/2**3)
-    res = tgates8.CP(res.states[-1], target3, target2, 2*np.pi/2**2)
+    res = tgates8.CP(res.states[-1], target4, target2, -2*np.pi/2**3)
+    res = tgates8.CP(res.states[-1], target3, target2, -2*np.pi/2**2)
     res = tgates8.H(res.states[-1], target2)
-    res = tgates8.CP(res.states[-1], target4, target1, 2*np.pi/2**4)
-    res = tgates8.CP(res.states[-1], target3, target1, 2*np.pi/2**3)
-    res = tgates8.CP(res.states[-1], target2, target1, 2*np.pi/2**2)
+    res = tgates8.CP(res.states[-1], target4, target1, -2*np.pi/2**4)
+    res = tgates8.CP(res.states[-1], target3, target1, -2*np.pi/2**3)
+    res = tgates8.CP(res.states[-1], target2, target1, -2*np.pi/2**2)
     return tgates8.H(psi0, target1)
 
 def CSWAP(psi0, control, target1, target2):
