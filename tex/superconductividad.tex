@@ -31,11 +31,18 @@ En el caso de la funcion de onda macroscópica, se cumplen las siguientes propie
 
 Donde $n^*_s(r,t)$ es la densidad local y $N^*_s$ es el número total de electrones superconductores.
 
+\section{Junciones de Josephson}
+
+Las junciones de Josephson representan el elemento clave en los qubits superconductores. Se podría decir que son para los qubits, lo que los transistores son para los bits.
+
 \section{Efecto Josephson}
 
-Se tienen dos placas superconductoras A y B, separadas por un aislante; esto se conoce como junción Josephson (JJ).  Las funciones de onda de las placas superconductoras son: $\psi_A = \sqrt{\rho_1} e^{i \phi_1}, \psi_B = \sqrt{\rho_2} e^{i \phi_2}$ 
+EL efecto Josephson, predicho por Brian David Josephson en 1962, consiste en que una corriente fluya indefinidamente a través de una junción de Josephson aun cuando no hay una diferencia de potencial aplicada. Una junción de Josephson consta de dos superconductores acoplados por una conexión debil, la cual puede ser formada por un aislante (superconductor-isolator-superconductor, SIS), un metal normal (superconductor-normal-superconductor, SNS) o cualquier otro material u obstáculo que acople debilmente a los dos superconductores. En principio, no debería haber conducción entre ambas placas.  Sin embargo, ese no es el caso. Por el efecto tunel, una supercorriente (corriente sin disipación) de pares de Cooper (pares de electrones con spines opuestos) pueden pasar de una placa a la otra sin disipación.
 
-En principio, no debería haber conducción entre ambas placas.  Sin embargo, ese no es el caso. Por el efecto tunel, una supercorriente (corriente sin disipación) de pares de Cooper (pares de electrones con spines opuestos) pueden pasar de una placa a la otra sin disipación.
+Las uniones Josephson son capaces de generar voltajes oscilatorios de alta frecuencia, por lo regular de $10^{10} ~ 10^{11} Hz$ y detectan potenciales eléctricos de un cuatrillón de voltios.
+
+Para comenzar el analisis de una junción de Josephson, se considera un sistema simple y simétrico, tal que el material sea el mismo en ambos extremos de la junción y no exista campo magnético. Se tienen dos placas superconductoras A y B, separadas por un aislante, cuyas funciones de onda son: $\psi_A = \sqrt{\rho_1} e^{i \phi_1}, \psi_B = \sqrt{\rho_2} e^{i \phi_2}$ 
+
 
 \begin{align}
     V_J &= \frac{\hbar}{2e} \frac{d\delta}{dt} \\
@@ -51,6 +58,16 @@ Si las placas se encuentran sin alimentación, entonces correrá una supercorrie
 \subsection{Efecto Josephson AC}
 
 Si las placas se alimentan con un voltaje DC externo, entonces la diferencia de fase entre ellas variará linealmente con el tiempo y habrá una corriente AC a través de ellas.
+
+\section{Componentes de la corriente en las junciones de Josephson}
+
+Esta corriente tiene tres componentes:
+
+\begin{enumerate}
+    \item $I_d$, la corriente de desplazamiento: Como la corriente en un capacitor. La junción de Josephson forma un capacitor de placas parelelas superconductoras con un material aislante o un metal normal entre ellas, entonces podemos hablar de una corriente de desplazamiento $I_d$. La capacitancia $C$ de este dispositivo está definida de la misma manera que en el estado normal: $C = \epsilon_r \frac{A}{4 \pi d}$, donde $\epsilon_r$ es la constante dieléctrica relativa de la capa que separa a los dos superconductores, $d$ la separación de los superconductores y $A$ el área de los mismos.
+    \item $I_n$, la correinte ordinaria: Por los electrones individuales. Cuando la temperatura $T \neq 0$, siempre habrá movimiento térmico de cargas cuya energía es del orden de $k_b T$, donde $k_B$ es la constante de Boltzmann. Cuando $T$ es menor, pero cercano a la termperatura crítica $T_c$, la energía de acoplamiento de los pares de Cooper $E_g = 2 \Delta$ es mucho menor a $k_B T$, lo cual resulta en la disminución e los pares de Cooper y el aumento de la concentración de eletrones normales. Si el voltaje a través de la junción es mayor al asociado a la energía de la brecha $V_g = \abs{\Delta_1 + \Delta_2}/e$, los pares de Cooper de un la do de la unión se rompen y uno de los electrones de cada uno de los pres disueltos pasa al otro lado, es decir, se produce un tunelamiento de electrones normales. Si la concentración de electrones individuales aumenta, el comportamiento de la unión tenderá a uno de tipo óhmico, es decir, la junción tenderá a comportarse como una resistencia.
+    \item $I_s$, la supercorriente: Por los pares de Cooper. Se puede 
+\end{enumerate}
 
 \section{Qubits superconductores}
 Los qubits superconductores se basan en circuitos osciladores no lineales, hechos a partir de JJs \cite{wendin}.
@@ -262,7 +279,10 @@ $$\hat{H} \approx \frac{1}{2} \tilde{\Delta}_{q_1} \sigma_{z_1} + \frac{1}{2} \t
 
 Variando la frecuencia de resonacia de los qubit, se puede variar el acoplamiento entre estos. 
 
-\section{Rx, Ry e iSWAP son las compuertas que se pueden realizar nativamente}
-\section{Las otras se tienen que construir a partir de estas}
+\subsection{Compuertas compuestas}
+
+Con los transmones se pueden realizar rotaciones X-Y y la compuerta iSWAP. Sin embargo, los algoritmos no se escriben en función de sólo estas compuertas, también se necesitan H, CNOT, entre otras. Entonces, debemos construir estas otras compuertas en función de Rx, Ry e iSWAP. Esto es posible, ya que con secuencias de rotaciones en X e Y se puede realizar cualquier compuerta de un sólo qubit, ya que estas consisten de rotaciones en la esfera de Bloch y con rotaciones sobre dos ejes ortogonales se pueden lograr rotaciones sobre cualquier eje en la esfera. Luego, con un set universal de compuertas de un sólo qubit y una compuerta de entrelazamiento, se tiene un conjunto universal de compuertas cuánticas.
+
+Las otras compuertas que necesitaremos, se construyen de la siguiente manera:
 
 
