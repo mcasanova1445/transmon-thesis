@@ -71,6 +71,7 @@ wq_swap = 9 * 2 * np.pi
 g = np.array([0.1 * 2*np.pi, 0.1 * 2*np.pi, 0.1 * 2*np.pi, 0.1 * 2*np.pi, 0.1 * 2*np.pi, 0.1 * 2*np.pi, 0.1 * 2*np.pi, 0.1 * 2*np.pi])
 
 D = wq - wr
+D_swap = wq_swap - wr
 
 chi = g**2 / abs(wr-wq)
 
@@ -170,9 +171,7 @@ def Y(psi0, target):
     return Ry(psi0, target, np.pi)
 
 def Z(psi0, target, theta):
-    res = Rx(psi0, target, np.pi/2)
-    res = Y(res.states[-1], target)
-    return Rx(res.states[-1], target, -np.pi/2)
+    return Rz(psi0, target, np.pi)
 
 def H(psi0, target):
     res = Ry(psi0, target, np.pi/2)
@@ -193,6 +192,7 @@ def sqrtiSWAP(psi0, target1, target2):
     tf = np.pi/(4*J)
     tlist = np.linspace(0, tf, 250)
 
+    '''
     Hsyst = 0
     for i in range(8): #MELCSCELDQ
         # Hsyst = Hsyst - wq[i]*(Id/2 + 2 * (g[i]**2/D[i])*(n + Id/2))*qop('sz',i) #RH
@@ -203,6 +203,9 @@ def sqrtiSWAP(psi0, target1, target2):
             if i!=j:
                 # Hsyst = Hsyst + (g[i]*g[j]/D[j])*(qop('sp',i)*qop('sm',j) + qop('sm',i)*qop('sp',j)) #RH
                 Hsyst = Hsyst + (g[i]*g[j]/D[j])*(qop('sp',i)*qop('sm',j) + qop('sm',i)*qop('sp',j))/2 #RH
+    '''
+
+    Hsyst = g[target1]*g[target2] * (qop('sp',target1)*qop('sm',target2) + qop('sm',target1)*qop('sp',target2)) / (D_swap)
 
     res = mesolve(Hsyst, psi0, tlist, c_ops, [])
 
@@ -230,6 +233,7 @@ def iSWAP(psi0, target1, target2):
     tf = np.pi/(2*J)
     tlist = np.linspace(0, tf, 500)
 
+    '''
     Hsyst = 0
     for i in range(8): #MELCSCELDQ
         # Hsyst = Hsyst - wq[i]*(Id/2 + 2 * (g[i]**2/D[i])*(n + Id/2))*qop('sz',i) #RH
@@ -240,6 +244,9 @@ def iSWAP(psi0, target1, target2):
             if i!=j:
                 # Hsyst = Hsyst + (g[i]*g[j]/D[j])*(qop('sp',i)*qop('sm',j) + qop('sm',i)*qop('sp',j)) #RH
                 Hsyst = Hsyst + (g[i]*g[j]/D[j])*(qop('sp',i)*qop('sm',j) + qop('sm',i)*qop('sp',j))/2 #RH
+    '''
+
+    Hsyst = g[target1]*g[target2] * (qop('sp',target1)*qop('sm',target2) + qop('sm',target1)*qop('sp',target2)) / (D_swap)
 
     res = mesolve(Hsyst, psi0, tlist, c_ops, [])
 
@@ -340,9 +347,17 @@ def CCRy(psi0, control1, control2, target, theta):
 
 def CCP(psi0, control1, control2, target, theta, b = 0b11):
     res = CP(psi0, control2, target, theta/2, b = b)
+    if b == 0b00 or b == 0b01:
+        res = X(res.states[-1], control1)
     res = CNOT(res.states[-1], control1, control2)
+    if b == 0b00 or b == 0b01:
+        res = X(res.states[-1], control1)
     res = CP(res.states[-1], control2, target, -theta/2, b = b)
+    if b == 0b00 or b == 0b01:
+        res = X(res.states[-1], control1)
     res = CNOT(res.states[-1], control1, control2)
+    if b == 0b00 or b == 0b01:
+        res = X(res.states[-1], control1)
     return CP(res.states[-1], control1, target, theta/2, b = b)
 
 def CCNOT(psi0, control1, control2, target):
@@ -386,7 +401,19 @@ def CCCRz(psi0, control1, control2, control3, target, theta):
 
 def CCCP(psi0, control1, control2, control3, target, theta, b = 0b11):
     res = CP(psi0, control3, target, theta/2, b = b)
+    if b == 0b00 or b == 0b01:
+        res = X(res.states[-1], control1)
+        res = X(res.states[-1], control2)
     res = CCNOT(res.states[-1], control1, control2, control3)
+    if b == 0b00 or b == 0b01:
+        res = X(res.states[-1], control1)
+        res = X(res.states[-1], control2)
     res = CP(res.states[-1], control3, target, -theta/2, b = b)
+    if b == 0b00 or b == 0b01:
+        res = X(res.states[-1], control1)
+        res = X(res.states[-1], control2)
     res = CCNOT(res.states[-1], control1, control2, control3)
+    if b == 0b00 or b == 0b01:
+        res = X(res.states[-1], control1)
+        res = X(res.states[-1], control2)
     return CCP(res.states[-1], control1, control2, target, theta/2, b = b)
