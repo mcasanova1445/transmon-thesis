@@ -97,10 +97,6 @@ En la representación matricial el producto tensorial se realiza de la siguiente
     \ket{\psi_1} \otimes \ket{\psi_2} &\neq \ket{\psi_2} \otimes \ket{\psi_1}
 \end{align}
 
-\section{Matriz de densidad}
-
-asdf
-
 \section{Postulados de la mecánica cuántica}
 \begin{enumerate}
 \item Un estado puro en mecánica cuántica se representa en términos de
