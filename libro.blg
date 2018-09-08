@@ -6,6 +6,7 @@ A level-1 auxiliary file: ./tex/resumen.aux
 A level-1 auxiliary file: ./tex/introduccion.aux
 A level-1 auxiliary file: ./tex/informacion_cuantica.aux
 A level-1 auxiliary file: ./tex/superconductividad.aux
+A level-1 auxiliary file: ./tex/simulador.aux
 A level-1 auxiliary file: ./tex/grover.aux
 A level-1 auxiliary file: ./tex/shor.aux
 A level-1 auxiliary file: ./tex/pagerank.aux
@@ -21,7 +22,7 @@ You're missing a field name---line 35 of file ./tex/referencias.bib
 I'm skipping whatever remains of this entry
 You've used 3 entries,
             1791 wiz_defined-function locations,
-            471 strings with 4225 characters,
+            472 strings with 4244 characters,
 and the built_in function-call counts, 534 in all, are:
 = -- 35
 > -- 41

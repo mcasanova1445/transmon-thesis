@@ -1,0 +1,14 @@
+\chapter{El simulador}
+
+El simulador se construyó utilizando la librería Qutip 4.2 de Python 3.6. Esta es una librería que incluye varias herramientas para realizar simulaciones de sistemas mecánico cuánticos, entre ellas, un solucionador de ecuaciones maestras. El funcionamiento básico del simulador desarrollado es el siguiente:
+
+\begin{enumerate}
+    \item Leer estado inicial
+    \item Construir Hamiltoniano del sistema
+    \item Introducir Hamiltoniano y estado inicial en el solucionador de ecuaciones maestras.
+    \item Retornar solución
+\end{enumerate}
+
+De esta manera se simulan las compuertas naturales de los transmones. Luego, a partir de estas se construyen todas las demás compuertas que se necesitaran para construir un set de instrucciones cuántico con el cual poder ejecutar los algoritmos de Grover, Shor y PageRank.
+
+

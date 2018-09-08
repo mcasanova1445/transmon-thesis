@@ -2,6 +2,56 @@
 
 En esta sección introduciremos las bases matemáticas fundamentales para empezar a trabajar con la Teoría de Información Cuántica, trabajaremos sobre espacios vectoriales discretos, debido a que los sistemas cuánticos que manejaremos (computadora cuántica) son sistemas físicos discretos, no continuos. Se dará una breve introducción a la notación de Dirac y su aplicación en la mecánica cuántica. Una vez establecidas las bases matemáticas se describirán los Postulados de la Mecánica Cuántica: Descripción del estado de un sistema, descripción de cantidades físicas, medición de cantidades físicas, reducción del paquete de ondas, evolución temporal, postulado de simetrización y variables de espín. Finalmente se definirá el enredamiento cuántico, su importancia en el cómputo cuántico y los sistemas de dos niveles.
 
+\section{Función de onda}
+
+El estado de una sistema cuántico viene dado por el conocimiento de un campo escalar denominado función de onda $\psi$ en todos los puntos del espacio para cualqueir instante de teimpo, dicha función de onda es compleja ($\in \mathds{C}$), de cuadrado integrable, cumple con el principio de superposición y es univaluada para las coordenadas espaciales de cada una de las partículas. Conocer la función de onda en mecánica cuántica es equivalente a conocer los vectores posición y momentum en mecánica clásica, en el sentido de que esta es la condición suficiente y necesaria para conocer el sistema en su totalidad. La evolución de la función de onda está dada por la ecuación de Schrödinger. La mecánica cuántica es una teoría probabilística, una partícula puede encontrarse en cualquier parte del universo en cualquier momento y la densidad de probabilidad de encontrarla en algún punto está dada por el módulo al cuadraro de su función de onda en este punto. De hecho, debido a esto es que $\psi$ debe ser de cuadrado integrable, pues la probabilidad de que la partícula se encuentre en cualquier lugar del universo debe ser uno, es decir:
+
+\begin{equation}
+    \int\limits_S \abs{\psi(r,t)}^2 dr = 1
+\end{equation}
+
+Donde $S$ es todo el universo. Esto es para funciones de onda que describen una partícula, en el siguiente capítulo se verán funciones de onda macroscópicas que describen sistemas de muchas partículas. En estos, el módulo cuadrádo de $\psi$ describe la densidad de partículas, la cual podría entenderse como la suma de la densidad de probabilidad de que cada una de las partículas se encuentren en ese punto, y $\int\limits_S \abs{\psi(r,t)}^2 dr = N_s$, donde $N_s$ es el número total de partículas del sistema, el cual podría entenderse como la suma de que cada una de las partículas se encuentre en algún punto del sistema.
+
+Según la mecánica clásica, ondas y partículas son dos entidades distintas, la primera es un ente puntual con posición definida que transporta masa, momentum y energía por el espacio, mientras que una onda es un ente disperso que transporta momentum y energía, pero no masa. En la mecánica cuántica existe la dualidad partícula-onda. Los entes cuánticos nos son partículas u ondas como se entienden en la mecánica clásica, pero se pueden comportar como estos bajo ciertas condiciones. Por ejemplo, un electrón que se dispara por un cañón tendrá una probabilidad de encontrarse en cierta región del espacio, pero a diferencia de la mecánica estadística clásica, este electrón no es una partícula cuya posición exacta se desconoce, sino que tiene comportamientos propios de una onda, como la interferencia destructiva. Este comportamiento de onda se mantiene hasta que se realice una medida de la posición de este electrón. En ese momento, la distribución de probabilidad de la posición de ese electrón se concentra en un punto y pasa a comportarse como una partícula. Lo mismo sucede con los fotones, que son las partículas de la luz. De hecho, debido a la naturaleza cuántica de la luz es que existen fenómenos como el efecto fotoeléctrico, el cual es un fenómeno de partículas, a pesar de que clásicamente la luz sea una onda.
+
+Es importante resaltar que a pesar de que los objetos cuánticos se puedan comportar como partículas u ondas clásicas bajo ciertas condiciones, en ningún momento son ondas ni partículas como se entiende en la mecánica clásica. Por ejemplo, la ``onda electrónica'' del párrafo anterior es una ``onda'' que transporta masa, mientras que en la definición de onda se especifíca explícitamente que las ondas no transportan masa. Por otro lado, los fotones son partículas sin masa, lo cual también es algo que no sucede con las partículas de la mecánica clásica. Así que los objetos cuánticos, a pesar de que lleven el nombre de "partícula" y se hable de la dualidad onda-partícula, no son ondas, ni partículas. Sólo son objetos cuyas propiedades vienen descritas por una función compleja de cuadrado integrable, cuyo módulo al cuadrado está asociado a una densidad de probabilidad.
+
+\subsection{Espacio de Hilbert}
+
+Los espacios de Hilbert, creados por el matemático David Hilbert y normalizados por John von Neumann en el siglo XX, son el soporte matemático de la mecánica cuántica. Un espacio de Hilbert es un espacio vectorial complejo $\mathcal{H}$ de cuadrados integrables con un producto interno $(f,g)$ donde la norma vectorial se define como $\norm{f} = \sqrt{(f,f)}$. El ejemplo por excelencia de un espacio de Hilbert es $\mathcal{L}^2$.
+
+Un conjunto de $2^n$ funciones $B = \{f_n\} \subset \mathcal{H}$ es llamado base ortonormal de $\mathcal{H}$ si y sólo si:
+
+\begin{align}
+    (f_n, f_m) &= \delta_{n } \quad \forall f_n, f_m \in B
+\end{align}
+
+Todo elemento $\psi \in \mathcal{H}$ puede ser escrito como:
+
+\begin{equation}
+    \psi = \sum\limits_n c_n \psi_n
+\end{equation}
+
+En la mecánica cuántica, todas las funciones de onda deben pertenecer un espacio de Hilbert normalizado. Es decir, pertenecen al espacio de Hilbert donde:
+
+\begin{equation}
+    \norm{\psi} = 1 \quad \forall \psi \in \mathcal{H}
+\end{equation}
+
+\subsubsection{Propiedades}
+
+\begin{enumerate}
+    \item Producto escalar: $(\psi, \phi) = \int\limits_S \psi^* \phi dr \quad \in \mathds{C}$
+    \item Simetría $(\psi, \phi) = (\phi, \psi)^*$
+    \item Linealidad: $(\psi, \alpha \phi_1 + \beta \phi_2) = \alpha (\psi, \phi_1) + \beta (\psi, \phi_2)$
+    \item Antilinealidad: $(\alpha \psi_1 + \beta \psi_2, \phi) = \alpha^* (\psi_1, \phi) + \beta^* (\psi_2, \phi)$
+    \item Ortogonalidad: $(f_i, f_j) = 0$
+    \item Autoproducto escalar: $(\psi, \psi) \neq 0$ ($(\psi, \psi) = 1$ si y sólo si $\psi$ está normalizada)
+    \item Norma: $\norm{\psi} = \sqrt{(\psi,\psi)}$
+    \item Desigualdad de Cauchy: $\norm{(\psi_1,\psi_2)} \leq \sqrt{(\psi_1,\psi_1)} \sqrt{(\psi_2,\psi_2)}$
+    \item Operadoers lineales: $\psi^\prime = \hat{A} \psi$
+\end{enumerate}
+
 \section{Herramientas necesarias}
 
 \subsection{Delta de Kronecker}
@@ -26,8 +76,6 @@ Dado que el símbolo sólo es diferente de cero cuando sus índices son iguales,
 
 En 1930 en el libro Principios de la Mecánica Cuántica Paul Dirac introdujo una poderosa notación para poder describir estados cuánticos y funciones lineales, también conocida como notación Bra-Ket. Con la notación de Dirac podemos representar un estado base de $n$ elementos con una cadena binaria de longitud $n$, mientras que con la representación de vectores columna necesitariamos $2^n$ componentes para definir el mismo vector.
 
-\section{Kets, bras y operadores}
-
 La notación bra-ket es la notación estándar en la mecánica cuántica para describir estados cuánticos. En el caso de la computación cuántica, se utilizan los kets $\ket{0}$ y $\ket{1}$ para describir los qubits en la base computacional. Este par de estados sería el equivalente a los bits 0 y 1 en la computación clásica. En su representación matricial, los kets $\ket{0}$ y $\ket{1}$ se representan de la siguiente manera:
 
 \[\ket{0} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}\]
@@ -40,9 +88,7 @@ Un bra es el operador adjunto de un ket. Los bras de la base computacional son $
 
 \[\bra{1} = \begin{pmatrix} 0 & 1 \end{pmatrix}\]
 
-\section{Productos interno y externo}
-
-El producto interno de kets es el producto de un bra seguido de un ket $braket{\phi}{\psi}$, el resultado de este producto es un número complejo y cumple las siguientes propiedades:
+El producto interno de kets es el producto de un bra seguido de un ket $\braket{\phi}{\psi}$, el resultado de este producto es un número complejo y cumple las siguientes propiedades:
 
 \begin{align}
     \braket{\phi}{\psi} &= z \\
@@ -56,13 +102,24 @@ El producto externo es el producto de un ket seguido de un bra $ketbra{\phi}{\ps
     (\ketbra{\phi}{\psi})^\dagger &= \ketbra{\psi}{\phi} = \Pi^\dagger
 \end{align}
 
-\section{Espacio de Hilbert}
+La aplicación de un proyector $\ketbra{\psi}{\phi}$ sobre un estado $\ket{\varphi}$ consiste en la multiplicación del escalar $c = \braket{\phi}{\varphi}$ al estado $\psi$.
 
-Un espacio de Hilbert es un espacio vectorial complejo con una medida, donde todos los cuadrados son integrables.
+\begin{equation}
+    \ketbra{\psi}{\phi} \ket{\varphi} = \braket{\phi}{\varphi} \ket{\psi} = c \ket{\psi}
+\end{equation}
+
+La notación de Dirac se relaciona con el formalismo de funciones de onda de la siguiente manera:
+
+\begin{equation}
+    \psi = \braket{x}{\psi}
+\end{equation}
+
+Donde $\bra{x}$ es el bra asociado a estar en la posición $x$.
+
 
 \section{Operadores unitarios}
 
-Estos son operadores tales que $U U^\dagger = \mathds{1}$ con determinante igual a 1.
+Estos son operadores tales que $U U^\dagger = \mathds{1}$ con determinante igual a 1.En la mecánica cuántica todas las operaciones que se realicen sobre un estado y no involucren medidas tienen un operador unitario asociado. Por ejemplo, la evolución temporal tiene un estado unitario $U$ asociado.
 
 \section{Producto tensorial}
 
@@ -94,36 +151,177 @@ En la representación matricial el producto tensorial se realiza de la siguiente
 
 \begin{align}
     (U_1 \otimes U_2) (\ket{\psi_1} \otimes \ket{\psi_2}) &= (U_1 \ket{\psi_1}) \otimes (U_2 \ket{\psi_2}) \\
-    \ket{\psi_1} \otimes \ket{\psi_2} &\neq \ket{\psi_2} \otimes \ket{\psi_1}
+    \ket{\psi_1} \otimes \ket{\psi_2} &\neq \ket{\psi_2} \otimes \ket{\psi_1} \\
+    \alpha (\ket{\psi_1} \otimes \ket{\psi_2}) &= (\alpha \ket{\psi_1}) \otimes \ket{\psi_2} = \ket{\psi_1} \otimes (\alpha \ket{\psi_2}) \\
+    (\ket{\psi_1} \otimes \ket{\psi_2})^\dagger &= \bra{\psi_1} \otimes \bra{\psi_2}
 \end{align}
+
+\subsection{Nota sobre la notación}
+
+Un estado multipartito se puede escribir de la forma extensa $\ket{\psi} \otimes \ket{\phi}$ o de la forma compacta $\ket{\psi \phi}$. También se pueden agregar subíndices para hacer énfasis en las particiones $\ket{\psi}_A \otimes \ket{\phi}$. Entonces:
+
+\begin{equation*}
+    \ket{\psi}_A \otimes \ket{\phi}_B = \ket{\psi} \otimes \ket{\phi} = \ket{\psi_A \phi_B} = \ket{\psi\phi}
+\end{equation*}
+
+\section{Postulados de la mecánica cuántica}
+
+La mecánica cuántica que fundamenta la teoría de información cuántica se describe formalmente con los siguientes postulados desarrollados por John von Neumann y Paul Dirac en el año 1932.
+
+\begin{enumerate}
+    \item Primer postulado: En un instante fijo $t_0$, el estado puro de un sistema se describe en términos de un vector normalizado $\ket{\psi}$ en un espacio de Hilbert $\mathcal{H}$.
+    \item Segundo postulado: Para todo observable o cantidad física $a$, existe un operador hermítico $\hat{A}$ asociado que actúa sobre el espacio $\mathcal{H}$
+    \item Tercer postulado: Toda medida de un observable $a$ tendrá como resultado un autovalor $a_n$ del operador hermítico $\hat{A}$.
+    \item Cuarto postulado: La probabilidad (en caso de variable discreta. Si $\hat{A}$ es de espectro continuo, entonces es la densidad de probabilidad) de obtener $a_n$ como resultado de una medida es $P(a_n) = \sum\limits_{i=1}^{g_n} \abs{\ketbra{a_{n_i}}{\psi}}^2$, donde $g_n$ es el grado de degeneración de $a_n$ (la cantidad de autovectores asociados a este mismo autovalor) y $\bra{a_{n_i}}$ representa a los bras asociados a este autovalor.
+    \item Quinto postulado: Inmediatamente después de una medida con resultado $a_n$, el sistema se transforma de la siguiente manera: $\ket{\psi} \rightarrow \frac{\sum_i \ketbra{a_{n_i}}{a_{n_i}} \ket{\psi}}{\sqrt{\bra{\psi} \hat{A} \ket{\psi}}}$. Esto se conoce como colapso de la función de onda.
+    \item Ecuación de Schrödinger: La evolución temporal del estado $\ket{\psi}$ viene dada por la ecuación de Schrödinger $i \hbar \frac{d}{d t} \ket{\psi} = \hat{H} \ket{\psi}$, donde $\hat{H}$ es el Hamiltoniano del sistema (el operador asociado a la energía).
+\end{enumerate}
 
 \section{Matriz de densidad}
 
-asdf
+Para describir un estado cuántico que no sólo involucre superposiciones cuánticas, sino también clásicas, es decir, un ensemble estadístico de estados cuánticos, podemos usar la representación de los operadores o matrices de densidad $\rho$.
 
-\section{Postulados de la mecánica cuántica}
+De aquí surge la clasificación de estados en puros y mixtos. Los estados puros son aquellos que no presentan superposición clásica (o mezcla) y su matriz de densidad se puede escribir como:
+
+\begin{equation}
+    \rho = \ketbra{\psi}{\psi}
+\end{equation}
+
+Los estados mixtos son aquellos que son formados por un ensemble estadístico y su matriz de densidad, escrita en función de los estados que pertenecen al ensemble o mezcla, es la siguiente:
+
+\begin{equation}
+    \rho = \sum_i p_i \ketbra{\psi_i}{\psi_i}
+\end{equation}
+
+Donde $p_i$ es la probabilidad asociada a cada estado puro de la mezcla y $\sum_i p_i = 1$.
+
+\subsection{Propiedades}
+
 \begin{enumerate}
-\item Un estado puro en mecánica cuántica se representa en términos de
-  un vector normalizado $\ket{\psi}$ en un espacio de Hilbert
-  $\mathcal{H}$.
-\item Si $\mathcal{H}_1$ y $\mathcal{H}_2$ son los espacios de Hilbert asociados a dos sistemas físicos, entonces el espacio del sistema
-  compuesto $\mathcal{H}$ estará dado por el producto tensoral de los
-  dos espacios de Hilbert
-  $\mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2$.
-\item Para todo observable $a$, existe un operador hermítico
-  correspondiente $A$ que actua sobre el espacio de Hilbert
-  $\mathcal{H}$, cuyos autovalores son los posibles resultados de una
-  medida de este observable.
-\item La evolución temporal del sistema sigue la ecuación de
-  Schrödinger
-  $i \hbar \frac{\partial \ket{\psi}}{\partial t} = H
-  \ket{\psi}$. Donde $\hbar$ es la constante de Planck reducida y $H$
-  es el Hamiltoniano del sistema, el cuál es el operador hermítico
-  correspondiente a la energía.
-\item Después de realizar una medida del observable $a$, el estado
-  $\ket{\psi}$ del sistema colapsa a al autoestado de $A$
-  correspondiente a la medida.
+    \item Traza igual a uno
+    \item Autovalores positivos
+    \item Hermíticas
+    \item Cuadrado:
+        \begin{enumerate}
+            \item Estado puro: $Tr(\rho^2) = 1$
+            \item Estado mixto $Tr(\rho^2) < 1$
+        \end{enumerate}
 \end{enumerate}
+
+En una matriz de densidad, los elementos de la diagonal son las poblaciones y los elementos fuera de ésta son las transiciones. Las poblaciones representan la probabilidades de que el sistema se encuentre en cada estado de la base tras una medida, mientras que las transiciones hacen referencia a la coherencia cuántica entre los elementos de la base que conforman el estado. Por ejemplo, el estado con superposición cuántica: $\ket{\psi} = (\ket{0} + \ket{1})/\sqrt{2}$ tiene la siguiente matriz de densidad:
+
+\begin{equation}
+    \rho_1 = \ketbra{\psi}{\psi} = \frac{1}{2} (\ketbra{0}{0} + \ketbra{0}{1} + \ketbra{1}{0} + \ketbra{1}{1}) =
+    \begin{pmatrix}
+        \frac{1}{2} & \frac{1}{2} \\
+        \frac{1}{2} & \frac{1}{2}
+    \end{pmatrix}
+\end{equation}
+
+Mientras que el estado de mezcla clásica $\rho = (\rho_0 + \rho_1)/2$ tiene la siguiente matriz de probabilidad:
+
+\begin{equation}
+    \rho_2 = \frac{1}{2} (\ketbra{0}{0} + \ketbra{1}{1}) =
+    \begin{pmatrix}
+        \frac{1}{2} & 0 \\
+        0 & \frac{1}{2}
+    \end{pmatrix}
+\end{equation}
+
+Como se puede ver, ambos estados tienen probabilidad $1/2$ de encontrarse en $\ket{0}$ o en $\ket{1}$ que son los estados de la base. Sin embargo, en el primer estado, esto se debe a que es un único estado cuántico con superposición coherente. Mientras que en el segundo estado esto se debe a que es un estado mezcla de dos estados cuánticos, decoherente. Este es un buen momento para notar la diferencia entre un estado mixto y estado coherente, pues un estado mezcla también puede ser coherente.
+
+Tomemos los mismos estados $\rho_1$ y $\rho_2$ anteriores y construyamos el estado
+
+\begin{equation}
+    \rho = \frac{1}{2} (\rho_1 + \rho_2) =
+    \begin{pmatrix}
+        \frac{1}{2} & \frac{1}{4} \\
+        \frac{1}{4} & \frac{1}{2}
+    \end{pmatrix}
+\end{equation}
+
+Este es un estado mezcla, pero aún así tiene elementos fuera de la diagonal, los cuales indican coherencia. Es decir, este estado tiene componente de superposición cuántica, además de la mezcla clásica.
+
+\section{Traza parcial}
+
+Para unir dos particiones en un sistema global se utiliza el producto tensorial tal que $\mathcal{H} = \mathcal{H}_A \otimes \mathcal{H}_B$. La operación inversa, para obtener $\mathcal{H}_A$ o $\mathcal{H}_B$ a partir de $\mathcal{H}$, es la traza parcial.
+
+La traza parcial se define de la siguiente manera:
+
+\begin{equation}
+    Tr_A(\rho_{A B}) = \sum\limits_i (\bra{i}_A \otimes \mathds{1}_B) \rho (\ket{i}_A \otimes \mathds{1}_B)
+\end{equation}
+
+Esta traza elimina la porción de $\rho_{A B}$ perteneciente a $\mathcal{H}_A$. Si pudiesemos escribir $\rho_{A B} = \rho{A} \otimes \rho{B}$ (este no siempre es el caso, más información en la sección siguiente), entonces $Tr_A(\rho_{A B}) = \rho_B$
+
+En caso que se quiera tener $\rho_A$ en lugar de $\rho_B$, entonces tenemos que tracear la partición B, en lugar de la partición A, de la siguiente manera:
+
+\begin{equation}
+    Tr_B(\rho_{A B}) = \sum\limits_i (\mathds{1}_A \otimes \bra{i}_B) \rho (\mathds{1}_A \otimes \ket{i}_B)
+\end{equation}
+
+Para entender mejor la traza parcial, recordemos la definición de la traza normal:
+
+\begin{equation}
+    Tr(\rho) = \sum\limits_i \bra{i} \rho \ket{i}
+\end{equation}
+
+El par $\bra{i} \ket{i}$ lo que hace es seleccionar el i-ésimo elemento de la diagonal de la matriz $\rho$, entonces es la suma de todas las poblaciones en cada estado $\ket{i}$ de la base de $\mathcal{H}$ y mapea este espacio de Hilbert a uno escalar (en el caso de las matrices de densidad, las mapea al número 1, por la normalización de las probabilidades). La traza parcial hace algo similar, solo que sólo sobre las poblaciones de $\mathcal{H}_A$ o de $\mathcal{H}_B$, dejando a la otra partición intacta. Es decir, el efecto de la traza y de las trazas parciales sobre una matriz de densidad es, en resumen, el siguiente:
+
+\begin{enumerate}
+    \item $Tr: \mathcal{H}_A \otimes \mathcal{H}_B \rightarrow 1$
+    \item $Tr_A: \mathcal{H}_A \otimes \mathcal{H}_B \rightarrow 1 \otimes \mathcal{H}_B$
+    \item $Tr_B: \mathcal{H}_A \otimes \mathcal{H}_B \rightarrow \mathcal{H}_A \otimes 1$
+\end{enumerate}
+
+
+\subsection{Comparación con el producto tensorial}
+
+\begin{enumerate}
+    \item El producto tensorial se puede realizar con kets o con matrices de densidad. Pero la traza parcial sólo se puede aplicar a matrices de densidad.
+    \item El producto tensorial de dos estados puros es otro estado puro. Sin embargo, las trazas parciales de un estado puro no necesariamente son estados puros. En la próxima sección se explicará más al respecto.
+\end{enumerate}
+
+\section{Entrelazamiento}
+
+Consideremos el estado $\ket{\psi} = (\ket{00} + \ket{11})/\sqrt{2}$ e intentemos escribirlo en función de $\ket{\psi_1}$ y $\ket{\psi_2}$, tal que $\ket{\psi} = \ket{\psi_1} \otimes \ket{\psi_2}$.
+
+\begin{align*}
+    \ket{\psi}
+    &= (\alpha \ket{0} + \beta \ket{1}) \otimes (\gamma \ket{0} + \delta \ket{1}) \\
+    &= \alpha \gamma \ket{00} + \alpha \delta \ket{01} + \beta \gamma \ket{10} + \beta \delta \ket{11}
+\end{align*}
+
+De aquí se debe cumplir que:
+
+$$
+    \alpha \gamma = \frac{1}{\sqrt{2}} \qquad
+    \alpha \delta = 0 \qquad
+    \beta \gamma = 0 \qquad
+    \beta \delta = \frac{1}{\sqrt{2}} \qquad
+$$
+
+Pero esto implicaría, al mismo tiempo que:
+
+\begin{enumerate}
+    \item Al menos una variable de cada uno de los siguientes pares de variables es cero: $\{\alpha, \delta\}$ y $\{\beta, \gamma\}$
+    \item Ninguna de las siguientes variables es cero: $\alpha, \beta, \gamma, \delta$
+\end{enumerate}
+
+Lo cual resulta contradictorio y se concluye que existen estados no separables o que $\ket{\psi}$ no es un estado físicamente realizable. El primer caso es el que ocurre, pues $\ket{\psi}$ sí es físicamente realizable y se han ejecutado gran cantidad de experimentos con estados no separables como este y muchos más.
+
+A la propiedad de causa esta inseparabilidad se le conoce como entrelazamiento y es la correlación cuántica más estudiada hasta ahora.
+
+Si se toma la traza parcial de un estado enterlazado puro, el resultado es un estado mixto, como consecuencia de la inseparabilidad de los estados entrelazados.
+
+De aquí surge la siguiente clasificación de los estados cuánticos:
+
+\begin{enumerate}
+    \item Estado producto: $\rho = \rho_A \otimes \rho_B$
+    \item Estado separable: $\rho = \sum\limits_{i j} p_{i j} (\rho_{A_i} \otimes \rho_{B_j})$
+    \item Estado entrelazado: $\rho \neq \sum\limits_{i j} p_{i j} (\rho_{A_i} \otimes \rho_{B_j})$
+\end{enumerate}
+
 
 \section{Computación cuántica}
 This section's content...
@@ -135,7 +333,66 @@ Un qubit es un sistema físico de dos niveles, es decir, es un objeto cuyo estad
 El qubit se puede pensar como el equivalente en IC del bit, el cual, por sus propiedad cuánticas, puede estar no sólo puede estar en el estado $\ket{0}$ y en el estado $\ket{1}$, sino también en superposiciones de estos dos.
 \vspace{0.5cm}
 
-El estado de un qubit también se puede escribir de la siguiente manera: $ \ket{\psi} = e^{i \phi_0} \cos ( \theta ) \ket{0} + e^{i \phi_1} \sin ( \theta ) \ket{1}  = e^{i \phi_0} (\cos ( \theta ) \ket{0} + e^{i ( \phi1 - \phi_0 )} \sin ( \theta ) \ket{1}) $, donde $ \theta $, $\phi_0$ y $\phi_1$ son números reales. La fase global $\phi_0$ es ignorable, pues no tiene ningún efecto sobre las probabilidades. Entonces, sin pérdida de generalidad, $ \ket{\psi} = \cos ( \theta ) \ket{0} + \sin ( \theta ) e^{i \phi} \ket{1} $, donde $ \theta \in [0, \pi ] $ y $ \phi \in [0, 2 \pi ] $. De esta manera, podemos representar los qubits en una esfera unitaria, conocida como esfera de Bloch.
+\subsection{Esfera de Bloch}
+
+El estado de un qubit también se puede escribir de la siguiente manera: $ \ket{\psi} = e^{i \phi_0} \cos ( \theta ) \ket{0} + e^{i \phi_1} \sin ( \theta ) \ket{1}  = e^{i \phi_0} (\cos ( \theta ) \ket{0} + e^{i ( \phi1 - \phi_0 )} \sin ( \theta ) \ket{1}) $, donde $ \theta $, $\phi_0$ y $\phi_1$ son números reales. La fase global $\phi_0$ es ignorable, pues no tiene ningún efecto sobre las probabilidades. Entonces, sin pérdida de generalidad, $ \ket{\psi} = \cos ( \theta ) \ket{0} + \sin ( \theta ) e^{i \phi} \ket{1} $, donde $ \theta \in [0, \pi ] $ y $ \phi \in [0, 2 \pi ] $. De esta manera, podemos representar los qubits en una esfera unitaria, conocida como esfera de Bloch. En esta esfera el ket $\ket{0}$ corresponde al vector (0,0,1), mientras que el ket $\ket{1}$ corresponde al vector (0,0,-1).
+
+Todas las operaciones de un qubit se pueden ver como rotaciones en la esfera de Bloch. Por ejemplo, un \texit{bit-flip} sería una rotación de $\pi$ sobre el eje X, tal que $(0,0,1) \rightarrow (0,0,-1)$, es decir $\ket{0} \rightarrow \ket{1}$.
+
+\subsection{Conmutador y anticonmutador}
+
+Estas son operaciones comunes en la mecánica cuántica y están asociadas a propiedades fundamentales del sistema, como simetrías cuando se realizan con observables.
+
+\subsubsection{Conmutador}
+
+\begin{equation}
+    [A,B] = A B - B A
+\end{equation}
+
+\subsubsection{Anticonmutador}
+
+\begin{equation}
+    \{A,B\} = A B + B A
+\end{equation}
+
+Si alguno de estos es igual a cero, se dice que $A$ y $B$ conmutan o anticonmutan, según sea el caso. Si dos operadores conmutan, ellos realizarán la misma transformación compuesta sin importar el orden en que se apliquen. De esta manera, si dos observables conmutan, ellos pueden ser medidos simultaneamente, pues ambas medidas no se afectan entre sí. Además, si un Hamiltoniano conmuta con una transformación unitaria, entonces el sistema es simétrico ante esa transformación.
+
+\begin{align*}
+    [A,B] &= 0 \implies A B = B A \\
+    U H U^\dagger &= U U^\dagger H = H
+\end{align*}
+
+
+\subsection{Matrices de Pauli}
+
+Estas matrices son de especial importancia en la mecánica cuántica y representan el spin de una partícula. Ellas son:
+
+\begin{align}
+    \sigma_x &=
+        \begin{pmatrix}
+            0 & 1 \\
+            1 & 0
+        \end{pmatrix} \\
+    \sigma_y &=
+        \begin{pmatrix}
+            0 & -i \\
+            i & 0
+        \end{pmatrix} \\
+    \sigma_z &=
+        \begin{pmatrix}
+            1 & 0 \\
+            0 & -1
+        \end{pmatrix}
+\end{align}
+
+\subsubsection{Propiedades}
+
+\begin{enumerate}
+    \item Autovalores $\pm 1$
+    \item Hermiticas
+    \item $[\sigma_i, \sigma_j] = i \sigma_k$, donde $(i,j) \in \{(x,y), (y,z), (z,x)\}$
+    \item $[\sigma_j, \sigma_i] = - i \sigma_k$, donde $(i,j) \in \{(x,y), (y,z), (z,x)\}$
+
 
 \subsection{Compuertas cuánticas}
 Las operaciones unitarias con las que se opera sobre los qubits reciben el nombre de compuertas cuánticas.
@@ -224,25 +481,24 @@ i & 0
 \end{minipage}
 
 \subsubsection{Compuerta de Hadamard}
-%Esta compuerta realiza una rotación de $\frac{\pi}{2}$ sobre el eje y de la esfera de Bloch. Ella es de especial importancia, pues transforma los estados de la base computacional $\ket{0}$ y $\ket{1}$ en estados de superposiciones uniformes ($\ket{+}$ y $\ket{-}$). También se puede interpretar como el mapa de la base Z a la base X.
-Esta compuerta transforma los estados de la base computacional $\ket{0}$ y $\ket{1}$ en estados de superposiciones uniformes ($\ket{+}$ y $\ket{-}$). También se puede interpretar como el mapa de la base Z a la base X.
+Esta compuerta transforma los estados de la base computacional $\ket{0}$ y $\ket{1}$ en estados de superposiciones uniformes ($\ket{+} = (\ket{0} + \ket{1})/\sqrt{2}$ y $\ket{-} = (\ket{0} - \ket{1})/\sqrt{2}$). También se puede interpretar como el mapa de la base Z a la base X. Ella consiste de una rotación de $\frac{\pi}{2}$ sobre el eje $(x+z)$ y se puede realizar con una rotación de $\pi/2$ sobre el eje Y seguida de la compuerta X.
 \vspace{0.25cm}
 
 \begin{minipage}{0.5\textwidth}
-\[
-\Qcircuit @C=1.4em @R=1.8em {
-& \gate{H} & \qw
-}
-\]
+    \[
+        \Qcircuit @C=1.4em @R=1.8em {
+        & \gate{H} & \qw
+        }
+    \]
 \end{minipage}
 \begin{minipage}{0.5\textwidth}
-\[
-\frac{1}{\sqrt{2}}
-\begin{pmatrix}
-1 & 1 \\
-1 & -1
-\end{pmatrix}
-\]
+    \[
+        \frac{1}{\sqrt{2}}
+        \begin{pmatrix}
+            1 & 1 \\
+            1 & -1
+        \end{pmatrix}
+    \]
 \end{minipage}
 
 \subsubsection{Compuerta S}
@@ -457,38 +713,36 @@ R_x(\theta) = R_z(\frac{\pi}{2}) R_y(\theta) R_z(\frac{-\pi}{2})
 \subsubsection{Compuerta de Deutsch}
 
 \begin{minipage}{0.5\textwidth}
-\[
-\Qcircuit @C=1.4em @R=1.8em {
-& \multigate{2}{D(\theta)} & \qw \\
-& \ghost{D(\theta)} & \qw \\
-& \ghost{D(\theta)} & \qw
-}
-\]
+    \[
+        \Qcircuit @C=1.4em @R=1.8em {
+        & \multigate{2}{D(\theta)} & \qw \\
+        & \ghost{D(\theta)} & \qw \\
+        & \ghost{D(\theta)} & \qw
+        }
+    \]
 \end{minipage}
 \begin{minipage}{0.5\textwidth}
-\[
-\begin{pmatrix}
-1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
-0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
-0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
-0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
-0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
-0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
-0 & 0 & 0 & 0 & 0 & 0 & i \cos(\theta) & \sin(\theta) \\
-0 & 0 & 0 & 0 & 0 & 0 & \sin(\theta) & i \cos(\theta)
-\end{pmatrix}
-\]
+    \[
+        \begin{pmatrix}
+            1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+            0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+            0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+            0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+            0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+            0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+            0 & 0 & 0 & 0 & 0 & 0 & i \cos(\theta) & \sin(\theta) \\
+            0 & 0 & 0 & 0 & 0 & 0 & \sin(\theta) & i \cos(\theta)
+        \end{pmatrix}
+    \]
 \end{minipage}
 
 \[
-\ket{a,b,c} \rightarrow
-\begin{cases}
-i \cos(\theta) \ket{a,b,c} + \sin(\theta) \ket{a,b,c \oplus 1} & \text{si } a=b=1 \\
-\ket{a,b,c} & \text{en otro caso}
-\end{cases}
+    \ket{a,b,c} \rightarrow
+    \begin{cases}
+        i \cos(\theta) \ket{a,b,c} + \sin(\theta) \ket{a,b,c \oplus 1} & \text{si } a=b=1 \\
+        \ket{a,b,c} & \text{en otro caso}
+    \end{cases}
 \]
-
-\subsection{Correspondencia entre compuertas clásicas y cuánticas}
 
 \subsection{Conjuntos universales de compuertas cuánticas}
 Un conjunto universal de compuertas cuánticas (CUCC) es un conjunto finito de compuertas cuánticas con el cuál se puede aproximar cualquier operación unitaria arbitrariamente bien.
@@ -511,10 +765,18 @@ Otro CUCC consiste en la compuerta de Ising y la compuerta de cambio de fase, \{
 \subsection{Compuertas no cliffordianas}
 Las compuertas cliffor
 
-
 \subsection{Circuitos cuánticos}
 
-\subsection{Paralelismo cuántico}
+El equivalente a los circuitos digitales en la computación cuántica es los circuitos cuánticos. Ellos describen la secuencia de operaciones que se deben aplicar a los qubits para ejecutar cierto algoritmo.
+
+\[
+    \Qcircuit @C=1.4em @R=1.8em {
+        \lstick{\ket{0}} & \qw      & \ctrl{2} & \qw        & \gate{U}   & \qw \\
+        \lstick{\ket{0}} & \gate{U} & \qw      & \ctrlo{1}  & \ctrl{-1}  & \qw \\
+        \lstick{\ket{1}} & \qw      & \gate{U} & \gate{U}   & \ctrlo{-1} & \qw \\
+    }
+\]
+
 
 \subsection{Algoritmos cuánticos}
 
@@ -522,11 +784,13 @@ Las compuertas cliffor
 Para construir un computador cuántico, se deben cumplir las siguientes condiciones experimentales:
 
 \begin{enumerate}
-\item Un sistema físico escalable con qubits bien caracterizados.
-\item La habilidad de inicializar el estado de los qubits en un estado fiducial simple.
-\item Tiempos de coherencia relevantes largos.
-\item Un conjunto universal de compuertas cuánticas.
-\item La capacidad de medir qubits en específico.
+    \item Un sistema físico escalable con qubits bien caracterizados.
+    \item La habilidad de inicializar el estado de los qubits en un estado fiducial simple.
+    \item Tiempos de coherencia relevantes largos.
+    \item Un conjunto universal de compuertas cuánticas.
+    \item La capacidad de medir qubits en específico.
 \end{enumerate}
 
+\section{Fidelidad}
 
+\section{Medidas}

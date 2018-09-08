@@ -1,4 +1,4 @@
-# PageRank del grafo estrella
+# PageRank del grafo corona
 
 import matplotlib.pyplot as plt
 import matplotlib as mpl
@@ -134,64 +134,56 @@ def T1(psi0):
 def T1d(psi0):
     return psi0
 
+def Kb1(psi0):                          #CCHH
+    res = tgates.CCRy(psi0, 0, 1, 2, np.pi/2)
+    res = tgates.CCNOT(res.states[-1], 0, 1, 2)
+    res = tgates.CCRy(res.states[-1], 0, 1, 3, np.pi/2)
+    return tgates.CCNOT(res.states[-1], 0, 1, 3)
+
+def Kb1d(psi0):                          #CCHH
+    return Kb2(psi0)
+
 def Kb2(psi0):
-    res = tgates.X(psi0, 0)
-    res = tgates.X(res.states[-1], 1)
+    thetay00 = -2.212560440971914
+    thetay10 = -1.9002206072069958
+    thetay11 = -0.75 * np.pi
 
-    res = tgastes.CCNOT(res.states[-1], 0, 1, 3)
-    res = tgastes.CCCRy(res.states[-1], 0, 1, 3, 2, thetay00)
-    res = tgastes.CCNOT(res.states[-1], 0, 1, 3)
+    res = tgates.X(psi0, 3)
+    res = tgates.CRy(res.states[-1], 3, 2, thetay01)
+    res = tgates.X(res.states[-1], 3)
+    res = tgates.X(res.states[-1], 2)
+    res = tgates.CRy(res.states[-1], 2, 3, thetay00)
+    res = tgates.X(res.states[-1], 2)
+    res = tgates.CRy(res.states[-1], 2, 3, thetay10)
 
-    res = tgastes.CCNOT(res.states[-1], 0, 1, 2)
-    res = tgastes.CCCRy(res.states[-1], 0, 1, 2, 3, thetay10)
-    res = tgastes.CCNOT(res.states[-1], 0, 1, 2)
-
-    res = tgastes.CCCRy(res.states[-1], 0, 1, 2, 3, thetay11)
-
-    res = tgates.X(res.states[-1], 1)
-    return tgates.X(res.states[-1], 0)
+    res = tgates.CCCRy(res.states[-1], 0, 1, 2, 3, -thetay10)
+    res = tgates.CCNOT(res.states[-1], 0, 1, 2)
+    res = tgates.CCCRy(res.states[-1], 0, 1, 2, 3, -thetay00)
+    res = tgates.CCNOT(res.states[-1], 0, 1, 2)
+    res = tgates.CCNOT(res.states[-1], 0, 1, 3)
+    res = tgates.CCCRy(res.states[-1], 0, 1, 3, 2, -thetay01)
+    return tgates.CCNOT(res.states[-1], 0, 1, 3)
 
 def Kb2d(psi0):
-    res = tgates.X(psi0, 0)
-    res = tgates.X(res.states[-1], 1)
+    thetay00 = 2.212560440971914
+    thetay01 = 1.9002206072069958
+    thetay10 = 0.75 * np.pi
 
-    res = tgastes.CCCRy(res.states[-1], 0, 1, 2, 3, -thetay11)
-
-    res = tgastes.CCNOT(res.states[-1], 0, 1, 2)
-    res = tgastes.CCCRy(res.states[-1], 0, 1, 2, 3, -thetay10)
-    res = tgastes.CCNOT(res.states[-1], 0, 1, 2)
-
-    res = tgastes.CCNOT(res.states[-1], 0, 1, 3)
-    res = tgastes.CCCRy(res.states[-1], 0, 1, 3, 2, -thetay00)
-    res = tgastes.CCNOT(res.states[-1], 0, 1, 3)
-
-    res = tgates.X(res.states[-1], 1)
-    return tgates.X(res.states[-1], 0)
-
-def Kb1(psi0):
-    res = tgates.H(psi0, 2)
-    res = tgates.H(res.states[-1], 3)
-
-    res = tgates.X(res.states[-1], 0)
-    res = tgates.X(res.states[-1], 1)
-    res = tgates.CCRy(psi0, 0, 1, 2, np.pi/2)
+    res = tgates.CCNOT(psi0, 0, 1, 3)
+    res = tgates.CCCRy(res.states[-1], 0, 1, 3, 2, -thetay01)
+    res = tgates.CCNOT(res.states[-1], 0, 1, 3)
     res = tgates.CCNOT(res.states[-1], 0, 1, 2)
-    res = tgates.CCRy(res.states[-1], 0, 1, 3, np.pi/2)
-    res = tgates.X(res.states[-1], 1)
-    return tgates.X(res.states[-1], 0)
-
-def Kb1d(psi0):
-
-    res = tgates.X(psi0, 0)
-    res = tgates.X(res.states[-1], 1)
-    res = tgates.CCRy(psi0, 0, 1, 2, np.pi/2)
+    res = tgates.CCCRy(res.states[-1], 0, 1, 2, 3, -thetay00)
     res = tgates.CCNOT(res.states[-1], 0, 1, 2)
-    res = tgates.CCRy(res.states[-1], 0, 1, 3, np.pi/2)
-    res = tgates.X(res.states[-1], 1)
-    res = tgates.X(res.states[-1], 0)
+    res = tgates.CCCRy(res.states[-1], 0, 1, 2, 3, -thetay10)
 
-    res = tgates.H(res.states[-1], 2)
-    return tgates.H(res.states[-1], 3)
+    res = tgates.CRy(res.states[-1], 2, 3, thetay10)
+    res = tgates.X(res.states[-1], 2)
+    res = tgates.CRy(res.states[-1], 2, 3, thetay00)
+    res = tgates.X(res.states[-1], 2)
+    res = tgates.X(res.states[-1], 3)
+    res = tgates.CRy(res.states[-1], 3, 2, thetay01)
+    return tgates.X(res.states[-1], 3)
 
 def Dd(psi0):
     return tgates.CP(psi0, 2, 3, np.pi, b=0b00)
@@ -203,7 +195,6 @@ def reg_SWAP(psi0):
 
 # El algoritmo
 # Estado fiducial
-'''
 print('Preparando estado fiducial...\t {}/{}/{} - {}:{}:{}'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
 psi0 = tensor(basis(2,0), basis(2,0), basis(2,0), basis(2,0))
 
@@ -212,31 +203,28 @@ print('Preparando estado inicial (1/2)...\t {}/{}/{} - {}:{}:{}'.format(time.loc
 res = Kb1(psi0)
 print('Preparando estado inicial (2/2)...\t {}/{}/{} - {}:{}:{}'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
 res = Kb2(res.states[-1])
-'''
-
-res = qload('itj_7')
 
 for i in range(21):
     
-    print('Iteración {}: Aplicando T1...\t {}/{}/{} - {}:{}:{}'.format(i+8, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+    print('Iteración {}: Aplicando T1...\t {}/{}/{} - {}:{}:{}'.format(i+1, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
     res = T1(res.states[-1])
-    print('Iteración {}: Aplicando Kb2^dag...\t {}/{}/{} - {}:{}:{}'.format(i+8, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+    print('Iteración {}: Aplicando Kb2^dag...\t {}/{}/{} - {}:{}:{}'.format(i+1, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
     res = Kb2d(res.states[-1])
-    print('Iteración {}: Aplicando Kb1^dag...\t {}/{}/{} - {}:{}:{}'.format(i+8, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+    print('Iteración {}: Aplicando Kb1^dag...\t {}/{}/{} - {}:{}:{}'.format(i+1, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
     res = Kb1d(res.states[-1])
-    print('Iteración {}: Aplicando Dd...\t {}/{}/{} - {}:{}:{}'.format(i+8, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+    print('Iteración {}: Aplicando Dd...\t {}/{}/{} - {}:{}:{}'.format(i+1, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
     res = Dd(res.states[-1])
-    print('Iteración {}: Aplicando Kb1...\t {}/{}/{} - {}:{}:{}'.format(i+8, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+    print('Iteración {}: Aplicando Kb1...\t {}/{}/{} - {}:{}:{}'.format(i+1, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
     res = Kb1(res.states[-1])
-    print('Iteración {}: Aplicando Kb2...\t {}/{}/{} - {}:{}:{}'.format(i+8, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+    print('Iteración {}: Aplicando Kb2...\t {}/{}/{} - {}:{}:{}'.format(i+1, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
     res = Kb2(res.states[-1])
-    print('Iteración {}: Aplicando T1^dag...\t {}/{}/{} - {}:{}:{}'.format(i+8, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+    print('Iteración {}: Aplicando T1^dag...\t {}/{}/{} - {}:{}:{}'.format(i+1, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
     res = T1d(res.states[-1])
-    print('Iteración {}: Aplicando reg_SWAP...\t {}/{}/{} - {}:{}:{}'.format(i+8, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+    print('Iteración {}: Aplicando reg_SWAP...\t {}/{}/{} - {}:{}:{}'.format(i+1, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
     res = reg_SWAP(res.states[-1])
     
-    print('Iteración {}: Guardando resultado de iteración...\t {}/{}/{} - {}:{}:{}'.format(i+8, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
-    qsave(res, 'itj_{}'.format(i+8))
+    print('Iteración {}: Guardando resultado de iteración...\t {}/{}/{} - {}:{}:{}'.format(i+1, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+    qsave(res, 'it_{}'.format(i+1))
 
-    print('Iteración {}: Terminada\t {}/{}/{} - {}:{}:{}'.format(i+8, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+    print('Iteración {}: Terminada\t {}/{}/{} - {}:{}:{}'.format(i+1, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
 
