@@ -135,6 +135,10 @@ def T1d(psi0):
     return psi0
 
 def Kb2(psi0):
+    thetay00 = -2.212560440971914
+    thetay10 = -1.9002206072069958
+    thetay11 = -0.75 * np.pi
+
     res = tgates.X(psi0, 0)
     res = tgates.X(res.states[-1], 1)
 
@@ -152,6 +156,10 @@ def Kb2(psi0):
     return tgates.X(res.states[-1], 0)
 
 def Kb2d(psi0):
+    thetay00 = -2.212560440971914
+    thetay10 = -1.9002206072069958
+    thetay11 = -0.75 * np.pi
+
     res = tgates.X(psi0, 0)
     res = tgates.X(res.states[-1], 1)
 
