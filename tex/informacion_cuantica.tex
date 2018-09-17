@@ -12,13 +12,13 @@ El estado de una sistema cuántico viene dado por el conocimiento de un campo es
 
 Donde $S$ es todo el universo. Esto es para funciones de onda que describen una partícula, en el siguiente capítulo se verán funciones de onda macroscópicas que describen sistemas de muchas partículas. En estos, el módulo cuadrádo de $\psi$ describe la densidad de partículas, la cual podría entenderse como la suma de la densidad de probabilidad de que cada una de las partículas se encuentren en ese punto, y $\int\limits_S \abs{\psi(r,t)}^2 dr = N_s$, donde $N_s$ es el número total de partículas del sistema, el cual podría entenderse como la suma de que cada una de las partículas se encuentre en algún punto del sistema.
 
-Según la mecánica clásica, ondas y partículas son dos entidades distintas, la primera es un ente puntual con posición definida que transporta masa, momentum y energía por el espacio, mientras que una onda es un ente disperso que transporta momentum y energía, pero no masa. En la mecánica cuántica existe la dualidad partícula-onda. Los entes cuánticos nos son partículas u ondas como se entienden en la mecánica clásica, pero se pueden comportar como estos bajo ciertas condiciones. Por ejemplo, un electrón que se dispara por un cañón tendrá una probabilidad de encontrarse en cierta región del espacio, pero a diferencia de la mecánica estadística clásica, este electrón no es una partícula cuya posición exacta se desconoce, sino que tiene comportamientos propios de una onda, como la interferencia destructiva. Este comportamiento de onda se mantiene hasta que se realice una medida de la posición de este electrón. En ese momento, la distribución de probabilidad de la posición de ese electrón se concentra en un punto y pasa a comportarse como una partícula. Lo mismo sucede con los fotones, que son las partículas de la luz. De hecho, debido a la naturaleza cuántica de la luz es que existen fenómenos como el efecto fotoeléctrico, el cual es un fenómeno de partículas, a pesar de que clásicamente la luz sea una onda.
+%Según la mecánica clásica, ondas y partículas son dos entidades distintas, la primera es un ente puntual con posición definida que transporta masa, momentum y energía por el espacio, mientras que una onda es un ente disperso que transporta momentum y energía, pero no masa. En la mecánica cuántica existe la dualidad partícula-onda. Los entes cuánticos nos son partículas u ondas como se entienden en la mecánica clásica, pero se pueden comportar como estos bajo ciertas condiciones. Por ejemplo, un electrón que se dispara por un cañón tendrá una probabilidad de encontrarse en cierta región del espacio, pero a diferencia de la mecánica estadística clásica, este electrón no es una partícula cuya posición exacta se desconoce, sino que tiene comportamientos propios de una onda, como la interferencia destructiva. Este comportamiento de onda se mantiene hasta que se realice una medida de la posición de este electrón. En ese momento, la distribución de probabilidad de la posición de ese electrón se concentra en un punto y pasa a comportarse como una partícula. Lo mismo sucede con los fotones, que son las partículas de la luz. De hecho, debido a la naturaleza cuántica de la luz es que existen fenómenos como el efecto fotoeléctrico, el cual es un fenómeno de partículas, a pesar de que clásicamente la luz sea una onda.
 
-Es importante resaltar que a pesar de que los objetos cuánticos se puedan comportar como partículas u ondas clásicas bajo ciertas condiciones, en ningún momento son ondas ni partículas como se entiende en la mecánica clásica. Por ejemplo, la ``onda electrónica'' del párrafo anterior es una ``onda'' que transporta masa, mientras que en la definición de onda se especifíca explícitamente que las ondas no transportan masa. Por otro lado, los fotones son partículas sin masa, lo cual también es algo que no sucede con las partículas de la mecánica clásica. Así que los objetos cuánticos, a pesar de que lleven el nombre de "partícula" y se hable de la dualidad onda-partícula, no son ondas, ni partículas. Sólo son objetos cuyas propiedades vienen descritas por una función compleja de cuadrado integrable, cuyo módulo al cuadrado está asociado a una densidad de probabilidad.
+%Es importante resaltar que a pesar de que los objetos cuánticos se puedan comportar como partículas u ondas clásicas bajo ciertas condiciones, en ningún momento son ondas ni partículas como se entiende en la mecánica clásica. Por ejemplo, la ``onda electrónica'' del párrafo anterior es una ``onda'' que transporta masa, mientras que en la definición de onda se especifíca explícitamente que las ondas no transportan masa. Por otro lado, los fotones son partículas sin masa, lo cual también es algo que no sucede con las partículas de la mecánica clásica. Así que los objetos cuánticos, a pesar de que lleven el nombre de "partícula" y se hable de la dualidad onda-partícula, no son ondas, ni partículas. Sólo son objetos cuyas propiedades vienen descritas por una función compleja de cuadrado integrable, cuyo módulo al cuadrado está asociado a una densidad de probabilidad.
 
-\subsection{Espacio de Hilbert}
+\section{Espacio de Hilbert}
 
-Los espacios de Hilbert, creados por el matemático David Hilbert y normalizados por John von Neumann en el siglo XX, son el soporte matemático de la mecánica cuántica. Un espacio de Hilbert es un espacio vectorial complejo $\mathcal{H}$ de cuadrados integrables con un producto interno $(f,g)$ donde la norma vectorial se define como $\norm{f} = \sqrt{(f,f)}$. El ejemplo por excelencia de un espacio de Hilbert es $\mathcal{L}^2$.
+Los espacios de Hilbert, creados por el matemático David Hilbert y normalizados por John von Neumann en el siglo XX, son el soporte matemático de la mecánica cuántica. Un espacio de Hilbert es un espacio vectorial complejo $\mathcal{H}$ de cuadrados integrables con un producto interno $(f,g)$ donde la norma vectorial se define como $\norm{f} = \sqrt{(f,f)}$.
 
 Un conjunto de $2^n$ funciones $B = \{f_n\} \subset \mathcal{H}$ es llamado base ortonormal de $\mathcal{H}$ si y sólo si:
 
@@ -38,7 +38,7 @@ En la mecánica cuántica, todas las funciones de onda deben pertenecer un espac
     \norm{\psi} = 1 \quad \forall \psi \in \mathcal{H}
 \end{equation}
 
-\subsubsection{Propiedades}
+Los espacios de Hilbert tienen las siguientes propiedades:
 
 \begin{enumerate}
     \item Producto escalar: $(\psi, \phi) = \int\limits_S \psi^* \phi dr \quad \in \mathds{C}$
@@ -52,9 +52,7 @@ En la mecánica cuántica, todas las funciones de onda deben pertenecer un espac
     \item Operadoers lineales: $\psi^\prime = \hat{A} \psi$
 \end{enumerate}
 
-\section{Herramientas necesarias}
-
-\subsection{Delta de Kronecker}
+\section{Delta de Kronecker}
 
 La delta de Kronecker, $\delta_{n,m}$ es un símbolo que representa dos posibles valores, dependiendo de sus índices,
 
@@ -72,7 +70,7 @@ Dado que el símbolo sólo es diferente de cero cuando sus índices son iguales,
     \sum\limits_m \delta_{nm} B_m = 0 B_1 + 0 B_2 + ... + 1 B_n + ... = B_n
 \end{equation*}
 
-\subsection{Notación de Dirac}
+\section{Notación de Dirac}
 
 En 1930 en el libro Principios de la Mecánica Cuántica Paul Dirac introdujo una poderosa notación para poder describir estados cuánticos y funciones lineales, también conocida como notación Bra-Ket. Con la notación de Dirac podemos representar un estado base de $n$ elementos con una cadena binaria de longitud $n$, mientras que con la representación de vectores columna necesitariamos $2^n$ componentes para definir el mismo vector.
 
@@ -95,18 +93,35 @@ El producto interno de kets es el producto de un bra seguido de un ket $\braket{
     (\braket{\phi}{\psi})^\dagger &= \braket{\psi}{\phi} = z^*
 \end{align}
 
-El producto externo es el producto de un ket seguido de un bra $ketbra{\phi}{\psi}$. El resultado es un proyector que toma la componente en $\ket{\psi}$ de un estado cuántico y la convierte en $\ket{\phi}$. Este producto cumple con las siguientes propiedades:
+El producto externo es el producto de un ket seguido de un bra $ketbra{\phi}{\psi}$. El resultado es un proyector que toma la componente en $\ket{\psi}$ de un estado cuántico y la convierte en $\ket{\phi}$. Ejemplos:
+
+\begin{align*}
+    \ketbra{0}{0} &= \begin{pmatrix} 1 \\ 0 \end{pmatrix} \begin{pmatrix} 1 & 0 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \\
+    \ketbra{0}{1} &= \begin{pmatrix} 1 \\ 0 \end{pmatrix} \begin{pmatrix} 0 & 1 \end{pmatrix} = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} \\
+    \ketbra{1}{0} &= \begin{pmatrix} 0 \\ 1 \end{pmatrix} \begin{pmatrix} 1 & 0 \end{pmatrix} = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} \\
+    \ketbra{1}{1} &= \begin{pmatrix} 0 \\ 1 \end{pmatrix} \begin{pmatrix} 0 & 1 \end{pmatrix} = \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} \\
+    \ketbra{\psi}{\psi} &= (\alpha \ket{0} + \beta \ket{1})(\alpha^* \bra{0} + \beta^* \bra{1}) = \begin{pmatrix} \abs{\alpha}^2 & \alpha \beta^* \\ \alpha^* \beta & \abs{\beta}^2 \end{pmatrix}
+\end{align*}
+
+Este producto cumple con las siguientes propiedades:
 
 \begin{align}
     \ketbra{\phi}{\psi} &= \Pi \\
     (\ketbra{\phi}{\psi})^\dagger &= \ketbra{\psi}{\phi} = \Pi^\dagger
 \end{align}
 
-La aplicación de un proyector $\ketbra{\psi}{\phi}$ sobre un estado $\ket{\varphi}$ consiste en la multiplicación del escalar $c = \braket{\phi}{\varphi}$ al estado $\psi$.
+El operador $\Pi$ que consiste de un producto exterior se conoce como proyector. La aplicación de un proyector $\ketbra{\psi}{\phi}$ sobre un estado $\ket{\varphi}$ es equivalente a la multiplicación del escalar $c = \braket{\phi}{\varphi}$ al estado $\psi$.
 
 \begin{equation}
     \ketbra{\psi}{\phi} \ket{\varphi} = \braket{\phi}{\varphi} \ket{\psi} = c \ket{\psi}
 \end{equation}
+
+Si además, el proyector es tal que $\ket{\psi} = \bra{\phi}^\dagger$, es decir: $\Pi = \ketbra{\psi}{\psi}$, entonces se cumple también que:
+
+\begin{align}
+    \Pi^2 &= \ketbra{\psi}{\psi} \ketbra{\psi}{\psi} = 1 \ketbra{\psi}{\psi} = \Pi \\
+    \Pi^\dagger &= (\ketbra{\psi}{\psi})^\dagger = \ketbra{\psi}{\psi} = \Pi
+\end{align}
 
 La notación de Dirac se relaciona con el formalismo de funciones de onda de la siguiente manera:
 
@@ -116,14 +131,23 @@ La notación de Dirac se relaciona con el formalismo de funciones de onda de la 
 
 Donde $\bra{x}$ es el bra asociado a estar en la posición $x$.
 
-
 \section{Operadores unitarios}
 
-Estos son operadores tales que $U U^\dagger = \mathds{1}$ con determinante igual a 1.En la mecánica cuántica todas las operaciones que se realicen sobre un estado y no involucren medidas tienen un operador unitario asociado. Por ejemplo, la evolución temporal tiene un estado unitario $U$ asociado.
+Estos son operadores tales que $U U^\dagger = \mathds{1}$ con determinante igual a 1. En la mecánica cuántica todas las operaciones que se realicen sobre o que afecten a un un estado y no involucren medidas ni decoherencia tienen un operador unitario asociado. Por ejemplo, la evolución temporal tiene un estado unitario $U$ asociado. Los operadores unitarios son importantes porque ellos preservan las trazas, las normas y la información, de esta manera, cuando se aplica un operador unitario a un estado cuántico, se preserva la normalización de las probabilidades.
+
+\section{Operadores hermíticos}
+
+Estos son operadores tales que $U = U^\dagger$. Estos operadores cumplen con la propiedad de que todos sus autovalores son reales. En la mecácina cuántica, todas las variables físicas observables (o simplemente, observables), es decir, todas aquellas variables que se pueden medir en un laboratorio, son autovalores asociados a un operador hermítico.
 
 \section{Producto tensorial}
 
-Cuando un sistema tiene más de una partición, para representar todo el sistema en un sólo ket, se realiza el producto tensorial de las particiones $\ket{\psi} = \ket{\psi_1} \otimes \ket{\psi_2}$.
+Cuando un sistema compuesto por dos (o más) espacios de Hilbert, $\mathcal{H}_A$ y $\mathcal{H}_B$, el espacio del sistema completo se escribe en función del producto tensorial $\mathcal{H} = \mathcal{H}_A \otimes \mathcal{H}_B$. Aquí, $\mathcal{H}_A$ y $\mathcal{H}_B$ se conocen como las particiones de $\mathcal{H}$. De igual manera, para representar un estado de $\mathcal{H}$ en un ket, en lugar de dos, se realiza el producto tensorial $\ket{\psi} = \ket{\psi_1} \otimes \ket{\psi_2}$. También se pueden agregar subindices a los kets para hacer énfasis en las particiones:
+
+\begin{array}{c c}
+    $\ket{\psi}$ & $\in \mathcal{H}$ \\
+    $\ket{\psi}_A \otimes \ket{\phi}_B$ & $\in \mathcal{H}_A \otimes \mathcal{H}_B$ \\
+    $\ket{\psi_1}_1 \otimes \ket{\psi_2}_2 \otimes ... \otimes \ket{\psi_n}_n$ & $\in \mathcal{H}_1 \otimes \mathcal{H}_2 \otimes ... \otimes \mathcal{H}_n$
+\end{array}
 
 En la representación matricial el producto tensorial se realiza de la siguiente manera:
 
@@ -139,6 +163,17 @@ En la representación matricial el producto tensorial se realiza de la siguiente
         d
     \end{pmatrix}
     =
+    \left(\!\!\!\begin{array}{c}
+            a \left(\!\!\begin{array}{c}
+                    c \\
+                    d \\
+            \end{array}\!\!\right) \\
+            b \left(\!\!\begin{array}{c}
+                    c \\
+                    d \\
+            \end{array}\!\!\right)
+    \end{array}\!\!\!\right)
+    =
     \begin{pmatrix}
         a c \\
         a d \\
@@ -147,7 +182,7 @@ En la representación matricial el producto tensorial se realiza de la siguiente
     \end{pmatrix}
 \end{equation*}
 
-\subsection{Propiedades}
+El producto tensorial tiene las siguientes propiedades:
 
 \begin{align}
     (U_1 \otimes U_2) (\ket{\psi_1} \otimes \ket{\psi_2}) &= (U_1 \ket{\psi_1}) \otimes (U_2 \ket{\psi_2}) \\
@@ -156,12 +191,56 @@ En la representación matricial el producto tensorial se realiza de la siguiente
     (\ket{\psi_1} \otimes \ket{\psi_2})^\dagger &= \bra{\psi_1} \otimes \bra{\psi_2}
 \end{align}
 
-\subsection{Nota sobre la notación}
+En el caso de los bras y los kets, el producto tensorial también se puede escribir de la forma $\ket{\psi\phi}$, en lugar de $\ket{\psi} \otimes \ket{\phi}$.
 
-Un estado multipartito se puede escribir de la forma extensa $\ket{\psi} \otimes \ket{\phi}$ o de la forma compacta $\ket{\psi \phi}$. También se pueden agregar subíndices para hacer énfasis en las particiones $\ket{\psi}_A \otimes \ket{\phi}$. Entonces:
+%Un estado multipartito se puede escribir de la forma extensa $\ket{\psi} \otimes \ket{\phi}$ o de la forma compacta $\ket{\psi \phi}$. También se pueden agregar subíndices para hacer énfasis en las particiones $\ket{\psi}_A \otimes \ket{\phi}$. Entonces:
 
 \begin{equation*}
     \ket{\psi}_A \otimes \ket{\phi}_B = \ket{\psi} \otimes \ket{\phi} = \ket{\psi_A \phi_B} = \ket{\psi\phi}
+\end{equation*}
+
+Ejemplos:
+
+\begin{equation*}
+    \ket{0} \otimes \ket{0}
+    = \begin{pmatrix} 1\\0 \end{pmatrix} \otimes \begin{pmatrix} 1\\0 \end{pmatrix}
+    = \begin{pmatrix} 1\\0\\0\\0 \end{pmatrix}
+\end{equation*}
+
+\begin{equation*}
+    \ket{0} \otimes \ket{1}
+    = \begin{pmatrix} 1\\0 \end{pmatrix} \otimes \begin{pmatrix} 0\\1 \end{pmatrix}
+    = \begin{pmatrix} 0\\1\\0\\0 \end{pmatrix}
+\end{equation*}
+
+\begin{equation*}
+    \ket{1} \otimes \ket{0}
+    = \begin{pmatrix} 0\\1 \end{pmatrix} \otimes \begin{pmatrix} 1\\0 \end{pmatrix}
+    = \begin{pmatrix} 0\\0\\1\\0 \end{pmatrix}
+\end{equation*}
+
+\begin{equation*}
+    \ket{1} \otimes \ket{1}
+    = \begin{pmatrix} 0\\1 \end{pmatrix} \otimes \begin{pmatrix} 0\\1 \end{pmatrix}
+    = \begin{pmatrix} 0\\0\\0\\1 \end{pmatrix}
+\end{equation*}
+
+\begin{equation*}
+    \mathds{1} \otimes \sigma_x
+    = \begin{pmatrix}
+        1 & 0 \\
+        0 & 1
+        \end{pmatrix} \otimes
+        \begin{pmatrix}
+            0 & 1 \\
+            1 & 0
+        \end{pmatrix}
+    = \begin{pmatrix}
+        0 & 1 & 0 & 0 \\
+        1 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 1 \\
+        0 & 0 & 1 & 0
+    \end{pmatrix}
 \end{equation*}
 
 \section{Postulados de la mecánica cuántica}
@@ -177,17 +256,17 @@ La mecánica cuántica que fundamenta la teoría de información cuántica se de
     \item Ecuación de Schrödinger: La evolución temporal del estado $\ket{\psi}$ viene dada por la ecuación de Schrödinger $i \hbar \frac{d}{d t} \ket{\psi} = \hat{H} \ket{\psi}$, donde $\hat{H}$ es el Hamiltoniano del sistema (el operador asociado a la energía).
 \end{enumerate}
 
-\section{Matriz de densidad}
+\section{Matriz densidad}
 
-Para describir un estado cuántico que no sólo involucre superposiciones cuánticas, sino también clásicas, es decir, un ensemble estadístico de estados cuánticos, podemos usar la representación de los operadores o matrices de densidad $\rho$.
+Para describir un estado cuántico que no sólo involucre superposiciones cuánticas, sino también clásicas, es decir, un ensemble estadístico de estados cuánticos, podemos usar la representación de los operadores o matrices densidad $\rho$.
 
-De aquí surge la clasificación de estados en puros y mixtos. Los estados puros son aquellos que no presentan superposición clásica (o mezcla) y su matriz de densidad se puede escribir como:
+De aquí surge la clasificación de estados en puros y mixtos. Los estados puros son aquellos que no presentan superposición clásica (o mezcla) y su matriz densidad se puede escribir como:
 
 \begin{equation}
     \rho = \ketbra{\psi}{\psi}
 \end{equation}
 
-Los estados mixtos son aquellos que son formados por un ensemble estadístico y su matriz de densidad, escrita en función de los estados que pertenecen al ensemble o mezcla, es la siguiente:
+Los estados mixtos son aquellos que son formados por un ensemble estadístico y su matriz densidad, escrita en función de los estados que pertenecen al ensemble o mezcla, es la siguiente:
 
 \begin{equation}
     \rho = \sum_i p_i \ketbra{\psi_i}{\psi_i}
@@ -195,20 +274,22 @@ Los estados mixtos son aquellos que son formados por un ensemble estadístico y 
 
 Donde $p_i$ es la probabilidad asociada a cada estado puro de la mezcla y $\sum_i p_i = 1$.
 
-\subsection{Propiedades}
+Las matrices densidad tienen las siguientes propiedades:
 
 \begin{enumerate}
-    \item Traza igual a uno
-    \item Autovalores positivos
-    \item Hermíticas
-    \item Cuadrado:
-        \begin{enumerate}
-            \item Estado puro: $Tr(\rho^2) = 1$
-            \item Estado mixto $Tr(\rho^2) < 1$
-        \end{enumerate}
+    \item Traza igual a uno: $Tr(\rho) = 1$
+    \item Hermíticas: $\rho^\dagger = \rho$
+    \item Autovalores no negativos: $\rho \ket{\lambda_i} = \lambda_i \ket{\lambda_i}, \quad \lambda_i \geq 0$
 \end{enumerate}
 
-En una matriz de densidad, los elementos de la diagonal son las poblaciones y los elementos fuera de ésta son las transiciones. Las poblaciones representan la probabilidades de que el sistema se encuentre en cada estado de la base tras una medida, mientras que las transiciones hacen referencia a la coherencia cuántica entre los elementos de la base que conforman el estado. Por ejemplo, el estado con superposición cuántica: $\ket{\psi} = (\ket{0} + \ket{1})/\sqrt{2}$ tiene la siguiente matriz de densidad:
+Las matrices densidad asociadas a un estado puro o mixto se pueden intentificar con la traza del cuadrado de la matriz densidad:
+
+\begin{enumerate}
+    \item Estado puro: $Tr(\rho^2) = 1$
+    \item Estado mixto $Tr(\rho^2) < 1$
+\end{enumerate}
+
+En una matriz densidad, los elementos de la diagonal son las poblaciones y los elementos fuera de ésta son las transiciones. Las poblaciones representan la probabilidades de que el sistema se encuentre en cada estado de la base tras una medida, mientras que las transiciones hacen referencia a la coherencia cuántica entre los elementos de la base que conforman el estado. Por ejemplo, el estado con superposición cuántica: $\ket{\psi} = (\ket{0} + \ket{1})/\sqrt{2}$ tiene la siguiente matriz densidad:
 
 \begin{equation}
     \rho_1 = \ketbra{\psi}{\psi} = \frac{1}{2} (\ketbra{0}{0} + \ketbra{0}{1} + \ketbra{1}{0} + \ketbra{1}{1}) =
@@ -254,7 +335,7 @@ La traza parcial se define de la siguiente manera:
 
 Esta traza elimina la porción de $\rho_{A B}$ perteneciente a $\mathcal{H}_A$. Si pudiesemos escribir $\rho_{A B} = \rho{A} \otimes \rho{B}$ (este no siempre es el caso, más información en la sección siguiente), entonces $Tr_A(\rho_{A B}) = \rho_B$
 
-En caso que se quiera tener $\rho_A$ en lugar de $\rho_B$, entonces tenemos que tracear la partición B, en lugar de la partición A, de la siguiente manera:
+En caso que se quiera tener $\rho_A$ en lugar de $\rho_B$, entonces tenemos que tomar la traza parcial de la partición B, en lugar de la partición A, de la siguiente manera:
 
 \begin{equation}
     Tr_B(\rho_{A B}) = \sum\limits_i (\mathds{1}_A \otimes \bra{i}_B) \rho (\mathds{1}_A \otimes \ket{i}_B)
@@ -266,19 +347,19 @@ Para entender mejor la traza parcial, recordemos la definición de la traza norm
     Tr(\rho) = \sum\limits_i \bra{i} \rho \ket{i}
 \end{equation}
 
-El par $\bra{i} \ket{i}$ lo que hace es seleccionar el i-ésimo elemento de la diagonal de la matriz $\rho$, entonces es la suma de todas las poblaciones en cada estado $\ket{i}$ de la base de $\mathcal{H}$ y mapea este espacio de Hilbert a uno escalar (en el caso de las matrices de densidad, las mapea al número 1, por la normalización de las probabilidades). La traza parcial hace algo similar, solo que sólo sobre las poblaciones de $\mathcal{H}_A$ o de $\mathcal{H}_B$, dejando a la otra partición intacta. Es decir, el efecto de la traza y de las trazas parciales sobre una matriz de densidad es, en resumen, el siguiente:
+El par $\bra{i} \ket{i}$ lo que hace es seleccionar el i-ésimo elemento de la diagonal de la matriz $\rho$, entonces es la suma de todas las poblaciones en cada estado $\ket{i}$ de la base de $\mathcal{H}$ y mapea este espacio de Hilbert a uno escalar (en el caso de las matrices densidad, las mapea al número 1, por la normalización de las probabilidades). La traza parcial hace algo similar, solo que sólo sobre las poblaciones de $\mathcal{H}_A$ o de $\mathcal{H}_B$, dejando a la otra partición intacta. Es decir, el efecto de la traza y de las trazas parciales sobre una matriz densidad es, en resumen, el siguiente:
 
 \begin{enumerate}
-    \item $Tr: \mathcal{H}_A \otimes \mathcal{H}_B \rightarrow 1$
-    \item $Tr_A: \mathcal{H}_A \otimes \mathcal{H}_B \rightarrow 1 \otimes \mathcal{H}_B$
-    \item $Tr_B: \mathcal{H}_A \otimes \mathcal{H}_B \rightarrow \mathcal{H}_A \otimes 1$
+    \item $Tr(\rho_{A B}) = 1$, donde $\rho \in \mathcal{H}_A \otimes \mathcal{H}_B$
+    \item $Tr_A(\rho_{A B}) = \rho_B$, donde $\rho \in \mathcal{H}_A \otimes \mathcal{H}_B$ y $\rho_B \in \mathcal{H}_B$
+    \item $Tr_B(\rho_{A B}) = \rho_A$, donde $\rho \in \mathcal{H}_A \otimes \mathcal{H}_B$ y $\rho_A \in \mathcal{H}_A$
 \end{enumerate}
 
 
 \subsection{Comparación con el producto tensorial}
 
 \begin{enumerate}
-    \item El producto tensorial se puede realizar con kets o con matrices de densidad. Pero la traza parcial sólo se puede aplicar a matrices de densidad.
+    \item El producto tensorial se puede realizar con kets o con matrices densidad. Pero la traza parcial sólo se puede aplicar a matrices densidad.
     \item El producto tensorial de dos estados puros es otro estado puro. Sin embargo, las trazas parciales de un estado puro no necesariamente son estados puros. En la próxima sección se explicará más al respecto.
 \end{enumerate}
 
@@ -308,9 +389,18 @@ Pero esto implicaría, al mismo tiempo que:
     \item Ninguna de las siguientes variables es cero: $\alpha, \beta, \gamma, \delta$
 \end{enumerate}
 
-Lo cual resulta contradictorio y se concluye que existen estados no separables o que $\ket{\psi}$ no es un estado físicamente realizable. El primer caso es el que ocurre, pues $\ket{\psi}$ sí es físicamente realizable y se han ejecutado gran cantidad de experimentos con estados no separables como este y muchos más.
+Lo cual resulta contradictorio y se concluye que existen estados no separables. Veamos qué significa esto en términos de la distribución de probabilidaes:
 
-A la propiedad de causa esta inseparabilidad se le conoce como entrelazamiento y es la correlación cuántica más estudiada hasta ahora.
+\begin{array}{c c c c}
+    & $\ket{\psi}_A = \ket{0}$ & $\ket{\psi}_A = \ket{0}$ & $P(A)$ \\
+    $\ket{\psi}_B = \ket{0}$ & 1/2 & 0 & 1/2 \\
+    $\ket{\psi}_B = \ket{1}$ & 0 & 1/2 & 1/2 \\
+    $P(B)$ & 1/2 & 1/2 &
+\end{array}
+
+De esta tabla se puede ver que las particiones $A$ y $B$ no son independientes, pues las probabilidades condicionadas no son el producto de las probabilidades sin condicionar $P(A|B) \neq P(A)P(B)$. Es decir, existe una correlación.
+
+A la correlación que causa la inseparabilidad de los sistemas se le conoce como entrelazamiento y es la correlación cuántica que va más allá de la interacción espacial.
 
 Si se toma la traza parcial de un estado enterlazado puro, el resultado es un estado mixto, como consecuencia de la inseparabilidad de los estados entrelazados.
 
@@ -385,7 +475,7 @@ Estas matrices son de especial importancia en la mecánica cuántica y represent
         \end{pmatrix}
 \end{align}
 
-\subsubsection{Propiedades}
+Las matrices de Pauli cumplen las siguientes propiedades:
 
 \begin{enumerate}
     \item Autovalores $\pm 1$
@@ -393,6 +483,79 @@ Estas matrices son de especial importancia en la mecánica cuántica y represent
     \item $[\sigma_i, \sigma_j] = i \sigma_k$, donde $(i,j) \in \{(x,y), (y,z), (z,x)\}$
     \item $[\sigma_j, \sigma_i] = - i \sigma_k$, donde $(i,j) \in \{(x,y), (y,z), (z,x)\}$
 
+\subsection{Circuitos cuánticos}
+
+El equivalente a los circuitos digitales en la computación cuántica es los circuitos cuánticos. Ellos describen la secuencia de operaciones que se deben aplicar a los qubits para ejecutar cierto algoritmo. Es importante resaltar que estos circuitos no representan componentes tangibles, sino componentes de información. En este sentido, los circuitos cuánticos son más el análogo del lenguaje de máquina que de los circuitos digitales.
+
+\[
+    \Qcircuit @C=1.4em @R=1.8em {
+        \lstick{\ket{0}} & \gate{U}  & \ctrl{2} & \qw        & \gate{U}   & \qw & \qw    \\
+        \lstick{\ket{0}} & \multigate{1}{U} & \qw      & \ctrlo{1}  & \ctrl{-1}  & \qw & \qw    \\
+        \lstick{\ket{1}} & \ghost{U} & \gate{U} & \gate{U}   & \ctrlo{-1} & \meter & \cw \\
+    }
+\]
+
+En esta figura se observan los siguientes elementos:
+
+\begin{enumerate}
+    \item Estado inicial: Este es el estado con el que se inicia el algoritmo.
+\[
+    \Qcircuit @C=1.4em @R=1.8em {
+        \lstick{\ket{\psi}} \\
+    }
+\]
+    \item Compuerta unitaria de un qubit: Representa una operación unitaria sobre el qubit en cuya linea se encuentra.
+\[
+    \Qcircuit @C=1.4em @R=1.8em {
+        & \gate{U} \\
+    }
+\]
+    \item Compuerta unitaria multiqubit: Representa una operación unitaria sobre los qubits en cuyas líneas se encuentra.
+\[
+    \Qcircuit @C=1.4em @R=1.8em {
+        & \multigate{1}{U} \\
+        & \ghost{U} \\
+    }
+\]
+    \item Compuerta unitaria condicionada cuánticamente: El punto blanco o negro indica que el qubit de esa línea es el qubit de control. Si el punto es blanco, se aplica la compuerta $U$ si el qubit de control es $\ket{0}$. Si el punto es negro, se aplica la compuerta $U$ si el qubit de control es $\ket{1}$. Es caso de que el qubit de control se encuentre en estado de superposición, la compuerta se aplica y no se aplica, simultaneamente.
+\[
+    \Qcircuit @C=1.4em @R=1.8em {
+        & \ctrl{1} \\
+        & \gate{U} \\
+    }
+\]
+\[
+    \Qcircuit @C=1.4em @R=1.8em {
+        & \ctrlo{1} \\
+        & \gate{U}  \\
+    }
+\]
+    \item Compuerta unitaria condicionada clásicamente: Equivalente a un if de cualquier lenguaje de programación clásica. Sólo se aplica la compuerta $U$ si el bit de control es 1.
+\[
+    \Qcircuit @C=1.4em @R=1.8em {
+        & \cwx[1] \\
+        & \gate{U}  \\
+    }
+\]
+    \item Medida proyectiva: Representa una medida proyectiva del qubit en cuya linea se encuentra.
+\[
+    \Qcircuit @C=1.4em @R=1.8em {
+        & \meter \\
+    }
+\]
+    \item Cable cuántico: No es un cable físico, sólo lleva ese nombre en analogía a los circuitos clásicas, donde las compuertas sí son componentes electrónicos en conexión. En el caso de los circuitos cuánticos, este elemento sólo representa que se mantiene la coherencia del qubit y que no se aplica ninguna compuerta sobre él en ese paso del algoritmo.
+\[
+    \Qcircuit @C=1.4em @R=1.8em {
+        & \qw \\
+    }
+\]
+    \item Cable clásico: Representa el bit clásico que se obtiene tras la medida de un qubit.
+\[
+    \Qcircuit @C=1.4em @R=1.8em {
+        & \cw \\
+    }
+\]
+\end{enumerate}
 
 \subsection{Compuertas cuánticas}
 Las operaciones unitarias con las que se opera sobre los qubits reciben el nombre de compuertas cuánticas.
@@ -708,8 +871,6 @@ R_x(\theta) = R_z(\frac{\pi}{2}) R_y(\theta) R_z(\frac{-\pi}{2})
 \]
 \end{minipage}
 
-\subsubsection{Compuerta de Fredkin}
-
 \subsubsection{Compuerta de Deutsch}
 
 \begin{minipage}{0.5\textwidth}
@@ -748,7 +909,7 @@ R_x(\theta) = R_z(\frac{\pi}{2}) R_y(\theta) R_z(\frac{-\pi}{2})
 Un conjunto universal de compuertas cuánticas (CUCC) es un conjunto finito de compuertas cuánticas con el cuál se puede aproximar cualquier operación unitaria arbitrariamente bien.
 \vspace{0.5cm}
 
-Cualquier operador unitario puede ser escrito en función de compuertas de uno y dos qubits [Barenco et al. 1995].
+Cualquier operador unitario puede ser escrito en función de compuertas de uno y dos qubits \cite{barenco}.
 \vspace{0.5cm}
 
 Un CUCC simple es $\{H,T,\mathit{CNOT}\}$.
@@ -762,23 +923,9 @@ La compuerta de Toffoli es un caso especial de la compuerta de Deutsch, $D(\frac
 
 Otro CUCC consiste en la compuerta de Ising y la compuerta de cambio de fase, \{$\mathit{XX}_\phi,R_z(\theta)$\}. Este conjunto es nativo en algunas computadoras cuánticas de trampas de iones.
 
-\subsection{Compuertas no cliffordianas}
-Las compuertas cliffor
+\subsection{El grupo de Clifford}
 
-\subsection{Circuitos cuánticos}
-
-El equivalente a los circuitos digitales en la computación cuántica es los circuitos cuánticos. Ellos describen la secuencia de operaciones que se deben aplicar a los qubits para ejecutar cierto algoritmo.
-
-\[
-    \Qcircuit @C=1.4em @R=1.8em {
-        \lstick{\ket{0}} & \qw      & \ctrl{2} & \qw        & \gate{U}   & \qw \\
-        \lstick{\ket{0}} & \gate{U} & \qw      & \ctrlo{1}  & \ctrl{-1}  & \qw \\
-        \lstick{\ket{1}} & \qw      & \gate{U} & \gate{U}   & \ctrlo{-1} & \qw \\
-    }
-\]
-
-
-\subsection{Algoritmos cuánticos}
+El grupo de Clifford es el grupo generado por las compuertas CZ, Hadamard y Uz(pi/2).
 
 \subsection{Criterios de DiVincenzo}
 Para construir un computador cuántico, se deben cumplir las siguientes condiciones experimentales:
@@ -793,4 +940,17 @@ Para construir un computador cuántico, se deben cumplir las siguientes condicio
 
 \section{Fidelidad}
 
-\section{Medidas}
+\section{Medidas proyectivas}
+
+\cite{sttiwuer}
+
+El esquema de medidas proyectivas, también llamadas medidas de von Neumann, se encuentra formado por proyectores ortogonales asociados a la medida espectral de un observable. Este esquema es la medida por excelencia utilizada por los físicos, ya que está directamente asociada a la medición de una propiedad del sistema o un conjunto compatible de ellas, y tales propiedades son caracterizadas a través de operadores autoadjuntos. Esta medida fue empleada por von Neumann para descomponer a los observables de un sistema cuántico en una combinación lineal de proyectores, donde cada proyector está a asociado a lso subespacios $\mathcal{M}_\lamda$ que son dejados invariantes por el operador en cuestión y, los coeficientes de la combinación lineal corresponden a los posibles valores que arroja el observable tras una medición. En este esquema, la probabilidad $P_\lambda(p)$ de obtener un valor $\lambda \in \Delta$ después de medir el observable en cuestión en el estado $\hat{\rho}$ viene dada por el valor medio del proyector $\hat{\Pi}_{\mathcal{M}_\lambda}$ asociado al autovalor $\lambda$, mientras que el estado después de la medida viene dado por el autovector correspondiente a dicho autovalor. En este caso, las medidas proyectivas vienen dadas por
+
+\begin{equation}
+    \begin{array}{r}
+    MP_s = \{\hat{\Pi}_m: \mathcal{H} \rightarrow \mathcal{M}_{\lambda_m} \subseteq \mathcal{H} \text{ tal que } \hat{\Pi}_m \hat{\Pi}_n = \delta_{m,n} \hat{\Pi_m}, \\
+    \sum\limits_m \hat{\Pi}_m = \mathds{1}, P_{\lambda_m}(\rho) = (\hat{\Pi}_m)_\rho \text{ y } \rho_{\lambda_m} \xrightarrow{\text{colapso}} \hat{\Pi}_m\}
+    \end{array}
+\end{equation}
+
+Cabe destacar que al realizar nuevamente la medida el estado resultante no se modifica, siempre que la dimensión de $\mathcal{M}_\lambda$ sea igual a uno, es decir, el proyector $\hat{\Pi}_{\mathcal{M}_\lambda}$ sea de rango uno. Este hecho se conoce con el nombre de repetibilidad, propiedad que no está presente en los otros esquemas de medidas.
