@@ -70,6 +70,14 @@ Dado que el símbolo sólo es diferente de cero cuando sus índices son iguales,
     \sum\limits_m \delta_{nm} B_m = 0 B_1 + 0 B_2 + ... + 1 B_n + ... = B_n
 \end{equation*}
 
+\section{Operadores hermíticos}
+
+Estos son operadores tales que $U = U^\dagger$, donde $U^\dagger = (U^*)^T$. Es decir, U es un operador hermítico si es igual a su transpuesto conjugado. Estos operadores cumplen con la propiedad de que todos sus autovalores son reales. En la mecácina cuántica, todas las variables físicas observables (o simplemente, observables), es decir, todas aquellas variables que se pueden medir en un laboratorio, son autovalores asociados a un operador hermítico.
+
+\section{Operadores unitarios}
+
+Estos son operadores tales que $U U^\dagger = \mathds{1}$ con determinante igual a 1. En la mecánica cuántica todas las operaciones que se realicen sobre o que afecten a un un estado y no involucren medidas ni decoherencia tienen un operador unitario asociado. Por ejemplo, la evolución temporal tiene un estado unitario $U$ asociado. Los operadores unitarios son importantes porque ellos preservan las trazas, las normas y la información, de esta manera, cuando se aplica un operador unitario a un estado cuántico, se preserva la normalización de las probabilidades y el entrelazamiento.
+
 \section{Notación de Dirac}
 
 En 1930 en el libro Principios de la Mecánica Cuántica Paul Dirac introdujo una poderosa notación para poder describir estados cuánticos y funciones lineales, también conocida como notación Bra-Ket. Con la notación de Dirac podemos representar un estado base de $n$ elementos con una cadena binaria de longitud $n$, mientras que con la representación de vectores columna necesitariamos $2^n$ componentes para definir el mismo vector.
@@ -130,14 +138,6 @@ La notación de Dirac se relaciona con el formalismo de funciones de onda de la 
 \end{equation}
 
 Donde $\bra{x}$ es el bra asociado a estar en la posición $x$.
-
-\section{Operadores unitarios}
-
-Estos son operadores tales que $U U^\dagger = \mathds{1}$ con determinante igual a 1. En la mecánica cuántica todas las operaciones que se realicen sobre o que afecten a un un estado y no involucren medidas ni decoherencia tienen un operador unitario asociado. Por ejemplo, la evolución temporal tiene un estado unitario $U$ asociado. Los operadores unitarios son importantes porque ellos preservan las trazas, las normas y la información, de esta manera, cuando se aplica un operador unitario a un estado cuántico, se preserva la normalización de las probabilidades.
-
-\section{Operadores hermíticos}
-
-Estos son operadores tales que $U = U^\dagger$. Estos operadores cumplen con la propiedad de que todos sus autovalores son reales. En la mecácina cuántica, todas las variables físicas observables (o simplemente, observables), es decir, todas aquellas variables que se pueden medir en un laboratorio, son autovalores asociados a un operador hermítico.
 
 \section{Producto tensorial}
 
@@ -245,7 +245,7 @@ Ejemplos:
 
 \section{Postulados de la mecánica cuántica}
 
-La mecánica cuántica que fundamenta la teoría de información cuántica se describe formalmente con los siguientes postulados desarrollados por John von Neumann y Paul Dirac en el año 1932.
+La mecánica cuántica que fundamenta la teoría de información cuántica se describe formalmente con los siguientes postulados desarrollados por la escuela de Copenhague.
 
 \begin{enumerate}
     \item Primer postulado: En un instante fijo $t_0$, el estado puro de un sistema se describe en términos de un vector normalizado $\ket{\psi}$ en un espacio de Hilbert $\mathcal{H}$.
@@ -445,7 +445,7 @@ Estas son operaciones comunes en la mecánica cuántica y están asociadas a pro
     \{A,B\} = A B + B A
 \end{equation}
 
-Si alguno de estos es igual a cero, se dice que $A$ y $B$ conmutan o anticonmutan, según sea el caso. Si dos operadores conmutan, ellos realizarán la misma transformación compuesta sin importar el orden en que se apliquen. De esta manera, si dos observables conmutan, ellos pueden ser medidos simultaneamente, pues ambas medidas no se afectan entre sí. Además, si un Hamiltoniano conmuta con una transformación unitaria, entonces el sistema es simétrico ante esa transformación.
+Si $[A,B] = 0$, A y B conmutan entre sí, pues $AB = BA$. De igual manera, si $\{A,B\} = 0$, se dice que anticonmutan, ya que $AB = -BA$. Si dos operadores conmutan, ellos realizarán la misma transformación compuesta sin importar el orden en que se apliquen. De esta manera, si dos observables conmutan, ellos pueden ser medidos simultaneamente, pues ambas medidas no se afectan entre sí. Además, si un Hamiltoniano conmuta con una transformación unitaria, entonces el sistema es simétrico ante esa transformación.
 
 \begin{align*}
     [A,B] &= 0 \implies A B = B A \\
@@ -485,7 +485,7 @@ Las matrices de Pauli cumplen las siguientes propiedades:
 
 \subsection{Circuitos cuánticos}
 
-El equivalente a los circuitos digitales en la computación cuántica es los circuitos cuánticos. Ellos describen la secuencia de operaciones que se deben aplicar a los qubits para ejecutar cierto algoritmo. Es importante resaltar que estos circuitos no representan componentes tangibles, sino componentes de información. En este sentido, los circuitos cuánticos son más el análogo del lenguaje de máquina que de los circuitos digitales.
+El equivalente a los circuitos digitales en la computación cuántica es los circuitos cuánticos. Ellos describen la secuencia de operaciones que se deben aplicar a los qubits para ejecutar cierto algoritmo. Esas operaciones pueden ser transformaciones unitarias, conocidas como compuertas cuánticas, o medidas proyectivas. Es importante resaltar que estos circuitos no representan componentes tangibles, sino componentes de información. De esta manera, las compuertas cuánticas no son componentes electrónicos de ninguna manera, sólo representan las transformaciones que se aplican a los qubits. En este sentido, los circuitos cuánticos son más el análogo del lenguaje de máquina que de los circuitos digitales. En general, las compuertas cuánticas se implementan con distintos tipo de ondas y pulsos electromagnéticos.
 
 \[
     \Qcircuit @C=1.4em @R=1.8em {
@@ -504,20 +504,20 @@ En esta figura se observan los siguientes elementos:
         \lstick{\ket{\psi}} \\
     }
 \]
-    \item Compuerta unitaria de un qubit: Representa una operación unitaria sobre el qubit en cuya linea se encuentra.
+    \item Compuerta de un qubit: Representa una operación unitaria sobre el qubit en cuya linea se encuentra.
 \[
     \Qcircuit @C=1.4em @R=1.8em {
         & \gate{U} \\
     }
 \]
-    \item Compuerta unitaria multiqubit: Representa una operación unitaria sobre los qubits en cuyas líneas se encuentra.
+    \item Compuerta multiqubit: Representa una operación unitaria sobre los qubits en cuyas líneas se encuentra.
 \[
     \Qcircuit @C=1.4em @R=1.8em {
         & \multigate{1}{U} \\
         & \ghost{U} \\
     }
 \]
-    \item Compuerta unitaria condicionada cuánticamente: El punto blanco o negro indica que el qubit de esa línea es el qubit de control. Si el punto es blanco, se aplica la compuerta $U$ si el qubit de control es $\ket{0}$. Si el punto es negro, se aplica la compuerta $U$ si el qubit de control es $\ket{1}$. Es caso de que el qubit de control se encuentre en estado de superposición, la compuerta se aplica y no se aplica, simultaneamente.
+    \item Compuerta condicionada cuánticamente: El punto blanco o negro indica que el qubit de esa línea es el qubit de control. Si el punto es blanco, se aplica la compuerta $U$ si el qubit de control es $\ket{0}$. Si el punto es negro, se aplica la compuerta $U$ si el qubit de control es $\ket{1}$. Es caso de que el qubit de control se encuentre en estado de superposición, la compuerta se aplica y no se aplica, simultaneamente.
 \[
     \Qcircuit @C=1.4em @R=1.8em {
         & \ctrl{1} \\
@@ -530,7 +530,7 @@ En esta figura se observan los siguientes elementos:
         & \gate{U}  \\
     }
 \]
-    \item Compuerta unitaria condicionada clásicamente: Equivalente a un if de cualquier lenguaje de programación clásica. Sólo se aplica la compuerta $U$ si el bit de control es 1.
+    \item Compuerta condicionada clásicamente: Equivalente a un if de cualquier lenguaje de programación clásica. Sólo se aplica la compuerta $U$ si el bit de control es 1.
 \[
     \Qcircuit @C=1.4em @R=1.8em {
         & \cwx[1] \\
@@ -557,7 +557,11 @@ En esta figura se observan los siguientes elementos:
 \]
 \end{enumerate}
 
-\subsection{Compuertas cuánticas}
+Las compuertas cuánticas difieren de las compuertas clásicas en que las primeras son reversibles. Esto implica que una compuerta cuántica siempre tiene la misma cantidad de entradas que de salidas y que conociendo la compuerta y la salida, se puede conocer inequívocamente la entrada. Este no es el caso con las compuertas clásicas. Por ejemplo, una compuerta AND tiene dos entradas, pero una sóla salida y no hay manera de conocer la entrada si la salida es 0. De hecho, incluso si se extiende la compuerta AND para incluir una de las entradas como una segunda salida, de manera de tener la misma cantidad de salidas que de entradas, como es el caso con las compuertas cuánticas, sigue siendo imposible conocer la otra entrada si ambas salidas son 0.
+
+Otra diferencia está en la variedad de compuertas que pueden existir. Como ejemplo, consideremos las compuertas de una entrada y una salida. En el caso clásico, sólo existen dos compuertas: el buffer y el NOT. Mientras que en el caso cuántico, existen infinitas compuertas de un qubit, pues cualquier elemento de SU(2) puede ser una compuerta.
+
+\subsection{Compuertas cuánticas de un qubit}
 Las operaciones unitarias con las que se opera sobre los qubits reciben el nombre de compuertas cuánticas.
 \vspace{0.5cm}
 
@@ -604,7 +608,7 @@ Este es el equivalente al NOT clásico, pues tránsforma los $\ket{0}$ en $\ket{
 \end{minipage}
 
 \subsubsection{Compuerta Z}
-Esta compuerta no tiene análogo clásico, pues lo que realiza es un cambio de fase. Esto equivale a una rotación de $\pi$ sobre el eje Z en la esfera de Bloch. Su forma matricial viene dada por la matriz de Pauli $\sigma_z$
+Esta compuerta no tiene análogo clásico, pues lo que realiza es un cambio de fase de $\pi$. Esto equivale a una rotación de $\pi$ sobre el eje Z en la esfera de Bloch. Su forma matricial viene dada por la matriz de Pauli $\sigma_z$
 \vspace{0.25cm}
 
 \begin{minipage}{0.5\textwidth}
@@ -624,7 +628,7 @@ Esta compuerta no tiene análogo clásico, pues lo que realiza es un cambio de f
 \end{minipage}
 
 \subsubsection{Compuerta Y}
-Esta compuerta realiza una rotación de $\pi$ sobre el eje y de la esfera de Bloch. Su forma matricial viene dada por la matriz de Pauli $\sigma_y$
+Esta compuerta realiza una rotación de $\pi$ sobre el eje y de la esfera de Bloch. Distintos autores definen la forma matricial de esta compuerta de dos maneras distintas, una forma viene dada por la matriz de Pauli $\sigma_y$ y otra es esta matriz por una fase global de $i$.
 \vspace{0.25cm}
 
 \begin{minipage}{0.5\textwidth}
@@ -639,6 +643,11 @@ Esta compuerta realiza una rotación de $\pi$ sobre el eje y de la esfera de Blo
 \begin{pmatrix}
 0 & -i \\
 i & 0
+\end{pmatrix}
+\text{ ó }
+\begin{pmatrix}
+0 & 1 \\
+-1 & 0
 \end{pmatrix}
 \]
 \end{minipage}
@@ -665,7 +674,7 @@ Esta compuerta transforma los estados de la base computacional $\ket{0}$ y $\ket
 \end{minipage}
 
 \subsubsection{Compuerta S}
-Esta compuerta es la raiz cuadrada de Z.
+Esta compuerta es la raiz cuadrada de Z e introduce una fase de $\pi/2$ al qubit.
 \vspace{0.25cm}
 
 \begin{minipage}{0.5\textwidth}
@@ -685,7 +694,7 @@ Esta compuerta es la raiz cuadrada de Z.
 \end{minipage}
 
 \subsubsection{Compuerta T}
-Esta compuerta es la raiz cuadrada de S.
+Esta compuerta es la raiz cuadrada de S e introduce una fase de $\pi/4$ al qubit.
 \vspace{0.25cm}
 
 \begin{minipage}{0.5\textwidth}
@@ -706,6 +715,8 @@ Esta compuerta es la raiz cuadrada de S.
 
 \subsubsection{Compuerta de cambio de fase}
 
+Esta compuerta es similar a Z, S y T, sólo que introduce una fase $\phi$ cualquiera al qubit.
+
 \begin{minipage}{0.5\textwidth}
 \[
 \Qcircuit @C=1.4em @R=1.8em {
@@ -724,6 +735,8 @@ Esta compuerta es la raiz cuadrada de S.
 
 \subsubsection{Compuertas de rotación}
 
+Una rotación general en la esfera de Bloch se escribe de la siguiente manera:
+
 \[
 R(\theta,\vec{r}) = e^{i \frac{\theta}{2} \vec{\sigma} \cdot \vec{r}} =
 \begin{pmatrix}
@@ -732,21 +745,9 @@ R(\theta,\vec{r}) = e^{i \frac{\theta}{2} \vec{\sigma} \cdot \vec{r}} =
 \end{pmatrix}
 \]
 
-\[
-R_y(\theta) =
-\begin{pmatrix}
-\cos(\frac{\theta}{2}) & \sin(\frac{\theta}{2}) \\
--\sin(\frac{\theta}{2}) & \cos(\frac{\theta}{2})
-\end{pmatrix}
-\]
+Donde $\vec{r}$ es el eje de la rotación, $\theta$ es el ángulo que se rota y $\vec{\sigma}$ es el vector de las matrices de Pauli $(\sigma_x, \sigma_y, \sigma_z)$.
 
-\[
-R_z(\theta) =
-\begin{pmatrix}
-e^{i \frac{\theta}{2}} & 0 \\
-0 & e^{-i \frac{\theta}{2}}
-\end{pmatrix}
-\]
+Si $\vec{r} = (1,0,0)$, se tiene la rotación general sobre X.
 
 \[
 R_x(\theta) =
@@ -756,11 +757,39 @@ i\sin(\frac{\theta}{2}) & \cos(\frac{\theta}{2})
 \end{pmatrix}
 \]
 
+Si $\vec{r} = (0,1,0)$, se tiene la rotación general sobre Y.
+
+\[
+R_y(\theta) =
+\begin{pmatrix}
+\cos(\frac{\theta}{2}) & \sin(\frac{\theta}{2}) \\
+-\sin(\frac{\theta}{2}) & \cos(\frac{\theta}{2})
+\end{pmatrix}
+\]
+
+Si $\vec{r} = (0,0,1)$, se tiene la rotación general sobre Z.
+
+\[
+R_z(\theta) =
+\begin{pmatrix}
+e^{i \frac{\theta}{2}} & 0 \\
+0 & e^{-i \frac{\theta}{2}}
+\end{pmatrix}
+\]
+
+Para realizar cualquier rotación en la esfera de Bloch, basta con poder realizar rotaciones generales sobre dos ejes ortogonales de ella. A partir de secuencias tres rotaciones alrededor de estos dos ejes se puede realizar cualquier rotación alrededor de cualquier otro eje. Por ejemplo, las rotaciones alrededor de X, en función de rotaciones alrededor de Y y Z se realizan de la siguiente manera:
+
 \[
 R_x(\theta) = R_z(\frac{\pi}{2}) R_y(\theta) R_z(\frac{-\pi}{2})
 \]
 
+\subsection{Compuertas multiqubit}
+
+Las compuertas multiqubit involucran interacción entre los qubits.
+
 \subsubsection{Compuerta CNOT}
+
+La compuerta CNOT o \textit{controlled-NOT} es un ejemplo de una compuerta condicionada. De hecho, es la compuerta X condicionada. Ella recibe dos qubits de entrada, un \textit{control} y un \textit{target}. Si el qubit de control es $\ket{0}$ se aplica $\mathds{1}$ sobre el qubit objetivo y si el qubit de control es $\ket{1}$, se aplica X sobre el qubit objetivo. Esta compuerta se puede escribir en función de proyectores en la partición del qubit de control de la siguiente manera: $\text{CNOT} =\Pi_0 \otimes \mathds{1} + \Pi_1 \otimes \text{X}$.
 
 \begin{minipage}{0.5\textwidth}
 \[
@@ -783,6 +812,8 @@ R_x(\theta) = R_z(\frac{\pi}{2}) R_y(\theta) R_z(\frac{-\pi}{2})
 
 \subsubsection{Compuerta SWAP}
 
+La compuerta SWAP, como su nombre lo indica, intercambia el contenido de dos particiones de qubits. Es decir, transforma $\ket{\psi} \otimes \ket{\phi}$ en $\ket{\phi} \otimes \ket{\psi}$.
+
 \begin{minipage}{0.5\textwidth}
 \[
 \Qcircuit @C=1.4em @R=1.8em {
@@ -801,6 +832,22 @@ R_x(\theta) = R_z(\frac{\pi}{2}) R_y(\theta) R_z(\frac{-\pi}{2})
 \end{pmatrix}
 \]
 \end{minipage}
+
+Si se tiene un sistema de qubits dividido en dos partes o registros del mismo tamaño, también se llama SWAP a la compuerta que intercambia estos dos registros. Es decir, a la operación que transforma $\ket{\psi_1} \otimes ... \otimes \ket{\psi_n} \otimes \ket{\phi_1} \otimes ... \otimes \ket{\phi_n}$ en $\ket{\phi_1} \otimes ... \otimes \ket{\phi_n} \otimes \ket{\psi_1} \otimes ... \otimes \ket{\psi_n}$. Ella se construye de la siguiente manera:
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \qswap      & \qw & \qw         & \qw & \qw         & \qw & \qw         & \qw \\
+& \qw \qwx    & \qw & \qswap      & \qw & \qw         & \qw & \qw         & \qw \\
+& \qw \qwx    & \qw & \qw \qwx    & \qw & \qswap      & \qw & \qw         & \qw \\
+& \qw \qwx    & \qw & \qw \qwx    & \qw & \qw \qwx    & \qw & \qswap      & \qw \\
+& \qswap \qwx & \qw & \qw \qwx    & \qw & \qw \qwx    & \qw & \qw \qwx    & \qw \\
+& \qw         & \qw & \qswap \qwx & \qw & \qw \qwx    & \qw & \qw \qwx    & \qw \\
+& \qw         & \qw & \qw         & \qw & \qswap \qwx & \qw & \qw \qwx    & \qw \\
+& \qw         & \qw & \qw         & \qw & \qw         & \qw & \qswap \qwx & \qw \\
+}
+\]
+
 
 \subsubsection{Compuerta $\sqrt{\text{SWAP}}$}
 
