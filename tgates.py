@@ -285,13 +285,13 @@ def CNOT(psi0, control, target):
     res = iSWAP(res.states[-1], control, target)
     return Rx(res.states[-1], target, np.pi/2)
 
-def CRy(psi0, control, target, theta): #Las rotaciones aqui son al reves que las que tengo en Mathematica
+def CRy(psi0, control, target, theta):
     res = Ry(psi0,target,theta/2)
     res = CNOT(res.states[-1],control,target)
     res = Ry(res.states[-1],target,-theta/2)
     return CNOT(res.states[-1],control,target)
 
-def CRz(psi0, control, target, theta): #Las rotaciones aqui son al reves que las que tengo en Mathematica
+def CRz(psi0, control, target, theta):
     res = Rz(psi0,target,theta/2)
     res = CNOT(res.states[-1],control,target)
     res = Rz(res.states[-1],target,-theta/2)
