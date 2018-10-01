@@ -182,9 +182,10 @@ def Kb1(psi0):
 
     res = tgates.X(res.states[-1], 0)
     res = tgates.X(res.states[-1], 1)
-    res = tgates.CCRy(psi0, 0, 1, 2, np.pi/2)
+    res = tgates.CCRy(res.states[-1], 0, 1, 2, np.pi/2)
     res = tgates.CCNOT(res.states[-1], 0, 1, 2)
     res = tgates.CCRy(res.states[-1], 0, 1, 3, np.pi/2)
+    res = tgates.CCNOT(res.states[-1], 0, 1, 3)
     res = tgates.X(res.states[-1], 1)
     return tgates.X(res.states[-1], 0)
 
@@ -192,9 +193,10 @@ def Kb1d(psi0):
 
     res = tgates.X(psi0, 0)
     res = tgates.X(res.states[-1], 1)
-    res = tgates.CCRy(psi0, 0, 1, 2, np.pi/2)
-    res = tgates.CCNOT(res.states[-1], 0, 1, 2)
+    res = tgates.CCNOT(res.states[-1], 0, 1, 3)
     res = tgates.CCRy(res.states[-1], 0, 1, 3, np.pi/2)
+    res = tgates.CCNOT(res.states[-1], 0, 1, 2)
+    res = tgates.CCRy(res.states[-1], 0, 1, 2, np.pi/2)
     res = tgates.X(res.states[-1], 1)
     res = tgates.X(res.states[-1], 0)
 

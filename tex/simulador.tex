@@ -9,7 +9,7 @@ El simulador se construyó utilizando la librería Qutip 4.2 de Python 3.6. Esta
     \item Retornar solución
 \end{enumerate}
 
-De esta manera se simulan las compuertas naturales de los transmones. Luego, a partir de estas se construyen todas las demás compuertas que se necesitaran para construir un set de instrucciones cuántico con el cual poder ejecutar los algoritmos de Grover, Shor y PageRank.
+De esta manera se simulan las compuertas naturales de los transmones. Luego, a partir de estas se construyen todas las demás compuertas que se necesitaran para construir un conjunto de compuertas cuánticas con el cual poder ejecutar los algoritmos de Grover, Shor y PageRank.
 
 Se simularon dos sistemas distintos, uno de cuatro qubits y otro de ocho qubits. El diseño original era el de cuatro qubits, con él se realizaron las simulaciones del algoritmo de Grover y del PageRank. Sin embargo, el algoritmo de Shor requiere de al menos ocho qubits para factorizar el número compuesto impar más pequeño: el número 15. Posteriormente también se realizo una generalización del simulador para poder trabajar con sistemas de n qubits.
 
@@ -32,7 +32,7 @@ Se han elegido parámetros típicos de los sistemas de qubits\cite{blais}.
             \item *Qubit 6: 13GHz
             \item *Qubit 7: 14GHz
         \end{enumerate}
-    \item Constante de acoplamiento: Todas iguales a $0.1  2 \pi$ (Unidades?)
+    \item Constante de acoplamiento: Todas iguales a $0.1 Hz$
     \item Tasas de decaimiento: Todas iguales a 5e-6 (Unidades?)
     \item Frecuencia de resonancia para iSWAP: 9GHz
 \end{enumerate}

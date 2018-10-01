@@ -95,10 +95,25 @@ def CMUL7(psi0, control, target1, target2, target3, target4):
     res = CSWAP(res.states[-1], control, target1, target2)
     return CSWAP(res.states[-1], control, target1, target4)
 
+def MUL3(psi0, target1, target2, target3, target4):
+    res = tgates8.X(psi0, target1)
+    res = tgates8.CNOT(res.states[-1], target1, target4)
+    res = tgates8.CCCNOT(res.states[-1], target1, target4, target3, target2)
+    res = tgates8.CNOT(res.states[-1], target1, target4)
+    res = tgates8.CCNOT(res.states[-1], target1, target4, target3)
+    return tgates8.X(res.states[-1], target1)
+
+def CMUL3(psi0, target1, target2, target3, target4):
+    res = tgates8.CNOT(psi0, control, control, target1)
+    res = tgates8.CCNOT(res.states[-1], control, target1, target4)
+    res = tgates8.CCCCNOT(res.states[-1], control, target1, target4, target3, target2)
+    res = tgates8.CCNOT(res.states[-1], control, target1, target4)
+    res = tgates8.CCCNOT(res.states[-1], control, target1, target4, target3)
+    return tgates8.CNOT(res.states[-1], control, target1)
+
 qN = 2**8
 
 
-'''
 # El algoritmo
 # Estado fiducial
 print('{}/{}/{} - {}:{}:{}\t Preparando estado fiducial...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
@@ -119,54 +134,51 @@ res = tgates8.H(res.states[-1], 3)
 
 qsave(res, 'rp_1')
 
-# Aplicando CMUL7(c=3)^1
-print('{}/{}/{} - {}:{}:{}\t Aplicando CMUL7(c=3)^1 (1/1)...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
-res = CMUL7(res.states[-1], 3, 4, 5, 6, 7)
+# Aplicando CMUL3(c=3)^1
+print('{}/{}/{} - {}:{}:{}\t Aplicando CMUL3(c=3)^1 (1/1)...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+res = CMUL3(res.states[-1], 3, 4, 5, 6, 7)
 
 qsave(res, 'rp_2')
 
-# Aplicando CMUL7(c=2)^2
-print('{}/{}/{} - {}:{}:{}\t Aplicando CMUL7(c=2)^2 (1/2)...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
-res = CMUL7(res.states[-1], 2, 4, 5, 6, 7)
-print('{}/{}/{} - {}:{}:{}\t Aplicando CMUL7(c=2)^2 (2/2)...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
-res = CMUL7(res.states[-1], 2, 4, 5, 6, 7)
+# Aplicando CMUL3(c=2)^2
+print('{}/{}/{} - {}:{}:{}\t Aplicando CMUL3(c=2)^2 (1/2)...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+res = CMUL3(res.states[-1], 2, 4, 5, 6, 7)
+print('{}/{}/{} - {}:{}:{}\t Aplicando CMUL3(c=2)^2 (2/2)...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+res = CMUL3(res.states[-1], 2, 4, 5, 6, 7)
 
 qsave(res, 'rp_3')
 
-# Aplicando CMUL7(c=1)^4
-print('{}/{}/{} - {}:{}:{}\t Aplicando CMUL7(c=1)^4 (1/4)...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
-res = CMUL7(res.states[-1], 1, 4, 5, 6, 7)
-print('{}/{}/{} - {}:{}:{}\t Aplicando CMUL7(c=1)^4 (2/4)...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
-res = CMUL7(res.states[-1], 1, 4, 5, 6, 7)
-print('{}/{}/{} - {}:{}:{}\t Aplicando CMUL7(c=1)^4 (3/4)...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
-res = CMUL7(res.states[-1], 1, 4, 5, 6, 7)
-print('{}/{}/{} - {}:{}:{}\t Aplicando CMUL7(c=1)^4 (4/4)...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
-res = CMUL7(res.states[-1], 1, 4, 5, 6, 7)
+# Aplicando CMUL3(c=1)^4
+print('{}/{}/{} - {}:{}:{}\t Aplicando CMUL3(c=1)^4 (1/4)...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+res = CMUL3(res.states[-1], 1, 4, 5, 6, 7)
+print('{}/{}/{} - {}:{}:{}\t Aplicando CMUL3(c=1)^4 (2/4)...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+res = CMUL3(res.states[-1], 1, 4, 5, 6, 7)
+print('{}/{}/{} - {}:{}:{}\t Aplicando CMUL3(c=1)^4 (3/4)...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+res = CMUL3(res.states[-1], 1, 4, 5, 6, 7)
+print('{}/{}/{} - {}:{}:{}\t Aplicando CMUL3(c=1)^4 (4/4)...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+res = CMUL3(res.states[-1], 1, 4, 5, 6, 7)
 
 qsave(res, 'rp_4')
 
-# Aplicando CMUL7(c=0)^8
-print('{}/{}/{} - {}:{}:{}\t Aplicando CMUL7(c=0)^4 (1/8)...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
-res = CMUL7(res.states[-1], 0, 4, 5, 6, 7)
-print('{}/{}/{} - {}:{}:{}\t Aplicando CMUL7(c=0)^4 (2/8)...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
-res = CMUL7(res.states[-1], 0, 4, 5, 6, 7)
-print('{}/{}/{} - {}:{}:{}\t Aplicando CMUL7(c=0)^4 (3/8)...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
-res = CMUL7(res.states[-1], 0, 4, 5, 6, 7)
-print('{}/{}/{} - {}:{}:{}\t Aplicando CMUL7(c=0)^4 (4/8)...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
-res = CMUL7(res.states[-1], 0, 4, 5, 6, 7)
-print('{}/{}/{} - {}:{}:{}\t Aplicando CMUL7(c=0)^4 (5/8)...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
-res = CMUL7(res.states[-1], 0, 4, 5, 6, 7)
-print('{}/{}/{} - {}:{}:{}\t Aplicando CMUL7(c=0)^4 (6/8)...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
-res = CMUL7(res.states[-1], 0, 4, 5, 6, 7)
-print('{}/{}/{} - {}:{}:{}\t Aplicando CMUL7(c=0)^4 (7/8)...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
-res = CMUL7(res.states[-1], 0, 4, 5, 6, 7)
-print('{}/{}/{} - {}:{}:{}\t Aplicando CMUL7(c=0)^4 (8/8)...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
-res = CMUL7(res.states[-1], 0, 4, 5, 6, 7)
+# Aplicando CMUL3(c=0)^8
+print('{}/{}/{} - {}:{}:{}\t Aplicando CMUL3(c=0)^8 (1/8)...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+res = CMUL3(res.states[-1], 0, 4, 5, 6, 7)
+print('{}/{}/{} - {}:{}:{}\t Aplicando CMUL3(c=0)^8 (2/8)...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+res = CMUL3(res.states[-1], 0, 4, 5, 6, 7)
+print('{}/{}/{} - {}:{}:{}\t Aplicando CMUL3(c=0)^8 (3/8)...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+res = CMUL3(res.states[-1], 0, 4, 5, 6, 7)
+print('{}/{}/{} - {}:{}:{}\t Aplicando CMUL3(c=0)^8 (4/8)...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+res = CMUL3(res.states[-1], 0, 4, 5, 6, 7)
+print('{}/{}/{} - {}:{}:{}\t Aplicando CMUL3(c=0)^8 (5/8)...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+res = CMUL3(res.states[-1], 0, 4, 5, 6, 7)
+print('{}/{}/{} - {}:{}:{}\t Aplicando CMUL3(c=0)^8 (6/8)...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+res = CMUL3(res.states[-1], 0, 4, 5, 6, 7)
+print('{}/{}/{} - {}:{}:{}\t Aplicando CMUL3(c=0)^8 (7/8)...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+res = CMUL3(res.states[-1], 0, 4, 5, 6, 7)
+print('{}/{}/{} - {}:{}:{}\t Aplicando CMUL3(c=0)^8 (8/8)...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+res = CMUL3(res.states[-1], 0, 4, 5, 6, 7)
 
 qsave(res, 'rp_5')
-'''
-
-res = qload('rp_5')
 
 # Aplicando la transformada cuántica inversa de Fourier sobre el primer registro
 print('{}/{}/{} - {}:{}:{}\t Aplicando QFT4d...'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))

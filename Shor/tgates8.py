@@ -417,3 +417,14 @@ def CCCP(psi0, control1, control2, control3, target, theta, b = 0b11):
         res = X(res.states[-1], control1)
         res = X(res.states[-1], control2)
     return CCP(res.states[-1], control1, control2, target, theta/2, b = b)
+
+def CCCCNOT(psi0, control1, control2, control3, control4, target):
+    res = H(psi0, target)
+    res = CCCRz(res.states[-1], control2, control3, control4, target, -np.pi/2)
+    res = CNOT(res.states[-1], control1, control2)
+    res = CCCRz(res.states[-1], control2, control3, control4, target, np.pi/2)
+    res = CNOT(res.states[-1], control1, control2)
+    res = CCCRz(res.states[-1], control1, control3, control4, target, -np.pi/2)
+    res = H(res.states[-1], target)
+    return CCCP(res.states[-1], control2, control3, control4, -np.pi/2)
+
