@@ -426,5 +426,5 @@ def CCCCNOT(psi0, control1, control2, control3, control4, target):
     res = CNOT(res.states[-1], control1, control2)
     res = CCCRz(res.states[-1], control1, control3, control4, target, -np.pi/2)
     res = H(res.states[-1], target)
-    return CCCP(res.states[-1], control2, control3, control4, -np.pi/2)
+    return CCCP(res.states[-1], control1, control2, control3, control4, -np.pi/2)
 
