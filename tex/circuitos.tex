@@ -124,12 +124,12 @@ Compuerta CH:
 } 
 \]
 
-Compuerta $CR^\theta$ blanca:
+Compuerta $CP^\theta$ blanca:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
 & \qw & \ctrlo{1} & \qw \\
-& \qw & \gate{R^\theta} & \qw 
+& \qw & \gate{P^\theta} & \qw 
 }\]
 \[\Qcircuit @C=1.4em @R=1.8em {
 & \qw & \gate{Rz(\frac{-3\theta}{4})} & \ctrl{1}                    & \gate{Rz(\frac{\theta}{2})} & \qw \\
@@ -137,12 +137,12 @@ Compuerta $CR^\theta$ blanca:
 } 
 \]
 
-Compuerta $CR_\theta$ blanca:
+Compuerta $CP_\theta$ blanca:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
 & \qw & \ctrlo{1} & \qw \\
-& \qw & \gate{R_\theta} & \qw 
+& \qw & \gate{P_\theta} & \qw 
 }\]
 \[\Qcircuit @C=1.4em @R=1.8em {
 & \qw & \gate{Rz(\frac{-3\theta}{4})} & \ctrl{1}                    & \gate{Rz(\frac{\theta}{2})} & \qw \\
@@ -150,12 +150,12 @@ Compuerta $CR_\theta$ blanca:
 } 
 \]
 
-Compuerta $CR^\theta$ negra:
+Compuerta $CP^\theta$ negra:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
 & \qw & \ctrl{1} & \qw \\
-& \qw & \gate{R^\theta} & \qw 
+& \qw & \gate{P^\theta} & \qw 
 }\]
 \[\Qcircuit @C=1.4em @R=1.8em {
 & \qw & \gate{Rz(\frac{\theta}{4})} & \ctrl{1}                    & \gate{Rz(\frac{\theta}{2})} & \qw \\
@@ -163,12 +163,12 @@ Compuerta $CR^\theta$ negra:
 } 
 \]
 
-Compuerta $CR_\theta$ negra:
+Compuerta $CP_\theta$ negra:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
 & \qw & \ctrl{1}        & \qw \\
-& \qw & \gate{R_\theta} & \qw 
+& \qw & \gate{P_\theta} & \qw 
 }\]
 \[\Qcircuit @C=1.4em @R=1.8em {
 & \qw & \gate{Rz(\frac{\theta}{4})} & \ctrl{1}                    & \gate{Rz(\frac{\theta}{2})} & \qw \\
@@ -186,7 +186,7 @@ Compuerta de Toffoli (CCNOT):
 }\]
 \[\Qcircuit @C=1.4em @R=1.8em {
 & \qw & \qw      & \qw                       & \ctrl{1} & \qw                      & \ctrl{1} & \ctrl{2}                  & \qw & \ctrl{1}          & \qw \\
-& \qw & \qw      & \ctrl{1}                  & \targ    & \ctrl{1}                 & \targ    & \qw                       & \qw & \gate{R_{-\frac{\pi}{2}}} & \qw \\
+& \qw & \qw      & \ctrl{1}                  & \targ    & \ctrl{1}                 & \targ    & \qw                       & \qw & \gate{P_{-\frac{\pi}{2}}} & \qw \\
 & \qw & \gate{H} & \gate{Rz(\frac{-\pi}{2})} & \qw      & \gate{Rz(\frac{\pi}{2})} & \qw      & \gate{Rz(\frac{-\pi}{2})} & \gate{H} & \qw & \qw 
 } 
 \]
@@ -221,63 +221,63 @@ Compuerta CCRy:
 } 
 \]
 
-Compuerta $CCR^\theta$ blanca:
+Compuerta $CCP^\theta$ blanca:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
 & \qw & \ctrlo{1} & \qw \\
 & \qw & \ctrlo{1} & \qw \\
-& \qw & \gate{R^\theta}    & \qw 
+& \qw & \gate{P^\theta}    & \qw 
 }\]
 \[\Qcircuit @C=1.4em @R=1.8em {
 & \qw & \qw                       & \ctrlo{1} & \qw                      & \ctrlo{1} & \ctrlo{2}                  & \qw \\
 & \qw & \ctrlo{1}                  & \targ    & \ctrlo{1}                 & \targ    & \qw                       & \qw \\
-& \qw & \gate{R^\frac{\theta}{2}} & \qw      & \gate{R^\frac{-\theta}{2}} & \qw      & \gate{R^\frac{\theta}{2}} & \qw 
+& \qw & \gate{P^\frac{\theta}{2}} & \qw      & \gate{P^\frac{-\theta}{2}} & \qw      & \gate{P^\frac{\theta}{2}} & \qw 
 } 
 \]
 
-Compuerta $CCR_\theta$ blanca:
+Compuerta $CCP_\theta$ blanca:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
 & \qw & \ctrlo{1} & \qw \\
 & \qw & \ctrlo{1} & \qw \\
-& \qw & \gate{R_\theta}    & \qw 
+& \qw & \gate{P_\theta}    & \qw 
 }\]
 \[\Qcircuit @C=1.4em @R=1.8em {
 & \qw & \qw                       & \ctrlo{1} & \qw                      & \ctrlo{1} & \ctrlo{2}                  & \qw \\
 & \qw & \ctrlo{1}                  & \targ    & \ctrlo{1}                 & \targ    & \qw                       & \qw \\
-& \qw & \gate{R_\frac{\theta}{2}} & \qw      & \gate{R_\frac{-\theta}{2}} & \qw      & \gate{R_\frac{\theta}{2}} & \qw 
+& \qw & \gate{P_\frac{\theta}{2}} & \qw      & \gate{P_\frac{-\theta}{2}} & \qw      & \gate{P_\frac{\theta}{2}} & \qw 
 } 
 \]
 
-Compuerta $CCR^\theta$ negra:
+Compuerta $CCP^\theta$ negra:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
 & \qw & \ctrl{1} & \qw \\
 & \qw & \ctrl{1} & \qw \\
-& \qw & \gate{R^\theta}    & \qw 
+& \qw & \gate{P^\theta}    & \qw 
 }\]
 \[\Qcircuit @C=1.4em @R=1.8em {
 & \qw & \qw                       & \ctrl{1} & \qw                      & \ctrl{1} & \ctrl{2}                  & \qw \\
 & \qw & \ctrl{1}                  & \targ    & \ctrl{1}                 & \targ    & \qw                       & \qw \\
-& \qw & \gate{R^\frac{\theta}{2}} & \qw      & \gate{R^\frac{-\theta}{2}} & \qw      & \gate{R^\frac{\theta}{2}} & \qw 
+& \qw & \gate{P^\frac{\theta}{2}} & \qw      & \gate{P^\frac{-\theta}{2}} & \qw      & \gate{P^\frac{\theta}{2}} & \qw 
 } 
 \]
 
-Compuerta $CCR_\theta$ negra:
+Compuerta $CCP_\theta$ negra:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
 & \qw & \ctrl{1} & \qw \\
 & \qw & \ctrl{1} & \qw \\
-& \qw & \gate{R_\theta}    & \qw 
+& \qw & \gate{P_\theta}    & \qw 
 }\]
 \[\Qcircuit @C=1.4em @R=1.8em {
 & \qw & \qw                       & \ctrl{1} & \qw                      & \ctrl{1} & \ctrl{2}                  & \qw \\
 & \qw & \ctrl{1}                  & \targ    & \ctrl{1}                 & \targ    & \qw                       & \qw \\
-& \qw & \gate{R_\frac{\theta}{2}} & \qw      & \gate{R_\frac{-\theta}{2}} & \qw      & \gate{R_\frac{\theta}{2}} & \qw 
+& \qw & \gate{P_\frac{\theta}{2}} & \qw      & \gate{P_\frac{-\theta}{2}} & \qw      & \gate{P_\frac{\theta}{2}} & \qw 
 } 
 \]
 
@@ -293,7 +293,7 @@ Compuerta CCCNOT:
 \[\Qcircuit @C=1.4em @R=1.8em {
 & \qw & \qw      & \qw                       & \ctrl{1} & \qw                      & \ctrl{1} & \ctrl{2}                  & \qw      & \ctrl{1}                  & \qw \\
 & \qw & \qw      & \ctrl{1}                  & \targ    & \ctrl{1}                 & \targ    & \qw                       & \qw      & \ctrl{1}                  & \qw \\
-& \qw & \qw      & \ctrl{1}                  & \qw      & \ctrl{1}                 & \qw      & \ctrl{1}                  & \qw      & \gate{R_\frac{-\pi}{2}} & \qw \\
+& \qw & \qw      & \ctrl{1}                  & \qw      & \ctrl{1}                 & \qw      & \ctrl{1}                  & \qw      & \gate{P_\frac{-\pi}{2}} & \qw \\
 & \qw & \gate{H} & \gate{Rz(\frac{-\pi}{2})} & \qw      & \gate{Rz(\frac{\pi}{2})} & \qw      & \gate{Rz(\frac{-\pi}{2})} & \gate{H} & \qw                       & \qw 
 } 
 \]
@@ -332,71 +332,71 @@ Compuerta CCCRz:
 } 
 \]
 
-Compuerta $CCCR^\theta$ blanca:
+Compuerta $CCCP^\theta$ blanca:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
 & \qw & \ctrlo{1} & \qw \\
 & \qw & \ctrlo{1} & \qw \\
 & \qw & \ctrlo{1} & \qw \\
-& \qw & \gate{R^\theta} & \qw 
+& \qw & \gate{P^\theta} & \qw 
 }\]
 \[\Qcircuit @C=1.4em @R=1.8em {
 & \qw & \qw                       & \ctrlo{1} & \qw                        & \ctrlo{1} & \ctrlo{1}                 & \qw \\
 & \qw & \qw                       & \ctrlo{1} & \qw                        & \ctrlo{1} & \ctrlo{2}                 & \qw \\
 & \qw & \ctrlo{1}                 & \targ     & \ctrlo{1}                  & \targ     & \qw                       & \qw \\
-& \qw & \gate{R^\frac{\theta}{2}} & \qw       & \gate{R^\frac{-\theta}{2}} & \qw       & \gate{R^\frac{\theta}{2}} & \qw 
+& \qw & \gate{P^\frac{\theta}{2}} & \qw       & \gate{P^\frac{-\theta}{2}} & \qw       & \gate{P^\frac{\theta}{2}} & \qw 
 } 
 \]
 
-Compuerta $CCCR_\theta$ blanca:
+Compuerta $CCCP_\theta$ blanca:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
 & \qw & \ctrlo{1} & \qw \\
 & \qw & \ctrlo{1} & \qw \\
 & \qw & \ctrlo{1} & \qw \\
-& \qw & \gate{R_\theta} & \qw 
+& \qw & \gate{P_\theta} & \qw 
 }\]
 \[\Qcircuit @C=1.4em @R=1.8em {
 & \qw & \qw                       & \ctrlo{1} & \qw                        & \ctrlo{1} & \ctrlo{1}                 & \qw \\
 & \qw & \qw                       & \ctrlo{1} & \qw                        & \ctrlo{1} & \ctrlo{2}                 & \qw \\
 & \qw & \ctrlo{1}                 & \targ     & \ctrlo{1}                  & \targ     & \qw                       & \qw \\
-& \qw & \gate{R_\frac{\theta}{2}} & \qw       & \gate{R_\frac{-\theta}{2}} & \qw       & \gate{R_\frac{\theta}{2}} & \qw 
+& \qw & \gate{P_\frac{\theta}{2}} & \qw       & \gate{P_\frac{-\theta}{2}} & \qw       & \gate{P_\frac{\theta}{2}} & \qw 
 } 
 \]
 
-Compuerta $CCCR^\theta$ negra:
+Compuerta $CCCP^\theta$ negra:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
 & \qw & \ctrl{1} & \qw \\
 & \qw & \ctrl{1} & \qw \\
 & \qw & \ctrl{1} & \qw \\
-& \qw & \gate{R^\theta} & \qw 
+& \qw & \gate{P^\theta} & \qw 
 }\]
 \[\Qcircuit @C=1.4em @R=1.8em {
 & \qw & \qw                       & \ctrl{1} & \qw                        & \ctrl{1} & \ctrl{1}                 & \qw \\
 & \qw & \qw                       & \ctrl{1} & \qw                        & \ctrl{1} & \ctrl{2}                 & \qw \\
 & \qw & \ctrl{1}                 & \targ     & \ctrl{1}                  & \targ     & \qw                       & \qw \\
-& \qw & \gate{R^\frac{\theta}{2}} & \qw       & \gate{R^\frac{-\theta}{2}} & \qw       & \gate{R^\frac{\theta}{2}} & \qw 
+& \qw & \gate{P^\frac{\theta}{2}} & \qw       & \gate{P^\frac{-\theta}{2}} & \qw       & \gate{P^\frac{\theta}{2}} & \qw 
 } 
 \]
 
-Compuerta $CCCR_\theta$ negra:
+Compuerta $CCCP_\theta$ negra:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
 & \qw & \ctrl{1} & \qw \\
 & \qw & \ctrl{1} & \qw \\
 & \qw & \ctrl{1} & \qw \\
-& \qw & \gate{R_\theta} & \qw 
+& \qw & \gate{P_\theta} & \qw 
 }\]
 \[\Qcircuit @C=1.4em @R=1.8em {
 & \qw & \qw                       & \ctrl{1} & \qw                        & \ctrl{1} & \ctrl{1}                 & \qw \\
 & \qw & \qw                       & \ctrl{1} & \qw                        & \ctrl{1} & \ctrl{2}                 & \qw \\
 & \qw & \ctrl{1}                 & \targ     & \ctrl{1}                  & \targ     & \qw                       & \qw \\
-& \qw & \gate{R_\frac{\theta}{2}} & \qw       & \gate{R_\frac{-\theta}{2}} & \qw       & \gate{R_\frac{\theta}{2}} & \qw 
+& \qw & \gate{P_\frac{\theta}{2}} & \qw       & \gate{P_\frac{-\theta}{2}} & \qw       & \gate{P_\frac{\theta}{2}} & \qw 
 } 
 \]
 

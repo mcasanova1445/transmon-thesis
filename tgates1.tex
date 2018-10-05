@@ -1,0 +1,342 @@
+%% AMS-LaTeX Created with the Wolfram Language : www.wolfram.com
+
+\documentclass{article}
+\usepackage{amsmath, amssymb, graphics, setspace}
+
+\newcommand{\mathsym}[1]{{}}
+\newcommand{\unicode}[1]{{}}
+
+\newcounter{mathematicapage}
+\begin{document}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{$\omega $r}=2\pi  10.0;}\\
+\pmb{\text{$\omega $q}_{\text{i$\_$}}\text{:=}2\pi \{5.0,6.0,7.0,8.0\}[[i+1]];}\\
+\pmb{\text{$\omega $qswap}=2\pi  9.0;}\\
+\pmb{g_{\text{i$\_$}}\text{:=}2\pi \{0.1,0.1,0.1,0.1\}[[i+1]];}\\
+\pmb{\Delta _{\text{i$\_$}}\text{:=}\text{$\omega $q}_i-\text{$\omega $r};}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{ket0}=\{\{1\},\{0\}\};}\\
+\pmb{\text{ket1}=\{\{0\},\{1\}\};}\\
+\pmb{\text{Id}=\text{PauliMatrix}[0];}\\
+\pmb{\text{$\sigma $x}=\text{PauliMatrix}[1];}\\
+\pmb{\text{$\sigma $y}=\text{PauliMatrix}[2];}\\
+\pmb{\text{$\sigma $z}=\text{PauliMatrix}[3];}\\
+\pmb{\text{$\sigma $p}=\text{ket1}.\text{ket0}\dagger;}\\
+\pmb{\text{$\sigma $m}=\text{ket0}.\text{ket1}\dagger;}\\
+\pmb{\text{QopAsc}[\text{i$\_$},\text{j$\_$},\text{qop$\_$}]\text{:=}<|\text{Mod}[i+0,4]\to \text{qop},\text{Mod}[i+1,4]\to \text{Id},}\\
+\pmb{\text{Mod}[i+2,4]\to \text{Id},\text{Mod}[i+3,4]\to \text{Id}|>[j];}\\
+\pmb{\text{Id}_{\text{i$\_$}}\text{:=}\text{KroneckerProduct}[\text{QopAsc}[i,0,\text{Id}],\text{QopAsc}[i,1,\text{Id}],}\\
+\pmb{\text{QopAsc}[i,2,\text{Id}],\text{QopAsc}[i,3,\text{Id}]];}\\
+\pmb{\text{$\sigma $x}_{\text{i$\_$}}\text{:=}\text{KroneckerProduct}[\text{QopAsc}[i,0,\text{$\sigma $x}],\text{QopAsc}[i,1,\text{$\sigma $x}],}\\
+\pmb{\text{QopAsc}[i,2,\text{$\sigma $x}],\text{QopAsc}[i,3,\text{$\sigma $x}]];}\\
+\pmb{\text{$\sigma $y}_{\text{i$\_$}}\text{:=}\text{KroneckerProduct}[\text{QopAsc}[i,0,\text{$\sigma $y}],\text{QopAsc}[i,1,\text{$\sigma $y}],}\\
+\pmb{\text{QopAsc}[i,2,\text{$\sigma $y}],\text{QopAsc}[i,3,\text{$\sigma $y}]];}\\
+\pmb{\text{$\sigma $z}_{\text{i$\_$}}\text{:=}\text{KroneckerProduct}[\text{QopAsc}[i,0,\text{$\sigma $z}],\text{QopAsc}[i,1,\text{$\sigma $z}],}\\
+\pmb{\text{QopAsc}[i,2,\text{$\sigma $z}],\text{QopAsc}[i,3,\text{$\sigma $z}]];}\\
+\pmb{\text{$\sigma $p}_{\text{i$\_$}}\text{:=}\text{KroneckerProduct}[\text{QopAsc}[i,0,\text{$\sigma $p}],\text{QopAsc}[i,1,\text{$\sigma $p}],}\\
+\pmb{\text{QopAsc}[i,2,\text{$\sigma $p}],\text{QopAsc}[i,3,\text{$\sigma $p}]];}\\
+\pmb{\text{$\sigma $m}_{\text{i$\_$}}\text{:=}\text{KroneckerProduct}[\text{QopAsc}[i,0,\text{$\sigma $m}],\text{QopAsc}[i,1,\text{$\sigma $m}],}\\
+\pmb{\text{QopAsc}[i,2,\text{$\sigma $m}],\text{QopAsc}[i,3,\text{$\sigma $m}]];}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{GaussianPulse}[\text{x$\_$},\text{ts$\_$},\text{tf$\_$}]\text{:=}}\\
+\pmb{(\text{UnitStep}[x-\mu +3\sigma ]-\text{UnitStep}[x-\mu -3\sigma ])}\\
+\pmb{\text{PDF}[\text{NormalDistribution}[\mu ,\sigma ],x]/0.997300204\text{/.}}\\
+\pmb{\left\{\mu \to \frac{\text{tf}+\text{ts}}{2},\sigma \to \frac{\text{tf}-\text{ts}}{6}\right\};}\\
+\pmb{\text{SquarePulse}[\text{x$\_$},\text{ts$\_$},\text{tf$\_$}]\text{:=}}\\
+\pmb{(\text{UnitStep}[x-\mu +3\sigma ]-\text{UnitStep}[x-\mu -3\sigma ])/(6\sigma )\text{/.}}\\
+\pmb{\left\{\mu \to \frac{\text{tf}+\text{ts}}{2},\sigma \to \frac{\text{tf}-\text{ts}}{6}\right\};}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{Rx}[\text{target$\_$},\theta \_]\text{:=}\text{Module}\left[\left\{H\text{:=}\frac{-1}{2}\text{Sum}\left[\left(\text{$\omega
+$q}_i-\text{$\omega $q}_{\text{target}}\right)\text{$\sigma $z}_i,\{i,0,3\}\right]\right\},\right.}\\
+\pmb{H=H+\frac{1}{2} \theta  \text{GaussianPulse}[t,0,10] \text{$\sigma $x}_{\text{target}};}\\
+\pmb{\text{MatrixExp}[-i \text{NIntegrate}[H,\{t,0,10\}]]}\\
+\pmb{];}\\
+\pmb{\text{Ry}[\text{target$\_$},\theta \_]\text{:=}\text{Module}\left[\left\{H\text{:=}\frac{-1}{2}\text{Sum}\left[\left(\text{$\omega $q}_i-\text{$\omega
+$q}_{\text{target}}\right)\text{$\sigma $z}_i,\{i,0,3\}\right]\right\},\right.}\\
+\pmb{H=H+\frac{1}{2} \theta  \text{GaussianPulse}[t,0,10] \text{$\sigma $y}_{\text{target}};}\\
+\pmb{\text{MatrixExp}[-i \text{NIntegrate}[H,\{t,0,10\}]]}\\
+\pmb{];}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{sqrtiSWAP}[\text{target1$\_$},\text{target2$\_$}]\text{:=}}\\
+\pmb{\text{Module}[}\\
+\pmb{\left\{H=\frac{-1}{2}\text{Sum}\left[\text{$\omega $q}_i \text{$\sigma $z}_i,\{i,0,3\}\right]+\right.}\\
+\pmb{\text{Sum}\left[\left(g_i g_j/\Delta _i\right)\left.\left(\text{$\sigma $p}_i .\text{$\sigma $m}_j+\text{$\sigma $m}_i .\text{$\sigma $p}_j\right)\right/2,\{i,0,3\},\{j,0,3\}\right],}\\
+\pmb{J=0,\text{$\Delta $swap}=\text{$\omega $qswap}-\text{$\omega $r}\},}\\
+\pmb{H=H+\frac{1}{2}\left(\text{$\omega $q}_{\text{target1}} \text{$\sigma $z}_{\text{target1}}+\text{$\omega $q}_{\text{target2}} \text{$\sigma
+$z}_{\text{target2}}\right)-}\\
+\pmb{g_{\text{target1}} g_{\text{target2}} \left(\Delta _{\text{target1}}+\Delta _{\text{target2}}\right)/\left(\Delta _{\text{target1}} \Delta _{\text{target2}}\right)}\\
+\pmb{\left.\left(\text{$\sigma $p}_{\text{target1}} .\text{$\sigma $m}_{\text{target2}}+\text{$\sigma $m}_{\text{target1}} .\text{$\sigma $p}_{\text{target2}}\right)\right/2;}\\
+\pmb{H=H-\frac{1}{2}\text{$\omega $qswap}\left(\text{$\sigma $z}_{\text{target1}}+\text{$\sigma $z}_{\text{target2}}\right)+}\\
+\pmb{g_{\text{target1}} g_{\text{target2}} \left.\left(\text{$\sigma $p}_{\text{target1}} .\text{$\sigma $m}_{\text{target2}}+\text{$\sigma $m}_{\text{target1}}
+.\text{$\sigma $p}_{\text{target2}}\right)\right/\text{$\Delta $swap};}\\
+\pmb{H=g_{\text{target1}} g_{\text{target2}} \left.\left(\text{$\sigma $p}_{\text{target1}} .\text{$\sigma $m}_{\text{target2}}+\text{$\sigma $m}_{\text{target1}}
+.\text{$\sigma $p}_{\text{target2}}\right)\right/\text{$\Delta $swap};}\\
+\pmb{J=\text{Abs}\left[g_{\text{target1}} \left.g_{\text{target2}} \right/\text{$\Delta $swap}\right];}\\
+\pmb{\text{MatrixExp}\left[-i H\frac{\pi }{4 J}\right]}\\
+\pmb{];}\\
+\pmb{\text{iSWAP}[\text{target1$\_$},\text{target2$\_$}]\text{:=}}\\
+\pmb{\text{Module}[}\\
+\pmb{\left\{H=\frac{-1}{2}\text{Sum}\left[\text{$\omega $q}_i \text{$\sigma $z}_i,\{i,0,3\}\right]+\right.}\\
+\pmb{\text{Sum}\left[\left(g_i g_j/\Delta _i\right)\left.\left(\text{$\sigma $p}_i .\text{$\sigma $m}_j+\text{$\sigma $m}_i .\text{$\sigma $p}_j\right)\right/2,\{i,0,3\},\{j,0,3\}\right],}\\
+\pmb{J=0,\text{$\Delta $swap}=\text{$\omega $qswap}-\text{$\omega $r}\},}\\
+\pmb{H=H+\frac{1}{2}\left(\text{$\omega $q}_{\text{target1}} \text{$\sigma $z}_{\text{target1}}+\text{$\omega $q}_{\text{target2}} \text{$\sigma
+$z}_{\text{target2}}\right)-}\\
+\pmb{g_{\text{target1}} g_{\text{target2}} \left(\Delta _{\text{target1}}+\Delta _{\text{target2}}\right)/\left(\Delta _{\text{target1}} \Delta _{\text{target2}}\right)}\\
+\pmb{\left.\left(\text{$\sigma $p}_{\text{target1}} .\text{$\sigma $m}_{\text{target2}}+\text{$\sigma $m}_{\text{target1}} .\text{$\sigma $p}_{\text{target2}}\right)\right/2;}\\
+\pmb{H=H-\frac{1}{2}\text{$\omega $qswap}\left(\text{$\sigma $z}_{\text{target1}}+\text{$\sigma $z}_{\text{target2}}\right)+}\\
+\pmb{g_{\text{target1}} g_{\text{target2}} \left.\left(\text{$\sigma $p}_{\text{target1}} .\text{$\sigma $m}_{\text{target2}}+\text{$\sigma $m}_{\text{target1}}
+.\text{$\sigma $p}_{\text{target2}}\right)\right/\text{$\Delta $swap};}\\
+\pmb{H=g_{\text{target1}} g_{\text{target2}} \left.\left(\text{$\sigma $p}_{\text{target1}} .\text{$\sigma $m}_{\text{target2}}+\text{$\sigma $m}_{\text{target1}}
+.\text{$\sigma $p}_{\text{target2}}\right)\right/\text{$\Delta $swap};}\\
+\pmb{J=\text{Abs}\left[g_{\text{target1}} \left.g_{\text{target2}} \right/\text{$\Delta $swap}\right];}\\
+\pmb{\text{MatrixExp}\left[-i H\frac{\pi }{2 J}\right]}\\
+\pmb{];}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{X[\text{target$\_$}]\text{:=}\text{Rx}[\text{target}, \pi ]\text{//}\text{FullSimplify};}\\
+\pmb{Y[\text{target$\_$}]\text{:=}\text{Ry}[\text{target}, \pi ]\text{//}\text{FullSimplify};}\\
+\pmb{\text{Rz}[\text{target$\_$},\theta \_]\text{:=}\text{Ry}[\text{target},-\pi /2].\text{Rx}[\text{target},\theta ].\text{Ry}[\text{target},\pi
+/2]\text{//}}\\
+\pmb{\text{FullSimplify};}\\
+\pmb{Z[\text{target$\_$}]\text{:=}\text{Rz}[\text{target},\pi ]\text{//}\text{FullSimplify};}\\
+\pmb{H[\text{target$\_$}]\text{:=}X[\text{target}].\text{Ry}[\text{target},\pi /2]\text{//}\text{FullSimplify};}\\
+\pmb{\text{CNOT}[\text{control$\_$},\text{target$\_$}]\text{:=}}\\
+\pmb{\text{Rx}[\text{target},\pi /2].\text{iSWAP}[\text{control},\text{target}].\text{Rx}[\text{control},\pi /2].}\\
+\pmb{\text{iSWAP}[\text{control},\text{target}].\text{Rx}[\text{target},\pi /2].\text{iSWAP}[\text{control},\text{target}].}\\
+\pmb{H[\text{control}].\text{iSWAP}[\text{control},\text{target}].\text{Rz}[\text{control},-\pi /2].}\\
+\pmb{\text{Rz}[\text{target},-\pi /2].H[\text{target}]\text{//}\text{FullSimplify};}\\
+\pmb{\text{CRy}[\text{control$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CNOT}[\text{control},\text{target}].\text{Ry}[\text{target},-\theta /2].\text{CNOT}[\text{control},\text{target}].}\\
+\pmb{\text{Ry}[\text{target},\theta /2]\text{//}\text{FullSimplify};}\\
+\pmb{\text{CRz}[\text{control$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CNOT}[\text{control},\text{target}].\text{Rz}[\text{target},-\theta /2].\text{CNOT}[\text{control},\text{target}].}\\
+\pmb{\text{Rz}[\text{target},\theta /2]\text{//}\text{FullSimplify};}\\
+\pmb{\text{SWAP}[\text{target1$\_$},\text{target2$\_$}]\text{:=}}\\
+\pmb{\text{CNOT}[\text{target1},\text{target2}].\text{CNOT}[\text{target2},\text{target1}].\text{CNOT}[\text{target1},\text{target2}]\text{//}}\\
+\pmb{\text{FullSimplify};}\\
+\pmb{\text{CH}[\text{control$\_$},\text{target$\_$}]\text{:=}}\\
+\pmb{\text{Ry}[\text{target},-\pi /4].\text{CNOT}[\text{control},\text{target}].\text{Ry}[\text{target},\pi /4]\text{//}\text{FullSimplify};}\\
+\pmb{\text{CP00}[\text{control$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CRz}[\text{target},\text{control},\theta /2].\text{CRz}[\text{control},\text{target},\theta /2].}\\
+\pmb{\text{Rz}[\text{target},-3 \theta /4].\text{Rz}[\text{control},-3 \theta /4]\text{//}\text{FullSimplify};}\\
+\pmb{\text{CP01}[\text{control$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CRz}[\text{target},\text{control},\theta /2].\text{CRz}[\text{control},\text{target},-3 \theta /2].}\\
+\pmb{\text{Rz}[\text{target},5 \theta /4].\text{Rz}[\text{control},-3 \theta /4]\text{//}\text{FullSimplify};}\\
+\pmb{\text{CP10}[\text{control$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CRz}[\text{target},\text{control},\theta /2].\text{CRz}[\text{control},\text{target},-3 \theta /2].}\\
+\pmb{\text{Rz}[\text{target},\theta /4].\text{Rz}[\text{control},\theta /4]\text{//}\text{FullSimplify};}\\
+\pmb{\text{CP11}[\text{control$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CRz}[\text{target},\text{control},\theta /2].\text{CRz}[\text{control},\text{target},\theta /2].}\\
+\pmb{\text{Rz}[\text{target},\theta /4].\text{Rz}[\text{control},\theta /4]\text{//}\text{FullSimplify};}\\
+\pmb{\text{Toffoli}[\text{control1$\_$},\text{control2$\_$},\text{target$\_$}]\text{:=}}\\
+\pmb{\text{CP11}[\text{control1},\text{control2},-\pi /2].H[\text{target}].\text{CRz}[\text{control1},\text{target},-\pi /2].}\\
+\pmb{\text{CNOT}[\text{control1},\text{control2}].\text{CRz}[\text{control2},\text{target},\pi /2].}\\
+\pmb{\text{CNOT}[\text{control1},\text{control2}].\text{CRz}[\text{control2},\text{target},-\pi /2].H[\text{target}]\text{//}}\\
+\pmb{\text{FullSimplify};}\\
+\pmb{\text{CCRz}[\text{control1$\_$},\text{control2$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CRz}[\text{control1},\text{target},\theta /2].\text{CNOT}[\text{control1},\text{control2}].}\\
+\pmb{\text{CRz}[\text{control2},\text{target},-\theta /2].\text{CNOT}[\text{control1},\text{control2}].}\\
+\pmb{\text{CRz}[\text{control2},\text{target},\theta /2]\text{//}\text{FullSimplify};}\\
+\pmb{\text{CCRy}[\text{control1$\_$},\text{control2$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CRy}[\text{control1},\text{target},\theta /2].\text{CNOT}[\text{control1},\text{control2}].}\\
+\pmb{\text{CRy}[\text{control2},\text{target},-\theta /2].\text{CNOT}[\text{control1},\text{control2}].}\\
+\pmb{\text{CRy}[\text{control2},\text{target},\theta /2]\text{//}\text{FullSimplify};}\\
+\pmb{\text{CCNOT}[\text{control1$\_$},\text{control2$\_$},\text{target$\_$}]\text{:=}}\\
+\pmb{\text{Toffoli}[\text{control1},\text{control2},\text{target}]\text{//}\text{FullSimplify};}\\
+\pmb{\text{CCP00}[\text{control1$\_$},\text{control2$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CP00}[\text{control1},\text{target},\theta /2].X[\text{control1}].\text{CNOT}[\text{control1},\text{control2}].}\\
+\pmb{X[\text{control1}].\text{CP00}[\text{control2},\text{target},-\theta /2].X[\text{control1}].}\\
+\pmb{\text{CNOT}[\text{control1},\text{control2}].X[\text{control1}].\text{CP00}[\text{control2},\text{target},\theta /2]\text{//}}\\
+\pmb{\text{FullSimplify};}\\
+\pmb{\text{CCP01}[\text{control1$\_$},\text{control2$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CP01}[\text{control1},\text{target},\theta /2].X[\text{control1}].\text{CNOT}[\text{control1},\text{control2}].}\\
+\pmb{X[\text{control1}].\text{CP01}[\text{control2},\text{target},-\theta /2].X[\text{control1}].}\\
+\pmb{\text{CNOT}[\text{control1},\text{control2}].X[\text{control1}].\text{CP01}[\text{control2},\text{target},\theta /2]\text{//}}\\
+\pmb{\text{FullSimplify};}\\
+\pmb{\text{CCP10}[\text{control1$\_$},\text{control2$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CP10}[\text{control1},\text{target},\theta /2].\text{CNOT}[\text{control1},\text{control2}].}\\
+\pmb{\text{CP10}[\text{control2},\text{target},-\theta /2].\text{CNOT}[\text{control1},\text{control2}].}\\
+\pmb{\text{CP10}[\text{control2},\text{target},\theta /2]\text{//}\text{FullSimplify};}\\
+\pmb{\text{CCP11}[\text{control1$\_$},\text{control2$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CP11}[\text{control1},\text{target},\theta /2].\text{CNOT}[\text{control1},\text{control2}].}\\
+\pmb{\text{CP11}[\text{control2},\text{target},-\theta /2].\text{CNOT}[\text{control1},\text{control2}].}\\
+\pmb{\text{CP11}[\text{control2},\text{target},\theta /2]\text{//}\text{FullSimplify};}\\
+\pmb{\text{mZ}[\text{target$\_$}]\text{:=}X[\text{target}].Y[\text{target}]\text{//}\text{FullSimplify};}\\
+\pmb{\text{CCCNOT}[\text{control1$\_$},\text{control2$\_$},\text{control3$\_$},\text{target$\_$}]\text{:=}}\\
+\pmb{\text{CP11}[\text{control1},\text{control3},-\pi /4].\text{CNOT}[\text{control1},\text{control2}].}\\
+\pmb{\text{CP11}[\text{control2},\text{control3},\pi /4].\text{CNOT}[\text{control1},\text{control2}].}\\
+\pmb{\text{CP11}[\text{control2},\text{control3},-\pi /4].H[\text{target}].}\\
+\pmb{\text{CCRz}[\text{control1},\text{control3},\text{target},-\pi /2].\text{CNOT}[\text{control1},\text{control2}].}\\
+\pmb{\text{CCRz}[\text{control2},\text{control3},\text{target},\pi /2].\text{CNOT}[\text{control1},\text{control2}].}\\
+\pmb{\text{CCRz}[\text{control2},\text{control3},\text{target},-\pi /2].H[\text{target}]\text{//}\text{FullSimplify};}\\
+\pmb{\text{CCCRy}[\text{control1$\_$},\text{control2$\_$},\text{control3$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CCRy}[\text{control1},\text{control2},\text{target},\theta /2].}\\
+\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].\text{CRy}[\text{control3},\text{target},-\theta /2].}\\
+\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].\text{CRy}[\text{control3},\text{target},\theta /2]\text{//}}\\
+\pmb{\text{FullSimplify};}\\
+\pmb{\text{CCCRz}[\text{control1$\_$},\text{control2$\_$},\text{control3$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CCRz}[\text{control1},\text{control2},\text{target},\theta /2].}\\
+\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].\text{CRz}[\text{control3},\text{target},-\theta /2].}\\
+\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].\text{CRz}[\text{control3},\text{target},\theta /2]\text{//}}\\
+\pmb{\text{FullSimplify};}\\
+\pmb{\text{CCCP00}[\text{control1$\_$},\text{control2$\_$},\text{control3$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CCP00}[\text{control1},\text{control2},\text{target},\theta /2].X[\text{control1}].X[\text{control2}].}\\
+\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].X[\text{control1}].X[\text{control2}].}\\
+\pmb{\text{CP00}[\text{control3},\text{target},-\theta /2].X[\text{control1}].X[\text{control2}].}\\
+\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].X[\text{control1}].X[\text{control2}].}\\
+\pmb{\text{CP00}[\text{control3},\text{target},\theta /2]\text{//}\text{FullSimplify};}\\
+\pmb{\text{CCCP01}[\text{control1$\_$},\text{control2$\_$},\text{control3$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CCP01}[\text{control1},\text{control2},\text{target},\theta /2].X[\text{control1}].X[\text{control2}].}\\
+\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].X[\text{control1}].X[\text{control2}].}\\
+\pmb{\text{CP01}[\text{control3},\text{target},-\theta /2].X[\text{control1}].X[\text{control2}].}\\
+\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].X[\text{control1}].X[\text{control2}].}\\
+\pmb{\text{CP01}[\text{control3},\text{target},\theta /2]\text{//}\text{FullSimplify};}\\
+\pmb{\text{CCCP10}[\text{control1$\_$},\text{control2$\_$},\text{control3$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CCP10}[\text{control1},\text{control2},\text{target},\theta /2].}\\
+\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].\text{CP10}[\text{control3},\text{target},-\theta /2].}\\
+\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].\text{CP10}[\text{control3},\text{target},\theta /2]\text{//}}\\
+\pmb{\text{FullSimplify};}\\
+\pmb{\text{CCCP11}[\text{control1$\_$},\text{control2$\_$},\text{control3$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CCP11}[\text{control1},\text{control2},\text{target},\theta /2].}\\
+\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].\text{CP11}[\text{control3},\text{target},-\theta /2].}\\
+\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].\text{CP11}[\text{control3},\text{target},\theta /2]\text{//}}\\
+\pmb{\text{FullSimplify};}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{CCCRy}\left[0,1,2,3,\frac{\pi }{4}\right]\text{//}\text{Chop}\text{//}\text{TraditionalForm}}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\left(
+\begin{array}{cccccccccccccccc}
+ -0.707107-0.707107 i & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & -0.707107-0.707107 i & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & -0.707107-0.707107 i & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & -0.707107-0.707107 i & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & -0.707107-0.707107 i & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & -0.707107-0.707107 i & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & -0.707107-0.707107 i & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 & -0.707107-0.707107 i & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & -0.707107-0.707107 i & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & -0.707107-0.707107 i & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & -0.707107-0.707107 i & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & -0.707107-0.707107 i & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & -0.707107-0.707107 i & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & -0.707107-0.707107 i & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & -0.653281-0.653281 i & 0.270598\, +0.270598 i \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & -0.270598-0.270598 i & -0.653281-0.653281 i \\
+\end{array}
+\right)\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{\frac{\%}{\left(\frac{-1}{\sqrt{2}}-\frac{i}{\sqrt{2}}\right)}\text{//}\text{Chop}\text{//}\text{TraditionalForm}}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\left(
+\begin{array}{cccccccccccccccc}
+ 1. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 1. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 1. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 1. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 1. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 1. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 1. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1. & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1. & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1. & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1. & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1. & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1. & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1. & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0.92388 & -0.382683 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0.382683 & 0.92388 \\
+\end{array}
+\right)\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{CCCRy}[0,1,2,3,\theta ]\text{//}\text{Chop}\text{//}\text{MatrixForm}}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\left(
+\begin{array}{cccccccccccccccc}
+ \left((-0.19335-0.19335 i)+(0.309359\, +0.309359 i) \text{Cos}\left[\frac{\theta }{8}\right]-(0.15468\, +0.15468 i) \text{Cos}\left[\frac{\theta
+}{4}\right]+(0.0441942\, +0.0441942 i) \text{Cos}\left[\frac{3 \theta }{8}\right]-(0.00552427\, +0.00552427 i) \text{Cos}\left[\frac{\theta }{2}\right]\right)
+\text{Csc}\left[\frac{\theta }{16}\right]^8 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & \left((-0.19335-0.19335 i)+(0.309359\, +0.309359 i) \text{Cos}\left[\frac{\theta }{8}\right]-(0.15468\, +0.15468 i) \text{Cos}\left[\frac{\theta
+}{4}\right]+(0.0441942\, +0.0441942 i) \text{Cos}\left[\frac{3 \theta }{8}\right]-(0.00552427\, +0.00552427 i) \text{Cos}\left[\frac{\theta }{2}\right]\right)
+\text{Csc}\left[\frac{\theta }{16}\right]^8 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & (0.309359\, +0.309359 i) \left(-0.625+1. \text{Cos}\left[\frac{\theta }{8}\right]-0.5 \text{Cos}\left[\frac{\theta }{4}\right]+0.142857
+\text{Cos}\left[\frac{3 \theta }{8}\right]-0.0178571 \text{Cos}\left[\frac{\theta }{2}\right]\right) \text{Csc}\left[\frac{\theta }{16}\right]^8
+& 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & (0.309359\, +0.309359 i) \left(-0.625+1. \text{Cos}\left[\frac{\theta }{8}\right]-0.5 \text{Cos}\left[\frac{\theta }{4}\right]+0.142857
+\text{Cos}\left[\frac{3 \theta }{8}\right]-0.0178571 \text{Cos}\left[\frac{\theta }{2}\right]\right) \text{Csc}\left[\frac{\theta }{16}\right]^8
+& 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & (0.309359\, +0.309359 i) \left(-0.625+1. \text{Cos}\left[\frac{\theta }{8}\right]-0.5 \text{Cos}\left[\frac{\theta }{4}\right]+0.142857
+\text{Cos}\left[\frac{3 \theta }{8}\right]-0.0178571 \text{Cos}\left[\frac{\theta }{2}\right]\right) \text{Csc}\left[\frac{\theta }{16}\right]^8
+& 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & (0.309359\, +0.309359 i) \left(-0.625+1. \text{Cos}\left[\frac{\theta }{8}\right]-0.5 \text{Cos}\left[\frac{\theta }{4}\right]+0.142857
+\text{Cos}\left[\frac{3 \theta }{8}\right]-0.0178571 \text{Cos}\left[\frac{\theta }{2}\right]\right) \text{Csc}\left[\frac{\theta }{16}\right]^8
+& 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & (0.309359\, +0.309359 i) \left(-0.625+1. \text{Cos}\left[\frac{\theta }{8}\right]-0.5 \text{Cos}\left[\frac{\theta }{4}\right]+0.142857
+\text{Cos}\left[\frac{3 \theta }{8}\right]-0.0178571 \text{Cos}\left[\frac{\theta }{2}\right]\right) \text{Csc}\left[\frac{\theta }{16}\right]^8
+& 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 & \left((-0.19335-0.19335 i)+(0.309359\, +0.309359 i) \text{Cos}\left[\frac{\theta }{8}\right]-(0.15468\, +0.15468 i)
+\text{Cos}\left[\frac{\theta }{4}\right]+(0.0441942\, +0.0441942 i) \text{Cos}\left[\frac{3 \theta }{8}\right]-(0.00552427\, +0.00552427 i) \text{Cos}\left[\frac{\theta
+}{2}\right]\right) \text{Csc}\left[\frac{\theta }{16}\right]^8 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & (0.309359\, +0.309359 i) \left(-0.625+1. \text{Cos}\left[\frac{\theta }{8}\right]-0.5 \text{Cos}\left[\frac{\theta
+}{4}\right]+0.142857 \text{Cos}\left[\frac{3 \theta }{8}\right]-0.0178571 \text{Cos}\left[\frac{\theta }{2}\right]\right) \text{Csc}\left[\frac{\theta
+}{16}\right]^8 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & (0.309359\, +0.309359 i) \left(-0.625+1. \text{Cos}\left[\frac{\theta }{8}\right]-0.5 \text{Cos}\left[\frac{\theta
+}{4}\right]+0.142857 \text{Cos}\left[\frac{3 \theta }{8}\right]-0.0178571 \text{Cos}\left[\frac{\theta }{2}\right]\right) \text{Csc}\left[\frac{\theta
+}{16}\right]^8 & 0 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \left((-0.19335-0.19335 i)+(0.309359\, +0.309359 i) \text{Cos}\left[\frac{\theta }{8}\right]-(0.15468\,
++0.15468 i) \text{Cos}\left[\frac{\theta }{4}\right]+(0.0441942\, +0.0441942 i) \text{Cos}\left[\frac{3 \theta }{8}\right]-(0.00552427\, +0.00552427
+i) \text{Cos}\left[\frac{\theta }{2}\right]\right) \text{Csc}\left[\frac{\theta }{16}\right]^8 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & (0.309359\, +0.309359 i) \left(-0.625+1. \text{Cos}\left[\frac{\theta }{8}\right]-0.5 \text{Cos}\left[\frac{\theta
+}{4}\right]+0.142857 \text{Cos}\left[\frac{3 \theta }{8}\right]-0.0178571 \text{Cos}\left[\frac{\theta }{2}\right]\right) \text{Csc}\left[\frac{\theta
+}{16}\right]^8 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \left((-0.19335-0.19335 i)+(0.309359\, +0.309359 i) \text{Cos}\left[\frac{\theta }{8}\right]-(0.15468\,
++0.15468 i) \text{Cos}\left[\frac{\theta }{4}\right]+(0.0441942\, +0.0441942 i) \text{Cos}\left[\frac{3 \theta }{8}\right]-(0.00552427\, +0.00552427
+i) \text{Cos}\left[\frac{\theta }{2}\right]\right) \text{Csc}\left[\frac{\theta }{16}\right]^8 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & (-0.353553-0.353553 i) \text{Csc}\left[\frac{\theta }{16}\right] \text{Sec}\left[\frac{\theta
+}{16}\right] \text{Sin}\left[\frac{\theta }{8}\right] & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & (-0.707107-0.707107 i) \text{Cos}\left[\frac{\theta }{2}\right] & (0.707107\, +0.707107
+i) \text{Sin}\left[\frac{\theta }{2}\right] \\
+ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & (-0.707107-0.707107 i) \text{Sin}\left[\frac{\theta }{2}\right] & \left((-0.00276214-0.00276214
+i)+(0.0220971\, +0.0220971 i) \text{Cos}\left[\frac{\theta }{8}\right]-(0.0773398\, +0.0773398 i) \text{Cos}\left[\frac{\theta }{4}\right]+(0.15468\,
++0.15468 i) \text{Cos}\left[\frac{3 \theta }{8}\right]-(0.19335\, +0.19335 i) \text{Cos}\left[\frac{\theta }{2}\right]+(0.15468\, +0.15468 i) \text{Cos}\left[\frac{5
+\theta }{8}\right]-(0.0773398\, +0.0773398 i) \text{Cos}\left[\frac{3 \theta }{4}\right]+(0.0220971\, +0.0220971 i) \text{Cos}\left[\frac{7 \theta
+}{8}\right]-(0.00276214\, +0.00276214 i) \text{Cos}[\theta ]\right) \text{Csc}\left[\frac{\theta }{16}\right]^8 \\
+\end{array}
+\right)\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{Norm}[\text{Im}[\text{$\%$58}]]}\\
+\pmb{\text{Norm}[\text{Re}[\text{$\%$58}]]}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\text{6.975558989515606$\grave{ }$*${}^{\wedge}$-9}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(1.\)
+\end{doublespace}
+
+\end{document}

@@ -1,6 +1,105 @@
 \chapter{Algoritmo de Shor}
 El algoritmo de Shor es un AC de factorización de enteros. Dado un entero $N=p \times q$, donde $p$ y $q$ son primos, el algoritmo de Shor encuentra $p$ y $q$ en $O((\log(N))^3)$ pasos. El algoritmo clásico más eficiente para factorizar enteros es la cibra general del cuerpo de números y funciona con una complejidad heurística de $O(e^{(\sqrt[3]{\frac{64}{9}}+o(1))(\ln(N))^{\frac{1}{3}}(\ln(\ln(N)))^{\frac{2}{3}}})$. Por su capacidad de factorizar números semiprimos, el algoritmo de Shor es capaz de violar el cifrado RSA y el protocolo Diffie-Hellman de intercambio de llaves, sobre los cuáles se basa virtualmente toda la criptografía actual.
 
+El algoritmo de Shor requiere de dos algoritmos cuánticos preliminares: La estimación de fase y la estimación de orden. El algoritmo de estimación de fase permite encontrar la fase $\phi$ del autovalor $e^i \phi$ asociado a algún autoestado $\ket{u}$ de un operador unitario U. El algoritmo de estimación de orden se basa en la estimación de fase para hallar el orden $r>0$ tal que $a^r \equiv 1 \mod m$.
+
+\section{Estimación de fase}
+
+Asumamos que tenemos un operador U, con autoestados $\ket{u}$ de dimensión L, y con autovalore complejos desconocidos $\lambda_\phi = e^{2 i \pi \phi}$, donde $\phi$ es un número real tal que $0 \leq \phi \leq 1$, a ser determinado.
+
+Asumamos también que somos capaces de construir una familia de operadores $CU^p$, donde $p = 2^0, 2^1, 2^2, ..., 2^{k-1}$
+
+El circuito cuántico del algoritmo de estimación de fase viene expresado en dos etapas, a las que llamaremos ``front-end'' y ``back-end''.
+
+\[\Qcircuit @C=1.4em @R=1.8em {
+\lstick{\ket{0}^{\otimes K}}& {/^K}\qw & \gate{H^{\otimes K}} & \ctrl{1}   & \gate{QFT^\dagger} & \meter & \cw \\
+\lstick{\ket{u} \quad}      & {/^L}\qw & \qw                  & \gate{U^j} & \qw                & \qw    & \qw \\
+& \rstick{\hspace{10pt} \text{Front-end}} & & & \rstick{\hspace{-10pt} \text{Back-end}}
+\gategroup{1}{2}{2}{4}{1em}{_\}}
+\gategroup{1}{5}{2}{6}{2.45em}{_\}}
+} 
+\]
+
+Analicemos la etapa front-end:
+
+\[\Qcircuit @C=1.4em @R=1.8em {
+\lstick{\ket{0}} & \gate{H}  & \qw            & \qw            & \qw            & \ctrl{4}       & \qw \\
+\lstick{\ket{0}} & \gate{H}  & \qw            & \qw            & \ctrl{3}       & \qw            & \qw \\
+\lstick{\ket{0}} & \gate{H}  & \qw            & \ctrl{2}       & \qw            & \qw            & \qw \\
+\lstick{\ket{0}} & \gate{H}  & \ctrl{1}       & \qw            & \qw            & \qw            & \qw \\
+\lstick{\ket{u}} & {/^L} \qw & \gate{U^{2^0}} & \gate{U^{2^1}} & \gate{U^{2^2}} & \gate{U^{2^3}} & \qw \\
+} 
+\]
+
+El circuito consta de dos registros. El primer registro empieza con el estado $\ket{0}$, mientras que el segundo empieza con un autoestado $\ket{u}$. Se aplica la transformada de Hadamard al primer registro para convertirlo en $\ket{s}$. Ahora se aplica U controlado por cada uno de los qubits del primer registro, como se ve en el circuito, tal que se aplique la fase del autovalor asociado a $\ket{u}$ n veces al estado $\ket{n}$. Para ilustrar mejor esto, veamos el efecto de $CU^j$ en distintos estados.
+
+$\ket{0} = \ket{0000}:$
+
+Como este estado está compuesto de sólo qubits $\ket{0}$, $CU^j$ actúa como $\mathds{1}$ y el estado de salida es igual al de entrada.
+
+\begin{equation}
+    CU^j \ket{0000} \otimes \ket{u} = e^{i 0 \times 2\pi \phi} \ket{0} \otimes \ket{u}
+\end{equation}
+
+$\ket{1} = \ket{0001}:$
+
+La última partición de este estado es $\ket{1}$, así que la componente $CU^{2^0} = CU$ de $CU^j$ actúa como $U$, por lo tanto, aparece una vez la fase del autovalor $e^{i 2\pi \phi}$.
+
+\begin{equation}
+    CU^j \ket{0001} \otimes \ket{u} = e^{i 1 \times 2\pi \phi} \ket{1} \otimes \ket{u}
+\end{equation}
+
+$\ket{6} = \ket{0110}:$
+
+La segunda y la tercera partición de este estado son $\ket{1}$, así que las componentes $CU^{2^1} = CU^2$ y $CU^{2^2} = CU^4$ de $CU^j$ actúan como $U^2$ y $U^4$. En total se tiene $U^6$, por lo tanto, aparece seis vez la fase del autovalor $e^{i 2\pi \phi}$.
+
+\begin{equation}
+    CU^j \ket{0110} \otimes \ket{u} = e^{i 6 \times 2\pi \phi} \ket{6} \otimes \ket{u}
+\end{equation}
+
+Como se puede ver, $CU^j \ket{n} \otimes \ket{u} = e^{i n 2\pi \phi} \ket{n} \otimes \ket{u}$. Por lo tanto, como las compuertas cuánticas son operadores lineales, sabemos que
+
+\begin{equation}
+    CU^j \ket{s} \otimes \ket{u} = CU^j \frac{1}{\sqrt{2^K}} \sum\limits_k \ket{k} \otimes \ket{u} = \frac{1}{\sqrt{2^K}} \sum\limits_k e^{i k 2\pi \phi} \ket{k} \otimes \ket{u}
+\end{equation}
+
+Ahora, se aplica la transformada cuántica inversa de Fourier al primer registro.
+
+\begin{equation}
+    QFT^\dagger = \frac{1}{\sqrt{2^K}} \sum\limits_x\sum\limits_k e^{-i 2\pi k x / 2^K} \ketbra{x}{k}
+\end{equation}
+
+\begin{equation}
+\begin{array}{r l}
+    QFT^\dagger \frac{1}{\sqrt{2^K}} \sum\limits_k e^{i k 2\pi \phi} \ket{k} \otimes \ket{u} &= \frac{1}{2^K} \sum\limits_x \sum\limits_k e^{i k 2\pi \phi} e^{-i 2\pi k x / 2^K} \ket{x} \otimes \ket{u} \\
+    &= \frac{1}{2^K} \sum\limits_x\sum\limits_k \left(e^{i 2\pi (\phi - \frac{x}{2^K})}\right)^k \ket{x} \otimes \ket{\phi} \\
+    &= \frac{1}{2^K} \sum\limits_x \frac{1 - e^{i 2\pi (\phi - \frac{x}{2^K}) 2^K}}{1 - e^{i 2\pi (\phi - \frac{x}{2^K})}} \ket{x} \otimes \ket{\phi} \\
+\end{array}
+\end{equation}
+
+La probabilidad de medir x a la salida del registro será:
+
+\begin{equation}
+    p(x) = \frac{1}{4^{K}} \frac{\sin^2(\pi (\phi - \frac{x}{2^K}) 2^K)}{\sin^2(\pi (\phi - \frac{x}{2^K}))}
+\end{equation}
+
+$p(n) = |\bra{u} \otimes \bra{n} \ket{\psi_{output}}|^2$
+
+$p(n) = \frac{1}{N^2} |\frac{1 - e^{2 i \pi (\phi - \frac{n}{N})N}}{1 - e^{2 i \pi (\phi - \frac{n}{N})}}|^2$
+
+$\therefore p(n) = \frac{1}{N^2} \frac{\sin^2(\pi (\phi - \frac{n}{N}) N)}{\sin^2(\pi (\phi - \frac{n}{N}))}$
+
+La medida de n con probabilidad asociada p(n), corresponde a la estimación de fase $\tilde{\phi} = n/N$. La probabilidad es máxima cuando $\delta = \phi - \tilde{\phi}$ es mínima.
+
+$p(n) = \frac{1}{N^2} \frac{\sin^2(\pi (\phi - \frac{n}{N}) N)}{\sin^2(\pi (\phi - \frac{n}{N}))}$ si N es grande $\rightarrow$ %Graf
+
+La probabilidad p(n) decae rápidamente a cero cuando el error $\delta$ se aleja del mínimo.
+
+Entonces:
+
+.) La medida tiene la maor probabilidad de dar la aproximación más cercana al estado $\phi$.
+.) El circuito de salida es de la forma $\ket{\tilde{\phi}} \ket{u}$, donde $\ket{\tilde{\phi}}$ es una superposición de estados, los cuales al medirlos dan una buena aproximación de $\phi$.
+
 \section{Estimación de orden}
 
 Dado $m \in \mathds{N}$, se dice que $a,b \in \mathds{Z}$ son congruentes módulo m si y sólo si $(a-b)/m \in \mathds{Z}$.
@@ -131,122 +230,6 @@ La parte cuántica del algoritmo de Shor la podemos dividir en 2 partes:
 2) El algoritmo de determinación de orden
 
 Entonces:
-
-\section{Estimación de fase}
-
-Asumamos que tenemos un operador U, con autoestados $\ket{u}$ de dimensión L, y con autovalore complejos dessconocidos $\lambda_\phi = e^{2 i \pi \phi}$, donde $\phi$ es un número real tal que $0 \leq \phi \leq 1$, a ser determinado.
-
-Asumamos también que somos capaces de construir una familia de operadores $controlled-U^p$, donde $p = 2^0, 2^1, 2^2, ..., 2^{k-1}$
-
-El circuito cuántico del algoritmo de estimación de fase viene expresado en dos etapas, a las que llamaremos "front-end" y "back-end".
-
-Analicemos la etapa front-end:
-
-%%%%%% CIRCUITO AQUÍ %%%%%%
-
-Recordemos que:
-
-%C
-
-Analicemos ls compuerta $CU^p \equiv controlled-U^p gate$:
-
-%C
-
-$U \ket{u} = e^{2 i \pi \phi}$
-$U^p \ket{u} = e^{2 i \pi p \phi}$
-$H \ket{0} = \ket{0} + \ket{1}$ (Sin $1\sqrt{2}$ por los momentos)
-
-$CU^p ((\ket{0} + \ket{1}) \otimes \ket{u} = \ket{0} \otimes \ket{u} + \ket{1} \otimes U^p \ket{u} = \ket{0} \otimes \ket{u} + \ket{1} e^{2i \pi p \phi} \ket{u} = (\ket{0} + e^{2 i p \pi \phi}) \otimes \ket{u}$
-
-$\therefore CU^p ((\ket{0} + \ket{1}) \otimes \ket{u}) = (\ket{0} + e^{2 i \pi p \phi} \ket{1}) \otimes \ket{u}$
-
-Analicemos ahora el producto tensorial a la salida de dos compuertas $CU^p$ recordemos que $p = \{2^0, 2^1, ..., 2^{k-1}\}$, entonces:
-
-$(\ket{0} + e^{2 i \pi 2^1 \phi} \ket{1}) \otimes (\ket{0} + e^{2 i \phi 2^0 \phi} \ket{1}) = \ket{0} \ket{0} + e^{2 i \pi 2^0 \phi} \ket{0} \ket{1} + e^{2 i \pi 2^1 p} \ket{1} \ket{0} + e^{2 \pi i (2^1 + 2^0) \phi} \ket{1} \ket{1} = e^{2 i \pi 0 \phi} \ket{0} + e^{2 i \pi 1 \phi} \ket{1} + e^{2 i \pi 2 \phi} \ket{2} + e^{2 i \pi 3 \phi} \ket{3}$
-
-donde $\ket{00} \equiv \ket{0}; \ket{01} \equiv \ket{1}; \ket{10} \equiv \ket{2}; \ket{11} \equiv \ket{3};$
-
-% revisar exponentes | error en la clase
-es decir: $\ket{ij} \equiv \ket{i 2^0 + j 2^1}$ con i,j = 0,1
-si generalizamos: $\ket{i j k ... n} = \ket{i 2^0 + j 2^1 + k 2^2 + ... + n 2^{n-1}}$
-
-$\therefore (\ket{0} + e^{2 i \pi 2^1}) \otimes (\ket{0} + e^{2 i \pi 2^0 \phi} \ket{1}) = \sum\limits_{k = 0}^3 e^{2i \pi k \phi} \ket{k}$
-
-Todo número puede ser representado en forma binaria:
-
-$0 \leq \phi \leq 1 \implies \phi \equiv 0 \phi_1 \phi_2 \phi_3 ... \implies \phi = \frac{\phi_1}{2} + \frac{\phi_2}{4} + \frac{\phi_3}{8} + ... + \frac{\phi_k}{2^k} + ...$
-
-para bits $\phi_i = 0,1 \rightarrow \phi_1 = 0 y \phi_2 = 1$
-
-luego: .) $2^{k-1} \phi = 2^{k-1} ( \frac{\phi_1}{2} + \frac{\phi_2}{4} + \frac{\phi_3}{8} + ... + \frac{\phi_k}{2^k} + ...) = \{\phi_1 2^{k-2} + \phi_2 2^{k-3} + ... + \phi_{k-1} 2^0\} + \frac{\phi_k}{2} + \frac{\phi_{k-1}}{4} + ...$
-
-.) $2^{k-2} \phi = 2^{k-2} ( \frac{\phi_1}{2} + \frac{\phi_2}{4} + \frac{\phi_3}{8} + ... + \frac{\phi_k}{2^k} + ...) = \{\phi_1 2^{k-3} + \phi_2 2^{k-4} + ... + \phi_{k-2} 2^0\} + \frac{\phi_{k-1}}{2} + \frac{\phi_k}{2} + \frac{\phi_{k+1}}{8} + ...$
-
-Los términos dentro de los \{ \} son enteros. Definamos entonces:
-
-$\Omega_m = \sum\limits_{l=1}^m \frac{\phi_{k-m+l}}{2^l}$
-
-tal que:
-
-$e^{2 i \pi 2^{k-1} \phi} = e^{2 i \phi \Omega_1} e^{2 i \pi (\frac{\phi_{k+1}}{4} + ...)}$
-$e^{2 i \pi 2^{k-2} \phi} = e^{2 i \phi \Omega_2} e^{2 i \pi (\frac{\phi_{k+1}}{8} + ...)}$
-.
-.
-.
-$e^{2 i \pi 2^0 \phi} = e^{2 i \phi \Omega_k} e^{2 i \pi (\frac{\phi_{k+1}}{2^{k+1}} + ...)}$
-
-Consideremos el caso en el cual $\phi$ es definido exactamente por k bits tal que $\phi_{k+1} = \phi_{k+2} = ... = 0$
-
-Dejando de lado el qubit $\ket{u}$ la salida del primer registro es:
-
-$\frac{1}{2^{k/2}} (\ket{0} + e^{2 i \pi \Omega_1} \ket{1}) \otimes (\ket{0} + e^{2 i \pi \Omega_2}) \otimes ... \otimes (\ket{0} + e^{2 i \pi \Omega_k} \ket{1})$
-
-Como podemos recordar
-
-$QFT \ket{n} = \frac{1}{2^{k/2}} (\ket{0}_1 + e^{2 i \pi \Omega_1} \ket{1}_1) \otimes (\ket{0}_2 +  e^{2 i \pi \Omega_2} \ket{1}_2) \otimes ... \otimes (\ket{0}_k + e^{2 i \pi \Omega_k} \ket{1}_k)$
-
-Siendo: $1 \leq m \leq k \rightarrow \ket{m} = \frac{1}{2^{m/2}} (\ket{0}_m + e^{2 i \pi \Omega_m} \ket{1}_m)$
-
-con $\Omega_m = \sum\limits_{l=1}^m \frac{n_{k-m+l}}{2}$
-
-Encontrando así que $\frac{1}{2^{k/2}} (\ket{0} + e^{2 i \pi \Omega_1} \ket{1}) \otimes (\ket{0} + e^{2 i \pi \Omega_2} \ket{1}) \otimes ... \otimes (\ket{0} + e^{2 i \pi \Omega_k} \ket{1})$
-
-Es la transformada cuántica de Fourier de nuestro estado $\ket{\phi}$ obtenida con las compuertas $Controlled-U^p$.
-
-Al ket $\ket{\phi}$ lo podemos recuperar haciendo la transformada inversa de Fourier.
-
-Consideremos ahora el módulo del circuito cuántico "back-end"
-
-% C
-
-El módulo back-end del circuito cuántico de Shor consiste en realizar la transformada cuántica inversa de Fourier y hacer medidas sobre los k qubits encontrando así los $\phi_1, \phi_2,...,\phi_k$.
-
-Seguidamente consideremos ahora el caso más general en el cual $2^k \phi$ no es un entero.
-
-Fron-end $\ket{0}^{\otimes k} \otimes \ket{u} \rightarrow \frac{1}{\sqrt{N}} \sum\limits_{k=0}^{N-1} e^{2 i \pi k \phi} \ket{k} \otimes \ket{u}$
-
-Back-end $QFT_1^\dagger (\frac{1}{\sqrt{N}} \sum\limits_{k=0}^{N-1} e^{2 i \pi k \phi} \ket{k} \otimes \ket{u}) = \frac{1}{\sqrt{N}} \sum\limits_{k=0}^{N-1} e^{2 i k \phi} QFT^\dagger \ket{k} \otimes \ket{u} = \frac{1}{\sqrt{N}} \sum\limits_{k=0}^{N-1} e^{2 i \pi k \phi} (\frac{1}{2^{k/2}} \sum\limits_{n=0}^{N-1} e^{-\frac{2 \pi i k n}{N} \ket{n}) \ket{u} = \frac{1}{N} \sum\limits_{k=0}^{N-1} \sum\limits_{n=0}^{N-1} e^{- 2 \pi i \frac{k n}{N}} e^2 i pi k \phi} \ket{n} \otimes \ket{u} = \frac{1}{N} \sum\limits_{n=0}^{N-1} (\sum\limits_{k=0}^{N-1} (e^{2 i \pi (\phi - \frac{n}{N})})^k ) \ket{n} \otimes \ket{u}$
-
-$\therefore (QFT^\dagger \otimes \mathds{1}) (\frac{1}{\sqrt{N}} \sum\limits_{k=0}^{N-1} e^{2 i \pi k \phi} \ket{k} \otimes \ket{u}) = \frac{1}{N} \sum\limits_{n=0}^{N-1} (\frac{1 - e^{2 i \pi (\phi - \frac{n}{N})N}}{1 - e^{2 i \pi (\phi - \frac{n}{N})}}) \ket{n} \otimes \ket{u}$
-
-La probabilidad de medir n a la salida del registro será:
-
-$p(n) = |\bra{u} \otimes \bra{n} \ket{\psi_{output}}|^2$
-
-$p(n) = \frac{1}{N^2} |\frac{1 - e^{2 i \pi (\phi - \frac{n}{N})N}}{1 - e^{2 i \pi (\phi - \frac{n}{N})}}|^2$
-
-$\therefore p(n) = \frac{1}{N^2} \frac{\sin^2(\pi (\phi - \frac{n}{N}) N)}{\sin^2(\pi (\phi - \frac{n}{N}))}$
-
-La medida de n con probabilidad asociada p(n), corresponde a la estimación de fase $\tilde{\phi} = n/N$. La probabilidad es máxima cuando $\delta = \phi - \tilde{\phi}$ es mínima.
-
-$p(n) = \frac{1}{N^2} \frac{\sin^2(\pi (\phi - \frac{n}{N}) N)}{\sin^2(\pi (\phi - \frac{n}{N}))}$ si N es grande $\rightarrow$ %Graf
-
-La probabilidad p(n) decae rápidamente a cero cuando el error $\delta$ se aleja del mínimo.
-
-Entonces:
-
-.) La medida tiene la maor probabilidad de dar la aproximación más cercana al estado $\phi$.
-.) El circuito de salida es de la forma $\ket{\tilde{\phi}} \ket{u}$, donde $\ket{\tilde{\phi}}$ es una superposición de estados, los cuales al medirlos dan una buena aproximación de $\phi$.
 
 \section{Estimación de orden}
 

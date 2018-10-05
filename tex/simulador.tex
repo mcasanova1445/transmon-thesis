@@ -194,9 +194,16 @@ Esta compuerta se realiza con una secuencia de CNOTs.
 
 Barenco et al \cite{barenco} demostraron que con la compuerta CNOT y compuertas de un qubit se puede realizar cualquier compuerta condicional bipartita de la siguiente manera:
 
-\begin{equation}
-    CU = IdxC CNOT IdxB CNOT IdxA
-\end{equation}
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \ctrl{1} & \qw \\
+& \gate{U} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \qw      & \ctrl{1} & \qw      & \ctrl{1} & \qw      & \qw \\
+& \gate{A} & \targ    & \gate{B} & \targ    & \gate{C} & \qw \\
+} 
+\]
 
 Donde $C X B X A = U$ y $C B A = \mathds{1}$.
 
@@ -204,7 +211,18 @@ Siguiendo este esquema se construyó: CRy, CRz y CH.
 
 Barenco et al. también presentan un método para agregar más qubits de control a una compuerta condicional:
 
-CIRCUITO
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \ctrl{1} & \qw \\
+& \ctrl{1} & \qw \\
+& \gate{U} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \qw      & \ctrl{1} & \qw              & \ctrl{1} & \ctrl{2} & \qw \\
+& \ctrl{1} & \targ    & \ctrl{1}         & \targ    & \qw      & \qw \\
+& \gate{V} & \qw      & \gate{V^\dagger} & \qw      & \gate{V} & \qw \\
+} 
+\]
 
 De esta manera se construyó: CCRy, CCCRy, CCRz y CCCRz. También se contruyó parcialmente de esta manera la compuerta de Toffoli, CCCNOT y CCCCNOT, sin embargo, debido a la fase global que queda al contruir X, Y y Z a partir de Rx, Ry y Rz, hace falta una componente adicional para poder construir estas compuertas. Esto ocurre porque la fase global también queda condicionada y deja de ser global. Para ilustrar mejor este detalle, tomemos como ejemplo el caso de Toffoli. Siguiendo el esquema anterior se llega a:
 
@@ -276,17 +294,17 @@ Rz y la compuerta de cambio de fase P son completamente equivalentes cuando actu
     e^{i \theta/2} CRz(\theta)
 \end{equation}
 
-Se puede construir un sistema de ecuaciones linealmente independientes con las fases introducidas por $Rz(\theta_1) \otimes \mathds{1}$, $\mathds{1} \otimes Rz(\theta_2)$, $CRz_1(\theta_3)$ y $CRz_0(\theta_4)$, donde $CRz_0$ y $CRz_1$ son la compuerta CRz con el qubit de la partición 1 y el qubit de la partición 0 como target, respectivamente.
+Se puede construir un sistema de ecuaciones con las fases introducidas por $Rz(\theta_1) \otimes \mathds{1}$, $\mathds{1} \otimes Rz(\theta_2)$, $CRz_1(\theta_3)$ y $CRz_0(\theta_4)$, donde $CRz_0$ y $CRz_1$ son la compuerta CRz con el qubit de la partición 1 y el qubit de la partición 0 como target, respectivamente.
 
-\begin{equation}
-    CRz_0(\theta_4) CRz_1(\theta_3) (\mathds{1} \otimes Rz(\theta_2)) (Rz(\theta_1) \otimes \mathds{1}) =
+\begin{multline}
+    CRz_0(\theta_4) CRz_1(\theta_3) (\mathds{1} \otimes Rz(\theta_2)) (Rz(\theta_1) \otimes \mathds{1}) = \\
     \begin{pmatrix}
         e^{i(-\theta_1 - \theta_2)/2} & 0 & 0 & 0 \\
         0 & e^{i(-\theta_1+\theta_2-\theta_4)/2} & 0 & 0 \\
         0 & 0 & e^{i(\theta_1 - \theta_2 - \theta_3)/2} & 0 \\
         0 & 0 & 0 & e^{i(\theta_1 + \theta_2 + \theta_3 + \theta_4)/2} \\
     \end{pmatrix}
-\end{equation}
+\end{multline}
 
 Donde se quiere que:
 
@@ -294,7 +312,7 @@ Donde se quiere que:
     (-\theta_1 - \theta_2)/2 &= \phi \\
     (-\theta_1+\theta_2-\theta_4)/2 &= \phi \\
     (\theta_1 - \theta_2 - \theta_3)/2 &= \phi \\
-    (\theta_1 + \theta_2 + \theta_3 + \theta_4)/2 &= \phi + \theta \\
+    (\theta_1 + \theta_2 + \theta_3 + \theta_4)/2 &= \phi + \theta
 \end{align}
 
 Esto se logra tomando:
@@ -303,11 +321,11 @@ Esto se logra tomando:
     \theta_1 &= \theta/4\\
     \theta_2 &= \theta/4\\
     \theta_3 &= \theta/2\\
-    \theta_4 &= \theta/2\\
+    \theta_4 &= \theta/2
 \end{align}
 
-\begin{equation}
-    CRz_0(\theta_4) CRz_1(\theta_3) (\mathds{1} \otimes Rz(\theta_2)) (Rz(\theta_1) \otimes \mathds{1}) =
+\begin{multline}
+    CRz_0(\theta_4) CRz_1(\theta_3) (\mathds{1} \otimes Rz(\theta_2)) (Rz(\theta_1) \otimes \mathds{1}) = \\
     \begin{pmatrix}
         e^{i(-\theta)/4} & 0 & 0 & 0 \\
         0 & e^{i(-\theta)/4} & 0 & 0 \\
@@ -320,7 +338,268 @@ Esto se logra tomando:
         0 & 0 & 1 & 0 \\
         0 & 0 & 0 & e^{i \theta} \\
     \end{pmatrix}
-\end{equation}
+\end{multline}
+
+Esta compuerta agrega una fase de $e^{i \theta}$ al ket $\ket{11}$. Con este mismo método también se pueden construir versiones de esta compuerta que agreguen la misma fase a los kets $\ket{00}$, $\ket{01}$, $\ket{10}$.
+
+
+\begin{align*}
+    \ket{00}, CP^\theta& blanca, CP00(\theta): \\
+    & \theta_1 = -3*\theta/4 \\
+    & \theta_2 = -3*\theta/4 \\
+    & \theta_3 = \theta/2 \\
+    & \theta_4 = \theta/2
+\end{align*}
+
+\begin{align*}
+    \ket{01}, CP_\theta& blanca, CP01(\theta): \\
+    & \theta_1 = -3\theta/4 \\
+    & \theta_2 = 5\theta/4 \\
+    & \theta_3 = -3\theta/2 \\
+    & \theta_4 = \theta/2
+\end{align*}
+
+\begin{align*}
+    \ket{10}, CP^\theta& negra, CP10(\theta): \\
+    \theta_1 &= \theta/4 \\
+    \theta_2 &= \theta/4 \\
+    \theta_3 &= -3\theta/2 \\
+    \theta_4 &= \theta/2
+\end{align*}
+
+\begin{align*}
+    \ket{11}, CP_\theta& negra, CP11(\theta): \\
+    \theta_1 &= \theta/4 \\
+    \theta_2 &= \theta/4 \\
+    \theta_3 &= \theta/2 \\
+    \theta_4 &= \theta/2
+\end{align*}
+
+Finalmente, para realizar la compuerta de Toffoli, se debe aplicar la compuerta $CP_\theta$ después de $Toffoli^\prime$ con $\theta = - \pi/2$ a los qubits de control de Toffoli.
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \ctrl{1} & \qw \\
+& \ctrl{1} & \qw \\
+& \targ    & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+        & \multigate{2}{Toffoli^\prime} & \ctrl{1}          & \qw \\
+        & \ghost{Toffoli^\prime} & \gate{P_{-\frac{\pi}{2}}} & \qw \\
+        & \ghost{Toffoli^\prime} & \qw & \qw 
+} 
+\]
+
+De la misma manera, con CCP se puede realizar CCCNOT. CCP y CCCP se pueden realizar con el método de Barenco.
+
+\section{Wolfram Mathematica}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{$\omega $r}=2\pi  10.0;}\\
+\pmb{\text{$\omega $q}_{\text{i$\_$}}\text{:=}2\pi \{5.0,6.0,7.0,8.0\}[[i+1]];}\\
+\pmb{\text{$\omega $qswap}=2\pi  9.0;}\\
+\pmb{g_{\text{i$\_$}}\text{:=}2\pi \{0.1,0.1,0.1,0.1\}[[i+1]];}\\
+\pmb{\Delta _{\text{i$\_$}}\text{:=}\text{$\omega $q}_i-\text{$\omega $r};}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{ket0}=\{\{1\},\{0\}\};}\\
+\pmb{\text{ket1}=\{\{0\},\{1\}\};}\\
+\pmb{\text{Id}=\text{PauliMatrix}[0];}\\
+\pmb{\text{$\sigma $x}=\text{PauliMatrix}[1];}\\
+\pmb{\text{$\sigma $y}=\text{PauliMatrix}[2];}\\
+\pmb{\text{$\sigma $z}=\text{PauliMatrix}[3];}\\
+\pmb{\text{$\sigma $p}=\text{ket1}.\text{ket0}\dagger;}\\
+\pmb{\text{$\sigma $m}=\text{ket0}.\text{ket1}\dagger;}\\
+\pmb{\text{QopAsc}[\text{i$\_$},\text{j$\_$},\text{qop$\_$}]\text{:=}<|\text{Mod}[i+0,4]\to \text{qop},\text{Mod}[i+1,4]\to \text{Id},}\\
+\pmb{\text{Mod}[i+2,4]\to \text{Id},\text{Mod}[i+3,4]\to \text{Id}|>[j];}\\
+\pmb{\text{Id}_{\text{i$\_$}}\text{:=}\text{KroneckerProduct}[\text{QopAsc}[i,0,\text{Id}],\text{QopAsc}[i,1,\text{Id}],}\\
+\pmb{\text{QopAsc}[i,2,\text{Id}],\text{QopAsc}[i,3,\text{Id}]];}\\
+\pmb{\text{$\sigma $x}_{\text{i$\_$}}\text{:=}\text{KroneckerProduct}[\text{QopAsc}[i,0,\text{$\sigma $x}],\text{QopAsc}[i,1,\text{$\sigma $x}],}\\
+\pmb{\text{QopAsc}[i,2,\text{$\sigma $x}],\text{QopAsc}[i,3,\text{$\sigma $x}]];}\\
+\pmb{\text{$\sigma $y}_{\text{i$\_$}}\text{:=}\text{KroneckerProduct}[\text{QopAsc}[i,0,\text{$\sigma $y}],\text{QopAsc}[i,1,\text{$\sigma $y}],}\\
+\pmb{\text{QopAsc}[i,2,\text{$\sigma $y}],\text{QopAsc}[i,3,\text{$\sigma $y}]];}\\
+\pmb{\text{$\sigma $z}_{\text{i$\_$}}\text{:=}\text{KroneckerProduct}[\text{QopAsc}[i,0,\text{$\sigma $z}],\text{QopAsc}[i,1,\text{$\sigma $z}],}\\
+\pmb{\text{QopAsc}[i,2,\text{$\sigma $z}],\text{QopAsc}[i,3,\text{$\sigma $z}]];}\\
+\pmb{\text{$\sigma $p}_{\text{i$\_$}}\text{:=}\text{KroneckerProduct}[\text{QopAsc}[i,0,\text{$\sigma $p}],\text{QopAsc}[i,1,\text{$\sigma $p}],}\\
+\pmb{\text{QopAsc}[i,2,\text{$\sigma $p}],\text{QopAsc}[i,3,\text{$\sigma $p}]];}\\
+\pmb{\text{$\sigma $m}_{\text{i$\_$}}\text{:=}\text{KroneckerProduct}[\text{QopAsc}[i,0,\text{$\sigma $m}],\text{QopAsc}[i,1,\text{$\sigma $m}],}\\
+\pmb{\text{QopAsc}[i,2,\text{$\sigma $m}],\text{QopAsc}[i,3,\text{$\sigma $m}]];}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{GaussianPulse}[\text{x$\_$},\text{ts$\_$},\text{tf$\_$}]\text{:=}}\\
+\pmb{(\text{UnitStep}[x-\mu +3\sigma ]-\text{UnitStep}[x-\mu -3\sigma ])}\\
+\pmb{\text{PDF}[\text{NormalDistribution}[\mu ,\sigma ],x]/0.997300204\text{/.}}\\
+\pmb{\left\{\mu \to \frac{\text{tf}+\text{ts}}{2},\sigma \to \frac{\text{tf}-\text{ts}}{6}\right\};}\\
+\pmb{\text{SquarePulse}[\text{x$\_$},\text{ts$\_$},\text{tf$\_$}]\text{:=}}\\
+\pmb{(\text{UnitStep}[x-\mu +3\sigma ]-\text{UnitStep}[x-\mu -3\sigma ])/(6\sigma )\text{/.}}\\
+\pmb{\left\{\mu \to \frac{\text{tf}+\text{ts}}{2},\sigma \to \frac{\text{tf}-\text{ts}}{6}\right\};}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{Rx}[\text{target$\_$},\theta \_]\text{:=}\text{Module}\left[\left\{H\text{:=}\frac{-1}{2}\text{Sum}\left[\left(\text{$\omega
+$q}_i-\text{$\omega $q}_{\text{target}}\right)\text{$\sigma $z}_i,\{i,0,3\}\right]\right\},\right.}\\
+\pmb{H=H+\frac{1}{2} \theta  \text{GaussianPulse}[t,0,10] \text{$\sigma $x}_{\text{target}};}\\
+\pmb{\text{MatrixExp}[-i \text{NIntegrate}[H,\{t,0,10\}]]}\\
+\pmb{];}\\
+\pmb{\text{Ry}[\text{target$\_$},\theta \_]\text{:=}\text{Module}\left[\left\{H\text{:=}\frac{-1}{2}\text{Sum}\left[\left(\text{$\omega $q}_i-\text{$\omega
+$q}_{\text{target}}\right)\text{$\sigma $z}_i,\{i,0,3\}\right]\right\},\right.}\\
+\pmb{H=H+\frac{1}{2} \theta  \text{GaussianPulse}[t,0,10] \text{$\sigma $y}_{\text{target}};}\\
+\pmb{\text{MatrixExp}[-i \text{NIntegrate}[H,\{t,0,10\}]]}\\
+\pmb{];}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{sqrtiSWAP}[\text{target1$\_$},\text{target2$\_$}]\text{:=}}\\
+\pmb{\text{Module}[}\\
+\pmb{\left\{H=\frac{-1}{2}\text{Sum}\left[\text{$\omega $q}_i \text{$\sigma $z}_i,\{i,0,3\}\right]+\right.}\\
+\pmb{\text{Sum}\left[\left(g_i g_j/\Delta _i\right)\left.\left(\text{$\sigma $p}_i .\text{$\sigma $m}_j+\text{$\sigma $m}_i .\text{$\sigma $p}_j\right)\right/2,\{i,0,3\},\{j,0,3\}\right],}\\
+\pmb{J=0,\text{$\Delta $swap}=\text{$\omega $qswap}-\text{$\omega $r}\},}\\
+\pmb{H=H+\frac{1}{2}\left(\text{$\omega $q}_{\text{target1}} \text{$\sigma $z}_{\text{target1}}+\text{$\omega $q}_{\text{target2}} \text{$\sigma
+$z}_{\text{target2}}\right)-}\\
+\pmb{g_{\text{target1}} g_{\text{target2}} \left(\Delta _{\text{target1}}+\Delta _{\text{target2}}\right)/\left(\Delta _{\text{target1}} \Delta _{\text{target2}}\right)}\\
+\pmb{\left.\left(\text{$\sigma $p}_{\text{target1}} .\text{$\sigma $m}_{\text{target2}}+\text{$\sigma $m}_{\text{target1}} .\text{$\sigma $p}_{\text{target2}}\right)\right/2;}\\
+\pmb{H=H-\frac{1}{2}\text{$\omega $qswap}\left(\text{$\sigma $z}_{\text{target1}}+\text{$\sigma $z}_{\text{target2}}\right)+}\\
+\pmb{g_{\text{target1}} g_{\text{target2}} \left.\left(\text{$\sigma $p}_{\text{target1}} .\text{$\sigma $m}_{\text{target2}}+\text{$\sigma $m}_{\text{target1}}
+.\text{$\sigma $p}_{\text{target2}}\right)\right/\text{$\Delta $swap};}\\
+\pmb{H=g_{\text{target1}} g_{\text{target2}} \left.\left(\text{$\sigma $p}_{\text{target1}} .\text{$\sigma $m}_{\text{target2}}+\text{$\sigma $m}_{\text{target1}}
+.\text{$\sigma $p}_{\text{target2}}\right)\right/\text{$\Delta $swap};}\\
+\pmb{J=\text{Abs}\left[g_{\text{target1}} \left.g_{\text{target2}} \right/\text{$\Delta $swap}\right];}\\
+\pmb{\text{MatrixExp}\left[-i H\frac{\pi }{4 J}\right]}\\
+\pmb{];}\\
+\pmb{\text{iSWAP}[\text{target1$\_$},\text{target2$\_$}]\text{:=}}\\
+\pmb{\text{Module}[}\\
+\pmb{\left\{H=\frac{-1}{2}\text{Sum}\left[\text{$\omega $q}_i \text{$\sigma $z}_i,\{i,0,3\}\right]+\right.}\\
+\pmb{\text{Sum}\left[\left(g_i g_j/\Delta _i\right)\left.\left(\text{$\sigma $p}_i .\text{$\sigma $m}_j+\text{$\sigma $m}_i .\text{$\sigma $p}_j\right)\right/2,\{i,0,3\},\{j,0,3\}\right],}\\
+\pmb{J=0,\text{$\Delta $swap}=\text{$\omega $qswap}-\text{$\omega $r}\},}\\
+\pmb{H=H+\frac{1}{2}\left(\text{$\omega $q}_{\text{target1}} \text{$\sigma $z}_{\text{target1}}+\text{$\omega $q}_{\text{target2}} \text{$\sigma
+$z}_{\text{target2}}\right)-}\\
+\pmb{g_{\text{target1}} g_{\text{target2}} \left(\Delta _{\text{target1}}+\Delta _{\text{target2}}\right)/\left(\Delta _{\text{target1}} \Delta _{\text{target2}}\right)}\\
+\pmb{\left.\left(\text{$\sigma $p}_{\text{target1}} .\text{$\sigma $m}_{\text{target2}}+\text{$\sigma $m}_{\text{target1}} .\text{$\sigma $p}_{\text{target2}}\right)\right/2;}\\
+\pmb{H=H-\frac{1}{2}\text{$\omega $qswap}\left(\text{$\sigma $z}_{\text{target1}}+\text{$\sigma $z}_{\text{target2}}\right)+}\\
+\pmb{g_{\text{target1}} g_{\text{target2}} \left.\left(\text{$\sigma $p}_{\text{target1}} .\text{$\sigma $m}_{\text{target2}}+\text{$\sigma $m}_{\text{target1}}
+.\text{$\sigma $p}_{\text{target2}}\right)\right/\text{$\Delta $swap};}\\
+\pmb{H=g_{\text{target1}} g_{\text{target2}} \left.\left(\text{$\sigma $p}_{\text{target1}} .\text{$\sigma $m}_{\text{target2}}+\text{$\sigma $m}_{\text{target1}}
+.\text{$\sigma $p}_{\text{target2}}\right)\right/\text{$\Delta $swap};}\\
+\pmb{J=\text{Abs}\left[g_{\text{target1}} \left.g_{\text{target2}} \right/\text{$\Delta $swap}\right];}\\
+\pmb{\text{MatrixExp}\left[-i H\frac{\pi }{2 J}\right]}\\
+\pmb{];}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{X[\text{target$\_$}]\text{:=}\text{Rx}[\text{target}, \pi ]\text{//}\text{FullSimplify};}\\
+\pmb{Y[\text{target$\_$}]\text{:=}\text{Ry}[\text{target}, \pi ]\text{//}\text{FullSimplify};}\\
+\pmb{\text{Rz}[\text{target$\_$},\theta \_]\text{:=}\text{Ry}[\text{target},-\pi /2].\text{Rx}[\text{target},\theta ].\text{Ry}[\text{target},\pi
+/2]\text{//}}\\
+\pmb{\text{FullSimplify};}\\
+\pmb{Z[\text{target$\_$}]\text{:=}\text{Rz}[\text{target},\pi ]\text{//}\text{FullSimplify};}\\
+\pmb{H[\text{target$\_$}]\text{:=}X[\text{target}].\text{Ry}[\text{target},\pi /2]\text{//}\text{FullSimplify};}\\
+\pmb{\text{CNOT}[\text{control$\_$},\text{target$\_$}]\text{:=}}\\
+\pmb{\text{Rx}[\text{target},\pi /2].\text{iSWAP}[\text{control},\text{target}].\text{Rx}[\text{control},\pi /2].}\\
+\pmb{\text{iSWAP}[\text{control},\text{target}].\text{Rx}[\text{target},\pi /2].\text{iSWAP}[\text{control},\text{target}].}\\
+\pmb{H[\text{control}].\text{iSWAP}[\text{control},\text{target}].\text{Rz}[\text{control},-\pi /2].}\\
+\pmb{\text{Rz}[\text{target},-\pi /2].H[\text{target}]\text{//}\text{FullSimplify};}\\
+\pmb{\text{CRy}[\text{control$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CNOT}[\text{control},\text{target}].\text{Ry}[\text{target},-\theta /2].\text{CNOT}[\text{control},\text{target}].}\\
+\pmb{\text{Ry}[\text{target},\theta /2]\text{//}\text{FullSimplify};}\\
+\pmb{\text{CRz}[\text{control$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CNOT}[\text{control},\text{target}].\text{Rz}[\text{target},-\theta /2].\text{CNOT}[\text{control},\text{target}].}\\
+\pmb{\text{Rz}[\text{target},\theta /2]\text{//}\text{FullSimplify};}\\
+\pmb{\text{SWAP}[\text{target1$\_$},\text{target2$\_$}]\text{:=}}\\
+\pmb{\text{CNOT}[\text{target1},\text{target2}].\text{CNOT}[\text{target2},\text{target1}].\text{CNOT}[\text{target1},\text{target2}]\text{//}}\\
+\pmb{\text{FullSimplify};}\\
+\pmb{\text{CH}[\text{control$\_$},\text{target$\_$}]\text{:=}}\\
+\pmb{\text{Ry}[\text{target},-\pi /4].\text{CNOT}[\text{control},\text{target}].\text{Ry}[\text{target},\pi /4]\text{//}\text{FullSimplify};}\\
+\pmb{\text{CP00}[\text{control$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CRz}[\text{target},\text{control},\theta /2].\text{CRz}[\text{control},\text{target},\theta /2].}\\
+\pmb{\text{Rz}[\text{target},-3 \theta /4].\text{Rz}[\text{control},-3 \theta /4]\text{//}\text{FullSimplify};}\\
+\pmb{\text{CP01}[\text{control$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CRz}[\text{target},\text{control},\theta /2].\text{CRz}[\text{control},\text{target},-3 \theta /2].}\\
+\pmb{\text{Rz}[\text{target},5 \theta /4].\text{Rz}[\text{control},-3 \theta /4]\text{//}\text{FullSimplify};}\\
+\pmb{\text{CP10}[\text{control$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CRz}[\text{target},\text{control},\theta /2].\text{CRz}[\text{control},\text{target},-3 \theta /2].}\\
+\pmb{\text{Rz}[\text{target},\theta /4].\text{Rz}[\text{control},\theta /4]\text{//}\text{FullSimplify};}\\
+\pmb{\text{CP11}[\text{control$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CRz}[\text{target},\text{control},\theta /2].\text{CRz}[\text{control},\text{target},\theta /2].}\\
+\pmb{\text{Rz}[\text{target},\theta /4].\text{Rz}[\text{control},\theta /4]\text{//}\text{FullSimplify};}\\
+\pmb{\text{Toffoli}[\text{control1$\_$},\text{control2$\_$},\text{target$\_$}]\text{:=}}\\
+\pmb{\text{CP11}[\text{control1},\text{control2},-\pi /2].H[\text{target}].\text{CRz}[\text{control1},\text{target},-\pi /2].}\\
+\pmb{\text{CNOT}[\text{control1},\text{control2}].\text{CRz}[\text{control2},\text{target},\pi /2].}\\
+\pmb{\text{CNOT}[\text{control1},\text{control2}].\text{CRz}[\text{control2},\text{target},-\pi /2].H[\text{target}]\text{//}}\\
+\pmb{\text{FullSimplify};}\\
+\pmb{\text{CCRz}[\text{control1$\_$},\text{control2$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CRz}[\text{control1},\text{target},\theta /2].\text{CNOT}[\text{control1},\text{control2}].}\\
+\pmb{\text{CRz}[\text{control2},\text{target},-\theta /2].\text{CNOT}[\text{control1},\text{control2}].}\\
+\pmb{\text{CRz}[\text{control2},\text{target},\theta /2]\text{//}\text{FullSimplify};}\\
+\pmb{\text{CCRy}[\text{control1$\_$},\text{control2$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CRy}[\text{control1},\text{target},\theta /2].\text{CNOT}[\text{control1},\text{control2}].}\\
+\pmb{\text{CRy}[\text{control2},\text{target},-\theta /2].\text{CNOT}[\text{control1},\text{control2}].}\\
+\pmb{\text{CRy}[\text{control2},\text{target},\theta /2]\text{//}\text{FullSimplify};}\\
+\pmb{\text{CCNOT}[\text{control1$\_$},\text{control2$\_$},\text{target$\_$}]\text{:=}}\\
+\pmb{\text{Toffoli}[\text{control1},\text{control2},\text{target}]\text{//}\text{FullSimplify};}\\
+\pmb{\text{CCP00}[\text{control1$\_$},\text{control2$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CP00}[\text{control1},\text{target},\theta /2].X[\text{control1}].\text{CNOT}[\text{control1},\text{control2}].}\\
+\pmb{X[\text{control1}].\text{CP00}[\text{control2},\text{target},-\theta /2].X[\text{control1}].}\\
+\pmb{\text{CNOT}[\text{control1},\text{control2}].X[\text{control1}].\text{CP00}[\text{control2},\text{target},\theta /2]\text{//}}\\
+\pmb{\text{FullSimplify};}\\
+\pmb{\text{CCP01}[\text{control1$\_$},\text{control2$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CP01}[\text{control1},\text{target},\theta /2].X[\text{control1}].\text{CNOT}[\text{control1},\text{control2}].}\\
+\pmb{X[\text{control1}].\text{CP01}[\text{control2},\text{target},-\theta /2].X[\text{control1}].}\\
+\pmb{\text{CNOT}[\text{control1},\text{control2}].X[\text{control1}].\text{CP01}[\text{control2},\text{target},\theta /2]\text{//}}\\
+\pmb{\text{FullSimplify};}\\
+\pmb{\text{CCP10}[\text{control1$\_$},\text{control2$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CP10}[\text{control1},\text{target},\theta /2].\text{CNOT}[\text{control1},\text{control2}].}\\
+\pmb{\text{CP10}[\text{control2},\text{target},-\theta /2].\text{CNOT}[\text{control1},\text{control2}].}\\
+\pmb{\text{CP10}[\text{control2},\text{target},\theta /2]\text{//}\text{FullSimplify};}\\
+\pmb{\text{CCP11}[\text{control1$\_$},\text{control2$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CP11}[\text{control1},\text{target},\theta /2].\text{CNOT}[\text{control1},\text{control2}].}\\
+\pmb{\text{CP11}[\text{control2},\text{target},-\theta /2].\text{CNOT}[\text{control1},\text{control2}].}\\
+\pmb{\text{CP11}[\text{control2},\text{target},\theta /2]\text{//}\text{FullSimplify};}\\
+\pmb{\text{mZ}[\text{target$\_$}]\text{:=}X[\text{target}].Y[\text{target}]\text{//}\text{FullSimplify};}\\
+\pmb{\text{CCCNOT}[\text{control1$\_$},\text{control2$\_$},\text{control3$\_$},\text{target$\_$}]\text{:=}}\\
+\pmb{\text{CP11}[\text{control1},\text{control3},-\pi /4].\text{CNOT}[\text{control1},\text{control2}].}\\
+\pmb{\text{CP11}[\text{control2},\text{control3},\pi /4].\text{CNOT}[\text{control1},\text{control2}].}\\
+\pmb{\text{CP11}[\text{control2},\text{control3},-\pi /4].H[\text{target}].}\\
+\pmb{\text{CCRz}[\text{control1},\text{control3},\text{target},-\pi /2].\text{CNOT}[\text{control1},\text{control2}].}\\
+\pmb{\text{CCRz}[\text{control2},\text{control3},\text{target},\pi /2].\text{CNOT}[\text{control1},\text{control2}].}\\
+\pmb{\text{CCRz}[\text{control2},\text{control3},\text{target},-\pi /2].H[\text{target}]\text{//}\text{FullSimplify};}\\
+\pmb{\text{CCCRy}[\text{control1$\_$},\text{control2$\_$},\text{control3$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CCRy}[\text{control1},\text{control2},\text{target},\theta /2].}\\
+\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].\text{CRy}[\text{control3},\text{target},-\theta /2].}\\
+\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].\text{CRy}[\text{control3},\text{target},\theta /2]\text{//}}\\
+\pmb{\text{FullSimplify};}\\
+\pmb{\text{CCCRz}[\text{control1$\_$},\text{control2$\_$},\text{control3$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CCRz}[\text{control1},\text{control2},\text{target},\theta /2].}\\
+\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].\text{CRz}[\text{control3},\text{target},-\theta /2].}\\
+\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].\text{CRz}[\text{control3},\text{target},\theta /2]\text{//}}\\
+\pmb{\text{FullSimplify};}\\
+\pmb{\text{CCCP00}[\text{control1$\_$},\text{control2$\_$},\text{control3$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CCP00}[\text{control1},\text{control2},\text{target},\theta /2].X[\text{control1}].X[\text{control2}].}\\
+\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].X[\text{control1}].X[\text{control2}].}\\
+\pmb{\text{CP00}[\text{control3},\text{target},-\theta /2].X[\text{control1}].X[\text{control2}].}\\
+\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].X[\text{control1}].X[\text{control2}].}\\
+\pmb{\text{CP00}[\text{control3},\text{target},\theta /2]\text{//}\text{FullSimplify};}\\
+\pmb{\text{CCCP01}[\text{control1$\_$},\text{control2$\_$},\text{control3$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CCP01}[\text{control1},\text{control2},\text{target},\theta /2].X[\text{control1}].X[\text{control2}].}\\
+\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].X[\text{control1}].X[\text{control2}].}\\
+\pmb{\text{CP01}[\text{control3},\text{target},-\theta /2].X[\text{control1}].X[\text{control2}].}\\
+\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].X[\text{control1}].X[\text{control2}].}\\
+\pmb{\text{CP01}[\text{control3},\text{target},\theta /2]\text{//}\text{FullSimplify};}\\
+\pmb{\text{CCCP10}[\text{control1$\_$},\text{control2$\_$},\text{control3$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CCP10}[\text{control1},\text{control2},\text{target},\theta /2].}\\
+\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].\text{CP10}[\text{control3},\text{target},-\theta /2].}\\
+\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].\text{CP10}[\text{control3},\text{target},\theta /2]\text{//}}\\
+\pmb{\text{FullSimplify};}\\
+\pmb{\text{CCCP11}[\text{control1$\_$},\text{control2$\_$},\text{control3$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
+\pmb{\text{CCP11}[\text{control1},\text{control2},\text{target},\theta /2].}\\
+\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].\text{CP11}[\text{control3},\text{target},-\theta /2].}\\
+\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].\text{CP11}[\text{control3},\text{target},\theta /2]\text{//}}\\
+\pmb{\text{FullSimplify};}\)
+\end{doublespace}
+
+
+\section{Python}
 
 \begin{verbatim}
 
