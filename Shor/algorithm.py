@@ -103,8 +103,8 @@ def MUL3(psi0, target1, target2, target3, target4):
     res = tgates8.CCNOT(res.states[-1], target1, target4, target3)
     return tgates8.X(res.states[-1], target1)
 
-def CMUL3(psi0, target1, target2, target3, target4):
-    res = tgates8.CNOT(psi0, control, control, target1)
+def CMUL3(psi0, control, target1, target2, target3, target4):
+    res = tgates8.CNOT(psi0, control, target1)
     res = tgates8.CCNOT(res.states[-1], control, target1, target4)
     res = tgates8.CCCCNOT(res.states[-1], control, target1, target4, target3, target2)
     res = tgates8.CCNOT(res.states[-1], control, target1, target4)
