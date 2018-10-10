@@ -73,11 +73,31 @@ Luego, Cooper demostró que si se tienen dos electones con una interacción atra
 
 Queda, por último, ver de dónde se obtiene la conducción eléctrica sin resistencia, es decir sin que los electrones de conducción cambien de momentum. Hay que señalar que el estado fundamental propuesto por la teoria BCS no está formado por un conunto de pares de Cooper cualesquiera. Los pares no actúan independientemente unos de otros y para romper un par hay que suministrar energía (la correspondiente a la zanja) de tipo térmico, subiendo la temperatura, o bien de tipo magnético, aplicando un campo magnético, etc. Mientras que no se suministre una energía superior a la de la zanja los electrones superconductores forman pares de Cooper de momentum constante. Esto es, conducen sin resistencia a no ser que se rompan los pares. Ahora bien, estos electrones se están moviendo en un sólido, en una red cristalina, que estará a una cierta temperatura, por debajo de la temperatura crítica, que no es suficiente para romper los pares. Por lo tanto, verán fonones e interaccionarán con ellos. ¿Cómo es posible que un electrón de una par que interacciona con un fonón (de energía menor de la necesaria para romper el par) no cambie su momentum? Esto es debido a que los pares están interrelacionados y el resto se acomoda para hacer posible que en su conjunto de $k$ no varíe. Aquí se puede utilizar una imagen debida a Schieffer. Supongamos que tenemos un conjunto de esquiadores, la mitad hombres y la mitad mujeres, que bajan una pendiente cogidos de la mano, hombre con mujer (aquí tenemos los pares de Cooper), pero estas parejas no bajan cada uno por su lado, sino que lo hacen al mismo tiempo y de alguna manera enlazados, de tal manera que si algún miembro de la pareja se encuentra en el camino un obstáculo (un fonón), siempre que no sea muy importante (de energía menor que la de la zanja) el conjunto de pares aguantarán el golpe y harán posible que se siga bajando sin perder velocidad, sin cambiar $k$, sin resistencia.
 
-Esta interacción se puede representar con un diagrama de Feynman (FIGURA). Cuando el primer electrón llega a un punto de la red y la atrae, emite un fonón. El segundo electrón absorbe este fonón y queda acoplado al primer electrón.
+Esta interacción se puede representar con el diagrama de Feynman de la figura \ref{fig:feynmanefe}. Cuando el primer electrón llega a un punto de la red y la atrae, emite un fonón. El segundo electrón absorbe este fonón y queda acoplado al primer electrón.
+
+\begin{figure}[H]
+    \center
+    \begin{tikzpicture}
+      \begin{feynman}
+        \vertex (a);
+        \vertex [below left=of a] (i1);
+        \vertex [above left=of a] (i2);
+        \vertex [right=of a] (b);
+        \vertex [above right=of b] (f1);
+        \vertex [below right=of b] (f2);
+     
+        \diagram* {
+          (i1) -- [fermion, edge label'=\(k\)] (a) -- [fermion, edge label'=\(k-q\)] (i2),
+          (a) -- [boson, edge label'=\(q\)] (b),
+          (f1) -- [fermion, edge label'=\(k\)] (b) -- [fermion, edge label'=\(k+q\)] (f2),
+        };
+      \end{feynman}
+    \end{tikzpicture}
+    \caption{Diagrama de Feynman de la interacción electrón-fonón-electrón}
+    \label{fig:feynmanefe}
+\end{figure}
 
 Los electrones que participan en esta interacción son los de la banda de conducción, con energías del orden de unos pocos electrón voltio. Los fonones disponibles tienen unas energías que son como máximo del orden de \color{red}la energía de Debye\color{black}. Dado que la temperatura de Debye suele ser del orden de algo más de 100K, se tiene que las energías de los fonones disponibles son de unos pocos milielectrón voltio, esto es muy pequeña comparada con la de los electrones. se tiene que la capa de los electrones de conducción en la esfera de Fermi que intercambian fonones, según este esquema es una franja muy estrecha.
-
-%%%%% Diagrama %%%%
 
 Si llamamos $\hbar k, \hbar k^\prime$ y $\hbar k_1, \hbar k_1^\prime$, los momenta de los electrones antes y después de la interacción la ley de conservación del momentum nos dice que
 
@@ -85,56 +105,143 @@ Si llamamos $\hbar k, \hbar k^\prime$ y $\hbar k_1, \hbar k_1^\prime$, los momen
     \hbar k_1 + \hbar k_1^\prime = \hbar k + \hbar k^\prime = \hbar K
 \end{equation*}
 
-donde hemos llamado $K$ al momentum del centro de masas de los electrones. Conviene aprovechar este punto para indicar el convenio habitual en cuanto al signo de la energía de los electrones. Se toman como energías positivas los valores de la energía superiores a la energía de Fermi y como energías negativas los valores inferiores a la energía, $E_F$, de Fermi. Es decir que $\epsilon_k$ será negativa si $k$ está dentro de la superficie de Fermi y positiva en caso contrario. Está claro que los únicos electrones que pueden intervernir en todo este proceso son los que tienen energías próximas a la de Fermi dado que solamente estos electrones pueden tener estados libres accesibles sin violar el principio de exclusión de Pauli. Por lo tanto, estamos solamente considerando como candidatos a electrones superconductores unos pocos de todos los de la esfera de electrones de conducción de Fermi, aquellos que están en una estrecha franja d espesor $\hbar \omega_D$ donde $\omega_D$ es la frecuencia de Debye, por lo tanto del orden de unos pocos meV de la energía de Fermi. En esta situación se conserva el momentum $\hbar K$ del centro de masas de los dos electrones. En la figura (FIGURA) se representa gráficamente todo lo que acabamos de decir, además se observa en esta figura que son, dentro de la estrecha franja, muy pocos los electrones qeu cumplen todas las condiciones y qeu por lo tanot pueden ser candidatos a formar pares de Cooper. Solamente los electrones cuyos momenta caen en la intersección de las dos capas esféricas son los posibles electrons superconductores. Es fácil ver qeu si disminuimos el valro del momentum del centro de masas del sistema la intersección aumentará y se hará máxima si hacemos $K = 0$, donde toda la franja está formada por posibles pares de Cooper. Es decir los pares de Cooper se forman con electrones de momenta opuestos, como ya habíamos anicipado unas líneas más arriba, esto es $k, -k$.  Además, este argumento que acabamos de desarrollar está apoyado en que la energía del sistema disminuye al ir formándose pares, lo que e puede demostrar, pero no de un a manera fácil.
+donde hemos llamado $K$ al momentum del centro de masas de los electrones. Conviene aprovechar este punto para indicar el convenio habitual en cuanto al signo de la energía de los electrones. Se toman como energías positivas los valores de la energía superiores a la energía de Fermi y como energías negativas los valores inferiores a la energía, $E_F$, de Fermi. Es decir que $\epsilon_k$ será negativa si $k$ está dentro de la superficie de Fermi y positiva en caso contrario. Está claro que los únicos electrones que pueden intervernir en todo este proceso son los que tienen energías próximas a la de Fermi dado que solamente estos electrones pueden tener estados libres accesibles sin violar el principio de exclusión de Pauli. Por lo tanto, estamos solamente considerando como candidatos a electrones superconductores unos pocos de todos los de la esfera de electrones de conducción de Fermi, aquellos que están en una estrecha franja d espesor $\hbar \omega_D$ donde $\omega_D$ es la frecuencia de Debye, por lo tanto del orden de unos pocos meV de la energía de Fermi. En esta situación se conserva el momentum $\hbar K$ del centro de masas de los dos electrones. En la figura \ref{fig:goodcooper} se representa gráficamente todo lo que acabamos de decir, además se observa en esta figura que son, dentro de la estrecha franja, muy pocos los electrones que cumplen todas las condiciones y que por lo tanot pueden ser candidatos a formar pares de Cooper. Solamente los electrones cuyos momenta caen en la intersección de las dos capas esféricas son los posibles electrons superconductores. Es fácil ver que si disminuimos el valro del momentum del centro de masas del sistema la intersección aumentará y se hará máxima si hacemos $K = 0$, donde toda la franja está formada por posibles pares de Cooper. Es decir los pares de Cooper se forman con electrones de momenta opuestos, como ya habíamos anicipado unas líneas más arriba, esto es $k, -k$.  Además, este argumento que acabamos de desarrollar está apoyado en que la energía del sistema disminuye al ir formándose pares, lo que e puede demostrar, pero no de un a manera fácil.
 
-Otro aspecto de los señalados anteriormente, que podemos abordar ahora, es qeu los pares estaban formados por electrones no sólo con momenta opuestos, sino también con espines opuestos, esta última característica es ahora muy fácil de tratar, dado qeu los electrones son fermiones, es decir cumplen el principio de exclusión de Pauli y tienen funciones de onda antisimétricas. Se puede demostrar que la parte orbital (es decir olvidándose de la parte de espín) de la función de onda de los pares de Cooper, depende tan sólo del módulo del momentum. Por lo tanto, frente al intercambio de la posicón de los dos electrones del par se tienen una función simétrica. Luego la parte de espín debe ser antisimétrica, es decir los espines de la pareja son opuestos. Se tiene que un par de Cooper esta formado por dos electrones tal que $k \uparrow, -k \downarrow$.
+\begin{figure}[H]
+\centering \includegraphics[width=0.6\linewidth]{img/goodcooper.png}
+\caption{Construcción geométrica de los posibles electrones candidatos para formar pares de Cooper, siendo $\hbar K$ el momentum del centro de masas.}
+\label{fig:goodcooper}
+\end{figure}
 
-En este punto surge uno de los peligros típicos de la teoría BCS, que pone de manifiesto la gran cantidad de sutilezas qeu encierra. Dado que un par de Cooper es una entidad cuyo espin es cero, como los bosones, es fácil caer en la tentación de tratar a los pares de Cooper como bosones. Además hemos indicado qeu un número creciente de pares de Cooper es energéticamente favorable. Ahora bien, el principio de Pauli sigue vigente: Así, el estado formado, por ejemplo, por $k \uparrow, -k \downarrow$ no uede estar ocupado por más de un par de electrones al mismo tiempo. En el gráfico (FIGURA) se representa la situación del estado fundamental para 3 pares de Cooper. Además, entrando en detalles más técnicos, los operadores con los que se construye el hamiltoniano de la teoría BCS, no siguen las reglas de conmutación de los operadores de bosones. Resulta de todas formas llamativo y conviene resaltarlo que la electrodinámica bosónica reproduce muy bien el comportamiento superconductor, por ejemplo la teoría clásica de la superconductividad de London (que no hemos tratado en este capítulo) se puede deducir de un gas cargado de bosones y de allí se puede extraer de una manera natural el efecto Meißner. Resumiendo, los pares de Cooper no son bosones.
+Otro aspecto de los señalados anteriormente, que podemos abordar ahora, es que los pares estaban formados por electrones no sólo con momenta opuestos, sino también con espines opuestos, esta última característica es ahora muy fácil de tratar, dado que los electrones son fermiones, es decir cumplen el principio de exclusión de Pauli y tienen funciones de onda antisimétricas. Se puede demostrar que la parte orbital (es decir olvidándose de la parte de espín) de la función de onda de los pares de Cooper, depende tan sólo del módulo del momentum. Por lo tanto, frente al intercambio de la posicón de los dos electrones del par se tienen una función simétrica. Luego la parte de espín debe ser antisimétrica, es decir los espines de la pareja son opuestos. Se tiene que un par de Cooper esta formado por dos electrones tal que $k \uparrow, -k \downarrow$.
 
-Pasaremos a continuación a describir de la manera más sencilla posible la función de onda del estado fundamenall superconductor y algunas de las expresiones de la teoría BCS.
+En este punto surge uno de los peligros típicos de la teoría BCS, que pone de manifiesto la gran cantidad de sutilezas que encierra. Dado que un par de Cooper es una entidad cuyo espin es cero, como los bosones, es fácil caer en la tentación de tratar a los pares de Cooper como bosones. Además hemos indicado que un número creciente de pares de Cooper es energéticamente favorable. Ahora bien, el principio de Pauli sigue vigente: Así, el estado formado, por ejemplo, por $k \uparrow, -k \downarrow$ no puede estar ocupado por más de un par de electrones al mismo tiempo. Además, los operadores con los que se construye el hamiltoniano de la teoría BCS, no siguen las reglas de conmutación de los operadores de bosones. Resulta de todas formas llamativo y conviene resaltarlo que la electrodinámica bosónica reproduce muy bien el comportamiento superconductor, por ejemplo la teoría clásica de la superconductividad de London se puede deducir de un gas cargado de bosones y de allí se puede extraer de una manera natural el efecto Meißner.
 
-La función de onda del estado fundamental de $N$ electrones, según la propone la teoría BCS, es el producto de funciones de onda de pares convenientemente antisimetrizadas, que se puede representar por $\phi(1,2,...,N) \propto \phi(1,2)\phi(3,4)...\phi(N-1,N)$ si no escribimos explícitamente la parte de espín y sólo lo hacemos con la parte orbital tendríamos $\phi(1,2,...,N) \propto \sum_{k_1}$ $\sum_{k_2} ... \sum_{k_3} g_{k_1} ... g_{k_{N/2}} e^{i (k_1 r_1 - r_2 k_2 + ... + k_{N/2} r_{N-1} - k_{N/2} r_N}$ donde cada término de esta función de onde describe una configuración donde los N electrones se agrupan en $N/2$ pares que son $(k_1, -k_1) ... (k_{N/2}, -k_{N/2})$ la parte de espín es inmediata cada electrón de cada par tiene espines opuestos. Como vemos la funcion de onda es una función complicada que abarca todos los pares relacionados entre ellos. También se puede escribir de una manera más compacta como $\phi = \prod\limits_k \phi_k$.
+Pasaremos a continuación a describir de la manera más sencilla posible la función de onda del estado fundamental superconductor y algunas de las expresiones de la teoría BCS.
 
-Antes de continuar merece la pena señalar algún otro aspecto de los pares de Cooper, estos pares están fuertemente relacionados entre sí, de tal manera qeu se puede decir que del orden de un millón de parestienen sus centros de masa dentro del espacio en el que se extiende un par dado, esto es los pares de electrones qeu forman un par de Cooer están muy alejados uno del otro, estando fuertemente correlacionados unos pares con otros. Se puede demostrar, que la disminución de la energía en la fase superconductora respecto al estado normal, debida a la interacción entre pares, depende de cómo se elijan esos pares. El conjunto de pares de Cooper no son independientes unos d eotros, están muy correlacionados.
+La función de onda del estado fundamental de $N$ electrones, según la propone la teoría BCS, es el producto de funciones de onda de pares convenientemente antisimetrizadas, que se puede representar por:
 
-Otro punto que hay que aclarar en lo anterior es que estamos considerando el caso en que no tenemos corriente eléctrica neta, ya que los electrones apareados tienen momentum toal cero. Los estados portadores  decorriente superconductora son aquellos en que los pares tienen momenta que serán $(k + \frac{q}{2} uparroa, -k + \frac{q}{2} \downarrow)$ y los electrones tendrán una velocidad de arrastre neta que será $v_a = \frac{\hbar q}{2m}$.
+\begin{equation}
+    \phi(1,2,...,N) \propto \phi(1,2)\phi(3,4)...\phi(N-1,N)
+\end{equation}
+
+Si no escribimos explícitamente la parte de espín y sólo lo hacemos con la parte orbital tendríamos
+
+\begin{equation}
+    \phi(1,2,...,N) \propto \sum_{k_1} \sum_{k_2} ... \sum_{k_3} g_{k_1} ... g_{k_{N/2}} e^{i (k_1 r_1 - r_2 k_2 + ... + k_{N/2} r_{N-1} - k_{N/2} r_N)}
+\end{equation}
+
+Donde cada término de esta función de onde describe una configuración donde los N electrones se agrupan en $N/2$ pares que son
+
+\begin{equation}
+    (k_1, -k_1) ... (k_{N/2}, -k_{N/2})
+\end{equation}
+
+La parte de espín es inmediata cada electrón de cada par tiene espines opuestos. Como vemos la funcion de onda es una función complicada que abarca todos los pares relacionados entre ellos. También se puede escribir de una manera más compacta como:
+
+\begin{equation}
+    \phi = \prod\limits_k \phi_k
+\end{equation}
+
+Antes de continuar merece la pena señalar algún otro aspecto de los pares de Cooper, estos pares están fuertemente relacionados entre sí, de tal manera que se puede decir que del orden de un millón de parestienen sus centros de masa dentro del espacio en el que se extiende un par dado, esto es los pares de electrones que forman un par de Cooer están muy alejados uno del otro, estando fuertemente correlacionados unos pares con otros. Se puede demostrar, que la disminución de la energía en la fase superconductora respecto al estado normal, debida a la interacción entre pares, depende de cómo se elijan esos pares. El conjunto de pares de Cooper no son independientes unos d eotros, están muy correlacionados.
+
+Otro punto que hay que aclarar en lo anterior es que estamos considerando el caso en que no tenemos corriente eléctrica neta, ya que los electrones apareados tienen momentum toal cero. Los estados portadores  decorriente superconductora son aquellos en que los pares tienen momenta que serán $(k + \frac{q}{2} \uparrow, -k + \frac{q}{2} \downarrow)$ y los electrones tendrán una velocidad de arrastre neta que será
+
+\begin{equation}
+    v_a = \frac{\hbar q}{2m}
+\end{equation}
 
 Otro aspecto importante de la teoria BSC es que predice la existencia de una zanja de energía $\Delta$, zanja que se puede medir experimenalmente y que está relacionada con la temperatura crítica por la ecuación BCS. Este parámetro $\Delta$ es el parámetro crucial de la teoría BCS de que acompaña la aparición del esado superconductor.
 
 Hay que resaltar que esta zanja reúne unas características muy particulares, por lo pronto se diferencia claramente de las zanjas que juen un papel importnate en sólidos, especialmente en los semiconductores. En superconductores tenemos una zanja que está situada en la banda de conducción y que tiene una marcada dependencia con la temperatura. Asimismo, mientras que en un semiconductor se necesita excitar por encima de la zanja a los electrones para tener conducción eléctrica, en un superconductor se tiene la supercorriente sin necesidad de tener estados excitados, se tiene conducción eléctrica por debajo del nivel de Fermi, esto es por debajo de la zanja que existe en la banda de conducción.
 
-Este parámetro $\Delta$ aparece en la sencilla e importante relación que se obtiene en la teoría BCS $2 \Delta(0) = 3.52 k_B T_c$ donde $T_c$ es la temperatura crítica superconductora.
+Este parámetro $\Delta$ aparece en la sencilla e importante relación que se obtiene en la teoría BCS
 
-Para finalizar un resumen general de la teoría BCS.
+\begin{equation}
+    2 \Delta(0) = 3.52 k_B T_c
+\end{equation}
 
-\begin{enumerate}
-    \item Interacción atractiva entre electrones.
-    \item Mar de Fermi inestable.
-    \item Posible formación de estados ligados de dos electrones.
-    \item Condensación de parejas de electrones, pares de Cooper $(k \uparrow, -k \downarrow)$.
-    \item Aparición de una zanja de energía (para romper los pares hay que suministrar esa energía).
-    \item Temperatura crítica superconductora BCS ligada al valor de la zanja de energía prohibida.
-\end{enumerate}
+Donde $T_c$ es la temperatura crítica superconductora.
 
 \section{Cuantización del flujo magnético y efecto tunel Giaver}
 
-En la teoría de Ginzburg-Landau de las transiciones de fase se introduce el concepto de parámetro de orden, que es una magnitud que aparece acompañando a la transición. Un ejemplo típico de parámetro de orden es la imanación de saturación, que es la magnitud que aparece cuando se tiene la transición de fase del estado paramagnético al ferromagnético. El modelo macroscópico de la superconductividad está basado en la hipótesis de que existe una función de onda macroscópica $\psi(r,t)$ que describe el comportamiento del ensemble completo de electrones superconductores y que es el parámetro de orden de la transición superconductora, tal que su módulo al cuadrado nos da la densidad de electrones superconductores que aparecen al pasar el metal del estado normal al superconductor. En el estado normal, el parámetro de orden (densidad de electrones superconductores) se desvanece. Por supuesto, esta hipótesis puede ser justificada por la teoría microscópica de la superconductividad (Teoría BCS). Esta teoría se basa en la idea de que en metales superconductores existe una fuerza atractiva entre los electrones cercanos al nivel de Fermi. A temperaturas bajo la temperatura crítica $T_c$, esta fuerza atractiva crea un nuevo estado cuántico diferente del mar de Fermi de un metal normal. Una pequeña porción de los electrones cercanos el nivel de Fermi están ligados a pares de Cooper. En el caso más simple, el movimiento interno de los pares no tiene momentum angular orbital (estado s simétrico) y consecuentemente el principio de Pauli requiere que los dos espines sean opuestos. Contrario a ligar dos átomos a una molécula, el estado orbital del par de Cooper tiene un radio mucho mayor, típicamente entre 10nm y 1$\mu$m, de manera que pares individuales se sobrelapan fuertemente en espacio y por lo tanto, la ligadura resulta cooperativa. En particular, la energía de ligadura de cualquier par depende de cuantos otros pares se hayan condensado y, más aún, el movimiento del centro de masas de los pares está fuertemente correlacionado tal que cada par reside en el mismo estado con el mismo movimiento de centro de masas. Es este estado el que describimos con una función de onda macroscópica y que le da al sistema sus propiedades superfluídicas. Por ejemplo, el movimiento del centro de masas puede ser descrito por la función de onda $\psi(r,t) = \psi_0 e^{i \theta(r,t)} = \psi_0 e^{i k_s \dot r - i \omega t}$, donde cada par tiene el mismo momentum $\hbar k_s$ o velocidad de par $v_s = \hbar k/m$. Además, se cumple que $n_s = \abs{\psi}^2$ donde $n_s$ es la densidad de electrones superconductores.
+En la teoría de Ginzburg-Landau \cite{cyrot} de las transiciones de fase se introduce el concepto de parámetro de orden, que es una magnitud que aparece acompañando a la transición. Un ejemplo típico de parámetro de orden es la imanación de saturación, que es la magnitud que aparece cuando se tiene la transición de fase del estado paramagnético al ferromagnético. El modelo macroscópico de la superconductividad está basado en la hipótesis de que existe una función de onda macroscópica $\psi(r,t)$ que describe el comportamiento del ensemble completo de electrones superconductores y que es el parámetro de orden de la transición superconductora, tal que su módulo al cuadrado nos da la densidad de electrones superconductores que aparecen al pasar el metal del estado normal al superconductor. En el estado normal, el parámetro de orden (densidad de electrones superconductores) se desvanece. Por supuesto, esta hipótesis puede ser justificada por la teoría microscópica de la superconductividad (Teoría BCS). Esta teoría se basa en la idea de que en metales superconductores existe una fuerza atractiva entre los electrones cercanos al nivel de Fermi. A temperaturas bajo la temperatura crítica $T_c$, esta fuerza atractiva crea un nuevo estado cuántico diferente del mar de Fermi de un metal normal. Una pequeña porción de los electrones cercanos el nivel de Fermi están ligados a pares de Cooper. En el caso más simple, el movimiento interno de los pares no tiene momentum angular orbital (estado s simétrico) y consecuentemente el principio de Pauli requiere que los dos espines sean opuestos. Contrario a ligar dos átomos a una molécula, el estado orbital del par de Cooper tiene un radio mucho mayor, típicamente entre 10nm y 1$\mu$m, de manera que pares individuales se sobrelapan fuertemente en espacio y por lo tanto, la ligadura resulta cooperativa. En particular, la energía de ligadura de cualquier par depende de cuantos otros pares se hayan condensado y, más aún, el movimiento del centro de masas de los pares está fuertemente correlacionado tal que cada par reside en el mismo estado con el mismo movimiento de centro de masas. Es este estado el que describimos con una función de onda macroscópica y que le da al sistema sus propiedades superfluídicas. Por ejemplo, el movimiento del centro de masas puede ser descrito por la función de onda
 
-Por otro lado, sabemos que la cantidad de movimiento de una partícula de masa $m^*$ y carga $e^*$ en presencia de un campo magnético representado por su potencial vectorial $A$, se escribe como $\mathbf{p} = m* \mathbf{v} + \frac{e^*}{c} \mathbf{A}$.
+\begin{equation}
+    \psi(r,t) = \psi_0 e^{i \theta(r,t)} = \psi_0 e^{i k_s \dot r - i \omega t}
+\end{equation}
 
-Si tenemos una densidad de partículas, todas ellas teniendo el mismo momentum $\mathbf{p}$ podemos escribir $n_s \mathbf{p} = n_s (m^* \mathbf{v} + \frac{e^*}{c} \mathbf{A}$.
+Donde cada par tiene el mismo momentum $\hbar k_s$ o velocidad de par $v_s = \hbar k/m$. Además, se cumple que
 
-Recordando el operador momentum en su expresión equivalente $p \rightarrow -\hbar \nabla$ tendremos $p = \hbar \nabla \phi = m^* v + \frac{e^*}{c} A$.
+\begin{equation}
+    n_s = \abs{\psi}^2
+\end{equation}
+    
+Donde $n_s$ es la densidad de electrones superconductores.
 
-Recordando la expresión general de la densidad de corriente eléctrica en función de la densidad de portadores, de la carga y de la velocidad promedio se pueden escribir $\mathbf{J} = n_s e^* \mathbf{v}$ que en nuestro caso será $\hbar \nabla \phi = \frac{m^*}{n_s e^*} J + \frac{e^*}{c} A$.
+Por otro lado, sabemos que la cantidad de movimiento de una partícula de masa $m^*$ y carga $e^*$ en presencia de un campo magnético representado por su potencial vectorial $A$, se escribe como
 
-Con esta expresión estamos preparados para demostrar la cuantización del flujo magnético en superconductores, para ellos basta con recordar algo trivial, como es que el parámetro de orden superconductor sólo puede tener un único valro en cada punto, es decir, la densidad de electrones superconductores debe ser única en cada punto, esta simple consideración se materializa en que podemos escribir $\phi(2\pi) - \phi(0) = n 2 \pi$.
+\begin{equation}
+    \mathbf{p} = -i \hbar \nabla \psi(r,t) = \hbar \nabla \phi = m^* \mathbf{v} + \frac{e^*}{c} \mathbf{A}
+\end{equation}
 
-Recordando la definición de circulación y de gradiente, y siendo $C$ un camino cerrado, la expresión anterior la podemos escribir como $\oint\limits_C \nabla \phi dl = n 2 \pi$. Si ahora suponemos que este camino $C$ está en el interior de un superconductor, alejado de los bordes y rodeando a un hueco, como se representa en la figura (FIGURA) y suponemos que tenemos aplicado un campo magnético a este superconductor, se tiene $\oint\limits_C (\frac{m^*}{\hbar n_s e^*} J + \frac{e^*}{\hbar e} A) dl = n 2 \pi$.
+Si tenemos una densidad de partículas, todas ellas teniendo el mismo momentum $\mathbf{p}$ podemos escribir $n_s \mathbf{p} = n_s (m^* \mathbf{v} + \frac{e^*}{c} \mathbf{A})$.
 
-Dado que estamos en un camino interior al superconductor y allí no existe corriente (las únicas corrientes que existen en una situación como la que estamos describiendo, están apantallando el campo magnético y están situadas cerca de los bordes tanto de la cavidad como de la superficie del material superconductor), tendremos $\oint A dl = \frac{n h c}{e^*}$.
+Recordando la expresión general de la densidad de corriente eléctrica en función de la densidad de portadores, de la carga y de la velocidad promedio se pueden escribir
 
-Recordando el teorema de Stokes se tiene $\oint\limits_C A dl = \iint\limits_S B ds = \Phi$ que en nuestro caso será $\Phi = n \Phi_0$ expresión que nos indica que el flujo magnético que encierra la cavidad es un número entero de un flujo elemental conocido con el nombre de fluxoide y cuyo valor es $\Phi_0 = \frac{h c}{2 e} = 2.07 10^{-7} gauss cm^2$ siendo $e^*$ la carga del portador de corriente, el par de Cooper $e^* = 2e$.
+\begin{equation}
+    \mathbf{J} = n_s e^* \mathbf{v}
+\end{equation}
+
+Que en nuestro caso será
+
+\begin{equation}
+    \hbar \nabla \phi = \frac{m^*}{n_s e^*} J + \frac{e^*}{c} A
+\end{equation}
+
+Con esta expresión estamos preparados para demostrar la cuantización del flujo magnético en superconductores, para ellos basta con recordar algo trivial, como es que el parámetro de orden superconductor sólo puede tener un único valro en cada punto, es decir, la densidad de electrones superconductores debe ser única en cada punto, esta simple consideración se materializa en que podemos escribir
+
+\begin{equation}
+    \phi(2\pi) - \phi(0) = n 2 \pi
+\end{equation}
+
+Recordando la definición de circulación y de gradiente, y siendo $C$ un camino cerrado, la expresión anterior la podemos escribir como
+
+\begin{equation}
+    \oint\limits_C \nabla \phi dl = n 2 \pi
+\end{equation}
+
+Si ahora suponemos que este camino $C$ está en el interior de un superconductor, alejado de los bordes y rodeando a un hueco, como se representa en la figura \ref{fig:fluxquant} y suponemos que tenemos aplicado un campo magnético a este superconductor, se tiene
+
+\begin{equation}
+    \oint\limits_C (\frac{m^*}{\hbar n_s e^*} J + \frac{e^*}{\hbar e} A) dl = n 2 \pi
+\end{equation}
+
+\begin{figure}[H]
+\centering \includegraphics[width=0.8\linewidth]{img/fluxquant.png}
+\caption{Cuantización del flujo magnético}
+\label{fig:fluxquant}
+\end{figure}
+
+Dado que estamos en un camino interior al superconductor y allí no existe corriente (las únicas corrientes que existen en una situación como la que estamos describiendo, están apantallando el campo magnético y están situadas cerca de los bordes tanto de la cavidad como de la superficie del material superconductor), tendremos
+
+\begin{equation}
+    \oint A dl = \frac{n h c}{e^*}
+\end{equation}
+
+Recordando el teorema de Stokes se tiene
+
+\begin{equation}
+    \oint\limits_C A dl = \iint\limits_S B ds = \Phi
+\end{equation}
+
+Que en nuestro caso será $\Phi = n \Phi_0$ expresión que nos indica que el flujo magnético que encierra la cavidad es un número entero de un flujo elemental conocido con el nombre de fluxoide y cuyo valor es
+
+\begin{equation}
+    \Phi_0 = \frac{h c}{2 e} = 2.07 10^{-7} gauss\ cm^2
+\end{equation}
+
+Siendo $e^*$ la carga del portador de corriente, el par de Cooper $e^* = 2e$.
 
 Este efecto fue encontrado experimentalmente de forma simultánea en 1961 por Deaver-Fairbanks \cite{deaver} y por Doll-Näbauer [ref].
 
@@ -144,19 +251,37 @@ Los electrones se pueden representar por funciones de onda, de tal manera que ex
 
 Antes de seguir hay que hacer notar que la energía necesaria para hacer pasar un electrón que está en el nivel de Fermi de un metal al vacío (función de trabajo del metal) es mayor que la energía necesaria para transferir ese electrón a un aislante.
 
-Por razones de simplicidad vamos a hacer toda la discusión siguiente, salvo cuando se diga expresamente lo contrario, para temperatura de 0K. La figura (FIGURA) nos indica la situación entre dos partes del mismo metal separadas por un aislante. Todos los estados por debajo de la energía de Fermi están ocupados, mientras que todos los estados por encima de $E_F$ están vacíos.
+Por razones de simplicidad vamos a hacer toda la discusión siguiente, salvo cuando se diga expresamente lo contrario, para temperatura de 0K. La figura \ref{fig:el1} nos indica la situación entre dos partes del mismo metal separadas por un aislante. Todos los estados por debajo de la energía de Fermi están ocupados, mientras que todos los estados por encima de $E_F$ están vacíos.
 
-Para que se pueda tener efecto túnel hacen falta dos condiciones. La primera es que, como es lógico, los electrones solamente pueden ir de un estado ocupado a un estado desocupado y la segund aes que se tiene qeu conservar la energía, es decir que las transiciones, en la gráfica, tienen qeu ser horizontales. Por lo tanto en la situación de la gráfica (FIGURA) no tendremos efecto túnel. No se pueden tener transiciones horizontales al no existir estados vacíos. Todos los estados en el mismo nivel de energía, a ambos lados de la barrera, están ocupados.
+\begin{figure}[H]
+\centering \includegraphics[width=0.8\linewidth]{img/el1.png}
+\caption{Imposibilidad de efecto túnel a través de la barrera}
+\label{fig:el1}
+\end{figure}
 
-Si aplicamos una diferencia de potencial constante a la barrera lo que estamso haciendo es aumentando la energía de los electrones de un lado de la barrera respecto al otro y entonces tenemos la posibilidad de que se tenga corriente por efecto túnel, gráfica (FIGURA).
+Para que se pueda tener efecto túnel hacen falta dos condiciones. La primera es que, como es lógico, los electrones solamente pueden ir de un estado ocupado a un estado desocupado y la segund aes que se tiene que conservar la energía, es decir que las transiciones, en la gráfica, tienen que ser horizontales. Por lo tanto en la situación de la figura \ref{fig:el1} no tendremos efecto túnel. No se pueden tener transiciones horizontales al no existir estados vacíos. Todos los estados en el mismo nivel de energía, a ambos lados de la barrera, están ocupados.
 
-La intensidad de esta corriente túnel depende de varios parámetros. Por ejemplo, a mayor diferencia de potencial aplicada mayor correitne. Está claro que cuantos más estados tengamos en el nivel de Fermi mayor será la probabilidad de tener corriente túnel, lo cual puede indicar que quizáß con experimentos de efecto túnel podemos obtener información sobre este importante parámetro y en general sobre la superficie de Fermi, pero como es de esperar la corriente túnel también depende de la anchura, altura y forma de la barrera y estos parámetros son muy difíciles de determinar, lo cual hace qeu en metales normales del efecto túnel se obtenga una información mucho menos rica de lo que se podía esperar. Ocurre todo lo contrario con el efecto túnel cuando uno de los dos metales está en estado superconductor, como pasaremos a ver a continuación.
+Si aplicamos una diferencia de potencial constante a la barrera lo que estamso haciendo es aumentando la energía de los electrones de un lado de la barrera respecto al otro y entonces tenemos la posibilidad de que se tenga corriente por efecto túnel, figura \ref{fig:el2}.
 
-La existencia de una zanja de energía en el estado superconductor (FIGURA) hace que el efecto túnel en una estructura formada por superconductor-aislante-metal en estado normal, tenga características especiales (Giaver, 1960 [ref]). Es claro que necesitamos previamente disponer de electrones normales por encima de la zanja superconductora, esto es hay que romper pares de Cooper, como primera medida, es decir diferencias de potencial aplicadas menores que la zanja no producirán efecto túnel. Esto es, se tiene que diferencias de potencial aplicadas a la barrera no producen corriente túnel, salvo que venzan un valor umbral, qu es precisamente el ancho de la zanja. De entrada ya tenemos una muy importante propiedad del efecto túnel superconductor, que nos permite medir la zanja superconductora y medir la variación de esta zanja con la temperatura.
+\begin{figure}[H]
+\centering \includegraphics[width=0.8\linewidth]{img/el2.png}
+\caption{Posibilidad de efecto túnel a través de la barrera}
+\label{fig:el2}
+\end{figure}
+
+La intensidad de esta corriente túnel depende de varios parámetros. Por ejemplo, a mayor diferencia de potencial aplicada mayor correitne. Está claro que cuantos más estados tengamos en el nivel de Fermi mayor será la probabilidad de tener corriente túnel, lo cual puede indicar que quizáß con experimentos de efecto túnel podemos obtener información sobre este importante parámetro y en general sobre la superficie de Fermi, pero como es de esperar la corriente túnel también depende de la anchura, altura y forma de la barrera y estos parámetros son muy difíciles de determinar, lo cual hace que en metales normales del efecto túnel se obtenga una información mucho menos rica de lo que se podía esperar. Ocurre todo lo contrario con el efecto túnel cuando uno de los dos metales está en estado superconductor, como pasaremos a ver a continuación.
+
+La existencia de una zanja de energía en el estado superconductor \ref{fig:el3} hace que el efecto túnel en una estructura formada por superconductor-aislante-metal en estado normal, tenga características especiales (Giaver, 1960 [ref]). Es claro que necesitamos previamente disponer de electrones normales por encima de la zanja superconductora, esto es hay que romper pares de Cooper, como primera medida, es decir diferencias de potencial aplicadas menores que la zanja no producirán efecto túnel. Esto es, se tiene que diferencias de potencial aplicadas a la barrera no producen corriente túnel, salvo que venzan un valor umbral, qu es precisamente el ancho de la zanja. De entrada ya tenemos una muy importante propiedad del efecto túnel superconductor, que nos permite medir la zanja superconductora y medir la variación de esta zanja con la temperatura.
+
+\begin{figure}[H]
+\centering \includegraphics[width=0.8\linewidth]{img/el3.png}
+\caption{Efecto Giaver: Efecto túnel entre un metal y un superconductor}
+\label{fig:el3}
+\end{figure}
 
 \section{Efecto Josephson}
 
-El efecto Josephson fue postulado teóricamente por Josephson (1962) [ref] y comprobado experimentalmente por P.W. Anderson y Rowell (1963) [ref] y por Shapiro (1963) [ref], casi simultáneamente. Este es un efecto túnel de pares de Cooper entre superconductores, mientras que el efecto túnel tratado en las líneas anteriores es túnel de electrones normales entre superconductores o entre un metal normal y un superconductor. En concreto la sugerencia de Josephson es que puede existir efecto túnel entre dos superconductores que se encuentren separados por una barrera aislante (en principio más delgada que las tratadas en el efecto túnel Giaver), donde la corriente túnel sea exclusivamente de pares de Cooper sin que se tenga una diferencia de potencial entre ambos lados de la barrera.
+El efecto Josephson fue postulado teóricamente por Josephson (1962) \cite{josephson} y comprobado experimentalmente por P.W. Anderson y Rowell (1963) \cite{rowell} y por Shapiro (1963) \cite{shapiro}, casi simultáneamente. Este es un efecto túnel de pares de Cooper entre superconductores, mientras que el efecto túnel tratado en las líneas anteriores es túnel de electrones normales entre superconductores o entre un metal normal y un superconductor. En concreto la sugerencia de Josephson es que puede existir efecto túnel entre dos superconductores que se encuentren separados por una barrera aislante (en principio más delgada que las tratadas en el efecto túnel Giaver), donde la corriente túnel sea exclusivamente de pares de Cooper sin que se tenga una diferencia de potencial entre ambos lados de la barrera.
 
 Se va a seguir la deducción de Feynman por su sencillez y claridad. Supongamos que tenemos un superconductor separado en dos partes por un aislante lo suficientemente estrecho como para que la función de onda superconductora a un lado de la barrera se sobrelape con la del otro lado. Sean $\psi_1$ y $\psi_2$ las funciones de onda superconductoras a los dos lados de la barrera (1) y (2).
 
@@ -195,7 +320,7 @@ Si ahora igualamos las partes reales y las partes imaginarias de estas ecuacione
     \frac{\partial n_{s_2}}{\partial t} &= j_0 \sin(\delta)
 \end{align}
 
-Donde $\delta = \varphi_2 - \varphi_1$ y $j_0 = \frac{2 A}{\hbar} (n_{s_1} n_{s_2})^{\sfrac{1}{2}}$. Como hemos hecho todo el cálculo para un mismo superconductor podemos asumir $n_{s1} = n_{s2}$. Entonces nos quedaría:
+Donde $\delta = \varphi_2 - \varphi_1$ y $j_0 = \frac{2 A}{\hbar} (n_{s_1} n_{s_2})^{\sfrac{1}{2}}$. En lo que sigue, asumiremos que se tiene el mismo superconductor en ambos lados, así que tomaremos $n_{s1} = n_{s2}$. Entonces:
 
 \begin{align}
     \frac{\partial \delta}{\partial t} &= \frac{\partial \varphi_2}{\partial t} - \frac{\partial \varphi_1}{\partial t} = (E_2 - E_1)/\hbar \\
@@ -211,19 +336,29 @@ De aquí salen directamente las relaciones de Josephson para corriente y voltaje
 
 Donde el voltaje $V_J$ es la diferencia de potencial entre los dos extremos de la junción de Josephson e $I_J$ es la supercorriente que fluye a través de ésta.
 
-Existe una clara diferencia entre este efecto túnel y el considerado al principio. En este caso de efecto Josephson tenemos túnel de pares de Cooper, mientras que en el caso anterior el túnel era de electrones individuales. En el efecto Josephson son bastante estrechas del orden o menores que la longitud coherente (tamaño de los pares de Cooper), en realidad el aislante actúa como un mal superconductor, las funciones de onda de ambos lados se pueden solapar, existiendo una difrencia de fase a ambos lados de la barrera y como resultado de todo esto se establece una corriente continua a través de la barrera. En ralidad, se puede demostrar que el mínimo de enrgía se alcanza cuando las fases se igualan y por lo tanto no se tiene correitne a través de la barrera, pero basta con aplicar una correinte de una fuente externa, siempre menor que $I_0$, para que las fases dejen de ser iguales y si esta desigualdad no varía con el tiempo, se tiene a través de la barrera una correitne constante sin qeu se tenga caída de potencial. no hace falta colocar un óxido, un aislante, para que actúe de barrera se puede utilizar un estrechamiento en el supercondcutor, producido mediante una técnica conocida como fotolitografía, o cualquier otra técnica que nos produzca que una parte del supercondutor esté unida a otra mediante un estrangulamiento lo suficientemente estrecho como para ser una unión débil. También se peuden obtener este tipo de uniones débiles con contactos entre superconductores de tipo puntual, o bien separando dos supercondcutores por una capa delgada de un metal en estado normal. Como acabamos de mencionar el tamaño de los pares de Cooper es una indicación del orden de magnitud de esta unión débil.
+Existe una clara diferencia entre este efecto túnel y el considerado al principio. En este caso de efecto Josephson tenemos túnel de pares de Cooper, mientras que en el caso anterior el túnel era de electrones individuales. En el efecto Josephson son bastante estrechas del orden o menores que la longitud coherente (tamaño de los pares de Cooper), en realidad el aislante actúa como un mal superconductor, las funciones de onda de ambos lados se pueden solapar, existiendo una difrencia de fase a ambos lados de la barrera y como resultado de todo esto se establece una corriente continua a través de la barrera. En ralidad, se puede demostrar que el mínimo de enrgía se alcanza cuando las fases se igualan y por lo tanto no se tiene correitne a través de la barrera, pero basta con aplicar una correinte de una fuente externa, siempre menor que $I_0$, para que las fases dejen de ser iguales y si esta desigualdad no varía con el tiempo, se tiene a través de la barrera una correitne constante sin que se tenga caída de potencial. no hace falta colocar un óxido, un aislante, para que actúe de barrera se puede utilizar un estrechamiento en el supercondcutor, producido mediante una técnica conocida como fotolitografía, o cualquier otra técnica que nos produzca que una parte del supercondutor esté unida a otra mediante un estrangulamiento lo suficientemente estrecho como para ser una unión débil. También se peuden obtener este tipo de uniones débiles con contactos entre superconductores de tipo puntual, o bien separando dos supercondcutores por una capa delgada de un metal en estado normal. Como acabamos de mencionar el tamaño de los pares de Cooper es una indicación del orden de magnitud de esta unión débil.
 
-Los órdenes de magnitud de los parámetros qeu intervienen en el efecto Josephson son, para una unión de $1mm^2$ de área $R = 1 \Omega$, $I_0 = 1 mA$ y $\Delta = 1meV$. Normalmente las densidades de corriente a través de las uniones son dle orden de un millón de veces menores qeu las densidades de corriente crítica superconductoa en un superconductor. Es decir, en general, en un superconductor se tiene que pasar de la densidad de correinte crítica para hacer desaparecer la superconductividad, pero si el superconductor tiene en algún punto una unión débil densidades de corriente un millón de veces menores hacen que se tenga caída de potencial en el paso de correitne por la unión.
+Los órdenes de magnitud de los parámetros que intervienen en el efecto Josephson son, para una unión de $1mm^2$ de área $R = 1 \Omega$, $I_0 = 1 mA$ y $\Delta = 1meV$. Normalmente las densidades de corriente a través de las uniones son dle orden de un millón de veces menores que las densidades de corriente crítica superconductoa en un superconductor. Es decir, en general, en un superconductor se tiene que pasar de la densidad de correinte crítica para hacer desaparecer la superconductividad, pero si el superconductor tiene en algún punto una unión débil densidades de corriente un millón de veces menores hacen que se tenga caída de potencial en el paso de correitne por la unión.
 
-Si hacemos pasar una corriente mayor que $I_0$ aparece una diferencia de potencial y teniendo en cuenta que al mismo tiempo que este efecto túnel (Josephson) de pares podemos tener el efecto túnel normal (Giaver) de electrones, el resultado se puede ver en la gráfica (FIGURA) donde se representa la curva característica I,V. Como sea la conexción en la realidad entre estos dos túneles depende de las características de l aunión y del circuito exterior.
+Si hacemos pasar una corriente mayor que $I_0$ aparece una diferencia de potencial y teniendo en cuenta que al mismo tiempo que este efecto túnel (Josephson) de pares podemos tener el efecto túnel normal (Giaver) de electrones, el resultado se puede ver en la figura \ref{fig:ivjj} donde se representa la curva característica I,V. Como sea la conexción en la realidad entre estos dos túneles depende de las características de l aunión y del circuito exterior.
 
-Finalmente hay que considerar lo que ocurre si aplicamos a la unión Josephson una diferencia de potencial externa constante, V, o lo que es lo mismo, tenemos una intensidad pasando por la barrera superor a $I_0$. El cálculo es análogo al anterior, muy sencillo y nos conduce a que la intensidad a través de la barrera tiene la expresión $I = I_0 \sin( (\varphi_2 - \varphi_1) + \omega t) = I_o \sin(\delta + \omega t)$ donde $\omega = \frac{2 ev}{\hbar}$.
+\begin{figure}[H]
+\centering \includegraphics[width=0.8\linewidth]{img/IVJJ.JPG}
+\caption{Curva característica de una unión Josephson}
+\label{fig:ivjj}
+\end{figure}
+
+Finalmente hay que considerar lo que ocurre si aplicamos a la unión Josephson una diferencia de potencial externa constante, V, o lo que es lo mismo, tenemos una intensidad pasando por la barrera superor a $I_0$. El cálculo es análogo al anterior, muy sencillo y nos conduce a que la intensidad a través de la barrera tiene la expresión
+
+\begin{equation}
+    I = I_0 \sin( (\varphi_2 - \varphi_1) + \omega t) = I_o \sin(\delta + \omega t)
+\end{equation}
+
+Donde $\omega = \frac{2 eV}{\hbar}$.
 
 En realidad el punto de partida de esta deducción es la dependencia con el tiempo de la fase, una diferencia de potencial aplicada a l aunión lo que hace es variar en el tiempo la fase y el ritmo de variación d ela fase viene dado por la ecuación $\frac{d \delta}{d t} = \frac{E_2 - E_1}{\hbar} = \frac{qV}{\hbar} = \frac{2 eV}{\hbar}$.
 
-Es decir, una diferencia de potencial constante aplicada a una barrera Josephson produce una corriente alterna de pares (una supercorreinte), por ejemplo una diferencia de potencial del orden de $1 \mu V$ da lugar a una corriente que oscila con una frecuencia de 484MHz. Además de esta corriente de pares tenemos la correitne debida al efecto túnel normla de los electrones individuales. Ahora podemos volver a la gráfica (FIGURA) donde tendremos que hasta que se alcanza el valor $I_0$ tenemos paso de correinte por la unión sin caida de potencial. una vez qeu $I > I_0$, entonces aparece un voltaje y nos situamos en un punto de la gráfica del efecto túnel de electrones normales (Giaver), tenemos una diferencia de potencial aplicada, luego existe túnel normal y además, esto no está represntado en la fëáfica, tenemos una supercorriente (corriente de pares de Cooper) que está oscilando.
-
-Antes de terminar esta sección, unas palabaras acerca de este sorprendente descubrimiento. Como dijimos al principio el hecho de que una diferencia de fase de una entidad puramente cuántica peuda determinar un efecto macroscópico tan claro como es la aparición de correitne eléctrica, no fue descubierto experimentalmente. Fue calculado de un manera completa, incluso indicando la forma de hacer la comprobación experimental, por Brian D. Josephson a la edad de 22 años, cuando estaba empezando a trabajas bajo al direccióñ de Brian Pippard en su tesis doctoral en el Cavendish Laboratory de la Universidad de Cambridge. Pocos años después Josephson pasó a engrosar la larga lista de premios Nobel en física por descubrimientos relacionados con la superconductividad. Su descrubrimiento ha tenido numerosas aplicaciones en campos tan distintos como pueden ser desde astronomía a medicina.
+Es decir, una diferencia de potencial constante aplicada a una barrera Josephson produce una corriente alterna de pares (una supercorreinte), por ejemplo una diferencia de potencial del orden de $1 \mu V$ da lugar a una corriente que oscila con una frecuencia de 484MHz. Además de esta corriente de pares tenemos la correitne debida al efecto túnel normla de los electrones individuales. Ahora podemos volver a la figura \ref{fig:ivjj} donde tendremos que hasta que se alcanza el valor $I_0$ tenemos paso de correinte por la unión sin caida de potencial. una vez que $I > I_0$, entonces aparece un voltaje y nos situamos en un punto de la gráfica del efecto túnel de electrones normales (Giaver), tenemos una diferencia de potencial aplicada, luego existe túnel normal y además, esto no está represntado en la fëáfica, tenemos una supercorriente (corriente de pares de Cooper) que está oscilando.
 
 \section{Componentes de la corriente en las junciones de Josephson}
 

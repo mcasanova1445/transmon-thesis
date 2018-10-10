@@ -15,50 +15,50 @@ A level-1 auxiliary file: ./tex/adyacencia.aux
 A level-1 auxiliary file: ./tex/circuitos.aux
 The style file: unsrt.bst
 Database file #1: ./tex/referencias.bib
-You're missing a field name---line 88 of file ./tex/referencias.bib
+You're missing a field name---line 143 of file ./tex/referencias.bib
  :     
  :     %author    = {},
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-You've used 11 entries,
+You've used 15 entries,
             1791 wiz_defined-function locations,
-            512 strings with 5363 characters,
-and the built_in function-call counts, 1848 in all, are:
-= -- 135
-> -- 123
+            541 strings with 5854 characters,
+and the built_in function-call counts, 2689 in all, are:
+= -- 217
+> -- 143
 < -- 0
-+ -- 46
-- -- 35
-* -- 95
-:= -- 354
-add.period$ -- 33
-call.type$ -- 11
-change.case$ -- 11
++ -- 55
+- -- 40
+* -- 157
+:= -- 487
+add.period$ -- 45
+call.type$ -- 15
+change.case$ -- 15
 chr.to.int$ -- 0
-cite$ -- 11
-duplicate$ -- 89
-empty$ -- 162
-format.name$ -- 35
-if$ -- 386
+cite$ -- 15
+duplicate$ -- 125
+empty$ -- 252
+format.name$ -- 40
+if$ -- 570
 int.to.chr$ -- 0
-int.to.str$ -- 11
-missing$ -- 11
-newline$ -- 58
-num.names$ -- 11
-pop$ -- 31
+int.to.str$ -- 15
+missing$ -- 15
+newline$ -- 78
+num.names$ -- 15
+pop$ -- 35
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 35
+skip$ -- 48
 stack$ -- 0
-substring$ -- 15
-swap$ -- 11
+substring$ -- 95
+swap$ -- 15
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 12
-width$ -- 13
-write$ -- 113
+while$ -- 22
+width$ -- 17
+write$ -- 157
 (There was 1 error message)
