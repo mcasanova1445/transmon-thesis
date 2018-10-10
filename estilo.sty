@@ -17,9 +17,21 @@
 \usepackage{hyperref}
 \hypersetup{colorlinks=true, linktoc=all}
 \usepackage{tikz-feynman}
+\usepackage{blochsphere}
+\usepackage{subcaption}
 
 \newcommand{\qwxo}[2][-1]{\ar @{-} [#1,0]|*+<4pt,6pt>[Fo]{#2}}
 
+\usepackage[T1]{fontenc}
+\usepackage{mathabx}
+\def\Circlearrowleft{\ensuremath{%
+  \rotatebox[origin=c]{180}{$\circlearrowleft$}}}
+\def\Circlearrowright{\ensuremath{%
+  \rotatebox[origin=c]{180}{$\circlearrowright$}}}
+\def\CircleArrowleft{\ensuremath{%
+  \reflectbox{\rotatebox[origin=c]{180}{$\circlearrowleft$}}}}
+\def\CircleArrowright{\ensuremath{%
+  \reflectbox{\rotatebox[origin=c]{180}{$\circlearrowright$}}}}
 
 \usepackage{amsmath, graphics, setspace}
 \newcommand{\mathsym}[1]{{}}
