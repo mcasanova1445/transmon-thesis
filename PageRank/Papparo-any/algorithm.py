@@ -269,15 +269,17 @@ print('Preparando estado fiducial...\t {}/{}/{} - {}:{}:{}'.format(time.localtim
 psi0 = tensor(basis(2,0), basis(2,0), basis(2,0), basis(2,0))
 
 # Preparación del estado inicial
-print('Preparando estado inicial (1/4)...\t {}/{}/{} - {}:{}:{}'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+print('Preparando estado inicial (1/5)...\t {}/{}/{} - {}:{}:{}'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
 res = tgates.H(psi0,0)
 res = tgates.H(res.states[-1],1)
-print('Preparando estado inicial (2/4)...\t {}/{}/{} - {}:{}:{}'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+print('Preparando estado inicial (2/5)...\t {}/{}/{} - {}:{}:{}'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
 res = Kb1(res.states[-1])
-print('Preparando estado inicial (3/4)...\t {}/{}/{} - {}:{}:{}'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+print('Preparando estado inicial (3/5)...\t {}/{}/{} - {}:{}:{}'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
 res = Kb2(res.states[-1])
-print('Preparando estado inicial (4/4)...\t {}/{}/{} - {}:{}:{}'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+print('Preparando estado inicial (4/5)...\t {}/{}/{} - {}:{}:{}'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
 res = Kb3(res.states[-1])
+print('Preparando estado inicial (5/5)...\t {}/{}/{} - {}:{}:{}'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+res = T3d(res.states[-1])
 
 
 # res = qload('itj_7')
