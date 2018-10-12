@@ -79,12 +79,12 @@ class QuantumChip:
         else:
             fig, axes = plt.subplots(2, 1, sharex=True, figsize=(12,8))
 
-            axes[0].plot(tlist, np.array(list(self.ksi_t(tlist,args))) / (2*np.pi), 'b', linewidth=2, label="drive envelope")
+            axes[0].plot(tlist, np.array(list(ksi_t(tlist,args))) / (2*np.pi), 'k', linewidth=2, label="drive envelope")
             axes[0].set_ylabel("Energy (GHz)", fontsize=16)
             axes[0].legend()
 
             for i in range(self.qN):
-                axes.plot(tlist, np.real(expect(self.qop('n',i), res.states)), '{}'.format(i/self.qN), linewidth=2, label="qubit {}".format(i))
+                axes[1].plot(tlist, np.real(expect(self.qop('n',i), res.states)), '{}'.format(i/self.qN), linewidth=2, label="qubit {}".format(i))
             axes[1].set_ylim(0, 1)
 
             axes[1].set_xlabel("Time (ns)", fontsize=16)
@@ -135,7 +135,7 @@ class QuantumChip:
         res = mesolve(H_t, self.psi0, tlist, self.c_ops, [], args = args)
         self.psi0 = res.states[-1]
 
-        # self.plot_drive_expect(res,args)
+        self.plot_drive_expect(res,args)
 
         return res
 
@@ -157,7 +157,7 @@ class QuantumChip:
         res = mesolve(H_t, self.psi0, tlist, self.c_ops, [], args = args)
         self.psi0 = res.states[-1]
 
-        # self.plot_drive_expect(res,args)
+        self.plot_drive_expect(res,args)
 
         return res
 
@@ -198,7 +198,7 @@ class QuantumChip:
         self.psi0 = res.states[-1]
 
         args = {'A' : 0, 'ts' : 0, 'tf' : tf, 'w' : wq[target1]}
-        # self.plot_drive_expect(res,args)
+        self.plot_drive_expect(res,args)
 
         return res
 
@@ -221,7 +221,7 @@ class QuantumChip:
         self.psi0 = res.states[-1]
 
         args = {'A' : 0, 'ts' : 0, 'tf' : tf, 'w' : wq[target1]} # Revisar este wq si decido graficar otra vez
-        # self.plot_drive_expect(res,args)
+        self.plot_drive_expect(res,args)
 
         return res
 
