@@ -217,8 +217,8 @@ def Kb3(psi0):
     return res
 
 def Kb3d(psi0):
-    res = tgates.CH(psi0, 0, 3, -np.pi/2)
-    res = tgates.CH(res.states[-1], 0, 2, -np.pi/2)
+    res = tgates.CRy(psi0, 0, 3, -np.pi/2)
+    res = tgates.CRy(res.states[-1], 0, 2, -np.pi/2)
     return res
 
 def Dd(psi0):
