@@ -15,7 +15,9 @@ class QuantumChip:
                  g = [0.1 * 2*np.pi, 0.1 * 2*np.pi, 0.1 * 2*np.pi, 0.1 * 2*np.pi],
                  kappa = 0.001,
                  gamma = [5e-6, 5e-6, 5e-6, 5e-6],
-                 psi0 = [[1,0], [1,0], [1,0], [1,0]]):
+                 psi0 = [[1,0], [1,0], [1,0], [1,0]],
+                 resolution_E = 200,
+                 resolution_M = 250):
 
         if(len(wq) == len(g) and
            (len(wq) == len(gamma) or len(gamma) == 0) and
@@ -48,6 +50,9 @@ class QuantumChip:
 
             for i in range(self.qN-1):
                 self.psi0 = tensor(self.psi0, (psi0[i+1][0]*basis(2, 0) + psi0[i+1][1]*basis(2, 1)).unit() )
+
+            self.resolution_E = resolution_E
+            self.resolution_M = resolution_M
                 
             '''
             # Operadores del resonador
@@ -65,34 +70,77 @@ class QuantumChip:
     def plot_drive_expect(self,res,args):
         tlist = res.times
 
-        if args == 0:
+        if args == None:
             fig, axes = plt.subplots(1, 1, sharex=True, figsize=(12,4))
 
             for i in range(self.qN):
-                axes.plot(tlist, np.real(expect(self.qop('n',i), res.states)), '{}'.format(i/self.qN), linewidth=2, label="qubit {}".format(i))
+                axes.plot(tlist, np.real(expect(self.qop('n',i), res.states)), '{}'.format(i/self.qN), linewidth=2, label="Qubit {}".format(i))
             axes.set_ylim(0, 1)
 
-            axes.set_xlabel("Time (ns)", fontsize=16)
-            axes.set_ylabel("Occupation probability", fontsize=16)
+            axes.set_xlabel("Tiempo (ns)", fontsize=16)
+            axes.set_ylabel("Probabilidad de ocupación", fontsize=16)
             axes.legend()
 
         else:
             fig, axes = plt.subplots(2, 1, sharex=True, figsize=(12,8))
 
-            axes[0].plot(tlist, np.array(list(ksi_t(tlist,args))) / (2*np.pi), 'k', linewidth=2, label="drive envelope")
-            axes[0].set_ylabel("Energy (GHz)", fontsize=16)
+            axes[0].plot(tlist, np.array(list(ksi_t(tlist,args) * np.cos(args['w']*tlist - args['phi']))) / (2*np.pi), 'k', linewidth=2, label="Pulso")
+            axes[0].set_ylabel("Energía (GHz)", fontsize=16)
             axes[0].legend()
 
             for i in range(self.qN):
-                axes[1].plot(tlist, np.real(expect(self.qop('n',i), res.states)), '{}'.format(i/self.qN), linewidth=2, label="qubit {}".format(i))
+                axes[1].plot(tlist, np.real(expect(self.qop('n',i), res.states)), '{}'.format(i/self.qN), linewidth=2, label="Qubit {}".format(i))
             axes[1].set_ylim(0, 1)
 
-            axes[1].set_xlabel("Time (ns)", fontsize=16)
-            axes[1].set_ylabel("Occupation probability", fontsize=16)
+            axes[1].set_xlabel("Tiempo (ns)", fontsize=16)
+            axes[1].set_ylabel("Probabilidad de ocupación", fontsize=16)
             axes[1].legend()
 
         fig.tight_layout()
 
+        return fig, axes
+
+    '''
+    def plot_drive_expect(self,res,args):
+        psi0 = tensor(coherent(N, sqrt(4)), (basis(2,0)+basis(2,1)).unit())
+        H = wr * (a.dag() * a + I/2.0) + (wq / 2.0) * sz + chi * (a.dag() * a + I/2) * sz
+        corr_vec = correlation(H, psi0, None, tlist, [], a.dag(), a)
+        fig, ax = plt.subplots(1, 1, sharex=True, figsize=(12,4))
+
+        ax.plot(tlist, real(corr_vec), 'r', linewidth=2, label="resonator")
+        ax.set_ylabel("correlation", fontsize=16)
+        ax.set_xlabel("Time (ns)", fontsize=16)
+        ax.legend()
+        ax.set_xlim(0,50)
+        fig.tight_layout()
+        w, S = spectrum_correlation_fft(tlist, corr_vec)
+        fig, ax = plt.subplots(figsize=(9,3))
+        ax.plot(w / (2 * pi), abs(S))
+        ax.set_xlabel(r'$\omega$', fontsize=18)
+        ax.set_xlim(wr/(2*pi)-.5, wr/(2*pi)+.5);
+        fig, ax = plt.subplots(figsize=(9,3))
+        ax.plot((w-wr)/chi, abs(S))
+        ax.set_xlabel(r'$(\omega-\omega_r)/\chi$', fontsize=18)
+        ax.set_xlim(-2,2);
+        corr_vec = correlation(H, psi0, None, tlist, [], sx, sx)
+        fig, ax = plt.subplots(1, 1, sharex=True, figsize=(12,4))
+
+        ax.plot(tlist, real(corr_vec), 'r', linewidth=2, label="qubit")
+        ax.set_ylabel("correlation", fontsize=16)
+        ax.set_xlabel("Time (ns)", fontsize=16)
+        ax.legend()
+        ax.set_xlim(0,50)
+        fig.tight_layout()
+        w, S = spectrum_correlation_fft(tlist, corr_vec)
+        fig, ax = plt.subplots(figsize=(9,3))
+        ax.plot(w / (2 * pi), abs(S))
+        ax.set_xlabel(r'$\omega$', fontsize=18)
+        fig, ax = plt.subplots(figsize=(9,3))
+        ax.plot((w - wq - chi) / (2 * chi), abs(S))
+        ax.set_xlabel(r'$(\omega - \omega_q - \chi)/2\chi$', fontsize=18)
+        ax.set_xlim(-.5, N);
+        return fig, axes
+    '''
 
     # Funciones para generar los operadores de los transmones
 
@@ -117,8 +165,8 @@ class QuantumChip:
         
     # Compuertas
 
-    def Rx(self, target, theta):
-        tlist = np.linspace(0, 10, 200)
+    def Rx(self, target, theta, plot_b=False):
+        tlist = np.linspace(0, 10, self.resolution_E)
 
         wd = self.wq[target]
 
@@ -131,16 +179,17 @@ class QuantumChip:
 
         H_t = [[self.qop('sx',target)/2, ksi_t], Hsyst]
 
-        args = {'A' : theta, 'ts' : 0, 'tf' : 10, 'w' : self.wq[target]}
+        args = {'A' : theta, 'ts' : 0, 'tf' : 10, 'w' : self.wq[target], 'phi' : 0}
         res = mesolve(H_t, self.psi0, tlist, self.c_ops, [], args = args)
         self.psi0 = res.states[-1]
 
-        self.plot_drive_expect(res,args)
+        if plot_b:
+            self.plot_drive_expect(res,args)
 
         return res
 
-    def Ry(self, target, theta):
-        tlist = np.linspace(0, 10, 200)
+    def Ry(self, target, theta, plot_b=False):
+        tlist = np.linspace(0, 10, self.resolution_E)
 
         wd = self.wq[target]
 
@@ -153,11 +202,12 @@ class QuantumChip:
 
         H_t = [[self.qop('sy',target)/2, ksi_t], Hsyst]
 
-        args = {'A' : theta, 'ts' : 0, 'tf' : 10, 'w' : self.wq[target]}
+        args = {'A' : theta, 'ts' : 0, 'tf' : 10, 'w' : self.wq[target], 'phi' : np.pi/2}
         res = mesolve(H_t, self.psi0, tlist, self.c_ops, [], args = args)
         self.psi0 = res.states[-1]
 
-        self.plot_drive_expect(res,args)
+        if plot_b:
+            self.plot_drive_expect(res,args)
 
         return res
 
@@ -179,7 +229,7 @@ class QuantumChip:
         res = self.Ry(target, np.pi/2)
         return self.X(target)
 
-    def sqrtiSWAP(self, target1, target2):
+    def sqrtiSWAP(self, target1, target2, plot_b=False):
         wq = self.wq
         
         wq[target1] = self.wq_swap
@@ -190,7 +240,7 @@ class QuantumChip:
         J = np.abs(self.g[target1] * self.g[target2] * (D[target1] + D[target2]) / (D[target1] * D[target2]))/2 # Revisar Hamiltoniano #RH
 
         tf = np.pi/(4*J)
-        tlist = np.linspace(0, tf, 250)
+        tlist = np.linspace(0, tf, self.resolution_M)
 
         Hsyst = self.g[target1]*self.g[target2] * (self.qop('sp',target1)*self.qop('sm',target2) + self.qop('sm',target1)*self.qop('sp',target2)) / (self.D_swap)
 
@@ -198,11 +248,13 @@ class QuantumChip:
         self.psi0 = res.states[-1]
 
         args = {'A' : 0, 'ts' : 0, 'tf' : tf, 'w' : wq[target1]}
-        self.plot_drive_expect(res,args)
+
+        if plot_b:
+            self.plot_drive_expect(res,args=None)
 
         return res
 
-    def iSWAP(self, target1, target2):
+    def iSWAP(self, target1, target2, plot_b=False):
         wq = self.wq
         
         wq[target1] = self.wq_swap
@@ -213,7 +265,7 @@ class QuantumChip:
         J = np.abs(self.g[target1] * self.g[target2] * (D[target1] + D[target2]) / (D[target1] * D[target2]))/2 # Revisar Hamiltoniano #RH
 
         tf = np.pi/(2*J)
-        tlist = np.linspace(0, tf, 500)
+        tlist = np.linspace(0, tf, 2*self.resolution_M)
 
         Hsyst = self.g[target1]*self.g[target2] * (self.qop('sp',target1)*self.qop('sm',target2) + self.qop('sm',target1)*self.qop('sp',target2)) / (self.D_swap)
 
@@ -221,7 +273,9 @@ class QuantumChip:
         self.psi0 = res.states[-1]
 
         args = {'A' : 0, 'ts' : 0, 'tf' : tf, 'w' : wq[target1]} # Revisar este wq si decido graficar otra vez
-        self.plot_drive_expect(res,args)
+
+        if plot_b:
+            self.plot_drive_expect(res,args=None)
 
         return res
 

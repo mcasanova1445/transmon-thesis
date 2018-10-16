@@ -7,7 +7,7 @@ SetDirectory["~/Documents/transmon-thesis/PageRank"]
 (*g=Graph[{1->2,1->3,1->4,2->1,2->4,3->4,4->3}];*) (*Grafo*)
 (*g=Graph[{1->2,1->3,2->4}];*) (*Grafo \[AAcute]rbol*)
 (*g=Graph[{1->2,2->3,3->4,4\[Rule]1}];*) (*Grafo c\[IAcute]clico*)
-g=Graph[{1->2,1->3,1->4}]; (*Grafo estrella*)
+g=Graph[{1->2,1->3,1->4,2->1,3->1,4->1}]; (*Grafo estrella*)
 (*g=Graph[{1->2,1->3,1->4,2->1,2->3,2->4,3->1,3->2,3->4,4->1,4->2,4->3}];*) (*Grafo completo*)
 (*g=Graph[{1->2,2->3,3->1, 1->3,3->2,2->1, 1->4,2->4,3->4}]*) (*Loke directed*)
 (*g=Graph[{1->2,2->3,3\[Rule]1, 1\[Rule]3,3\[Rule]2,2\[Rule]1, 1->4,2\[Rule]4,3\[Rule]4, 4\[Rule]1,4\[Rule]2,4\[Rule]3}]*) (*Loke unidirected*)
@@ -108,6 +108,9 @@ Export["Nodo4-PRQ.csv",qIvl4]
 
 "PageRank cu\[AAcute]ntico: " >>> "output.txt"
 {Mean[qIvl1],Mean[qIvl2],Mean[qIvl3],Mean[qIvl4]} >>> "output.txt"
+
+
+
 
 
 
