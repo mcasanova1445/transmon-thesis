@@ -138,56 +138,57 @@ def T1d(psi0):
     res = R2(res.states[-1], 1, 0)
     return R2(res.states[-1], 0, 1)
 
-def Kb2(psi0):                          #CCHH
-    res = tgates.CCRy(psi0, 0, 1, 2, np.pi/2)
-    res = tgates.CCNOT(res.states[-1], 0, 1, 2)
-    res = tgates.CCRy(res.states[-1], 0, 1, 3, np.pi/2)
-    return tgates.CCNOT(res.states[-1], 0, 1, 3)
-
-def Kb2d(psi0):                          #CCHH
-    return Kb2(psi0)
-
 def Kb1(psi0):
-    thetay00 = -1.900220607202805 * 2
-    thetay01 = -2.212560440981948 * 2
-    thetay10 = -0.75 * np.pi * 2
+    # theta target trigger_state
+    # \[Theta]y00 -> 1.85806, \[Theta]y10 -> \ 2.48274, \[Theta]y11 -> 1.5708
+    thetay00 = 1.85806
+    thetay10 = 2.48274
+    thetay11 = 1.5708
 
     res = tgates.X(psi0, 3)
-    res = tgates.CRy(res.states[-1], 3, 2, thetay01)
+    res = tgates.CRy(res.states[-1], 3, 2, thetay00)
     res = tgates.X(res.states[-1], 3)
     res = tgates.X(res.states[-1], 2)
-    res = tgates.CRy(res.states[-1], 2, 3, thetay00)
-    res = tgates.X(res.states[-1], 2)
     res = tgates.CRy(res.states[-1], 2, 3, thetay10)
+    res = tgates.X(res.states[-1], 2)
+    res = tgates.CRy(res.states[-1], 2, 3, thetay11)
 
+    res = tgates.CCCRy(res.states[-1], 0, 1, 2, 3, -thetay11)
+    res = tgates.X(res.states[-1], 2)
     res = tgates.CCCRy(res.states[-1], 0, 1, 2, 3, -thetay10)
-    res = tgates.CCNOT(res.states[-1], 0, 1, 2)
-    res = tgates.CCCRy(res.states[-1], 0, 1, 2, 3, -thetay00)
-    res = tgates.CCNOT(res.states[-1], 0, 1, 2)
-    res = tgates.CCNOT(res.states[-1], 0, 1, 3)
-    res = tgates.CCCRy(res.states[-1], 0, 1, 3, 2, -thetay01)
-    return tgates.CCNOT(res.states[-1], 0, 1, 3)
+    res = tgates.X(res.states[-1], 2)
+    res = tgates.X(res.states[-1], 3)
+    res = tgates.CCCRy(res.states[-1], 0, 1, 3, 2, -thetay00)
+    return tgates.X(res.states[-1], 3)
 
 def Kb1d(psi0):
-    thetay00 = 1.900220607202805 * 2
-    thetay01 = 2.212560440981948 * 2
-    thetay10 = 0.75 * np.pi * 2
+    thetay00 = 1.85806
+    thetay10 = 2.48274
+    thetay11 = 1.5708
 
-    res = tgates.CCNOT(psi0, 0, 1, 3)
-    res = tgates.CCCRy(res.states[-1], 0, 1, 3, 2, -thetay01)
-    res = tgates.CCNOT(res.states[-1], 0, 1, 3)
-    res = tgates.CCNOT(res.states[-1], 0, 1, 2)
-    res = tgates.CCCRy(res.states[-1], 0, 1, 2, 3, -thetay00)
-    res = tgates.CCNOT(res.states[-1], 0, 1, 2)
-    res = tgates.CCCRy(res.states[-1], 0, 1, 2, 3, -thetay10)
-
-    res = tgates.CRy(res.states[-1], 2, 3, thetay10)
+    res = tgates.X(psi0, 3)
+    res = tgates.CCCRy(res.states[-1], 0, 1, 3, 2, thetay00)
+    res = tgates.X(res.states[-1], 3)
     res = tgates.X(res.states[-1], 2)
-    res = tgates.CRy(res.states[-1], 2, 3, thetay00)
+    res = tgates.CCCRy(res.states[-1], 0, 1, 2, 3, thetay10)
+    res = tgates.X(res.states[-1], 2)
+    res = tgates.CCCRy(res.states[-1], 0, 1, 2, 3, thetay11)
+
+    res = tgates.CRy(res.states[-1], 2, 3, -thetay11)
+    res = tgates.X(res.states[-1], 2)
+    res = tgates.CRy(res.states[-1], 2, 3, -thetay10)
     res = tgates.X(res.states[-1], 2)
     res = tgates.X(res.states[-1], 3)
-    res = tgates.CRy(res.states[-1], 3, 2, thetay01)
+    res = tgates.CRy(res.states[-1], 3, 2, -thetay00)
     return tgates.X(res.states[-1], 3)
+
+def Kb2(psi0):
+    res = tgates.CCRy(psi0, 0, 1, 2, np.pi/2)
+    return tgates.CCRy(res.states[-1], 0, 1, 3, np.pi/2)
+
+def Kb2d(psi0):
+    res = tgates.CCRy(psi0, 0, 1, 3, -np.pi/2)
+    return tgates.CCRy(res.states[-1], 0, 1, 2, -np.pi/2)
 
 def Dd(psi0):
     return tgates.CP(psi0, 2, 3, np.pi, b=0b00)
@@ -197,23 +198,27 @@ def reg_SWAP(psi0):
     return tgates.SWAP(res.states[-1], 0, 2)
 
 
+'''
 # El algoritmo
 # Estado fiducial
 print('Preparando estado fiducial...\t {}/{}/{} - {}:{}:{}'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
 psi0 = tensor(basis(2,0), basis(2,0), basis(2,0), basis(2,0))
 
 # Preparación del estado inicial
-print('Preparando estado inicial (1/3)...\t {}/{}/{} - {}:{}:{}'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+print('Preparando estado inicial (1/4)...\t {}/{}/{} - {}:{}:{}'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
 res = tgates.H(psi0,0)
 res = tgates.H(res.states[-1],1)
-print('Preparando estado inicial (2/3)...\t {}/{}/{} - {}:{}:{}'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+print('Preparando estado inicial (2/4)...\t {}/{}/{} - {}:{}:{}'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
 res = Kb1(res.states[-1])
-print('Preparando estado inicial (3/3)...\t {}/{}/{} - {}:{}:{}'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+print('Preparando estado inicial (3/4)...\t {}/{}/{} - {}:{}:{}'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
 res = Kb2(res.states[-1])
+print('Preparando estado inicial (4/4)...\t {}/{}/{} - {}:{}:{}'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
+res = T1d(res.states[-1])
+'''
 
-# res = qload('itj_7')
+res = qload('itj_21')
 
-for i in range(21):
+for i in range(21,60):
     
     print('Iteración {}: Aplicando T1...\t {}/{}/{} - {}:{}:{}'.format(i+1, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
     res = T1(res.states[-1])

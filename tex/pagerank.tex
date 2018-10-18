@@ -124,7 +124,7 @@ donde se toma un vector $I^{0}$ y se hace interactuar unas 100 veces y el orden 
 \textbf{La matriz E:} se sabe de la teoría de matrices estocásticas que 1 es uno de sus autovalores. Además, también se sabe que la convergencia de $I^k = E I^{k-1}$ a $I = E I$ depende del segundo autovalor de $\lambda_2$ de E y es un hecho que $I^k = E I^{k-1}$ converge rápidamente si $\abs{\lambda_2}$ es
 cercano a cero.
 
-\subsection{El algoritmo de remiendo (parcheo) general}
+\section{El algoritmo de remiendo (parcheo) general}
 
 Asumamos que el caminante recorre el grafo siguiendo la web con una matriz estocástica E con probabilidad $\alpha$, y con probabilidad $1-\alpha$ podrá ir a cualquier página al azar que sea de su interés. La matriz web de este proceso será:
 
@@ -197,12 +197,11 @@ Propiedades de G:
  \\
 (a) & (b)
 \end{tabular}
-\caption{Grafo correspondiente a la matriz de adyacencia (a) de la red E (b) remendada de Google G con $\alpha=\frac{1}{2}$}
+\caption[Transformación de un grafo al crear la matriz de Google con $\alpha = \frac{1}{2}$]{Transformación de un grafo al crear la matriz de Google con $\alpha = \frac{1}{2}$: Grafo correspondiente a la matriz de adyacencia (a) de la red E (b) remendada de Google G con $\alpha=\frac{1}{2}$}
 \end{center}
 \end{figure}
 
-
-\subsection{Interpretación como una caminata aleatoria}
+\section{Interpretación como una caminata aleatoria}
 
 La asiganación de valores de importancia se puede replantear como la probabilidad de encontrar un caminante aleatorio en cierto nodo del grafo.
 
@@ -228,7 +227,7 @@ En el contexto del Internet, $G_{i j}$ es la probabilidad de que cierto internau
 
 El factor de amortiguamiento es libre y debe ser calibrado. Se suela usar $\alpha = 0.85$
 
-\subsection{Cuantizando las caminatas aleatorias}
+\section{Cuantizando las caminatas aleatorias}
 
 La forma obvia y directa de cuantizar una caminata aleatoria sería sustituir el conjunto de nodos $\{p_i\}$ por el conjunto de kets $\{\ket{i}\}$. Sin embargo, esto lleva a sistemas con operadores no unitarios y no es realizable.
 
@@ -272,7 +271,7 @@ Casi todas las cuantizaciones cometen estos dos pecados, aumentar la dimensión 
 
 \textbf{Nota:} También existen caminatas cuánticas continuas, no sólo discretas.
 
-\subsection{Caminata cuántica de Szegedy}
+\section{Caminata cuántica de Szegedy}
 
 Existe un tipo particular de caminatas aleatorias conocido como caminatas bipartitas. En éstas se tiene dos conjuntos de nodos y sólo ocurren transiciones entre los dos conjuntos, no dentro del mismo.
 
@@ -346,7 +345,13 @@ A - \mathds{1}) = [S (2 A - \mathds{1})]^2
 
 Donde $S$ es el operador SWAP, $S = \sum\limits_{i j} \ketbra{j i}{i j}$
 
-\subsection{PageRank cuántico}
+Tomando $W = (2 A - \mathds{1})$, el operador de difusión es
+
+\begin{equation}
+    U = (S W)^2
+\end{equation}
+
+\section{PageRank cuántico}
 
 Finalmente, procedemos a cuántizar el algoritmo de PageRank. Partimos del hecho de que el algoritmo de PageRank se puede formular como una caminata algeatoria, cuya matriz de probabilidades es la matriz de Google, G. Entonces seguimos el procedimiento de Szegedy, sustituyendo $p_{i j}$ por $G_{i j}$.
 
@@ -361,5 +366,164 @@ Esto equivale a realizar $m$ pasos de la caminata con $\ket{\psi_0}$ como estado
 
 Nota: $I_q$ no converge, sino que oscila, así que se toma el centro de las oscilacioens como la medida de importancia de las páginas. Esto se hace promediando $I_q$ sobre $m$: $\langle I_q(P_i) \rangle = \frac{1}{M} \sum\limits_{m=0}^{M-1} I_q(P_i,m)$ 
 
+\section{Circuitos de las caminatas cuánticas de Szegedy}
 
+Loke y Wang \cite{loke} proponen un esquema para construir eficientemente algoritmos de las caminatas cuánticas de Szegedy. Este esquema consiste en separar las reflexiones del algoritmo en distintas etapas y realizar reflexiones alrededor de estados de la base computacional.
 
+Sea el operador de reflexión del operador de difusión
+
+\begin{equation}
+    W = 2 \sum\limits_i \ketbra{\psi_i}{\psi_i} - \mathds{1} = 2 \sum\limits_i \ketbra{i}{i} \otimes \ketbra{\psi_i^\prime}{\psi_i^\prime} - \mathds{1}
+\end{equation}
+
+Donde $\ket{\psi_i^\prime} = \sum\limits_j \sqrt{p_{j i}} \ket{j}_2$
+
+Si le aplicamos la transformación unitaria $K = \sum\limits_i \ketbra{i}{i} \otimes K_i$ tal que $U_i \ket{\psi_i^\prime} = \ket{b}$, donde  $\ket{b}$ es un estado de la base computacional, tendremos:
+
+\begin{multline}
+K W K^\dagger = K (2 A - \mathds{1}) K^\dagger = 2 K A K^\dagger - \mathds{1} = 2 \sum\limits_i \ketbra{i}{i} \otimes K_i \ketbra{\psi_i^\prime}{\psi_i^\prime} K_i^\dagger \right) - \mathds{1} \\ = 2 \sum\limits_i \ketbra{i}{i} \otimes \ketbra{b}{b} \right) - \mathds{1} = 2 \mathds{1}_1 \otimes \ketbra{b}{b}_2 - \mathds{1} = D
+\end{multline}
+
+Lo cual se puede implementar fácilmente con compuertas de fase controladas, ya que es una reflexión alrededor de un estado de la base computacional del segundo registro. Sin embargo, esto todavía requeriría hallar $N$ $K_i$ distintos para un grafo de $N$ nodos. Para disminuir la cantidad de $K_i$ a hallar, se pueden aprovechar simetrías en la matriz de adyacencia del grafo. Si separamos el grafo en subgrafos cíclicos, bastaría con hallar un $K_i$ por subgrafo. En los grafos cíclicos, cada fila de la matriz de adyacencia, y de la matriz de Google, es una permutación de la anterior. Lo mismo sucede con los estados asociados a cada uno de los nodos, así que, con un operador de permutación $T$, se podrían convertir los estados de todos los nodos de un grafo cíclico en un mismo estado de referencia. Por ejemplo, supongamos un grafo, cuyos estados $\ket{\psi_i^\prime}$ son:
+
+\begin{equation}
+    \begin{array}{cc}
+        \ket{\psi_0^\prime} = 
+        \begin{pmatrix}
+            \sqrt{0.0375} \\ \sqrt{0.8875} \\ \sqrt{0.8875} \\ \sqrt{0.8875}
+        \end{pmatrix} &
+        \ket{\psi_1^\prime} = 
+        \begin{pmatrix}
+            \sqrt{0.8875} \\ \sqrt{0.0375} \\ \sqrt{0.8875} \\ \sqrt{0.8875}
+        \end{pmatrix} \\
+        \ket{\psi_2^\prime} = 
+        \begin{pmatrix}
+            \sqrt{0.8875} \\ \sqrt{0.8875} \\ \sqrt{0.0375} \\ \sqrt{0.8875}
+        \end{pmatrix} &
+        \ket{\psi_3^\prime} = 
+        \begin{pmatrix}
+            \sqrt{0.8875} \\ \sqrt{0.8875} \\ \sqrt{0.8875} \\ \sqrt{0.0375}
+        \end{pmatrix} &
+    \end{array}
+\end{equation}
+
+Entonces, el operador de permutación
+
+\begin{equation}
+    T = X(1) \text{CNOT}(1, 0)
+\end{equation}
+
+Permite transformar $\ket{\psi_1^\prime},\ket{\psi_2^\prime},\ket{\psi_3^\prime}$ en $\ket{\psi_0^\prime}$ de la siguiente manera:
+
+\begin{equation}
+    \begin{array}{cc}
+        \ket{\psi_0^\prime} = T^\dagger \ket{\psi_1^\prime} = T^3 \ket{\psi_1^\prime} = T^2 \ket{\psi_2^\prime} = T \ket{\psi_3^\prime}
+    \end{array}
+\end{equation}
+
+\begin{figure}[H]
+\[\Qcircuit @C=1.4em @R=1.8em {
+        & \targ     & \qw      & \qw \\
+        & \ctrl{-1} & \gate{X} & \qw \\
+} 
+\]
+\caption[Operador de permutación]{Operador de permutación $T$}
+\label{fig:T}
+\end{figure}
+
+Luego, siguiendo esta idea, $K_i = K_b^\dagger T_i$, donde $K_b^\dagger \ket{\psi_r^\prime} = \ket{b}$ y $T_i \ket{\psi_i^\prime} = \ket{\psi_r^\prime}$. En otras palabras, $\{K_b\}$ representa el conjunto de $K_i$ necesarios después de separar el grafo, uno por cada subgrafo cíclico; $\ket{\psi_r^\prime}$ es un estado de referencia de cada subgrafo cíclico y podría ser el estado asociado a alguno de los nodos de ese subgrafo; $T_i$ es un operador que transforma el estado de cada nodo en el estado de referencia del subgrafo cíclico correspondiente. En caso de haber elegido $\ket{\psi_r^\prime}$ como el estado de alguno de los nodos del subgrafo cíclico, entonces $T_i$ puede ser un mismo operador de permutción aplicado repetidas veces para todos los nodos del mismo subgrafo, como en el ejemplo anterior.
+
+\begin{figure}[H]
+\[\Qcircuit @C=1.4em @R=1.8em {
+        \lstick{\text{Registro 1}}& {/}\qw & \ctrl{1}   & \ctrl{1}           & \qw      & \ctrl{1}   & \ctrl{1}           & \qswap     & \qw \\
+        \lstick{\text{Registro 2}}& {/}\qw & \gate{T_i} & \gate{K_b^\dagger} & \gate{D} & \gate{K_b} & \gate{T_i^\dagger} & \qswap\qwx & \qw \\
+& & & & \rstick{\hspace{-13pt} 2 \text{ veces}}
+\gategroup{2}{3}{2}{8}{1.5em}{_\}}
+} 
+\]
+\caption[Circuito de Loke para las caminatas cuánticas de Szegedy]{Circuito de Loke para las caminatas cuánticas de Szegedy}
+\label{fig:lokecircuit}
+\end{figure}
+
+En resumen, el proceso para construir el circuito de una caminata de Szegedy es:
+
+\begin{enumerate}
+    \item Hallar la matriz de Google del grafo.
+    \item Separar las filas de la matriz en grupos de filas tales que las filas de cada grupo sean permutaciones una de la otra.
+    \item Hallar los operadores de permutación $T_i$.
+    \item Hallar los operadores $K_b$ que conviertan un estado de referencia $\ket{\phi_{r_i}}$ de cada grupo en un mismo estado de referencia $\ket{b}$ de la base computacional.
+    \item Hallar el operador de reflexión D.
+    \item Construir el operador de difusión a partir del circuito de la figura \ref{fig:lokecircuit}.
+\end{enumerate}
+
+Loke y Wang sólo muestran como realizar $K_i$ para unos pocos casos particulares de caminatas cuánticas de Szegedy que utilizan como ejemplo en su paper. En estre trabajo mostramos cómo realizar cualquier $K_i$ para caminatas cuánticas de Szegedy asociadas a grafos de cuatro nodos.
+
+Todos los coeficientes de los estados involucrados en el algoritmo de PageRank son reales positivos o cero. Es decir, que los qubits individuales que forman estos estados pertenecen todos al arco de semicircunferencia que va de $+\hat{z}$ a $-\hat{z}$ pasando por $+\hat{x}$. Esto indica que los operadores $K_i$ deben poder construirse a partir de compuertas $Ry(\theta)$ y compuertas $Ry(\theta)$ condicionadas tomando $0 \leq \theta \leq \pi$.
+
+En lo que sigue se considerará $\ket{b} = \ket{0}$ y que los grafos son de cuatro nodos. De esta manera, podemos asumir que
+
+\begin{equation}
+    K_i = CRy_n(0,1,\theta_{11}) CRy_b(0,1,\theta_{10}) Ry(1,0,\theta_{00})
+\end{equation}
+
+Entonces, para hallar $K_i$, debemos resolver la siguiente ecuación y hallar $\theta_{11}, \theta_{10}, \theta_{00}$
+
+\begin{equation}
+    CRy_n(0,1,\theta_{11}) CRy_b(0,1,\theta_{10}) Ry(1,0,\theta_{00}) \ket{0} = \ket{\phi_{r_i}}
+\end{equation}
+
+Sin embargo, esto conduce a un sistema de cuatro ecuaciones y tres variables. Para poder resolver este sistema por métodos numéricos se modifica la ecuación de la siguiente manera, sabiendo que $\theta_x$ debe ser $n 2\pi$, donde $n$ es entero.
+
+\begin{align}
+    \cos(\frac{\theta_{00}}{2}) \cos(\frac{\theta_{10}}{2}) &= \sqrt{G_1} \\
+    \cos(\frac{\theta_{00}}{2}) \sin(\frac{\theta_{10}}{2}) &= \sqrt{G_2} \\
+    \cos(\frac{\theta_{11}}{2}) \sin(\frac{\theta_{00}}{2}) &= \sqrt{G_3} \\
+    \sin(\frac{\theta_{00}}{2}) \sin(\frac{\theta_{11}}{2}) &= \sqrt{G_4}
+\end{align}
+
+Esto se puede solucionar recordando la normalización de los estados cuánticos y de las matrices estocásticas, entonces, sabemos que $G_4 = 1 - (G_1 + G_2 + G_3)$. Por lo que podemos reducir el sistema de ecuaciones a un de tres variables
+
+\begin{align}
+    \cos(\frac{\theta_{00}}{2}) \cos(\frac{\theta_{10}}{2}) &= \sqrt{G_1}
+    \label{eq:crot1} \\
+    \cos(\frac{\theta_{00}}{2}) \sin(\frac{\theta_{10}}{2}) &= \sqrt{G_2}
+    \label{eq:crot2} \\
+    \cos(\frac{\theta_{11}}{2}) \sin(\frac{\theta_{00}}{2}) &= \sqrt{G_3}
+\end{align}
+
+Sumando \ref{eq:crot1} y \ref{eq:crot2}, y aplicando $\cos^2(\theta) + \sin^2(\theta) = 1$, se tiene:
+
+\begin{align}
+    \cos^2(\frac{\theta_{00}}{2}) \cos^2(\frac{\theta_{10}}{2}) &= G_1
+    \label{eq:crot3} \\
+    \cos^2(\frac{\theta_{00}}{2}) &= G_1 + G_2
+    \label{eq:crot4} \\
+    \cos^2(\frac{\theta_{11}}{2}) \sin^2(\frac{\theta_{00}}{2}) &= G_3
+    \label{eq:crot5}
+\end{align}
+
+Ahora, sustituyendo \ref{eq:crot4} en \ref{eq:crot3} y \ref{eq:crot5}, y volviendo a aplicar la misma propiedad trigonométrica, se tiene:
+
+\begin{align}
+    \cos^2(\frac{\theta_{10}}{2}) &= \frac{G_1}{G_1 + G_2} \\
+    \cos^2(\frac{\theta_{00}}{2}) &= G_1 + G_2 \\
+    \cos^2(\frac{\theta_{11}}{2}) &= \frac{G_3}{1-(G_1 + G_2)}
+\end{align}
+
+Finalmente, se tiene que los ángulos de las rotaciones deben ser:
+
+\begin{align}
+    \theta_{00} &= 2 \cos^{-1}\left(\sqrt{G_1 + G_2}\right) \\
+    \theta_{10} &= 2 \cos^{-1}\left(\sqrt{\frac{G_1}{G_1 + G_2}}\right) \\
+    \theta_{11} &= 2 \cos^{-1}\left(\sqrt{\frac{G_3}{1 - (G_1 + G_2)}}\right)
+\end{align}
+
+\section{Simulaciones}
+
+\subsection{Grafo estrella}
+
+\subsection{Grafo corona}
+
+\subsection{Grafo arbol}
+
+\subsection{Grafo aleatorio}

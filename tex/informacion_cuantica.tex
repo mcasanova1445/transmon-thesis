@@ -1254,6 +1254,44 @@ Para construir un computador cuántico, se deben cumplir las siguientes condicio
 
 \section{Fidelidad}
 
+La fidelidad de dos distribuciones de probabilidad $\{p_x\}$ y $\{q_x\}$ es una medida de distancia entre ellas y se define como:
+
+\begin{equation}
+    F(p_x, q_x) = \sum\limits_x \sqrt{p_x q_x}
+\end{equation}
+
+Cuando las distribuciones $\{p_x\}$ y $\{q_x\}$ son idénticas, la fidelidad entre ellas es igual a 1. La interpretación geométrica de la fidelidad es que esta es el producto interno de dos vectores de componentes $\sqrt{p_x}$ y $\sqrt{q_x}$, que yacen en la esfera unitaria.
+
+En el caso de los estados cuánticos, la fidelidad toma la siguiente forma:
+
+\begin{equation}
+    F(\rho, \sigma) = Tr(\sqrt{\rho^{1/2} \sigma \rho^{1/2}})
+\end{equation}
+
+En ciertos casos especiales, la fidelidad se puede simplificar de las siguientes maneras:
+
+\begin{enumerate}
+    \item Si $\rho$ y $\sigma$ conmutan, es decir, que existe una base en la que ambos son diagonales, entonces la fidelidad cuántica toma la forma de la fidelidad clásica
+
+        \begin{equation}
+            F(\rho, \sigma) = Tr(\sum\limits_i \sqrt{r_i s_i} \ketbra{i}{i}) = \sum\limits_i \sqrt{r_i s_i} = F(r_i, s_i)
+        \end{equation}
+
+        Donde $r_i$ y $s_i$ son los autovalores de $\rho$ y $\sigma$, respectivamente.
+
+    \item Si $\sigma$ es un estado puro $\ket{\psi}$, entonces la fidelidad toma la forma
+
+        \begin{equation}
+            F(\ket{\psi}, \rho) = Tr(\sqrt{\bra{\psi} \rho \ket{\psi} \braket{\psi}{\psi}}) = \sqrt{\bra{\psi} \rho \ket{\psi}}
+        \end{equation}
+
+    \item Si ambos estados son puros, entonces la fidelidad es:
+
+        \begin{equation}
+            F(\ket{\psi}, \ket{\varphi}) = \sqrt{\bra{\psi} \ketbra{\varphi}{\varphi} \ket{\psi}} = \abs{\braket{\psi}{\varphi}}
+        \end{equation}
+\end{enumerate}
+
 \section{Medidas proyectivas}
 
 \cite{sttiwuer}
