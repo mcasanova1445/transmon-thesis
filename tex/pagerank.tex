@@ -381,7 +381,7 @@ Donde $\ket{\psi_i^\prime} = \sum\limits_j \sqrt{p_{j i}} \ket{j}_2$
 Si le aplicamos la transformación unitaria $K = \sum\limits_i \ketbra{i}{i} \otimes K_i$ tal que $U_i \ket{\psi_i^\prime} = \ket{b}$, donde  $\ket{b}$ es un estado de la base computacional, tendremos:
 
 \begin{multline}
-K W K^\dagger = K (2 A - \mathds{1}) K^\dagger = 2 K A K^\dagger - \mathds{1} = 2 \sum\limits_i \ketbra{i}{i} \otimes K_i \ketbra{\psi_i^\prime}{\psi_i^\prime} K_i^\dagger \right) - \mathds{1} \\ = 2 \sum\limits_i \ketbra{i}{i} \otimes \ketbra{b}{b} \right) - \mathds{1} = 2 \mathds{1}_1 \otimes \ketbra{b}{b}_2 - \mathds{1} = D
+K W K^\dagger = K (2 A - \mathds{1}) K^\dagger = 2 K A K^\dagger - \mathds{1} = 2 \sum\limits_i \ketbra{i}{i} \otimes K_i \ketbra{\psi_i^\prime}{\psi_i^\prime} K_i^\dagger) - \mathds{1} \\ = 2 \sum\limits_i \ketbra{i}{i} \otimes \ketbra{b}{b}) - \mathds{1} = 2 \mathds{1}_1 \otimes \ketbra{b}{b}_2 - \mathds{1} = D
 \end{multline}
 
 Lo cual se puede implementar fácilmente con compuertas de fase controladas, ya que es una reflexión alrededor de un estado de la base computacional del segundo registro. Sin embargo, esto todavía requeriría hallar $N$ $K_i$ distintos para un grafo de $N$ nodos. Para disminuir la cantidad de $K_i$ a hallar, se pueden aprovechar simetrías en la matriz de adyacencia del grafo. Si separamos el grafo en subgrafos cíclicos, bastaría con hallar un $K_i$ por subgrafo. En los grafos cíclicos, cada fila de la matriz de adyacencia, y de la matriz de Google, es una permutación de la anterior. Lo mismo sucede con los estados asociados a cada uno de los nodos, así que, con un operador de permutación $T$, se podrían convertir los estados de todos los nodos de un grafo cíclico en un mismo estado de referencia. Por ejemplo, supongamos un grafo, cuyos estados $\ket{\psi_i^\prime}$ son:
@@ -403,7 +403,7 @@ Lo cual se puede implementar fácilmente con compuertas de fase controladas, ya 
         \ket{\psi_3^\prime} = 
         \begin{pmatrix}
             \sqrt{0.8875} \\ \sqrt{0.8875} \\ \sqrt{0.8875} \\ \sqrt{0.0375}
-        \end{pmatrix} &
+        \end{pmatrix}
     \end{array}
 \end{equation}
 

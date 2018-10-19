@@ -143,11 +143,13 @@ Donde $\bra{x}$ es el bra asociado a estar en la posición $x$.
 
 Cuando un sistema compuesto por dos (o más) espacios de Hilbert, $\mathcal{H}_A$ y $\mathcal{H}_B$, el espacio del sistema completo se escribe en función del producto tensorial $\mathcal{H} = \mathcal{H}_A \otimes \mathcal{H}_B$. Aquí, $\mathcal{H}_A$ y $\mathcal{H}_B$ se conocen como las particiones de $\mathcal{H}$. De igual manera, para representar un estado de $\mathcal{H}$ en un ket, en lugar de dos, se realiza el producto tensorial $\ket{\psi} = \ket{\psi_1} \otimes \ket{\psi_2}$. También se pueden agregar subindices a los kets para hacer énfasis en las particiones:
 
+\[
 \begin{array}{c c}
-    $\ket{\psi}$ & $\in \mathcal{H}$ \\
-    $\ket{\psi}_A \otimes \ket{\phi}_B$ & $\in \mathcal{H}_A \otimes \mathcal{H}_B$ \\
-    $\ket{\psi_1}_1 \otimes \ket{\psi_2}_2 \otimes ... \otimes \ket{\psi_n}_n$ & $\in \mathcal{H}_1 \otimes \mathcal{H}_2 \otimes ... \otimes \mathcal{H}_n$
+    \ket{\psi} & \in \mathcal{H} \\
+    \ket{\psi}_A \otimes \ket{\phi}_B & \in \mathcal{H}_A \otimes \mathcal{H}_B \\
+    \ket{\psi_1}_1 \otimes \ket{\psi_2}_2 \otimes ... \otimes \ket{\psi_n}_n & \in \mathcal{H}_1 \otimes \mathcal{H}_2 \otimes ... \otimes \mathcal{H}_n
 \end{array}
+\]
 
 En la representación matricial el producto tensorial se realiza de la siguiente manera:
 
@@ -391,12 +393,14 @@ Pero esto implicaría, al mismo tiempo que:
 
 Lo cual resulta contradictorio y se concluye que existen estados no separables. Veamos qué significa esto en términos de la distribución de probabilidaes:
 
+\[
 \begin{array}{c c c c}
-    & $\ket{\psi}_A = \ket{0}$ & $\ket{\psi}_A = \ket{0}$ & $P(A)$ \\
-    $\ket{\psi}_B = \ket{0}$ & 1/2 & 0 & 1/2 \\
-    $\ket{\psi}_B = \ket{1}$ & 0 & 1/2 & 1/2 \\
-    $P(B)$ & 1/2 & 1/2 &
+    & \ket{\psi}_A = \ket{0} & \ket{\psi}_A = \ket{0} & P(A) \\
+    \ket{\psi}_B = \ket{0} & 1/2 & 0 & 1/2 \\
+    \ket{\psi}_B = \ket{1} & 0 & 1/2 & 1/2 \\
+    P(B) & 1/2 & 1/2 &
 \end{array}
+\]
 
 De esta tabla se puede ver que las particiones $A$ y $B$ no son independientes, pues las probabilidades condicionadas no son el producto de las probabilidades sin condicionar $P(A|B) \neq P(A)P(B)$. Es decir, existe una correlación.
 
@@ -427,7 +431,7 @@ El qubit se puede pensar como el equivalente en IC del bit, el cual, por sus pro
 
 El estado de un qubit también se puede escribir de la siguiente manera: $ \ket{\psi} = e^{i \phi_0} \cos ( \theta ) \ket{0} + e^{i \phi_1} \sin ( \theta ) \ket{1}  = e^{i \phi_0} (\cos ( \theta ) \ket{0} + e^{i ( \phi1 - \phi_0 )} \sin ( \theta ) \ket{1}) $, donde $ \theta $, $\phi_0$ y $\phi_1$ son números reales. La fase global $\phi_0$ es ignorable, pues no tiene ningún efecto sobre las probabilidades. Entonces, sin pérdida de generalidad, $ \ket{\psi} = \cos ( \theta ) \ket{0} + \sin ( \theta ) e^{i \phi} \ket{1} $, donde $ \theta \in [0, \pi ] $ y $ \phi \in [0, 2 \pi ] $. De esta manera, podemos representar los qubits en una esfera unitaria, conocida como esfera de Bloch. En esta esfera el ket $\ket{0}$ corresponde al vector (0,0,1), mientras que el ket $\ket{1}$ corresponde al vector (0,0,-1).
 
-Todas las operaciones de un qubit se pueden ver como rotaciones en la esfera de Bloch. Por ejemplo, un \texit{bit-flip} sería una rotación de $\pi$ sobre el eje X, tal que $(0,0,1) \rightarrow (0,0,-1)$, es decir $\ket{0} \rightarrow \ket{1}$.
+Todas las operaciones de un qubit se pueden ver como rotaciones en la esfera de Bloch. Por ejemplo, un \textit{bit-flip} sería una rotación de $\pi$ sobre el eje X, tal que $(0,0,1) \rightarrow (0,0,-1)$, es decir $\ket{0} \rightarrow \ket{1}$.
 
 \begin{figure}[H]
     \center
@@ -519,6 +523,7 @@ Las matrices de Pauli cumplen las siguientes propiedades:
     \item Hermiticas
     \item $[\sigma_i, \sigma_j] = i \sigma_k$, donde $(i,j) \in \{(x,y), (y,z), (z,x)\}$
     \item $[\sigma_j, \sigma_i] = - i \sigma_k$, donde $(i,j) \in \{(x,y), (y,z), (z,x)\}$
+\end{enumerate}
 
 \subsection{Circuitos cuánticos}
 
@@ -610,19 +615,29 @@ Esta operación es equivalente a \textit{no-operation} en una computadora clási
 
 \begin{minipage}{0.5\textwidth}
 \[
-\Qcircuit @C=1.4em @R=1.8em {
-& \gate{I} & \qw
-}
+    \Qcircuit @C=1.4em @R=1.8em {
+    & \gate{I} & \qw
+    }
 \]
 \end{minipage}
 \begin{minipage}{0.5\textwidth}
 \[
-\begin{pmatrix}
-1 & 0 \\
-0 & 1
-\end{pmatrix}
+    I = 
+    \begin{pmatrix}
+    1 & 0 \\
+    0 & 1
+    \end{pmatrix}
 \]
 \end{minipage}
+
+\begin{center}
+\begin{tabular}{c c}
+    Entrada & Salida \\
+    $\ket{0}$ & $\ket{0}$ \\
+    $\ket{1}$ & $\ket{1}$ \\
+    $\alpha \ket{0} + \beta \ket{1}$ & $\alpha \ket{0} + \beta \ket{1}$
+\end{tabular}
+\end{center}
 
 \begin{figure}[H]
     \center
@@ -653,19 +668,29 @@ Este es el equivalente al NOT clásico, pues tránsforma los $\ket{0}$ en $\ket{
 
 \begin{minipage}{0.5\textwidth}
 \[
-\Qcircuit @C=1.4em @R=1.8em {
-& \gate{X} & \qw
-}
+    \Qcircuit @C=1.4em @R=1.8em {
+    & \gate{X} & \qw
+    }
 \]
 \end{minipage}
 \begin{minipage}{0.5\textwidth}
 \[
-\begin{pmatrix}
-0 & 1 \\
-1 & 0
-\end{pmatrix}
+    X =
+    \begin{pmatrix}
+    0 & 1 \\
+    1 & 0
+    \end{pmatrix}
 \]
 \end{minipage}
+
+\begin{center}
+\begin{tabular}{c c}
+    Entrada & Salida \\
+    $\ket{0}$ & $\ket{1}$ \\
+    $\ket{1}$ & $\ket{0}$ \\
+    $\alpha \ket{0} + \beta \ket{1}$ & $\beta \ket{0} + \alpha \ket{1}$
+\end{tabular}
+\end{center}
 
 \begin{figure}[H]
     \center
@@ -696,19 +721,29 @@ Esta compuerta no tiene análogo clásico, pues lo que realiza es un cambio de f
 
 \begin{minipage}{0.5\textwidth}
 \[
-\Qcircuit @C=1.4em @R=1.8em {
-& \gate{Z} & \qw
-}
+    \Qcircuit @C=1.4em @R=1.8em {
+    & \gate{Z} & \qw
+    }
 \]
 \end{minipage}
 \begin{minipage}{0.5\textwidth}
 \[
-\begin{pmatrix}
-1 & 0 \\
-0 & -1
-\end{pmatrix}
+    Z =
+    \begin{pmatrix}
+    1 & 0 \\
+    0 & -1
+    \end{pmatrix}
 \]
 \end{minipage}
+
+\begin{center}
+\begin{tabular}{c c}
+    Entrada & Salida \\
+    $\ket{0}$ & $\ket{0}$ \\
+    $\ket{1}$ & $-\ket{1}$ \\
+    $\alpha \ket{0} + \beta \ket{1}$ & $\alpha \ket{0} - \beta \ket{1}$
+\end{tabular}
+\end{center}
 
 \begin{figure}[H]
     \center
@@ -739,24 +774,35 @@ Esta compuerta realiza una rotación de $\pi$ sobre el eje y de la esfera de Blo
 
 \begin{minipage}{0.5\textwidth}
 \[
-\Qcircuit @C=1.4em @R=1.8em {
-& \gate{Y} & \qw
-}
+    \Qcircuit @C=1.4em @R=1.8em {
+    & \gate{Y} & \qw
+    }
 \]
 \end{minipage}
 \begin{minipage}{0.5\textwidth}
 \[
-\begin{pmatrix}
-0 & -i \\
-i & 0
-\end{pmatrix}
+    Y =
+    \begin{pmatrix}
+    0 & -i \\
+    i & 0
+    \end{pmatrix}
 \text{ ó }
-\begin{pmatrix}
-0 & 1 \\
--1 & 0
-\end{pmatrix}
+    Y =
+    \begin{pmatrix}
+    0 & 1 \\
+    -1 & 0
+    \end{pmatrix}
 \]
 \end{minipage}
+
+\begin{center}
+\begin{tabular}{c c}
+    Entrada & Salida \\
+    $\ket{0}$ & $i \ket{1}$ ó $-\ket{1}$ \\
+    $\ket{1}$ & $-i\ket{0}$ ó $\ket{0}$ \\
+    $\alpha \ket{0} + \beta \ket{1}$ & $-i \beta \ket{0} + i \alpha \ket{1}$ ó $\beta \ket{0} - \alpha \ket{1}$
+\end{tabular}
+\end{center}
 
 \begin{figure}[H]
     \center
@@ -794,6 +840,7 @@ Esta compuerta transforma los estados de la base computacional $\ket{0}$ y $\ket
 \end{minipage}
 \begin{minipage}{0.5\textwidth}
     \[
+        H = 
         \frac{1}{\sqrt{2}}
         \begin{pmatrix}
             1 & 1 \\
@@ -801,6 +848,15 @@ Esta compuerta transforma los estados de la base computacional $\ket{0}$ y $\ket
         \end{pmatrix}
     \]
 \end{minipage}
+
+\begin{center}
+\begin{tabular}{c c}
+    Entrada & Salida \\
+    $\ket{0}$ & $\frac{\ket{0} + \ket{1}}{\sqrt{2}}$ \\
+    $\ket{1}$ & $\frac{\ket{0} - \ket{1}}{\sqrt{2}}$ \\
+    $\alpha \ket{0} + \beta \ket{1}$ & $\frac{\alpha + \beta}{\sqrt{2}} \ket{0} + \frac{\alpha - \beta}{\sqrt{2}} \ket{1}$
+\end{tabular}
+\end{center}
 
 \begin{figure}[H]
     \center
@@ -832,19 +888,29 @@ Esta compuerta es la raiz cuadrada de Z e introduce una fase de $\pi/2$ al qubit
 
 \begin{minipage}{0.5\textwidth}
 \[
-\Qcircuit @C=1.4em @R=1.8em {
-& \gate{S} & \qw
-}
+    \Qcircuit @C=1.4em @R=1.8em {
+    & \gate{S} & \qw
+    }
 \]
 \end{minipage}
 \begin{minipage}{0.5\textwidth}
 \[
-\begin{pmatrix}
-1 & 0 \\
-0 & i
-\end{pmatrix}
+    S =
+    \begin{pmatrix}
+    1 & 0 \\
+    0 & i
+    \end{pmatrix}
 \]
 \end{minipage}
+
+\begin{center}
+\begin{tabular}{c c}
+    Entrada & Salida \\
+    $\ket{0}$ & $\ket{0}$ \\
+    $\ket{1}$ & $i \ket{1}$ \\
+    $\alpha \ket{0} + \beta \ket{1}$ & $\alpha \ket{0} + i \beta \ket{1}$
+\end{tabular}
+\end{center}
 
 \begin{figure}[H]
     \center
@@ -875,19 +941,29 @@ Esta compuerta es la raiz cuadrada de S e introduce una fase de $\pi/4$ al qubit
 
 \begin{minipage}{0.5\textwidth}
 \[
-\Qcircuit @C=1.4em @R=1.8em {
-& \gate{T} & \qw
-}
+    \Qcircuit @C=1.4em @R=1.8em {
+    & \gate{T} & \qw
+    }
 \]
 \end{minipage}
 \begin{minipage}{0.5\textwidth}
 \[
-\begin{pmatrix}
-1 & 0 \\
-0 & e^{\frac{i \pi}{4}}
-\end{pmatrix}
+    T =
+    \begin{pmatrix}
+    1 & 0 \\
+    0 & e^{\frac{i \pi}{4}}
+    \end{pmatrix}
 \]
 \end{minipage}
+
+\begin{center}
+\begin{tabular}{c c}
+    Entrada & Salida \\
+    $\ket{0}$ & $\ket{0}$ \\
+    $\ket{1}$ & $e^{\frac{i \pi}{4}} \ket{1}$ \\
+    $\alpha \ket{0} + \beta \ket{1}$ & $\alpha \ket{0} + e^{\frac{i \pi}{4}} \beta \ket{1}$
+\end{tabular}
+\end{center}
 
 \begin{figure}[H]
     \center
@@ -918,19 +994,29 @@ Esta compuerta es similar a Z, S y T, sólo que introduce una fase $\phi$ cualqu
 
 \begin{minipage}{0.5\textwidth}
 \[
-\Qcircuit @C=1.4em @R=1.8em {
-& \gate{P_{\phi}} & \qw
-}
+    \Qcircuit @C=1.4em @R=1.8em {
+    & \gate{P_{\phi}} & \qw
+    }
 \]
 \end{minipage}
 \begin{minipage}{0.5\textwidth}
 \[
-\begin{pmatrix}
-1 & 0 \\
-0 & e^{i \phi}
-\end{pmatrix}
+    P_\phi =
+    \begin{pmatrix}
+    1 & 0 \\
+    0 & e^{i \phi}
+    \end{pmatrix}
 \]
 \end{minipage}
+
+\begin{center}
+\begin{tabular}{c c}
+    Entrada & Salida \\
+    $\ket{0}$ & $\ket{0}$ \\
+    $\ket{1}$ & $e^{i \phi} \ket{1}$ \\
+    $\alpha \ket{0} + \beta \ket{1}$ & $\alpha \ket{0} + e^{i \phi} \beta \ket{1}$
+\end{tabular}
+\end{center}
 
 \begin{figure}[H]
     \center
@@ -955,16 +1041,16 @@ Esta compuerta es similar a Z, S y T, sólo que introduce una fase $\phi$ cualqu
 Una rotación general en la esfera de Bloch se escribe de la siguiente manera:
 
 \[
-R(\theta,\vec{r}) = e^{i \frac{\theta}{2} \vec{\sigma} \cdot \vec{r}} =
+R(\theta,\hat{r}) = e^{i \frac{\theta}{2} \vec{\sigma} \cdot \hat{r}} =
 \begin{pmatrix}
 \cos(\frac{\theta}{2}) + i z \sin(\frac{\theta}{2}) & \sin(\frac{\theta}{2}) (i x + y) \\
 \sin(\frac{\theta}{2}) (i x - y) & \cos(\frac{\theta}{2}) - i z \sin(\frac{\theta}{2})
 \end{pmatrix}
 \]
 
-Donde $\vec{r}$ es el eje de la rotación, $\theta$ es el ángulo que se rota y $\vec{\sigma}$ es el vector de las matrices de Pauli $(\sigma_x, \sigma_y, \sigma_z)$.
+Donde $\hat{r}$ es el vector unitario asociado al eje de la rotación, $\theta$ es el ángulo que se rota y $\vec{\sigma}$ es el vector de las matrices de Pauli $(\sigma_x, \sigma_y, \sigma_z)$.
 
-Si $\vec{r} = (1,0,0)$, se tiene la rotación general sobre X.
+Si $\hat{r} = (1,0,0)$, se tiene la rotación general sobre X.
 
 \[
 R_x(\theta) =
@@ -974,7 +1060,7 @@ i\sin(\frac{\theta}{2}) & \cos(\frac{\theta}{2})
 \end{pmatrix}
 \]
 
-Si $\vec{r} = (0,1,0)$, se tiene la rotación general sobre Y.
+Si $\hat{r} = (0,1,0)$, se tiene la rotación general sobre Y.
 
 \[
 R_y(\theta) =
@@ -984,7 +1070,7 @@ R_y(\theta) =
 \end{pmatrix}
 \]
 
-Si $\vec{r} = (0,0,1)$, se tiene la rotación general sobre Z.
+Si $\hat{r} = (0,0,1)$, se tiene la rotación general sobre Z.
 
 \[
 R_z(\theta) =
@@ -1051,7 +1137,7 @@ e^{i \frac{\theta}{2}} & 0 \\
 Para realizar cualquier rotación en la esfera de Bloch, basta con poder realizar rotaciones generales sobre dos ejes ortogonales de ella. A partir de secuencias tres rotaciones alrededor de estos dos ejes se puede realizar cualquier rotación alrededor de cualquier otro eje. Por ejemplo, las rotaciones alrededor de X, en función de rotaciones alrededor de Y y Z se realizan de la siguiente manera:
 
 \[
-R_x(\theta) = R_z(\frac{\pi}{2}) R_y(\theta) R_z(\frac{-\pi}{2})
+    R_x(\theta) = R_z(\frac{\pi}{2}) R_y(\theta) R_z(\frac{-\pi}{2})
 \]
 
 \subsection{Compuertas multiqubit}
@@ -1072,14 +1158,26 @@ La compuerta CNOT o \textit{controlled-NOT} es un ejemplo de una compuerta condi
 \end{minipage}
 \begin{minipage}{0.5\textwidth}
 \[
-\begin{pmatrix}
-1 & 0 & 0 & 0 \\
-0 & 1 & 0 & 0 \\
-0 & 0 & 0 & 1 \\
-0 & 0 & 1 & 0
-\end{pmatrix}
+    CNOT =
+    \begin{pmatrix}
+    1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 0 & 1 \\
+    0 & 0 & 1 & 0
+    \end{pmatrix}
 \]
 \end{minipage}
+
+\begin{center}
+\begin{tabular}{c c}
+    Entrada & Salida \\
+    $\ket{00}$ & $\ket{00}$ \\
+    $\ket{01}$ & $\ket{01}$ \\
+    $\ket{10}$ & $\ket{11}$ \\
+    $\ket{11}$ & $\ket{10}$ \\
+    $\alpha \ket{00} + \beta \ket{01} + \gamma \ket{10} + \delta \ket{11}$ & $\alpha \ket{00} + \beta \ket{01} + \delta \ket{10} + \gamma \ket{11}$
+\end{tabular}
+\end{center}
 
 \subsubsection{Compuerta SWAP}
 
@@ -1087,35 +1185,47 @@ La compuerta SWAP, como su nombre lo indica, intercambia el contenido de dos par
 
 \begin{minipage}{0.5\textwidth}
 \[
-\Qcircuit @C=1.4em @R=1.8em {
-& \qswap & \qw \\
-& \qswap \qwx & \qw \\
-}
+    \Qcircuit @C=1.4em @R=1.8em {
+    & \qswap & \qw \\
+    & \qswap \qwx & \qw \\
+    }
 \]
 \end{minipage}
 \begin{minipage}{0.5\textwidth}
 \[
-\begin{pmatrix}
-1 & 0 & 0 & 0 \\
-0 & 0 & 1 & 0 \\
-0 & 1 & 0 & 0 \\
-0 & 0 & 0 & 1
-\end{pmatrix}
+    SWAP =
+    \begin{pmatrix}
+    1 & 0 & 0 & 0 \\
+    0 & 0 & 1 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 0 & 1
+    \end{pmatrix}
 \]
 \end{minipage}
+
+\begin{center}
+\begin{tabular}{c c}
+    Entrada & Salida \\
+    $\ket{00}$ & $\ket{00}$ \\
+    $\ket{01}$ & $\ket{10}$ \\
+    $\ket{10}$ & $\ket{01}$ \\
+    $\ket{11}$ & $\ket{11}$ \\
+    $\alpha \ket{00} + \beta \ket{01} + \gamma \ket{10} + \delta \ket{11}$ & $\alpha \ket{00} + \gamma \ket{01} + \beta \ket{10} + \delta \ket{11}$
+\end{tabular}
+\end{center}
 
 Si se tiene un sistema de qubits dividido en dos partes o registros del mismo tamaño, también se llama SWAP a la compuerta que intercambia estos dos registros. Es decir, a la operación que transforma $\ket{\psi_1} \otimes ... \otimes \ket{\psi_n} \otimes \ket{\phi_1} \otimes ... \otimes \ket{\phi_n}$ en $\ket{\phi_1} \otimes ... \otimes \ket{\phi_n} \otimes \ket{\psi_1} \otimes ... \otimes \ket{\psi_n}$. Ella se construye de la siguiente manera:
 
 \[
-\Qcircuit @C=1.4em @R=1.8em {
-& \qswap      & \qw & \qw         & \qw & \qw         & \qw & \qw         & \qw \\
-& \qw \qwx    & \qw & \qswap      & \qw & \qw         & \qw & \qw         & \qw \\
-& \qw \qwx    & \qw & \qw \qwx    & \qw & \qswap      & \qw & \qw         & \qw \\
-& \qw \qwx    & \qw & \qw \qwx    & \qw & \qw \qwx    & \qw & \qswap      & \qw \\
-& \qswap \qwx & \qw & \qw \qwx    & \qw & \qw \qwx    & \qw & \qw \qwx    & \qw \\
-& \qw         & \qw & \qswap \qwx & \qw & \qw \qwx    & \qw & \qw \qwx    & \qw \\
-& \qw         & \qw & \qw         & \qw & \qswap \qwx & \qw & \qw \qwx    & \qw \\
-& \qw         & \qw & \qw         & \qw & \qw         & \qw & \qswap \qwx & \qw \\
+    \Qcircuit @C=1.4em @R=1.8em {
+    & \qswap      & \qw & \qw         & \qw & \qw         & \qw & \qw         & \qw \\
+    & \qw \qwx    & \qw & \qswap      & \qw & \qw         & \qw & \qw         & \qw \\
+    & \qw \qwx    & \qw & \qw \qwx    & \qw & \qswap      & \qw & \qw         & \qw \\
+    & \qw \qwx    & \qw & \qw \qwx    & \qw & \qw \qwx    & \qw & \qswap      & \qw \\
+    & \qswap \qwx & \qw & \qw \qwx    & \qw & \qw \qwx    & \qw & \qw \qwx    & \qw \\
+    & \qw         & \qw & \qswap \qwx & \qw & \qw \qwx    & \qw & \qw \qwx    & \qw \\
+    & \qw         & \qw & \qw         & \qw & \qswap \qwx & \qw & \qw \qwx    & \qw \\
+    & \qw         & \qw & \qw         & \qw & \qw         & \qw & \qswap \qwx & \qw \\
 }
 \]
 
@@ -1124,24 +1234,37 @@ Si se tiene un sistema de qubits dividido en dos partes o registros del mismo ta
 
 \begin{minipage}{0.5\textwidth}
 \[
-\Qcircuit @C=1.4em @R=1.8em {
-& \qswap & \qw \\
-& \qswap\qwxo{\scalebox{0.5}{$1\hspace{-1pt}/\hspace{-1pt}2$}} & \qw
-}
+    \Qcircuit @C=1.4em @R=1.8em {
+    & \qswap & \qw \\
+    & \qswap\qwxo{\scalebox{0.5}{$1\hspace{-1pt}/\hspace{-1pt}2$}} & \qw
+    }
 \]
 \end{minipage}
 \begin{minipage}{0.5\textwidth}
 \[
-\begin{pmatrix}
-1 & 0 & 0 & 0 \\
-0 & \frac{1}{2} (1+i) & \frac{1}{2} (1-i) & 0 \\
-0 & \frac{1}{2} (1-i) & \frac{1}{2} (1+i) & 0 \\
-0 & 0 & 0 & 1
-\end{pmatrix}
+    \begin{pmatrix}
+    1 & 0 & 0 & 0 \\
+    0 & \frac{1}{2} (1+i) & \frac{1}{2} (1-i) & 0 \\
+    0 & \frac{1}{2} (1-i) & \frac{1}{2} (1+i) & 0 \\
+    0 & 0 & 0 & 1
+    \end{pmatrix}
 \]
 \end{minipage}
 
+\begin{center}
+\begin{tabular}{c c}
+    Entrada & Salida \\
+    $\ket{00}$ & $\ket{00}$ \\
+    $\ket{01}$ & $\frac{1+i}{2} \ket{01} + \frac{1-i}{2} \ket{10}$ \\
+    $\ket{10}$ & $\frac{1-i}{2} \ket{01} + \frac{1+i}{2} \ket{10}$ \\
+    $\ket{11}$ & $\ket{11}$ \\
+    $\alpha \ket{00} + \beta \ket{01} + \gamma \ket{10} + \delta \ket{11}$ & $\alpha \ket{00} + (\frac{1+i}{2}\beta + \frac{1-i}{2}\gamma) \ket{01} + (\frac{1-i}{2}\beta + \frac{1+i}{2}\gamma) \ket{10} + \delta \ket{11}$
+\end{tabular}
+\end{center}
+
 \subsubsection{Compuerta de Ising}
+
+Esta compuerta es fundamental para las computadoras cuánticas a base de trampas de iones, pues se puede realizar de manera nativa en estos sistemas. [ref]
 
 \begin{minipage}{0.5\textwidth}
 \[
@@ -1162,6 +1285,17 @@ Si se tiene un sistema de qubits dividido en dos partes o registros del mismo ta
 \end{pmatrix}
 \]
 \end{minipage}
+
+\begin{center}
+\begin{tabular}{c c}
+    Entrada & Salida \\
+    $\ket{00}$ & $\frac{1}{\sqrt{2}} (\ket{00} - i e^{-i \phi} \ket{11})$ \\
+    $\ket{01}$ & $\frac{1}{\sqrt{2}} (\ket{01} - i \ket{10})$ \\
+    $\ket{10}$ & $\frac{1}{\sqrt{2}} (- i \ket{01} + \ket{10})$ \\
+    $\ket{11}$ & $\frac{1}{\sqrt{2}} (- i e^{i \phi} \ket{00} + \ket{11})$ \\
+    $\alpha \ket{00} + \beta \ket{01} + \gamma \ket{10} + \delta \ket{11}$ & $\frac{\alpha - i e^{i \phi} \delta}{\sqrt{2}} \ket{00} + \frac{\beta - i \gamma}{\sqrt{2}} \ket{01} + \frac{\gamma - i \beta}{\sqrt{2}} \ket{10} + \frac{\delta - i e^{-i \phi} \alpha}{\sqrt{2}} \ket{11}$
+\end{tabular}
+\end{center}
 
 \subsubsection{Compuerta de Toffoli}
 
@@ -1188,6 +1322,22 @@ Si se tiene un sistema de qubits dividido en dos partes o registros del mismo ta
 \end{pmatrix}
 \]
 \end{minipage}
+
+\begin{center}
+\begin{tabular}{c c}
+    Entrada & Salida \\
+    $\ket{000}$ & $\ket{000}$ \\
+    $\ket{001}$ & $\ket{001}$ \\
+    $\ket{010}$ & $\ket{010}$ \\
+    $\ket{011}$ & $\ket{011}$ \\
+    $\ket{100}$ & $\ket{100}$ \\
+    $\ket{101}$ & $\ket{101}$ \\
+    $\ket{110}$ & $\ket{111}$ \\
+    $\ket{111}$ & $\ket{110}$ \\
+    $\alpha \ket{000} + \beta \ket{001} + \gamma \ket{010} + \delta \ket{011}$ & $\alpha \ket{000} + \beta \ket{001} + \gamma \ket{010} + \delta \ket{011}$ \\
+    $+ \epsilon \ket{100} + \zeta \ket{101} + \eta \ket{110} + \theta \ket{111}$ & $+ \epsilon \ket{100} + \zeta \ket{101} + \theta \ket{110} + \eta \ket{111}$
+\end{tabular}
+\end{center}
 
 \subsubsection{Compuerta de Deutsch}
 
@@ -1222,6 +1372,23 @@ Si se tiene un sistema de qubits dividido en dos partes o registros del mismo ta
         \ket{a,b,c} & \text{en otro caso}
     \end{cases}
 \]
+
+\begin{center}
+\begin{tabular}{c c}
+    Entrada & Salida \\
+    $\ket{000}$ & $\ket{000}$ \\
+    $\ket{001}$ & $\ket{001}$ \\
+    $\ket{010}$ & $\ket{010}$ \\
+    $\ket{011}$ & $\ket{011}$ \\
+    $\ket{100}$ & $\ket{100}$ \\
+    $\ket{101}$ & $\ket{101}$ \\
+    $\ket{110}$ & $i \cos(\theta) \ket{110} + \sin(\theta) \ket{111}$ \\
+    $\ket{111}$ & $\sin(\theta) \ket{110} + i \cos(\theta) \ket{111}$ \\
+    $\alpha \ket{000} + \beta \ket{001} + \gamma \ket{010} + \delta \ket{011}$ & $\alpha \ket{000} + \beta \ket{001} + \gamma \ket{010} + \delta \ket{011}$ \\
+    $+ \epsilon \ket{100} + \zeta \ket{101} + \eta \ket{110} + \iota \ket{111}$ & $+ \epsilon \ket{100} + \zeta \ket{101} + (i \cos(\theta) \eta + \sin(\theta) \iota) \ket{110}$ \\
+    & $+ (\sin(\theta) \eta + i \cos(\theta) \iota) \ket{111}$
+\end{tabular}
+\end{center}
 
 \subsection{Conjuntos universales de compuertas cuánticas}
 Un conjunto universal de compuertas cuánticas (CUCC) es un conjunto finito de compuertas cuánticas con el cuál se puede aproximar cualquier operación unitaria arbitrariamente bien.
@@ -1296,7 +1463,7 @@ En ciertos casos especiales, la fidelidad se puede simplificar de las siguientes
 
 \cite{sttiwuer}
 
-El esquema de medidas proyectivas, también llamadas medidas de von Neumann, se encuentra formado por proyectores ortogonales asociados a la medida espectral de un observable. Este esquema es la medida por excelencia utilizada por los físicos, ya que está directamente asociada a la medición de una propiedad del sistema o un conjunto compatible de ellas, y tales propiedades son caracterizadas a través de operadores autoadjuntos. Esta medida fue empleada por von Neumann para descomponer a los observables de un sistema cuántico en una combinación lineal de proyectores, donde cada proyector está a asociado a lso subespacios $\mathcal{M}_\lamda$ que son dejados invariantes por el operador en cuestión y, los coeficientes de la combinación lineal corresponden a los posibles valores que arroja el observable tras una medición. En este esquema, la probabilidad $P_\lambda(p)$ de obtener un valor $\lambda \in \Delta$ después de medir el observable en cuestión en el estado $\hat{\rho}$ viene dada por el valor medio del proyector $\hat{\Pi}_{\mathcal{M}_\lambda}$ asociado al autovalor $\lambda$, mientras que el estado después de la medida viene dado por el autovector correspondiente a dicho autovalor. En este caso, las medidas proyectivas vienen dadas por
+El esquema de medidas proyectivas, también llamadas medidas de von Neumann, se encuentra formado por proyectores ortogonales asociados a la medida espectral de un observable. Este esquema es la medida por excelencia utilizada por los físicos, ya que está directamente asociada a la medición de una propiedad del sistema o un conjunto compatible de ellas, y tales propiedades son caracterizadas a través de operadores autoadjuntos. Esta medida fue empleada por von Neumann para descomponer a los observables de un sistema cuántico en una combinación lineal de proyectores, donde cada proyector está a asociado a lso subespacios $\mathcal{M}_\lambda$ que son dejados invariantes por el operador en cuestión y, los coeficientes de la combinación lineal corresponden a los posibles valores que arroja el observable tras una medición. En este esquema, la probabilidad $P_\lambda(p)$ de obtener un valor $\lambda \in \Delta$ después de medir el observable en cuestión en el estado $\hat{\rho}$ viene dada por el valor medio del proyector $\hat{\Pi}_{\mathcal{M}_\lambda}$ asociado al autovalor $\lambda$, mientras que el estado después de la medida viene dado por el autovector correspondiente a dicho autovalor. En este caso, las medidas proyectivas vienen dadas por
 
 \begin{equation}
     \begin{array}{r}

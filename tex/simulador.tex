@@ -32,8 +32,9 @@ Se han elegido parámetros típicos de los sistemas de qubits\cite{blais}.
             \item *Qubit 6: 13GHz
             \item *Qubit 7: 14GHz
         \end{enumerate}
-    \item Constante de acoplamiento: Todas iguales a $0.1 GHz$
-    \item Tasas de decaimiento: Todas iguales a 5e-6 (Unidades?)
+    \item Constante de acoplamiento: Todas iguales a 0.1GHz
+    \item Tasas de relajación: Todas iguales a 25KHz
+    \item Tiempo de relajación: Todos iguales a $40 \mu s$
     \item Frecuencia de resonancia para iSWAP: 9GHz
 \end{enumerate}
 
@@ -65,11 +66,109 @@ Estas compuertas se logran realizan un pulso gaussiano de microondas en fase (Rx
 
 Donde $\mu = 5ns$, $\sigma = \frac{5}{3} ns$, $\Pi(t)$ es la función rectangular, $A = \frac{\theta}{N}$ y $N = 0.9973$ es una constante de normalización. De esta manera se tiene el pulso gaussiano truncado deseado de 0ns a 10ns, cuya área bajo la curva sea igual al ángulo $\theta$ de la rotación.
 
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[m]{0.49\textwidth}
+        \centering \includegraphics[width=1\linewidth]{img/rx02pi.png}
+        \caption{Rx}
+    \end{subfigure}
+    \begin{subfigure}[m]{0.49\textwidth}
+        \centering \includegraphics[width=1\linewidth]{img/ry02pi.png}
+        \caption{Ry}
+    \end{subfigure}
+    \caption[Rotaciones en X e Y de $2\pi$]{Rotaciones en X e Y de $2\pi$}
+\label{fig:rxry02pi}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[m]{0.49\textwidth}
+        \centering \includegraphics[width=1\linewidth]{img/rx0pi.png}
+        \caption{Rx}
+    \end{subfigure}
+    \begin{subfigure}[m]{0.49\textwidth}
+        \centering \includegraphics[width=1\linewidth]{img/ry0pi.png}
+        \caption{Ry}
+    \end{subfigure}
+    \caption[Rotaciones en X e Y de $\pi$]{Rotaciones en X e Y de $\pi$}
+\label{fig:rxry0pi}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[m]{0.49\textwidth}
+        \centering \includegraphics[width=1\linewidth]{img/rx0pi2.png}
+        \caption{Rx}
+    \end{subfigure}
+    \begin{subfigure}[m]{0.49\textwidth}
+        \centering \includegraphics[width=1\linewidth]{img/ry0pi2.png}
+        \caption{Ry}
+    \end{subfigure}
+    \caption[Rotaciones en X e Y de $\frac{\pi}{2}$]{Rotaciones en X e Y de $\frac{\pi}{2}$}
+\label{fig:rxry0pi2}
+\end{figure}
+
 \subsection{iSWAP}
 
 Esta compuerta se logra aplicando un campo magnético tal que la frecuencia de resonancia de los dos qubits deseados se mueva a $\omega_{swap} = 9GHz$. Esta interacción se deja durante $\frac{\pi}{2 J}$, donde $J = \abs{\frac{g_1 g_2}{\Delta_{swap}}}$ y $\Delta_{swap} = \omega_{swap} - \omega_r$. Esto es, esta interacción se deja por 25ns.
 
 Si se desea realizar la compuerta $\sqrt{iSWAP}$, se debe dejar la misma interacción por sólo 12.5ns, que es la mitad del tiempo.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[m]{0.49\textwidth}
+        \centering \includegraphics[width=1\linewidth]{img/iswap00.png}
+        \caption{iSWAP}
+    \end{subfigure}
+    \begin{subfigure}[m]{0.49\textwidth}
+        \centering \includegraphics[width=1\linewidth]{img/sqrtiswap00.png}
+        \caption{$\sqrt{iSWAP}$}
+    \end{subfigure}
+    \caption[Compuertas iSWAP y $\sqrt{iSWAP}$ aplicadas a $\ket{00}$]{Compuertas iSWAP y $\sqrt{iSWAP}$ aplicadas a $\ket{00}$}
+\label{fig:iswapsqrtiswap00}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[m]{0.49\textwidth}
+        \centering \includegraphics[width=1\linewidth]{img/iswap01.png}
+        \caption{iSWAP}
+    \end{subfigure}
+    \begin{subfigure}[m]{0.49\textwidth}
+        \centering \includegraphics[width=1\linewidth]{img/sqrtiswap01.png}
+        \caption{$\sqrt{iSWAP}$}
+    \end{subfigure}
+    \caption[Compuertas iSWAP y $\sqrt{iSWAP}$ aplicadas a $\ket{01}$]{Compuertas iSWAP y $\sqrt{iSWAP}$ aplicadas a $\ket{01}$}
+\label{fig:iswapsqrtiswap01}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[m]{0.49\textwidth}
+        \centering \includegraphics[width=1\linewidth]{img/iswap0011.png}
+        \caption{iSWAP}
+    \end{subfigure}
+    \begin{subfigure}[m]{0.49\textwidth}
+        \centering \includegraphics[width=1\linewidth]{img/sqrtiswap0011.png}
+        \caption{$\sqrt{iSWAP}$}
+    \end{subfigure}
+    \caption[Compuertas iSWAP y $\sqrt{iSWAP}$ aplicadas a $\frac{\ket{00} + \ket{11}}{\sqrt{2}}$]{Compuertas iSWAP y $\sqrt{iSWAP}$ aplicadas a $\frac{\ket{00} + \ket{11}}{\sqrt{2}}$}
+\label{fig:iswapsqrtiswap0011}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[m]{0.49\textwidth}
+        \centering \includegraphics[width=1\linewidth]{img/iswap0101.png}
+        \caption{iSWAP}
+    \end{subfigure}
+    \begin{subfigure}[m]{0.49\textwidth}
+        \centering \includegraphics[width=1\linewidth]{img/sqrtiswap0101.png}
+        \caption{$\sqrt{iSWAP}$}
+    \end{subfigure}
+    \caption[Compuertas iSWAP y $\sqrt{iSWAP}$ aplicadas a $\frac{\ket{0} + \ket{1}}{\sqrt{2}} \otimes \frac{\ket{0} + \ket{1}}{\sqrt{2}}$]{Compuertas iSWAP y $\sqrt{iSWAP}$ aplicadas a $\frac{\ket{0} + \ket{1}}{\sqrt{2}} \otimes \frac{\ket{0} + \ket{1}}{\sqrt{2}}$}
+\label{fig:iswapsqrtiswap0101}
+\end{figure}
 
 \section{Compuertas compuestas}
 
@@ -391,621 +490,5 @@ Finalmente, para realizar la compuerta de Toffoli, se debe aplicar la compuerta 
 \]
 
 De la misma manera, con CCP se puede realizar CCCNOT. CCP y CCCP se pueden realizar con el método de Barenco.
-
-\section{Wolfram Mathematica}
-
-\begin{doublespace}
-\noindent\(\pmb{\text{$\omega $r}=2\pi  10.0;}\\
-\pmb{\text{$\omega $q}_{\text{i$\_$}}\text{:=}2\pi \{5.0,6.0,7.0,8.0\}[[i+1]];}\\
-\pmb{\text{$\omega $qswap}=2\pi  9.0;}\\
-\pmb{g_{\text{i$\_$}}\text{:=}2\pi \{0.1,0.1,0.1,0.1\}[[i+1]];}\\
-\pmb{\Delta _{\text{i$\_$}}\text{:=}\text{$\omega $q}_i-\text{$\omega $r};}\)
-\end{doublespace}
-
-\begin{doublespace}
-\noindent\(\pmb{\text{ket0}=\{\{1\},\{0\}\};}\\
-\pmb{\text{ket1}=\{\{0\},\{1\}\};}\\
-\pmb{\text{Id}=\text{PauliMatrix}[0];}\\
-\pmb{\text{$\sigma $x}=\text{PauliMatrix}[1];}\\
-\pmb{\text{$\sigma $y}=\text{PauliMatrix}[2];}\\
-\pmb{\text{$\sigma $z}=\text{PauliMatrix}[3];}\\
-\pmb{\text{$\sigma $p}=\text{ket1}.\text{ket0}\dagger;}\\
-\pmb{\text{$\sigma $m}=\text{ket0}.\text{ket1}\dagger;}\\
-\pmb{\text{QopAsc}[\text{i$\_$},\text{j$\_$},\text{qop$\_$}]\text{:=}<|\text{Mod}[i+0,4]\to \text{qop},\text{Mod}[i+1,4]\to \text{Id},}\\
-\pmb{\text{Mod}[i+2,4]\to \text{Id},\text{Mod}[i+3,4]\to \text{Id}|>[j];}\\
-\pmb{\text{Id}_{\text{i$\_$}}\text{:=}\text{KroneckerProduct}[\text{QopAsc}[i,0,\text{Id}],\text{QopAsc}[i,1,\text{Id}],}\\
-\pmb{\text{QopAsc}[i,2,\text{Id}],\text{QopAsc}[i,3,\text{Id}]];}\\
-\pmb{\text{$\sigma $x}_{\text{i$\_$}}\text{:=}\text{KroneckerProduct}[\text{QopAsc}[i,0,\text{$\sigma $x}],\text{QopAsc}[i,1,\text{$\sigma $x}],}\\
-\pmb{\text{QopAsc}[i,2,\text{$\sigma $x}],\text{QopAsc}[i,3,\text{$\sigma $x}]];}\\
-\pmb{\text{$\sigma $y}_{\text{i$\_$}}\text{:=}\text{KroneckerProduct}[\text{QopAsc}[i,0,\text{$\sigma $y}],\text{QopAsc}[i,1,\text{$\sigma $y}],}\\
-\pmb{\text{QopAsc}[i,2,\text{$\sigma $y}],\text{QopAsc}[i,3,\text{$\sigma $y}]];}\\
-\pmb{\text{$\sigma $z}_{\text{i$\_$}}\text{:=}\text{KroneckerProduct}[\text{QopAsc}[i,0,\text{$\sigma $z}],\text{QopAsc}[i,1,\text{$\sigma $z}],}\\
-\pmb{\text{QopAsc}[i,2,\text{$\sigma $z}],\text{QopAsc}[i,3,\text{$\sigma $z}]];}\\
-\pmb{\text{$\sigma $p}_{\text{i$\_$}}\text{:=}\text{KroneckerProduct}[\text{QopAsc}[i,0,\text{$\sigma $p}],\text{QopAsc}[i,1,\text{$\sigma $p}],}\\
-\pmb{\text{QopAsc}[i,2,\text{$\sigma $p}],\text{QopAsc}[i,3,\text{$\sigma $p}]];}\\
-\pmb{\text{$\sigma $m}_{\text{i$\_$}}\text{:=}\text{KroneckerProduct}[\text{QopAsc}[i,0,\text{$\sigma $m}],\text{QopAsc}[i,1,\text{$\sigma $m}],}\\
-\pmb{\text{QopAsc}[i,2,\text{$\sigma $m}],\text{QopAsc}[i,3,\text{$\sigma $m}]];}\)
-\end{doublespace}
-
-\begin{doublespace}
-\noindent\(\pmb{\text{GaussianPulse}[\text{x$\_$},\text{ts$\_$},\text{tf$\_$}]\text{:=}}\\
-\pmb{(\text{UnitStep}[x-\mu +3\sigma ]-\text{UnitStep}[x-\mu -3\sigma ])}\\
-\pmb{\text{PDF}[\text{NormalDistribution}[\mu ,\sigma ],x]/0.997300204\text{/.}}\\
-\pmb{\left\{\mu \to \frac{\text{tf}+\text{ts}}{2},\sigma \to \frac{\text{tf}-\text{ts}}{6}\right\};}\\
-\pmb{\text{SquarePulse}[\text{x$\_$},\text{ts$\_$},\text{tf$\_$}]\text{:=}}\\
-\pmb{(\text{UnitStep}[x-\mu +3\sigma ]-\text{UnitStep}[x-\mu -3\sigma ])/(6\sigma )\text{/.}}\\
-\pmb{\left\{\mu \to \frac{\text{tf}+\text{ts}}{2},\sigma \to \frac{\text{tf}-\text{ts}}{6}\right\};}\)
-\end{doublespace}
-
-\begin{doublespace}
-\noindent\(\pmb{\text{Rx}[\text{target$\_$},\theta \_]\text{:=}\text{Module}\left[\left\{H\text{:=}\frac{-1}{2}\text{Sum}\left[\left(\text{$\omega
-$q}_i-\text{$\omega $q}_{\text{target}}\right)\text{$\sigma $z}_i,\{i,0,3\}\right]\right\},\right.}\\
-\pmb{H=H+\frac{1}{2} \theta  \text{GaussianPulse}[t,0,10] \text{$\sigma $x}_{\text{target}};}\\
-\pmb{\text{MatrixExp}[-i \text{NIntegrate}[H,\{t,0,10\}]]}\\
-\pmb{];}\\
-\pmb{\text{Ry}[\text{target$\_$},\theta \_]\text{:=}\text{Module}\left[\left\{H\text{:=}\frac{-1}{2}\text{Sum}\left[\left(\text{$\omega $q}_i-\text{$\omega
-$q}_{\text{target}}\right)\text{$\sigma $z}_i,\{i,0,3\}\right]\right\},\right.}\\
-\pmb{H=H+\frac{1}{2} \theta  \text{GaussianPulse}[t,0,10] \text{$\sigma $y}_{\text{target}};}\\
-\pmb{\text{MatrixExp}[-i \text{NIntegrate}[H,\{t,0,10\}]]}\\
-\pmb{];}\)
-\end{doublespace}
-
-\begin{doublespace}
-\noindent\(\pmb{\text{sqrtiSWAP}[\text{target1$\_$},\text{target2$\_$}]\text{:=}}\\
-\pmb{\text{Module}[}\\
-\pmb{\left\{H=\frac{-1}{2}\text{Sum}\left[\text{$\omega $q}_i \text{$\sigma $z}_i,\{i,0,3\}\right]+\right.}\\
-\pmb{\text{Sum}\left[\left(g_i g_j/\Delta _i\right)\left.\left(\text{$\sigma $p}_i .\text{$\sigma $m}_j+\text{$\sigma $m}_i .\text{$\sigma $p}_j\right)\right/2,\{i,0,3\},\{j,0,3\}\right],}\\
-\pmb{J=0,\text{$\Delta $swap}=\text{$\omega $qswap}-\text{$\omega $r}\},}\\
-\pmb{H=H+\frac{1}{2}\left(\text{$\omega $q}_{\text{target1}} \text{$\sigma $z}_{\text{target1}}+\text{$\omega $q}_{\text{target2}} \text{$\sigma
-$z}_{\text{target2}}\right)-}\\
-\pmb{g_{\text{target1}} g_{\text{target2}} \left(\Delta _{\text{target1}}+\Delta _{\text{target2}}\right)/\left(\Delta _{\text{target1}} \Delta _{\text{target2}}\right)}\\
-\pmb{\left.\left(\text{$\sigma $p}_{\text{target1}} .\text{$\sigma $m}_{\text{target2}}+\text{$\sigma $m}_{\text{target1}} .\text{$\sigma $p}_{\text{target2}}\right)\right/2;}\\
-\pmb{H=H-\frac{1}{2}\text{$\omega $qswap}\left(\text{$\sigma $z}_{\text{target1}}+\text{$\sigma $z}_{\text{target2}}\right)+}\\
-\pmb{g_{\text{target1}} g_{\text{target2}} \left.\left(\text{$\sigma $p}_{\text{target1}} .\text{$\sigma $m}_{\text{target2}}+\text{$\sigma $m}_{\text{target1}}
-.\text{$\sigma $p}_{\text{target2}}\right)\right/\text{$\Delta $swap};}\\
-\pmb{H=g_{\text{target1}} g_{\text{target2}} \left.\left(\text{$\sigma $p}_{\text{target1}} .\text{$\sigma $m}_{\text{target2}}+\text{$\sigma $m}_{\text{target1}}
-.\text{$\sigma $p}_{\text{target2}}\right)\right/\text{$\Delta $swap};}\\
-\pmb{J=\text{Abs}\left[g_{\text{target1}} \left.g_{\text{target2}} \right/\text{$\Delta $swap}\right];}\\
-\pmb{\text{MatrixExp}\left[-i H\frac{\pi }{4 J}\right]}\\
-\pmb{];}\\
-\pmb{\text{iSWAP}[\text{target1$\_$},\text{target2$\_$}]\text{:=}}\\
-\pmb{\text{Module}[}\\
-\pmb{\left\{H=\frac{-1}{2}\text{Sum}\left[\text{$\omega $q}_i \text{$\sigma $z}_i,\{i,0,3\}\right]+\right.}\\
-\pmb{\text{Sum}\left[\left(g_i g_j/\Delta _i\right)\left.\left(\text{$\sigma $p}_i .\text{$\sigma $m}_j+\text{$\sigma $m}_i .\text{$\sigma $p}_j\right)\right/2,\{i,0,3\},\{j,0,3\}\right],}\\
-\pmb{J=0,\text{$\Delta $swap}=\text{$\omega $qswap}-\text{$\omega $r}\},}\\
-\pmb{H=H+\frac{1}{2}\left(\text{$\omega $q}_{\text{target1}} \text{$\sigma $z}_{\text{target1}}+\text{$\omega $q}_{\text{target2}} \text{$\sigma
-$z}_{\text{target2}}\right)-}\\
-\pmb{g_{\text{target1}} g_{\text{target2}} \left(\Delta _{\text{target1}}+\Delta _{\text{target2}}\right)/\left(\Delta _{\text{target1}} \Delta _{\text{target2}}\right)}\\
-\pmb{\left.\left(\text{$\sigma $p}_{\text{target1}} .\text{$\sigma $m}_{\text{target2}}+\text{$\sigma $m}_{\text{target1}} .\text{$\sigma $p}_{\text{target2}}\right)\right/2;}\\
-\pmb{H=H-\frac{1}{2}\text{$\omega $qswap}\left(\text{$\sigma $z}_{\text{target1}}+\text{$\sigma $z}_{\text{target2}}\right)+}\\
-\pmb{g_{\text{target1}} g_{\text{target2}} \left.\left(\text{$\sigma $p}_{\text{target1}} .\text{$\sigma $m}_{\text{target2}}+\text{$\sigma $m}_{\text{target1}}
-.\text{$\sigma $p}_{\text{target2}}\right)\right/\text{$\Delta $swap};}\\
-\pmb{H=g_{\text{target1}} g_{\text{target2}} \left.\left(\text{$\sigma $p}_{\text{target1}} .\text{$\sigma $m}_{\text{target2}}+\text{$\sigma $m}_{\text{target1}}
-.\text{$\sigma $p}_{\text{target2}}\right)\right/\text{$\Delta $swap};}\\
-\pmb{J=\text{Abs}\left[g_{\text{target1}} \left.g_{\text{target2}} \right/\text{$\Delta $swap}\right];}\\
-\pmb{\text{MatrixExp}\left[-i H\frac{\pi }{2 J}\right]}\\
-\pmb{];}\)
-\end{doublespace}
-
-\begin{doublespace}
-\noindent\(\pmb{X[\text{target$\_$}]\text{:=}\text{Rx}[\text{target}, \pi ]\text{//}\text{FullSimplify};}\\
-\pmb{Y[\text{target$\_$}]\text{:=}\text{Ry}[\text{target}, \pi ]\text{//}\text{FullSimplify};}\\
-\pmb{\text{Rz}[\text{target$\_$},\theta \_]\text{:=}\text{Ry}[\text{target},-\pi /2].\text{Rx}[\text{target},\theta ].\text{Ry}[\text{target},\pi
-/2]\text{//}}\\
-\pmb{\text{FullSimplify};}\\
-\pmb{Z[\text{target$\_$}]\text{:=}\text{Rz}[\text{target},\pi ]\text{//}\text{FullSimplify};}\\
-\pmb{H[\text{target$\_$}]\text{:=}X[\text{target}].\text{Ry}[\text{target},\pi /2]\text{//}\text{FullSimplify};}\\
-\pmb{\text{CNOT}[\text{control$\_$},\text{target$\_$}]\text{:=}}\\
-\pmb{\text{Rx}[\text{target},\pi /2].\text{iSWAP}[\text{control},\text{target}].\text{Rx}[\text{control},\pi /2].}\\
-\pmb{\text{iSWAP}[\text{control},\text{target}].\text{Rx}[\text{target},\pi /2].\text{iSWAP}[\text{control},\text{target}].}\\
-\pmb{H[\text{control}].\text{iSWAP}[\text{control},\text{target}].\text{Rz}[\text{control},-\pi /2].}\\
-\pmb{\text{Rz}[\text{target},-\pi /2].H[\text{target}]\text{//}\text{FullSimplify};}\\
-\pmb{\text{CRy}[\text{control$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
-\pmb{\text{CNOT}[\text{control},\text{target}].\text{Ry}[\text{target},-\theta /2].\text{CNOT}[\text{control},\text{target}].}\\
-\pmb{\text{Ry}[\text{target},\theta /2]\text{//}\text{FullSimplify};}\\
-\pmb{\text{CRz}[\text{control$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
-\pmb{\text{CNOT}[\text{control},\text{target}].\text{Rz}[\text{target},-\theta /2].\text{CNOT}[\text{control},\text{target}].}\\
-\pmb{\text{Rz}[\text{target},\theta /2]\text{//}\text{FullSimplify};}\\
-\pmb{\text{SWAP}[\text{target1$\_$},\text{target2$\_$}]\text{:=}}\\
-\pmb{\text{CNOT}[\text{target1},\text{target2}].\text{CNOT}[\text{target2},\text{target1}].\text{CNOT}[\text{target1},\text{target2}]\text{//}}\\
-\pmb{\text{FullSimplify};}\\
-\pmb{\text{CH}[\text{control$\_$},\text{target$\_$}]\text{:=}}\\
-\pmb{\text{Ry}[\text{target},-\pi /4].\text{CNOT}[\text{control},\text{target}].\text{Ry}[\text{target},\pi /4]\text{//}\text{FullSimplify};}\\
-\pmb{\text{CP00}[\text{control$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
-\pmb{\text{CRz}[\text{target},\text{control},\theta /2].\text{CRz}[\text{control},\text{target},\theta /2].}\\
-\pmb{\text{Rz}[\text{target},-3 \theta /4].\text{Rz}[\text{control},-3 \theta /4]\text{//}\text{FullSimplify};}\\
-\pmb{\text{CP01}[\text{control$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
-\pmb{\text{CRz}[\text{target},\text{control},\theta /2].\text{CRz}[\text{control},\text{target},-3 \theta /2].}\\
-\pmb{\text{Rz}[\text{target},5 \theta /4].\text{Rz}[\text{control},-3 \theta /4]\text{//}\text{FullSimplify};}\\
-\pmb{\text{CP10}[\text{control$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
-\pmb{\text{CRz}[\text{target},\text{control},\theta /2].\text{CRz}[\text{control},\text{target},-3 \theta /2].}\\
-\pmb{\text{Rz}[\text{target},\theta /4].\text{Rz}[\text{control},\theta /4]\text{//}\text{FullSimplify};}\\
-\pmb{\text{CP11}[\text{control$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
-\pmb{\text{CRz}[\text{target},\text{control},\theta /2].\text{CRz}[\text{control},\text{target},\theta /2].}\\
-\pmb{\text{Rz}[\text{target},\theta /4].\text{Rz}[\text{control},\theta /4]\text{//}\text{FullSimplify};}\\
-\pmb{\text{Toffoli}[\text{control1$\_$},\text{control2$\_$},\text{target$\_$}]\text{:=}}\\
-\pmb{\text{CP11}[\text{control1},\text{control2},-\pi /2].H[\text{target}].\text{CRz}[\text{control1},\text{target},-\pi /2].}\\
-\pmb{\text{CNOT}[\text{control1},\text{control2}].\text{CRz}[\text{control2},\text{target},\pi /2].}\\
-\pmb{\text{CNOT}[\text{control1},\text{control2}].\text{CRz}[\text{control2},\text{target},-\pi /2].H[\text{target}]\text{//}}\\
-\pmb{\text{FullSimplify};}\\
-\pmb{\text{CCRz}[\text{control1$\_$},\text{control2$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
-\pmb{\text{CRz}[\text{control1},\text{target},\theta /2].\text{CNOT}[\text{control1},\text{control2}].}\\
-\pmb{\text{CRz}[\text{control2},\text{target},-\theta /2].\text{CNOT}[\text{control1},\text{control2}].}\\
-\pmb{\text{CRz}[\text{control2},\text{target},\theta /2]\text{//}\text{FullSimplify};}\\
-\pmb{\text{CCRy}[\text{control1$\_$},\text{control2$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
-\pmb{\text{CRy}[\text{control1},\text{target},\theta /2].\text{CNOT}[\text{control1},\text{control2}].}\\
-\pmb{\text{CRy}[\text{control2},\text{target},-\theta /2].\text{CNOT}[\text{control1},\text{control2}].}\\
-\pmb{\text{CRy}[\text{control2},\text{target},\theta /2]\text{//}\text{FullSimplify};}\\
-\pmb{\text{CCNOT}[\text{control1$\_$},\text{control2$\_$},\text{target$\_$}]\text{:=}}\\
-\pmb{\text{Toffoli}[\text{control1},\text{control2},\text{target}]\text{//}\text{FullSimplify};}\\
-\pmb{\text{CCP00}[\text{control1$\_$},\text{control2$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
-\pmb{\text{CP00}[\text{control1},\text{target},\theta /2].X[\text{control1}].\text{CNOT}[\text{control1},\text{control2}].}\\
-\pmb{X[\text{control1}].\text{CP00}[\text{control2},\text{target},-\theta /2].X[\text{control1}].}\\
-\pmb{\text{CNOT}[\text{control1},\text{control2}].X[\text{control1}].\text{CP00}[\text{control2},\text{target},\theta /2]\text{//}}\\
-\pmb{\text{FullSimplify};}\\
-\pmb{\text{CCP01}[\text{control1$\_$},\text{control2$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
-\pmb{\text{CP01}[\text{control1},\text{target},\theta /2].X[\text{control1}].\text{CNOT}[\text{control1},\text{control2}].}\\
-\pmb{X[\text{control1}].\text{CP01}[\text{control2},\text{target},-\theta /2].X[\text{control1}].}\\
-\pmb{\text{CNOT}[\text{control1},\text{control2}].X[\text{control1}].\text{CP01}[\text{control2},\text{target},\theta /2]\text{//}}\\
-\pmb{\text{FullSimplify};}\\
-\pmb{\text{CCP10}[\text{control1$\_$},\text{control2$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
-\pmb{\text{CP10}[\text{control1},\text{target},\theta /2].\text{CNOT}[\text{control1},\text{control2}].}\\
-\pmb{\text{CP10}[\text{control2},\text{target},-\theta /2].\text{CNOT}[\text{control1},\text{control2}].}\\
-\pmb{\text{CP10}[\text{control2},\text{target},\theta /2]\text{//}\text{FullSimplify};}\\
-\pmb{\text{CCP11}[\text{control1$\_$},\text{control2$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
-\pmb{\text{CP11}[\text{control1},\text{target},\theta /2].\text{CNOT}[\text{control1},\text{control2}].}\\
-\pmb{\text{CP11}[\text{control2},\text{target},-\theta /2].\text{CNOT}[\text{control1},\text{control2}].}\\
-\pmb{\text{CP11}[\text{control2},\text{target},\theta /2]\text{//}\text{FullSimplify};}\\
-\pmb{\text{mZ}[\text{target$\_$}]\text{:=}X[\text{target}].Y[\text{target}]\text{//}\text{FullSimplify};}\\
-\pmb{\text{CCCNOT}[\text{control1$\_$},\text{control2$\_$},\text{control3$\_$},\text{target$\_$}]\text{:=}}\\
-\pmb{\text{CP11}[\text{control1},\text{control3},-\pi /4].\text{CNOT}[\text{control1},\text{control2}].}\\
-\pmb{\text{CP11}[\text{control2},\text{control3},\pi /4].\text{CNOT}[\text{control1},\text{control2}].}\\
-\pmb{\text{CP11}[\text{control2},\text{control3},-\pi /4].H[\text{target}].}\\
-\pmb{\text{CCRz}[\text{control1},\text{control3},\text{target},-\pi /2].\text{CNOT}[\text{control1},\text{control2}].}\\
-\pmb{\text{CCRz}[\text{control2},\text{control3},\text{target},\pi /2].\text{CNOT}[\text{control1},\text{control2}].}\\
-\pmb{\text{CCRz}[\text{control2},\text{control3},\text{target},-\pi /2].H[\text{target}]\text{//}\text{FullSimplify};}\\
-\pmb{\text{CCCRy}[\text{control1$\_$},\text{control2$\_$},\text{control3$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
-\pmb{\text{CCRy}[\text{control1},\text{control2},\text{target},\theta /2].}\\
-\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].\text{CRy}[\text{control3},\text{target},-\theta /2].}\\
-\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].\text{CRy}[\text{control3},\text{target},\theta /2]\text{//}}\\
-\pmb{\text{FullSimplify};}\\
-\pmb{\text{CCCRz}[\text{control1$\_$},\text{control2$\_$},\text{control3$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
-\pmb{\text{CCRz}[\text{control1},\text{control2},\text{target},\theta /2].}\\
-\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].\text{CRz}[\text{control3},\text{target},-\theta /2].}\\
-\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].\text{CRz}[\text{control3},\text{target},\theta /2]\text{//}}\\
-\pmb{\text{FullSimplify};}\\
-\pmb{\text{CCCP00}[\text{control1$\_$},\text{control2$\_$},\text{control3$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
-\pmb{\text{CCP00}[\text{control1},\text{control2},\text{target},\theta /2].X[\text{control1}].X[\text{control2}].}\\
-\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].X[\text{control1}].X[\text{control2}].}\\
-\pmb{\text{CP00}[\text{control3},\text{target},-\theta /2].X[\text{control1}].X[\text{control2}].}\\
-\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].X[\text{control1}].X[\text{control2}].}\\
-\pmb{\text{CP00}[\text{control3},\text{target},\theta /2]\text{//}\text{FullSimplify};}\\
-\pmb{\text{CCCP01}[\text{control1$\_$},\text{control2$\_$},\text{control3$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
-\pmb{\text{CCP01}[\text{control1},\text{control2},\text{target},\theta /2].X[\text{control1}].X[\text{control2}].}\\
-\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].X[\text{control1}].X[\text{control2}].}\\
-\pmb{\text{CP01}[\text{control3},\text{target},-\theta /2].X[\text{control1}].X[\text{control2}].}\\
-\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].X[\text{control1}].X[\text{control2}].}\\
-\pmb{\text{CP01}[\text{control3},\text{target},\theta /2]\text{//}\text{FullSimplify};}\\
-\pmb{\text{CCCP10}[\text{control1$\_$},\text{control2$\_$},\text{control3$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
-\pmb{\text{CCP10}[\text{control1},\text{control2},\text{target},\theta /2].}\\
-\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].\text{CP10}[\text{control3},\text{target},-\theta /2].}\\
-\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].\text{CP10}[\text{control3},\text{target},\theta /2]\text{//}}\\
-\pmb{\text{FullSimplify};}\\
-\pmb{\text{CCCP11}[\text{control1$\_$},\text{control2$\_$},\text{control3$\_$},\text{target$\_$},\theta \_]\text{:=}}\\
-\pmb{\text{CCP11}[\text{control1},\text{control2},\text{target},\theta /2].}\\
-\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].\text{CP11}[\text{control3},\text{target},-\theta /2].}\\
-\pmb{\text{CCNOT}[\text{control1},\text{control2},\text{control3}].\text{CP11}[\text{control3},\text{target},\theta /2]\text{//}}\\
-\pmb{\text{FullSimplify};}\)
-\end{doublespace}
-
-
-\section{Python}
-
-\begin{verbatim}
-
-import matplotlib.pyplot as plt
-import matplotlib as mpl
-import numpy as np
-from scipy.stats import norm
-from qutip import *
-
-def gaussianpulse(x,ts,tf):
-    s = (tf-ts)/6
-    m = (ts+tf)/2
-    return (np.heaviside(x-m+3*s,1)-np.heaviside(x-m-3*s,1)) \
-            *norm.pdf(x, loc = m, scale = s)/0.997300204
-
-def squarepulse(x,ts,tf):
-    s = (tf-ts)/6
-    m = (ts+tf)/2
-    return (np.heaviside(x-m+3*s,1)-np.heaviside(x-m-3*s,1))/(6*s)
-
-def plot_drive_expect(res,args):
-    tlist = res.times
-
-    if args == 0:
-        fig, axes = plt.subplots(1, 1, sharex=True, figsize=(12,4))
-
-        axes.plot(tlist, np.real(expect(qop('n',0), res.states)), \
-                    'b', linewidth=2, label="qubit 0")
-        axes.plot(tlist, np.real(expect(qop('n',1), res.states)), \
-                    'g', linewidth=2, label="qubit 1")
-        axes.plot(tlist, np.real(expect(qop('n',2), res.states)), \
-                    'c', linewidth=2, label="qubit 2")
-        axes.plot(tlist, np.real(expect(qop('n',3), res.states)), \
-                    'm', linewidth=2, label="qubit 3")
-        axes.set_ylim(0, 1)
-
-        axes.set_xlabel("Time (ns)", fontsize=16)
-        axes.set_ylabel("Occupation probability", fontsize=16)
-        axes.legend()
-
-    else:
-        fig, axes = plt.subplots(2, 1, sharex=True, figsize=(12,8))
-
-        axes[0].plot(tlist, np.array(list(ksi_t(tlist,args))) / (2*np.pi), \
-                        'b', linewidth=2, label="drive envelope")
-        axes[0].set_ylabel("Energy (GHz)", fontsize=16)
-        axes[0].legend()
-
-        axes[1].plot(tlist, np.real(expect(qop('n',0), res.states)), 'b', \
-                        linewidth=2, label="qubit 0")
-        axes[1].plot(tlist, np.real(expect(qop('n',1), res.states)), 'g', \
-                        linewidth=2, label="qubit 1")
-        axes[1].plot(tlist, np.real(expect(qop('n',2), res.states)), 'c', \
-                        linewidth=2, label="qubit 2")
-        axes[1].plot(tlist, np.real(expect(qop('n',3), res.states)), 'm', \
-                        linewidth=2, label="qubit 3")
-        axes[1].set_ylim(0, 1)
-
-        axes[1].set_xlabel("Time (ns)", fontsize=16)
-        axes[1].set_ylabel("Occupation probability", fontsize=16)
-        axes[1].legend()
-
-    fig.tight_layout()
-
-# Parametros del sistema
-
-N = 50
-
-wr = 10.0 * 2 * np.pi
-wq = np.array([5.0 * 2 * np.pi, 6.0 * 2 * np.pi, 7.0 * 2 * np.pi, \
-                8.0 * 2 * np.pi])
-wq_swap = 9 * 2 * np.pi
-
-g = np.array([0.1 * 2*np.pi, 0.1 * 2*np.pi, 0.1 * 2*np.pi, 0.1 * 2*np.pi])
-
-D = wq - wr
-D_swap = wq_swap - wr
-
-chi = g**2 / abs(wr-wq)
-
-kappa = 0.001
-gamma = np.array([5e-6, 5e-6, 5e-6, 5e-6])
-
-# cavity operators
-a = destroy(N)
-# a = tensor(destroy(N), qeye(2), qeye(2), qeye(2), qeye(2))
-n = a.dag() * a
-Id_r = qeye(N)
-
-def qop_part(operator, target):
-    if target == 0:
-        qop_dict = {'sm' : destroy(2), 'sp' : (destroy(2)).dag(), 
-                    'sx' : sigmax(), 'sy' : sigmay(), 'sz' : sigmaz(),
-                    'n' : (destroy(2)).dag() * destroy(2)}
-        return qop_dict[operator]
-    else:
-        return qeye(2)
-
-def qop(operator, target):
-    return tensor(qop_part(operator, target-0), qop_part(operator, \
-                    target-1), qop_part(operator, target-2), \
-                    qop_part(operator, target-3))
-    
-#c_ops = [np.sqrt(gamma[0]) * qop('sm', 0), np.sqrt(gamma[1]) * \
-            qop('sm', 1), np.sqrt(gamma[2]) * qop('sm', 2), \
-            np.sqrt(gamma[3]) * qop('sm', 3)]
-c_ops = []
-
-def ksi_t(t, args):
-    return args['A'] * gaussianpulse(t,args['ts'],args['tf'])
-
-def ksi_tm(t, args):
-    return args['A'] * gaussianpulse(t,args['ts'],args['tf']) * \
-            np.exp(-1j*args['w']*(t-args['ts']))
-
-def ksi_tp(t, args):
-    return args['A'] * gaussianpulse(t,args['ts'],args['tf']) * \
-            np.exp(1j*args['w']*(t-args['ts']))
-
-def ksiS_t(t, args):
-    return args['A'] * squarepulse(t,args['ts'],args['tf'])
-
-def ksiS_tm(t, args):
-    return args['A'] * np.exp(-1j*args['w']*(t-args['ts']))
-
-def ksiS_tp(t, args):
-    return args['A'] * np.exp(1j*args['w']*(t-args['ts']))
-
-def Rx(psi0, target, theta):
-    tlist = np.linspace(0, 10, 200)
-
-    wd = wq[target]
-
-    Dr = wr-wd
-    Dq = wq-wd
-
-    Hsyst = 0
-    for i in range(4):
-        Hsyst = Hsyst - Dq[i]*qop('sz',i)/2
-
-    H_t = [[qop('sx',target)/2, ksi_t], Hsyst]
-
-    args = {'A' : theta, 'ts' : 0, 'tf' : 10, 'w' : wq[target]}
-    res = mesolve(H_t, psi0, tlist, c_ops, [], args = args)
-
-    # plot_drive_expect(res,args)
-
-    return res
-
-def Ry(psi0, target, theta):
-    tlist = np.linspace(0, 10, 200)
-
-    wd = wq[target]
-
-    Dr = wr-wd
-    Dq = wq-wd
-
-    Hsyst = 0
-    for i in range(4):
-        Hsyst = Hsyst - Dq[i]*qop('sz',i)/2
-
-    H_t = [[qop('sy',target)/2, ksi_t], Hsyst]
-
-    args = {'A' : theta, 'ts' : 0, 'tf' : 10, 'w' : wq[target]}
-    res = mesolve(H_t, psi0, tlist, c_ops, [], args = args)
-
-    # plot_drive_expect(res,args)
-
-    return res
-
-def Rz(psi0, target, theta):
-    res = Ry(psi0, target, np.pi/2)
-    res = Rx(res.states[-1], target, theta)
-    return Ry(res.states[-1], target, -np.pi/2)
-
-def X(psi0, target):
-    return Rx(psi0, target, np.pi)
-
-def Y(psi0, target):
-    return Ry(psi0, target, np.pi)
-
-def Z(psi0, target, theta):
-    return Rz(psi0, target, np.pi)
-
-def H(psi0, target):
-    res = Ry(psi0, target, np.pi/2)
-    return X(res.states[-1], target)
-
-def sqrtiSWAP(psi0, target1, target2):
-    wqt1 = wq[target1]
-    wq[target1] = wq_swap
-    
-    wqt2 = wq[target2]
-    wq[target2] = wq_swap
-
-    D = wq - wr
-
-    J = np.abs(g[target1] * g[target2] * (D[target1] + D[target2]) / \
-        (D[target1] * D[target2]))/2
-
-    tf = np.pi/(4*J)
-    tlist = np.linspace(0, tf, 250)
-
-    Hsyst = g[target1]*g[target2] * (qop('sp',target1)*qop('sm',target2) \
-        + qop('sm',target1)*qop('sp',target2)) / (D_swap)
-
-    res = mesolve(Hsyst, psi0, tlist, c_ops, [])
-
-    wq[target1] = wqt1
-    wq[target2] = wqt2
-    D = wq - wr
-
-    args = {'A' : 0, 'ts' : 0, 'tf' : tf, 'w' : wq[target1]}
-    # plot_drive_expect(res,args)
-
-    return res
-
-def iSWAP(psi0, target1, target2):
-    wqt1 = wq[target1]
-    wq[target1] = wq_swap
-    
-    wqt2 = wq[target2]
-    wq[target2] = wq_swap
-
-    D = wq - wr
-
-    J = np.abs(g[target1] * g[target2] * (D[target1] + D[target2]) / \
-        (D[target1] * D[target2]))/2
-
-    tf = np.pi/(2*J)
-    tlist = np.linspace(0, tf, 500)
-
-    Hsyst = g[target1]*g[target2] * (qop('sp',target1)*qop('sm',target2) \
-        + qop('sm',target1)*qop('sp',target2)) / (D_swap)
-
-    res = mesolve(Hsyst, psi0, tlist, c_ops, [])
-
-    wq[target1] = wqt1
-    wq[target2] = wqt2
-    D = wq - wr
-
-    args = {'A' : 0, 'ts' : 0, 'tf' : tf, 'w' : wq[target1]}
-    # plot_drive_expect(res,args)
-
-    return res
-
-def CNOT(psi0, control, target):
-    res = H(psi0, target)
-    res = Rz(res.states[-1], target, -np.pi/2)
-    res = Rz(res.states[-1], control, -np.pi/2)
-    res = iSWAP(res.states[-1], control, target)
-    res = H(res.states[-1], control)
-    res = iSWAP(res.states[-1], control, target)
-    res = Rx(res.states[-1], target, np.pi/2)
-    res = iSWAP(res.states[-1], control, target)
-    res = Rx(res.states[-1], control, np.pi/2)
-    res = iSWAP(res.states[-1], control, target)
-    return Rx(res.states[-1], target, np.pi/2)
-
-def CRy(psi0, control, target, theta):
-    res = Ry(psi0,target,theta/2)
-    res = CNOT(res.states[-1],control,target)
-    res = Ry(res.states[-1],target,-theta/2)
-    return CNOT(res.states[-1],control,target)
-
-def CRz(psi0, control, target, theta):
-    res = Rz(psi0,target,theta/2)
-    res = CNOT(res.states[-1],control,target)
-    res = Rz(res.states[-1],target,-theta/2)
-    return CNOT(res.states[-1],control,target)
-
-def SWAP(psi0, target1, target2):
-    res = CNOT(psi0, target1, target2)
-    res = CNOT(res.states[-1], target2, target1)
-    return CNOT(res.states[-1], target1, target2)
-
-def CH(psi0, control, target):
-    res = Ry(psi0, target, np.pi/4)
-    res = CNOT(res.states[-1], control, target)
-    return Ry(psi0, target, -np.pi/4)
-
-def CP(psi0, control, target, theta, b = 0b11):
-    if b == 0b00:
-        res = Rz(psi0, control, -3*theta/4)
-        res = Rz(res.states[-1], target, -3*theta/4)
-        res = CRz(res.states[-1], control, target, theta/2)
-        res = CRz(res.states[-1], target, control, theta/2)
-
-    elif b == 0b01:
-        res = Rz(psi0, control, -3*theta/4)
-        res = Rz(res.states[-1], target, 5*theta/4)
-        res = CRz(res.states[-1], control, target, -3*theta/2)
-        res = CRz(res.states[-1], target, control, theta/2)
-
-    elif b == 0b10:
-        res = Rz(psi0, control, theta/4)
-        res = Rz(res.states[-1], target, theta/4)
-        res = CRz(res.states[-1], control, target, -3*theta/2)
-        res = CRz(res.states[-1], target, control, theta/2)
-
-    elif b == 0b11:
-        res = Rz(psi0, control, theta/4)
-        res = Rz(res.states[-1], target, theta/4)
-        res = CRz(res.states[-1], control, target, theta/2)
-        res = CRz(res.states[-1], target, control, theta/2)
-
-    return res
-
-def Toffoli(psi0, control1, control2, target):
-    res = H(psi0, target)
-    res = CRz(res.states[-1], control2, target, -np.pi/2)
-    res = CNOT(res.states[-1], control1, control2)
-    res = CRz(res.states[-1], control2, target, np.pi/2)
-    res = CNOT(res.states[-1], control1, control2)
-    res = CRz(res.states[-1], control1, target, -np.pi/2)
-    res = H(res.states[-1], target)
-    return CP(res.states[-1], control1, control2, -np.pi/2, b = 0b11)
-
-def CCRz(psi0, control1, control2, target, theta):
-    res = CRz(psi0, control2, target, theta/2)
-    res = CNOT(res.states[-1], control1, control2)
-    res = CRz(res.states[-1], control2, target, -theta/2)
-    res = CNOT(res.states[-1], control1, control2)
-    return CRz(res.states[-1], control1, target, theta/2)
-
-def CCRy(psi0, control1, control2, target, theta):
-    res = CRy(psi0, control2, target, theta/2)
-    res = CNOT(res.states[-1], control1, control2)
-    res = CRy(res.states[-1], control2, target, -theta/2)
-    res = CNOT(res.states[-1], control1, control2)
-    return CRy(res.states[-1], control1, target, theta/2)
-
-def CCP(psi0, control1, control2, target, theta, b = 0b11):
-    res = CP(psi0, control2, target, theta/2, b = b)
-    if b == 0b00 or b == 0b01:
-        res = X(res.states[-1], control1)
-    res = CNOT(res.states[-1], control1, control2)
-    if b == 0b00 or b == 0b01:
-        res = X(res.states[-1], control1)
-    res = CP(res.states[-1], control2, target, -theta/2, b = b)
-    if b == 0b00 or b == 0b01:
-        res = X(res.states[-1], control1)
-    res = CNOT(res.states[-1], control1, control2)
-    if b == 0b00 or b == 0b01:
-        res = X(res.states[-1], control1)
-    return CP(res.states[-1], control1, target, theta/2, b = b)
-
-def CCNOT(psi0, control1, control2, target):
-    return Toffoli(psi0, control1, control2, target)
-
-def Z(psi0, target):
-    res = Ry(psi0, target, np.pi)
-    return Rx(res.states[-1], target, -np.pi)
-
-def mZ(psi0, target):
-    res = Ry(psi0, target, np.pi)
-    return Rx(res.states[-1], target, np.pi)
-
-def CCCNOT(psi0, control1, control2, control3, target):
-    res = H(psi0, target)
-    res = CCRz(res.states[-1], control2, control3, target, -np.pi/2)
-    res = CNOT(res.states[-1], control1, control2)
-    res = CCRz(res.states[-1], control2, control3, target, np.pi/2)
-    res = CNOT(res.states[-1], control1, control2)
-    res = CCRz(res.states[-1], control1, control3, target, -np.pi/2)
-    res = H(res.states[-1], target)
-    res = CP(res.states[-1], control2, control3, -np.pi/4)
-    res = CNOT(res.states[-1], control1, control2)
-    res = CP(res.states[-1], control2, control3, np.pi/4)
-    res = CNOT(res.states[-1], control1, control2)
-    return CP(res.states[-1], control1, control3, -np.pi/4)
-
-def CCCRy(psi0, control1, control2, control3, target, theta):
-    res = CRy(psi0, control3, target, theta/2)
-    res = CCNOT(res.states[-1], control1, control2, control3)
-    res = CRy(res.states[-1], control3, target, -theta/2)
-    res = CCNOT(res.states[-1], control1, control2, control3)
-    return CCRy(res.states[-1], control1, control2, target, theta/2)
-
-def CCCRz(psi0, control1, control2, control3, target, theta):
-    res = CRz(psi0, control3, target, theta/2)
-    res = CCNOT(res.states[-1], control1, control2, control3)
-    res = CRz(res.states[-1], control3, target, -theta/2)
-    res = CCNOT(res.states[-1], control1, control2, control3)
-    return CCRz(res.states[-1], control1, control2, target, theta/2)
-
-def CCCP(psi0, control1, control2, control3, target, theta, b = 0b11):
-    res = CP(psi0, control3, target, theta/2, b = b)
-    if b == 0b00 or b == 0b01:
-        res = X(res.states[-1], control1)
-        res = X(res.states[-1], control2)
-    res = CCNOT(res.states[-1], control1, control2, control3)
-    if b == 0b00 or b == 0b01:
-        res = X(res.states[-1], control1)
-        res = X(res.states[-1], control2)
-    res = CP(res.states[-1], control3, target, -theta/2, b = b)
-    if b == 0b00 or b == 0b01:
-        res = X(res.states[-1], control1)
-        res = X(res.states[-1], control2)
-    res = CCNOT(res.states[-1], control1, control2, control3)
-    if b == 0b00 or b == 0b01:
-        res = X(res.states[-1], control1)
-        res = X(res.states[-1], control2)
-    return CCP(res.states[-1], control1, control2, target, theta/2, b = b)
-
-\end{verbatim}
-
 
 

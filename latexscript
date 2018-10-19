@@ -1,12 +1,15 @@
 pdflatex libro.tex
+#pdflatex -interaction=nonstopmode libro.tex
 wait
 bibtex libro.aux
 wait
 pdflatex libro.tex
+#pdflatex -interaction=nonstopmode libro.tex
 wait
 pdflatex libro.tex
+#pdflatex -interaction=nonstopmode libro.tex
 wait
-rm libro.log
+#rm libro.log
 rm libro.aux
 rm libro.bbl
 rm libro.blg
