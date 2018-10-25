@@ -77,7 +77,7 @@ D_swap = wq_swap - wr
 chi = g**2 / abs(wr-wq)
 
 kappa = 0.001
-gamma = np.array([5e-6, 5e-6, 5e-6, 5e-6])
+gamma = np.array([2.5e-5, 2.5e-5, 2.5e-5, 2.5e-5])
 
 '''
 for i in range(4):
@@ -108,8 +108,8 @@ def qop(operator, target):
 # def qop(operator, target):
     # return tensor(qeye(N), qop_part(operator, target-0), qop_part(operator, target-1), qop_part(operator, target-2), qop_part(operator, target-3), qop_part(operator, target-4), qop_part(operator, target-5), qop_part(operator, target-6), qop_part(operator, target-7)) #MELCSCELDQ
 
-#c_ops = [np.sqrt(gamma[0]) * qop('sm', 0), np.sqrt(gamma[1]) * qop('sm', 1), np.sqrt(gamma[2]) * qop('sm', 2), np.sqrt(gamma[3]) * qop('sm', 3)]
-c_ops = []
+c_ops = [np.sqrt(gamma[0]) * qop('sm', 0), np.sqrt(gamma[1]) * qop('sm', 1), np.sqrt(gamma[2]) * qop('sm', 2), np.sqrt(gamma[3]) * qop('sm', 3)]
+#c_ops = []
 
 def ksi_t(t, args):
     return args['A'] * gaussianpulse(t,args['ts'],args['tf'])
