@@ -2,6 +2,10 @@
 
 \section{Wolfram Mathematica}
 
+Este código se realizó con la intensión de poder ver las matrices asociadas a las compuertas programadas en Python y corregir los posibles errores que pudiera haber en dichas compuertas.
+
+Primero se definen los parámetros del sistema, como la frecuencia de resonancia de los qubits y las constantes de acoplamiento.
+
 \begin{doublespace}
 \noindent\(\pmb{\text{$\omega $r}=2\pi  10.0;}\\
 \pmb{\text{$\omega $q}_{\text{i$\_$}}\text{:=}2\pi \{5.0,6.0,7.0,8.0\}[[i+1]];}\\
@@ -9,6 +13,8 @@
 \pmb{g_{\text{i$\_$}}\text{:=}2\pi \{0.1,0.1,0.1,0.1\}[[i+1]];}\\
 \pmb{\Delta _{\text{i$\_$}}\text{:=}\text{$\omega $q}_i-\text{$\omega $r};}\)
 \end{doublespace}
+
+Ahora se definen las matrices básicas con las cuales se construiran los Hamiltonianos necesarios para realizar las compuertas y asociaciones para asignar los operadores a cada partición de una manera más legible.
 
 \begin{doublespace}
 \noindent\(\pmb{\text{ket0}=\{\{1\},\{0\}\};}\\
@@ -35,6 +41,8 @@
 \pmb{\text{QopAsc}[i,2,\text{$\sigma $m}],\text{QopAsc}[i,3,\text{$\sigma $m}]];}\)
 \end{doublespace}
 
+Ahora se define la función del pulso gaussiano que se utilizará para las rotaciones en X-Y.
+
 \begin{doublespace}
 \noindent\(\pmb{\text{GaussianPulse}[\text{x$\_$},\text{ts$\_$},\text{tf$\_$}]\text{:=}}\\
 \pmb{(\text{UnitStep}[x-\mu +3\sigma ]-\text{UnitStep}[x-\mu -3\sigma ])}\\
@@ -44,6 +52,8 @@
 \pmb{(\text{UnitStep}[x-\mu +3\sigma ]-\text{UnitStep}[x-\mu -3\sigma ])/(6\sigma )\text{/.}}\\
 \pmb{\left\{\mu \to \frac{\text{tf}+\text{ts}}{2},\sigma \to \frac{\text{tf}-\text{ts}}{6}\right\};}\)
 \end{doublespace}
+
+Se utilizan módulos para definir el operador de evolución con el Hamiltoniano necesario para realizar las rotaciones en X-Y.
 
 \begin{doublespace}
 \noindent\(\pmb{\text{Rx}[\text{target$\_$},\theta \_]\text{:=}\text{Module}\left[\left\{H\text{:=}\frac{-1}{2}\text{Sum}\left[\left(\text{$\omega
@@ -57,6 +67,8 @@ $q}_{\text{target}}\right)\text{$\sigma $z}_i,\{i,0,3\}\right]\right\},\right.}\
 \pmb{\text{MatrixExp}[-i \text{NIntegrate}[H,\{t,0,10\}]]}\\
 \pmb{];}\)
 \end{doublespace}
+
+Se utilizan módulos para definir el operador de evolución con el Hamiltoniano necesario para realizar las compuertas iSWAP y $\sqrt{iSWAP}$.
 
 \begin{doublespace}
 \noindent\(\pmb{\text{sqrtiSWAP}[\text{target1$\_$},\text{target2$\_$}]\text{:=}}\\
@@ -94,6 +106,8 @@ $z}_{\text{target2}}\right)-}\\
 \pmb{\text{MatrixExp}\left[-i H\frac{\pi }{2 J}\right]}\\
 \pmb{];}\)
 \end{doublespace}
+
+Finalmente, se definen todas las compuertas del simulador.
 
 \begin{doublespace}
 \noindent\(\pmb{X[\text{target$\_$}]\text{:=}\text{Rx}[\text{target}, \pi ]\text{//}\text{FullSimplify};}\\
@@ -209,14 +223,19 @@ $z}_{\text{target2}}\right)-}\\
 
 \section{Python}
 
-\begin{verbatim}
+Primero, se importan todos los módulos necesarios. Entre ellos, Numpy para variables y funciones numéricas, tgates para las compuertas de transmones.
 
+\begin{verbatim}
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 import numpy as np
 from scipy.stats import norm
 from qutip import *
+\end{verbatim}
 
+Ahora definimos la función del pulso gaussiano que se utilizará para las rotaciones X-Y. Esta función recibe como entradas el eje de tiempo, el tiempo de inicio del pulso y el tiempo de fin del pulso, y retorna el valor del pulso gaussiano normalizado en cada instante del eje de tiempo. También se ha definido la función de un pulso rectangular con las mismas características. Esta función no se usa en la versión actual del simulador, pero se ha dejado en el código para que pueda ser utilizada en el futuro sin necesidad de reimplementarla.
+
+\begin{verbatim}
 def gaussianpulse(x,ts,tf):
     s = (tf-ts)/6
     m = (ts+tf)/2
@@ -227,7 +246,11 @@ def squarepulse(x,ts,tf):
     s = (tf-ts)/6
     m = (ts+tf)/2
     return (np.heaviside(x-m+3*s,1)-np.heaviside(x-m-3*s,1))/(6*s)
+\end{verbatim}
 
+La siguiente función es una función que se utiliza para graficar la probabilidad de ocupación de las salidas del solucionador de ecuaciones maestras y los pulsos utilizados en las compuertas.
+
+\begin{verbatim}
 def plot_drive_expect(res,args):
     tlist = res.times
 
@@ -271,7 +294,25 @@ def plot_drive_expect(res,args):
         axes[1].legend()
 
     fig.tight_layout()
+\end{verbatim}
 
+Ahora se definen los parámetros del sistema, como las tasas de relajación y las frecuencias de resonancia.
+
+\begin{enumerate}
+    \item N es el tamaño del resonador. Es decir, la cantidad de fotonones a la que se trunca su Hamiltoniano.
+    \item wr es la frecuencia de resonancia del resonador.
+    \item wq es un arreglo con las frecuencias de resonancia de los qubits.
+    \item \begin{verbatim}wq_swap\end{verbatim} es la frecuencia a la que se desplazan los qubits para realizar iSWAP y $\sqrt{iSWAP}$.
+    \item g es un arreglo con las constantes de acoplamiento entre los qubits y el resonador.
+    \item D es un arreglo con las diferencias de las frecuencias de resonancia entre los qubits y el resonador.
+    \item \begin{verbatim}D_swap\end{verbatim} es la diferencia entre la frecuencia de resonancia para iSWAP y el resonador.
+    \item kappa es la tasa de relajación del resonador.
+    \item gamma es un arreglo con las tasas de relejación de los qubits.
+    \item a es el operador de destrucción del resonador.
+    \item n es el operador de número del resonador.
+\end{enumerate}
+
+\begin{verbatim}
 # Parametros del sistema
 
 N = 50
@@ -296,7 +337,13 @@ a = destroy(N)
 # a = tensor(destroy(N), qeye(2), qeye(2), qeye(2), qeye(2))
 n = a.dag() * a
 Id_r = qeye(N)
+\end{verbatim}
 
+La función \begin{verbatim}qop_part\end{verbatim} devuelve la matriz asociada al operador solicitado y se utiliza como parte de la función qop para realizar el producto tensorial de este operador con los operadores de identidad necesarios para retornar el operador que actúe en el qubit solicitado.
+
+La lista \begin{verbatim}c_ops\end{verbatim} es la lista de los operadores de colapso de los qubits. En el caso sin pérdidas, esta lista es vacía. En el caso con pérdidas contiene los operadores $\sigma_-$ de cada qubit.
+
+\begin{verbatim}
 def qop_part(operator, target):
     if target == 0:
         qop_dict = {'sm' : destroy(2), 'sp' : (destroy(2)).dag(), 
@@ -315,7 +362,11 @@ def qop(operator, target):
             qop('sm', 1), np.sqrt(gamma[2]) * qop('sm', 2), \
             np.sqrt(gamma[3]) * qop('sm', 3)]
 c_ops = []
+\end{verbatim}
 
+Las siguientes funciones son funciones para utilizar como coeficientes dependientes del tiempo en los Hamiltonianos.
+
+\begin{verbatim}
 def ksi_t(t, args):
     return args['A'] * gaussianpulse(t,args['ts'],args['tf'])
 
@@ -335,7 +386,11 @@ def ksiS_tm(t, args):
 
 def ksiS_tp(t, args):
     return args['A'] * np.exp(1j*args['w']*(t-args['ts']))
+\end{verbatim}
 
+Finalmente, se definen las compuertas cuánticas. En los casos de las compuertas Rx y Ry, primero se define el vector de tiempo. Luego se asigna la frencuencia del pulso para que actúe sobre el qubit deseado. Se define la parte independiente del tiempo del Hamiltoniano y la parte dependiente del tiempo con \begin{verbatim}ksi_t\end{verbatim} como coeficiente. Se asignan los argumentos del pulso y se ejecuta el solucionador de ecuaciones maestras. Se retorna el resultado del solucionador.
+
+\begin{verbatim}
 def Rx(psi0, target, theta):
     tlist = np.linspace(0, 10, 200)
 

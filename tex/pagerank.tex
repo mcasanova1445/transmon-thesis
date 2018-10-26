@@ -527,3 +527,47 @@ Finalmente, se tiene que los ángulos de las rotaciones deben ser:
 \subsection{Grafo arbol}
 
 \subsection{Grafo aleatorio}
+
+
+Se ha realizado una simulación del algoritmo de Grover en Wolfram Mathematica implementando $U_{\omega}$, $U_s$ y la transformada de Hadamard, directamente, de manera matricial, de acuerdo a las definiciones dadas anteriormente. Por otro lado, se ha realizado una simulación del algoritmo de Grover en Python definiendo todas las operaciones y transformaciones en base a sus construcciones circuitales, a partir de las compuertas nativas de los transmones, resolviendo la ecuación maestra del sistema al aplicar cada compuerta nativa. A la primera la llamaremos la simulación matemática, y a la segunda, simulación circuital. El código de ambas simulaciones se encuentra en el apédice (APENDICE).
+
+En el caso de la simulación matemática, sólo se ha simulado el caso sin pérdidas. Sin embargo, en el caso de la simulación circuital, se ha simulado el sistema tanto sin pérdidas, como con pérdidas. En el caso del sistema con pérdidas, se ha utilizado la ecuación maestra de Lindblad con los operadores de colapso $\sigma_{-_i}$ y tasa de relajación $\gamma = 25KHz$. Primero compararemos las dos simulaciones sin pérdidas para analizar la precisión del solucionador de ecuaciones maestras.
+
+En la figura (FIGURA) se puede observar la gráfica de la evolución de la probabilidad de medir cada estado en cada iteración. Como se puede observar, ambas figuras son bastante similares. Por otro lado, la fidelidad entre los estados finales de ambas simulaciones es <++>. Por lo que la precisión del solucionador de ecuaciones maestras causó un error correspondiente a una pérdida de <++> de fidelidad.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics{img/Grover-2_gr1.eps}
+        \caption{Rx}
+    \end{subfigure}
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/groveralllossless.png}
+        \caption{Ry}
+    \end{subfigure}
+    \caption[]{Compuertas Rx, Ry y Rz en la esfera de Bloch}
+    \label{fig:groverlosslesscomp}
+\end{figure}
+
+Ahora, compararemos los resultados de la simulación circuital con y sin pérdidas. Como se puede ver en la figura (FIGURA), en el caso con pérdidas, los estados que no contienen el valor deseado dejan de tener la misma probabilidad. Los estados que involucran el estado base ganan probabilidad debido a la relajación de los qubits. La fidelidad entre los estados resultantes de los casos con y sin pérdidas es de <++>.
+
+Aunque la fidelidad sea tan baja, la probabilidad del estado deseado sigue siendo lo suficientemente alta como para obtener el resultado deseado x/x veces.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/groveralllossless.png}
+        \caption{Ry}
+    \end{subfigure}
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/groverpairlossless.png}
+        \caption{Rz}
+    \end{subfigure}
+    \caption[]{Compuertas Rx, Ry y Rz en la esfera de Bloch}
+    \label{fig:groverlosscomp}
+\end{figure}
+

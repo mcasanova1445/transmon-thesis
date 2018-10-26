@@ -5,6 +5,20 @@ El algoritmo de Shor requiere de dos algoritmos cuánticos preliminares: La esti
 
 \section{Transformada cuántica de Fourier}
 
+Una tranformada integral cuántica es una transformada integral discreta que actúa en un espacio de Hilbert y tiene un operador unitario asociado, tal que:
+
+\begin{equation}
+    U = \sum\limits_x\sum\limits_y K(x,y) \ketbra{y}{x}
+\end{equation}
+
+Aplica la transformada
+
+\begin{equation}
+    \ket{x} \rightarrow K(x,y) \ket{y}
+\end{equation}
+
+Donde $K(x,y)$ se conoce como el kernel de la transformada.
+
 Una de las transformadas integrales cuánticas más importantes es la tranformada cuántica de Fourier. Sea $\omega_n$ la n-ésima raíz primitiva de la unidad:
 
 \begin{equation}
@@ -172,8 +186,10 @@ La probabilidad p(n) decae rápidamente a cero cuando el error $\delta$ se aleja
 
 Entonces:
 
-.) La medida tiene la maor probabilidad de dar la aproximación más cercana al estado $\phi$.
-.) El circuito de salida es de la forma $\ket{\tilde{\phi}} \ket{u}$, donde $\ket{\tilde{\phi}}$ es una superposición de estados, los cuales al medirlos dan una buena aproximación de $\phi$.
+\begin{enumerate}
+    \item La medida tiene la mayor probabilidad de dar la aproximación más cercana al estado $\phi$.
+    \item El circuito de salida es de la forma $\ket{\tilde{\phi}} \ket{u}$, donde $\ket{\tilde{\phi}}$ es una superposición de estados, los cuales al medirlos dan una buena aproximación de $\phi$.
+\end{enumerate}
 
 \section{Estimación de orden}
 
@@ -211,7 +227,7 @@ Ejemplo:
          2  &   16  & 4^2 = 13\times1                    + 3    & 3     \\
          3  &   64  & 4^3 = 13\times4                    + 12   & 12    \\
          4  &   256  & 4^4 = 13\times19                  + 9    & 9     \\
-         5  &   1024  & 4^5 = 13\times78                 + 10   & 10    \\ % Revisar tabla | Error en la clase
+         5  &   1024  & 4^5 = 13\times78                 + 10   & 10    \\
          6  &   4096  & 4^6 = 13\times315                + 1    & 1     \\
          7  &   16384  & 4^7 = 13\times1260              + 4    & 4     \\
          8  &   65536  & 4^8 = 13\times5041              + 3    & 3     \\
@@ -229,6 +245,8 @@ Ejemplo:
  Como podemos ver el período es r=6, el cual corresponde al menor r entero distinto de cero para el cual se cumple $4^r=1 \mod 13$ con r=6
 
  $\therefore 4^6 = 1 \mod 13$
+
+ %Como podemos ver en la tabla (TABLA), la función $f(x) = a^x mod N$ es periódica. Dado que $a^0 = 1$ y las relaciones de congruencia, el período de esta función es igual al orden de $r$ de $a$. Sin implementamos esta función en un operador cuántico, podríamos crear un estado que contenga esta periodicidad y utilizar la transformada inversa de Fourier para hallar el período $r$. Esto es exactamente lo que se hace al ejecutar el algoritmo de estimación de fase con un operador $U$ tal que $ U \ket{y} = \ket{x y \mod N}.
 
 Analicemos como la estimación de fase hace posible determinar r, el orden de $x \mod N$, con alta probabilidad y precisión. Primero necesitamos introducir el operador U y sus correspondientes autovectores y autovalores.
 
@@ -341,26 +359,21 @@ Entonces:
 
 \section{Algoritmo de factorización de Shor}
 
-El algoritmo de factorización de Shor permite factorizar números los cuales se pueden descomponer en un producto único de números primos.
-
-Dicho número N es un entero no-primo de L bits.
-
-En un ordenador cuántico el algoritmo de Shor tendrá un tiempo de corrida del orden $O((L^3))$ (polinómico) y en un ordenador clásico es del $O(e^[L^{1/3} (log L)^{2/3}])$ (exponencial), mostrando así que el algorimo de Shor es capaz de factorizar números muy grandes en tiempos polinómicos.
-
-En dicho algoritmo se conjugan:
-
 \begin{enumerate}
-    \item Aritmética modular $\leftarrow$ Clásico
-    \item Paralelismo cuántico $\leftarrow$ Cuántico
-    \item Transformada cuántica de Fourier $\leftarrow$ Cuántico
+    \item Elegir un número aleatorio $a < N$
+    \item Calcular $GCD(a,N)$
+    \item Si $GCD(a,N) \neq 1$, entonces este número es un factor no trivial de N y se ha hallado una factorización.
+    \item Si no, usar el algoritmo de estimación de orden $r$ para hallar el período de $f(x) = a^x mod N$
+    \item Si r es impar, volver al paso 1
+    \item Si $a^{x+r} \equiv -1 \mod N$, ir al paso 1
+    \item Si no, $GCD(a^{r/2} + 1, N)$ y $GCD(a^{r/2} - 1, N)$ y se ha hallado la factorización.
 \end{enumerate}
 
-El algoritmo consiste en dos etapas:
+%El algoritmo de factorización de Shor permite factorizar números los cuales se pueden descomponer en un producto único de números primos.
 
-\begin{enumerate}
-    \item Una reducción del problema de descomponer en factores al problema de encontrar el orden
-    \item Un algoritmo cuántico para solucionar el problema de encontrar el período.
-\end{enumerate}
+%Dicho número N es un entero no-primo de L bits.
+
+%En un ordenador cuántico el algoritmo de Shor tendrá un tiempo de corrida del orden $O((L^3))$ (polinómico) y en un ordenador clásico es del $O(e^[L^{1/3} (log L)^{2/3}])$ (exponencial), mostrando así que el algorimo de Shor es capaz de factorizar números muy grandes en tiempos polinómicos.
 
 El algoritmo de Shor fue publicado en: P.W. Shor SIAM I. Comput. 26, 1484-1509 (1997)
 
@@ -397,4 +410,46 @@ El algoritmo de Shor fue publicado en: P.W. Shor SIAM I. Comput. 26, 1484-1509 (
  0.02936951642045106,
  0.012035158723792341,
  0.027772969041529337]
+
+Se ha realizado una simulación del algoritmo de Grover en Wolfram Mathematica implementando $U_{\omega}$, $U_s$ y la transformada de Hadamard, directamente, de manera matricial, de acuerdo a las definiciones dadas anteriormente. Por otro lado, se ha realizado una simulación del algoritmo de Grover en Python definiendo todas las operaciones y transformaciones en base a sus construcciones circuitales, a partir de las compuertas nativas de los transmones, resolviendo la ecuación maestra del sistema al aplicar cada compuerta nativa. A la primera la llamaremos la simulación matemática, y a la segunda, simulación circuital. El código de ambas simulaciones se encuentra en el apédice (APENDICE).
+
+En el caso de la simulación matemática, sólo se ha simulado el caso sin pérdidas. Sin embargo, en el caso de la simulación circuital, se ha simulado el sistema tanto sin pérdidas, como con pérdidas. En el caso del sistema con pérdidas, se ha utilizado la ecuación maestra de Lindblad con los operadores de colapso $\sigma_{-_i}$ y tasa de relajación $\gamma = 25KHz$. Primero compararemos las dos simulaciones sin pérdidas para analizar la precisión del solucionador de ecuaciones maestras.
+
+En la figura (FIGURA) se puede observar la gráfica de la evolución de la probabilidad de medir cada estado en cada iteración. Como se puede observar, ambas figuras son bastante similares. Por otro lado, la fidelidad entre los estados finales de ambas simulaciones es <++>. Por lo que la precisión del solucionador de ecuaciones maestras causó un error correspondiente a una pérdida de <++> de fidelidad.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics{img/Grover-2_gr1.eps}
+        \caption{Rx}
+    \end{subfigure}
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/groveralllossless.png}
+        \caption{Ry}
+    \end{subfigure}
+    \caption[]{Compuertas Rx, Ry y Rz en la esfera de Bloch}
+    \label{fig:groverlosslesscomp}
+\end{figure}
+
+Ahora, compararemos los resultados de la simulación circuital con y sin pérdidas. Como se puede ver en la figura (FIGURA), en el caso con pérdidas, los estados que no contienen el valor deseado dejan de tener la misma probabilidad. Los estados que involucran el estado base ganan probabilidad debido a la relajación de los qubits. La fidelidad entre los estados resultantes de los casos con y sin pérdidas es de <++>.
+
+Aunque la fidelidad sea tan baja, la probabilidad del estado deseado sigue siendo lo suficientemente alta como para obtener el resultado deseado x/x veces.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/groveralllossless.png}
+        \caption{Ry}
+    \end{subfigure}
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/groverpairlossless.png}
+        \caption{Rz}
+    \end{subfigure}
+    \caption[]{Compuertas Rx, Ry y Rz en la esfera de Bloch}
+    \label{fig:groverlosscomp}
+\end{figure}
 

@@ -2,11 +2,7 @@
 
 \section{Wolfram Mathematica}
 
-\begin{doublespace}
-\noindent\(\pmb{\text{Remove}[\text{{``}Global$\grave{ }$*{''}}];}\\
-\pmb{\text{Off}[\text{General}\text{::}\text{Spell1}];}\\
-\pmb{\text{ClearAll}[\text{{``}Global $\grave{ }$*{''}}];}\)
-\end{doublespace}
+Primero definimos el número a factorizar y número que se utilizará para el operador de multiplicación modular.
 
 \begin{doublespace}
 \noindent\(\pmb{\text{(*}\text{Factorizar} \text{el} \text{n{\' u}mero} M=15\text{*)}}\\
@@ -16,13 +12,7 @@
 \pmb{\text{GCD}[x,M]==1}\)
 \end{doublespace}
 
-\begin{doublespace}
-\noindent\(7\)
-\end{doublespace}
-
-\begin{doublespace}
-\noindent\(\text{True}\)
-\end{doublespace}
+Ahora se definen las matrices necesarias para el algoritmo, como los kets de la base computacional, el operador de multiplicación, la compuerta de fase, entre otras.
 
 \begin{doublespace}
 \noindent\(\pmb{\text{(*}\text{Los} |0> y |1>\text{*)}}\\
@@ -65,7 +55,14 @@
 o}n} \text{por} 7 \text{m{\' o}dulo} 15\text{*)}}\\
 \pmb{U=\text{Urp}[x,M];}\\
 \pmb{}\\
-\pmb{\text{(*Preparando el estado inicial*)}}\\
+\)
+\end{doublespace}
+
+Ahora se prepara el estado inicial y se ejecuta el algoritmo.
+
+
+\begin{doublespace}
+\noindent\(\pmb{\text{(*Preparando el estado inicial*)}}\\
 \pmb{\text{$\psi $0}=\text{KroneckerProduct}\left[\text{ket}_0,\text{ket}_0,\text{ket}_0,\text{ket}_0\right];}\\
 \pmb{\text{$\psi $0}=N[\text{KroneckerProduct}[H,H,H,H].\text{$\psi $0}];}\\
 \pmb{\psi =\text{KroneckerProduct}\left[\text{ket}_0,\text{ket}_0,\text{ket}_0,\text{ket}_1\right];}\\
@@ -147,6 +144,8 @@ j,\text{L1}[[i,2]]\text{+=}\text{L1}[[j,2]];}\\
 
 \section{Python}
 
+Primero, se importan todos los módulos necesarios. Entre ellos, Numpy para variables y funciones numéricas, tgates8 para las compuertas de transmones.
+
 \begin{verbatim}
 import matplotlib.pyplot as plt
 import matplotlib as mpl
@@ -155,8 +154,11 @@ from scipy.stats import norm
 from qutip import *
 import tgates8
 import time
+\end{verbatim}
 
+Ahora se definen las operaciones que son explícitas para este algoritmo. Ellas son la transformada de Hadamard y los operadores de reflexión.
 
+\begin{verbatim}
 #Transformada inversa de Fourier
 def QFT4d(psi0, target1, target2, target3, target4):
     res = tgates8.SWAP(psi0, target2, target3)
@@ -190,8 +192,11 @@ def CMUL7(psi0, control, target1, target2, target3, target4):
 
 #Dimensión del espacio de Hilbert
 qN = 2**8
+\end{verbatim}
 
+Finalmente, se define el estado inicial y se ejecuta el algoritmo. Se realizan el doble de interaciones de las necesarias, igual que en el código de Wolfram Mathematica, para analizar lo que ocurre si se realizan más rotaciones de las necesarias.
 
+\begin{verbatim}
 # El algoritmo
 # Estado fiducial
 psi0 = tensor(basis(2,0), basis(2,0), basis(2,0), basis(2,0),
