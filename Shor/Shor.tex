@@ -94,7 +94,7 @@ $t}\right];}\\
 $t}\right];}\\
 \pmb{}\\
 \pmb{\text{(*}\text{Medidas}\text{*)}}\\
-\pmb{\text{For}[i=0,i<32,i\text{++},\text{sub0}=\text{Mod}[i,2];}\\
+\pmb{\text{For}[i=0,i<16,i\text{++},\text{sub0}=\text{Mod}[i,2];}\\
 \pmb{\text{sub1}=\text{Which}[i==0,0,\text{Mod}[i,2]==0\&\&\text{sub1}==0,1,\text{Mod}[i,2]==0\&\&\text{sub1}==1,0,\text{True},\text{sub1}];}\\
 \pmb{\text{sub2}=\text{Which}\left[i==0,0,\text{Mod}\left[i,2^2\right]==0\&\&\text{sub2}==0,1,\text{Mod}\left[i,2^2\right]==0\&\&\text{sub2}==1,0,\text{True},\text{sub2}\right];}\\
 \pmb{\text{sub3}=\text{Which}\left[i==0,0,\text{Mod}\left[i,2^3\right]==0\&\&\text{sub3}==0,1,\text{Mod}\left[i,2^3\right]==0\&\&\text{sub3}==1,0,\text{True},\text{sub3}\right];}\\
@@ -104,7 +104,7 @@ $t}\right];}\\
 \pmb{}\\
 \pmb{\text{(*Organizar resultados de las medidas y graficar*)}}\\
 \pmb{L=\text{Table}\left[\left\{i,\frac{i}{2^4},\text{$\psi $t}_i[[1,1]]\right\},\{i,0,31\}\right];}\\
-\pmb{\text{ListPlot}\left[\text{Table}\left[\left\{N\left[\frac{i}{2^4}\right],\text{$\psi $t}_i[[1,1]]\right\},\{i,0,16\}\right],\text{PlotRange}\to
+\pmb{\text{ListPlot}\left[\text{Table}\left[\left\{N\left[\frac{i}{2^4}\right],\text{$\psi $t}_i[[1,1]]\right\},\{i,0,15\}\right],\text{PlotRange}\to
 \text{All}\right]}\)
 \end{doublespace}
 
