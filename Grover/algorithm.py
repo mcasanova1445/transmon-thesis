@@ -24,13 +24,13 @@ def Uomega(psi0):
     return tgates.CCCP(psi0, 0, 1, 2, 3, np.pi, b = 0b11)
 '''
 
+'''
 def Uomega(psi0):
     return tgates.CCP(psi0, 0, 3, 2, np.pi, b = 0b10)
-
 '''
+
 def Uomega(psi0):
     return tgates.CP(psi0, 2, 1, np.pi, b = 0b01)
-'''
 
 qN = 2**4
 
