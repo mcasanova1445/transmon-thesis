@@ -520,13 +520,43 @@ Finalmente, se tiene que los ángulos de las rotaciones deben ser:
 
 \section{Simulaciones}
 
+Se han realizado simulaciones del algoritmo de PageRank con un grafo estrella, un grafo corona, un grafo árbol y un grafo aleatorio, todos de cuatro nodos. Se han realizado simulaciones con y sin pérdidas. El código de las simulaciones se encuentra en el apéndice \ref{ch:pagerankcod}.
+
 \subsection{Grafo estrella}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{img/star.png}
+    \caption[Grafo estrella]{Grafo estrella}
+    \label{fig:star}
+\end{figure}
 
 \subsection{Grafo corona}
 
-\subsection{Grafo arbol}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{img/crown.png}
+    \caption[Grafo corona]{Grafo corona}
+    \label{fig:crown}
+\end{figure}
+
+\subsection{Grafo árbol}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{img/tree.png}
+    \caption[Grafo árbol]{Grafo árbol}
+    \label{fig:tree}
+\end{figure}
 
 \subsection{Grafo aleatorio}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{img/any.png}
+    \caption[Grafo aleatorio]{Grafo aleatorio}
+    \label{fig:any}
+\end{figure}
 
 
 Se ha realizado una simulación del algoritmo de Grover en Wolfram Mathematica implementando $U_{\omega}$, $U_s$ y la transformada de Hadamard, directamente, de manera matricial, de acuerdo a las definiciones dadas anteriormente. Por otro lado, se ha realizado una simulación del algoritmo de Grover en Python definiendo todas las operaciones y transformaciones en base a sus construcciones circuitales, a partir de las compuertas nativas de los transmones, resolviendo la ecuación maestra del sistema al aplicar cada compuerta nativa. A la primera la llamaremos la simulación matemática, y a la segunda, simulación circuital. El código de ambas simulaciones se encuentra en el apédice (APENDICE).
@@ -539,7 +569,7 @@ En la figura (FIGURA) se puede observar la gráfica de la evolución de la proba
     \centering
     \begin{subfigure}[m]{0.45\textwidth}
         \centering
-        \includegraphics{img/Grover-2_gr1.eps}
+        \includegraphics[width=0.9\linewidth]{img/Grover-2_gr1.eps}
         \caption{Rx}
     \end{subfigure}
     \begin{subfigure}[m]{0.45\textwidth}
