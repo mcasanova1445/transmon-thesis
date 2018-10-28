@@ -267,9 +267,7 @@ U U^\dagger = p \ketbra{i+1}{i+1} \otimes \ketbra{c}{c} + (1-p) \ketbra{i-1}{i-1
 
 Al realizar la suma sobre $i$ se tiene $\mathds{1}$, como se deseaba. Sin embargo, esta solución toavía no es satisfactoria, pues exige que $p_{i j}=\frac{1}{outdeg(j)}$ para que $U U^\dagger=\mathds{1}$.
 
-Casi todas las cuantizaciones cometen estos dos pecados, aumentar la dimensión del espacio de Hilbert e imponer condiciones sobre el grafo; y en general, se debe cometer al menos uno de los dos.
-
-\textbf{Nota:} También existen caminatas cuánticas continuas, no sólo discretas.
+Casi todas las cuantizaciones cometen estos dos pecados, aumentar la dimensión del espacio de Hilbert e imponer condiciones sobre el grafo; y en general, se debe cometer al menos uno de los dos. También existen caminatas cuánticas continuas, no sólo discretas, pero ellas siguen un esquema distinto de la computación cuántica, donde no se busca que el operador de evolución del sistema corresponda a compuertas cuánticas con las cuales construir el operador de difusión, sino directamente al operador de difusión de la caminata cuántica.
 
 \section{Caminata cuántica de Szegedy}
 
@@ -549,6 +547,70 @@ Se han realizado simulaciones del algoritmo de PageRank con un grafo estrella, u
     \label{fig:tree}
 \end{figure}
 
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/tree-inst-M.png}
+        \caption{Wolfram Mathematica}
+    \end{subfigure}
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/tree-inst-lossless.png}
+        \caption{Python}
+    \end{subfigure}
+    \caption[PageRank cuántico instantáneo del grafo árbol sin pérdidas]{PageRank cuántico instantáneo del grafo árbol sin pérdidas}
+    \label{fig:insttreelossless}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/tree-mean-M.png}
+        \caption{Wolfram Mathematica}
+    \end{subfigure}
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/tree-mean-lossless.png}
+        \caption{Python}
+    \end{subfigure}
+    \caption[PageRank cuántico promedio del grafo árbol sin pérdidas]{PageRank cuántico promedio del grafo árbol sin pérdidas}
+    \label{fig:meantreelossless}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/tree-inst-lossless.png}
+        \caption{Sin relajación}
+    \end{subfigure}
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/tree-inst-lossy.png}
+        \caption{Con relajación}
+    \end{subfigure}
+    \caption[PageRank cuántico instantaneo del grafo árbol con y sin pérdidas]{PageRank cuántico instantaneo del grafo árbol con y sin pérdidas}
+    \label{fig:insttreelossy}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/tree-mean-lossless.png}
+        \caption{Sin relajación}
+    \end{subfigure}
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/tree-mean-lossy.png}
+        \caption{Con relajación}
+    \end{subfigure}
+    \caption[PageRank cuántico promedio del grafo árbol con y sin pérdidas]{PageRank cuántico promedio del grafo árbol con y sin pérdidas}
+    \label{fig:meantreelossy}
+\end{figure}
+
 \subsection{Grafo aleatorio}
 
 \begin{figure}[H]
@@ -558,6 +620,70 @@ Se han realizado simulaciones del algoritmo de PageRank con un grafo estrella, u
     \label{fig:any}
 \end{figure}
 
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/any-inst-M.png}
+        \caption{Wolfram Mathematica}
+    \end{subfigure}
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/any-inst-lossless.png}
+        \caption{Python}
+    \end{subfigure}
+    \caption[PageRank cuántico instantáneo del grafo aleatorio sin pérdidas]{PageRank cuántico instantáneo del grafo aleatorio sin pérdidas}
+    \label{fig:instanylossless}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/any-mean-M.png}
+        \caption{Wolfram Mathematica}
+    \end{subfigure}
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/any-mean-lossless.png}
+        \caption{Python}
+    \end{subfigure}
+    \caption[PageRank cuántico promedio del grafo aleatorio sin pérdidas]{PageRank cuántico promedio del grafo aleatorio sin pérdidas}
+    \label{fig:meananylossless}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/any-inst-lossless.png}
+        \caption{Sin relajación}
+    \end{subfigure}
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/any-inst-lossy.png}
+        \caption{Con relajación}
+    \end{subfigure}
+    \caption[PageRank cuántico instantaneo del grafo aleatorio con y sin pérdidas]{PageRank cuántico instantaneo del grafo aleatorio con y sin pérdidas}
+    \label{fig:instanylossy}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/any-mean-lossless.png}
+        \caption{Sin relajación}
+    \end{subfigure}
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/any-mean-lossy.png}
+        \caption{Con relajación}
+    \end{subfigure}
+    \caption[PageRank cuántico promedio del grafo aleatorio con y sin pérdidas]{PageRank cuántico promedio del grafo aleatorio con y sin pérdidas}
+    \label{fig:meananylossy}
+\end{figure}
+
 
 Se ha realizado una simulación del algoritmo de Grover en Wolfram Mathematica implementando $U_{\omega}$, $U_s$ y la transformada de Hadamard, directamente, de manera matricial, de acuerdo a las definiciones dadas anteriormente. Por otro lado, se ha realizado una simulación del algoritmo de Grover en Python definiendo todas las operaciones y transformaciones en base a sus construcciones circuitales, a partir de las compuertas nativas de los transmones, resolviendo la ecuación maestra del sistema al aplicar cada compuerta nativa. A la primera la llamaremos la simulación matemática, y a la segunda, simulación circuital. El código de ambas simulaciones se encuentra en el apédice (APENDICE).
 
@@ -565,39 +691,6 @@ En el caso de la simulación matemática, sólo se ha simulado el caso sin pérd
 
 En la figura (FIGURA) se puede observar la gráfica de la evolución de la probabilidad de medir cada estado en cada iteración. Como se puede observar, ambas figuras son bastante similares. Por otro lado, la fidelidad entre los estados finales de ambas simulaciones es <++>. Por lo que la precisión del solucionador de ecuaciones maestras causó un error correspondiente a una pérdida de <++> de fidelidad.
 
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[m]{0.45\textwidth}
-        \centering
-        \includegraphics[width=0.9\linewidth]{img/Grover-2_gr1.eps}
-        \caption{Rx}
-    \end{subfigure}
-    \begin{subfigure}[m]{0.45\textwidth}
-        \centering
-        \includegraphics[width=0.9\linewidth]{img/groveralllossless.png}
-        \caption{Ry}
-    \end{subfigure}
-    \caption[]{Compuertas Rx, Ry y Rz en la esfera de Bloch}
-    \label{fig:groverlosslesscomp}
-\end{figure}
-
 Ahora, compararemos los resultados de la simulación circuital con y sin pérdidas. Como se puede ver en la figura (FIGURA), en el caso con pérdidas, los estados que no contienen el valor deseado dejan de tener la misma probabilidad. Los estados que involucran el estado base ganan probabilidad debido a la relajación de los qubits. La fidelidad entre los estados resultantes de los casos con y sin pérdidas es de <++>.
 
 Aunque la fidelidad sea tan baja, la probabilidad del estado deseado sigue siendo lo suficientemente alta como para obtener el resultado deseado x/x veces.
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[m]{0.45\textwidth}
-        \centering
-        \includegraphics[width=0.9\linewidth]{img/groveralllossless.png}
-        \caption{Ry}
-    \end{subfigure}
-    \begin{subfigure}[m]{0.45\textwidth}
-        \centering
-        \includegraphics[width=0.9\linewidth]{img/groverpairlossless.png}
-        \caption{Rz}
-    \end{subfigure}
-    \caption[]{Compuertas Rx, Ry y Rz en la esfera de Bloch}
-    \label{fig:groverlosscomp}
-\end{figure}
-

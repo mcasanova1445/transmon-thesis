@@ -198,6 +198,7 @@ def reg_SWAP(psi0):
     return tgates.SWAP(res.states[-1], 0, 2)
 
 
+'''
 # El algoritmo
 # Estado fiducial
 print('Preparando estado fiducial...\t {}/{}/{} - {}:{}:{}'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
@@ -213,10 +214,11 @@ print('Preparando estado inicial (3/4)...\t {}/{}/{} - {}:{}:{}'.format(time.loc
 res = Kb2(res.states[-1])
 print('Preparando estado inicial (4/4)...\t {}/{}/{} - {}:{}:{}'.format(time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
 res = T1d(res.states[-1])
+'''
 
-#res = qload('itj_43')
+res = qload('itj_22')
 
-for i in range(60):
+for i in range(22,60):
     
     print('Iteración {}: Aplicando T1...\t {}/{}/{} - {}:{}:{}'.format(i+1, time.localtime()[0], time.localtime()[1], time.localtime()[2], time.localtime()[3], time.localtime()[4], time.localtime()[5]))
     res = T1(res.states[-1])
