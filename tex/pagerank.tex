@@ -461,13 +461,21 @@ Todos los coeficientes de los estados involucrados en el algoritmo de PageRank s
 En lo que sigue se considerará $\ket{b} = \ket{0}$ y que los grafos son de cuatro nodos. De esta manera, podemos asumir que
 
 \begin{equation}
-    K_i = CRy_n(0,1,\theta_{11}) CRy_b(0,1,\theta_{10}) Ry(1,0,\theta_{00})
+    K_i = CRy_n(0,1,\theta_{11}) CRy_b(0,1,\theta_{10}) Ry(0,\theta_{00})
 \end{equation}
+
+\begin{figure}[H]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \gate{Ry(\theta_{00})} & \ctrlo{1}               & \ctrl{1}               & \qw \\
+& \qw                    & \gate{Ry(\theta_{10})}  & \gate{Ry(\theta_{11})} & \qw \\
+} \]
+\caption{Circuito de $K_i$}
+\end{figure}
 
 Entonces, para hallar $K_i$, debemos resolver la siguiente ecuación y hallar $\theta_{11}, \theta_{10}, \theta_{00}$
 
 \begin{equation}
-    CRy_n(0,1,\theta_{11}) CRy_b(0,1,\theta_{10}) Ry(1,0,\theta_{00}) \ket{0} = \ket{\phi_{r_i}}
+    CRy_n(0,1,\theta_{11}) CRy_b(0,1,\theta_{10}) Ry(0,\theta_{00}) \ket{0} = \ket{\phi_{r_i}}
 \end{equation}
 
 Sin embargo, esto conduce a un sistema de cuatro ecuaciones y tres variables. Para poder resolver este sistema por métodos numéricos se modifica la ecuación de la siguiente manera, sabiendo que $\theta_x$ debe ser $n 2\pi$, donde $n$ es entero.
@@ -522,6 +530,9 @@ Se han realizado simulaciones del algoritmo de PageRank con un grafo estrella, u
 
 \subsection{Grafo estrella}
 
+En la figura \ref{fig:star} se observa el grafo estrella utilizado para esta simulación. Este grafo es simétrico, por lo tanto, su matriz de adyacencia es hermítica% y es un ejemplo de un grafo con el cual no necesitaríamos el esquema de Szegedy para realizar una caminata cuántica
+. Este no es el caso, sin embargo, una vez convertimos el grafo en uno ponderado. La matriz estocástica $E$ no es hermítica, y por extensión la matriz de Google tampoco lo es.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{img/star.png}
@@ -529,7 +540,169 @@ Se han realizado simulaciones del algoritmo de PageRank con un grafo estrella, u
     \label{fig:star}
 \end{figure}
 
+\begin{equation}
+    A =
+    \begin{pmatrix}
+        0 & 1 & 1 & 1 \\
+        1 & 0 & 0 & 0 \\
+        1 & 0 & 0 & 0 \\
+        1 & 0 & 0 & 0
+    \end{pmatrix}
+\end{equation}
+
+\begin{equation}
+    E = 
+    \begin{pmatrix}
+        0 & 1 & 1 & 1 \\
+        \frac{1}{3} & 0 & 0 & 0 \\
+        \frac{1}{3} & 0 & 0 & 0 \\
+        \frac{1}{3} & 0 & 0 & 0
+    \end{pmatrix}
+\end{equation}
+
+\begin{equation}
+    G =
+    \begin{pmatrix}
+        \frac{3}{80} & \frac{71}{80} & \frac{71}{80} & \frac{71}{80} \\
+        \frac{77}{240} & \frac{3}{80} & \frac{3}{80} & \frac{3}{80} \\
+        \frac{77}{240} & \frac{3}{80} & \frac{3}{80} & \frac{3}{80} \\
+        \frac{77}{240} & \frac{3}{80} & \frac{3}{80} & \frac{3}{80}
+    \end{pmatrix}
+\end{equation}
+
+Los tres nodos exteriores de este grafo, además, forman lo que hemos llamado un subgrafo cíclico, por lo que para este grafo necesitaremos dos operadores $K_b$, unos para estos tres nodos y otro para el nodo central. Las figuras \ref{fig:starkb1} - \ref{fig:lokestar} muestran cómo construir el circuito del operador de difusión de la caminata de Szegedy asociada a la matriz de Google de este grafo.
+
+\begin{figure}[H]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \gate{Ry(1.85806)} & \ctrlo{1}           & \ctrl{1}          & \qw \\
+& \qw                & \gate{Ry(2.48274)}  & \gate{Ry(1.5708)} & \qw \\
+} \]
+\caption{Circuito de $K_1$ para el grafo estrella}
+\label{fig:starkb1}
+\end{figure}
+
+\begin{figure}[H]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \gate{Ry(0.554811)} & \ctrlo{1}            & \ctrl{1}          & \qw \\
+& \qw                 & \gate{Ry(0.405465)}  & \gate{Ry(1.5708)} & \qw \\
+} \]
+\caption{Circuito de $K_2$ para el grafo estrella}
+\label{fig:starkb2}
+\end{figure}
+
+\begin{figure}[H]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \ctrlo{1}                   & \qw                 & \ctrlo{1}           & \qw \\
+& \ctrlo{1}                   & \qw                 & \ctrlo{1}           & \qw \\
+& \multigate{1}{K_1^\dagger} & \multigate{1}{K_1} & \multigate{1}{K_2} & \qw \\
+& \ghost{K_1^\dagger}        & \ghost{K_1}        & \ghost{K_2}        & \qw \\
+} 
+\]
+\caption[$K_b$ del grafo estrella]{$K_b$ del grafo estrella}
+\label{fig:starkb}
+\end{figure}
+
+\begin{figure}[H]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \gate{Id} & \qw \\
+& \gate{Id} & \qw \\
+} 
+\]
+\caption[$T$ del grafo estrella]{$T$ del grafo estrella}
+\label{fig:starT}
+\end{figure}
+
+\begin{figure}[H]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \gate{H} & \multigate{3}{K_b} & \qw \\
+& \gate{H} & \ghost{K_b}        & \qw \\
+& \qw      & \ghost{K_b}        & \qw \\
+& \qw      & \ghost{K_b}        & \qw \\
+} 
+\]
+\caption{Preparación del estado inicial para la caminata en el grafo estrella}
+\label{fig:starinit}
+\end{figure}
+
+\begin{figure}[H]
+\[ \Qcircuit @C=1.4em @R=1.8em {
+\lstick{\ket{0}} & {/^4} \qw & \gate{Init} & \gate{K_b^\dagger} & \gate{D} & \gate{K_b} & \gate{SWAP} & \meter & \cw \\
+                 & & & & \rstick{2m \text{ veces}}
+\gategroup{1}{4}{1}{7}{1.3em}{_\}}
+} \]
+\caption{Circuito del PageRank cuántico  del grafo estrella}
+\label{fig:lokestar}
+\end{figure}
+
+En la figura \ref{fig:inststarlossless} se puede observar la gráfica del PageRank cuántico instantáneo sin relajación. En esta figura se puede observar claramente la naturaleza sinusoidal de este algoritmo, por estar basado en reflexiones. Como se puede observar, ambas figuras son bastante similares. La diferencia está en que en el caso de la simulación matemática, el PageRank cuántico de los tres nodos exteriores se solapan perfectamente, mientras que en la simulación circuital, no. Esto se debe a la limitada precisión numérica del solucionador de ecuaciones maestras.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/star-inst-M.png}
+        \caption{Wolfram Mathematica}
+    \end{subfigure}
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/star-inst-lossless.png}
+        \caption{Python}
+    \end{subfigure}
+    \caption[PageRank cuántico instantáneo del grafo estrella sin pérdidas]{PageRank cuántico instantáneo del grafo estrella sin pérdidas}
+    \label{fig:inststarlossless}
+\end{figure}
+
+En el caso del PageRank promedio, en la figura \ref{fig:meanstarlossless} podemos ver cómo este valor sí converge, a diferencia del PageRank instantaneo, el cuál oscila alrededor del valor de convergencia del PageRank promedio.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/star-mean-M.png}
+        \caption{Wolfram Mathematica}
+    \end{subfigure}
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/star-mean-lossless.png}
+        \caption{Python}
+    \end{subfigure}
+    \caption[PageRank cuántico promedio del grafo estrella sin pérdidas]{PageRank cuántico promedio del grafo estrella sin pérdidas}
+    \label{fig:meanstarlossless}
+\end{figure}
+
+Ahora, compararemos los resultados de la simulación circuital con y sin pérdidas. Como se puede ver en la figura (FIGURA), en el caso con pérdidas, <++>
+
 \subsection{Grafo corona}
+
+\begin{equation}
+    A =
+    \begin{pmatrix}
+        0 & 1 & 1 & 0 \\
+        1 & 0 & 1 & 0 \\
+        1 & 1 & 0 & 0 \\
+        1 & 1 & 1 & 0 \\
+    \end{pmatrix}
+\end{equation}
+
+\begin{equation}
+    E =
+    \begin{pmatrix}
+        0 & \frac{1}{3} & \frac{1}{3} & \frac{1}{4} \\
+        \frac{1}{3} & 0 & \frac{1}{3} & \frac{1}{4} \\
+        \frac{1}{3} & \frac{1}{3} & 0 & \frac{1}{4} \\
+        \frac{1}{3} & \frac{1}{3} & \frac{1}{3} & \frac{1}{4} \\
+    \end{pmatrix}
+\end{equation}
+
+\begin{equation}
+    G =
+    \begin{pmatrix}
+        \frac{3}{80} & \frac{77}{240} & \frac{77}{240} & \frac{1}{4} \\
+        \frac{77}{240} & \frac{3}{80} & \frac{77}{240} & \frac{1}{4} \\
+        \frac{77}{240} & \frac{77}{240} & \frac{3}{80} & \frac{1}{4} \\
+        \frac{77}{240} & \frac{77}{240} & \frac{77}{240} & \frac{1}{4} \\
+    \end{pmatrix}
+\end{equation}
 
 \begin{figure}[H]
     \centering
@@ -538,7 +711,69 @@ Se han realizado simulaciones del algoritmo de PageRank con un grafo estrella, u
     \label{fig:crown}
 \end{figure}
 
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/crown-inst-M.png}
+        \caption{Wolfram Mathematica}
+    \end{subfigure}
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/crown-inst-lossless.png}
+        \caption{Python}
+    \end{subfigure}
+    \caption[PageRank cuántico instantáneo del grafo corona sin pérdidas]{PageRank cuántico instantáneo del grafo corona sin pérdidas}
+    \label{fig:instcrownlossless}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/crown-mean-M.png}
+        \caption{Wolfram Mathematica}
+    \end{subfigure}
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/crown-mean-lossless.png}
+        \caption{Python}
+    \end{subfigure}
+    \caption[PageRank cuántico promedio del grafo corona sin pérdidas]{PageRank cuántico promedio del grafo corona sin pérdidas}
+    \label{fig:meancrownlossless}
+\end{figure}
+
 \subsection{Grafo árbol}
+
+\begin{equation}
+    A = 
+    \begin{pmatrix}
+        0 & 0 & 0 & 0 \\
+        1 & 0 & 0 & 0 \\
+        1 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+    \end{pmatrix}
+\end{equation}
+
+\begin{equation}
+    E =
+    \begin{pmatrix}
+        0 & 0 & \frac{1}{4} & \frac{1}{4} \\
+        \frac{1}{2} & 0 & \frac{1}{4} & \frac{1}{4} \\
+        \frac{1}{2} & 0 & \frac{1}{4} & \frac{1}{4} \\
+        0 & 1 & \frac{1}{4} & \frac{1}{4} \\
+    \end{pmatrix}
+\end{equation}
+
+\begin{equation}
+    G =
+    \begin{pmatrix}
+        \frac{3}{80} & \frac{3}{80} & \frac{1}{4} & \frac{1}{4} \\
+        \frac{37}{80} & \frac{3}{80} & \frac{1}{4} & \frac{1}{4} \\
+        \frac{37}{80} & \frac{3}{80} & \frac{1}{4} & \frac{1}{4} \\
+        \frac{3}{80} & \frac{71}{80} & \frac{1}{4} & \frac{1}{4} \\
+    \end{pmatrix}
+\end{equation}
 
 \begin{figure}[H]
     \centering
@@ -613,6 +848,36 @@ Se han realizado simulaciones del algoritmo de PageRank con un grafo estrella, u
 
 \subsection{Grafo aleatorio}
 
+\begin{equation}
+    A =
+    \begin{pmatrix}
+        0 & 1 & 0 & 0 \\
+        1 & 0 & 0 & 0 \\
+        1 & 0 & 0 & 1 \\
+        1 & 1 & 1 & 0 \\
+    \end{pmatrix}
+\end{equation}
+
+\begin{equation}
+    E =
+    \begin{pmatrix}
+        0 & \frac{1}{2} & 0 & 0 \\
+        \frac{1}{3} & 0 & 0 & 0 \\
+        \frac{1}{3} & 0 & 0 & 1 \\
+        \frac{1}{3} & \frac{1}{2} & 1 & 0 \\
+    \end{pmatrix}
+\end{equation}
+
+\begin{equation}
+    G =
+    \begin{pmatrix}
+        \frac{3}{80} & \frac{37}{80} & \frac{3}{80} & \frac{3}{80} \\
+        \frac{77}{240} & \frac{3}{80} & \frac{3}{80} & \frac{3}{80} \\
+        \frac{77}{240} & \frac{3}{80} & \frac{3}{80} & \frac{71}{80} \\
+        \frac{77}{240} & \frac{37}{80} & \frac{71}{80} & \frac{3}{80} \\
+    \end{pmatrix}
+\end{equation}
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{img/any.png}
@@ -685,12 +950,4 @@ Se han realizado simulaciones del algoritmo de PageRank con un grafo estrella, u
 \end{figure}
 
 
-Se ha realizado una simulación del algoritmo de Grover en Wolfram Mathematica implementando $U_{\omega}$, $U_s$ y la transformada de Hadamard, directamente, de manera matricial, de acuerdo a las definiciones dadas anteriormente. Por otro lado, se ha realizado una simulación del algoritmo de Grover en Python definiendo todas las operaciones y transformaciones en base a sus construcciones circuitales, a partir de las compuertas nativas de los transmones, resolviendo la ecuación maestra del sistema al aplicar cada compuerta nativa. A la primera la llamaremos la simulación matemática, y a la segunda, simulación circuital. El código de ambas simulaciones se encuentra en el apédice (APENDICE).
 
-En el caso de la simulación matemática, sólo se ha simulado el caso sin pérdidas. Sin embargo, en el caso de la simulación circuital, se ha simulado el sistema tanto sin pérdidas, como con pérdidas. En el caso del sistema con pérdidas, se ha utilizado la ecuación maestra de Lindblad con los operadores de colapso $\sigma_{-_i}$ y tasa de relajación $\gamma = 25KHz$. Primero compararemos las dos simulaciones sin pérdidas para analizar la precisión del solucionador de ecuaciones maestras.
-
-En la figura (FIGURA) se puede observar la gráfica de la evolución de la probabilidad de medir cada estado en cada iteración. Como se puede observar, ambas figuras son bastante similares. Por otro lado, la fidelidad entre los estados finales de ambas simulaciones es <++>. Por lo que la precisión del solucionador de ecuaciones maestras causó un error correspondiente a una pérdida de <++> de fidelidad.
-
-Ahora, compararemos los resultados de la simulación circuital con y sin pérdidas. Como se puede ver en la figura (FIGURA), en el caso con pérdidas, los estados que no contienen el valor deseado dejan de tener la misma probabilidad. Los estados que involucran el estado base ganan probabilidad debido a la relajación de los qubits. La fidelidad entre los estados resultantes de los casos con y sin pérdidas es de <++>.
-
-Aunque la fidelidad sea tan baja, la probabilidad del estado deseado sigue siendo lo suficientemente alta como para obtener el resultado deseado x/x veces.

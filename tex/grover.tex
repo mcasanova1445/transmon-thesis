@@ -3,7 +3,7 @@
 
 El algoritmo de Grover es un AC que realiza una búsqueda en una secuencia no ordenada de datos con $N=2^n$ entradas. Clásicamente esta búsqueda tendría un orden de complejidad de $O(N)$, pues, como los datos no están ordenados, la cantidad promedio de evaluaciones que se deben realizar crece linealmente con la cantidad de entradas. En el caso del algoritmo de Grover, la complejidad de la búsqueda es de $O(\sqrt{N})$, pues se requieren aproximadamente $\frac{\pi\sqrt{N}}{4}$ iteraciones para hallar la entrada deseada. En cuanto a la cantidad de qubits requeridos, se necesitan $O(\log_2 N)$ qubits, pues se debe realizar un estado superpuesto donde cada componente de la superposición represente una entrada de la secuencia de datos.
 
-Supongamos que la secuencia de datos ordenada tiene la siguiente función asociada:
+Supongamos que la secuencia de datos no ordenada tiene la siguiente función asociada:
 
 \begin{equation}
     f(x) =
@@ -191,13 +191,95 @@ Si tomamos $N \gg 1$ en (4.12), tenemos que:
     \item Realizar la medida $\Omega$.
 \end{enumerate}
 
-\section{Simulación}
+\section{Variaciones y generalizaciones del algoritmo de Grover}
 
-Se ha realizado una simulación del algoritmo de Grover en Wolfram Mathematica implementando $U_{\omega}$, $U_s$ y la transformada de Hadamard, directamente, de manera matricial, de acuerdo a las definiciones dadas anteriormente. Por otro lado, se ha realizado una simulación del algoritmo de Grover en Python definiendo todas las operaciones y transformaciones en base a sus construcciones circuitales, a partir de las compuertas nativas de los transmones, resolviendo la ecuación maestra del sistema al aplicar cada compuerta nativa. A la primera la llamaremos la simulación matemática, y a la segunda, simulación circuital. El código de ambas simulaciones se encuentra en el apéndice \ref{ch:grovercod}.
+A continuación estudiaremos el algoritmo de amplificación de amplitud, el cual es una generalización del algoritmo de Grover para bases de datos con cualquier cantidad de estados objetivos, y el algoritmo de Grover en un paso, el cual es una variación del algoritmo de Grover en la que se mide en cada iteración.
 
-En el caso de la simulación matemática, sólo se ha simulado el caso sin pérdidas. Por otro lado, en el caso de la simulación circuital, se ha simulado el sistema tanto sin pérdidas, como con pérdidas. En el caso del sistema con pérdidas, se ha utilizado la ecuación maestra de Lindblad con los operadores de colapso $\sigma_{-_i}$ y tasa de relajación $\gamma = 25KHz$. Primero compararemos las dos simulaciones sin pérdidas para analizar la precisión del solucionador de ecuaciones maestras.
+\subsection{Algoritmo de amplificación de amplitud}
 
-En la figura \ref{fig:groverlosslesscomp} se puede observar la gráfica de la evolución de la probabilidad de medir cada estado en cada iteración. Como se puede observar, ambas figuras son bastante similares. La fidelidad entre los estados finales de ambas simulaciones es 0.999875.
+Esta generalización fue desarrollada independientemente por Brassar y H̨\o yer en 1997 [ref] y por Grover en 1998 [ref]. Con este algoritmo se pueden utilizar funciones oráculo que marquen 1 para más de una entrada de la base de datos en la cual se realizará la búsqueda. Entonces, sea $\mathcal{W}$ el conjunto de entradas a encontrar, tenemos la función oráculo:
+
+\begin{equation}
+    f(x) =
+    \begin{cases}
+        1 & \text{si } x \in \mathcal{W} \\
+        0 & \text{si } x \not\in \mathcal{W}
+    \end{cases}
+\end{equation}
+
+Ahora sea el proyector $\Pi_\mathcal{W}$ tal que proyecte los estados del espacio de Hilbert $\mathcal{H}$ asociado a la base de datos en el espacio de Hilbert generado por los estados objetivos $\mathcal{H}_\mathcal{W}$:
+
+\begin{equation}
+    \Pi_\mathcal{W} = \sum\limits_k \ketbra{\omega_k}{\omega_k}
+\end{equation}
+
+Donde los estados $\ket{\omega_k}$ son los estados asociados a las entradas de la base de datos pertenecientes a $\mathcal{W}$.
+
+Sea el estado inicial:
+
+\begin{equation}
+    \ket{\psi} = \sin(\theta) \ket{\psi_1} + \cos(\theta) \ket{\psi_0}
+\end{equation}
+
+Donde $\ket{\psi_1} = \frac{\Pi_\mathcal{W} \ket{\psi}}{\sin(\theta)}$ y $\sin(\theta) = \bra{\psi} \Pi_\mathcal{W} \ket{\psi}$. De aquí podemos hallar que $\ket{\psi_0} = \frac{(\mathds{1} - \Pi_\mathcal{W}) \ket{\psi}}{\cos(\theta)}$ y que $\cos(\theta) = \bra{\psi} (\mathds{1} - \Pi_\mathcal{W}) \ket{\psi}$.
+
+Ahora definamos los siguientes operadores de reflexión $U_\psi = (2 \ketbra{\psi}{\psi}$ y $ U_\mathcal{W} = \mathds{1})(\mathds{1} - 2 \Pi_\mathcal{W})$, estos son las generalizaciones de $U_s$ y $U_\omega$, del algoritmo de Grover, respectivamente. El producto de ellos, $U_\psi U_\mathcal{W}$ es un operador de rotación en el plano generado por $\ket{\psi_0}$ y $\ket{\psi_1}$, de la misma manera que $U_s U_\omega$ es un operador de rotación en el plano generado por $\ket{s^\prime}$ y $\ket{\omega}$. Ahora veamos el efecto de $U_\psi U_\mathcal{W}$ y el ángulo que rota este operador:
+
+\begin{multline}
+    U_\psi U_\mathcal{W} \ket{\psi} = (2 \ketbra{\psi}{\psi} - \mathds{1}) (\mathds{1} - 2 \Pi_\mathcal{W}) \ket{\psi} = (2 \ketbra{\psi}{\psi} - \mathds{1}) [(\mathds{1} - \Pi_\mathcal{W}) - \Pi_\mathcal{W}] \ket{\psi} \\
+    = (2 \ketbra{\psi}{\psi} - \mathds{1}) (\cos(\theta) \ket{\psi_0} - \sin(\theta) \ket{\psi_1}) = (2 \ketbra{\psi}{\psi} - \mathds{1}) (\ket{\psi} - 2 \sin(\theta) \ket{\psi_1}) \\
+    = \ket{\psi} + (- 4 \sin^2(\theta) \ket{\psi} + 2 \sin(\theta) \ket{\psi_1}) = (3 - 4 \sin^2(\theta)) \sin(\theta) \ket{\psi_1} + (1 - 4 \sin^2(\theta)) \cos(\theta) \ket{\psi_0} \\
+    = \sin(3 \theta) \ket{\psi_1} + \cos(3 \theta) \ket{\psi_0}
+\end{multline}
+
+Como se puede ver, el operador $U_\psi U_\mathcal{W}$ rota un ángulo de $2 \theta$. Por lo que si se aplica $k$ veces a $\ket{\psi}$, tendremos:
+
+\begin{equation}
+    (U_\psi U_\mathcal{W})^k \ket{\psi} = \sin( (2 k + 1) \theta) \ket{\psi_1} + \cos( (2 k + 1) \theta) \ket{\psi_0}
+\end{equation}
+
+De esta manera, el $k = k_max$ para el cual se obtiene la probabilidad máxima de medir un elemento de $\mathcal{H}_\mathcal{W}$, es decir, el $k$ que maximiza la amplitud de probabilidad de la componente $\ket{\psi_1}$ de $\ket{\psi}$, es $\lfloor \frac{\pi}{4 \theta} \rfloor$. Así:
+
+\begin{multline}
+    (U_\psi U_\mathcal{W})^{k_{max}} \ket{\psi} = \sin( (2 \lfloor \frac{\pi}{4 \theta} \rfloor + 1) \theta) \ket{\psi_1} + \cos( (2 \lfloor \frac{\pi}{4 \theta} \rfloor + 1) \theta) \ket{\psi_0} \\
+    \approx \sin(\frac{\pi}{2}) \ket{\psi_1} + \cos(\frac{\pi}{2}) \ket{\psi_0} = \ket{\psi_1}
+\end{multline}
+
+Mientras menor sea $\theta$, más tenderá $(U_\psi U_\mathcal{W})^{k_{max}} \ket{\psi}$ a $\ket{\psi_1}$, pero mayor será $k_{max}$.
+
+Como se puede ver, el algoritmo de amplificación de amplitud se puede utilizar como algoritmo de búsqueda con una cantidad arbitraria de estados objetivos y un estado inicial arbitrario, no sólo $\ket{s}$ como en el algoritmo de Grover. Sin embargo, este no es sólo un algoritmo de búsqueda, sino tambien un algoritmo de optimización. En este sentido, la amplificación de amplitud también se puede utilizar como subrutina para mejorar el resultado de otros algoritmos. Sea $U_\mathcal{A}$ el operador asociado a un algoritmo cuántico $\mathcal{A}$, entonces, tal que, partiendo del estado fiducial, retorne el estado $\ket{\psi}$. Es decir, $U_\mathcal{A} \ket{0} = \ket{\psi}$, entonces, podemos reescribir $U_\psi$ de la siguiente manera:
+
+\begin{equation}
+    U_\psi = (2 \ketbra{\psi} - \mathds{1}) = (2 U_\mathcal{A} \ketbra{0} U_\mathcal{A}^\dagger - \mathds{1}) = U_\mathcal{A} (2 \ketbra{0} - \mathds{1}) U_\mathcal{A}^\dagger = U_\mathcal{A} U_0 U_\mathcal{A}^\dagger
+\end{equation}
+
+De esta manera, a cualquier algoritmo, que actúe sobre un espacio de Hilbert $\mathcal{H}$ que se pueda descomponer un espacio de estados buenos $\mathcal{H}_\mathcal{W}$ y un espacio de estados malos $\mathcal{H} \setminus \mathcal{H}_\mathcal{W}$, se le puede aplicar la amplificación de amplitud para mejorar su resultado.
+
+Ahora consideremos el caso en el que $U_\mathcal{A} = H^{\otimes n}$, es decir, el caso en el que $\ket{\psi} = \ket{s}$. Este seria el caso particular del algoritmo de amplificación de amplitud en el que se utiliza el mismo estado inicial del algoritmo de Grover.
+
+\begin{align}
+    \ket{\psi} &= \frac{1}{\sqrt{N}} \sum\limits_i \ket{i} = \frac{1}{\sqrt{N}} \sum\limits_{i \in \mathcal{W}} \ket{i} + \frac{1}{\sqrt{N}} \sum\limits_{j \not\in \mathcal{W}} \ket{j} \\
+    \ket{\psi_1} &= \frac{1}{\sqrt{W}} \sum\limits_{i \in \mathcal{W}} \ket{i} \\
+    \sin{\theta} &= \sqrt{\frac{W}{N}} \\
+    \ket{\psi_0} &= \frac{1}{\sqrt{N-W}} \sum\limits_{j \not\in \mathcal{W}} \ket{j} \\
+    \cos{\theta} &= \sqrt{\frac{N-W}{N}}
+\end{align}
+
+Si tomamos $N \gg W$, tendríamos que $\theta \approx \sqrt{\frac{W}{N}}$, entonces $k_{max} \approx \frac{\pi}{4} \sqrt{\frac{N}{W}}$. Es interesante notar que mientras más estados buenos haya, menos iteraciones se necesitan. Pero a cambio, para hallar todos esos estados buenos, se debe ejecutar el algoritmo más veces. En caso de que $\mathcal{W}$ sea de dimensión 1, se recuperaría exactamente el algoritmo de Grover.
+
+\subsection{Algoritmo de Grover en un paso}
+
+\section{Simulaciones}
+
+\subsection{Algoritmo de Grover}
+
+Se han realizado simulaciones del algoritmo de Grover en Wolfram Mathematica implementando $U_{\omega}$, $U_s$ y la transformada de Hadamard, directamente, de manera matricial, de acuerdo a las definiciones dadas anteriormente. Por otro lado, se ha realizado una simulación del algoritmo de Grover en Python definiendo todas las operaciones y transformaciones en base a sus construcciones circuitales, a partir de las compuertas nativas de los transmones, resolviendo la ecuación maestra del sistema al aplicar cada compuerta nativa. A la primera la llamaremos la simulación matemática, y a la segunda, simulación circuital. El código de ambas simulaciones se encuentra en el apéndice \ref{ch:grovercod}.
+
+En el caso de la simulación matemática, sólo se ha simulado el caso sin relajación. Por otro lado, en el caso de la simulación circuital, se ha simulado el sistema tanto sin relajación, como con relajación. En el caso del sistema con relajación, se ha utilizado la ecuación maestra de Lindblad con los operadores de colapso $\sigma_{-_i}$ y tasa de relajación $\gamma = 25KHz$. Primero compararemos las dos simulaciones sin relajación para analizar la precisión del solucionador de ecuaciones maestras.
+
+Como el espacio de Hilbert del sistema en el que sea ejecutado el algoritmo es de 16 dimensiones, ya que es de cuatro qubits, se necesitan $\lfloor \frac{\pi \sqrt{16}}{4} \rfloor = 3$ iteraciones para tener la máxima probabilidad de medir el estado deseado. Sin embargo, la simulación se ha realizado con 7 iteraciones, para apreciar la naturaleza oscilatoria de este algoritmo. Recordemos que este algoritmo consiste en rotaciones en el espacio 2D generado por $\ket{\omega}$ y $\ket{s^\prime}$, es decir, que si se aplican más de 3 rotaciones, la probabilidad de éxito debería disminuir, hasta que el estado del sistema se alinee con $- \ket{s^\prime}$, volver a aumentar hasta llegar a $- \ket{\omega}$, disminuir hasta pasar por $\ket{s^\prime}$, pasar de nuevo por el estado inicial $\ket{s}$ y repetirse el ciclo. La hipotesis es que veremos aproximadamente un período de sinusoide muestreada, con alrededor de seis muestras por período, en la gráfica de la evolución de la probabilidad de medir $\ket{\omega}$, ya que si luego de tres iteraciones se llega al punto de probabilidad máxima, alrededor de la sexta iteración se debe llegar al punto de probabilidad mínima y en la séptima volvería a aumentar.
+
+En la figura \ref{fig:groverlosslesscomp1111} se puede observar la gráfica de la evolución de la probabilidad de medir cada estado en cada iteración del algoritmo de Grover con $\ket{\omega} = \ket{1111}$. Como se puede observar, ambas figuras son bastante similares. La fidelidad entre los estados finales de ambas simulaciones es 0.999875. Además, se ha confirmado la hipotesis de que la evolución de la probabilidad de medir $\ket{1111}$ tiene forma sinusoidal.
 
 \begin{figure}[H]
     \centering
@@ -211,25 +293,36 @@ En la figura \ref{fig:groverlosslesscomp} se puede observar la gráfica de la ev
         \includegraphics[width=0.9\linewidth]{img/groveralllossless.png}
         \caption{Python}
     \end{subfigure}
-    \caption[Evolución de las probabilidades en el algoritmo de Grover sin pérdidas]{Evolución de las probabilidades en el algoritmo de Grover sin pérdidas}
-    \label{fig:groverlosslesscomp}
+    \caption[Evolución de las probabilidades en el algoritmo de Grover sin relajación]{Evolución de las probabilidades en el algoritmo de Grover sin relajación}
+    \label{fig:groverlosslesscomp1111}
 \end{figure}
 
-Ahora, compararemos los resultados de la simulación circuital con y sin pérdidas. Como se puede ver en la figura \ref{fig:groverlosscomp}, en el caso con pérdidas, los estados que no contienen el valor deseado dejan de tener la misma probabilidad. Los estados que involucran el estado base ganan probabilidad debido a la relajación de los qubits. La fidelidad entre los estados resultantes de los casos con y sin pérdidas es de 0.250818.
+Ahora, compararemos los resultados de la simulación circuital con y sin relajación. Como se puede ver en la figura \ref{fig:groverlosscomp}, en el caso con relajación, los estados que no contienen el valor deseado dejan de tener todos la misma probabilidad. Los estados que involucran el estado base ganan probabilidad debido a la relajación de los qubits. La fidelidad entre los estados resultantes de los casos con y sin relajación es de 0.250818.
 
 \begin{figure}[H]
     \centering
     \begin{subfigure}[m]{0.49\textwidth}
         \centering
         \includegraphics[width=0.99\linewidth]{img/groveralllossless.png}
-        \caption{Sin pérdidas}
+        \caption{Sin relajación}
     \end{subfigure}
     \begin{subfigure}[m]{0.49\textwidth}
         \centering
         \includegraphics[width=0.99\linewidth]{img/groverallloss.png}
-        \caption{Con pérdidas}
+        \caption{Con relajación}
     \end{subfigure}
-    \caption[Evolución de las probabilidades en el algoritmo de Grover con pérdidas]{Evolución de las probabilidades en el algoritmo de Grover con pérdidas}
+    \caption[Evolución de las probabilidades en el algoritmo de Grover con relajación]{Evolución de las probabilidades en el algoritmo de Grover con relajación}
     \label{fig:groverlosscomp}
 \end{figure}
+
+----------------------------------------------------------------------------
+
+Incluir resultados del algoritmo de Grover con $\ket{\omega} = \ket{0}$ y $\ket{\omega} = \ket{0101}$ para comparar los efectos de la relajación en distintos casos.
+
+----------------------------------------------------------------------------
+
+
+\subsection{Amplificación de amplitud}
+
+\subsection{Optimización del algoritmo de Grover}
 
