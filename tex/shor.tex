@@ -1,7 +1,9 @@
 \chapter{Algoritmo de Shor}
-El algoritmo de Shor es un AC de factorización de enteros. Dado un entero $N=p \times q$, donde $p$ y $q$ son primos, el algoritmo de Shor encuentra $p$ y $q$ en $O((\log(N))^3)$ pasos. El algoritmo clásico más eficiente para factorizar enteros es la cibra general del cuerpo de números y funciona con una complejidad heurística de $O(e^{(\sqrt[3]{\frac{64}{9}}+o(1))(\ln(N))^{\frac{1}{3}}(\ln(\ln(N)))^{\frac{2}{3}}})$. Por su capacidad de factorizar números semiprimos, el algoritmo de Shor es capaz de violar el cifrado RSA y el protocolo Diffie-Hellman de intercambio de llaves, sobre los cuáles se basa virtualmente toda la criptografía actual.
 
-El algoritmo de Shor requiere de dos algoritmos cuánticos preliminares: La estimación de fase y la estimación de orden. El algoritmo de estimación de fase permite encontrar la fase $\phi$ del autovalor $e^i \phi$ asociado a algún autoestado $\ket{u}$ de un operador unitario U. El algoritmo de estimación de orden se basa en la estimación de fase para hallar el orden $r>0$ tal que $a^r \equiv 1 \mod m$.
+%P.W. Shor SIAM I. Comput. 26, 1484-1509 (1997)
+El algoritmo de Shor es un algoritmo cuántico de factorización de enteros. Dado un entero $N=p \times q$, donde $p$ y $q$ son primos, el algoritmo de Shor encuentra $p$ y $q$ en $O((\log(N))^3)$ pasos, publicado en 1997 por Peter Shor. El algoritmo clásico más eficiente para factorizar enteros es la cibra general del cuerpo de números y funciona con una complejidad heurística de $O(e^{(\sqrt[3]{\frac{64}{9}}+o(1))(\ln(N))^{\frac{1}{3}}(\ln(\ln(N)))^{\frac{2}{3}}})$. Por su capacidad de factorizar números semiprimos, el algoritmo de Shor es capaz de violar el cifrado RSA y el protocolo Diffie-Hellman de intercambio de llaves, sobre los cuáles se basa virtualmente toda la criptografía actual.
+
+El algoritmo de Shor está basado en el algoritmo de estimación de orden, el cuál es una aplicación del algoritmo de estimación de fase. Éste último permite encontrar la fase $\phi$ del autovalor $e^i \phi$ asociado a algún autoestado $\ket{u}$ de un operador unitario U. El algoritmo de estimación de orden utiliza esta estimación para hallar el orden $r>0$ tal que $a^r \equiv 1 \mod m$, a partir del operador unitario de multiplicación modular.
 
 \section{Transformada cuántica de Fourier}
 
@@ -169,27 +171,14 @@ Ahora, se aplica la transformada cuántica inversa de Fourier al primer registro
 La probabilidad de medir x a la salida del registro será:
 
 \begin{equation}
-    p(x) = \frac{1}{4^{K}} \frac{\sin^2(\pi (\phi - \frac{x}{2^K}) 2^K)}{\sin^2(\pi (\phi - \frac{x}{2^K}))}
+    p(x) = \abs{(\bra{x} \otimes \bra{u}) \ket{\psi_{output}}}^2 = \frac{1}{4^K} \abs{\frac{1 - e^{i 2\pi (\phi - \frac{x}{2^K})2^K}}{1 - e^{i 2\pi (\phi - \frac{x}{2^K})}}}^2 = \frac{1}{4^{K}} \frac{\sin^2(\pi (\phi - \frac{x}{2^K}) 2^K)}{\sin^2(\pi (\phi - \frac{x}{2^K}))}
 \end{equation}
 
-$p(n) = |\bra{u} \otimes \bra{n} \ket{\psi_{output}}|^2$
+La medida de x con probabilidad asociada $p(x)$, corresponde a la estimación de fase $\tilde{\phi} = \frac{x}{2^K}$. La probabilidad es máxima cuando $\delta = \phi - \tilde{\phi}$ es mínima.
 
-$p(n) = \frac{1}{N^2} |\frac{1 - e^{2 i \pi (\phi - \frac{n}{N})N}}{1 - e^{2 i \pi (\phi - \frac{n}{N})}}|^2$
-
-$\therefore p(n) = \frac{1}{N^2} \frac{\sin^2(\pi (\phi - \frac{n}{N}) N)}{\sin^2(\pi (\phi - \frac{n}{N}))}$
-
-La medida de n con probabilidad asociada p(n), corresponde a la estimación de fase $\tilde{\phi} = n/N$. La probabilidad es máxima cuando $\delta = \phi - \tilde{\phi}$ es mínima.
-
-$p(n) = \frac{1}{N^2} \frac{\sin^2(\pi (\phi - \frac{n}{N}) N)}{\sin^2(\pi (\phi - \frac{n}{N}))}$ si N es grande $\rightarrow$ %Graf
+$p(n) = \frac{1}{4^K} \frac{\sin^2(\pi \delta 2^K)}{\sin^2(\pi \delta)}$ si $K$ es grande $\rightarrow$ %Graf
 
 La probabilidad p(n) decae rápidamente a cero cuando el error $\delta$ se aleja del mínimo.
-
-Entonces:
-
-\begin{enumerate}
-    \item La medida tiene la mayor probabilidad de dar la aproximación más cercana al estado $\phi$.
-    \item El circuito de salida es de la forma $\ket{\tilde{\phi}} \ket{u}$, donde $\ket{\tilde{\phi}}$ es una superposición de estados, los cuales al medirlos dan una buena aproximación de $\phi$.
-\end{enumerate}
 
 \section{Estimación de orden}
 
@@ -359,29 +348,30 @@ Entonces:
 
 \section{Algoritmo de factorización de Shor}
 
+Se asume que el número de entrada $N$ es un número compuesto. El algoritmo de Shor halla dos factores de este número. El algoritmo es el siguiente:
+
 \begin{enumerate}
-    \item Elegir un número aleatorio $a < N$
-    \item Calcular $GCD(a,N)$
-    \item Si $GCD(a,N) \neq 1$, entonces este número es un factor no trivial de N y se ha hallado una factorización.
-    \item Si no, usar el algoritmo de estimación de orden $r$ para hallar el período de $f(x) = a^x mod N$
-    \item Si r es impar, volver al paso 1
-    \item Si $a^{x+r} \equiv -1 \mod N$, ir al paso 1
-    \item Si no, $GCD(a^{r/2} + 1, N)$ y $GCD(a^{r/2} - 1, N)$ y se ha hallado la factorización.
+    \item Si es $N$ es par, el número 2 es un es un factor no trivial de $N$ y se ha hallado una factorización. Fin del algoritmo.
+    \item Evaluar $\sqrt{N}$. Si $N$ es un cuadrado perfecto, ya se ha hallado la factorización. Fin del algoritmo.
+    \item Elegir un número aleatorio $a < N$.
+    \item Si $GCD(a,N) \neq 1$, entonces este número es un factor no trivial de N y se ha hallado una factorización. Fin del algoritmo.
+    \item Si $a$ es par, volver al paso 3.
+    \item Si no, usar el algoritmo de estimación de orden para hallar el período $r$ de $f(x) = a^x mod N$.
+    \item Si r es impar, volver al paso 3.
+    \item Si $a^{r} \not\equiv 1 \mod N$, ir al paso 3.
+    \item Si $a^{r/2} \equiv -1 \mod N$, ir al paso 3.
+    \item Finalmente, $GCD(a^{r/2} + 1, N)$ y $GCD(a^{r/2} - 1, N)$ son factores de $N$. Fin del algoritmo.
 \end{enumerate}
 
-%El algoritmo de factorización de Shor permite factorizar números los cuales se pueden descomponer en un producto único de números primos.
+\section{Simulaciones}
 
-%Dicho número N es un entero no-primo de L bits.
+Se han realizado simulaciones del algoritmo de Shor factorizando el número 15 y el número 8. En este caso, no se han realizado simulaciones con pérdidas, debido al tiempo que esto hubiese requerido. Se inició la simulación del algoritmo factorizando el número 15 y en más de 48 horas no terminó de aplicar el primer operador de multiplicación modular condicionado. Así que con este algoritmo sólo compararemos la simulación matemática con la simulación circuital sin pérdidas. El código de ambas simulaciones se encuentra en el apéndice \ref{ch:shorcod}.
 
-%En un ordenador cuántico el algoritmo de Shor tendrá un tiempo de corrida del orden $O((L^3))$ (polinómico) y en un ordenador clásico es del $O(e^[L^{1/3} (log L)^{2/3}])$ (exponencial), mostrando así que el algorimo de Shor es capaz de factorizar números muy grandes en tiempos polinómicos.
+\subsection{Factorización del número 15}
 
-El algoritmo de Shor fue publicado en: P.W. Shor SIAM I. Comput. 26, 1484-1509 (1997)
+Se ha elegido el número 7 para crear el operador unitario de multiplicación modular $U_{7,15}$. Este número cumple las condiciones de ser menor que 15, de ser impar y de ser coprimo con 15.
 
-\section{Simulación}
-
-Se han realizado simulaciones del algoritmo de Shor factorizando el número 15 y el número 8. En este caso, no se han realizado simulaciones con pérdidas, debido al tiempo que esto hubiese requerido. Se inició la simulación del algoritmo factorizando el número 15 y en más de 24 horas no terminó de aplicar el primer operador de multiplicación modular condicionado. Así que con este algoritmo sólo compararemos la simulación matemática con la simulación circuital sin pérdidas. El código de ambas simulaciones se encuentra en el apéndice \ref{ch:shorcod}.
-
-En la figura \ref{fig:shor15} se puede observar la distribución de probabilidad de la estimación de fase del operador de multiplicación por 7, módulo 15. Como se puede observar, en el caso de la simulación circuital, las estimaciones incorrectas tienen probabilidades distintas de cero. Esto se debe errores numéricos. Por otro lado, la fidelidad entre los estados finales de ambas simulaciones es 0.363599.
+En la figura \ref{fig:shor15} se puede observar la distribución de probabilidad de la estimación de fase del operador de multiplicación por 7, módulo 15. Como se puede observar, en el caso de la simulación circuital, las estimaciones incorrectas tienen probabilidades distintas de cero. Por otro lado, la fidelidad entre los estados finales de ambas simulaciones es 0.363599.
 
 \begin{figure}[H]
     \centering
@@ -399,7 +389,119 @@ En la figura \ref{fig:shor15} se puede observar la distribución de probabilidad
     \label{fig:shor15}
 \end{figure}
 
-Aunque la fidelidad sea tan baja, la probabilidad medir alguno de los cuatro estados correctos en el resultado de la simulación circuital es de 0.7237236882953652. Es decir, que sólo se mediría un valor incorrecto alrededor de un cuarto de las veces.
+Aunque la fidelidad sea tan baja, la probabilidad medir alguno de los cuatro estados correctos en el resultado de la simulación circuital es de 0.723724. Es decir, que sólo se mediría un valor incorrecto alrededor de un cuarto de las veces. Además, la fidelidad clásica entre las distribuciones de la estimación de fase es de 0.850689.
 
+Entonces, tenemos las siguientes estimaciones de fase: $0 \times 2\pi$, $0.25 \times 2\pi$, $0.5 \times 2\pi$, $0.75 \times 2\pi$. Analicemos el algoritmo tras obtener cada una de estas estimaciones.
 
-Fidelidad 8: 0.390136
+\begin{enumerate}
+    \item Caso $0 \times 2\pi$:
+
+        En este caso no se puede hacer nada, pues no se puede hacer expansión en fracciones continuas con el número cero. Este caso ocurre con 0.25 de probabilidad en la simulación matemática y con 0.182651 de probabilidad en la simulación circuital.
+
+    \item Caso $0.25 \times 2\pi$:
+
+        En este caso, se tiene la siguiente expansión en fracciones continuas:
+        
+        \begin{equation}
+            \tilde{\varphi} = 0 + \cfrac{1}{4}
+        \end{equation}
+        
+        De donde recuperamos el número racional $1/4$, de donde el orden estimado es $r = 4$.
+
+        Como $r$ es par, $7^{4}\mod 15 \equiv 1$ y $7^{4/2}\mod 15 \equiv 4\mod 15 \not\equiv -1\mod 15$, podemos continuar y hallar la siguiente factorización:
+
+        \begin{equation}
+            15 = GCD(7^{4/2} + 1, 15) \times GCD(7^{4/2} - 1, 15) = GCD(50, 15) \times GCD(48, 15) = 5 \times 3
+        \end{equation}
+
+        Este caso ocurre con 0.25 de probabilidad en la simulación matemática y con 0.177 de probabilidad en la simulación circuital.
+
+    \item Caso $0.5 \times 2\pi$:
+
+        En este caso, se tiene la siguiente expansión en fracciones continuas:
+
+        \begin{equation}
+            \tilde{\varphi} = 0 + \cfrac{1}{2}
+        \end{equation}
+        
+        De donde recuperamos el número racional $1/2$, de donde el orden estimado es $r = 2$.
+
+        El orden $r$ es par y $7^{2/2}\mod 15 \equiv 7\mod 15 \not\equiv -1\mod 15$, pero $7^2\mod 15 \equiv 4\mod 15 \not\equiv 1\mod 15$, así que el algoritmo nos indica que volvamos al primer paso.
+
+        Este caso ocurre con 0.25 de probabilidad en la simulación matemática y con 0.179174 de probabilidad en la simulación circuital.
+
+    \item Caso $0.75 \times 2\pi$:
+
+        En este caso, se tiene la siguiente expansión en fracciones continuas:
+
+        \begin{equation}
+            \tilde{\varphi} = 0 + \cfrac{1}{1 + \cfrac{1}{3}}
+        \end{equation}
+        
+        De donde recuperamos el número racional $3/4$, de donde el orden estimado es $r = 4$. Entonces, este caso es similiar al de $\tilde{\varphi} = 0.25$ y se tienen los factores 5 y 3.
+
+        Este caso ocurre con 0.25 de probabilidad en la simulación matemática y con 0.184898 de probabilidad en la simulación circuital.
+
+    \item El resto de los casos:
+
+        En el resto de los casos, las estimaciones de orden que se obtienen son 8 y 16. Estas estimaciones sólo ocurren en caso de error en la ejecución del algoritmo debido a falta de fidelidad en las compuertas. Si el algoritmo se ejecuta en un sistema sin decoherencia, sin relajación y con compuertas perfectas, estas estimaciones no ocurrirán. Aun así, ellas pasan las pruebas $r$ par, $x^r \mod N \equiv 1$ y $x^{r/2} \mod N \not\equiv -1$, pero sólo se obtienen los factores triviales 1 y 15.
+
+        En la simulación matemática estos casos no ocurren, pero en la simulación circuital ocurren con 0.276276 de probabilidad.
+\end{enumerate}
+
+En total, tenemos que se logra factorizar el número 15 ejecutando el algoritmo de Shor con el operador $U_{7,15}$ con una probabilidad de 0.5 en la simulación matemática y con una probabilidad de 0.361898, esto es, la mitad de las veces en la simulación matemática y más de un tercio de las veces en la simulación circuital.
+
+\subsection{Factorización del número 8}
+
+Se ha elegido el número 3 para crear el operador unitario de multiplicación modular $U_{3,8}$. Este número cumple las condiciones de ser menor que 8, de ser impar y de ser coprimo con 8. El número 8 sin embargo, es par, así que, siguiendo estrictamente el algoritmo, se tendría la factorización con el número 2 y finalizaría el algoritmo. Sin embargo, como 15 es el único número compuesto, no par y no cuadrado que se puede escribir con cuatro bits, aplicaremos la etapa cuántica de todas maneras.
+
+En la figura \ref{fig:shor8} se puede observar la distribución de probabilidad de la estimación de fase del operador de multiplicación por 3, módulo 8. Como se puede observar, en el caso de la simulación circuital, las estimaciones incorrectas tienen probabilidades distintas de cero. Por otro lado, la fidelidad entre los estados finales de ambas simulaciones es 0.390136.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/ShorM8.png}
+        \caption{Wolfram Mathematica}
+    \end{subfigure}
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/shor2lossless.png}
+        \caption{Python}
+    \end{subfigure}
+    \caption[Distribución de probabilidad en la estimación de fase del algoritmo de Shor sin pérdidas]{Distribución de probabilidad en la estimación de fase del algoritmo de Shor sin pérdidas}
+    \label{fig:shor8}
+\end{figure}
+
+Aunque la fidelidad sea tan baja, la probabilidad medir alguno de los dos estados correctos en el resultado de la simulación circuital es de 0.327688. Es decir, que sólo se mediría un valor correcto alrededor de un tercio de las veces. La fidelidad clásica entre las distribuciones de la estimación de fase es de 0.572365.
+
+Entonces, tenemos las siguientes estimaciones de fase: $0 \times 2\pi$ y $0.5 \times 2\pi$. Analicemos el algoritmo tras obtener cada una de estas estimaciones.
+
+\begin{enumerate}
+    \item Caso $0 \times 2\pi$:
+
+        En este caso no se puede hacer nada, pues no se puede hacer expansión en fracciones continuas con el número cero. Este caso ocurre con 0.5 de probabilidad en la simulación matemática y con 0.169189 de probabilidad en la simulación circuital.
+
+    \item Caso $0.5 \times 2\pi$:
+
+        En este caso, se tiene la siguiente expansión en fracciones continuas:
+
+        \begin{equation}
+            \tilde{\varphi} = 0 + \cfrac{1}{2}
+        \end{equation}
+        
+        De donde recuperamos el número racional $1/2$, de donde el orden estimado es $r = 2$.
+
+        Como $r$ es par, $3^{2}\mod 8 \equiv 1$ y $3^{3/2}\mod 8 \equiv 3\mod 8 \not\equiv -1\mod 8$, podemos continuar y hallar los siguientes factores:
+
+        Este caso ocurre con 0.5 de probabilidad en la simulación matemática y con 0.1585 de probabilidad en la simulación circuital.
+
+    \item El resto de los casos:
+
+        En el resto de los casos, las estimaciones de orden que se obtienen son 4, 8 y 16. Estas estimaciones sólo ocurren en caso de error en la ejecución del algoritmo debido a falta de fidelidad en las compuertas. Si el algoritmo se ejecuta en un sistema sin decoherencia, sin relajación y con compuertas perfectas, estas estimaciones no ocurrirán. Aun así, ellas pasan las pruebas $r$ par, $x^r \mod N \equiv 1$ y $x^{r/2} \mod N \not\equiv -1$, pero sólo se obtienen los factores triviales 1 y 8.
+
+        En la simulación matemática estos casos no ocurren, pero en la simulación circuital ocurren con 0.636401 de probabilidad.
+\end{enumerate}
+
+En total, tenemos que se logra factorizar el número 8 ejecutando el algoritmo de Shor con el operador $U_{3,8}$ con una probabilidad de 0.5 en la simulación matemática y con una probabilidad de 0.1585, esto es, la mitad de las veces en la simulación matemática y alrededor de un sexto de las veces en la simulación circuital.
+
