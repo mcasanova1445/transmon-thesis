@@ -37,50 +37,51 @@ U_s = 2 \ketbra{s}{s} - \mathds{1}
 
 Veamos lo que sucede al aplicar esta secuencia de rotaciones sobre el estado $\ket{s}$:
 
-\begin{align*}
+\begin{multline}
     U_\omega \ket{s}
-    &= (\mathds{1} - 2 \ketbra{\omega}{\omega}) \ket{s} \\
-    &= \ket{s} - 2 \ketbra{\omega}{\omega} \ket{s} \\
-    &= \ket{s} - \frac{2}{\sqrt{N}} \ketbra{\omega}{\omega} \sum\limits_{x=0}^{N-1} \ket{x} \\
-    &= \ket{s} - \frac{2}{\sqrt{N}} \ket{\omega}
-\end{align*}
+    = (\mathds{1} - 2 \ketbra{\omega}{\omega}) \ket{s}
+    = \ket{s} - 2 \ketbra{\omega}{\omega} \ket{s} \\
+    = \ket{s} - \frac{2}{\sqrt{N}} \ketbra{\omega}{\omega} \sum\limits_{x=0}^{N-1} \ket{x}
+    = \ket{s} - \frac{2}{\sqrt{N}} \ket{\omega}
+\end{multline}
 
-\begin{align*}
+\begin{multline}
     U_s (\ket{s} - \frac{2}{\sqrt{N}} \ket{\omega})
-    &= (2 \ketbra{s}{s} - \mathds{1}) (\ket{s} - \frac{2}{\sqrt{N}} \ket{\omega}) \\
-    &= 2 (\ket{s} - \frac{4}{N} \ket{s}) - (\ket{s} - \frac{2}{\sqrt{N}} \ket{\omega}) \\
-    &= \ket{s} - \frac{4}{N} \ket{s} + \frac{2}{\sqrt{N}} \ket{\omega} \\
-    &= \frac{N-4}{N} \ket{s} + \frac{2}{\sqrt{N}} \ket{\omega}
-\end{align*}
+    = (2 \ketbra{s}{s} - \mathds{1}) (\ket{s} - \frac{2}{\sqrt{N}} \ket{\omega}) \\
+    = 2 (\ket{s} - \frac{4}{N} \ket{s}) - (\ket{s} - \frac{2}{\sqrt{N}} \ket{\omega})
+    = \ket{s} - \frac{4}{N} \ket{s} + \frac{2}{\sqrt{N}} \ket{\omega} \\
+    = \frac{N-4}{N} \ket{s} + \frac{2}{\sqrt{N}} \ket{\omega}
+\end{multline}
 
 Ahora veamos lo que sucede al aplicar esta secuencia de rotaciones sobre el estado $\ket{\omega}$:
 
-\begin{align*}
+\begin{equation}
     U_\omega \ket{\omega}
-    &= (\mathds{1} - 2 \ketbra{\omega}{\omega} \ket{\omega} \\
-    &= \ket{\omega} - 2 \ket{\omega} \\
-    &= - \ket{\omega}
-\end{align*}
+    = (\mathds{1} - 2 \ketbra{\omega}{\omega} \ket{\omega}
+    = \ket{\omega} - 2 \ket{\omega}
+    = - \ket{\omega}
+\end{equation}
 
-\begin{align*}
+\begin{equation}
     U_s (-\ket{\omega})
-    &= (2 \ketbra{s}{s} - \mathds{1}) (-\ket{\omega}) \\
-    &= -\frac{2}{\sqrt{N}} \ket{s} + \ket{\omega} \\
-\end{align*}
+    = (2 \ketbra{s}{s} - \mathds{1}) (-\ket{\omega})
+    = -\frac{2}{\sqrt{N}} \ket{s} + \ket{\omega}
+\end{equation}
 
 Se observa que al aplicar $U_s U_\omega$ sobre $\ket{s}$, se amplifica la componente de $\ket{\omega}$ en la superposición de $\frac{1}{\sqrt{N}}$ a $\frac{3N-4}{N \sqrt{N}}$. Es decir que la probabilidad de medir el valor deseado crece de $\frac{1}{N}$ a $9 (1-\frac{4}{3N}) \frac{1}{N}$.
 
-\begin{align*}
+\begin{equation}
     \bra{\omega} U_s U_\omega \ket{s}
-    &= \frac{N-4}{N} \frac{1}{\sqrt{N}} + \frac{2}{\sqrt{N}} \\
-    &= \frac{3N-4}{N \sqrt{N}}
-\end{align*}
+    = \frac{N-4}{N} \frac{1}{\sqrt{N}} + \frac{2}{\sqrt{N}}
+    = \frac{3N-4}{N \sqrt{N}}
+\end{equation}
 
-\begin{align*}
-    \abs{\bra{\omega} U_s U_\omega \ket{s}}^2
-    &= \frac{(3N-4)^2}{N^3} \\
-    &= 9 (1-\frac{4}{3N}) \frac{1}{N}
-\end{align*}
+\begin{equation}
+    p(\omega) = \abs{\bra{\omega} U_s U_\omega \ket{s}}^2
+    = \frac{(3N-4)^2}{N^3}
+    = 9 (1-\frac{4}{3N}) \frac{1}{N}
+    \label{eq:prob1step}
+\end{equation}
 
 Por otro lado, se observa que al aplicar $U_s U_\omega$ sobre $\ket{\omega}$, aparece una componente de $\ket{s}$, así que en ese caso, la probabilidad de medir el valor deseado disminuye. Por lo que debe existir una cantidad de iteraciones $k_{max}$ tras las cuales se alcanza la probabilidad máxima de medir $\ket{\omega}$, partiendo de $\ket{s}$ y a partir de donde esta probabilidad empieza a disminuir.
 
@@ -97,10 +98,10 @@ De esta manera, el algoritmo de Grover consiste en aplicar $k_{max}$ veces $U_s 
 
 Para hallar $k_{max}$, veamos el ángulo que se rota con cada aplicación de $U_s U_\omega$. Primero definamos el estado $\ket{s^\prime}$ como la superposición uniforme de todos los estados de la base computacional excepto $\ket{\omega}$, es decir:
 
-\begin{align}
-    \ket{s^\prime} &= \frac{1}{N-1} \sum\limits_{x \neq \omega} \ket{x} \\
-               &= \frac{\sqrt{N}}{\sqrt{N-1}}\ket{s} - \frac{1}{\sqrt{N-1}} \ket{\omega}
-\end{align}
+\begin{equation}
+    \ket{s^\prime} = \frac{1}{N-1} \sum\limits_{x \neq \omega} \ket{x}
+               = \frac{\sqrt{N}}{\sqrt{N-1}}\ket{s} - \frac{1}{\sqrt{N-1}} \ket{\omega}
+\end{equation}
 
 Los estados $\ket{s^\prime}$ y $\ket{\omega}$ son ortonormales, $\braket{s^\prime}{\omega} = 0$, por lo que generan un espacio bidimensional de Hilbert. Este espacio contiene a $\ket{s}$, pues:
 
@@ -112,36 +113,37 @@ Además, se ha visto que $U_s U_\omega \ket{s}$ y $U_s U_\omega \ket{\omega}$ se
 
 Ahora que conocemos una base del plano de rotación, podemos hayar el ángulo que se rota con cada aplicación de $U_s U_\omega$.
 
-\begin{align*}
+\begin{equation}
     U_\omega \ket{\psi}
-    &= (\mathds{1} - 2 \ketbra{\omega}{\omega}) (\alpha \ket{s^\prime} + \beta \ket{\omega}) \\
-    &= \alpha \ket{s^\prime} - \beta \ket{\omega}
-\end{align*}
+    = (\mathds{1} - 2 \ketbra{\omega}{\omega}) (\alpha \ket{s^\prime} + \beta \ket{\omega})
+    = \alpha \ket{s^\prime} - \beta \ket{\omega}
+\end{equation}
 
-\begin{align*}
+\begin{multline}
     U_s (\alpha \ket{s^\prime} - \beta \ket{\omega})
-    &= (2 \ketbra{s}{s} - \mathds{1}) (\alpha \ket{s^\prime} - \beta \ket{\omega}) \\
-    &= \alpha \left(2 \frac{\sqrt{N-1}}{\sqrt{N}} \ket{s} - \ket{s^\prime}\right) - \beta \left(\frac{2}{\sqrt{N}} \ket{s} - \ket{\omega}\right) \\
-    &= \alpha \left((2\frac{N-1}{N} - 1) \ket{s^\prime} + 2\frac{\sqrt{N-1}}{N}\ket{\omega}\right) \\
-    &\qquad - \beta \left(\frac{2\sqrt{N-1}}{N}\ket{s^\prime} + (\frac{2}{N}-1)\ket{\omega}\right) \\
-    &= (\alpha \frac{N-2}{N} - \beta \frac{2\sqrt{N-1}}{N}) \ket{s^\prime} \\
-    &\qquad + (\alpha\ 2\frac{\sqrt{N-1}}{N} + \beta  \frac{N-2}{N}) \ket{\omega} \\
-\end{align*}
+    = (2 \ketbra{s}{s} - \mathds{1}) (\alpha \ket{s^\prime} - \beta \ket{\omega}) \\
+    = \alpha \left(2 \frac{\sqrt{N-1}}{\sqrt{N}} \ket{s} - \ket{s^\prime}\right) - \beta \left(\frac{2}{\sqrt{N}} \ket{s} - \ket{\omega}\right) \\
+    = \alpha \left((2\frac{N-1}{N} - 1) \ket{s^\prime} + 2\frac{\sqrt{N-1}}{N}\ket{\omega}\right)
+    - \beta \left(\frac{2\sqrt{N-1}}{N}\ket{s^\prime} + (\frac{2}{N}-1)\ket{\omega}\right) \\
+    = (\alpha \frac{N-2}{N} - \beta \frac{2\sqrt{N-1}}{N}) \ket{s^\prime}
+    + (\alpha\ 2\frac{\sqrt{N-1}}{N} + \beta  \frac{N-2}{N}) \ket{\omega} \\
+\end{multline}
 
 De aquí se deduce que $\cos(\Delta\theta) = \frac{N-2}{N}$ y que $\sin(\Delta\theta) = 2\frac{\sqrt{N-1}}{N}$. De hecho, se comprueba que:
 
-\begin{equation*}
+\begin{equation}
     \cos^2(\Delta\theta)+\sin^2(\Delta\theta)
     = \frac{(N-2)^2}{N^2} + 4\frac{N-1}{N^2}
     = \frac{N^2-4N+4}{N^2} + 4\frac{N-1}{N^2}
     = 1
-\end{equation*}
+\end{equation}
 
 Ahora escribimos las componentes de $\ket{s}$ en función del ángulo inicial $\theta_0$:
 
 \begin{align}
     \cos(\theta_0) &= \frac{\sqrt{N-1}}{\sqrt{N}} \\
     \sin(\theta_0) &= \frac{1}{\sqrt{N}}
+    \label{eq:sinTheta0}
 \end{align}
 
 Finalmente, lo que se quiere es que:
@@ -230,6 +232,7 @@ Ahora definamos los siguientes operadores de reflexión $U_\psi = (2 \ketbra{\ps
     = (2 \ketbra{\psi}{\psi} - \mathds{1}) (\cos(\theta) \ket{\psi_0} - \sin(\theta) \ket{\psi_1}) = (2 \ketbra{\psi}{\psi} - \mathds{1}) (\ket{\psi} - 2 \sin(\theta) \ket{\psi_1}) \\
     = \ket{\psi} + (- 4 \sin^2(\theta) \ket{\psi} + 2 \sin(\theta) \ket{\psi_1}) = (3 - 4 \sin^2(\theta)) \sin(\theta) \ket{\psi_1} + (1 - 4 \sin^2(\theta)) \cos(\theta) \ket{\psi_0} \\
     = \sin(3 \theta) \ket{\psi_1} + \cos(3 \theta) \ket{\psi_0}
+    \label{eq:DTheta}
 \end{multline}
 
 Como se puede ver, el operador $U_\psi U_\mathcal{W}$ rota un ángulo de $2 \theta$. Por lo que si se aplica $k$ veces a $\ket{\psi}$, tendremos:
@@ -269,13 +272,49 @@ Si tomamos $N \gg W$, tendríamos que $\theta \approx \sqrt{\frac{W}{N}}$, enton
 
 \subsection{Algoritmo de Grover en un paso}
 
+En [ref] Grover propone una manera alternativa para ejecutar su algoritmo. En lugar de realizar $O(\sqrt{N})$ iteraciones, propone realizar una sola iteración en $\Omega(\sqrt{N \log(N)})$ sistemas identicos simultáneamente. Partiendo de la ecuación \ref{eq:prob1step}, la probabilidad de medir cada uno de los estados, cuando N es grande, luego de aplicar una iteración del algoritmo de Grover es aproximadamente:
+
+\begin{equation}
+    p(x) \approx
+    \begin{cases}
+        \frac{9}{N} & \text{si } x = \omega \\
+        \frac{1}{N} & \text{si } x \neq \omega
+    \end{cases}
+\end{equation}
+
+Así que con $\eta$ sistemas se tendrá, en promedio $9 \eta/N \pm O(\sqrt{\eta/N})$ medidas del valor deseado y $\eta/N \pm O(\sqrt{\eta/N})$ medidas de cualquiera de cada uno de los otros estados. La idea es tener suficientes sistemas para poder elegir con seguridad el valor que más se repita como el valor deseado. Por el teorema del límite central, la probabilidad de que una variable particular se desvíe más de $\pm \gamma \sqrt{\eta/N}$ de su valor esperado es menor que $e^{- \Omega(\gamma^2)}$. De esta manera, si $\eta = \Omega(N \log(N))$, entonces, con una probabilidad cercana a 1, el valor deseado ocurrirá con mayor frecuencia que cualquiera de los otros $N-1$.
+
+Este esquema también se puede aplicar al algoritmo de amplificación de amplitud, pero con una condición: Que la cantidad de estados marcados sea menor a $N/4$. Esto es porque no hay manera de diferenciar los $W$ estados deseados de los otros $N - W$. Entonces, si $W$ es cercano a $N/2$, resultará imposible identificar correctamente los estados deseados.
+
+Es importante mencionar que aunque esta versión del algoritmo se pueda ejecutar con una sola iteración, resulta menos eficiente que el algoritmo de Grover tradicional. Esto es porque esas $\Omega(N \log(N))$ mediciones necesitarán ser procesadas para hallar los valores más frecuentes, lo cual tendrá una complejidad temporal del mismo orden $\Omega(N \log(N))$, la cual es mayor a la complejidad temporal $O(\sqrt{N}$ de la versión tradicional del algoritmo. De esta forma, la única verdadera ventaja de esta variacíón estaría en el caso en que se tengan sistemas con tiempos de vida tales que no permitan realizar las iteraciones necessarias para ejecutar la versión tradicional del algoritmo de Grover.
+
+\subsection{Optimización del algoritmo de Grover}
+
+En [ref] Garg y Pande proponen una optimización del algoritmo de Grover, mezclando el algoritmo de Grover tradicional y el algoritmo de Grover de un paso. La idea de ellos es ejecutar el algoritmo en múltiples sistemas idénticos, como en el algoritmo de un paso, pero realizar más de una iteración, como en el algoritmo tradicional. De esta manera, reducen la cantidad $\eta$ de sistemas necesarios y la cantidad $k$ de iteraciones necesarias. Ellos hayan que tomando $\eta = k$, entonces sólo se necestian $O(\sqrt[3]{N})$.
+
+Partiendo de \ref{eq:sinTheta0} y \ref{eq:DTheta}, sabemos que en cada iteración de Grover, cuando $N$ es grande, se rota un ángulo de aproximadamente $2/\sqrt{N}$ y que el ángulo inicial es aproximadamente $1/\sqrt{N}$. Así que luego de $k$ iteraciones, se tendrá un ángulo de aproximadamente $(2k + 1)/\sqrt{N}$. Por lo tanto, la probabilidad de medir cada estado será:
+
+\begin{equation}
+    p(x) \approx
+    \begin{cases}
+        \frac{(2k + 1)^2}{N} & \text{si } x = \omega \\
+        \frac{1}{N} & \text{si } x \neq \omega
+    \end{cases}
+\end{equation}
+
+Si realizamos esto en $\eta$ sistemas idénticos, entonces, mediremos el valor deseado $\eta (2k + 1)^2 / N \pm O(\sqrt{\eta k^2/N})$ veces y cada otro estado $\eta / N \pm O(\sqrt{\eta k^2/N})$ veces. Si tomamos $\eta = k$, entonces, mediremos $\omega$ alrededor de $k (2k + 1)^2 / N \pm O(\sqrt{k^3/N})$ veces. Ahora, si tomamos $k$ en el orden de $O(\sqrt[3]{N})$, tendremos $\omega$ alrededor de $\sqrt[3]{N} ( 2 \sqrt[3]{N} + 1)^2 \pm O(1)$ veces. Como $N$ es grande, podemos hacer la aproximación $2 \sqrt[3]{N} + 1 \approx 2 \sqrt[3]{N}$ y entonces, tendremos $\omega$ alrededor de $4 \pm O(1)$ veces. Mientras que todos los otros valores ocurriran sólo $N^{-2/3} \pm O(1)$ veces cada uno. Así que, el estado medido con mayor frecuencia ha de ser, con seguridad, el estado deseado.
+
+Finalmente, la parte cuántica de este algoritmo tiene una complejidad temporal de $O(\sqrt[3]{N})$ y el procesamiento posterior de las mediciones realizadas también tendrá una complejidad temporal de $O(\sqrt[3]{N}$, pues esta es la cantidad de datos a procesar. Por lo tanto, la complejidad total de este algoritmo es $O(\sqrt[3]{N}$, la cual es menor a $O(\sqrt{N})$ de la versión tradicional y a $\Omega(N \log(N))$ de la versión en un paso.
+
 \section{Simulaciones}
 
+Se realizaron simulaciones del algoritmo de Grover con $\ket{\omega} = \ket{0000}$, $\ket{\omega} = \ket{0110}$ y $\ket{\omega} = \ket{1111}$. También se realizon simulaciones del algoritmo de amplificación de amplitud con $\mathcal{W} = \{ \}$ y $\mathcal{W} = \{ \}$.
+
+Un conjunto de las simulaciones se ha realizado en Wolfram Mathematica, implementando los operadores, es decir $U_{\omega}$, $U_\mathcal{W}$, $U_s$ y la transformada de Hadamard, directamente, de manera matricial, de acuerdo a las definiciones dadas anteriormente. Otro conjunto de las simulaciones ha realizado en Python, definiendo todos los operadores y transformaciones en base a sus construcciones circuitales, a partir de las compuertas nativas de los transmones, resolviendo la ecuación maestra del sistema al aplicar cada compuerta nativa. Al primer conjunto lo llamaremos simulaciones matemáticas, y al segundo, simulaciones circuitales. El código todas las simulaciones de este capítulo se encuentra en el apéndice \ref{ch:grovercod}.
+
+En el caso de la simulaciones matemáticas, sólo se ha simulado el caso sin relajación. Por otro lado, en el caso de la simulaciones circuitales, se ha simulado el sistema tanto sin relajación, como con relajación. En el caso del sistema con relajación, se ha utilizado la ecuación maestra de Lindblad con los operadores de colapso $\sigma_{-_i}$ y tasa de relajación $\gamma = 25KHz$.
+
 \subsection{Algoritmo de Grover}
-
-Se han realizado simulaciones del algoritmo de Grover en Wolfram Mathematica implementando $U_{\omega}$, $U_s$ y la transformada de Hadamard, directamente, de manera matricial, de acuerdo a las definiciones dadas anteriormente. Por otro lado, se ha realizado una simulación del algoritmo de Grover en Python definiendo todas las operaciones y transformaciones en base a sus construcciones circuitales, a partir de las compuertas nativas de los transmones, resolviendo la ecuación maestra del sistema al aplicar cada compuerta nativa. A la primera la llamaremos la simulación matemática, y a la segunda, simulación circuital. El código de ambas simulaciones se encuentra en el apéndice \ref{ch:grovercod}.
-
-En el caso de la simulación matemática, sólo se ha simulado el caso sin relajación. Por otro lado, en el caso de la simulación circuital, se ha simulado el sistema tanto sin relajación, como con relajación. En el caso del sistema con relajación, se ha utilizado la ecuación maestra de Lindblad con los operadores de colapso $\sigma_{-_i}$ y tasa de relajación $\gamma = 25KHz$. Primero compararemos las dos simulaciones sin relajación para analizar la precisión del solucionador de ecuaciones maestras.
 
 Como el espacio de Hilbert del sistema en el que sea ejecutado el algoritmo es de 16 dimensiones, ya que es de cuatro qubits, se necesitan $\lfloor \frac{\pi \sqrt{16}}{4} \rfloor = 3$ iteraciones para tener la máxima probabilidad de medir el estado deseado. Sin embargo, la simulación se ha realizado con 7 iteraciones, para apreciar la naturaleza oscilatoria de este algoritmo. Recordemos que este algoritmo consiste en rotaciones en el espacio 2D generado por $\ket{\omega}$ y $\ket{s^\prime}$, es decir, que si se aplican más de 3 rotaciones, la probabilidad de éxito debería disminuir, hasta que el estado del sistema se alinee con $- \ket{s^\prime}$, volver a aumentar hasta llegar a $- \ket{\omega}$, disminuir hasta pasar por $\ket{s^\prime}$, pasar de nuevo por el estado inicial $\ket{s}$ y repetirse el ciclo. La hipotesis es que veremos aproximadamente un período de sinusoide muestreada, con alrededor de seis muestras por período, en la gráfica de la evolución de la probabilidad de medir $\ket{\omega}$, ya que si luego de tres iteraciones se llega al punto de probabilidad máxima, alrededor de la sexta iteración se debe llegar al punto de probabilidad mínima y en la séptima volvería a aumentar.
 
@@ -314,13 +353,6 @@ Ahora, compararemos los resultados de la simulación circuital con y sin relajac
     \caption[Evolución de las probabilidades en el algoritmo de Grover con relajación]{Evolución de las probabilidades en el algoritmo de Grover con relajación}
     \label{fig:groverlosscomp}
 \end{figure}
-
-----------------------------------------------------------------------------
-
-Incluir resultados del algoritmo de Grover con $\ket{\omega} = \ket{0}$ y $\ket{\omega} = \ket{0101}$ para comparar los efectos de la relajación en distintos casos.
-
-----------------------------------------------------------------------------
-
 
 \subsection{Amplificación de amplitud}
 
