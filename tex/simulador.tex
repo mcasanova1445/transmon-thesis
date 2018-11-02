@@ -40,7 +40,7 @@ Se han elegido parámetros típicos de los sistemas de qubits\cite{blais}.
 
 *Sólo aplica para el caso del sistema de 8 qubits
 
-\section{Compuertas simples}
+\section{Compuertas nativas}
 
 Como se vio en el capítulo anterior, en los transmones se puede ejecutar de manera natural las compuertas Rx, Ry e iSWAP. Estas compuertas se implementan en el simulador y es a partir de ellas que se contruyen todas las demás.
 
@@ -214,6 +214,15 @@ Como tenemos $Ry(\theta)$, basta con hacer $\theta = \pi$ para realizar Y, módu
     \end{pmatrix}
 \end{equation}
 
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \gate{X} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \gate{Rx({\pi})} & \qw 
+}
+\]
+
 \subsection{Rz}
 
 Esta compuerta se realiza aplicando una transformación a Rx tal que el eje de rotación se rote y coincida con el eje Z. Es decir, el eje X se rota $\pi/2$ alrededor de Y:
@@ -238,6 +247,15 @@ Esta compuerta se realiza aplicando una transformación a Rx tal que el eje de r
     \end{pmatrix}
 \end{multline}
 
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \gate{Rz({\theta})} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \gate{Ry(\frac{\pi}{2})} & \gate{Rx({\theta})} & \gate{Ry(\frac{-\pi}{2})} & \qw 
+}
+\]
+
 \subsection{Z}
 
 Ahora, con Rz, se puede realizar Z haciendo $\theta = \pi$, módulo una fase global de $-i$.
@@ -257,6 +275,15 @@ Ahora, con Rz, se puede realizar Z haciendo $\theta = \pi$, módulo una fase glo
         0 & -1
     \end{pmatrix}
 \end{equation}
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \gate{Z} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \gate{Rz({\pi})} & \qw 
+}
+\]
 
 
 \subsection{H}
@@ -281,13 +308,45 @@ Esta compuerta transforma la base X en la base Z y se realiza con $Ry(\pi/2)$ se
 
 Sólo que en nuestro caso, X también agrega una fase global de $-i$.
 
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \gate{H} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \gate{Ry(\frac{\pi}{2})} & \gate{X} & \qw 
+}
+\]
+
 \subsection{CNOT}
 
 Esta compuerta se realizó siguiendo el esquema de Schuch y Siewert \cite{schuch}. De esta manera se logra la compuerta CNOT, módulo una fase global de $\frac{-1-i}{\sqrt{2}}$.
 
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \ctrl{1} & \qw \\
+& \qw & \targ    & \qw 
+}\]
+\[
+\Qcircuit @C=0.4em @R=0.6em {
+& \qw & \qw & \gate{Rz(\frac{-\pi}{2})} & \multigate{1}{\text{iSWAP}} & \gate{H} & \multigate{1}{\text{iSWAP}} & \qw  & \multigate{1}{\text{iSWAP}} &  \gate{Rx(\frac{\pi}{2})} &\multigate{1}{\text{iSWAP}} & \qw & \qw \\
+& \qw & \gate{H} & \gate{Rz(\frac{-\pi}{2})} & \ghost{\text{iSWAP}} & \qw & \ghost{\text{iSWAP}}  & \gate{Rx(\frac{-\pi}{2})} & \ghost{\text{iSWAP}} & \qw & \ghost{\text{iSWAP}} & \gate{Rx(\frac{\pi}{2})} & \qw
+}
+\]
+
 \subsection{SWAP}
 
 Esta compuerta se realiza con una secuencia de CNOTs.
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \qswap     & \qw \\
+& \qw & \qswap\qwx & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \ctrl{1} & \targ     & \ctrl{1} & \qw \\
+& \qw & \targ    & \ctrl{-1} & \targ    & \qw 
+} 
+\]
 
 \subsection{Compuertas condicionales generales}
 
@@ -306,7 +365,29 @@ Barenco et al \cite{barenco} demostraron que con la compuerta CNOT y compuertas 
 
 Donde $C X B X A = U$ y $C B A = \mathds{1}$.
 
-Siguiendo este esquema se construyó: CRy, CRz y CH.
+Siguiendo este esquema se construyó CRy y CRz.
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \ctrl{1} & \qw \\
+& \qw & \gate{Ry(\theta)} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \qw                         & \ctrl{1} & \qw                          & \ctrl{1} & \qw \\
+& \qw & \gate{Ry(\frac{\theta}{2})} & \targ    & \gate{Ry(\frac{-\theta}{2})} & \targ    & \qw 
+} 
+\]
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \ctrl{1} & \qw \\
+& \qw & \gate{Rz(\theta)} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \qw                         & \ctrl{1} & \qw                          & \ctrl{1} & \qw \\
+& \qw & \gate{Rz(\frac{\theta}{2})} & \targ    & \gate{Rz(\frac{-\theta}{2})} & \targ    & \qw 
+} 
+\]
 
 Barenco et al. también presentan un método para agregar más qubits de control a una compuerta condicional:
 
@@ -323,7 +404,65 @@ Barenco et al. también presentan un método para agregar más qubits de control
 } 
 \]
 
-De esta manera se construyó: CCRy, CCCRy, CCRz y CCCRz. También se contruyó parcialmente de esta manera la compuerta de Toffoli, CCCNOT y CCCCNOT, sin embargo, debido a la fase global que queda al contruir X, Y y Z a partir de Rx, Ry y Rz, hace falta una componente adicional para poder construir estas compuertas. Esto ocurre porque la fase global también queda condicionada y deja de ser global. Para ilustrar mejor este detalle, tomemos como ejemplo el caso de Toffoli. Siguiendo el esquema anterior se llega a:
+De esta manera se construyó: CCRy, CCCRy, CCRz y CCCRz.
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \ctrl{1} & \qw \\
+& \qw & \ctrl{1} & \qw \\
+& \qw & \gate{Ry(\theta)}    & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \qw                       & \ctrl{1} & \qw                      & \ctrl{1} & \ctrl{2}                  & \qw \\
+& \qw & \ctrl{1}                  & \targ    & \ctrl{1}                 & \targ    & \qw                       & \qw \\
+& \qw & \gate{Ry(\frac{\theta}{2})} & \qw      & \gate{Ry(\frac{-\theta}{2})} & \qw      & \gate{Ry(\frac{\theta}{2})} & \qw 
+} 
+\]
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \ctrl{1} & \qw \\
+& \qw & \ctrl{1} & \qw \\
+& \qw & \ctrl{1} & \qw \\
+& \qw & \gate{Ry(\theta)} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \qw                         & \ctrl{1} & \qw                          & \ctrl{1} & \ctrl{1}                    & \qw \\
+& \qw & \qw                         & \ctrl{1} & \qw                          & \ctrl{1} & \ctrl{2}                    & \qw \\
+& \qw & \ctrl{1}                    & \targ    & \ctrl{1}                     & \targ    & \qw                         & \qw \\
+& \qw & \gate{Ry(\frac{\theta}{2})} & \qw      & \gate{Ry(\frac{-\theta}{2})} & \qw      & \gate{Ry(\frac{\theta}{2})} & \qw 
+} 
+\]
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \ctrl{1} & \qw \\
+& \qw & \ctrl{1} & \qw \\
+& \qw & \gate{Rz(\theta)}    & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \qw                       & \ctrl{1} & \qw                      & \ctrl{1} & \ctrl{2}                  & \qw \\
+& \qw & \ctrl{1}                  & \targ    & \ctrl{1}                 & \targ    & \qw                       & \qw \\
+& \qw & \gate{Rz(\frac{\theta}{2})} & \qw      & \gate{Rz(\frac{-\theta}{2})} & \qw      & \gate{Rz(\frac{\theta}{2})} & \qw 
+} 
+\]
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \ctrl{1} & \qw \\
+& \qw & \ctrl{1} & \qw \\
+& \qw & \ctrl{1} & \qw \\
+& \qw & \gate{Rz(\theta)} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \qw                         & \ctrl{1} & \qw                          & \ctrl{1} & \ctrl{1}                    & \qw \\
+& \qw & \qw                         & \ctrl{1} & \qw                          & \ctrl{1} & \ctrl{2}                    & \qw \\
+& \qw & \ctrl{1}                    & \targ    & \ctrl{1}                     & \targ    & \qw                         & \qw \\
+& \qw & \gate{Rz(\frac{\theta}{2})} & \qw      & \gate{Rz(\frac{-\theta}{2})} & \qw      & \gate{Rz(\frac{\theta}{2})} & \qw 
+} 
+\]
+
+También se contruyó parcialmente de esta manera la compuerta de Toffoli, CCCNOT y CCCCNOT, sin embargo, debido a la fase global que queda al contruir X, Y y Z a partir de Rx, Ry y Rz, hace falta una componente adicional para poder construir estas compuertas. Esto ocurre porque la fase global también queda condicionada y deja de ser global. Para ilustrar mejor este detalle, tomemos como ejemplo el caso de Toffoli. Siguiendo el esquema anterior se llega a:
 
 \begin{equation}
     Toffoli^\prime =
@@ -441,38 +580,84 @@ Esto se logra tomando:
 
 Esta compuerta agrega una fase de $e^{i \theta}$ al ket $\ket{11}$. Con este mismo método también se pueden construir versiones de esta compuerta que agreguen la misma fase a los kets $\ket{00}$, $\ket{01}$, $\ket{10}$.
 
-
+\begin{enumerate}
+    \item Para agregar una fase al estado $\ket{00}$, se utiliza la compuerta $CP^\theta$ blanca, la cual se construye con los siguientes ángulos:
 \begin{align*}
-    \ket{00}, CP^\theta& blanca, CP00(\theta): \\
-    & \theta_1 = -3*\theta/4 \\
-    & \theta_2 = -3*\theta/4 \\
-    & \theta_3 = \theta/2 \\
-    & \theta_4 = \theta/2
+    \theta_1 &= -3*\theta/4 \\
+    \theta_2 &= -3*\theta/4 \\
+    \theta_3 &= \theta/2 \\
+    \theta_4 &= \theta/2
 \end{align*}
 
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \ctrlo{1} & \qw \\
+& \qw & \gate{P^\theta} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \gate{Rz(\frac{-3\theta}{4})} & \ctrl{1}                    & \gate{Rz(\frac{\theta}{2})} & \qw \\
+& \qw & \gate{Rz(\frac{-3\theta}{4})} & \gate{Rz(\frac{\theta}{2})} & \ctrl{-1}                    & \qw 
+} 
+\]
+
+    \item Para agregar una fase al estado $\ket{01}$, se utiliza la compuerta $CP_\theta$ blanca, la cual se construye con los siguientes ángulos:
 \begin{align*}
-    \ket{01}, CP_\theta& blanca, CP01(\theta): \\
-    & \theta_1 = -3\theta/4 \\
-    & \theta_2 = 5\theta/4 \\
-    & \theta_3 = -3\theta/2 \\
-    & \theta_4 = \theta/2
+    \theta_1 &= -3\theta/4 \\
+    \theta_2 &= 5\theta/4 \\
+    \theta_3 &= -3\theta/2 \\
+    \theta_4 &= \theta/2
 \end{align*}
 
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \ctrlo{1} & \qw \\
+& \qw & \gate{P_\theta} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \gate{Rz(\frac{-3\theta}{4})} & \ctrl{1}                    & \gate{Rz(\frac{\theta}{2})} & \qw \\
+& \qw & \gate{Rz(\frac{5\theta}{4})} & \gate{Rz(\frac{-3\theta}{2})} & \ctrl{-1}                   & \qw 
+} 
+\]
+
+    \item Para agregar una fase al estado $\ket{10}$, se utiliza la compuerta $CP^\theta$ negra, la cual se construye con los siguientes ángulos:
 \begin{align*}
-    \ket{10}, CP^\theta& negra, CP10(\theta): \\
     \theta_1 &= \theta/4 \\
     \theta_2 &= \theta/4 \\
     \theta_3 &= -3\theta/2 \\
     \theta_4 &= \theta/2
 \end{align*}
 
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \ctrl{1} & \qw \\
+& \qw & \gate{P^\theta} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \gate{Rz(\frac{\theta}{4})} & \ctrl{1}                    & \gate{Rz(\frac{\theta}{2})} & \qw \\
+& \qw & \gate{Rz(\frac{\theta}{4})} & \gate{Rz(\frac{-3\theta}{2})} & \ctrl{-1}                  & \qw 
+} 
+\]
+
+    \item Para agregar una fase al estado $\ket{11}$, se utiliza la compuerta $CP_\theta$ negra, la cual se construye con los siguientes ángulos:
 \begin{align*}
-    \ket{11}, CP_\theta& negra, CP11(\theta): \\
     \theta_1 &= \theta/4 \\
     \theta_2 &= \theta/4 \\
     \theta_3 &= \theta/2 \\
     \theta_4 &= \theta/2
 \end{align*}
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \ctrl{1}        & \qw \\
+& \qw & \gate{P_\theta} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \gate{Rz(\frac{\theta}{4})} & \ctrl{1}                    & \gate{Rz(\frac{\theta}{2})} & \qw \\
+& \qw & \gate{Rz(\frac{\theta}{4})} & \gate{Rz(\frac{\theta}{2})} & \ctrl{-1}                    & \qw 
+} 
+\]
+
+\end{enumerate}
 
 Finalmente, para realizar la compuerta de Toffoli, se debe aplicar la compuerta $CP_\theta$ después de $Toffoli^\prime$ con $\theta = - \pi/2$ a los qubits de control de Toffoli.
 
@@ -489,6 +674,161 @@ Finalmente, para realizar la compuerta de Toffoli, se debe aplicar la compuerta 
 } 
 \]
 
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \ctrl{1} & \qw \\
+& \qw & \ctrl{1} & \qw \\
+& \qw & \targ    & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \qw      & \qw                       & \ctrl{1} & \qw                      & \ctrl{1} & \ctrl{2}                  & \qw & \ctrl{1}          & \qw \\
+& \qw & \qw      & \ctrl{1}                  & \targ    & \ctrl{1}                 & \targ    & \qw                       & \qw & \gate{P_{-\frac{\pi}{2}}} & \qw \\
+& \qw & \gate{H} & \gate{Rz(\frac{-\pi}{2})} & \qw      & \gate{Rz(\frac{\pi}{2})} & \qw      & \gate{Rz(\frac{-\pi}{2})} & \gate{H} & \qw & \qw 
+} 
+\]
+
 De la misma manera, con CCP se puede realizar CCCNOT. CCP y CCCP se pueden realizar con el método de Barenco.
 
+Compuerta $CCP^\theta$ blanca:
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \ctrlo{1} & \qw \\
+& \qw & \ctrlo{1} & \qw \\
+& \qw & \gate{P^\theta}    & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \qw                       & \ctrlo{1} & \qw                      & \ctrlo{1} & \ctrlo{2}                  & \qw \\
+& \qw & \ctrlo{1}                  & \targ    & \ctrlo{1}                 & \targ    & \qw                       & \qw \\
+& \qw & \gate{P^\frac{\theta}{2}} & \qw      & \gate{P^\frac{-\theta}{2}} & \qw      & \gate{P^\frac{\theta}{2}} & \qw 
+} 
+\]
+
+Compuerta $CCP_\theta$ blanca:
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \ctrlo{1} & \qw \\
+& \qw & \ctrlo{1} & \qw \\
+& \qw & \gate{P_\theta}    & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \qw                       & \ctrlo{1} & \qw                      & \ctrlo{1} & \ctrlo{2}                  & \qw \\
+& \qw & \ctrlo{1}                  & \targ    & \ctrlo{1}                 & \targ    & \qw                       & \qw \\
+& \qw & \gate{P_\frac{\theta}{2}} & \qw      & \gate{P_\frac{-\theta}{2}} & \qw      & \gate{P_\frac{\theta}{2}} & \qw 
+} 
+\]
+
+Compuerta $CCP^\theta$ negra:
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \ctrl{1} & \qw \\
+& \qw & \ctrl{1} & \qw \\
+& \qw & \gate{P^\theta}    & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \qw                       & \ctrl{1} & \qw                      & \ctrl{1} & \ctrl{2}                  & \qw \\
+& \qw & \ctrl{1}                  & \targ    & \ctrl{1}                 & \targ    & \qw                       & \qw \\
+& \qw & \gate{P^\frac{\theta}{2}} & \qw      & \gate{P^\frac{-\theta}{2}} & \qw      & \gate{P^\frac{\theta}{2}} & \qw 
+} 
+\]
+
+Compuerta $CCP_\theta$ negra:
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \ctrl{1} & \qw \\
+& \qw & \ctrl{1} & \qw \\
+& \qw & \gate{P_\theta}    & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \qw                       & \ctrl{1} & \qw                      & \ctrl{1} & \ctrl{2}                  & \qw \\
+& \qw & \ctrl{1}                  & \targ    & \ctrl{1}                 & \targ    & \qw                       & \qw \\
+& \qw & \gate{P_\frac{\theta}{2}} & \qw      & \gate{P_\frac{-\theta}{2}} & \qw      & \gate{P_\frac{\theta}{2}} & \qw 
+} 
+\]
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \ctrl{1} & \qw \\
+& \qw & \ctrl{1} & \qw \\
+& \qw & \ctrl{1} & \qw \\
+& \qw & \targ    & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \qw      & \qw                       & \ctrl{1} & \qw                      & \ctrl{1} & \ctrl{2}                  & \qw      & \ctrl{1}                  & \qw \\
+& \qw & \qw      & \ctrl{1}                  & \targ    & \ctrl{1}                 & \targ    & \qw                       & \qw      & \ctrl{1}                  & \qw \\
+& \qw & \qw      & \ctrl{1}                  & \qw      & \ctrl{1}                 & \qw      & \ctrl{1}                  & \qw      & \gate{P_\frac{-\pi}{2}} & \qw \\
+& \qw & \gate{H} & \gate{Rz(\frac{-\pi}{2})} & \qw      & \gate{Rz(\frac{\pi}{2})} & \qw      & \gate{Rz(\frac{-\pi}{2})} & \gate{H} & \qw                       & \qw 
+} 
+\]
+
+Compuerta $CCCP^\theta$ blanca:
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \ctrlo{1} & \qw \\
+& \qw & \ctrlo{1} & \qw \\
+& \qw & \ctrlo{1} & \qw \\
+& \qw & \gate{P^\theta} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \qw                       & \ctrlo{1} & \qw                        & \ctrlo{1} & \ctrlo{1}                 & \qw \\
+& \qw & \qw                       & \ctrlo{1} & \qw                        & \ctrlo{1} & \ctrlo{2}                 & \qw \\
+& \qw & \ctrlo{1}                 & \targ     & \ctrlo{1}                  & \targ     & \qw                       & \qw \\
+& \qw & \gate{P^\frac{\theta}{2}} & \qw       & \gate{P^\frac{-\theta}{2}} & \qw       & \gate{P^\frac{\theta}{2}} & \qw 
+} 
+\]
+
+Compuerta $CCCP_\theta$ blanca:
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \ctrlo{1} & \qw \\
+& \qw & \ctrlo{1} & \qw \\
+& \qw & \ctrlo{1} & \qw \\
+& \qw & \gate{P_\theta} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \qw                       & \ctrlo{1} & \qw                        & \ctrlo{1} & \ctrlo{1}                 & \qw \\
+& \qw & \qw                       & \ctrlo{1} & \qw                        & \ctrlo{1} & \ctrlo{2}                 & \qw \\
+& \qw & \ctrlo{1}                 & \targ     & \ctrlo{1}                  & \targ     & \qw                       & \qw \\
+& \qw & \gate{P_\frac{\theta}{2}} & \qw       & \gate{P_\frac{-\theta}{2}} & \qw       & \gate{P_\frac{\theta}{2}} & \qw 
+} 
+\]
+
+Compuerta $CCCP^\theta$ negra:
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \ctrl{1} & \qw \\
+& \qw & \ctrl{1} & \qw \\
+& \qw & \ctrl{1} & \qw \\
+& \qw & \gate{P^\theta} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \qw                       & \ctrl{1} & \qw                        & \ctrl{1} & \ctrl{1}                 & \qw \\
+& \qw & \qw                       & \ctrl{1} & \qw                        & \ctrl{1} & \ctrl{2}                 & \qw \\
+& \qw & \ctrl{1}                 & \targ     & \ctrl{1}                  & \targ     & \qw                       & \qw \\
+& \qw & \gate{P^\frac{\theta}{2}} & \qw       & \gate{P^\frac{-\theta}{2}} & \qw       & \gate{P^\frac{\theta}{2}} & \qw 
+} 
+\]
+
+Compuerta $CCCP_\theta$ negra:
+
+\[
+\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \ctrl{1} & \qw \\
+& \qw & \ctrl{1} & \qw \\
+& \qw & \ctrl{1} & \qw \\
+& \qw & \gate{P_\theta} & \qw 
+}\]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \qw & \qw                       & \ctrl{1} & \qw                        & \ctrl{1} & \ctrl{1}                 & \qw \\
+& \qw & \qw                       & \ctrl{1} & \qw                        & \ctrl{1} & \ctrl{2}                 & \qw \\
+& \qw & \ctrl{1}                 & \targ     & \ctrl{1}                  & \targ     & \qw                       & \qw \\
+& \qw & \gate{P_\frac{\theta}{2}} & \qw       & \gate{P_\frac{-\theta}{2}} & \qw       & \gate{P_\frac{\theta}{2}} & \qw 
+} 
+\]
 

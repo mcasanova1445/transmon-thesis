@@ -199,7 +199,7 @@ A continuación estudiaremos el algoritmo de amplificación de amplitud, el cual
 
 \subsection{Algoritmo de amplificación de amplitud}
 
-Esta generalización fue desarrollada independientemente por Brassar y H̨\o yer en 1997 [ref] y por Grover en 1998 [ref]. Con este algoritmo se pueden utilizar funciones oráculo que marquen 1 para más de una entrada de la base de datos en la cual se realizará la búsqueda. Entonces, sea $\mathcal{W}$ el conjunto de entradas a encontrar, tenemos la función oráculo:
+Esta generalización fue desarrollada independientemente por Brassar y H̨øyer en 1997 [ref] y por Grover en 1998 [ref]. Con este algoritmo se pueden utilizar funciones oráculo que marquen 1 para más de una entrada de la base de datos en la cual se realizará la búsqueda. Entonces, sea $\mathcal{W}$ el conjunto de entradas a encontrar, tenemos la función oráculo:
 
 \begin{equation}
     f(x) =
@@ -308,13 +308,11 @@ Finalmente, la parte cuántica de este algoritmo tiene una complejidad temporal 
 
 \section{Simulaciones}
 
-Se realizaron simulaciones del algoritmo de Grover con $\ket{\omega} = \ket{0000}$, $\ket{\omega} = \ket{0110}$ y $\ket{\omega} = \ket{1111}$. También se realizon simulaciones del algoritmo de amplificación de amplitud con $\mathcal{W} = \{ \}$ y $\mathcal{W} = \{ \}$.
+Se realizaron simulaciones del algoritmo de Grover con $\ket{\omega} = \ket{0000}$, $\ket{\omega} = \ket{0110}$ y $\ket{\omega} = \ket{1111}$. También se realizon simulaciones del algoritmo de amplificación de amplitud con $\mathcal{W} = \{9, 13\} = \{1001_2, 1101_2 \}$ y $\mathcal{W} = \{4, 5, 12, 13\} = \{0100_2, 0101_2, 1100_2, 1101_2\}$.
 
 Un conjunto de las simulaciones se ha realizado en Wolfram Mathematica, implementando los operadores, es decir $U_{\omega}$, $U_\mathcal{W}$, $U_s$ y la transformada de Hadamard, directamente, de manera matricial, de acuerdo a las definiciones dadas anteriormente. Otro conjunto de las simulaciones ha realizado en Python, definiendo todos los operadores y transformaciones en base a sus construcciones circuitales, a partir de las compuertas nativas de los transmones, resolviendo la ecuación maestra del sistema al aplicar cada compuerta nativa. Al primer conjunto lo llamaremos simulaciones matemáticas, y al segundo, simulaciones circuitales. El código todas las simulaciones de este capítulo se encuentra en el apéndice \ref{ch:grovercod}.
 
 En el caso de la simulaciones matemáticas, sólo se ha simulado el caso sin relajación. Por otro lado, en el caso de la simulaciones circuitales, se ha simulado el sistema tanto sin relajación, como con relajación. En el caso del sistema con relajación, se ha utilizado la ecuación maestra de Lindblad con los operadores de colapso $\sigma_{-_i}$ y tasa de relajación $\gamma = 25KHz$.
-
-\subsection{Algoritmo de Grover}
 
 Como el espacio de Hilbert del sistema en el que sea ejecutado el algoritmo es de 16 dimensiones, ya que es de cuatro qubits, se necesitan $\lfloor \frac{\pi \sqrt{16}}{4} \rfloor = 3$ iteraciones para tener la máxima probabilidad de medir el estado deseado. Sin embargo, la simulación se ha realizado con 7 iteraciones, para apreciar la naturaleza oscilatoria de este algoritmo. Recordemos que este algoritmo consiste en rotaciones en el espacio 2D generado por $\ket{\omega}$ y $\ket{s^\prime}$, es decir, que si se aplican más de 3 rotaciones, la probabilidad de éxito debería disminuir, hasta que el estado del sistema se alinee con $- \ket{s^\prime}$, volver a aumentar hasta llegar a $- \ket{\omega}$, disminuir hasta pasar por $\ket{s^\prime}$, pasar de nuevo por el estado inicial $\ket{s}$ y repetirse el ciclo. La hipotesis es que veremos aproximadamente un período de sinusoide muestreada, con alrededor de seis muestras por período, en la gráfica de la evolución de la probabilidad de medir $\ket{\omega}$, ya que si luego de tres iteraciones se llega al punto de probabilidad máxima, alrededor de la sexta iteración se debe llegar al punto de probabilidad mínima y en la séptima volvería a aumentar.
 
@@ -338,6 +336,12 @@ En la figura \ref{fig:groverlosslesscomp1111} se puede observar la gráfica de l
 
 Ahora, compararemos los resultados de la simulación circuital con y sin relajación. Como se puede ver en la figura \ref{fig:groverlosscomp}, en el caso con relajación, los estados que no contienen el valor deseado dejan de tener todos la misma probabilidad. Los estados que involucran el estado base ganan probabilidad debido a la relajación de los qubits. La fidelidad entre los estados resultantes de los casos con y sin relajación es de 0.250818.
 
+Además, en el caso con relajación, la probabilidad de medir el estado deseado depende de cuál sea este estado. Mientras más particiones en $\ket{1}$ contenga este estado, peor será el efecto de la relajación en el algoritmo. Esto ocurre porque el algoritmo debe llevar estas particiones a estado excitados, es decir, a estados de energías superiores y esto es energía que el entorno absorbe por efecto Purcell. Las particiones en el estado $\ket{0}$ están en su estado base y no se ven afectadas por este fenómeno, pues este es su estado de mínima energía. Esto se ve reflejado en las siguientes figuras.
+
+En la figura \ref{fig:groverlosscomp}, se tiene $\ket{\omega} = \ket{1111}$, así que este es el caso en el que el entorno tiene el mayor efecto sobre el algoritmo, pues es el caso en el que el sistema tiene las mayores energías. Por otro lado, la figura \ref{fig:groverloss0000} presenta el caso en el que $\ket{\omega} = \ket{0000}$, este es el caso en el que el entorno tiene el menor efecto sobre el algoritmo, pues es el caso en el que el sistema tiene las menores energías. La figura \ref{fig:groverloss0110} presenta el caso en el $\ket{\omega} = \ket{0110}$. Este es un caso intermedio y el sistema tiene un efecto distinto sobre cada partición.
+
+\color{red}Los tiempos de vida no son suficientes\color{black}
+
 \begin{figure}[H]
     \centering
     \begin{subfigure}[m]{0.49\textwidth}
@@ -350,11 +354,102 @@ Ahora, compararemos los resultados de la simulación circuital con y sin relajac
         \includegraphics[width=0.99\linewidth]{img/groverallloss.png}
         \caption{Con relajación}
     \end{subfigure}
-    \caption[Evolución de las probabilidades en el algoritmo de Grover con relajación]{Evolución de las probabilidades en el algoritmo de Grover con relajación}
+    \caption[Evolución de las probabilidades en el algoritmo de Grover con relajación, $\mathcal{W} = \{15\}$]{Evolución de las probabilidades en el algoritmo de Grover con relajación, $\mathcal{W} = \{15\} \{1111_2\}$}
     \label{fig:groverlosscomp}
 \end{figure}
 
-\subsection{Amplificación de amplitud}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{img/grover0110loss.png}
+    \caption[Evolución de las probabilidades en el algoritmo de Grover con relajación, $\mathcal{W} = \{6\}$]{Evolución de las probabilidades en el algoritmo de Grover con relajación, $\mathcal{W} = \{6\} = \{0110_2\}$}
+    \label{fig:groverloss0110}
+\end{figure}
 
-\subsection{Optimización del algoritmo de Grover}
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[m]{0.49\textwidth}
+        \centering
+        \includegraphics[width=0.99\linewidth]{img/groverallloss.png}
+        \caption{$\omega = 15$}
+    \end{subfigure}
+    \begin{subfigure}[m]{0.49\textwidth}
+        \centering
+        \includegraphics[width=0.99\linewidth]{img/grover0000loss.png}
+        \caption{$\omega = 0$}
+    \end{subfigure}
+    \caption[Evolución de las probabilidades en el algoritmo de Grover con relajación, $\mathcal{W} = \{0\}$]{Evolución de las probabilidades en el algoritmo de Grover con relajación, $\mathcal{W} = \{0\} = \{0000_2\}$}
+    \label{fig:groverloss0000}
+\end{figure}
+
+Ahora veamos los casos en los que se tiene más de un estado deseado
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[m]{0.49\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/Grover-2_gr1.eps}
+        \caption{Wolfram Mathematica}
+    \end{subfigure}
+    \begin{subfigure}[m]{0.49\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/grover2lossless.png}
+        \caption{Python}
+    \end{subfigure}
+    \caption[Evolución de las probabilidades en el algoritmo de Grover sin relajación $\mathcal{W} = \{9, 13\}$]{Evolución de las probabilidades en el algoritmo de Grover sin relajación $\mathcal{W} = \{9, 13\} = \{1001_2, 1101_2\}$}
+    \label{fig:groverlosslesscomp2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[m]{0.49\textwidth}
+        \centering
+        \includegraphics[width=0.99\linewidth]{img/grover2lossless.png}
+        \caption{Sin relajación}
+    \end{subfigure}
+    \begin{subfigure}[m]{0.49\textwidth}
+        \centering
+        \includegraphics[width=0.99\linewidth]{img/grover2loss.png}
+        \caption{Con relajación}
+    \end{subfigure}
+    \caption[Evolución de las probabilidades en el algoritmo de Grover sin relajación, $\mathcal{W} = \{9, 13\}$]{Evolución de las probabilidades en el algoritmo de Grover sin relajación $\mathcal{W} = \{9, 13\} = \{1001_2, 1101_2\}$}
+    \label{fig:groverlosscomp2}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[m]{0.49\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/Grover-2_gr1.eps}
+        \caption{Wolfram Mathematica}
+    \end{subfigure}
+    \begin{subfigure}[m]{0.49\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/grover3lossless.png}
+        \caption{Python}
+    \end{subfigure}
+    \caption[Evolución de las probabilidades en el algoritmo de Grover sin relajación $\mathcal{W} = \{4, 5, 12, 13\}$]{Evolución de las probabilidades en el algoritmo de Grover sin relajación $\mathcal{W} = \{4, 5, 12, 13\} = \{0100_2, 0101_2, 1100_2, 1101_2\}$}
+    \label{fig:groverlosslesscomp3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[m]{0.49\textwidth}
+        \centering
+        \includegraphics[width=0.99\linewidth]{img/grover3lossless.eps}
+        \caption{Sin relajación}
+    \end{subfigure}
+    \begin{subfigure}[m]{0.49\textwidth}
+        \centering
+        \includegraphics[width=0.99\linewidth]{img/grover3loss.eps}
+        \caption{Con relajación}
+    \end{subfigure}
+    \caption[Evolución de las probabilidades en el algoritmo de Grover con relajación $\mathcal{W} = \{4, 5, 12, 13\}$]{Evolución de las probabilidades en el algoritmo de Grover con relajación $\mathcal{W} = \{4, 5, 12, 13\} = \{0100_2, 0101_2, 1100_2, 1101_2\}$}
+    \label{fig:groverlosscomp3}
+\end{figure}
+
+
+\subsection{Algoritmo de Grover en un paso y optimización}
+
+
 

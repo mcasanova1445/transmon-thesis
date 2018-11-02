@@ -7,14 +7,12 @@ Este algoritmo se basa en la idea de que sitios web importantes tienen muchos v�
 
 Existen muchos otros algoritmos, algunos más eficientes, pero la importancia de PageRank se sustenta en el poder económico de Google.
 
-Ilustraremos el algoritmo de PageRank con un ejemplo sencillo:
+Ilustraremos el algoritmo de PageRank con un ejemplo sencillo. Consideremos 5 páginas web distintas a las que denotaremos por 1, 2, 3, 4, y 5, y cuyo grafo es:
 
-Ejemplo:
+\color{red} GRAFO \color{black}
 
-Consideremos 5 páginas web distintas a las que denotaremos por 1, 2, 3, 4, y 5, y cuyo grafo es:
-\vspace{3cm}
+Entonces se deben realizar los siguientes pasos:
 
-Pasos:
 \begin{enumerate}
 \item Determinar la matriz de adyacencia. Algunos autores denotan la matriz de de adyacencia por M en el protocolo de PageRank
 
@@ -238,18 +236,18 @@ La forma obvia y directa de cuantizar una caminata aleatoria sería sustituir el
 \tikzset{VertexStyle/.style = {draw,circle,thick,
                                minimum size=1cm,
                                font=\bfseries},thick} 
-\Vertex[x = -2.2, y = 0]{-2}  \Vertex[x = -1.1, y = 0]{-1}
-\Vertex[x = 0, y = 0]{0} \Vertex[x = 1.1, y = 0]{1}
-\Vertex[x = 2.2, y = 0]{2}
+\Vertex[x = -3, y = 0]{-2}  \Vertex[x = -1.5, y = 0]{-1}
+\Vertex[x = 0, y = 0]{0} \Vertex[x = 1.5, y = 0]{1}
+\Vertex[x = 3, y = 0]{2}
 \Edges(-2,-1,0,1,2)
 \end{tikzpicture} &
 \begin{tikzpicture}[,>=stealth',shorten >=1pt,thick]
 \tikzset{VertexStyle/.style = {draw,circle,thick,
                                minimum size=1cm,
                                font=\scriptsize\bfseries},thick} 
-\Vertex[x = -2.2, y = 0, L = $\ket{-2}$]{-2}  \Vertex[x = -1.1, y = 0, L = $\ket{-1}$]{-1}
-\Vertex[x = 0, y = 0, L = $\ket{0}$]{0} \Vertex[x = 1.1, y = 0, L = $\ket{1}$]{1}
-\Vertex[x = 2.2, y = 0, L = $\ket{2}$]{2}
+\Vertex[x = -3, y = 0, L = $\ket{-2}$]{-2}  \Vertex[x = -1.5, y = 0, L = $\ket{-1}$]{-1}
+\Vertex[x = 0, y = 0, L = $\ket{0}$]{0} \Vertex[x = 1.5, y = 0, L = $\ket{1}$]{1}
+\Vertex[x = 3, y = 0, L = $\ket{2}$]{2}
 \Edges(-2,-1,0,1,2)
 \end{tikzpicture}
 \end{tabular}
@@ -299,7 +297,7 @@ Si tomamos un grafo cualquiera y lo duplicamos en la forma de un grafo bipartito
 \SetGraphUnit{2} 
 \tikzset{VertexStyle/.style = {draw,circle,thick,
                                minimum size=0.5cm,
-                               font=\Large\bfseries},thick} 
+                               font=\bfseries},thick} 
 \Vertex{1} \SOWE(1){2} \SOEA(2){3} \SOEA(1){4} 
 \Edges(1,2,3) \Edge(1)(4)
 
@@ -535,7 +533,21 @@ En la figura \ref{fig:star} se observa el grafo estrella utilizado para esta sim
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{img/star.png}
+    \begin{tikzpicture}[->,>=stealth',shorten >=1pt,thick]
+    \SetGraphUnit{2} 
+    \tikzset{VertexStyle/.style = {draw,circle,thick,
+                                   minimum size=0.5cm,
+                                   font=\bfseries},thick} 
+    \Vertex{1} \NO(1){2} \SOEA(1){3} \SOWE(1){4} 
+    \Edge(1)(2)
+    \Edge(1)(3)
+    \Edge(1)(4)
+    
+    \tikzset{EdgeStyle/.style = {->, bend left}}
+    \Edge(2)(1)
+    \Edge(3)(1)
+    \Edge(4)(1)
+    \end{tikzpicture} 
     \caption[Grafo estrella]{Grafo estrella}
     \label{fig:star}
 \end{figure}
@@ -570,7 +582,7 @@ En la figura \ref{fig:star} se observa el grafo estrella utilizado para esta sim
     \end{pmatrix}
 \end{equation}
 
-Los tres nodos exteriores de este grafo, además, forman lo que hemos llamado un subgrafo cíclico, por lo que para este grafo necesitaremos dos operadores $K_b$, unos para estos tres nodos y otro para el nodo central. Las figuras \ref{fig:starkb1} - \ref{fig:lokestar} muestran cómo construir el circuito del operador de difusión de la caminata de Szegedy asociada a la matriz de Google de este grafo.
+Los tres nodos exteriores de este grafo, además, forman lo que hemos llamado un subgrafo cíclico, por lo que para este grafo necesitaremos dos operadores $K_i$, uno para estos tres nodos y otro para el nodo central. Las figuras \ref{fig:starkb1} - \ref{fig:lokestar} muestran cómo construir el circuito del operador de difusión de la caminata de Szegedy asociada a la matriz de Google de este grafo.
 
 \begin{figure}[H]
 \[\Qcircuit @C=1.4em @R=1.8em {
@@ -604,8 +616,10 @@ Los tres nodos exteriores de este grafo, además, forman lo que hemos llamado un
 
 \begin{figure}[H]
 \[\Qcircuit @C=1.4em @R=1.8em {
-& \gate{Id} & \qw \\
-& \gate{Id} & \qw \\
+& \gate{I} & \qw \\
+& \gate{I} & \qw \\
+& \gate{I} & \qw \\
+& \gate{I} & \qw \\
 } 
 \]
 \caption[$T$ del grafo estrella]{$T$ del grafo estrella}
@@ -706,6 +720,27 @@ Ahora, compararemos los resultados de la simulación circuital con y sin pérdid
 
 \subsection{Grafo corona}
 
+En la figura \ref{fig:crown} se observa el grafo corona utilizado para esta simulación. Este grafo no es simétrico, por lo tanto, ni su matriz de adyacencia A, ni su matriz estocástica E, ni su matriz de Google G son hermíticas.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[->,>=stealth',shorten >=1pt,thick]
+    \SetGraphUnit{2} 
+    \tikzset{VertexStyle/.style = {draw,circle,thick,
+                                   minimum size=0.5cm,
+                                   font=\bfseries},thick} 
+    \Vertex{4} \NO(4){1} \SOEA(4){2} \SOWE(4){3} 
+    \Edge(1)(4)
+    \Edge(2)(4)
+    \Edge(3)(4)
+    \Edges(3,2,1,3)
+    \tikzset{EdgeStyle/.style = {->, bend left}}
+    \Edges(1,2,3,1)
+    \end{tikzpicture} 
+    \caption[Grafo corona]{Grafo corona}
+    \label{fig:crown}
+\end{figure}
+
 \begin{equation}
     A =
     \begin{pmatrix}
@@ -736,12 +771,73 @@ Ahora, compararemos los resultados de la simulación circuital con y sin pérdid
     \end{pmatrix}
 \end{equation}
 
+Como en el grafo corona, en este grafo, los tres nodos exteriores un subgrafo cíclico, por lo que para este grafo también necesitaremos dos operadores $K_i$, uno para estos tres nodos y otro para el nodo central. Las figuras \ref{fig:crownkb1} - \ref{fig:lokecrown} muestran cómo construir el circuito del operador de difusión de la caminata de Szegedy asociada a la matriz de Google de este grafo.
+
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\linewidth]{img/crown.png}
-    \caption[Grafo corona]{Grafo corona}
-    \label{fig:crown}
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \gate{Ry(1.85806)} & \ctrlo{1}           & \ctrl{1}          & \qw \\
+& \qw                & \gate{Ry(2.48274)}  & \gate{Ry(1.5708)} & \qw \\
+} \]
+\caption{Circuito de $K_1$ para el grafo corona}
+\label{fig:crownkb1}
 \end{figure}
+
+\begin{figure}[H]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \gate{Ry(\pi/2)}    & \qw               & \qw \\
+& \qw                 & \gate{Ry(\pi/2)}  & \qw \\
+} \]
+\caption{Circuito de $K_2$ para el grafo corona}
+\label{fig:crownkb2}
+\end{figure}
+
+\begin{figure}[H]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \ctrl{1}                   & \qw                & \ctrl{1}           & \qw \\
+& \ctrl{1}                   & \qw                & \ctrl{1}           & \qw \\
+& \multigate{1}{K_1^\dagger} & \multigate{1}{K_1} & \multigate{1}{K_2} & \qw \\
+& \ghost{K_1^\dagger}        & \ghost{K_1}        & \ghost{K_2}        & \qw \\
+} 
+\]
+\caption[$K_b$ del grafo corona]{$K_b$ del grafo corona}
+\label{fig:crownkb}
+\end{figure}
+
+\begin{figure}[H]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \ctrlo{1} & \ctrlo{1} & \ctrl{1}  & \ctrl{1}  & \ctrl{1}  & \ctrl{1}  & \qw \\
+& \ctrl{2}  & \ctrl{1}  & \ctrlo{2} & \ctrlo{1} & \ctrlo{2} & \ctrlo{1} & \qw \\
+& \qw       & \targ     & \qw       & \targ     & \qw       & \targ     & \qw \\
+& \targ     & \ctrl{-1} & \targ     & \ctrl{-1} & \targ     & \ctrl{-1} & \qw \\
+} 
+\]
+\caption[$T$ del grafo corona]{$T$ del grafo corona}
+\label{fig:crownT}
+\end{figure}
+
+\begin{figure}[H]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \gate{H} & \multigate{3}{K_b} & \multigate{3}{T^\dagger} & \qw \\
+& \gate{H} & \ghost{K_b}        & \ghost{T^\dagger}        & \qw \\
+& \qw      & \ghost{K_b}        & \ghost{T^\dagger}        & \qw \\
+& \qw      & \ghost{K_b}        & \ghost{T^\dagger}        & \qw \\
+} 
+\]
+\caption{Preparación del estado inicial para la caminata en el grafo corona}
+\label{fig:crowninit}
+\end{figure}
+
+\begin{figure}[H]
+\[ \Qcircuit @C=1.4em @R=1.8em {
+\lstick{\ket{0}} & {/^4} \qw & \gate{Init} & \gate{T} & \gate{K_b^\dagger} & \gate{D} & \gate{K_b} & \gate{T^\dagger} & \gate{SWAP} & \meter & \cw \\
+& & & & & \rstick{\quad 2m \text{ veces}}
+\gategroup{1}{4}{1}{9}{1.3em}{_\}}
+} \]
+\caption{Circuito del PageRank cuántico  del grafo corona}
+\label{fig:lokecrown}
+\end{figure}
+
+En la figura \ref{fig:instcrownlossless} se pueden observar las gráficas del PageRank cuántico instantáneo sin relajación, resultantes de la simulación matemática y de la simulación circuital. Como se puede observar, ambas figuras son bastante similares. En el caso de la simulación matemática, el PageRank cuántico de los tres nodos exteriores se solapan perfectamente, mientras que en la simulación circuital, no. Otra diferencia está en que las oscilaciones del PageRank cuántico en la simulación matemática son más amplias que las de la simulación circuital. Esto se debe a la limitada precisión numérica del solucionador de ecuaciones maestras.
 
 \begin{figure}[H]
     \centering
@@ -777,6 +873,24 @@ Ahora, compararemos los resultados de la simulación circuital con y sin pérdid
 
 \subsection{Grafo árbol}
 
+En la figura \ref{fig:tree} se observa el grafo árbol utilizado para esta simulación. Este grafo no es simétrico, por lo tanto, ni su matriz de adyacencia A, ni su matriz estocástica E, ni su matriz de Google G son hermíticas.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[->,>=stealth',shorten >=1pt,thick]
+    \SetGraphUnit{2} 
+    \tikzset{VertexStyle/.style = {draw,circle,thick,
+                                   minimum size=0.5cm,
+                                   font=\bfseries},thick} 
+    \Vertex{1} \SOWE(1){2} \SOEA(1){3} \SO(2){4} 
+    \Edge(1)(2)
+    \Edge(1)(3)
+    \Edge(2)(4)
+    \end{tikzpicture} 
+    \caption[Grafo árbol]{Grafo árbol}
+    \label{fig:tree}
+\end{figure}
+
 \begin{equation}
     A = 
     \begin{pmatrix}
@@ -807,12 +921,82 @@ Ahora, compararemos los resultados de la simulación circuital con y sin pérdid
     \end{pmatrix}
 \end{equation}
 
+En este grafo, los dos nodos hojas, 3 y 4, forman un subgrafo cíclico. El nodo raíz, 1, es su propio grafo cíclico, igual que el nodo 2. Por lo tanto, para este grafo necesitaremos tres operadores $K_i$, uno para los nodos 3 y 4, otro para el nodo 1 y otro para el nodo 2. Las figuras \ref{fig:treekb1} - \ref{fig:loketree} muestran cómo construir el circuito del operador de difusión de la caminata de Szegedy asociada a la matriz de Google de este grafo.
+
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\linewidth]{img/tree.png}
-    \caption[Grafo árbol]{Grafo árbol}
-    \label{fig:tree}
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \gate{Ry(1.5708)} & \ctrlo{1}           & \ctrl{1}          & \qw \\
+& \qw                & \gate{Ry(2.58678)}  & \gate{Ry(0.554811)} & \qw \\
+} \]
+\caption{Circuito de $K_1$ para el grafo árbol}
+\label{fig:treekb1}
 \end{figure}
+
+\begin{figure}[H]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \gate{Ry(2.58678)} & \ctrlo{1}           & \ctrl{1}          & \qw \\
+& \qw                & \gate{Ry(1.5708)}  & \gate{Ry(2.73613)} & \qw \\
+} \]
+\caption{Circuito de $K_2$ para el grafo árbol}
+\label{fig:treekb2}
+\end{figure}
+
+\begin{figure}[H]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \gate{Ry(\pi/2)}    & \qw               & \qw \\
+& \qw                 & \gate{Ry(\pi/2)}  & \qw \\
+} \]
+\caption{Circuito de $K_3$ para el grafo árbol}
+\label{fig:treekb3}
+\end{figure}
+
+\begin{figure}[H]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \ctrlo{1}          & \ctrlo{1}          & \ctrl{2}           & \qw \\
+& \ctrlo{1}          & \ctrl{1}           & \qw                & \qw \\
+& \multigate{1}{K_1} & \multigate{1}{K_2} & \multigate{1}{K_3} & \qw \\
+& \ghost{K_1}        & \ghost{K_2}        & \ghost{K_3}        & \qw \\
+} 
+\]
+\caption[$K_b$ del grafo árbol]{$K_b$ del grafo árbol}
+\label{fig:treekb}
+\end{figure}
+
+\begin{figure}[H]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \gate{I} & \qw \\
+& \gate{I} & \qw \\
+& \gate{I} & \qw \\
+& \gate{I} & \qw \\
+} 
+\]
+\caption[$T$ del grafo árbol]{$T$ del grafo árbol}
+\label{fig:treeT}
+\end{figure}
+
+\begin{figure}[H]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \gate{H} & \multigate{3}{K_b} & \qw \\
+& \gate{H} & \ghost{K_b}        & \qw \\
+& \qw      & \ghost{K_b}        & \qw \\
+& \qw      & \ghost{K_b}        & \qw \\
+} 
+\]
+\caption{Preparación del estado inicial para la caminata en el grafo árbol}
+\label{fig:treeinit}
+\end{figure}
+
+\begin{figure}[H]
+\[ \Qcircuit @C=1.4em @R=1.8em {
+\lstick{\ket{0}} & {/^4} \qw & \gate{Init} & \gate{K_b^\dagger} & \gate{D} & \gate{K_b} & \gate{SWAP} & \meter & \cw \\
+& & & & \rstick{ 2m \text{ veces}}
+\gategroup{1}{4}{1}{7}{1.3em}{_\}}
+} \]
+\caption{Circuito del PageRank cuántico  del grafo árbol}
+\label{fig:loketree}
+\end{figure}
+
+En la figura \ref{fig:insttreelossless} se pueden observar las gráficas del PageRank cuántico instantáneo sin relajación, resultantes de la simulación matemática y de la simulación circuital. Como se puede observar, ambas figuras son bastante similares. De la misma manera que con el grafo corona, las oscilaciones en la simulación circuital son de menor amplitud.
 
 \begin{figure}[H]
     \centering
@@ -845,6 +1029,8 @@ Ahora, compararemos los resultados de la simulación circuital con y sin pérdid
     \caption[PageRank cuántico promedio del grafo árbol sin pérdidas]{PageRank cuántico promedio del grafo árbol sin pérdidas}
     \label{fig:meantreelossless}
 \end{figure}
+
+En el caso con pérdidas, presentado en la figura \ref{fig:insttreelossy}, se observa que el PageRank cuántico es constante. Esto se debe a lo larga que es cada iterción. En el tiempo que realiza una iteración, los qubits ya le han entregado al entorno la energía introducida por las primeras compuertas, así que el estado final de cada iteración se aproxima a la aplicación de sólo las últimas compuertas de la iteración al estado base.
 
 \begin{figure}[H]
     \centering
@@ -880,6 +1066,31 @@ Ahora, compararemos los resultados de la simulación circuital con y sin pérdid
 
 \subsection{Grafo aleatorio}
 
+En la figura \ref{fig:tree} se observa último grafo utilizado para las simulaciones y fue construido de manera aleatoria. Este grafo no es simétrico, por lo tanto, ni su matriz de adyacencia A, ni su matriz estocástica E, ni su matriz de Google G son hermíticas.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[->,>=stealth',shorten >=1pt,thick]
+    \SetGraphUnit{2} 
+    \tikzset{VertexStyle/.style = {draw,circle,thick,
+                                   minimum size=0.5cm,
+                                   font=\bfseries},thick} 
+    \Vertex{1} \SOWE(1){2} \SOEA(1){3} \SOEA(2){4} 
+    \Edge(1)(2)
+    \Edge(1)(3)
+    \Edge(1)(4)
+    \Edge(2)(4)
+    \Edge(3)(4)
+
+    \tikzset{EdgeStyle/.style = {->, bend left}}
+    \Edge(2)(1)
+    \tikzset{EdgeStyle/.style = {->, bend right}}
+    \Edge(4)(3)
+    \end{tikzpicture} 
+    \caption[Grafo aleatorio]{Grafo aleatorio}
+    \label{fig:any}
+\end{figure}
+
 \begin{equation}
     A =
     \begin{pmatrix}
@@ -910,12 +1121,82 @@ Ahora, compararemos los resultados de la simulación circuital con y sin pérdid
     \end{pmatrix}
 \end{equation}
 
+En este grafo, al igual que en el caso anterior, los nodos 3 y 4 forman un subgrafo cíclico, y los nodos 1 y 2 son sus propios subgrafos cíclicos. Por lo tanto, para este grafo también necesitaremos tres operadores $K_i$, uno para los nodos 3 y 4, otro para el nodo 1 y otro para el nodo 2. Las figuras \ref{fig:anykb1} - \ref{fig:lokeany} muestran cómo construir el circuito del operador de difusión de la caminata de Szegedy asociada a la matriz de Google de este grafo.
+
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\linewidth]{img/any.png}
-    \caption[Grafo aleatorio]{Grafo aleatorio}
-    \label{fig:any}
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \gate{Ry(1.85806)} & \ctrlo{1}           & \ctrl{1}          & \qw \\
+& \qw                & \gate{Ry(2.48274)}  & \gate{Ry(1.5708)} & \qw \\
+} \]
+\caption{Circuito de $K_1$ para el grafo aleatorio}
+\label{fig:anykb1}
 \end{figure}
+
+\begin{figure}[H]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \gate{Ry(1.5708)} & \ctrlo{1}           & \ctrl{1}          & \qw \\
+& \qw                & \gate{Ry(0.554811)}  & \gate{Ry(2.58678)} & \qw \\
+} \]
+\caption{Circuito de $K_2$ para el grafo aleatorio}
+\label{fig:anykb2}
+\end{figure}
+
+\begin{figure}[H]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \gate{Ry(2.58678)} & \ctrlo{1}           & \ctrl{1}          & \qw \\
+& \qw                & \gate{Ry(1.5708)}  & \gate{Ry(2.73613)} & \qw \\
+} \]
+\caption{Circuito de $K_3$ para el grafo aleatorio}
+\label{fig:anykb3}
+\end{figure}
+
+\begin{figure}[H]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \ctrlo{1}          & \ctrlo{1}          & \ctrl{2}           & \qw \\
+& \ctrlo{1}          & \ctrl{1}           & \qw                & \qw \\
+& \multigate{1}{K_1} & \multigate{1}{K_2} & \multigate{1}{K_3} & \qw \\
+& \ghost{K_1}        & \ghost{K_2}        & \ghost{K_3}        & \qw \\
+} 
+\]
+\caption[$K_b$ del grafo aleatorio]{$K_b$ del grafo aleatorio}
+\label{fig:anykb}
+\end{figure}
+
+\begin{figure}[H]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \ctrl{1}  & \ctrl{1} & \qw \\
+& \ctrl{1}  & \ctrl{2} & \qw \\
+& \targ     & \qw      & \qw \\
+& \ctrl{-1} & \targ    & \qw \\
+} 
+\]
+\caption[$T$ del grafo aleatorio]{$T$ del grafo aleatorio}
+\label{fig:anyT}
+\end{figure}
+
+\begin{figure}[H]
+\[\Qcircuit @C=1.4em @R=1.8em {
+& \gate{H} & \multigate{3}{K_b} & \multigate{3}{T^\dagger} & \qw \\
+& \gate{H} & \ghost{K_b}        & \ghost{T^\dagger}        & \qw \\
+& \qw      & \ghost{K_b}        & \ghost{T^\dagger}        & \qw \\
+& \qw      & \ghost{K_b}        & \ghost{T^\dagger}        & \qw \\
+} 
+\]
+\caption{Preparación del estado inicial para la caminata en el grafo aleatorio}
+\label{fig:anyinit}
+\end{figure}
+
+\begin{figure}[H]
+\[ \Qcircuit @C=1.4em @R=1.8em {
+\lstick{\ket{0}} & {/^4} \qw & \gate{Init} & \gate{T} & \gate{K_b^\dagger} & \gate{D} & \gate{K_b} & \gate{T^\dagger} & \gate{SWAP} & \meter & \cw \\
+& & & & \rstick{ 2m \text{ veces}}
+\gategroup{1}{4}{1}{9}{1.3em}{_\}}
+} \]
+\caption{Circuito del PageRank cuántico  del grafo aleatorio}
+\label{fig:lokeany}
+\end{figure}
+
+En la figura \ref{fig:instanylossless} se pueden observar las gráficas del PageRank cuántico instantáneo sin relajación, resultantes de la simulación matemática y de la simulación circuital. Como se puede observar, ambas figuras son bastante similares. De la misma manera que con el grafo corona, las oscilaciones en la simulación circuital son de menor amplitud. También se nota que las curvas son más suaves en el caso circuital. Por ejemplo, en la curva del nodo 3, la no monoticidad en los trabos de subida o bajada es menor.
 
 \begin{figure}[H]
     \centering
@@ -948,6 +1229,8 @@ Ahora, compararemos los resultados de la simulación circuital con y sin pérdid
     \caption[PageRank cuántico promedio del grafo aleatorio sin pérdidas]{PageRank cuántico promedio del grafo aleatorio sin pérdidas}
     \label{fig:meananylossless}
 \end{figure}
+
+En el caso con pérdidas, presentado en la figura \ref{fig:instanylossy}, se observa que el PageRank cuántico es constante. Esto se debe a lo larga que es cada iterción. En el tiempo que realiza una iteración, los qubits ya le han entregado al entorno la energía introducida por las primeras compuertas, así que el estado final de cada iteración se aproxima a la aplicación de sólo las últimas compuertas de la iteración al estado base.
 
 \begin{figure}[H]
     \centering

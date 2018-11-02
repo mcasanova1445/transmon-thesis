@@ -422,10 +422,8 @@ This section's content...
 
 \subsection{Qubits}
 Un qubit es un sistema físico de dos niveles, es decir, es un objeto cuyo estado es un elemento del espacio de Hilbert de dimensión $\dim (\mathcal{H})=2$ y puede ser escrito de la siguiente manera: $ \ket{\psi} = \alpha \ket{0} + \beta \ket{1} $, donde $ \{ \ket{0},\ket{1} \} $ forma una base de $\mathcal{H}$ y donde $ \alpha $ y $ \beta $ son números complejos, tales que $ | \alpha |^2 + | \beta |^2 = 1 $, conocidos como amplitudes de probabilidad.
-\vspace{0.5cm}
 
 El qubit se puede pensar como el equivalente en IC del bit, el cual, por sus propiedad cuánticas, puede estar no sólo puede estar en el estado $\ket{0}$ y en el estado $\ket{1}$, sino también en superposiciones de estos dos.
-\vspace{0.5cm}
 
 \subsection{Esfera de Bloch}
 
@@ -605,7 +603,6 @@ Otra diferencia está en la variedad de compuertas que pueden existir. Como ejem
 
 \subsection{Compuertas cuánticas de un qubit}
 Las operaciones unitarias con las que se opera sobre los qubits reciben el nombre de compuertas cuánticas.
-\vspace{0.5cm}
 
 Las compuertas de un sólo qubit pueden ser vistas como rotaciones en la esfera de Bloch.
 
@@ -664,7 +661,6 @@ Esta operación es equivalente a \textit{no-operation} en una computadora clási
 
 \subsubsection{Compuerta X}
 Este es el equivalente al NOT clásico, pues tránsforma los $\ket{0}$ en $\ket{1}$ y viceversa, ya que realiza una rotación de $\pi$ sobre el eje X en la esfera de Bloch. Su forma matricial viene dada por la matriz de Pauli $\sigma_x$
-\vspace{0.25cm}
 
 \begin{minipage}{0.5\textwidth}
 \[
@@ -717,7 +713,6 @@ Este es el equivalente al NOT clásico, pues tránsforma los $\ket{0}$ en $\ket{
 
 \subsubsection{Compuerta Z}
 Esta compuerta no tiene análogo clásico, pues lo que realiza es un cambio de fase de $\pi$. Esto equivale a una rotación de $\pi$ sobre el eje Z en la esfera de Bloch. Su forma matricial viene dada por la matriz de Pauli $\sigma_z$
-\vspace{0.25cm}
 
 \begin{minipage}{0.5\textwidth}
 \[
@@ -770,7 +765,6 @@ Esta compuerta no tiene análogo clásico, pues lo que realiza es un cambio de f
 
 \subsubsection{Compuerta Y}
 Esta compuerta realiza una rotación de $\pi$ sobre el eje y de la esfera de Bloch. Distintos autores definen la forma matricial de esta compuerta de dos maneras distintas, una forma viene dada por la matriz de Pauli $\sigma_y$ y otra es esta matriz por una fase global de $i$.
-\vspace{0.25cm}
 
 \begin{minipage}{0.5\textwidth}
 \[
@@ -829,7 +823,6 @@ Esta compuerta realiza una rotación de $\pi$ sobre el eje y de la esfera de Blo
 
 \subsubsection{Compuerta de Hadamard}
 Esta compuerta transforma los estados de la base computacional $\ket{0}$ y $\ket{1}$ en estados de superposiciones uniformes ($\ket{+} = (\ket{0} + \ket{1})/\sqrt{2}$ y $\ket{-} = (\ket{0} - \ket{1})/\sqrt{2}$). También se puede interpretar como el mapa de la base Z a la base X. Ella consiste de una rotación de $\pi$ sobre el eje $(x+z)$ y se puede realizar con una rotación de $\pi/2$ sobre el eje Y seguida de la compuerta X.
-\vspace{0.25cm}
 
 \begin{minipage}{0.5\textwidth}
     \[
@@ -884,7 +877,6 @@ Esta compuerta transforma los estados de la base computacional $\ket{0}$ y $\ket
 
 \subsubsection{Compuerta S}
 Esta compuerta es la raiz cuadrada de Z e introduce una fase de $\pi/2$ al qubit.
-\vspace{0.25cm}
 
 \begin{minipage}{0.5\textwidth}
 \[
@@ -937,7 +929,6 @@ Esta compuerta es la raiz cuadrada de Z e introduce una fase de $\pi/2$ al qubit
 
 \subsubsection{Compuerta T}
 Esta compuerta es la raiz cuadrada de S e introduce una fase de $\pi/4$ al qubit.
-\vspace{0.25cm}
 
 \begin{minipage}{0.5\textwidth}
 \[
@@ -1392,19 +1383,14 @@ Esta compuerta es fundamental para las computadoras cuánticas a base de trampas
 
 \subsection{Conjuntos universales de compuertas cuánticas}
 Un conjunto universal de compuertas cuánticas (CUCC) es un conjunto finito de compuertas cuánticas con el cuál se puede aproximar cualquier operación unitaria arbitrariamente bien.
-\vspace{0.5cm}
 
 Cualquier operador unitario puede ser escrito en función de compuertas de uno y dos qubits \cite{barenco}.
-\vspace{0.5cm}
 
 Un CUCC simple es $\{H,T,\mathit{CNOT}\}$.
-\vspace{0.5cm}
 
 Existe un CUCC de una sóla compuerta, la compuerta de Deutsch, $D(\theta)$.
-\vspace{0.5cm}
 
 La compuerta de Toffoli es un caso especial de la compuerta de Deutsch, $D(\frac{\pi}{2})$.
-\vspace{0.5cm}
 
 Otro CUCC consiste en la compuerta de Ising y la compuerta de cambio de fase, \{$\mathit{XX}_\phi,R_z(\theta)$\}. Este conjunto es nativo en algunas computadoras cuánticas de trampas de iones.
 
@@ -1473,3 +1459,239 @@ El esquema de medidas proyectivas, también llamadas medidas de von Neumann, se 
 \end{equation}
 
 Cabe destacar que al realizar nuevamente la medida el estado resultante no se modifica, siempre que la dimensión de $\mathcal{M}_\lambda$ sea igual a uno, es decir, el proyector $\hat{\Pi}_{\mathcal{M}_\lambda}$ sea de rango uno. Este hecho se conoce con el nombre de repetibilidad, propiedad que no está presente en los otros esquemas de medidas.
+
+\section{Sistemas cuánticos abiertos}
+
+Consideremos el espacio de Hilbert bipartito $\mathcal{H} = \mathcal{H}_A \otimes \mathcal{H}_B$. Como ya vimos antes, si tenemos una matriz de densidad $\rho \in \mathcal{H}$, la manera de escribir la matriz de densidad del subsistema $A$ está dada por la traza parcial $\rho_A = Tr_B(\rho)$.
+
+En $\mathcal{H}_A$ las medidas están dadas por un conjunto de operadores hermíticos $\{M_k\}$, cada uno de ellos asociado a un posible resultado $k$. Supongamos que no podemos ver el subsistema $B$ y que sólo vemos $A$ con $\rho_A$. Entonces, la probabilidad de obtener un resultado $k$ cuando realicemos la medida $\{M_k\}$ será
+
+\begin{equation}
+    p_A(k) = Tr(M_k \rho_A)
+\end{equation}
+
+En el sistema total esta medida corresponde a un operador $\tilde{M}_k = M_k \otimes \mathds{1}$ y la probabilidad de obtener el resultado $k$ sería
+
+\begin{equation}
+    p_A(k) = Tr(\tilde{M}_k \rho)
+\end{equation}
+
+Si $\{\ket{\psi_i^A}, \ket{\varphi_j^B}\}$ es una base de $\mathcal{H}$, entonces
+
+\begin{equation}
+    \begin{array}{r c l}
+        p_A(k)
+        &=& Tr[(M_k \otimes \mathds{1}) \rho] \\
+        &=& \sum_{ij} \bra{\psi_i^A} \bra{\varphi_j^B} (M_k \otimes \mathds{1}) \rho \ket{\psi_i^A} \ket{\varphi_j^B} \\
+        &=& \sum_i (\bra{\psi_i^A} M_k \otimes \mathds{1}) \left[\sum_j (\mathds{1} \otimes \bra{\varphi_j^B}) \rho (\mathds{1} \otimes \ket{\varphi_j^B})\right] (\ket{\psi_i^A} \otimes \mathds{1}) \\
+        &=& \sum_i \bra{\psi_i^A} M_k Tr_B(\rho) \ket{\psi_i^A} \\
+        &=& \sum_i \bra{\psi_i^A} M_k \rho_A \ket{\psi_i^A} = Tr(M_k \rho_A)
+    \end{array}
+\end{equation}
+
+Así que $\rho_A$ está inequívocamente dado por la traza parcial $Tr_B(\rho)$.
+
+Una propiedad importante de la traza parcial es que incluso si $\rho$ es un estado puro, $\rho_A$ y $\rho_B$ pueden ser mixtos, esto ocurre si $\ket{\phi}$ es un estado entrelazado.
+
+Dada la matriz de densidad $\rho(t_0)$, tomando la traza parcial en $B$ en el tiempo $t_1$, tendríamos el estado $\rho_A(t_1)$, dado por:
+
+\begin{equation}
+    \rho_A(t_1) = Tr_B[U(t_1, t_0) \rho(t_0) U^\dagger(t_1, t_0)]
+    \label{eq:parevol}
+\end{equation}
+
+Si el operador de evolución no puede ser factorizado de la manera $U(t_1, t_0) = U_A(t_1, t_0) \otimes U_B(t_1, t_0)$, entonces los sistemas $A$ y $B$ están iteractuando e intercambian energía e información entre ellos, es decir, son sistemas cuánticos abiertos.
+
+Ahora, ¿qué pasa si queremos estudiar sólo la dinámica de $\rho_A$?, a pesar de saber que no podemos factorizar $U(t_1, t_0)$ en dos particiones. Este problema se soluciona desarrollando un mapa dinámico que actúe en $\mathcal{H}_A$ que transforme los estados del subsistema $A$ del tiempo $t_0$ al tiempo $t_1$.
+
+\begin{equation}
+    \mathcal{E}_{(t_1, t_0)} : \rho_A(t_0) \rightarrow \rho_A(t_1)
+\end{equation}
+
+El problema es que en general este mapa no depende sólo de $U(t_1, t_0)$ y de las propiedades de $B$, sino también de $A$ en sí mismo. Para aclarar este punto, escribamos el estado total $\rho$ como la suma de dos contribuciones:
+
+\begin{equation}
+    \rho(t_) = \rho_A(t_0) \otimes \rho_B(t_1) + \rho_{corr}(t_0)
+    \label{eq:ABcorr}
+\end{equation}
+
+Donde el término $\rho_{corr}(t_0)$ no es un estado cuántico y satisface
+
+\begin{equation}
+    Tr_A[\rho_{corr}(t_0)] = Tr_B[\rho_{corr}(t_0)] = 0
+\end{equation}
+
+Este término contiene las correlaciones, tanto clásicas como cuánticas, entre los dos subsistemas. Sustituyendo  \ref{eq:ABcorr} en \ref{eq:parevol} tenemos
+
+\begin{equation}
+    \begin{array}{r c l}
+        \rho_A(t_1)
+        &=& Tr_B[U(t_1, t_0) (\rho_A(t_0) \otimes \rho_B(t_0) + \rho_{corr}(t_0)) U^\dagger(t_1, t_0)] \\
+        &=& \sum_i \lambda_i Tr_B[U(t_1, t_0) (\rho_A(t_0) \otimes \ketbra{\psi_i}) U^\dagger(t_1, t_0)] \\ &+& Tr_B[U(t_1, t_0) \rho_{corr}(t_0)) U^\dagger(t_1, t_0)] \\
+        &=& \sum_{ij} K_{ij}(t1, t0) \rho_A(t_0) K_{ij}^\dagger(t_1, t_0) + \zeta(t_1, t_0) \\
+        &=& \mathcal{E}_{(t_1, t_0)}[\rho_A(t_0)]
+    \end{array}
+\end{equation}
+
+Donde $K_{ij}(t_1, t_0) = \sqrt{\lambda_i} \bra{\psi_j} U(t_1, t_0) \ket{\psi_i}$ y hemos usado la descomposición espectral de $\rho_B(t_0) = \sum_i \lambda_i \ketbra{\psi_i}$. Los operadores $K_{ij}(t_1, t_0)$ dependen sólo del operador de evolución global y del estado inicial del subsistema $B$, pero la parte no homogenea $\zeta(t_1, t_0) = Tr_B[U(t_1, t_0) \rho_{corr}(t_0)) U^\dagger(t_1, t_0)]$ puede no ser independiente de $\rho_A$ debido al término de correlación $\rho_{corr}$.
+
+Vista esta depencia, reescribamos $\mathcal{E}_{(t_1, t_0)}$ de la siguiente manera:
+
+\begin{equation}
+    \mathcal{E}_{(t_1, t_0)}[\rho_A] = \rho_A(t_1) = \sum_{ij} K_{ij}(t_1, t_0, \rho_A) \rho_A(t_0) K^\dagger_{ij}(t_1, t_0, \rho_A)
+\end{equation}
+
+Hemos escrito el mapa dinámico de manera homogenea y ahora $K_{ij}$ depende de $\rho_A$ en el tiempo $t_0$. Un mapa con esta forma siempre existe. Para demostrar esto, basta con considerar el siguiente caso particular:
+
+\begin{equation}
+    \mathcal{E}_{(t_1, t_0)}[\rho_A] = Tr_2[U_{SWAP} \rho_A(t_0) \otimes \rho_A(t_1) U_{SWAP}^\dagger] = \rho_A(t_1)
+\end{equation}
+
+Aquí $U_{SWAP}$ representa el operdor SWAP entre las particiones 1 y 2, tal que $U_{SWAP} (\rho \otimes \sigma) U_{SWAP}^\dagger$. Así, $\rho_A(t_1)$ pasa a la partición 1 y es el resultado de la traza parcial. Entonces, si utilizamos la descomposición espectral de $\rho_A{t_1}$ tendremos
+
+\begin{equation}
+    \begin{array}{r c l}
+        \mathcal{E}_{(t_1, t_0)}[\rho_A]
+        &=& Tr_2[U_{SWAP} \rho_A(t_0) \otimes \rho_A(t_1) U_{SWAP}^\dagger] \\
+        &=& \sum_i \lambda_i Tr_2[U_{SWAP} \rho_A(t_0) \otimes \ket{\lambda_i} U_{SWAP}^\dagger] \\
+        &=& \sum_{ij} K_{ij}(t_1, t_0, \rho_A) \rho_A(t_0) K^\dagger_{ij}(t_1, t_0, \rho_A)
+    \end{array}
+\end{equation}
+
+Donde $K_{ij}(t_1, t_0, \rho_A) = \sqrt{\lambda_i} \bra{\lambda_j} U_{SWAP} \ket{\lambda_i}$. Cabe mencionar que esta descomposición no es única.
+
+Un mapa dinámico universal es aquel que es independiente del estado al que se aplica. Los operadores $K_{ij}(t_1, t_0)$ que lo conforman se conocen como operadores de Krauss. Los mapas dinámicos universales son completamente positivos y los operadores de Krauss cumplen la siguiente propiedad
+
+\begin{equation}
+    \sum_{ij} K_{ij}^\dagger(t_1, t_0) K_{ij}(t_1, t_0) = \mathds(1)
+\end{equation}
+
+Decimos que un sistema tiene evolución markoviana cuando su evolución puede ser descrita por mapas dinámicos universales tales componibles de la siguiente manera:
+
+\begin{equation}
+    \mathcal{E}_{(t_2, t_0)} = \mathcal{E}_{(t_2, t_1)} \mathcal{E}_{(t_1, t_0)}
+\end{equation}
+
+Esta propiedad de composición se conoce como condición de divisibilidad. Típicamente, la evolución de los sistemas abiertos no es markoviana, porque se desarrollan correlaciones que hacen que el mapa dinámico que la describe no sea universal. Sin embargo, si el término $\rho_{corr}$ no afecta mucho la dinámica del sistema, un modelo markoviano puede dar una buena aproximación de la evolución temporal.
+
+Consideremos entonces una evolución markoviana. Esto nos permite construir la siguiente ecuación de diferencias:
+
+\begin{equation}
+    \rho(t + \epsilon) - \rho(t) = [\mathcal{E}_{(t+\epsilon,0)} - \mathcal{E}_{(t,0)}] \rho(0) = [\mathcal{E}_{(t+\epsilon,t)} - \mathds{1}] \mathcal{E}_{(t,0)}[\rho(0)] = [\mathcal{E}_{(t+\epsilon,t)} - \mathds{1}] \rho(t)
+\end{equation}
+
+Si el límite cuando $\epsilon$ tiende a cero está bien definido, entonces podemos construir la ecuación diferencial de $\rho(t)$, llamada ecuación maestra:
+
+\begin{equation}
+    \frac{d\rho(t)}{dt} = \lim_{\epsilon \to 0} \frac{\rho(t+\epsilon) - \rho(t)}{\epsilon} = \lim_{\epsilon \to 0} \frac{[\mathcal{E} - \mathds{1}]}{\epsilon} \rho(t) = \mathcal{L}_t \rho(t)
+\end{equation}
+
+Donde hemos definido el generador de la evolución como:
+
+\begin{equation}
+    \mathcal{L}_t = \lim_{\epsilon \to 0} \frac{[\mathcal{E} - \mathds{1}]}{\epsilon}
+\end{equation}
+
+Sea $\{F_j, j = 1, ..., N^2\}$ una base ortonormal completa con respecto al producto interno de Hilbert-Schmidt $(F_n, F_m) = Tr(F_n^\dagger F_m) = \delta_{nm}$, tal que $F_{N^2} = \mathds{1}/\sqrt{N}$, para que el resto de los operadores tengan traza cero. Ahora la expansión de Krauss en esta base nos da
+
+\begin{equation}
+    \mathcal{E}_{(t_2, t_1)}[\rho] = \sum_{nm} c_{nm}(t_2, t_1) F_n \rho F_m^\dagger
+\end{equation}
+
+Donde los elementos $c_{nm}$ son la multiplicación de los productos internos de $K_{ij}$ con los elementos de la base elegida.
+
+\begin{equation}
+    c_{nm}(t_2, t_1) = \sum_{ij} (F_n, K_{ij}(t_2, t_1)) (F_m, K_{ij}(t_2, t_1))^*
+\end{equation}
+
+En esta base el generador $\mathcal{L}_t$ toma la siguiente forma:
+
+\begin{equation}
+    \begin{array}{r c l}
+        \mathcal{L}_t(\rho)
+        &=& \lim_{\epsilon \to 0} \sum_{nm} \frac{c_{nm}(t+\epsilon,t) F_n \rho F_m^\dagger - \rho}{\epsilon} \\
+        &=& \lim_{\epsilon \to 0}
+        [\frac{c_{N^2N^2}(t+\epsilon,t) - N}{N\epsilon} \rho \\
+        &+& \sum_{n=1}^{N^2-1} \frac{1}{\sqrt{N}} (
+        \frac{c_{nN^2}(t+\epsilon,t)}{\epsilon} F_n \rho +
+        \frac{c_{N^2n}(t+\epsilon,t)}{\epsilon} \rho F_n^\dagger) \\
+        &+& \sum_{n,m=1}^{N^2-1} \frac{c_{nm}(t+\epsilon,t)}{\epsilon} F_n \rho F_m^\dagger]
+    \end{array}
+\end{equation}
+
+Ahora, definamos los coeficientes $\alpha_{nm}(t)$ como:
+
+\begin{align}
+    \alpha_{N^2N^2}(t) &= \lim_{\epsilon \to 0} \frac{c_{N^2N^2}(t+\epsilon,t) - N}{\epsilon} \\
+    \alpha_{nN^2}(t) &= \lim_{\epsilon \to 0} \frac{c_{nN^2}{\epsilon}}, \quad n = 1, ... , N^2 -1 \\
+    \alpha_{nm}(t) &= \lim_{\epsilon \to 0} \frac{c_{nm}{\epsilon}}, \quad n = 1, ... , N^2 -1
+\end{align}
+
+También definimos los siguientes operadores:
+
+\begin{align}
+    F(t) &= \frac{1}{\sqrt{N}} \sum_{n=1}^{N^2-1} \alpha_{jN^2}(t) F_j \\
+    G(t) &= \frac{\alpha_{N^2N^2}}{2N} \mathds{1} + \frac{1}{2} [F^\dagger(t) + F(t)] \\
+    H(t) &= \frac{1}{2i} [F^\dagger(t) - F(t)]
+\end{align}
+
+Este último operador, $H(t)$, es hermítico. En términos de estos operadores, sustituyendo, el generador de la ecuación maestra toma la siguiente forma:
+
+\begin{equation}
+    \mathcal{L}_t(\rho) = -i [H(t), \rho] + \{G(t), \rho\} + \sum_{n,m=1}^{N^2-1} \alpha_{nm}(t) F_n \rho F_m^\dagger
+\end{equation}
+
+Ya que los mapas dinámicos universales preservan la traza de cualquier matriz de densidad $\rho$,
+
+\begin{equation}
+    0 = Tr[\mathcal{L}(\rho)] = Tr\left[ \left(2G(t) + \sum_{n,m=1}^{N^2-1} \alpha_{nm}(t) F_m^\dagger F_n \right) \rho \right]
+\end{equation}
+
+Las siguientes propiedades de la traza de los conmutadores y los anticonmutadores
+
+\begin{align}
+    Tr([A,B]) &= Tr(AB - BA) = Tr(AB) - Tr(BA) = 0 \\
+    Tr(\{A,B\}) &= Tr(AB + BA) = Tr(AB) + Tr(BA) = 2 Tr(AB)
+\end{align}
+
+Dado este hecho, podemos concluir que 
+
+\begin{equation}
+    G(t) = - \frac{1}{2} \sum_{n,m=1}^{N^2-1} \alpha_{nm}(t) F_m^\dagger F_n
+\end{equation}
+
+Sustituyendo, el generador nos queda de con la siguiente forma
+
+\begin{equation}
+    \mathcal{L}_t(\rho) = -i [H(t), \rho] + \sum_{n,m=1}^{N^2-1} \alpha_{nm}(t) \left[F_n \rho F_m^\dagger - frac{1}{2} \{F_m^\dagger F_n, \rho\}\right]
+\end{equation}
+
+La matriz de coeficientes $\{\alpha_{nm}(t)\}$ es una matriz semidefinida positiva, así que podemos diagonalizarla con una matriz unitaria $u(t)$, tal que
+
+\begin{equation}
+    \sum_{nm} u_{jn}(t) \alpha_{nm}(t) u_{km}^*(t) = \gamma_j(t) \delta_{jk}
+\end{equation}
+
+Cada autovalor $\gamma_j(t)$ es mayor o igual a cero. Ahora tenemos los nuevos operadores $V_m(t)$
+
+\begin{equation}
+    V_m(t) = \sum_{n=1}^{N^2-1} u_{mn}^*(t) F_n \\
+    F_j = \sum_{m=1}^{N^2-1} u_{mn}(t) V_m(t)
+\end{equation}
+
+Con estos últimos operadores, el generador de la ecuación maestra se convierte en
+
+\begin{equation}
+    \mathcal{L}_t(\rho) = -i [H(t), \rho] + \sum_m \gamma_m(t) \left[ V_m(t) \rho V_m^\dagger(t) - \frac{1}{2} \{V_m^\dagger(t) V_m(t), \rho\}\right]
+\end{equation}
+
+Con $\gamma_m(t) \geq 0$ para todo $m$ y $t$. Finalmente, Kossakowski [ref] y Lindblad [ref] analizaorn este problema para el caso de ecuaciones temporalmente homogeneas, es decir, el caso en el que el mapa dinámico universal depende sólo de la diferencia entre los tiempos $t_2$ y $t_1$, $\tau = t_2 - t_1$, en lugar de los tiempos en sí mismos, $\mathcal{E}_{(t2, t1)} = \mathcal{E}_{(\tau})$. La ecuación diferencial generada en este caso se conoce como Lindbladiano.
+
+\begin{equation}
+    \dot{\rho}(t) = -i [\hat{H}, \rho(t)] + \sum_k \gamma_k [V_k \rho(t) V_k^\dagger - \frac{1}{2} \{V_k^\dagger V_k, \rho(t)\}]
+\end{equation}
+
+En esta ecuación $\hat{H}$ es el Hamiltoniano del sistema, $V_k$ son operadores de salto o colapso, y $\gamma_k$ son tasas de decaimiento. El término $-i [\hat{H}, \rho(t)]$ representa la evolución unitaria y es el mismo de la ecuación de Liouville-von Neumann. Los términos $\gamma_k V_k \rho(t) V_k^\dagger$ representan el efecto del entorno en el sistema y los términos $-\frac{1}{2} \{V_k^\dagger V_k, \rho(t)\}$ son términos de normalización para el caso en el que el entorno no afecta al sistema.
+
+
+
