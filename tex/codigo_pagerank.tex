@@ -3,6 +3,115 @@
 
 \section{Wolfram Mathematica}
 
+\begin{doublespace}
+\noindent\(\pmb{\text{ket0}=\text{SparseArray}[\{\{1,1\}\to 1,\{2,1\}\to 0\}];\text{ket1}=\text{SparseArray}[\{\{2,1\}\to 1\}];}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{g=\text{Graph}[\{1\text{-$>$}2,1\text{-$>$}3,1\text{-$>$}4,2\text{-$>$}1,2\text{-$>$}4,3\text{-$>$}4,4\text{-$>$}3\}]; \text{(*}\text{Grafo}\text{*)}}\\
+\pmb{\text{(*}g=\text{Graph}[\{1\text{-$>$}2,1\text{-$>$}3,2\text{-$>$}4\}];\text{*)} \text{(*Grafo {\' a}rbol*)}}\\
+\pmb{\text{(*}g=\text{Graph}[\{1\text{-$>$}2,1\text{-$>$}3,1\text{-$>$}4,2\text{-$>$}1,3\text{-$>$}1,4\text{-$>$}1\}];\text{*)} \text{(*Grafo estrella*)}}\\
+\pmb{\text{(*}g=\text{Graph}[\{1\text{-$>$}2,2\text{-$>$}3,3\text{-$>$}1, 1\text{-$>$}3,3\text{-$>$}2,2\text{-$>$}1, 1\text{-$>$}4,2\text{-$>$}4,3\text{-$>$}4\}];\text{*)}
+}\\
+\pmb{\text{(*Grafo corona*)}}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{Em}=\text{AdjacencyMatrix}[g]; }\\
+\pmb{\text{For}[j=1,j\text{$<$=}4,j\text{++},}\\
+\pmb{\quad \text{OutDeg}=\text{Sum}[\text{Em}[[j,i]],\{i,1,4\}];}\\
+\pmb{\quad \text{If}[\text{OutDeg}\text{!=}0, \text{Em}[[j]]=\text{Em}[[j]]/\text{OutDeg}, \text{Em}[[j]]=\{1/4,1/4,1/4,1/4\};]]}\\
+\pmb{\text{Em}=\text{Transpose}[\text{Em}]; }\\
+\pmb{\text{(*Matriz de adyacencia del grafo*)}}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{G=\alpha  \text{Em} + \frac{(1-\alpha )}{\text{Dimensions}[\text{Em}][[1]]} \text{Table}[1,\{\text{Dimensions}[\text{Em}][[1]]\},\{\text{Dimensions}[\text{Em}][[1]]\}]; }\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{Ivl1}=\{1\}; \text{(*PageRank inicial de cada nodo*)}}\\
+\pmb{\text{Ivl2}=\{0\};}\\
+\pmb{\text{Ivl3}=\{0\};}\\
+\pmb{\text{Ivl4}=\{0\};}\\
+\pmb{\text{Iv}=\{\{1\},\{0\},\{0\},\{0\}\}; \text{(*Vector de PageRank inicial*)}}\\
+\pmb{\text{For}[i=1,i\leq 30,i\text{++},}\\
+\pmb{\text{Iv}=(G\text{/.}\{\alpha \to 0.85\}).\text{Iv}; \text{(*Iterar con la matriz de Google*)}}\\
+\pmb{\text{(*}\text{Iv}=\text{Iv}/\text{Norm}[\text{Iv}];\text{*)}}\\
+\pmb{\text{AppendTo}[\text{Ivl1},\text{Iv}[[1,1]]];}\\
+\pmb{\text{AppendTo}[\text{Ivl2},\text{Iv}[[2,1]]];}\\
+\pmb{\text{AppendTo}[\text{Ivl3},\text{Iv}[[3,1]]];}\\
+\pmb{\text{AppendTo}[\text{Ivl4},\text{Iv}[[4,1]]];]}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{ListLinePlot}[\text{Ivl1},\text{PlotRange}\to \{0,1\},\text{DataRange}\to \{0,30\}]}\\
+\pmb{\text{ListLinePlot}[\text{Ivl2},\text{PlotRange}\to \{0,1\},\text{DataRange}\to \{0,30\}]}\\
+\pmb{\text{ListLinePlot}[\text{Ivl3},\text{PlotRange}\to \{0,1\},\text{DataRange}\to \{0,30\}]}\\
+\pmb{\text{ListLinePlot}[\text{Ivl4},\text{PlotRange}\to \{0,1\},\text{DataRange}\to \{0,30\}]}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{PageRankCentrality}[g,0.85]}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{ket}[\text{k$\_$},\text{n$\_$}]\text{:=}\text{Table}[\{i==k\},\{i,0,n-1\}]\text{/.}\{\text{True}\to 1,\text{False}\to 0\}; }\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{$\phi $x}_{\text{j$\_$}}\text{:=}\text{KroneckerProduct}\left[\text{ket}[j-1,4],\text{Sum}\left[\sqrt{G[[k,j]]} \text{ket}[k-1,4],\{k,1,4\}\right]\right]; }\\
+\pmb{\text{$\psi $y}_{\text{j$\_$}}\text{:=}\text{KroneckerProduct}\left[\text{Sum}\left[\sqrt{G[[k,j]]} \text{ket}[k-1,4],\{k,1,4\}\right],\text{ket}[j-1,4]\right]; }\\
+\pmb{\text{$\phi $x0}=\left.\text{Sum}\left[\text{$\phi $x}_j,\{j,1,4\}\right]\right/2;}\\
+\pmb{\text{$\psi $y0}=\left.\text{Sum}\left[\text{$\psi $y}_j,\{j,1,4\}\right]\right/2;}\\
+\pmb{\text{$\Pi $x}=\text{Sum}\left[\text{$\phi $x}_j.\text{$\phi $x}_j\dagger,\{j,1,4\}\right]; \text{(*}\text{Proyector} A \to  B\text{*)}}\\
+\pmb{\text{$\Pi $y}=\text{Sum}\left[\text{$\psi $y}_j.\text{$\psi $y}_j\dagger,\{j,1,4\}\right]; \text{(*}\text{Proyector} B \to  A\text{*)}}\\
+\pmb{S=\text{Sum}[\text{KroneckerProduct}[\text{ket}[j,4],}\\
+\pmb{\qquad\text{ket}[k,4]].\text{KroneckerProduct}[\text{ket}[k,4],\text{ket}[j,4]]\dagger,\{j,0,3\},\{k,0,3\}];
+\text{(*Operador SWAP*)}}\\
+\pmb{\text{Ux}=S.(2\text{$\Pi $x}-\text{IdentityMatrix}[16]); \text{(*}\text{Operador} \text{de} \text{difusi{\' o}n} 1/2\text{*)}}\\
+\pmb{\text{Ax}=\text{Sum}\left[\text{$\phi $x}_j.\text{ket}[j-1,4]\dagger,\{j,1,4\}\right]; \text{(*A $\to $ B*)}}\\
+\pmb{\text{By}=\text{Sum}\left[\text{$\psi $y}_j.\text{ket}[j-1,4]\dagger,\{j,1,4\}\right]; \text{(*B $\to $ A*)}}\\
+\pmb{H=\text{HadamardMatrix}[2]; \text{(*}\text{Hadamard}\text{*)}}\\
+\pmb{W=(\text{IdentityMatrix}[16]-2 \text{Ax}.\text{Ax}\dagger).(2 s.s\dagger-\text{IdentityMatrix}[16]); \text{(*}\text{Operador} \text{de} \text{difusi{\'
+o}n} \text{m{\' a}s} \text{Grover}-\text{like}\text{*)}}\\
+\pmb{W=(2 \text{By}.\text{By}\dagger-\text{IdentityMatrix}[16]).(2 \text{Ax}.\text{Ax}\dagger-\text{IdentityMatrix}[16]); \text{(*Operador de difusi{\'
+o}n 2*)}}\\
+\pmb{W=\text{MatrixPower}[\text{Ux},2]; \text{(*Operador de difusi{\' o}n 1*)}}\\
+\pmb{\text{(*}W=\text{MatrixPower}\left[W\text{/.}\alpha \to 0.99,\frac{1}{10}\right];\text{*)}}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{a=0.85;}\\
+\pmb{\text{qIvl1}=}\\
+\pmb{\text{Table}[((\text{$\phi $x0}\dagger\text{/.}\{\alpha \to a\}).\text{MatrixPower}[(W\dagger\text{/.}\{\alpha \to a\}),m].}\\
+\pmb{\qquad\text{KroneckerProduct}[\text{IdentityMatrix}[4],\text{ket}[0,4].\text{ket}[0,4]\dagger].}\\
+\pmb{\qquad\text{MatrixPower}[(W\text{/.}\{\alpha
+\to a\}),m].(\text{$\phi $x0}\text{/.}\{\alpha \to a\}))[[1,1]],\{m,1,30\}];}\\
+\pmb{\text{qIvl2}=}\\
+\pmb{\text{Table}[((\text{$\phi $x0}\dagger\text{/.}\{\alpha \to a\}).\text{MatrixPower}[(W\dagger\text{/.}\{\alpha \to a\}),m].}\\
+\pmb{\qquad\text{KroneckerProduct}[\text{IdentityMatrix}[4],\text{ket}[1,4].\text{ket}[1,4]\dagger].}\\
+\pmb{\qquad\text{MatrixPower}[(W\text{/.}\{\alpha
+\to a\}),m].(\text{$\phi $x0}\text{/.}\{\alpha \to a\}))[[1,1]],\{m,1,30\}];}\\
+\pmb{\text{qIvl3}=}\\
+\pmb{\text{Table}[((\text{$\phi $x0}\dagger\text{/.}\{\alpha \to a\}).\text{MatrixPower}[(W\dagger\text{/.}\{\alpha \to a\}),m].}\\
+\pmb{\qquad\text{KroneckerProduct}[\text{IdentityMatrix}[4],\text{ket}[2,4].\text{ket}[2,4]\dagger].}\\
+\pmb{\qquad\text{MatrixPower}[(W\text{/.}\{\alpha
+\to a\}),m].(\text{$\phi $x0}\text{/.}\{\alpha \to a\}))[[1,1]],\{m,1,30\}];}\\
+\pmb{\text{qIvl4}=}\\
+\pmb{\text{Table}[((\text{$\phi $x0}\dagger\text{/.}\{\alpha \to a\}).\text{MatrixPower}[(W\dagger\text{/.}\{\alpha \to a\}),m].}\\
+\pmb{\qquad\text{KroneckerProduct}[\text{IdentityMatrix}[4],\text{ket}[3,4].\text{ket}[3,4]\dagger].}\\
+\pmb{\qquad\text{MatrixPower}[(W\text{/.}\{\alpha
+\to a\}),m].(\text{$\phi $x0}\text{/.}\{\alpha \to a\}))[[1,1]],\{m,1,30\}];}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{ListLinePlot}[\text{qIvl1},\text{PlotRange}\to \{0,1\},\text{DataRange}\to \{1,30\}]}\\
+\pmb{\text{ListLinePlot}[\text{qIvl2},\text{PlotRange}\to \{0,1\},\text{DataRange}\to \{1,30\}]}\\
+\pmb{\text{ListLinePlot}[\text{qIvl3},\text{PlotRange}\to \{0,1\},\text{DataRange}\to \{1,30\}]}\\
+\pmb{\text{ListLinePlot}[\text{qIvl4},\text{PlotRange}\to \{0,1\},\text{DataRange}\to \{1,30\}]}\)
+\end{doublespace}
+
 \section{Python}
 
 \begin{verbatim}
@@ -14,7 +123,7 @@ from qutip import *
 import tgates
 import time
 
-def R2(psi0, c1, c2):                 # 1: black; 0: white; -1: none
+def R2(psi0, c1, c2):
     if c1 == -1 and c2 == -1:
         res = tgates.CNOT(psi0, 3, 2)
         res = tgates.X(res.states[-1], 3)
@@ -74,7 +183,7 @@ def R2(psi0, c1, c2):                 # 1: black; 0: white; -1: none
 
     return res
 
-def L2(psi0, c1, c2):                 # 1: black; 0: white; -1: none
+def L2(psi0, c1, c2):
     if c1 == -1 and c2 == -1:
         res = tgates.X(psi0, 3)
         res = tgates.CNOT(res.states[-1], 3, 2)
@@ -140,8 +249,6 @@ def L2(psi0, c1, c2):                 # 1: black; 0: white; -1: none
 
 \begin{verbatim}
 def Kb1(psi0):
-    # theta target trigger_state
-    # \[Theta]y00 -> 1.85806, \[Theta]y10 -> \ 2.48274, \[Theta]y11 -> 1.5708
     thetay00 = 1.85806
     thetay10 = 2.48274
     thetay11 = 1.5708
@@ -184,7 +291,6 @@ def Kb1d(psi0):
     return tgates.X(res.states[-1], 0)
 
 def Kb2(psi0):
-    # \[Theta]y00 -> 0.554811, \[Theta]y10 -> \ 0.405465, \[Theta]y11 -> 1.5708
     thetay00 = 0.554811
     thetay10 = 0.405465
     thetay11 = 1.5708
@@ -256,11 +362,8 @@ def reg_SWAP(psi0):
     return tgates.SWAP(res.states[-1], 0, 2)
 
 
-# El algoritmo
-# Estado fiducial
 psi0 = tensor(basis(2,0), basis(2,0), basis(2,0), basis(2,0))
 
-# Preparación del estado inicial
 res = tgates.H(psi0,0)
 res = tgates.H(res.states[-1],1)
 res = Kb1(res.states[-1])
@@ -293,8 +396,6 @@ def T1d(psi0):
     return R2(res.states[-1], 0, 1)
 
 def Kb1(psi0):
-    # theta target trigger_state
-    # \[Theta]y00 -> 1.85806, \[Theta]y10 -> \ 2.48274, \[Theta]y11 -> 1.5708
     thetay00 = 1.85806
     thetay10 = 2.48274
     thetay11 = 1.5708
@@ -352,11 +453,8 @@ def reg_SWAP(psi0):
     return tgates.SWAP(res.states[-1], 0, 2)
 
 
-# El algoritmo
-# Estado fiducial
 psi0 = tensor(basis(2,0), basis(2,0), basis(2,0), basis(2,0))
 
-# Preparación del estado inicial
 res = tgates.H(psi0,0)
 res = tgates.H(res.states[-1],1)
 res = Kb1(res.states[-1])
@@ -382,8 +480,6 @@ for i in range(60):
 
 \begin{verbatim}
 def Kb1(psi0):
-    # theta target trigger_state
-    # \[Theta]x00 -> 87.9646, \[Theta]y00 -> 1.5708, \[Theta]y10 -> \ 2.58678, \[Theta]y11 -> 0.554811
     thetay00 = 1.5708
     thetay10 = 2.58678
     thetay11 = 0.554811
@@ -426,7 +522,6 @@ def Kb1d(psi0):
     return tgates.X(res.states[-1], 0)
 
 def Kb2(psi0):
-    # \[Theta]y00 -> 2.58678, \[Theta]y10 -> \ 1.5708, \[Theta]y11 -> 2.73613
     thetay00 = 2.58678
     thetay10 = 1.5708
     thetay11 = 2.73613
@@ -482,11 +577,8 @@ def reg_SWAP(psi0):
     return tgates.SWAP(res.states[-1], 0, 2)
 
 
-# El algoritmo
-# Estado fiducial
 psi0 = tensor(basis(2,0), basis(2,0), basis(2,0), basis(2,0))
 
-# Preparación del estado inicial
 res = tgates.H(psi0,0)
 res = tgates.H(res.states[-1],1)
 res = Kb1(res.states[-1])
@@ -494,7 +586,6 @@ res = Kb2(res.states[-1])
 res = Kb3(res.states[-1])
 
 
-# res = qload('itj_7')
 
 for i in range(60):
     
@@ -521,10 +612,6 @@ def T3d(psi0):
     return L2(psi0, 1, 1)
 
 def Kb1(psi0):
-    # theta target trigger_state
-    # rulez00 \[Theta]y00 -> 1.85806, \[Theta]y10 -> \ 2.48274, \[Theta]y11 -> 1.5708
-    # rulez01 \[Theta]y00 -> 1.5708, \[Theta]y10 -> \ 0.554811, \[Theta]y11 -> 2.58678
-    # rulez1x \[Theta]y00 -> 2.58678, \[Theta]y10 -> \ 1.5708, \[Theta]y11 -> 2.73613
     thetay00 = 1.85806
     thetay10 = 2.48274
     thetay11 = 1.5708
@@ -567,8 +654,6 @@ def Kb1d(psi0):
     return tgates.X(res.states[-1], 0)
 
 def Kb2(psi0):
-    # rulez01 \[Theta]y00 -> 1.5708, \[Theta]y10 -> \ 0.554811, \[Theta]y11 -> 2.58678
-    # rulez1x \[Theta]y00 -> 2.58678, \[Theta]y10 -> \ 1.5708, \[Theta]y11 -> 2.73613
     thetay00 = 1.5708
     thetay10 = 0.554811
     thetay11 = 2.58678
@@ -607,7 +692,6 @@ def Kb2d(psi0):
     return tgates.X(res.states[-1], 0)
 
 def Kb3(psi0):
-    # rulez1x \[Theta]y00 -> 2.58678, \[Theta]y10 -> \ 1.5708, \[Theta]y11 -> 2.73613
     thetay00 = 2.58678
     thetay10 = 1.5708
     thetay11 = 2.73613
@@ -649,11 +733,8 @@ def reg_SWAP(psi0):
     return tgates.SWAP(res.states[-1], 0, 2)
 
 
-# El algoritmo
-# Estado fiducial
 psi0 = tensor(basis(2,0), basis(2,0), basis(2,0), basis(2,0))
 
-# Preparación del estado inicial
 res = tgates.H(psi0,0)
 res = tgates.H(res.states[-1],1)
 res = Kb1(res.states[-1])
@@ -662,7 +743,6 @@ res = Kb3(res.states[-1])
 res = T3d(res.states[-1])
 
 
-#res = qload('itj_50')
 
 for i in range(60):
     

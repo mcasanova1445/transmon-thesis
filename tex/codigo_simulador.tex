@@ -2,7 +2,7 @@
 
 \section{Wolfram Mathematica}
 
-Este código se realizó con la intensión de poder ver las matrices asociadas a las compuertas programadas en Python y corregir los posibles errores que pudiera haber en dichas compuertas.
+Este código se realizó con la intensión de poder ver las matrices asociadas a las compuertas programadas en Python y corregir los posibles errores que pudiera haber en dichas compuertas durante su desarrollo.
 
 Primero se definen los parámetros del sistema, como la frecuencia de resonancia de los qubits y las constantes de acoplamiento.
 
@@ -24,8 +24,13 @@ Ahora se definen las matrices básicas con las cuales se construiran los Hamilto
 \pmb{\text{$\sigma $y}=\text{PauliMatrix}[2];}\\
 \pmb{\text{$\sigma $z}=\text{PauliMatrix}[3];}\\
 \pmb{\text{$\sigma $p}=\text{ket1}.\text{ket0}\dagger;}\\
-\pmb{\text{$\sigma $m}=\text{ket0}.\text{ket1}\dagger;}\\
-\pmb{\text{QopAsc}[\text{i$\_$},\text{j$\_$},\text{qop$\_$}]\text{:=}<|\text{Mod}[i+0,4]\to \text{qop},\text{Mod}[i+1,4]\to \text{Id},}\\
+\pmb{\text{$\sigma $m}=\text{ket0}.\text{ket1}\dagger;}\\ \)
+\end{doublespace}
+
+Las siguientes son asociaciones que se definen para automatizar la construicción de los productos tensoriales necesarios, ubicando el operador indicado en la partición adecuada.
+
+\begin{doublespace}
+\noindent\(\pmb{\text{QopAsc}[\text{i$\_$},\text{j$\_$},\text{qop$\_$}]\text{:=}<|\text{Mod}[i+0,4]\to \text{qop},\text{Mod}[i+1,4]\to \text{Id},}\\
 \pmb{\text{Mod}[i+2,4]\to \text{Id},\text{Mod}[i+3,4]\to \text{Id}|>[j];}\\
 \pmb{\text{Id}_{\text{i$\_$}}\text{:=}\text{KroneckerProduct}[\text{QopAsc}[i,0,\text{Id}],\text{QopAsc}[i,1,\text{Id}],}\\
 \pmb{\text{QopAsc}[i,2,\text{Id}],\text{QopAsc}[i,3,\text{Id}]];}\\
@@ -41,7 +46,7 @@ Ahora se definen las matrices básicas con las cuales se construiran los Hamilto
 \pmb{\text{QopAsc}[i,2,\text{$\sigma $m}],\text{QopAsc}[i,3,\text{$\sigma $m}]];}\)
 \end{doublespace}
 
-Ahora se define la función del pulso gaussiano que se utilizará para las rotaciones en X-Y.
+Ahora se define la función del pulso gaussiano que se utilizará para las rotaciones en X-Y. También se incluye una función de un pulso rectangular.
 
 \begin{doublespace}
 \noindent\(\pmb{\text{GaussianPulse}[\text{x$\_$},\text{ts$\_$},\text{tf$\_$}]\text{:=}}\\
@@ -107,7 +112,7 @@ $z}_{\text{target2}}\right)-}\\
 \pmb{];}\)
 \end{doublespace}
 
-Finalmente, se definen todas las compuertas del simulador.
+Finalmente, se definen todas las compuertas del simulador. Ellas no son más que el producto de matrices correspondiente a los circuitos dados en el capítulo \ref{ch:simulador}
 
 \begin{doublespace}
 \noindent\(\pmb{X[\text{target$\_$}]\text{:=}\text{Rx}[\text{target}, \pi ]\text{//}\text{FullSimplify};}\\
@@ -302,10 +307,10 @@ Ahora se definen los parámetros del sistema, como las tasas de relajación y la
     \item N es el tamaño del resonador. Es decir, la cantidad de fotonones a la que se trunca su Hamiltoniano.
     \item wr es la frecuencia de resonancia del resonador.
     \item wq es un arreglo con las frecuencias de resonancia de los qubits.
-    \item \begin{verbatim}wq_swap\end{verbatim} es la frecuencia a la que se desplazan los qubits para realizar iSWAP y $\sqrt{iSWAP}$.
+    \item wq\_swap es la frecuencia a la que se desplazan los qubits para realizar iSWAP y $\sqrt{iSWAP}$.
     \item g es un arreglo con las constantes de acoplamiento entre los qubits y el resonador.
     \item D es un arreglo con las diferencias de las frecuencias de resonancia entre los qubits y el resonador.
-    \item \begin{verbatim}D_swap\end{verbatim} es la diferencia entre la frecuencia de resonancia para iSWAP y el resonador.
+    \item D\_swap es la diferencia entre la frecuencia de resonancia para iSWAP y el resonador.
     \item kappa es la tasa de relajación del resonador.
     \item gamma es un arreglo con las tasas de relejación de los qubits.
     \item a es el operador de destrucción del resonador.
@@ -313,8 +318,6 @@ Ahora se definen los parámetros del sistema, como las tasas de relajación y la
 \end{enumerate}
 
 \begin{verbatim}
-# Parametros del sistema
-
 N = 50
 
 wr = 10.0 * 2 * np.pi
@@ -332,16 +335,15 @@ chi = g**2 / abs(wr-wq)
 kappa = 0.001
 gamma = np.array([5e-6, 5e-6, 5e-6, 5e-6])
 
-# cavity operators
 a = destroy(N)
 # a = tensor(destroy(N), qeye(2), qeye(2), qeye(2), qeye(2))
 n = a.dag() * a
 Id_r = qeye(N)
 \end{verbatim}
 
-La función \begin{verbatim}qop_part\end{verbatim} devuelve la matriz asociada al operador solicitado y se utiliza como parte de la función qop para realizar el producto tensorial de este operador con los operadores de identidad necesarios para retornar el operador que actúe en el qubit solicitado.
+La función qop\_part devuelve la matriz asociada al operador solicitado y se utiliza como parte de la función qop para realizar el producto tensorial de este operador con los operadores de identidad necesarios para retornar el operador que actúe en el qubit solicitado.
 
-La lista \begin{verbatim}c_ops\end{verbatim} es la lista de los operadores de colapso de los qubits. En el caso sin pérdidas, esta lista es vacía. En el caso con pérdidas contiene los operadores $\sigma_-$ de cada qubit.
+La lista c\_ops es la lista de los operadores de colapso de los qubits. En el caso sin pérdidas, esta lista es vacía. En el caso con pérdidas contiene los operadores $\sigma_-$ de cada qubit.
 
 \begin{verbatim}
 def qop_part(operator, target):
@@ -388,7 +390,7 @@ def ksiS_tp(t, args):
     return args['A'] * np.exp(1j*args['w']*(t-args['ts']))
 \end{verbatim}
 
-Finalmente, se definen las compuertas cuánticas. En los casos de las compuertas Rx y Ry, primero se define el vector de tiempo. Luego se asigna la frencuencia del pulso para que actúe sobre el qubit deseado. Se define la parte independiente del tiempo del Hamiltoniano y la parte dependiente del tiempo con \begin{verbatim}ksi_t\end{verbatim} como coeficiente. Se asignan los argumentos del pulso y se ejecuta el solucionador de ecuaciones maestras. Se retorna el resultado del solucionador.
+Finalmente, se definen las compuertas cuánticas. En los casos de las compuertas Rx y Ry, primero se define el vector de tiempo. Luego se asigna la frencuencia del pulso para que actúe sobre el qubit deseado. Se define la parte independiente del tiempo del Hamiltoniano y la parte dependiente del tiempo con ksi\_t como coeficiente. Se asignan los argumentos del pulso y se ejecuta el solucionador de ecuaciones maestras. Se retorna el resultado del solucionador.
 
 \begin{verbatim}
 def Rx(psi0, target, theta):
