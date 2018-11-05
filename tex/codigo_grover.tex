@@ -5,24 +5,20 @@
 
 El siguiente fragmento de código genera una lista de números entre 1 y 16, en orden aleatorio, donde ningún número se repite.
 
-\subsubsection*{Generar datos aleatorios}
-
 \begin{doublespace}
 \noindent\(\pmb{\text{data}=\{\};}\\
-\pmb{\text{While}\left[\text{Dimensions}[\text{data}][[1]]<2^4,\text{AppendTo}\left[\text{data},\text{RandomInteger}\left[\left\{1,2^4\right\}\right]\right];\text{data}=\text{DeleteDuplicates}[\text{data}];\right]}\)
+\pmb{\text{While}[\text{Dimensions}[\text{data}][[1]]<2^4,}\\
+\pmb{\qquad\text{AppendTo}[\text{data},\text{RandomInteger}[\{1,2^4\}]];}\\
+\pmb{\qquad\text{data}=\text{DeleteDuplicates}[\text{data}];]}\)
 \end{doublespace}
 
 Ahora declaramos el número que se buscará en la lista.
-
-\subsubsection*{Introducir n{\' u}mero a buscar}
 
 \begin{doublespace}
 \noindent\(\pmb{\text{buscar}=16;}\)
 \end{doublespace}
 
 Se procede a definir las matrices necesarias para ejecutar el algoritmo. Es decir: Los kets de la base computacional, la compuerta y la transformada de Hadamard y los operadores de reflexión.
-
-\subsubsection*{Preparar el sistema y el or{\' a}culo}
 
 \begin{doublespace}
 \noindent\(\pmb{\text{ket0}=\{\{1\},\{0\}\};}\\
@@ -40,8 +36,6 @@ $}];}\\
 \end{doublespace}
 
 Finalmente, se prepara el estado inicial y se realizan las reflexiones para ejecutar el algoritmo. Se realizan $\pi N /2$ iteraciones, el doble de las necesarias, para poder estudiar lo que ocurre si sigue rotando el estado, pasado el máxima probabilidad de medir el estado deseado.
-
-\subsubsection*{Ejecutar el algoritmo}
 
 \begin{doublespace}
 \noindent\(\pmb{\text{ket$\psi $}=\text{KroneckerProduct}[\text{ket0},\text{ket0},\text{ket0},\text{ket0}];}\\
@@ -114,11 +108,8 @@ qN = 2**4
 Finalmente, se define el estado inicial y se ejecuta el algoritmo. Se realizan el doble de interaciones de las necesarias, igual que en el código de Wolfram Mathematica, para analizar lo que ocurre si se realizan más rotaciones de las necesarias.
 
 \begin{verbatim}
-# El algoritmo
-# Estado fiducial
 psi0 = tensor(basis(2,0), basis(2,0), basis(2,0), basis(2,0))
 
-# Preparación del estado inicial
 res = Htrans(psi0)
 
 Nit = 2*int(np.pi*np.sqrt(qN)/4)+1

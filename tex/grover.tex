@@ -199,7 +199,7 @@ A continuación estudiaremos el algoritmo de amplificación de amplitud, el cual
 
 \subsection{Algoritmo de amplificación de amplitud}
 
-Esta generalización fue desarrollada independientemente por Brassar y H̨\o yer en 1997 [ref] y por Grover en 1998 [ref]. Con este algoritmo se pueden utilizar funciones oráculo que marquen 1 para más de una entrada de la base de datos en la cual se realizará la búsqueda. Entonces, sea $\mathcal{W}$ el conjunto de entradas a encontrar, tenemos la función oráculo:
+Esta generalización fue desarrollada independientemente por Brassar y H̨øyer en 1997 [ref] y por Grover en 1998 [ref]. Con este algoritmo se pueden utilizar funciones oráculo que marquen 1 para más de una entrada de la base de datos en la cual se realizará la búsqueda. Entonces, sea $\mathcal{W}$ el conjunto de entradas a encontrar, tenemos la función oráculo:
 
 \begin{equation}
     f(x) =
@@ -308,15 +308,13 @@ Finalmente, la parte cuántica de este algoritmo tiene una complejidad temporal 
 
 \section{Simulaciones}
 
-Se realizaron simulaciones del algoritmo de Grover con $\ket{\omega} = \ket{0000}$, $\ket{\omega} = \ket{0110}$ y $\ket{\omega} = \ket{1111}$. También se realizon simulaciones del algoritmo de amplificación de amplitud con $\mathcal{W} = \{ \}$ y $\mathcal{W} = \{ \}$.
+Se realizaron simulaciones del algoritmo de Grover con $\ket{\omega} = \ket{0000}$, $\ket{\omega} = \ket{0110}$ y $\ket{\omega} = \ket{1111}$. También se realizon simulaciones del algoritmo de amplificación de amplitud con $\mathcal{W} = \{9, 13\} = \{1001_2, 1101_2 \}$ y $\mathcal{W} = \{4, 5, 12, 13\} = \{0100_2, 0101_2, 1100_2, 1101_2\}$.
 
 Un conjunto de las simulaciones se ha realizado en Wolfram Mathematica, implementando los operadores, es decir $U_{\omega}$, $U_\mathcal{W}$, $U_s$ y la transformada de Hadamard, directamente, de manera matricial, de acuerdo a las definiciones dadas anteriormente. Otro conjunto de las simulaciones ha realizado en Python, definiendo todos los operadores y transformaciones en base a sus construcciones circuitales, a partir de las compuertas nativas de los transmones, resolviendo la ecuación maestra del sistema al aplicar cada compuerta nativa. Al primer conjunto lo llamaremos simulaciones matemáticas, y al segundo, simulaciones circuitales. El código todas las simulaciones de este capítulo se encuentra en el apéndice \ref{ch:grovercod}.
 
-En el caso de la simulaciones matemáticas, sólo se ha simulado el caso sin relajación. Por otro lado, en el caso de la simulaciones circuitales, se ha simulado el sistema tanto sin relajación, como con relajación. En el caso del sistema con relajación, se ha utilizado la ecuación maestra de Lindblad con los operadores de colapso $\sigma_{-_i}$ y tasa de relajación $\gamma = 25KHz$.
+En el caso de la simulaciones matemáticas, sólo se ha simulado el caso sin relajación. Por otro lado, en el caso de la simulaciones circuitales, se ha simulado el sistema tanto sin relajación, como con relajación. En el caso del sistema con relajación, se ha utilizado la ecuación maestra de Lindblad con los operadores de colapso $\sigma_{-_i}$ y tasa de decaimiento $\gamma = 25KHz$.
 
-\subsection{Algoritmo de Grover}
-
-Como el espacio de Hilbert del sistema en el que sea ejecutado el algoritmo es de 16 dimensiones, ya que es de cuatro qubits, se necesitan $\lfloor \frac{\pi \sqrt{16}}{4} \rfloor = 3$ iteraciones para tener la máxima probabilidad de medir el estado deseado. Sin embargo, la simulación se ha realizado con 7 iteraciones, para apreciar la naturaleza oscilatoria de este algoritmo. Recordemos que este algoritmo consiste en rotaciones en el espacio 2D generado por $\ket{\omega}$ y $\ket{s^\prime}$, es decir, que si se aplican más de 3 rotaciones, la probabilidad de éxito debería disminuir, hasta que el estado del sistema se alinee con $- \ket{s^\prime}$, volver a aumentar hasta llegar a $- \ket{\omega}$, disminuir hasta pasar por $\ket{s^\prime}$, pasar de nuevo por el estado inicial $\ket{s}$ y repetirse el ciclo. La hipotesis es que veremos aproximadamente un período de sinusoide muestreada, con alrededor de seis muestras por período, en la gráfica de la evolución de la probabilidad de medir $\ket{\omega}$, ya que si luego de tres iteraciones se llega al punto de probabilidad máxima, alrededor de la sexta iteración se debe llegar al punto de probabilidad mínima y en la séptima volvería a aumentar.
+Como el espacio de Hilbert del sistema en el que sea ejecutado el algoritmo es de 16 dimensiones, ya que es de cuatro qubits, se necesitan $\lfloor \frac{\pi \sqrt{16}}{4} \rfloor = 3$ iteraciones para tener la máxima probabilidad de medir el estado deseado. Sin embargo, la simulación se ha realizado con 7 iteraciones, para apreciar la naturaleza oscilatoria de este algoritmo. Recordemos que este algoritmo consiste en rotaciones en el plano generado por $\ket{\omega}$ y $\ket{s^\prime}$, es decir, que si se aplican más de 3 rotaciones, la probabilidad de éxito debería disminuir, hasta que el estado del sistema se alinee con $- \ket{s^\prime}$, volver a aumentar hasta llegar a $- \ket{\omega}$, disminuir hasta pasar por $\ket{s^\prime}$, pasar de nuevo por el estado inicial $\ket{s}$ y repetirse el ciclo. La hipotesis es que veremos aproximadamente un período de sinusoide muestreada, con alrededor de seis muestras por período, en la gráfica de la evolución de la probabilidad de medir $\ket{\omega}$, ya que si luego de tres iteraciones se llega al punto de probabilidad máxima, alrededor de la sexta iteración se debe llegar al punto de probabilidad mínima y en la séptima volvería a aumentar.
 
 En la figura \ref{fig:groverlosslesscomp1111} se puede observar la gráfica de la evolución de la probabilidad de medir cada estado en cada iteración del algoritmo de Grover con $\ket{\omega} = \ket{1111}$. Como se puede observar, ambas figuras son bastante similares. La fidelidad entre los estados finales de ambas simulaciones es 0.999875. Además, se ha confirmado la hipotesis de que la evolución de la probabilidad de medir $\ket{1111}$ tiene forma sinusoidal.
 
@@ -324,37 +322,102 @@ En la figura \ref{fig:groverlosslesscomp1111} se puede observar la gráfica de l
     \centering
     \begin{subfigure}[m]{0.49\textwidth}
         \centering
-        \includegraphics[width=0.9\linewidth]{img/Grover-2_gr1.eps}
+        \includegraphics[width=0.9\linewidth]{img/groverallM.eps}
         \caption{Wolfram Mathematica}
     \end{subfigure}
     \begin{subfigure}[m]{0.49\textwidth}
         \centering
-        \includegraphics[width=0.9\linewidth]{img/groveralllossless.png}
+        \includegraphics[width=0.9\linewidth]{img/groveralllossless.eps}
         \caption{Python}
     \end{subfigure}
     \caption[Evolución de las probabilidades en el algoritmo de Grover sin relajación]{Evolución de las probabilidades en el algoritmo de Grover sin relajación}
     \label{fig:groverlosslesscomp1111}
 \end{figure}
 
-Ahora, compararemos los resultados de la simulación circuital con y sin relajación. Como se puede ver en la figura \ref{fig:groverlosscomp}, en el caso con relajación, los estados que no contienen el valor deseado dejan de tener todos la misma probabilidad. Los estados que involucran el estado base ganan probabilidad debido a la relajación de los qubits. La fidelidad entre los estados resultantes de los casos con y sin relajación es de 0.250818.
+Ahora, compararemos los resultados de la simulación circuital con y sin relajación. Como se puede ver en la figura \ref{fig:groverloss}, en el caso con relajación, los estados que no contienen el valor deseado dejan de tener todos la misma probabilidad. Los estados que involucran el estado base ganan probabilidad debido a la relajación de los qubits. La fidelidad entre los estados resultantes de los casos con y sin relajación es de 0.250818.
+
+Además, en el caso con relajación, la probabilidad de medir el estado deseado depende de cuál sea este estado. Mientras más particiones en $\ket{1}$ contenga este estado, peor será el efecto de la relajación en el algoritmo. Esto ocurre porque el algoritmo debe llevar estas particiones a estado excitados, es decir, a estados de energías superiores y esto es energía que el entorno absorbe por efecto Purcell. Las particiones en el estado $\ket{0}$ están en su estado base y no se ven afectadas por este fenómeno, pues este es su estado de mínima energía. Esto se ve reflejado en las siguientes figuras.
+
+En la figura \ref{fig:groverloss1111}, se tiene $\ket{\omega} = \ket{1111}$, así que este es el caso en el que el entorno tiene el mayor efecto sobre el algoritmo, pues es el caso en el que el sistema tiene las mayores energías. Por otro lado, la figura \ref{fig:groverloss0000} presenta el caso en el que $\ket{\omega} = \ket{0000}$, este es el caso en el que el entorno tiene el menor efecto sobre el algoritmo, pues es el caso en el que el sistema tiene las menores energías. La figura \ref{fig:groverloss0110} presenta el caso en el $\ket{\omega} = \ket{0110}$. Este es un caso intermedio y el sistema tiene un efecto distinto sobre cada partición.
+
+El tiempo de vida de los qubits no es suficiente para ejecutar el algoritmo de Grover en su forma tradicional. Esto requeriría tres iteraciones, pero para ese momento, el estado deseado ya no es el más probable, debido a la decoherencia. El único caso en el que el estado deseado sigue siendo el más probable luego de la tercer iteración es el caso en el que este es el estado base. Sin embargo, en todos los casos, la probabilidad máxima de medir el estado correcto ocurre en la primera iteración. Debido a esto, resulta mejor utilizar el algoritmo de Grover en un paso. En cuanto a la versión optimizada, como nuestro sistema tiene cuatro qubits, $N = 16$, el error introducido por las aproximaciones realizadas en el desarrollo de este algoritmo es demasiado grande. La cantidad de iteraciones y subsistemas necesarios estaría alrededor de $\sqrt[3]{N} = 2.519842$, lo cual está en el mismo orden que 1 y sería equivalente a aplicar el algoritmo de Grover en un paso, que, debido a la corto tiempo de vida de los qubits, es la única variante de este algoritmo que es realizable en este sistema.
 
 \begin{figure}[H]
     \centering
     \begin{subfigure}[m]{0.49\textwidth}
         \centering
-        \includegraphics[width=0.99\linewidth]{img/groveralllossless.png}
-        \caption{Sin relajación}
+        \includegraphics[width=0.99\linewidth]{img/grover0000loss.eps}
+        \caption{$\omega = 0$}
+        \label{fig:groverloss0000}
     \end{subfigure}
     \begin{subfigure}[m]{0.49\textwidth}
         \centering
-        \includegraphics[width=0.99\linewidth]{img/groverallloss.png}
-        \caption{Con relajación}
+        \includegraphics[width=0.99\linewidth]{img/grover0110loss.eps}
+        \caption{$\omega = 6$}
+        \label{fig:groverloss0110}
     \end{subfigure}
-    \caption[Evolución de las probabilidades en el algoritmo de Grover con relajación]{Evolución de las probabilidades en el algoritmo de Grover con relajación}
-    \label{fig:groverlosscomp}
+    \begin{subfigure}[m]{0.49\textwidth}
+        \centering
+        \includegraphics[width=0.99\linewidth]{img/groverallloss.eps}
+        \caption{$\omega = 15$}
+        \label{fig:groverloss1111}
+    \end{subfigure}
+    \caption[Evolución de las probabilidades en el algoritmo de Grover con relajación, $\mathcal{W} = \{0\}$]{Evolución de las probabilidades en el algoritmo de Grover con relajación. En (a) se tiene $\mathcal{W} = \{0\} = \{0000_2\}$, este es el caso que se ve menos afectado por el decaimiento de los qubits. En (b) se tiene $\mathcal{W} = \{6\} = \{0110_2\}$. En (c) se tiene $\mathcal{W} = \{15\} = \{1111_2\}$, este es el caso que se ve más afectado por el decaimiento de los qubits.}
+    \label{fig:groverloss}
 \end{figure}
 
-\subsection{Amplificación de amplitud}
+Ahora veamos los casos en los que se tiene más de un estado deseado, es decir, el algoritmo de amplificación de amplitud. La figura \ref{fig:groverlosslesscomp2} muestra el caso en el que se tienen dos estados deseados, sin relajación. Las graficas obtenidas de la simulación matematica y la simulación circuital son idénticas. Lo mismo ocurre en la figura \ref{fig:groverlosslesscomp3} con el caso en el que se han seleccionado cuatro estados deseados.
 
-\subsection{Optimización del algoritmo de Grover}
+La cantidad de iteraciones necesarias en el caso de dos estados deseados es $\lfloor \frac{\pi}{4} \sqrt{\frac{16}{2}} \rfloor = \rfloor 2.221441 \lfloor = 2$. Mientras que en el caso de cuatro estados deseados es $\lfloor \frac{\pi}{4} \sqrt{\frac{16}{4}} \rfloor = \lfloor \pi/2 \rfloor = 1$. Estos valores se confirman viendo las gráficas. En la figura \ref{fig:groverlosslesscomp2}, correspondiente al caso de $W = 2$, el pico de mayor probabilidad para los dos estados deseados se encuentra en la segunda iteración. Mientras que en la figura \ref{fig:groverlosslesscomp3}, correspondiente al caso de cuatro estados deseados, el pico de máxima probabilidad se encuentra luego de la primera iteración. Aumentar el tamaño del conjunto de estados deseados tiene el efecto de aumentar la frecuencia de las oscilaciones generadas por este algoritmo.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[m]{0.49\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/grover2M.eps}
+        \caption{Wolfram Mathematica}
+    \end{subfigure}
+    \begin{subfigure}[m]{0.49\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/grover2lossless.eps}
+        \caption{Python}
+    \end{subfigure}
+    \caption[Evolución de las probabilidades en el algoritmo de amplificación de amplitud sin relajación, $\mathcal{W} = \{9, 13\}$]{Evolución de las probabilidades en el algoritmo de amplificación de amplitud sin relajación, $\mathcal{W} = \{9, 13\} = \{1001_2, 1101_2\}$}
+    \label{fig:groverlosslesscomp2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[m]{0.49\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/grover3M.eps}
+        \caption{Wolfram Mathematica}
+    \end{subfigure}
+    \begin{subfigure}[m]{0.49\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{img/grover3lossless.eps}
+        \caption{Python}
+    \end{subfigure}
+    \caption[Evolución de las probabilidades en el algoritmo de amplificación de amplitud sin relajación, $\mathcal{W} = \{4, 5, 12, 13\}$]{Evolución de las probabilidades en el algoritmo de amplificación de amplitud sin relajación, $\mathcal{W} = \{4, 5, 12, 13\} = \{0100_2, 0101_2, 1100_2, 1101_2\}$}
+    \label{fig:groverlosslesscomp3}
+\end{figure}
+
+En la figura \ref{fig:groverlosscomp2} se presentan los resultados de la simulaciones con relajación del algoritmo de amplificación de amplitud. Se nota que en estos casos se logran tener más iteraciones antes de que la decoherencia haga irreconocibles los estados deseados. Esto ocurre porque estos casos fueron elegidos tal que los operadores de reflexión utilizados $U_\mathcal{W}$ involucren menos qubits de control que los operadores $U_\omega$. En consecuencia, cada iteración es más corta y se pueden realizar más iteraciones en el tiempo de vida de los qubits.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[m]{0.49\textwidth}
+        \centering
+        \includegraphics[width=0.99\linewidth]{img/grover2loss.eps}
+        \caption{$\mathcal{W} = \{9, 13\}$}
+    \end{subfigure}
+    \begin{subfigure}[m]{0.49\textwidth}
+        \centering
+        \includegraphics[width=0.99\linewidth]{img/grover3loss.eps}
+        \caption{$\mathcal{W} = \{4, 5, 12, 13\}$}
+    \end{subfigure}
+    \caption[Evolución de las probabilidades en el algoritmo de amplificación de amplitud con relajación]{Evolución de las probabilidades en el algoritmo de amplificación de amplitud con relajación. En (a) se tiene $\mathcal{W} = \{9, 13\} = \{1001_2, 1101_2\}$, en (b) se tiene $\mathcal{W} = \{4, 5, 12, 13\} = \{0100_2, 0101_2, 1100_2, 1101_2\}$}
+    \label{fig:groverlosscomp2}
+\end{figure}
+
 

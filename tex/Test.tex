@@ -71,16 +71,13 @@ This section's content...
 
 \subsection{Qubits}
 Un qubit es un sistema físico de dos niveles, es decir, es un objeto cuyo estado es un elemento del espacio de Hilbert de dimensión $\dim (\mathcal{H})=2$ y puede ser escrito de la siguiente manera: $ \ket{\psi} = \alpha \ket{0} + \beta \ket{1} $, donde $ \{ \ket{0},\ket{1} \} $ forma una base de $\mathcal{H}$ y donde $ \alpha $ y $ \beta $ son números complejos, tales que $ | \alpha |^2 + | \beta |^2 = 1 $, conocidos como amplitudes de probabilidad.
-\vspace{0.5cm}
 
 El qubit se puede pensar como el equivalente en IC del bit, el cual, por sus propiedad cuánticas, puede estar no sólo puede estar en el estado $\ket{0}$ y en el estado $\ket{1}$, sino también en superposiciones de estos dos.
-\vspace{0.5cm}
 
 El estado de un qubit también se puede escribir de la siguiente manera: $ \ket{\psi} = e^{i \phi_0} \cos ( \theta ) \ket{0} + e^{i \phi_1} \sin ( \theta ) \ket{1}  = e^{i \phi_0} (\cos ( \theta ) \ket{0} + e^{i ( \phi1 - \phi_0 )} \sin ( \theta ) \ket{1}) $, donde $ \theta $, $\phi_0$ y $\phi_1$ son números reales. La fase global $\phi_0$ es ignorable, pues no tiene ningún efecto sobre las probabilidades. Entonces, sin pérdida de generalidad, $ \ket{\psi} = \cos ( \theta ) \ket{0} + \sin ( \theta ) e^{i \phi} \ket{1} $, donde $ \theta \in [0, \pi ] $ y $ \phi \in [0, 2 \pi ] $. De esta manera, podemos representar los qubits en una esfera unitaria, conocida como esfera de Bloch.
 
 \subsection{Compuertas cuánticas}
 Las operaciones unitarias con las que se opera sobre los qubits reciben el nombre de compuertas cuánticas.
-\vspace{0.5cm}
 
 Las compuertas de un sólo qubit pueden ser vistas como rotaciones en la esfera de Bloch.
 
@@ -106,7 +103,6 @@ Esta operación es equivalente a \textit{no-operation} en una computadora clási
 
 \subsubsection{Compuerta X}
 Este es el equivalente al NOT clásico, pues tránsforma los $\ket{0}$ en $\ket{1}$ y viceversa, ya que realiza una rotación de $\pi$ sobre el eje X en la esfera de Bloch. Su forma matricial viene dada por la matriz de Pauli $\sigma_x$
-\vspace{0.25cm}
 
 \begin{minipage}{0.5\textwidth}
 \[
@@ -126,7 +122,6 @@ Este es el equivalente al NOT clásico, pues tránsforma los $\ket{0}$ en $\ket{
 
 \subsubsection{Compuerta Z}
 Esta compuerta no tiene análogo clásico, pues lo que realiza es un cambio de fase. Esto equivale a una rotación de $\pi$ sobre el eje Z en la esfera de Bloch. Su forma matricial viene dada por la matriz de Pauli $\sigma_z$
-\vspace{0.25cm}
 
 \begin{minipage}{0.5\textwidth}
 \[
@@ -146,7 +141,6 @@ Esta compuerta no tiene análogo clásico, pues lo que realiza es un cambio de f
 
 \subsubsection{Compuerta Y}
 Esta compuerta realiza una rotación de $\pi$ sobre el eje y de la esfera de Bloch. Su forma matricial viene dada por la matriz de Pauli $\sigma_y$
-\vspace{0.25cm}
 
 \begin{minipage}{0.5\textwidth}
 \[
@@ -167,7 +161,6 @@ i & 0
 \subsubsection{Compuerta de Hadamard}
 %Esta compuerta realiza una rotación de $\frac{\pi}{2}$ sobre el eje y de la esfera de Bloch. Ella es de especial importancia, pues transforma los estados de la base computacional $\ket{0}$ y $\ket{1}$ en estados de superposiciones uniformes ($\ket{+}$ y $\ket{-}$). También se puede interpretar como el mapa de la base Z a la base X.
 Esta compuerta transforma los estados de la base computacional $\ket{0}$ y $\ket{1}$ en estados de superposiciones uniformes ($\ket{+}$ y $\ket{-}$). También se puede interpretar como el mapa de la base Z a la base X.
-\vspace{0.25cm}
 
 \begin{minipage}{0.5\textwidth}
 \[
@@ -188,7 +181,6 @@ Esta compuerta transforma los estados de la base computacional $\ket{0}$ y $\ket
 
 \subsubsection{Compuerta S}
 Esta compuerta es la raiz cuadrada de Z.
-\vspace{0.25cm}
 
 \begin{minipage}{0.5\textwidth}
 \[
@@ -208,7 +200,6 @@ Esta compuerta es la raiz cuadrada de Z.
 
 \subsubsection{Compuerta T}
 Esta compuerta es la raiz cuadrada de S.
-\vspace{0.25cm}
 
 \begin{minipage}{0.5\textwidth}
 \[
@@ -433,19 +424,14 @@ i \cos(\theta) \ket{a,b,c} + \sin(\theta) \ket{a,b,c \oplus 1} & \text{si } a=b=
 
 \subsection{Conjuntos universales de compuertas cuánticas}
 Un conjunto universal de compuertas cuánticas (CUCC) es un conjunto finito de compuertas cuánticas con el cuál se puede aproximar cualquier operación unitaria arbitrariamente bien.
-\vspace{0.5cm}
 
 Cualquier operador unitario puede ser escrito en función de compuertas de uno y dos qubits [Barenco et al. 1995].
-\vspace{0.5cm}
 
 Un CUCC simple es $\{H,T,\mathit{CNOT}\}$.
-\vspace{0.5cm}
 
 Existe un CUCC de una sóla compuerta, la compuerta de Deutsch, $D(\theta)$.
-\vspace{0.5cm}
 
 La compuerta de Toffoli es un caso especial de la compuerta de Deutsch, $D(\frac{\pi}{2})$.
-\vspace{0.5cm}
 
 Otro CUCC consiste en la compuerta de Ising y la compuerta de cambio de fase, \{$\mathit{XX}_\phi,R_z(\theta)$\}. Este conjunto es nativo en algunas computadoras cuánticas de trampas de iones.
 
@@ -472,7 +458,6 @@ Para construir un computador cuántico, se deben cumplir las siguientes condicio
 
 \chapter{Superconductividad}
 Los qubits superconductores se basan en circuitos osciladores no lineales, hechos a partir de uniones de Josephson (Josephson Junctions - JJ). [Wendin]
-\vspace{0.5cm}
 
 El Hamiltoniano de un oscilador armónico LC está dado por 
 
@@ -481,7 +466,6 @@ El Hamiltoniano de un oscilador armónico LC está dado por
 \]
 
 donde $\hat{n}$ es la cantidad de pares de Cooper inducidos en el capacitor (En otras parabras, la carga inducida en el capacitor, medida en unidades de $2e$), y $\hat{\phi}$ es la diferencia de fase sobre el inductor. La carga $\hat{n}$ y la fase $\hat{\phi}$ no conmutan, $\comm{\hat{\phi}}{\hat{n}}=i$, lo que significa que sus valores esperados no se pueden medir simultaneamente. $E_C=\frac{(2e)^2}{2C}$, $E_L=\frac{\hbar^2}{(2e)^2L}$ y la distancia entre niveles de energía del oscilador armónico $\hbar \omega = \frac{\hbar}{\sqrt{LC}}=\sqrt{2E_LE_C}$.
-\vspace{0.5cm}
 
 Para poder servir como qubit, el oscilador debe ser anarmónico, de manera que se pueda operar sobre un par específico de niveles de energía. Al agregar una JJ, el Hamiltoniano del circuito LCJ se convierte en:
 
@@ -535,7 +519,6 @@ Tratando el transmonio como un sistema de dos niveles acoplado linealmente a un 
 \]
 
 donde $\epsilon$ es la energía de excitación del qubit, $g$ es el acoplamiento qubit-oscilador y $\omega$ es la frecuencia del oscilador.
-\vspace{0.5cm}
 
 Introduciendo los operadores escalera del qubit, $\sigma_\pm = \frac{1}{2}(\sigma_x \pm i \sigma_y)$, el término de interacción $\hat{H}_{qr}$ se puede dividir en dos términos, el de Jaynes-Cummings (JC) y el anti-Jaynes-Cummings (AJC):
 
@@ -1444,7 +1427,6 @@ Ilustraremos el algoritmo de PageRank con un ejemplo sencillo:
 Ejemplo:
 
 Consideremos 5 páginas web distintas a las que denotaremos por 1, 2, 3, 4, y 5, y cuyo grafo es:
-\vspace{3cm}
 
 Pasos:
 \begin{enumerate}

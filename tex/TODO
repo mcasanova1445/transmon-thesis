@@ -1,8 +1,12 @@
-Grover: Como la prob vuelve a bajar
-Grover: Comparar con paper de robusticidad/improvement dinámico
 Grover: Hash functions
+Grover: Fidelidades
 
 Shor: Explicar por qué 8 qubits
+
+PageRank: Comparar con el PageRank clásico
+PageRank: Efecto de alfa en las oscilaciones
+PageRank: Explicar mejor la parte de T
+PageRank: Desviación estándar
 
 All: Tiempos de ejecución
 
