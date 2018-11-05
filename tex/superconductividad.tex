@@ -443,28 +443,60 @@ Si se polariza la unión Josephson con una fuente de corriente, la fase en ambos
 
 \section{Transmones}
 
-Los transmones son un tipo de qubit de carga. Tratando el transmón como un sistema de dos niveles acoplado linealmente a un oscilador monomodo, su Hamiltoniano toma la siguiente forma:
+Los transmones son un tipo de qubit de carga derivado capacitivamente para hacerlo insensible a las fluctuasiones de carga. La manera de interactuar con los transmones es acoplándolos a un resonador. Tratando el transmón como un sistema de dos niveles y el resonador como un oscilador monomodo, podemos modelar este sistema con el Hamiltoniano de Jaynes-Cummings, el cuál describe un átomo o un átomo artificial que interactúa con un oscilador armónico cuántico:
 
-\[
-\hat{H} = \hat{H}_q + \hat{H}_{qr} + \hat{H}_r = -\frac{1}{2} \epsilon \sigma_z + g \sigma_x (a+a^\dag) + \hbar \omega (a^\dag a + \frac{1}{2})
-\]
+\begin{equation}
+    \hat{H} = \hat{H}_q + \hat{H}_{qr} + \hat{H}_r = -\frac{1}{2} \hbar \omega_q \sigma_z + \hbar g \sigma_x (a+a^\dag) + \hbar \omega_r (a^\dag a + \frac{1}{2})
+\end{equation}
 
-donde $\epsilon$ es la energía de excitación del qubit, $g$ es el acoplamiento qubit-oscilador y $\omega$ es la frecuencia del oscilador.
+donde $\omega_q$ es la frecuencia de resonancia del qubit, $g$ es la constante de acoplamiento qubit-oscilador y $\omega_r$ es la frecuencia de resonancia del resonador. El operador $a$ es el operdor de aniquilación bosónico del oscilador y su efecto al ser aplicado al estado del sistema es aniquilar fotones del resonador. Similarmente, $a^\dagger$ es el operador de creación bosónico del oscilador y su efecto al ser aplicado al estado del sistema es crear fotones en el resonador.
 
-Introduciendo los operadores escalera del qubit, $\sigma_\pm = \frac{1}{2}(\sigma_x \pm i \sigma_y)$, el término de interacción $\hat{H}_{qr}$ se puede dividir en dos términos, el de Jaynes-Cummings (JC) y el anti-Jaynes-Cummings (AJC):
+\begin{align}
+    a \ket{n} &= \sqrt{n} \ket{n-1} \\
+    a^\dagger \ket{n} &= \sqrt{n+1} \ket{n+1}
+\end{align}
 
-\[
-\hat{H}_{qr} = \hat{H}_{qr}^{JC} + \hat{H}_{qr}^{AJC} = g(\sigma_+ a + \sigma_- a^\dag) + g(\sigma_+ a^\dag + \sigma_- a)
-\]
+Aquí $n$ es la cantidad de fotones en el resonador. De estas ecuaciones podemos deducir el operador de número, el cuál es:
 
-Este Hamiltoniano describe el modelo cuántico canónico de Rabi (canonical quantum Rabi model - QRM). Las ecuaciones ()() son completamente generales y aplicables a cualquier sistema qubit-oscilador. Mantener sólo el término JC correponde a realizar la aproximación de onda rotativa (rotating wave approximation - RWA).
+\begin{equation}
+    a^\dagger a \ket{n} = a^\dagger \sqrt{n} \ket{n-1} = \sqrt{(n-1)+1} \sqrt{n-1} \ket{(n-1)+1} = n \ket{n}
+\end{equation}
+
+En cuando a los operadores del qubit, tenemos el operador de aniquilación fermiónico $\sigma_-$, el cuál disminuye el nivel de energía del qubit, y el operador de creación fermiónico $\sigma_+ = \sigma_-^\dagger$, el cuál aumenta el nivel de energía del qubit.
+
+\begin{align}
+    \sigma_- &= \ketbra{0}{1} \\
+    \sigma_+ &- \ketbra{1}{0}
+\end{align}
+
+También tenemos el operador $\sigma_z$, que es el análogo del operador de número para el qubit y el operador $\sigma_x$ que hace un \textit{bitflip}.
+
+\begin{align}
+    \sigma_z &= \ketbra{0} - \ketbra{1} = \sigma_-\sigma_+ - \sigma_+\sigma_- \\
+    \sigma_x &= \ketbra{0}{1} + \ketbra{1}{0} = \sigma_- + \sigma_+
+\end{align}
+
+El término de interacción del Hamiltoniano de Jaynes-Cummings lo podemos descomponer en el término de Jaynes-Cummings y el término anti-Jaynes-Cummings.
+
+\begin{equation}
+    \hat{H}_{qr} = \hat{H}_{qr}^{JC} + \hat{H}_{qr}^{AJC} = g(\sigma_+ a + \sigma_- a^\dag) + g(\sigma_+ a^\dag + \sigma_- a)
+\end{equation}
+
+El término $H_{qr}^{AJC}$ describe oscilaciones de alta frecuencia. En los sistemas típicos, estas oscilaciones están en el orden de los teraherzios (THz) y tienen amplitudes muy pequñas. Debido al orden de las frecuencias de estas oscilaciones, no las podemos medir con la tecnología utilizada para la computación cuántica. Las mediciones en el régimen de los teraherzios son un tema de investigación activo en el que todavía nos estamos adentrando [ref]. Por esto y la amplitud despreciable de estas oscilaciones, es común hacer la aproximación de onda rotativa, con la cual se aplica una transformación al Hamiltoniano de manera que desaparesca el término $H_{qr}^{AJC}$. Trabajaremos con el Hamiltoniano de Jaynes-Cummings bajo esta aproximación. Además, también usaremos unidades naturales, es decir, que tendremos que $\hbar = 1$ y $c = 1$, donde $\hbar$ es la consante reducida de Planck y $c$ es la velocidad de la luz. En estas unidades la energía se mide en Hz.
+
+\begin{equation}
+    \hat{H}_{RWA} = \hat{H}_r + \hat{H}_q + \hat{H}_{qr} = \omega_r a^\dag a - \frac{1}{2} \omega_q \sigma_z + g(a \sigma_+ + a^\dag \sigma_-)
+\end{equation}
+
+En este Hamiltoniano tenemos el término $\hat{H}_r = \omega_r a^\dagger a$, correspondiente a la energía del resonador. Este término da la cantidad de fotones de frecuencia $\omega_r$ en el resonador y por lo tanto, la energía de este subsistema (recordemos que elegimos $\hbar = 1$). En el primer Hamiltoniano que presentamos también había un término $+ \frac{1}{2} \omega_r$, este término se puede descartar, pues sólo representa un término constante de energía y como es una constante por la identidad, sólo actúa como una fase global en la evolución del sistema, así que no afecta las probabilidades. El término $\hat{H}_q = - \frac{1}{2} \omega_q \sigma_z$ representa la energía del qubit. $\omega_q$ es la diferencia de energía entre los dos niveles del qubit y el nivel cero de energía se ha tomado tal que el espectro del qubit esté centrado alrededor del cero. Así, el qubit tiene energía $-\frac{1}{2} \omega_q$ cuando está en el estado $\ket{0}$ y energía $\frac{1}{2} \omega_r$ cuando está en el estado $\ket{1}$. Finalmente, el término de interacción $H_{qr} = g (a \sigma_+ + a^\dagger \sigma_-)$ indica que las emisiones en el resonador corresponden a absorsiones del qubit y viceversa. La manera en la que interactúan el resonador y el qubit es intercambiando energía.
 
 \section{Hamiltonianos multiqubit de transmones}
-Omitiendo el término del oscilador, el Hamiltoniano toma la siguiente forma general:
 
-\[
+Cuando tenemos más de un qubit acoplado al mismo resonador, estos interactúan virtualmente a través de emisiones y absorsiones con el resonador. Omitiendo el término del oscilador, esto se refleja en el Hamiltoniano, de forma general, de la siguiente manera:
+
+\begin{equation}
 \hat{H} = \hat{H}_q + \hat{H}_{qr} + \hat{H}_{qq} = -\frac{1}{2} \sum\limits_i \epsilon_i \sigma_{zi} + \sum\limits_i g_i \sigma_{xi} (a+a^\dag) + \frac{1}{2} \sum\limits_{i,j;\nu} \lambda_{\nu,ij} \sigma_{\nu i} \sigma_{\nu j}
-\]
+\end{equation}
 
 Por simplicidad, se considera que el término $\hat{H}_{qr}$ se refiere sólo a la lectura y las operaciones de bus, dejando la interacción indirecta qubit-qubit via el resonador ser incluidas en $\hat{H}_{qq}$ via la constante de acoplamiento $\lambda_{\nu,ij}$. Existen distintos tipos de acoplamiento qubit-qubit, entre ellos se encuentran los siguientes:
 
@@ -526,59 +558,80 @@ Los cuales describen al sistema intrínseco, $\hat{H}_{syst}$ y las operaciones 
 \hat{H}_{ctrl} = \sum\limits_{i; \nu} f_{\nu i}(t) \sigma_{\nu i} + \frac{1}{2} \sum\limits_{i,j;\nu} h_{\nu, ij}(t) \sigma_{\nu i} \sigma_{\nu j} + k(t) a^\dag a
 \]
 
-\subsection{Pulsos de microondas}
+Pulsos de microondas
 
 $$\hat{H}_d = \sum\limits_k (a+a^\dagger) (\xi_k e^{-i\omega_d^{(k)}t} + \xi_k^*e^{i\omega_d^{(k)}t})$$
 
 RWA: $$\hat{H}_d=\sum\limits_k a\xi_k^*e^{i\omega_d^{(k)}t}+ a^\dagger\xi_ke^{-i\omega_d^{(k)}t}$$
 
-\subsection{Régimen rotacional del pulso}
+En el apéndice \ref{ch:hamiltonians} se realizan con detalle los cálculos asociados a la deducción del Hamiltoniano efectivo que dará lugar a las compuertas que construiremos. Un bus de transmones controlado con pulsos de microondas y con frecuencias de resonancia modulables tendrá el siguiente Hamiltoniano efectivo con el que podemos realizar rotaciones en X-Y y la compuerta de entrelazamiento $\sqrt{iSWAP}$.
 
-Trabajando con un sólo modo a la vez, se aplica la siguiente transformación $U(t) = exp[-i \omega_d t(a^\dagger a + \sum\limits_i \sigma_{z i})]$ para entrar en el régimen rotacional del pulso de control.
+\begin{multline}
+\hat{H}_{eff} = \tilde{\tilde{\Delta}}_r a^\dagger a - \frac{1}{2} \sum\limits_i \Delta_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+i} + a^\dagger \sigma_{-i}) + \sum\limits_i (\Omega \sigma_{+i} + \Omega^* \sigma_{-i}) + \\
+\sum\limits_{ij} \frac{g_i g_j}{2 \Delta_j} \left(\sigma_{+i} \sigma_{-j} + \sigma_{+j} \sigma_{-i}\right)
+\end{multline}
 
-$$\hat{H} = U^\dagger (\hat{H}_{syst} + \hat{H}_d) U - i U^\dagger \dot{U}$$
-$$ \hat{H} = \Delta_c a^\dagger a + \frac{1}{2} \sum\limits_i \Delta_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}) + (a\xi^*e^{i\omega_d t}+a^\dagger\xi e^{-i\omega_d t})$$
-
-$\Delta_c = \omega_c - \omega_d \qquad \quad \Delta_{qi} = \omega_{qi} - \omega_d$
-
-\subsection{Efecto del pulso sobre el qubit}
-
-Luego se aplica el operador de desplazamineto $D(\alpha) = exp[\alpha a^\dagger - \alpha^* a]$ sobre el campo $a$ con $\dot{\alpha} = -i \Delta_c \alpha -i \xi e^{-i \omega_d t}$ para eliminar el efecto directo del pulso sobre la cavidad.
-
-$$\hat{H} = D^\dagger (\alpha) \hat{H}_{old} D(\alpha) -i D^\dagger(\alpha) \dot{D}(\alpha)$$
-
-$$\hat{H} = \Delta_c a^\dagger a + \frac{1}{2} \sum\limits_i \Delta_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+i} + a^\dagger \sigma_{-i})$$
-$$ + \sum\limits_i g_i (\alpha \sigma_{+i} + \alpha^* \sigma_{-i}) - \Delta_c \alpha \alpha^* $$
-
-El término $-\Delta_c \alpha \alpha^*$ se desprecia, ya que sólo representa una fase global en la evolución del sistema.
-
-\subsection{Régimen dispersivo}
-
-Finalmente, aplicamos la transformación $U = exp[\sum\limits_i \frac{g_i} {\Delta_i} (a^\dagger \sigma_{-i} - a \sigma_{+i})]$, donde $\Delta_i = \omega_{qi} - \omega_c$ y realizamos la aproximación de segundo grado sobre los términos $\frac{g_i}{\Delta_i} \ll 1$.
-
-$$\hat{H} = U^\dagger \hat{H}_{old} U$$
-$$\hat{H} \approx \tilde{\Delta}_c a^\dagger a + \frac{1}{2} \sum\limits_i \tilde{\Delta}_{qi} \sigma_{zi} + \sum\limits_i (\Omega_i \sigma_{+i} + \Omega_i^* \sigma_{-i})$$
-$$+ \sum\limits_{i \neq j} \frac{g_i g_j}{2 \Delta_i} (\sigma_{-i} \sigma_{+j}+\sigma_{+i} \sigma_{-j})$$
-
-$\tilde{\Delta}_c = (\omega_c + \sum\limits_i \chi_i \sigma_{zi}) - \omega_d
- \qquad
- \tilde{\Delta}_{qi} = (\omega_{qi} + \chi_i) - \omega_d
- \qquad
- \chi_i = \frac{g_i^2}{\Delta_i}$
+En este Hamiltoniano $\tilde{\Delta}_r$ es la diferencia entre las frecuencias del resonador, con un pequeño desplazamiento $\chi$ dependiente del estado de cada qubit, y la del pulso de control aplicado. De igual manera, $\Delta_{qi}$ es la diferencia entre la frecuencia de resonancia de cada qubit y la frecuencia del pulso aplicado. $\Delta_i$ es la diferencia entre la frecuencia de cada qubit y la del resonador. El término $\sum\limits_{ij} \frac{g_i g_j}{2 \Delta_j} \left(\sigma_{+i} \sigma_{-j} + \sigma_{+j} \sigma_{-i}\right)$ representa el acoplamiento por el resonador entre los qubits. El término $\sum\limits_i (\Omega \sigma_{+i} + \Omega^* \sigma_{-i})$ representa el efecto del pulso de control sobre los qubits.
 
 \subsection{Rotaciones X-Y}
 
 Tomando $\Omega(t) = \Omega^x(t) \cos(\omega_d t) + \Omega^y \sin(\omega_d t)$, donde $\omega_d$ es igual a la frecuencia de resonancia de uno de los qubits logramos rotaciones sobre los ejes X e Y. Las amplitudes de estas rotaciones vienen dadas por $\int_0^{t_0} \Omega^x(t) dt$ y $\int_0^{t_0} \Omega^y(t) dt$, respectivamente, donde $t_0$ es la duración del pulso.
 
-$$\hat{H} \approx \tilde{\Delta}_c a^\dagger a + \frac{1}{2} \tilde{\Delta}_q \sigma_z + \frac{1}{2} (\Omega^x(t) \sigma_x + \Omega^y(t) \sigma_y)$$
+Tomemos un pulso modulado de la siguiente manera $\Omega(t) = \Omega^x(t) \cos(\omega_d t) = \frac{\Omega^x(t)}{2} (e^{i \omega_d t} + e^{-i \omega_d t})$, donde $\omega_d$ coincide con la frecuencia de resonancia de alguno de los qubits. El término correspondiente en el Hamiltoniano será $\frac{1}{2} (\Omega^x(t) \sigma_{+i} + \Omega^x(t) \sigma_{-i}) = \frac{\Omega^x(t)}{2} \sigma_{xi}$. Generando así, rotacione en X para el qubit i. Si variamos la fase del pulso, tal que $\Omega(t) = \Omega^k(t) \cos(\omega_d t + \phi_k)$, entonces podremos generar rotaciones alrededor de cualquier eje del plano X-Y dentro de la esfera de Bloch. Por ejemplo, sea $\phi_y = \pi/2$, entonces tendremos $\Omega(t) = \Omega^y(t) \sin(\omega_d) = \frac{\Omega^y(t)}{2} \frac{-i e^{i \omega_d t} + i e^{i \omega_d t}}{2i}$. Así, el termino en el Hamiltoniano será $\frac{\Omega^y(t)}{2} (-i \sigma_{-i} + i \sigma_{+i}) = \frac{\Omega^y(t)}{2} \sigma_{yi}$. Por lo tanto, aplicando pulsos modulados en fase y cuadratura podemos generar rotaciones en X-Y tales que
+
+\begin{equation}
+    \hat{H}_{XY} = \frac{1}{2} (\Omega^x(t) \sigma_x + \Omega^y(t) \sigma_y)
+\end{equation}
+
+Lo cual nos ta la siguiente contribución a la evolución del sistema:
+
+\begin{equation}
+    \hat{H}_{XY} = \frac{1}{2} (\Omega^x(t) \sigma_x + \Omega^y(t) \sigma_y)
+\end{equation}
 
 \subsection{Compuerta de entrelazamiento}
 
-Ejemplo con sólo dos qubits
+Ahora estudiemos lo que sucede si modulamos la frecuencia de resonancia de dos qubits en el mismo valor, así que $\Delta_1 = \Delta_2 = \Delta$ y sea $J = \frac{g_1 g_2}{\Delta}$. Vamos a enfocarnos en el término de acoplamiento por el resonador entre estos dos qubits.
 
-$$\hat{H} \approx \frac{1}{2} \tilde{\Delta}_{q_1} \sigma_{z_1} + \frac{1}{2} \tilde{\Delta}_{q_2} \sigma_{z_2} + \frac{g_1 g_2 (\Delta_1 + \Delta_2)}{2 \Delta_1 \Delta_2} (\sigma_{-_1} \sigma_{+_2} + \sigma_{+_1} \sigma_{-_2})$$
+\begin{equation}
+    \hat{H}_{q_1 q_2} = (\frac{g_1 g_2}{2 \Delta_1} + \frac{g_1 g_2}{2 \Delta_2}) (\sigma_{-_1} \sigma_{+_2} + \sigma_{+_1} \sigma_{-_2}) = J (\sigma_{-_1} \sigma_{+_2} + \sigma_{+_1} \sigma_{-_2})
+\end{equation}
 
-Variando la frecuencia de resonacia de los qubit, se puede variar el acoplamiento entre estos. 
+Este elemento contribuirá a la evolución del sistema de la siguiente manera:
+
+\begin{equation}
+    U(t_1, t_0) = e^{-i J (\sigma_{-_1} \sigma_{+_2} + \sigma_{+_1} \sigma_{-_2}) (t_1 - t_0)} = 
+    \begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & \cos(J (t_1 - t_0))  & -i \sin(J (t_1 - t_0)) & 0 \\
+        0 & -i \sin(J (t_1 - t_0)) & \cos(J (t_1 - t_0)) & 0 \\
+        0 & 0 & 0 & 1 \\
+    \end{pmatrix}
+\end{equation}
+
+Por lo que si tomamos $t_1$ y $t_0$ tales que $t_1 - t_0 = \frac{\pi}{4J}$ podemos generar la compuerta $\sqrt{iSWAP}$
+
+\begin{equation}
+    U(t_0 + \frac{\pi}{4J}, t_0) = 
+    \begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & \frac{1}{\sqrt{2}}  & -i \frac{1}{\sqrt{2}} & 0 \\
+        0 & -i \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} & 0 \\
+        0 & 0 & 0 & 1 \\
+    \end{pmatrix} = \sqrt{iSWAP}
+\end{equation}
+
+Intuitivamente sigue que si dejamos que esta interacción ocurra por el doble de tiempo, es decir $t_1 - t_0 = \frac{\pi}{2J}$ generaremos la compuerta iSWAP.
+
+\begin{equation}
+    U(t_0 + \frac{\pi}{2J}, t_0) = 
+    \begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & 0 & -i & 0 \\
+        0 & -i & 0 & 0 \\
+        0 & 0 & 0 & 1 \\
+    \end{pmatrix} = iSWAP
+\end{equation}
 
 \subsection{Compuertas compuestas}
 

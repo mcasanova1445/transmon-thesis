@@ -1,35 +1,5 @@
 \chapter{Cálculos de Hamiltonianos}
-
-\section{Hamiltoniano de Jaynes-Cummings}
-
-El Hamiltoniano de Jaynes-Cummings es un Hamiltoniano diagonal que representa un
-sistema de dos niveles interactuando con un modo cuantizado de una cavidad óptica.
-
-\begin{equation}
-    \hat{H}_{JC} = \hat{H}_r + \hat{H}_q + \hat{H}_{qr} = \omega_r a^\dag a - \frac{1}{2} \omega_q \sigma_z + g(a \sigma_+ + a^\dag \sigma_-)
-\end{equation}
-
-\section{Hamiltoniano multiquibit}
-
-El modelo de Jaynes-Cummings para varios qubits sin el término de la energía de la cavidad es el siguiente:
-
-\begin{equation}
-    \hat{H} = \hat{H}_q + \hat{H}_{qr} = - \frac{1}{2} \sum\limits_i \omega_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i})
-\end{equation}
-
-\section{Pulsos de microondas}
-
-Para operar sobre los qubits se aplican pulsos de microondas.
-
-\begin{equation}
-    \hat{H}_d = \sum\limits_k (a+a^\dagger) (\xi_k e^{-i\omega_d^{(k)}t} + \xi_k^*e^{i\omega_d^{(k)}t})
-\end{equation}
-
-RWA:
-
-\begin{equation}
-    \hat{H}_d=\sum\limits_k a\xi_k^*e^{i\omega_d^{(k)}t}+ a^\dagger\xi_ke^{-i\omega_d^{(k)}t}
-\end{equation}
+\label{ch:hamiltonians}
 
 \section{Régimen rotacional del pulso}
 
@@ -288,25 +258,139 @@ Con el cuarto término tenemos el siguiente conmutador:
 - \sum\limits_i \frac{g_i^2} {\Delta_i} (\alpha a^\dagger + \alpha^* a) \sigma_{zi}
 \end{multline}
 
-Sumando y agrupando se tiene
+-----------------------------------------------------------
+
+
+Con el primer término tenemos el siguiente conmutador:
 
 \begin{multline}
-\Delta_r a^\dagger a - \frac{1}{2} \sum\limits_i \Delta_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+i} + a^\dagger \sigma_{-i}) + \sum\limits_i g_i (\alpha \sigma_{+i} + \alpha^* \sigma_{-i}) \\
-+ \Delta_r \sum\limits_i \frac{g_i} {\Delta_i} (a^\dagger \sigma_{-i} + a \sigma_{+i}) - \sum\limits_i \frac{g_i} {\Delta_i} \Delta_{qi} (a^\dagger \sigma_{-i} + a \sigma_{+i}) \\
-+ \sum\limits_{ij} g_i \frac{g_j}{\Delta_j} \left(\sigma_{+i} \sigma_{-j} + \sigma_{+j} \sigma_{-i}\right) - 2 \sum\limits_{i} \frac{g_i^2}{\Delta_i} a^\dagger a \sigma_{zi} - \sum\limits_i \frac{g_i^2} {\Delta_i} (\alpha a^\dagger + \alpha^* a) \sigma_{zi}
+    [\Delta_r \sum\limits_i \frac{g_i} {\Delta_i} (a^\dagger \sigma_{-i} + a \sigma_{+i}), \sum\limits_j \frac{g_j} {\Delta_j} (a^\dagger \sigma_{-j} - a \sigma_{+j})] = \\
+    \Delta_r \sum\limits_{ij} \frac{g_i g_j}{\Delta_i \Delta_j} \left([(a^\dagger \sigma_{-i} ), (- a \sigma_{+j})] + 
+        [(a \sigma_{+i}), (a^\dagger \sigma_{-j} )]\right) = \\
+\Delta_r \left(\sum\limits_{ij} \frac{g_i g_j}{\Delta_i \Delta_j} \left(\sigma_{+i} \sigma_{-j} + \sigma_{+j} \sigma_{-i}\right) -
+2 \sum\limits_{i} \frac{g_i^2}{\Delta_i^2} a^\dagger a \sigma_{zi} \right)
+\end{multline}
+
+Con el segundo término tenemos el siguiente conmutador:
+
+\begin{multline}
+    [- \sum\limits_i \frac{g_i} {\Delta_i} \Delta_{qi} (a^\dagger \sigma_{-i} + a \sigma_{+i}), \sum\limits_j \frac{g_j} {\Delta_j} (a^\dagger \sigma_{-j} - a \sigma_{+j})] = \\
+- \sum\limits_{ij} \Delta_{qi}  \frac{g_i g_j}{\Delta_i \Delta_j} \left(\sigma_{+i} \sigma_{-j} + \sigma_{+j} \sigma_{-i}\right) +
+2 \sum\limits_{i} \Delta_{qi} \frac{g_i^2}{\Delta_i^2} a^\dagger a \sigma_{zi}
+\end{multline}
+
+Con el tercer término tenemos el siguiente conmutador:
+
+\begin{multline}
+[\sum\limits_{ij} g_i \frac{g_j}{\Delta_j} \left(\sigma_{+i} \sigma_{-j} + \sigma_{+j} \sigma_{-i}\right), \sum\limits_k \frac{g_k} {\Delta_k} (a^\dagger \sigma_{-k} - a \sigma_{+k})] = \\
+[\sum\limits_{i \neq j} g_i \frac{g_j}{\Delta_j} \left(\sigma_{+i} \sigma_{-j} + \sigma_{+j} \sigma_{-i}\right), \sum\limits_k \frac{g_k} {\Delta_k} (a^\dagger \sigma_{-k} - a \sigma_{+k})] = \\
+\sum\limits_{i \neq j, k} g_i \frac{g_j}{\Delta_j} \frac{g_k}{\Delta_k} \left(
+[\sigma_{+i} \sigma_{-j},  a^\dagger \sigma_{-k}] +
+[\sigma_{+i} \sigma_{-j},  - a \sigma_{+k}] +
+[\sigma_{+j} \sigma_{-i},  a^\dagger \sigma_{-k}] +
+[\sigma_{+j} \sigma_{-i}, - a \sigma_{+k}] \right) = \\
+\sum\limits_{i \neq j} g_i \frac{g_j}{\Delta_j} \left(
+[\sigma_{+i} \sigma_{-j}, \frac{g_i}{\Delta_i}  a^\dagger \sigma_{-i}] -
+[\sigma_{+i} \sigma_{-j}, \frac{g_j}{\Delta_j} a \sigma_{+j}] +
+[\sigma_{+j} \sigma_{-i}, \frac{g_j}{\Delta_j} a^\dagger \sigma_{-j}] -
+[\sigma_{+j} \sigma_{-i}, \frac{g_i}{\Delta_i} a \sigma_{+i}] \right) = \\
+\sum\limits_{i \neq j} g_i \frac{g_j}{\Delta_j} \left(
+- \frac{g_i}{\Delta_i} a^\dagger \sigma_{zi} \sigma_{-j}
+- \frac{g_j}{\Delta_j} a \sigma_{+i} \sigma_{zj}
+- \frac{g_j}{\Delta_j} a^\dagger \sigma_{zj} \sigma_{-i}
+- \frac{g_i}{\Delta_i} a \sigma_{+j} \sigma_{zi} \right)
+\end{multline}
+
+\begin{multline}
+[- 2 \sum\limits_{i} \frac{g_i^2}{\Delta_i} a^\dagger a \sigma_{zi}, \sum\limits_j \frac{g_j} {\Delta_j} (a^\dagger \sigma_{-j} - a \sigma_{+j})] =
+- 2 \sum\limits_{ij} \frac{g_i^2}{\Delta_i} \frac{g_j}{\Delta_j} \left(
+[a^\dagger a \sigma_{zi}, a^\dagger \sigma_{-j}] -
+[a^\dagger a \sigma_{zi}, a \sigma_{+j}]
+\right) = \\
+- 2 \sum\limits_{i} \frac{g_i^3}{\Delta_i^2} \left(
+(a^\dagger a \sigma_{zi} a^\dagger \sigma_{-i} - a^\dagger \sigma_{-i} a^\dagger a \sigma_{zi}) -
+(a^\dagger a \sigma_{zi} a \sigma_{+i} - a \sigma_{+i} a^\dagger a \sigma_{zi})
+\right) \\
+- 2 \sum\limits_{i \neq j} \frac{g_i^2}{\Delta_i} \frac{g_j}{\Delta_j} \left(
+\sigma_{zi} [a^\dagger a, a^\dagger] \sigma_{-j} -
+\sigma_{zi} [a^\dagger a, a] \sigma_{+j}
+\right) = \\
+- 2 \sum\limits_{i} \frac{g_i^3}{\Delta_i^2} \left(
+(a^\dagger a \sigma_{zi} a^\dagger \sigma_{-i} - a^\dagger \sigma_{-i} a^\dagger a \sigma_{zi}) -
+(a^\dagger a \sigma_{zi} a \sigma_{+i} - a \sigma_{+i} a^\dagger a \sigma_{zi})
+\right) \\
+- 2 \sum\limits_{i \neq j} \frac{g_i^2}{\Delta_i} \frac{g_j}{\Delta_j} \left(
+\sigma_{zi} a^\dagger \sigma_{-j} +
+\sigma_{zi} a \sigma_{+j}
+\right) = \\
+- 2 \sum\limits_{i} \frac{g_i^3}{\Delta_i^2} \left(
+(a^\dagger \sigma_{zi} \sigma_{-i} (1 + a^\dagger a) - a^\dagger \sigma_{-i} \sigma_{zi} a^\dagger a) -
+(a^\dagger a \sigma_{zi} \sigma_{+i} a - (1 + a^\dagger a) \sigma_{+i} \sigma_{zi} a)
+\right) \\
+- 2 \sum\limits_{i \neq j} \frac{g_i^2}{\Delta_i} \frac{g_j}{\Delta_j} \left(
+\sigma_{zi} a^\dagger \sigma_{-j} +
+\sigma_{zi} a \sigma_{+j}
+\right) = \\
+- 2 \sum\limits_{i} \frac{g_i^3}{\Delta_i^2} \left(
+(a^\dagger \sigma_{zi} \sigma_{-i} + a^\dagger (2 \sigma_{-i}) a^\dagger a) -
+(a^\dagger a (-2) \sigma_{+i} a - \sigma_{+i} \sigma_{zi} a)
+\right) \\
+- 2 \sum\limits_{i \neq j} \frac{g_i^2}{\Delta_i} \frac{g_j}{\Delta_j} \left(
+\sigma_{zi} a^\dagger \sigma_{-j} +
+\sigma_{zi} a \sigma_{+j}
+\right)
+\end{multline}
+
+Sumando, agrupando y descartando los términos $\sigma_z \sigma_-$, $a^\dagger a \sigma_-$, $\sigma_z (a + a^\dagger)$, sus conjugados hermíticos y otros términos de orden superior, nos queda:
+
+\begin{multline}
+[[H,X],X] \approx \Delta_r \left(\sum\limits_{ij} \frac{g_i g_j}{\Delta_i \Delta_j} \left(\sigma_{+i} \sigma_{-j} + \sigma_{+j} \sigma_{-i}\right) -
+2 \sum\limits_{i} \frac{g_i^2}{\Delta_i^2} a^\dagger a \sigma_{zi} \right) + \\
+- \sum\limits_{ij} \Delta_{qi}  \frac{g_i g_j}{\Delta_i \Delta_j} \left(\sigma_{+i} \sigma_{-j} + \sigma_{+j} \sigma_{-i}\right) +
+2 \sum\limits_{i} \Delta_{qi} \frac{g_i^2}{\Delta_i^2} a^\dagger a \sigma_{zi} = \\
+- \left(\sum\limits_{ij} \frac{g_i g_j}{\Delta_j} \left(\sigma_{+i} \sigma_{-j} + \sigma_{+j} \sigma_{-i}\right) -
+2 \sum\limits_{i} \frac{g_i^2}{\Delta_i} a^\dagger a \sigma_{zi} \right) \\
+\end{multline}
+
+\begin{multline}
+    [H,X] = \Delta_r \sum\limits_i \frac{g_i} {\Delta_i} (a^\dagger \sigma_{-i} + a \sigma_{+i}) - \sum\limits_i \frac{g_i} {\Delta_i} \Delta_{qi} (a^\dagger \sigma_{-i} + a \sigma_{+i}) \\
++ \sum\limits_{ij} g_i \frac{g_j}{\Delta_j} \left(\sigma_{+i} \sigma_{-j} + \sigma_{+j} \sigma_{-i}\right) - 2 \sum\limits_{i} \frac{g_i^2}{\Delta_i} a^\dagger a \sigma_{zi} - \sum\limits_i \frac{g_i^2} {\Delta_i} = \\
+- \sum\limits_i g_i (a^\dagger \sigma_{-i} + a \sigma_{+i}) + \sum\limits_{ij} g_i \frac{g_j}{\Delta_j} \left(\sigma_{+i} \sigma_{-j} + \sigma_{+j} \sigma_{-i}\right) - 2 \sum\limits_{i} \frac{g_i^2}{\Delta_i} a^\dagger a \sigma_{zi} - \sum\limits_i \frac{g_i^2} {\Delta_i}
+\end{multline}
+
+Entonces, sumando y agrupando todos los términos restantes, nos queda:
+
+\begin{multline}
+\hat{H}_4 \approx \Delta_r a^\dagger a - \frac{1}{2} \sum\limits_i \Delta_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+i} + a^\dagger \sigma_{-i}) + \sum\limits_i g_i (\alpha \sigma_{+i} + \alpha^* \sigma_{-i}) + \\
+- \sum\limits_i g_i (a^\dagger \sigma_{-i} + a \sigma_{+i}) + \sum\limits_{ij} \frac{g_i g_j}{\Delta_j} \left(\sigma_{+i} \sigma_{-j} + \sigma_{+j} \sigma_{-i}\right) - 2 \sum\limits_{i} \frac{g_i^2}{\Delta_i} a^\dagger a \sigma_{zi} \\
+- \frac{1}{2} \left(\sum\limits_{ij} \frac{g_i g_j}{\Delta_j} \left(\sigma_{+i} \sigma_{-j} + \sigma_{+j} \sigma_{-i}\right) -
+2 \sum\limits_{i} \frac{g_i^2}{\Delta_i} a^\dagger a \sigma_{zi} \right) = \\
+(\Delta_r - \sum\limits_{i} \frac{g_i^2}{\Delta_i} \sigma_{zi}) a^\dagger a - \frac{1}{2} \sum\limits_i \Delta_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+i} + a^\dagger \sigma_{-i}) + \sum\limits_i g_i (\alpha \sigma_{+i} + \alpha^* \sigma_{-i}) + \\
+\sum\limits_{ij} \frac{g_i g_j}{2 \Delta_j} \left(\sigma_{+i} \sigma_{-j} + \sigma_{+j} \sigma_{-i}\right)
+\end{multline}
+
+\begin{multline}
+\hat{H}_{eff} = \tilde{\Delta}_r a^\dagger a - \frac{1}{2} \sum\limits_i \Delta_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+i} + a^\dagger \sigma_{-i}) + \sum\limits_i g_i (\alpha \sigma_{+i} + \alpha^* \sigma_{-i}) + \\
+\sum\limits_{ij} \frac{g_i g_j}{2 \Delta_j} \left(\sigma_{+i} \sigma_{-j} + \sigma_{+j} \sigma_{-i}\right) - \sum\limits_{i} \frac{g_i^2}{\Delta_i} a^\dagger a \sigma_{zi}
 \end{multline}
 
 
-\begin{multline}
-    (\Delta_r - \sum\limits_i \frac{g_i^2}{\Delta_i} \sigma_{zi}) a^\dagger a - \frac{1}{2} \sum\limits_i (\Delta_{qi} + 2 \frac{g_i^2}{\Delta_i} a^\dagger a) \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+i} + a^\dagger \sigma_{-i}) + \sum\limits_i g_i (\alpha \sigma_{+i} + \alpha^* \sigma_{-i}) \\
-- \sum\limits_i \frac{g_i \Delta_i} {\Delta_i} (a^\dagger \sigma_{-i} + a \sigma_{+i}) + \sum\limits_{ij} g_i \frac{g_j}{\Delta_j} \left(\sigma_{+i} \sigma_{-j} + \sigma_{+j} \sigma_{-i}\right) - \sum\limits_i \frac{g_i^2}{\Delta_i} (\alpha a^\dagger + \alpha^* a) \sigma_{zi}
-\end{multline}
 
 
-\begin{multline}
-    (\Delta_r - \sum\limits_i \frac{g_i^2}{\Delta_i} \sigma_{zi}) a^\dagger a - \frac{1}{2} \sum\limits_i (\Delta_{qi} + 2 \frac{g_i^2}{\Delta_i} a^\dagger a) \sigma_{zi} + \sum\limits_i g_i (\alpha \sigma_{+i} + \alpha^* \sigma_{-i}) \\
-+ \sum\limits_{ij} g_i \frac{g_j}{\Delta_j} \left(\sigma_{+i} \sigma_{-j} + \sigma_{+j} \sigma_{-i}\right) - \sum\limits_i \frac{g_i^2}{\Delta_i} (\alpha a^\dagger + \alpha^* a) \sigma_{zi}
-\end{multline}
+En el caso de dos qubits tenemos:
+
+\begin{equation}
+\hat{H}_{eff} \approx \Delta_r a^\dagger a - \frac{1}{2} \sum\limits_i \tilde{\Delta}_{qi} \sigma_{zi} + \sum\limits_i (\Omega_i \sigma_{+i} + \Omega_i^* \sigma_{-i})
++ \frac{g_1 g_2 (\Delta_1 + \Delta_2)}{2 \Delta_1 \Delta_2} (\sigma_{-1} \sigma_{+2}+\sigma_{+1} \sigma_{-2})
+\end{equation}
+
+$\tilde{\Delta}_r = (\omega_r - \frac{1}{2} \sum\limits_i \chi_i \sigma_{zi}) - \omega_d \qquad \chi_i = \frac{g_i^2}{\Delta_i}$
+
+
+
+
+
+-----------------------------------------------------------
 
 
 % Dr = wr - wd
@@ -314,42 +398,4 @@ Sumando y agrupando se tiene
 % Di = wqi - wr
 % Desaparece el acoplamiento resonador-qubits
 % Aparece acoplamiento qubit-qubit
-
-
-\begin{multline}
-\hat{H} = \Delta_r a^\dagger a - \sum\limits_i \Delta_{qi} (\frac{1}{2} + 2 \frac{g_i^2} {\Delta_i} (a^\dagger a + \frac{1}{2})) \sigma_{zi} +
-\sum\limits_{i \neq j} \frac{g_i g_j} {\Delta_j} (\sigma_{+i} \sigma_{-j} +\\
-\sigma_{-i} \sigma_{+j}) +
-\sum\limits_i g_i (\alpha \sigma_{+i} + \alpha^* \sigma_{-i}) -\\
-\sum\limits_i \frac{g_i^2} {\Delta_i} (\alpha a^\dagger + \alpha^* a) \sigma_{zi}
-\end{multline}
-
-------------------------------
-
-$$\hat{H} \approx \tilde{\Delta}_c a^\dagger a - \frac{1}{2} \sum\limits_i \tilde{\Delta}_{qi} \sigma_{zi} + \sum\limits_i (\Omega_i \sigma_{+i} + \Omega_i^* \sigma_{-i})$$
-$$+ \sum\limits_{i \neq j} \frac{g_i g_j}{2 \Delta_i} (\sigma_{-i} \sigma_{+j}+\sigma_{+i} \sigma_{-j})$$
-
-$\tilde{\Delta}_c = (\omega_c + \sum\limits_i \chi_i \sigma_{zi}) - \omega_d \qquad \tilde{\Delta}_{qi} = (\omega_{qi} + \chi_i) - \omega_d \qquad \chi_i = \frac{g_i^2}{\Delta_i}$
-
-\section{Rotaciones X-Y}
-
-Tomando $\Omega(t) = \Omega^x(t) \cos(\omega_d t) + \Omega^y \sin(\omega_d t)$, donde $\omega_d$ es igual a la frecuencia de resonancia de uno de los qubits logramos rotaciones sobre los ejes X e Y. Las amplitudes de estas rotaciones vienen dadas por $\int_0^{t_0} \Omega^x(t) dt$ y $\int_0^{t_0} \Omega^y(t) dt$, respectivamente, donde $t_0$ es la duración del pulso.
-
-------------------------
-$$ \Omega \sigma_+ + \Omega^* \sigma_- $$
-
-$$ e^{i(x+\pi/2)}-e^{-i(x+\pi/2)} = e^{i\pi/2}e^{ix}-e^{-i\pi/2}e^{-ix} =
-e^{i\pi/2}e^{ix}+e^{i\pi}e^{-i\pi/2}e^{-ix} = e^{i\pi/2}e^{ix}+e^{i\pi/2}e^{-ix} = e^{i\pi/2}(e^{ix}+e^{-ix})$$
-------------------------
-
-$$\hat{H} \approx \tilde{\Delta}_c a^\dagger a + \frac{1}{2} \tilde{\Delta}_q \sigma_z + \frac{1}{2} (\Omega^x(t) \sigma_x + \Omega^y(t) \sigma_y)$$
-
-\section{Compuerta de entrelazamiento}
-
-Ejemplo con sólo dos qubits
-
-$$\hat{H} \approx \frac{1}{2} \tilde{\Delta}_{q_1} \sigma_{z_1} + \frac{1}{2} \tilde{\Delta}_{q_2} \sigma_{z_2} + \frac{g_1 g_2 (\Delta_1 + \Delta_2)}{2 \Delta_1 \Delta_2} (\sigma_{-_1} \sigma_{+_2} + \sigma_{+_1} \sigma_{-_2})$$
-
-Variando la frecuencia de resonacia de los qubit, se puede variar el acoplamiento entre estos. 
-
 
