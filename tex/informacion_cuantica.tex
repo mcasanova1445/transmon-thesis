@@ -1,66 +1,105 @@
 \chapter{Información cuántica}
 
-En esta sección introduciremos las bases matemáticas fundamentales para empezar a trabajar con la Teoría de Información Cuántica, trabajaremos sobre espacios vectoriales discretos, debido a que los sistemas cuánticos que manejaremos (computadora cuántica) son sistemas físicos discretos, no continuos. Se dará una breve introducción a la notación de Dirac y su aplicación en la mecánica cuántica. Una vez establecidas las bases matemáticas se describirán los Postulados de la Mecánica Cuántica: Descripción del estado de un sistema, descripción de cantidades físicas, medición de cantidades físicas, reducción del paquete de ondas, evolución temporal, postulado de simetrización y variables de espín. Finalmente se definirá el enredamiento cuántico, su importancia en el cómputo cuántico y los sistemas de dos niveles.
+En esta sección introduciremos las bases matemáticas fundamentales para empezar a trabajar con la Teoría de Información Cuántica, trabajaremos sobre espacios vectoriales discretos, debido a que los sistemas cuánticos que manejaremos (computadora cuántica) son sistemas físicos discretos, no continuos. Se dará una breve introducción a la notación de Dirac y su aplicación en la mecánica cuántica (QM, por sus siglas en inglés). Una vez establecidas las bases matemáticas se describirán los Postulados de la Mecánica Cuántica: Descripción del estado de un sistema, descripción de cantidades físicas, medición de cantidades físicas, colapso del estado cuántico, evolución temporal, postulado de simetrización y variables de espín. Finalmente se definirá el enredamiento cuántico, su importancia en el cómputo cuántico y los sistemas de dos niveles.
 
-\section{Función de onda}
+\section{Estados cuánticos}
 
-El estado de una sistema cuántico viene dado por el conocimiento de un campo escalar denominado función de onda $\psi$ en todos los puntos del espacio para cualqueir instante de teimpo, dicha función de onda es compleja ($\in \mathds{C}$), de cuadrado integrable, cumple con el principio de superposición y es univaluada para las coordenadas espaciales de cada una de las partículas. Conocer la función de onda en mecánica cuántica es equivalente a conocer los vectores posición y momentum en mecánica clásica, en el sentido de que esta es la condición suficiente y necesaria para conocer el sistema en su totalidad. La evolución de la función de onda está dada por la ecuación de Schrödinger. La mecánica cuántica es una teoría probabilística, una partícula puede encontrarse en cualquier parte del universo en cualquier momento y la densidad de probabilidad de encontrarla en algún punto está dada por el módulo al cuadraro de su función de onda en este punto. De hecho, debido a esto es que $\psi$ debe ser de cuadrado integrable, pues la probabilidad de que la partícula se encuentre en cualquier lugar del universo debe ser uno, es decir:
+Un sistema físico es aquel que consta de fuentes y campos que posiblemente interactúan entre sí, y a partir del cual será posible extraer o transmitir algún tipo de información. Aquellas propiedades de un sistema físico que sean susceptibles a la medida reciben el nombre de observables o magnitudes físicas. No todas las propiedades de un sistema físico son independientes, unas se pueden describir en función de las otras y el conjunto minimal de observables necesarios para describir todas las propiedades del sistema se conoce como conjunto irreducible de observables (CIO) u observables fundamentales (OF). El conjunto de medidas realizadas sobre el CIO puede ser representado como coordenadas de un espacio vectorial, al cual llamaremos espacio de estado; de manera qeu los estados del sistema serán caracterizados a partir de puntos en dicho espacio.
+
+En la mecánica cuántica, a todo sistema físico se le hace corresponder un espacio de Hilbert $\mathcal{H}$, complejo y separable. A cada observable $\mathcal{A}$ del sistema le corresponde un operador hermítico $\hat{A}$, cuyos autovalores son los valores que pueden resultar de una medida de $\mathcal{A}$. No todos los operadores hermíticos corresponden a un observable, pero el recíproco sí es cierto. En partícular, es de interés el Hamiltoniano $\hat{H}$, el cual es el operador asociado a la energía del sistema.
+
+Las mezclas estadísticas de estados cuánticos también son estados cuánticos. Esto nos lleva a distinguir entre estados puros y estados mezcla. Los estados puros se suelen representar en la notación de vectores de estado, bra-kets de Dirac, mientras que los estados mezcla se suelen representar en la notación de matrices densidad. Ambas notaciones las explicaremos en secciones posteriores de este capítulo.
+
+La evolución de los estados cuánticos está dada por la ecuación de Schrödinger para estados puros y por la ecuación de Liouville-von Neumann para estados mixtos. La mecánica cuántica es una teoría probabilística. Los vectores de estado se construyen con amplitudes complejas de probabilidad asociadas a cada elemento de la base del espacio de Hilbert $\mathca{H}$ y las matrices densidad a partir de probabilidades asociadas a cada estado que compone la mezcla. En la mecánica cuántica, una partícula puede encontrarse en cualquier parte del universo, en cualquier momento con, con cualquier energía, de acuerdo a cierta distribución de probabilidad, siendo la densidad de probabilidad de encontrarla en algún estado al medir, el módulo al cuadrado de la proyección del estado actual en ese estado resultante de la medida. De hecho, debido a esto es que el estado debe estar normalizado, pues la probabilidad de que el sistema se encuentre cualquier estado siempre debe ser igual a uno.
 
 \begin{equation}
-    \int\limits_S \abs{\psi(r,t)}^2 dr = 1
+    \sum\limits \abs{\braket{\psi_i}{\psi}}^2 = 1
 \end{equation}
 
-Donde $S$ es todo el universo. Esto es para funciones de onda que describen una partícula, en el siguiente capítulo se verán funciones de onda macroscópicas que describen sistemas de muchas partículas. En estos, el módulo cuadrádo de $\psi$ describe la densidad de partículas, la cual podría entenderse como la suma de la densidad de probabilidad de que cada una de las partículas se encuentren en ese punto, y $\int\limits_S \abs{\psi(r,t)}^2 dr = N_s$, donde $N_s$ es el número total de partículas del sistema, el cual podría entenderse como la suma de que cada una de las partículas se encuentre en algún punto del sistema.
-
-%Según la mecánica clásica, ondas y partículas son dos entidades distintas, la primera es un ente puntual con posición definida que transporta masa, momentum y energía por el espacio, mientras que una onda es un ente disperso que transporta momentum y energía, pero no masa. En la mecánica cuántica existe la dualidad partícula-onda. Los entes cuánticos nos son partículas u ondas como se entienden en la mecánica clásica, pero se pueden comportar como estos bajo ciertas condiciones. Por ejemplo, un electrón que se dispara por un cañón tendrá una probabilidad de encontrarse en cierta región del espacio, pero a diferencia de la mecánica estadística clásica, este electrón no es una partícula cuya posición exacta se desconoce, sino que tiene comportamientos propios de una onda, como la interferencia destructiva. Este comportamiento de onda se mantiene hasta que se realice una medida de la posición de este electrón. En ese momento, la distribución de probabilidad de la posición de ese electrón se concentra en un punto y pasa a comportarse como una partícula. Lo mismo sucede con los fotones, que son las partículas de la luz. De hecho, debido a la naturaleza cuántica de la luz es que existen fenómenos como el efecto fotoeléctrico, el cual es un fenómeno de partículas, a pesar de que clásicamente la luz sea una onda.
-
-%Es importante resaltar que a pesar de que los objetos cuánticos se puedan comportar como partículas u ondas clásicas bajo ciertas condiciones, en ningún momento son ondas ni partículas como se entiende en la mecánica clásica. Por ejemplo, la ``onda electrónica'' del párrafo anterior es una ``onda'' que transporta masa, mientras que en la definición de onda se especifíca explícitamente que las ondas no transportan masa. Por otro lado, los fotones son partículas sin masa, lo cual también es algo que no sucede con las partículas de la mecánica clásica. Así que los objetos cuánticos, a pesar de que lleven el nombre de "partícula" y se hable de la dualidad onda-partícula, no son ondas, ni partículas. Sólo son objetos cuyas propiedades vienen descritas por una función compleja de cuadrado integrable, cuyo módulo al cuadrado está asociado a una densidad de probabilidad.
+Donde la suma es sobre los estados de alguna base de $\mathcal{H}$.% Esto es, para funciones de onda que describen una partícula, en el siguiente capítulo se verán funciones de onda macroscópicas que describen sistemas de muchas partículas. En estos, el módulo cuadrádo de $\psi$ describe la densidad de partículas, la cual podría entenderse como la suma de la densidad de probabilidad de que cada una de las partículas se encuentren en ese punto, y $\int\limits_S \abs{\psi(r,t)}^2 dr = N_s$, donde $N_s$ es el número total de partículas del sistema, el cual podría entenderse como la suma de que cada una de las partículas se encuentre en algún punto del sistema.
 
 \section{Espacio de Hilbert}
 
-Los espacios de Hilbert, creados por el matemático David Hilbert y normalizados por John von Neumann en el siglo XX, son el soporte matemático de la mecánica cuántica. Un espacio de Hilbert es un espacio vectorial complejo $\mathcal{H}$ de cuadrados integrables con un producto interno $(f,g)$ donde la norma vectorial se define como $\norm{f} = \sqrt{(f,f)}$.
-
-Un conjunto de $2^n$ funciones $B = \{f_n\} \subset \mathcal{H}$ es llamado base ortonormal de $\mathcal{H}$ si y sólo si:
-
-\begin{align}
-    (f_n, f_m) &= \delta_{n } \quad \forall f_n, f_m \in B
-\end{align}
-
-Todo elemento $\psi \in \mathcal{H}$ puede ser escrito como:
-
-\begin{equation}
-    \psi = \sum\limits_n c_n \psi_n
-\end{equation}
-
-En la mecánica cuántica, todas las funciones de onda deben pertenecer un espacio de Hilbert normalizado. Es decir, pertenecen al espacio de Hilbert donde:
-
-\begin{equation}
-    \norm{\psi} = 1 \quad \forall \psi \in \mathcal{H}
-\end{equation}
-
-Los espacios de Hilbert tienen las siguientes propiedades:
+Sea $\mathcal{V}$ un espacio vectorial, real o complejo, y consideremos una función $\norm{\cdot}: \mathcal{V} \rightarrow \mathds{R}$ que denominaremos norma si satisface los siguientes axiomas:
 
 \begin{enumerate}
-    \item Producto escalar: $(\psi, \phi) = \int\limits_S \psi^* \phi dr \quad \in \mathds{C}$
-    \item Simetría $(\psi, \phi) = (\phi, \psi)^*$
-    \item Linealidad: $(\psi, \alpha \phi_1 + \beta \phi_2) = \alpha (\psi, \phi_1) + \beta (\psi, \phi_2)$
-    \item Antilinealidad: $(\alpha \psi_1 + \beta \psi_2, \phi) = \alpha^* (\psi_1, \phi) + \beta^* (\psi_2, \phi)$
-    \item Ortogonalidad: $(f_i, f_j) = 0$
-    \item Autoproducto escalar: $(\psi, \psi) \neq 0$ ($(\psi, \psi) = 1$ si y sólo si $\psi$ está normalizada)
-    \item Norma: $\norm{\psi} = \sqrt{(\psi,\psi)}$
-    \item Desigualdad de Cauchy: $\norm{(\psi_1,\psi_2)} \leq \sqrt{(\psi_1,\psi_1)} \sqrt{(\psi_2,\psi_2)}$
-    \item Operadoers lineales: $\psi^\prime = \hat{A} \psi$
+    \item Positividad: La norma es una función definida positiva, es decir, para cualquier vector $\psi \in \mathcal{V}$ se cumple que
+
+        \begin{equation}
+            \norm{\psi} \geq 0
+        \end{equation}
+
+    \item Escalamiento: Sea $\lambda$ un escalar arbitrario de $\mathcal{V}$, es decir, un número real o complejo, según aplique. Consideremos un vector $\psi \in \mathcal{V}$, entonces se cumple que
+
+        \begin{equation}
+            \norm{\lambda \psi} = \abs{\lambda} \norm{\psi}
+        \end{equation}
+
+    \item Desigualdad triangular: La suma de la norma de dos vectores cualesquiera $\psi, \phi \in \mathcal{V}$ siempre es mayor o igual que la suma de la norma de estos, siendo igual en el caso en el caso en que estos vectores son paralelos.
+
+        \begin{equation}
+            \norm{\psi + \phi} \leq \norm{\psi} + \norm{\phi}
+        \end{equation}
+
 \end{enumerate}
+
+La estructura algebraica $\mathcal{N} = \{\mathcal{V}, \norm{\cdot}\}$ compuesta por un espacio vectorial $\mathcal{V}$ y una norma $\norm{\cdot}$ recibe el nombre de espacio normado.
+
+Sea $\mathit{V}$ es un espacio vectorial complejo y la función $\langle \cdot | \cdot \rangle: \mathit{V} \times \mathit{V} \rightarrow \mathds{C}$ una función sesquilineal, positiva, no degenerada y simétrica respecto a la conjugación compleja, entonces diremos que esta función define un producto escalar. La propiedad de sesquilinealidad se refiere a que el funcional $\langle \cdot | \cdot \rangle$ es antilineal en el primer argumento y lineal en el segundo. En concreto, la sesquilinealidad satisface la siguiente igualdad
+
+\begin{equation}
+    \langle \sum_i \alpha_i \psi_i | \sum_j \beta_j \phi_j \rangle = \sum_i \sum_j \alpha_i^* \beta_j \langle \psi_i | \phi_j \rangle
+\end{equation}
+
+La propiedad de positividad se refiere a que $\langle \psi | \psi \rangle > 0$ para cualquier $\psi \in \mathit{V}$ no nulo. La propiedad de no degenerado se refiere a que un único vector cumple la relación $\langle \phi | \phi \rangle$, el cual es el vector nulo. La propiedad de simetría ante la cojugación compleja se refiere a que el producto escalar satisface la siguiente propiedad
+
+\begin{equation}
+    \langle \psi | \phi \rangle = \langle \phi | \psi \rangle^*
+\end{equation}
+
+La estructura algebraica $\mathcal{P} = \{\mathit{V}, \langle \cdot | \cdot \rangle\}$ compuesta por un espacio vectorial $\mathit{V}$ y un producto escalar $\langle \cdot | \cdot \rangle$ recibe el nombre de espacio de pre-Hilbert. Estos espacios son considerados como casos particulares de espacios normados, ya que la norma es inducida por el producto escalar de la siguiente manera
+
+\begin{equation}
+    \norm{\psi} = \sqrt{\langle\psi | \psi \rangle} \quad \forall \psi \in \mathit{V}
+\end{equation}
+
+Ahora introduciremos otros conceptos necesarios para definir un espacio de Hilbert:
+
+\begin{enumerate}
+    \item Convergencia fuerte: Sea $\{\psi_n\}^{n \in N}$ una sucesión cualquiera en un espacio normado $\mathcal{N}$, diremos que diche sucesión converge fuertemente a un vector $\psi \in \mathcal{V}$ siempre que
+
+        \begin{equation}
+            \lim_{n \to \infty} \norm{\psi_n - \psi} = 0
+        \end{equation}
+
+    \item Convergencia débil: Sea $\{\psi_n\}^{n \in N}$ una sucesión cualquiera en un espacio de pre-Hilbert $\mathcal{P}$, diremos que dicha sucesión converge débilmente a un vector $\psi \in \mathit{V}$ siempre que
+
+        \begin{equation}
+            \lim_{n \to \infty} \langle \psi_n | \phi \rangle = \langle \psi | \phi \rangle
+        \end{equation}
+
+        Resulta  claro que la convergencia débil no implica la convergencia fuerte, pero la convergencia fuerte sí implica la convergencia débil.
+\end{enumerate}
+
+El ordenamiento de una sucesión puede ser un factor determinante para su convergencia. Las sucesiones de Cauchy son aquellas en las que el ordenamiento no afecta la convergencia. Es decir, son aquellas sucesiones que cumplen que
+
+\begin{equation}
+    \lim_{n,m \to \infty} \norm{\psi_n - \psi_m} = 0
+\end{equation}
+
+Todas las sucesiones fuertemente convergentes son de Cauchy, sin embargo, en general, lo recíproco no es cierto. La razón es que en algunas sucesiones en $\mathcal{N}$ convergen a un vector que no pertenece a $\mathcal{N}$. Un espacio normado es completo si toda sucesión de Cauchy converge fuertemente en él. Todo espacio normado $\mathcal{N}$ y completo recibe el nombre de espacio de Banach $\mathcal{B}$ y todo espacio de pre-Hilbert $\mathcal{P}$ y completo recibe el nombre de espacio de Hilbert $\mathcal{H}$.
+
+Finalmente, un espacio de Hilbert separable es aquel cuya base puede ser generado por una base contable. Una base contable es una base con la cardinalidad de algún subconjunto de los números naturales. En otras palabra, es una base cuyos elementos se pueden contar o enumerar. Esto implica que una base contable debe ser finita o infinita discreta.
 
 \section{Delta de Kronecker}
 
-La delta de Kronecker, $\delta_{n,m}$ es un símbolo que representa dos posibles valores, dependiendo de sus índices,
+La delta de Kronecker, $\delta_{nm}$ es un símbolo que representa dos posibles valores, dependiendo de sus índices,
 
 \begin{equation}
-    \delta_{n,m} =
+    \delta_{nm} =
     \begin{cases}
-        1, & n = m \\
-        0, & n \neq m
+        1 & \text{si } n = m \\
+        0 & \text{si } n \neq m
     \end{cases}
 \end{equation}
 
