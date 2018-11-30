@@ -165,7 +165,7 @@ La propiedad de positividad se refiere a que $\langle v | v \rangle > 0$ para cu
 La estructura algebraica $\mathcal{P} = \{\mathit{V}, \langle \cdot | \cdot \rangle\}$ compuesta por un espacio vectorial $\mathit{V}$ y un producto escalar $\langle \cdot | \cdot \rangle$ recibe el nombre de espacio de pre-Hilbert. Estos espacios son considerados como casos particulares de espacios normados, ya que la norma es inducida por el producto escalar de la siguiente manera
 
 \begin{equation}
-    \norm{v} = \sqrt{\langlev | v \rangle} \quad \forall v \in \mathit{V}
+    \norm{v} = \sqrt{\langle v | v \rangle} \quad \forall v \in \mathit{V}
 \end{equation}
 
 Ahora introduciremos otros conceptos necesarios para definir un espacio de Hilbert:
@@ -334,7 +334,7 @@ Donde $i$ es la unidad imaginaria $\sqrt{-1}$, $\hbar$ es la constante de Planck
     i \hbar \dot{\rho}(t) = [\hat{H}, \rho(t)]
 \end{equation}
 
-La mecánica cuántica es una teoría probabilística. Los vectores de estado se construyen con amplitudes complejas de probabilidad asociadas a cada elemento de la base del espacio de Hilbert $\mathca{H}$ y las matrices densidad a partir de probabilidades asociadas a cada estado que compone la mezcla. En la mecánica cuántica, una partícula puede encontrarse en cualquier parte del universo, en cualquier momento con, con cualquier energía, de acuerdo a cierta distribución de probabilidad. Sea $\ket{u}$ un autoestado del operador hermítico, asociado a un observable $\mathcal{A}$. Entonces, la función de distribución de probabilidad de $\mathcal{A}$ asociada al estado $\ket{\psi}$ es la siguiente:
+La mecánica cuántica es una teoría probabilística. Los vectores de estado se construyen con amplitudes complejas de probabilidad asociadas a cada elemento de la base del espacio de Hilbert $\mathcal{H}$ y las matrices densidad a partir de probabilidades asociadas a cada estado que compone la mezcla. En la mecánica cuántica, una partícula puede encontrarse en cualquier parte del universo, en cualquier momento con, con cualquier energía, de acuerdo a cierta distribución de probabilidad. Sea $\ket{u}$ un autoestado del operador hermítico, asociado a un observable $\mathcal{A}$. Entonces, la función de distribución de probabilidad de $\mathcal{A}$ asociada al estado $\ket{\psi}$ es la siguiente:
 
 \begin{equation}
     f_\mathcal{A}(u) = \abs{\braket{u}{\psi}}^2
@@ -507,7 +507,7 @@ Finalmente, comparemos algunos de los aspectos del producto tensorial y de la tr
 
 \section{Postulados de la mecánica cuántica}
 
-La mecánica cuántica que fundamenta la teoría de información cuántica se describe formalmente con los siguientes postulados desarrollados por la escuela de Copenhague a lo largo de todo el siglo XX [ref:pascual].
+La mecánica cuántica que fundamenta la teoría de información cuántica se describe formalmente con los siguientes postulados desarrollados por la escuela de Copenhague a lo largo de todo el siglo XX \cite{Galindo_1990}.
 
 \begin{enumerate}
     \item La descripción de un sistema físico en QM está dada en términos de los elementos de un espacio de Hilbert complejo separable asociado al sistema físico. En cada instante de tiempo $t$, un estado puro del sistema se representa por el vector unitario $\ket{\psi(t)}$ en el espacio de Hilbert correspondiente. Tal vector se llama vector de estado o ket.
@@ -1409,7 +1409,7 @@ Si se tiene un sistema de qubits dividido en dos partes o registros del mismo ta
 
 \subsection{Compuerta de Ising}
 
-Esta compuerta es fundamental para las computadoras cuánticas a base de trampas de iones, pues se puede realizar de manera nativa en estos sistemas. [ref]
+Esta compuerta es fundamental para las computadoras cuánticas a base de trampas de iones, pues se puede realizar de manera nativa en estos sistemas \cite{Wang_2010, Mkrtchian_2008}.
 
 \begin{minipage}{0.5\textwidth}
 \[
@@ -1601,9 +1601,7 @@ En ciertos casos especiales, la fidelidad se puede simplificar de las siguientes
 
 \section{Medidas proyectivas}
 
-\cite{sttiwuer}
-
-El esquema de medidas proyectivas, también llamadas medidas de von Neumann, se encuentra formado por proyectores ortogonales asociados a la medida espectral de un observable. Este esquema es la medida por excelencia utilizada por los físicos, ya que está directamente asociada a la medición de una propiedad del sistema o un conjunto compatible de ellas, y tales propiedades son caracterizadas a través de operadores autoadjuntos. Esta medida fue empleada por von Neumann para descomponer a los observables de un sistema cuántico en una combinación lineal de proyectores, donde cada proyector está a asociado a lso subespacios $\mathcal{M}_\lambda$ que son dejados invariantes por el operador en cuestión y, los coeficientes de la combinación lineal corresponden a los posibles valores que arroja el observable tras una medición. En este esquema, la probabilidad $P_\lambda(p)$ de obtener un valor $\lambda \in \Delta$ después de medir el observable en cuestión en el estado $\hat{\rho}$ viene dada por el valor medio del proyector $\hat{\Pi}_{\mathcal{M}_\lambda}$ asociado al autovalor $\lambda$, mientras que el estado después de la medida viene dado por el autovector correspondiente a dicho autovalor. En este caso, las medidas proyectivas vienen dadas por
+El esquema de medidas proyectivas, también llamadas medidas de von Neumann, se encuentra formado por proyectores ortogonales asociados a la medida espectral de un observable \cite{sttiwuer}. Este esquema es la medida por excelencia utilizada por los físicos, ya que está directamente asociada a la medición de una propiedad del sistema o un conjunto compatible de ellas, y tales propiedades son caracterizadas a través de operadores autoadjuntos. Esta medida fue empleada por von Neumann para descomponer a los observables de un sistema cuántico en una combinación lineal de proyectores, donde cada proyector está a asociado a lso subespacios $\mathcal{M}_\lambda$ que son dejados invariantes por el operador en cuestión y, los coeficientes de la combinación lineal corresponden a los posibles valores que arroja el observable tras una medición. En este esquema, la probabilidad $P_\lambda(p)$ de obtener un valor $\lambda \in \Delta$ después de medir el observable en cuestión en el estado $\hat{\rho}$ viene dada por el valor medio del proyector $\hat{\Pi}_{\mathcal{M}_\lambda}$ asociado al autovalor $\lambda$, mientras que el estado después de la medida viene dado por el autovector correspondiente a dicho autovalor. En este caso, las medidas proyectivas vienen dadas por
 
 \begin{equation}
     \begin{array}{r}
@@ -1839,7 +1837,7 @@ Con estos últimos operadores, el generador de la ecuación maestra se convierte
     \mathcal{L}_t(\rho) = -i [H(t), \rho] + \sum_m \gamma_m(t) \left[ V_m(t) \rho V_m^\dagger(t) - \frac{1}{2} \{V_m^\dagger(t) V_m(t), \rho\}\right]
 \end{equation}
 
-Con $\gamma_m(t) \geq 0$ para todo $m$ y $t$. Finalmente, Kossakowski [ref] y Lindblad [ref] analizaorn este problema para el caso de ecuaciones temporalmente homogeneas, es decir, el caso en el que el mapa dinámico universal depende sólo de la diferencia entre los tiempos $t_2$ y $t_1$, $\tau = t_2 - t_1$, en lugar de los tiempos en sí mismos, $\mathcal{E}_{(t2, t1)} = \mathcal{E}_{(\tau})$. La ecuación diferencial generada en este caso se conoce como Lindbladiano.
+Con $\gamma_m(t) \geq 0$ para todo $m$ y $t$. Finalmente, Kossakowski \cite{Kossakowski_1972} y Lindblad \cite{Lindblad_1976} analizaron este problema para el caso de ecuaciones temporalmente homogeneas, es decir, el caso en el que el mapa dinámico universal depende sólo de la diferencia entre los tiempos $t_2$ y $t_1$, $\tau = t_2 - t_1$, en lugar de los tiempos en sí mismos, $\mathcal{E}_{(t2, t1)} = \mathcal{E}_{(\tau})$. La ecuación diferencial generada en este caso se conoce como Lindbladiano.
 
 \begin{equation}
     \dot{\rho}(t) = -i [\hat{H}, \rho(t)] + \sum_k \gamma_k [V_k \rho(t) V_k^\dagger - \frac{1}{2} \{V_k^\dagger V_k, \rho(t)\}]

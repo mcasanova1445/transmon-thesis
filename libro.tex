@@ -2,7 +2,7 @@
 \usepackage{estilo}
 
 %\includeonly{./tex/titulo, ./tex/introduccion, ./tex/codigo_simulador, ./tex/codigo_grover, ./tex/codigo_shor, ./tex/codigo_pagerank}
-\includeonly{./tex/titulo, .tex/resumen, ./tex/conclusiones}
+\includeonly{./tex/titulo, ./tex/pagerank}
 
 \begin{document}
 
@@ -13,7 +13,7 @@
 \include{./tex/agradecimientos}
 \tableofcontents
 \listoffigures
-\listoftables
+%\listoftables
 
 \include{./tex/introduccion}
 \include{./tex/informacion_cuantica}
@@ -24,7 +24,8 @@
 \include{./tex/pagerank}
 \include{./tex/conclusiones}
 
-\begin{appendices}
+\part*{Apéndices}
+\appendix
 \include{./tex/hamiltonianos}
 %\include{./tex/adyacencia}
 %\include{./tex/circuitos}
@@ -32,7 +33,6 @@
 \include{./tex/codigo_grover}
 \include{./tex/codigo_shor}
 \include{./tex/codigo_pagerank}
-\end{appendices}
 
 \bibliographystyle{unsrt}
 \bibliography{./tex/referencias}

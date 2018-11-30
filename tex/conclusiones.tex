@@ -16,3 +16,10 @@ En el presente trabajo, se desarrollaron las siguientes herramientas y se obtuvi
     \item El efecto de la relajación en los algoritmos de Grover, Shor y PageRank.
 \end{enumerate}
 
+En el algoritmo de Grover se ha visto que con relajación, sólo se puede realizar una iteración. En la segunda ya no se puede garantizar que el estado deseado el de probabilidad más alta y en general tiene probabilidad mayor al final de la primera que al final de la segunda. Así que la mejor alternativa en este algoritmo es su variante de un paso. Sin embargo, debido a que se deben procesar $\Omega(N \log(N))$ medidas, se pierde la ventaja de ejecutar una búsqueda cuántica.
+
+El algoritmo de Shor no se pudo simular con relajación, debido a los largos tiempos que esto hubiese tomado. La ejecución del operador de multiplicación modular $MUL(7,15)$ tomó 72 horas y la del operador $MUL(3,8)$ tomó más de 120 horas. Estos operadores se deben aplicar 15 veces en total, así que el tiempo de ejecución de estas simulaciones hubiese sido de al menos 45 y 75 días, para factorizar los números 15 y 8, respectivamente.
+
+En cuanto al algoritmo PageRank, cada iteración del algoritmo es tan larga, que exceden el tiempo de vida de los qubits y al final de cada iteración sólo se tiene el efecto de las últimas compuertas de esta, se pierde el efecto de las primeras. Como la relajación borra toda la información del inicio de la iteración, todas las iteraciones terminan siendo iguales y se miden los mismos valores al final de cada una.
+
+Los resultados de las simulaciones del algoritmo de Grover y PageRank nos indican que para sistemas con tiempos de relajación del orden de $O(10^4 ns)$, los protocolos de corrección de errores son una necesidad. Este es un resultado significante, pues el record actual de tiempo de vida de un qubit superconductor es inferior a 0.1ms, está en el mismo orden de magnitud que el del sistema simulado.

@@ -6,7 +6,10 @@
 Partiendo del Hamiltoniano de Jaynes-Cummings para un sistema multiqubit con pulsos de microondas bajo la aproximación de onda rotacional:
 
 \begin{equation}
-    \hat{H}_1 = \hat{H}_{syst} + \hat{H}_d = \omega_r a^\dag a - \frac{1}{2} \sum\limits_i \omega_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}) + \sum\limits_k a\xi_k^*e^{i\omega_d^{(k)}t}+ a^\dagger\xi_ke^{-i\omega_d^{(k)}t}
+    \begin{array}{r c l}
+        \hat{H}_1 &=& \hat{H}_{syst} + \hat{H}_d \\
+                  &=& \omega_r a^\dag a - \frac{1}{2} \sum\limits_i \omega_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}) + \sum\limits_k a\xi_k^*e^{i\omega_d^{(k)}t}+ a^\dagger\xi_ke^{-i\omega_d^{(k)}t}
+    \end{array}
 \end{equation}
 
 Aplicamos la siguiente transformación unitaria para entrar en el regimen rotacional del pulso aplicado
@@ -29,7 +32,7 @@ Utilizaremos la formula de Baker-Campbell-Hausdorff para calcular este Hamiltoni
     e^{-\lambda X} H e^{\lambda X} = H + \lambda [H,X] + \frac{\lambda^2}{2!}[[H,X],X] + ...
 \end{equation}
 
-En cuanto a los conmutadores, podemos utilizar las siguientes identidades:
+Tomaremos $H$ como el Hamiltoniano y $X$ como el argumento completo del exponencial del operador unitario, incluyendo la parte escalar. Es decir, tendremos $X = \sum\limits_n-i \omega_d^{(n)} t(a^\dagger a - \frac{1}{2} \sum\limits_i \sigma_{z i})$ y $\lambda = 1$. En cuanto a los conmutadores, podemos utilizar las siguientes identidades:
 
 \begin{align}
     [a, a^\dagger] &= 1
@@ -59,7 +62,7 @@ Para que el cálculo sea visualmente más manejable, aprovechamos la propiedad d
 Con el primer término tenemos el siguiente conmutador:
 
 \begin{equation}
-    [\omega_r a^\dag a, \sum\limits_n-i \omega_d^{(n)} t(a^\dagger a - \frac{1}{2} \sum\limits_i \sigma_{z i})] = 0
+    [\omega_r a^\dag a, X] = 0
 \end{equation}
 
 El cual es igual a cero, ya que $a^\dagger a$ conmuta con sí mismo, como todo operador, y con $\sigma_{z_i}$, ya que actúan sobre particiones distintas del sistema.
@@ -67,7 +70,7 @@ El cual es igual a cero, ya que $a^\dagger a$ conmuta con sí mismo, como todo o
 Con el segundo término tenemos el siguiente conmutador:
 
 \begin{equation}
-    [- \frac{1}{2} \sum\limits_i \omega_{qi} \sigma_{zi} , \sum\limits_n-i \omega_d^{(n)} t(a^\dagger a - \frac{1}{2} \sum\limits_i \sigma_{z i})] = 0
+    [- \frac{1}{2} \sum\limits_i \omega_{qi} \sigma_{zi} , X] = 0
 \end{equation}
 
 El cual es igual a cero, ya que $\sigma_{z_i}$ conmuta consigo mismo y con $a^\dagger a$.
@@ -75,7 +78,7 @@ El cual es igual a cero, ya que $\sigma_{z_i}$ conmuta consigo mismo y con $a^\d
 Con el tercer término tenemos el siguiente conmutador:
 
 \begin{multline}
-\left[\sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}), \sum\limits_n-i \omega_d^{(n)} t(a^\dagger a - \frac{1}{2} \sum\limits_i \sigma_{z i})\right] = \\
+\left[\sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}), X\right] = 
 \sum\limits_n-i \omega_d^{(n)} t \left[\sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}), (a^\dagger a)\right] \\
 + \sum\limits_n-i \omega_d^{(n)} t \left[\sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}), (- \frac{1}{2} \sum\limits_i \sigma_{z i})\right] = \\
 \sum\limits_n-i \omega_d^{(n)} t \sum\limits_i g_i (a \sigma_{+ i} - a^\dagger \sigma_{- i})
@@ -87,35 +90,38 @@ En este caso, utilizamos el hecho de que $a$, $a^\dagger$ y $a^\dagger a$ conmut
 Con el cuarto término tenemos el siguiente conmutador:
 
 \begin{multline}
-    \left[\sum\limits_k \left(a\xi_k^*e^{i\sum\limits_k \omega_d^{(k)}t}+ a^\dagger\xi_ke^{-i\sum\limits_k \omega_d^{(k)}t}\right), \sum\limits_n-i \omega_d^{(n)} t\left(a^\dagger a - \frac{1}{2} \sum\limits_i \sigma_{z i}\right)\right] = \\
+    \left[\sum\limits_k \left(a\xi_k^*e^{i\sum\limits_k \omega_d^{(k)}t}+ a^\dagger\xi_ke^{-i\sum\limits_k \omega_d^{(k)}t}\right), X\right] = \\
     \left(\sum\limits_n-i \omega_d^{(n)} t\right) \sum\limits_k \left(a\xi_k^*e^{i\sum\limits_k \omega_d^{(k)}t} - a^\dagger\xi_ke^{-i\sum\limits_k \omega_d^{(k)}t}\right)
 \end{multline}
 
 Aquí hemos utilzado el hecho de que $a$ y $a^\dagger$ conmutan con $\sigma_{z_i}$ y las identidades \ref{eq:a_ada} y \ref{eq:ad_ada}. Este conmutador no es igual a cero como los anteriores, así que tenemos que utilizar este resultado para calcular $[[H,X],X]$.
 
 \begin{multline}
-    \left[\left(\sum\limits_n-i \omega_d^{(n)} t\right) \sum\limits_k \left(a\xi_k^*e^{i\sum\limits_k \omega_d^{(k)}t} - a^\dagger\xi_ke^{-i\sum\limits_k \omega_d^{(k)}t}\right), \sum\limits_n-i \omega_d^{(n)} t\left(a^\dagger a - \frac{1}{2} \sum\limits_i \sigma_{z i}\right)\right] = \\
+    \left[\left(\sum\limits_n-i \omega_d^{(n)} t\right) \sum\limits_k \left(a\xi_k^*e^{i\sum\limits_k \omega_d^{(k)}t} - a^\dagger\xi_ke^{-i\sum\limits_k \omega_d^{(k)}t}\right), X\right] = \\
     \left(\sum\limits_n-i \omega_d^{(n)} t\right)^2 \sum\limits_k \left(a\xi_k^*e^{i\sum\limits_k \omega_d^{(k)}t} + a^\dagger\xi_ke^{-i\sum\limits_k \omega_d^{(k)}t}\right)
 \end{multline}
  
 De igual manera que en el conmutador anterior, hemos utilzado el hecho de que $a$ y $a^\dagger$ conmutan con $\sigma_{z_i}$ y las identidades \ref{eq:a_ada} y \ref{eq:ad_ada}. Este conmutador no es igual a cero como los anteriores, así que tenemos que utilizar este resultado para calcular $[[[H,X],X],X]$.
 
 \begin{multline}
-    \left[\left(\sum\limits_n-i \omega_d^{(n)} t\right)^2 \sum\limits_k \left(a\xi_k^*e^{i\sum\limits_k \omega_d^{(k)}t}+ a^\dagger\xi_ke^{-i\sum\limits_k \omega_d^{(k)}t}\right), \left(\sum\limits_n-i \omega_d^{(n)} t\right)\left(a^\dagger a - \frac{1}{2} \sum\limits_i \sigma_{z i}\right)\right] = \\
+    \left[\left(\sum\limits_n-i \omega_d^{(n)} t\right)^2 \sum\limits_k \left(a\xi_k^*e^{i\sum\limits_k \omega_d^{(k)}t}+ a^\dagger\xi_ke^{-i\sum\limits_k \omega_d^{(k)}t}\right), X\right] = \\
     \left(\sum\limits_n-i \omega_d^{(n)} t\right)^3 \sum\limits_k \left(a\xi_k^*e^{i\sum\limits_k \omega_d^{(k)}t} - a^\dagger\xi_ke^{-i\sum\limits_k \omega_d^{(k)}t}\right)
 \end{multline}
 
 De igual manera que en el conmutador anterior, hemos utilzado el hecho de que $a$ y $a^\dagger$ conmutan con $\sigma_{z_i}$ y las identidades \ref{eq:a_ada} y \ref{eq:ad_ada}. Este conmutador no es igual a cero como los anteriores, así que tenemos que utilizar este resultado para calcular $[[[[H,X],X],X],X]$.
 
 \begin{multline}
-    \left[\left(\sum\limits_n-i \omega_d^{(n)} t\right)^3 \sum\limits_k \left(a\xi_k^*e^{i\sum\limits_k \omega_d^{(k)}t} - a^\dagger\xi_ke^{-i\sum\limits_k \omega_d^{(k)}t}\right), \left(\sum\limits_n-i \omega_d^{(n)} t\right)\left(a^\dagger a - \frac{1}{2} \sum\limits_i \sigma_{z i}\right)\right] = \\
+    \left[\left(\sum\limits_n-i \omega_d^{(n)} t\right)^3 \sum\limits_k \left(a\xi_k^*e^{i\sum\limits_k \omega_d^{(k)}t} - a^\dagger\xi_ke^{-i\sum\limits_k \omega_d^{(k)}t}\right), X\right] = \\
     \left(\sum\limits_n-i \omega_d^{(n)} t\right)^4 \sum\limits_k \left(a\xi_k^*e^{i\sum\limits_k \omega_d^{(k)}t} + a^\dagger\xi_ke^{-i\sum\limits_k \omega_d^{(k)}t}\right)
 \end{multline}
 
 En este punto podemos notar cierto patrón. Esta serie de conmutadores nos recuerda a la serie de Taylor de la función exponencial con argumento $\sum\limits_n-i \omega_d^{(n)} t$. Al sustituirlos en la fórmula de Baker-Campbell-Hausdorff, vemos que efectivamente se trata de este exponencial. Entonces, el primer término del Hamiltoniano $\hat{H}_2$ es:
 
 \begin{equation}
-    U^\dagger (\hat{H}_1) U = \hat{H}_{syst} + \sum\limits_k (e^{\sum\limits_n-i \omega_d^{(n)} t} a\xi_k^*e^{\sum\limits_k i\omega_d^{(k)}t}+ e^{-\sum\limits_n-i \omega_d^{(n)} t} a^\dagger\xi_ke^{-\sum\limits_k i\omega_d^{(k)}t}) = \hat{H}_{syst} + \sum\limits_k (a\xi_k^* + a^\dagger\xi_k)
+    \begin{array}{r c l}
+        U^\dagger (\hat{H}_1) U &=& \hat{H}_{syst} + \sum\limits_k \left(e^{\sum\limits_n-i \omega_d^{(n)} t} a\xi_k^*e^{\sum\limits_k i\omega_d^{(k)}t}+ e^{-\sum\limits_n-i \omega_d^{(n)} t} a^\dagger\xi_ke^{-\sum\limits_k i\omega_d^{(k)}t}\right) \\
+                                &=& \hat{H}_{syst} + \sum\limits_k \left(a\xi_k^* + a^\dagger\xi_k\right)
+    \end{array}
 \end{equation}
 
 Por otro lado, el segundo término es:
@@ -129,7 +135,10 @@ Es decir, $-i$ por la derivada temporal del argumento del exponencial en el que 
 Finalmente, sumando y agrupando términos, nos queda que el Hamiltoniano en el régimen rotacional del pulso es:
 
 \begin{equation}
-    \hat{H}_2 = (\omega_r - \sum\limits_n \omega_d^{(n)}) a^\dag a - \frac{1}{2} \sum\limits_i (\omega_{qi} - \sum\limits_n \omega_d^{(n)}) \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}) + \sum\limits_k (a\xi_k^* + a^\dagger\xi_k)
+    \begin{array}{r l}
+        \hat{H}_2 &= (\omega_r - \sum\limits_n \omega_d^{(n)}) a^\dag a - \frac{1}{2} \sum\limits_i (\omega_{qi} - \sum\limits_n \omega_d^{(n)}) \sigma_{zi} \\
+                  &\quad + \sum\limits_i g_i (a \sigma_{+ i} + a^\dagger \sigma_{- i}) + \sum\limits_k (a\xi_k^* + a^\dagger\xi_k)
+    \end{array}
 \end{equation}
 
 En el caso de un pulso de un sólo modo, este Hamiltoniano toma la forma:
@@ -258,8 +267,7 @@ Con el cuarto término tenemos el siguiente conmutador:
 - \sum\limits_i \frac{g_i^2} {\Delta_i} (\alpha a^\dagger + \alpha^* a) \sigma_{zi}
 \end{multline}
 
------------------------------------------------------------
-
+Ahora, los términos de segundo orden, es decir $[[H,X],X]$, se obtienen de la siguiente manera.
 
 Con el primer término tenemos el siguiente conmutador:
 
@@ -279,21 +287,21 @@ Con el segundo término tenemos el siguiente conmutador:
 2 \sum\limits_{i} \Delta_{qi} \frac{g_i^2}{\Delta_i^2} a^\dagger a \sigma_{zi}
 \end{multline}
 
-Con el tercer término tenemos el siguiente conmutador:
+Con el tercer término tenemos el siguiente conmutador, aplicando la propiedad distributiva del conmutador, tenemos dos partes. La primera:
 
 \begin{multline}
 [\sum\limits_{ij} g_i \frac{g_j}{\Delta_j} \left(\sigma_{+i} \sigma_{-j} + \sigma_{+j} \sigma_{-i}\right), \sum\limits_k \frac{g_k} {\Delta_k} (a^\dagger \sigma_{-k} - a \sigma_{+k})] = \\
 [\sum\limits_{i \neq j} g_i \frac{g_j}{\Delta_j} \left(\sigma_{+i} \sigma_{-j} + \sigma_{+j} \sigma_{-i}\right), \sum\limits_k \frac{g_k} {\Delta_k} (a^\dagger \sigma_{-k} - a \sigma_{+k})] = \\
-\sum\limits_{i \neq j, k} g_i \frac{g_j}{\Delta_j} \frac{g_k}{\Delta_k} \left(
+\sum\limits_{i \neq j, k} g_i \frac{g_j}{\Delta_j} \frac{g_k}{\Delta_k} (
 [\sigma_{+i} \sigma_{-j},  a^\dagger \sigma_{-k}] +
-[\sigma_{+i} \sigma_{-j},  - a \sigma_{+k}] +
+[\sigma_{+i} \sigma_{-j},  - a \sigma_{+k}] + \\
 [\sigma_{+j} \sigma_{-i},  a^\dagger \sigma_{-k}] +
-[\sigma_{+j} \sigma_{-i}, - a \sigma_{+k}] \right) = \\
-\sum\limits_{i \neq j} g_i \frac{g_j}{\Delta_j} \left(
+[\sigma_{+j} \sigma_{-i}, - a \sigma_{+k}] ) = \\
+\sum\limits_{i \neq j} g_i \frac{g_j}{\Delta_j} (
 [\sigma_{+i} \sigma_{-j}, \frac{g_i}{\Delta_i}  a^\dagger \sigma_{-i}] -
-[\sigma_{+i} \sigma_{-j}, \frac{g_j}{\Delta_j} a \sigma_{+j}] +
+[\sigma_{+i} \sigma_{-j}, \frac{g_j}{\Delta_j} a \sigma_{+j}] + \\
 [\sigma_{+j} \sigma_{-i}, \frac{g_j}{\Delta_j} a^\dagger \sigma_{-j}] -
-[\sigma_{+j} \sigma_{-i}, \frac{g_i}{\Delta_i} a \sigma_{+i}] \right) = \\
+[\sigma_{+j} \sigma_{-i}, \frac{g_i}{\Delta_i} a \sigma_{+i}] ) = \\
 \sum\limits_{i \neq j} g_i \frac{g_j}{\Delta_j} \left(
 - \frac{g_i}{\Delta_i} a^\dagger \sigma_{zi} \sigma_{-j}
 - \frac{g_j}{\Delta_j} a \sigma_{+i} \sigma_{zj}
@@ -301,8 +309,10 @@ Con el tercer término tenemos el siguiente conmutador:
 - \frac{g_i}{\Delta_i} a \sigma_{+j} \sigma_{zi} \right)
 \end{multline}
 
+La segunda:
+
 \begin{multline}
-[- 2 \sum\limits_{i} \frac{g_i^2}{\Delta_i} a^\dagger a \sigma_{zi}, \sum\limits_j \frac{g_j} {\Delta_j} (a^\dagger \sigma_{-j} - a \sigma_{+j})] =
+[- 2 \sum\limits_{i} \frac{g_i^2}{\Delta_i} a^\dagger a \sigma_{zi}, \sum\limits_j \frac{g_j} {\Delta_j} (a^\dagger \sigma_{-j} - a \sigma_{+j})] = \\
 - 2 \sum\limits_{ij} \frac{g_i^2}{\Delta_i} \frac{g_j}{\Delta_j} \left(
 [a^\dagger a \sigma_{zi}, a^\dagger \sigma_{-j}] -
 [a^\dagger a \sigma_{zi}, a \sigma_{+j}]
@@ -359,38 +369,30 @@ Sumando, agrupando y descartando los términos $\sigma_z \sigma_-$, $a^\dagger a
 \end{multline}
 
 Entonces, sumando y agrupando todos los términos restantes, nos queda:
-
 \begin{multline}
 \hat{H}_4 \approx \Delta_r a^\dagger a - \frac{1}{2} \sum\limits_i \Delta_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+i} + a^\dagger \sigma_{-i}) + \sum\limits_i g_i (\alpha \sigma_{+i} + \alpha^* \sigma_{-i}) + \\
 - \sum\limits_i g_i (a^\dagger \sigma_{-i} + a \sigma_{+i}) + \sum\limits_{ij} \frac{g_i g_j}{\Delta_j} \left(\sigma_{+i} \sigma_{-j} + \sigma_{+j} \sigma_{-i}\right) - 2 \sum\limits_{i} \frac{g_i^2}{\Delta_i} a^\dagger a \sigma_{zi} \\
 - \frac{1}{2} \left(\sum\limits_{ij} \frac{g_i g_j}{\Delta_j} \left(\sigma_{+i} \sigma_{-j} + \sigma_{+j} \sigma_{-i}\right) -
-2 \sum\limits_{i} \frac{g_i^2}{\Delta_i} a^\dagger a \sigma_{zi} \right) = \\
-(\Delta_r - \sum\limits_{i} \frac{g_i^2}{\Delta_i} \sigma_{zi}) a^\dagger a - \frac{1}{2} \sum\limits_i \Delta_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+i} + a^\dagger \sigma_{-i}) + \sum\limits_i g_i (\alpha \sigma_{+i} + \alpha^* \sigma_{-i}) + \\
-\sum\limits_{ij} \frac{g_i g_j}{2 \Delta_j} \left(\sigma_{+i} \sigma_{-j} + \sigma_{+j} \sigma_{-i}\right)
+2 \sum\limits_{i} \frac{g_i^2}{\Delta_i} a^\dagger a \sigma_{zi} \right)
 \end{multline}
+
+Finalmente, agrupando términos y simplificando $\hat{H}_4$, tenemos el Hamiltoniano efectivo $\hat{H}_{eff}$ de donde saldrán todas las compuertas utilizadas en este trabajo.
 
 \begin{multline}
 \hat{H}_{eff} = \tilde{\Delta}_r a^\dagger a - \frac{1}{2} \sum\limits_i \Delta_{qi} \sigma_{zi} + \sum\limits_i g_i (a \sigma_{+i} + a^\dagger \sigma_{-i}) + \sum\limits_i g_i (\alpha \sigma_{+i} + \alpha^* \sigma_{-i}) + \\
-\sum\limits_{ij} \frac{g_i g_j}{2 \Delta_j} \left(\sigma_{+i} \sigma_{-j} + \sigma_{+j} \sigma_{-i}\right) - \sum\limits_{i} \frac{g_i^2}{\Delta_i} a^\dagger a \sigma_{zi}
+\sum\limits_{ij} \frac{g_i g_j}{2 \Delta_j} \left(\sigma_{+i} \sigma_{-j} + \sigma_{+j} \sigma_{-i}\right)
 \end{multline}
 
-
-
-
-En el caso de dos qubits tenemos:
+Donde $\tilde{\Delta}_r = (\omega_r - \frac{1}{2} \sum\limits_i \chi_i \sigma_{zi}) - \omega_d$ y $\chi_i = \frac{g_i^2}{\Delta_i}$. En el caso de dos qubits tenemos el siguiente Hamiltoniano que se encuentra en la literatura:
 
 \begin{equation}
-\hat{H}_{eff} \approx \Delta_r a^\dagger a - \frac{1}{2} \sum\limits_i \tilde{\Delta}_{qi} \sigma_{zi} + \sum\limits_i (\Omega_i \sigma_{+i} + \Omega_i^* \sigma_{-i})
+    \hat{H}_{eff} = \tilde{\Delta}_r a^\dagger a - \frac{1}{2} \sum\limits_i \Delta_{qi} \sigma_{zi} + \sum\limits_i (\Omega_i \sigma_{+i} + \Omega_i^* \sigma_{-i})
 + \frac{g_1 g_2 (\Delta_1 + \Delta_2)}{2 \Delta_1 \Delta_2} (\sigma_{-1} \sigma_{+2}+\sigma_{+1} \sigma_{-2})
 \end{equation}
 
-$\tilde{\Delta}_r = (\omega_r - \frac{1}{2} \sum\limits_i \chi_i \sigma_{zi}) - \omega_d \qquad \chi_i = \frac{g_i^2}{\Delta_i}$
 
 
 
-
-
------------------------------------------------------------
 
 
 % Dr = wr - wd
