@@ -1,11 +1,8 @@
 \chapter{Google PageRank}
-% El PageRank, nombrado en honor a Larry Page, es una de las medidas de centralidad de los nodos de un grafo más conocidas. Ésta es utilizada para ordenar los sitios web en los resultados de búsqueda de Google, de acuerdo a su importancia.
 
-El algoritmo de PageRank fue desarrollado en 1996 en la Universidad de Stanford por Larry Page y Sergey Brin, los cuales fueron los fundadores de Google.
+El algoritmo de PageRank fue desarrollado en 1996 en la Universidad de Stanford por Larry Page y Sergey Brin [ref], los cuales fueron los fundadores de Google.
 
-Este algoritmo se basa en la idea de que sitios web importantes tienen muchos vínculos que apuntan hacia ellos, lo que conduce a pensar en la web como una red ponderada orientada.
-
-Existen muchos otros algoritmos, algunos más eficientes, pero la importancia de PageRank se sustenta en el poder económico de Google.
+Este algoritmo se basa en la idea de que sitios web importantes tienen muchos vínculos que apuntan hacia ellos, lo que conduce a pensar en la web como una red ponderada orientada. Existen muchos otros algoritmos, algunos más eficientes, pero la importancia de PageRank se sustenta en el poder económico de Google.
 
 Ilustraremos el algoritmo de PageRank con un ejemplo sencillo. Consideremos 5 páginas web distintas a las que denotaremos por 1, 2, 3, 4, y 5, y cuyo grafo es:
 
@@ -67,6 +64,7 @@ M = \begin{pmatrix}
 
 Estas sumas representan el número de links que salen del nodo o vértice de la página $p_j$, es decir: 
 
+\color{red}
 $I(p_j) \equiv \text{Importancia de la página j}$
 
 $\mathrm{outdeg}(p_j) \equiv \text{número de links que salen de la página } p_j$
@@ -74,6 +72,7 @@ $\mathrm{outdeg}(p_j) \equiv \text{número de links que salen de la página } p_
 $I(p_i) \equiv \sum\limits_{j \in B_i} \frac{I(p_j}{\mathrm{outdeg}(p_j)}$
 
 $B_i \equiv \text{conjunto de páginas qeu son linkeadas}$
+\color{black}
 
 \item Dividimos cada elemento de M por la suma de los elementos de la columna a la cual corresponde y llamaremos a la nueva matriz obtenida $M^\prime$
 
@@ -133,7 +132,7 @@ Surgen varios problemas:
   \item No se encuentra $\lambda = 1$ en la mayoría de los casos.
 \end{enumerate}
 
-Por esta razón, un remedio (Patching) del algoritmo de PageRank fue el método de las potencias, en el cual la matriz hiperenlace
+Por esta razón, un remedio (Patching) del algoritmo de PageRank fue el método de las potencias [ref], en el cual la matriz hiperenlace
 
 \[
 H_{ij} \equiv \begin{cases}
@@ -150,7 +149,7 @@ I^{k+1} = H I^k
 
 donde se toma un vector $I^{0}$ y se hace interactuar unas 100 veces y el orden mostrado de las páginas es el de $I^{100}$, ordenadas de mayor a menor. Si se normalizan las columnas de la matriz hipervínculo (hiperenlace) $H$, obtenemos otra matriz hiperenlace normalizada E.
 
-\textbf{La matriz E:} se sabe de la teoría de matrices estocásticas que 1 es uno de sus autovalores. Además, también se sabe que la convergencia de $I^k = E I^{k-1}$ a $I = E I$ depende del segundo autovalor de $\lambda_2$ de E y es un hecho que $I^k = E I^{k-1}$ converge rápidamente si $\abs{\lambda_2}$ es
+\textbf{La matriz E:} se sabe de la teoría de matrices estocásticas que 1 es uno de sus autovalores. Además, también se sabe que la convergencia de $I^k = E I^{k-1}$ a $I = E I$ depende del segundo autovalor de $\lambda_2$ de E, y es un hecho que $I^k = E I^{k-1}$ converge rápidamente si $\abs{\lambda_2}$ es
 cercano a cero.
 
 \section{El algoritmo de remiendo (parcheo) general}
@@ -232,8 +231,9 @@ Propiedades de G:
 
 \section{Interpretación como una caminata aleatoria}
 
-La asiganación de valores de importancia se puede replantear como la probabilidad de encontrar un caminante aleatorio en cierto nodo del grafo.
+La asignación de valores de importancia, se puede replantear como la probabilidad de encontrar un caminante aleatorio en cierto nodo del grafo.
 
+\color{red}
 \begin{minipage}{0.5\linewidth}
 Del proceso:
 \begin{align*}
@@ -251,10 +251,11 @@ De la ley de probabilidad total:
 \[
 \implies G_{i j} = Pr(x^{(n+1)}=p_i | x^{(n)}=p_j)
 \]
+\color{black}
 
 En el contexto del Internet, $G_{i j}$ es la probabilidad de que cierto internauta, que se encuentra en la página $p_i$, entre en la página $p_j$. El factor $\alpha E_{i j}$ es la probabilidad de que lo haga presionando un enlace presente en $p_i$, mientras que $\frac{1-\alpha}{N} \mathds{I}$ es la probabilidad de que lo haga introduciendo la URL directamente.
 
-El factor de amortiguamiento es libre y debe ser calibrado. Se suela usar $\alpha = 0.85$
+El factor de amortiguamiento es libre y debe ser calibrado. Se suela usar $\alpha = 0.85$ [ref]
 
 \section{Cuantizando las caminatas aleatorias}
 
@@ -284,7 +285,7 @@ La forma obvia y directa de cuantizar una caminata aleatoria sería sustituir el
 \end{tabular}
 \end{figure}
 
-Esto nos obliga a buscar maneras alternativas de cuantizar las caminatas aleatorias. La cadena anterior se podría cuantizar agregando un espacio "moneda" al espacio de Hilbert generado por $\{\ket{i}\}$. En este caso, el operador de difusión se interpreta como "lanzar la moneda" para decidir en qué dirección ir.
+Esto nos obliga a buscar maneras alternativas de cuantizar las caminatas aleatorias. La cadena anterior se podría cuantizar agregando un espacio ``moneda'' al espacio de Hilbert generado por $\{\ket{i}\}$. En este caso, el operador de difusión se interpreta como ``lanzar la moneda'' para decidir en qué dirección ir [ref].
 
 \begin{align*}
 U = \sqrt{p} \ketbra{i+1}{i} \otimes \ketbra{c}{c} + \sqrt{1-p}
@@ -302,9 +303,7 @@ Casi todas las cuantizaciones cometen estos dos pecados, aumentar la dimensión 
 
 Existe un tipo particular de caminatas aleatorias conocido como caminatas bipartitas. En éstas se tiene dos conjuntos de nodos y sólo ocurren transiciones entre los dos conjuntos, no dentro del mismo.
 
-% INSERTAR EJEMPLO AQUÍ
-
-Szegedy desarrolló una cuantización de estas caminatas. Para esto utilizó operadores de reflexión ($W = \mathds{1} - 2 \ketbra{w}{w}$, similares a los utilizados en el algoritmo de Grover). Aprovechándose del hecho de que un par de reflexiones equivale a una rotación (como en el algoritmo de Grover), creó el siguiente operador de evolución de la caminata: $U = (\mathds{1} - 2 B)(\mathds{1} - 2 A)$, donde A es el proyector sobre las transiciones de la primera partición a la segunda y B de la segunda a la primera.
+Szegedy desarrolló una cuantización de estas caminatas. Para esto utilizó operadores de reflexión ($W = \mathds{1} - 2 \ketbra{w}{w}$, similares a los utilizados en el algoritmo de Grover [ref]). Aprovechándose del hecho de que un par de reflexiones equivale a una rotación (como en el algoritmo de Grover), creó el siguiente operador de evolución de la caminata: $U = (\mathds{1} - 2 B)(\mathds{1} - 2 A)$, donde A es el proyector sobre las transiciones de la primera partición a la segunda, y B de la segunda a la primera.
 
 \begin{minipage}{0.5\linewidth}
 \begin{align*}
@@ -363,35 +362,35 @@ Si tomamos un grafo cualquiera y lo duplicamos en la forma de un grafo bipartito
 \end{tabular}
 \end{figure}
 
-En estos casos, podemso escribir el operador de difusión en términos de sólo A, pues como la segunda partición es un reflejo de la primera, $B = A^T$. Entonces: $U = (2 A^T - \mathds{1})(2 A - \mathds{1})$
+En estos casos, podemos escribir el operador de difusión en términos de sólo A, pues como la segunda partición es un reflejo de la primera, $B = A^T$. Entonces: $U = (2 A^T - \mathds{1})(2 A - \mathds{1})$
 
 \[
 \implies = (2 S A S - \mathds{1})(2 A - \mathds{1}) = S (2 A - \mathds{1}) S (2
 A - \mathds{1}) = [S (2 A - \mathds{1})]^2
 \]
 
-Donde $S$ es el operador SWAP, $S = \sum\limits_{i j} \ketbra{j i}{i j}$
-
-Tomando $W = (2 A - \mathds{1})$, el operador de difusión es
+Donde $S$ es el operador SWAP, $S = \sum\limits_{i j} \ketbra{j i}{i j}$. Tomando $W = (2 A - \mathds{1})$, el operador de difusión es
 
 \begin{equation}
     U = (S W)^2
 \end{equation}
 
-\section{PageRank cuántico}
+\section{PageRank Cuántico}
 
-Finalmente, procedemos a cuántizar el algoritmo de PageRank. Partimos del hecho de que el algoritmo de PageRank se puede formular como una caminata algeatoria, cuya matriz de probabilidades es la matriz de Google, G. Entonces seguimos el procedimiento de Szegedy, sustituyendo $p_{i j}$ por $G_{i j}$.
+Finalmente, procedemos a cuántizar el algoritmo de PageRank. Partimos del hecho de que el algoritmo de PageRank se puede formular como una caminata algeatoria, cuya matriz de probabilidades es la matriz de Google, G. Entonces seguimos el procedimiento de Szegedy [ref], sustituyendo $p_{i j}$ por $G_{i j}$.
 
 Ahora, definimos el valor de PageRank cuántico en el paso $m$ como:
 
+\color{red}
 \begin{align*}
 I_q(P_i,m) &= \ket{U^{\dagger m}(\mathds{1} \otimes \ketbra{i}{i})} \\
 \ket{\psi_0} &= \frac{1}{\sqrt{N}} \sum\limits_i \ket{\psi_i}
 \end{align*}
+\color{black}
 
 Esto equivale a realizar $m$ pasos de la caminata con $\ket{\psi_0}$ como estado inicial y realizar una medida proyeciva sobre $\ket{i}_2$.
 
-Nota: $I_q$ no converge, sino que oscila, así que se toma el centro de las oscilacioens como la medida de importancia de las páginas. Esto se hace promediando $I_q$ sobre $m$: $\langle I_q(P_i) \rangle = \frac{1}{M} \sum\limits_{m=0}^{M-1} I_q(P_i,m)$ 
+Nota: $I_q$ no converge, sino que oscila, así que se toma el centro de las oscilaciones como la medida de importancia de las páginas. Esto se hace promediando $I_q$ sobre $m$: $\langle I_q(P_i) \rangle = \frac{1}{M} \sum\limits_{m=0}^{M-1} I_q(P_i,m)$ 
 
 \section{Circuitos de las caminatas cuánticas de Szegedy}
 
@@ -468,7 +467,7 @@ Luego, siguiendo esta idea, $K_i = K_b^\dagger T_i$, donde $K_b^\dagger \ket{\ps
 \gategroup{2}{3}{2}{8}{1.5em}{_\}}
 } 
 \]
-\caption[Circuito de Loke para las caminatas cuánticas de Szegedy]{Circuito de Loke para las caminatas cuánticas de Szegedy}
+\caption[Circuito de Loke [ref] para las caminatas cuánticas de Szegedy]{Circuito de Loke para las caminatas cuánticas de Szegedy}
 \label{fig:lokecircuit}
 \end{figure}
 
@@ -480,12 +479,12 @@ En resumen, el proceso para construir el circuito de una caminata de Szegedy es:
     \item Hallar los operadores de permutación $T_i$.
     \item Hallar los operadores $K_b$ que conviertan un estado de referencia $\ket{\phi_{r_i}}$ de cada grupo en un mismo estado de referencia $\ket{b}$ de la base computacional.
     \item Hallar el operador de reflexión D.
-    \item Construir el operador de difusión a partir del circuito de la figura \ref{fig:lokecircuit}.
+    \item Construir el operador de difusión a partir del circuito de la Figura \ref{fig:lokecircuit}.
 \end{enumerate}
 
 Loke y Wang sólo muestran como realizar $K_i$ para unos pocos casos particulares de caminatas cuánticas de Szegedy que utilizan como ejemplo en su paper. En estre trabajo mostramos cómo realizar cualquier $K_i$ para caminatas cuánticas de Szegedy asociadas a grafos de cuatro nodos.
 
-Todos los coeficientes de los estados involucrados en el algoritmo de PageRank son reales positivos o cero. Es decir, que los qubits individuales que forman estos estados pertenecen todos al arco de semicircunferencia que va de $+\hat{z}$ a $-\hat{z}$ pasando por $+\hat{x}$. Esto indica que los operadores $K_i$ deben poder construirse a partir de compuertas $Ry(\theta)$ y compuertas $Ry(\theta)$ condicionadas tomando $0 \leq \theta \leq \pi$.
+Todos los coeficientes de los estados involucrados en el algoritmo de PageRank son reales positivos o cero. Es decir, que los qubits individuales que forman estos estados pertenecen todos al arco de semicircunferencia que va de $+\hat{z}$ a $-\hat{z}$, pasando por $+\hat{x}$. Esto indica que los operadores $K_i$ deben poder construirse a partir de compuertas $Ry(\theta)$ y compuertas $Ry(\theta)$ condicionadas tomando $0 \leq \theta \leq \pi$.
 
 En lo que sigue se considerará $\ket{b} = \ket{0}$ y que los grafos son de cuatro nodos. De esta manera, podemos asumir que
 
@@ -507,7 +506,7 @@ Entonces, para hallar $K_i$, debemos resolver la siguiente ecuación y hallar $\
     CRy_n(0,1,\theta_{11}) CRy_b(0,1,\theta_{10}) Ry(0,\theta_{00}) \ket{0} = \ket{\phi_{r_i}}
 \end{equation}
 
-Sin embargo, esto conduce a un sistema de cuatro ecuaciones y tres variables. Para poder resolver este sistema por métodos numéricos se modifica la ecuación de la siguiente manera, sabiendo que $\theta_x$ debe ser $n 2\pi$, donde $n$ es entero.
+Sin embargo, esto conduce a un sistema de cuatro ecuaciones y tres variables. Para poder resolver este sistema por métodos numéricos se modifica la ecuación de la siguiente manera, sabiendo que $\theta_x$ debe ser $n 2\pi$, donde $n$ es entero, quedándonos
 
 \begin{align}
     \cos(\frac{\theta_{00}}{2}) \cos(\frac{\theta_{10}}{2}) &= \sqrt{G_1} \\
@@ -516,7 +515,7 @@ Sin embargo, esto conduce a un sistema de cuatro ecuaciones y tres variables. Pa
     \sin(\frac{\theta_{00}}{2}) \sin(\frac{\theta_{11}}{2}) &= \sqrt{G_4}
 \end{align}
 
-Esto se puede solucionar recordando la normalización de los estados cuánticos y de las matrices estocásticas, entonces, sabemos que $G_4 = 1 - (G_1 + G_2 + G_3)$. Por lo que podemos reducir el sistema de ecuaciones a un de tres variables
+Esto se puede solucionar recordando la normalización de los estados cuánticos y de las matrices estocásticas, entonces, sabemos que $G_4 = 1 - (G_1 + G_2 + G_3)$. Por lo que podemos reducir el sistema de ecuaciones a uno de tres variables
 
 \begin{align}
     \cos(\frac{\theta_{00}}{2}) \cos(\frac{\theta_{10}}{2}) &= \sqrt{G_1}
@@ -526,7 +525,7 @@ Esto se puede solucionar recordando la normalización de los estados cuánticos 
     \cos(\frac{\theta_{11}}{2}) \sin(\frac{\theta_{00}}{2}) &= \sqrt{G_3}
 \end{align}
 
-Sumando \ref{eq:crot1} y \ref{eq:crot2}, y aplicando $\cos^2(\theta) + \sin^2(\theta) = 1$, se tiene:
+Sumando (\ref{eq:crot1}) y (\ref{eq:crot2}), y aplicando $\cos^2(\theta) + \sin^2(\theta) = 1$, se tiene:
 
 \begin{align}
     \cos^2(\frac{\theta_{00}}{2}) \cos^2(\frac{\theta_{10}}{2}) &= G_1
@@ -537,7 +536,7 @@ Sumando \ref{eq:crot1} y \ref{eq:crot2}, y aplicando $\cos^2(\theta) + \sin^2(\t
     \label{eq:crot5}
 \end{align}
 
-Ahora, sustituyendo \ref{eq:crot4} en \ref{eq:crot3} y \ref{eq:crot5}, y volviendo a aplicar la misma propiedad trigonométrica, se tiene:
+Ahora, sustituyendo (\ref{eq:crot4}) en (\ref{eq:crot3}) y (\ref{eq:crot5}), y volviendo a aplicar la misma propiedad trigonométrica, se tiene:
 
 \begin{align}
     \cos^2(\frac{\theta_{10}}{2}) &= \frac{G_1}{G_1 + G_2} \\
@@ -559,7 +558,7 @@ Se han realizado simulaciones del algoritmo de PageRank con un grafo estrella, u
 
 \subsection{Grafo estrella}
 
-En la figura \ref{fig:star} se observa el grafo estrella utilizado para esta simulación. Este grafo es simétrico, por lo tanto, su matriz de adyacencia es hermítica% y es un ejemplo de un grafo con el cual no necesitaríamos el esquema de Szegedy para realizar una caminata cuántica
+En la Figura \ref{fig:star} se observa el grafo estrella utilizado para esta simulación. Este grafo es simétrico, por lo tanto, su matriz de adyacencia es hermítica% y es un ejemplo de un grafo con el cual no necesitaríamos el esquema de Szegedy para realizar una caminata cuántica
 . Este no es el caso, sin embargo, una vez convertimos el grafo en uno ponderado. La matriz estocástica $E$ no es hermítica, y por extensión la matriz de Google tampoco lo es.
 
 \begin{figure}[H]
@@ -679,7 +678,7 @@ Los tres nodos exteriores de este grafo, además, forman lo que hemos llamado un
 \label{fig:lokestar}
 \end{figure}
 
-En la figura \ref{fig:inststarlossless} se puede observar la gráfica del PageRank cuántico instantáneo sin relajación. En esta figura se puede observar claramente la naturaleza sinusoidal de este algoritmo, por estar basado en reflexiones. Como se puede observar, ambas figuras son bastante similares. La diferencia está en que en el caso de la simulación matemática, el PageRank cuántico de los tres nodos exteriores se solapan perfectamente, mientras que en la simulación circuital, no. Esto se debe a la limitada precisión numérica del solucionador de ecuaciones maestras.
+En la Figura \ref{fig:inststarlossless} se puede observar la gráfica del PageRank cuántico instantáneo sin relajación. En esta figura se puede observar claramente la naturaleza sinusoidal de este algoritmo, por estar basado en reflexiones. Como se puede observar, ambas figuras son bastante similares. La diferencia está en que en el caso de la simulación matemática, el PageRank cuántico de los tres nodos exteriores se solapan perfectamente, mientras que en la simulación circuital, no. Esto se debe a la limitada precisión numérica del solucionador de ecuaciones maestras.
 
 \begin{figure}[H]
     \centering
@@ -697,7 +696,7 @@ En la figura \ref{fig:inststarlossless} se puede observar la gráfica del PageRa
     \label{fig:inststarlossless}
 \end{figure}
 
-En el caso del PageRank promedio, en la figura \ref{fig:meanstarlossless} podemos ver cómo este valor sí converge, a diferencia del PageRank instantaneo, el cuál oscila alrededor del valor de convergencia del PageRank promedio.
+En el caso del PageRank promedio, en la Figura \ref{fig:meanstarlossless} podemos ver cómo este valor sí converge, a diferencia del PageRank instantaneo, el cuál oscila alrededor del valor de convergencia del PageRank promedio.
 
 \begin{figure}[H]
     \centering
@@ -751,7 +750,7 @@ Ahora, compararemos los resultados de la simulación circuital con y sin pérdid
 
 \subsection{Grafo corona}
 
-En la figura \ref{fig:crown} se observa el grafo corona utilizado para esta simulación. Este grafo no es simétrico, por lo tanto, ni su matriz de adyacencia A, ni su matriz estocástica E, ni su matriz de Google G son hermíticas.
+En la Figura \ref{fig:crown} se observa el grafo corona utilizado para esta simulación. Este grafo no es simétrico, por lo tanto, ni su matriz de adyacencia A, ni su matriz estocástica E, ni su matriz de Google G son hermíticas.
 
 \begin{figure}[H]
     \centering
@@ -868,7 +867,7 @@ Como en el grafo corona, en este grafo, los tres nodos exteriores un subgrafo c�
 \label{fig:lokecrown}
 \end{figure}
 
-En la figura \ref{fig:instcrownlossless} se pueden observar las gráficas del PageRank cuántico instantáneo sin relajación, resultantes de la simulación matemática y de la simulación circuital. Como se puede observar, ambas figuras son bastante similares. En el caso de la simulación matemática, el PageRank cuántico de los tres nodos exteriores se solapan perfectamente, mientras que en la simulación circuital, no. Otra diferencia está en que las oscilaciones del PageRank cuántico en la simulación matemática son más amplias que las de la simulación circuital. Esto se debe a la limitada precisión numérica del solucionador de ecuaciones maestras.
+En la Figura \ref{fig:instcrownlossless} se pueden observar las gráficas del PageRank cuántico instantáneo sin relajación, resultantes de la simulación matemática, y de la simulación circuital. Como se puede observar, ambas figuras son bastante similares. En el caso de la simulación matemática, el PageRank cuántico de los tres nodos exteriores se solapan perfectamente, mientras que en la simulación circuital, no. Otra diferencia está en que las oscilaciones del PageRank cuántico en la simulación matemática son más amplias que las de la simulación circuital. Esto se debe a la limitada precisión numérica del solucionador de ecuaciones maestras.
 
 \begin{figure}[H]
     \centering
@@ -936,7 +935,7 @@ En la figura \ref{fig:instcrownlossless} se pueden observar las gráficas del Pa
 
 \subsection{Grafo árbol}
 
-En la figura \ref{fig:tree} se observa el grafo árbol utilizado para esta simulación. Este grafo no es simétrico, por lo tanto, ni su matriz de adyacencia A, ni su matriz estocástica E, ni su matriz de Google G son hermíticas.
+En la Figura \ref{fig:tree} se observa el grafo árbol utilizado para esta simulación. Este grafo no es simétrico, por lo tanto, ni su matriz de adyacencia A, ni su matriz estocástica E, ni su matriz de Google G son hermíticas.
 
 \begin{figure}[H]
     \centering
@@ -1059,7 +1058,7 @@ En este grafo, los dos nodos hojas, 3 y 4, forman un subgrafo cíclico. El nodo 
 \label{fig:loketree}
 \end{figure}
 
-En la figura \ref{fig:insttreelossless} se pueden observar las gráficas del PageRank cuántico instantáneo sin relajación, resultantes de la simulación matemática y de la simulación circuital. Como se puede observar, ambas figuras son bastante similares. De la misma manera que con el grafo corona, las oscilaciones en la simulación circuital son de menor amplitud.
+En la Figura \ref{fig:insttreelossless} se pueden observar las gráficas del PageRank cuántico instantáneo sin relajación, resultantes de la simulación matemática y de la simulación circuital. Como se puede observar, ambas figuras son bastante similares. De la misma manera que con el grafo corona, las oscilaciones en la simulación circuital son de menor amplitud.
 
 \begin{figure}[H]
     \centering
@@ -1093,7 +1092,7 @@ En la figura \ref{fig:insttreelossless} se pueden observar las gráficas del Pag
     \label{fig:meantreelossless}
 \end{figure}
 
-En el caso con pérdidas, presentado en la figura \ref{fig:insttreelossy}, se observa que el PageRank cuántico es constante. Esto se debe a lo larga que es cada iterción. En el tiempo que realiza una iteración, los qubits ya le han entregado al entorno la energía introducida por las primeras compuertas, así que el estado final de cada iteración se aproxima a la aplicación de sólo las últimas compuertas de la iteración al estado base.
+En el caso con pérdidas, presentado en la Figura \ref{fig:insttreelossy}, se observa que el PageRank cuántico es constante. Esto se debe a lo larga que es cada iteración del algoritmo. En el tiempo que realiza una iteración, los qubits ya le han entregado al entorno la energía introducida por las primeras compuertas, así que el estado final de cada iteración se aproxima a la aplicación de sólo las últimas compuertas de la iteración al estado base.
 
 \begin{figure}[H]
     \centering
@@ -1129,7 +1128,7 @@ En el caso con pérdidas, presentado en la figura \ref{fig:insttreelossy}, se ob
 
 \subsection{Grafo aleatorio}
 
-En la figura \ref{fig:tree} se observa último grafo utilizado para las simulaciones y fue construido de manera aleatoria. Este grafo no es simétrico, por lo tanto, ni su matriz de adyacencia A, ni su matriz estocástica E, ni su matriz de Google G son hermíticas.
+En la Figura \ref{fig:tree} se observa último grafo utilizado para las simulaciones y fue construido de manera aleatoria. Este grafo no es simétrico, por lo tanto, ni su matriz de adyacencia A, ni su matriz estocástica E, ni su matriz de Google G son hermíticas.
 
 \begin{figure}[H]
     \centering
@@ -1259,7 +1258,7 @@ En este grafo, al igual que en el caso anterior, los nodos 3 y 4 forman un subgr
 \label{fig:lokeany}
 \end{figure}
 
-En la figura \ref{fig:instanylossless} se pueden observar las gráficas del PageRank cuántico instantáneo sin relajación, resultantes de la simulación matemática y de la simulación circuital. Como se puede observar, ambas figuras son bastante similares. De la misma manera que con el grafo corona, las oscilaciones en la simulación circuital son de menor amplitud. También se nota que las curvas son más suaves en el caso circuital. Por ejemplo, en la curva del nodo 3, la no monoticidad en los trabos de subida o bajada es menor.
+En la Figura \ref{fig:instanylossless} se pueden observar las gráficas del PageRank cuántico instantáneo sin relajación, resultantes de la simulación matemática y de la simulación circuital. Como se puede observar, ambas figuras son bastante similares. De la misma manera que con el grafo corona, las oscilaciones en la simulación circuital son de menor amplitud. También se nota que las curvas son más suaves en el caso circuital. Por ejemplo, en la curva del nodo 3, la no monoticidad en los trabos de subida o bajada es menor.
 
 \begin{figure}[H]
     \centering
@@ -1293,7 +1292,7 @@ En la figura \ref{fig:instanylossless} se pueden observar las gráficas del Page
     \label{fig:meananylossless}
 \end{figure}
 
-En el caso con pérdidas, presentado en la figura \ref{fig:instanylossy}, se observa que el PageRank cuántico es constante. Esto se debe a lo larga que es cada iterción. En el tiempo que realiza una iteración, los qubits ya le han entregado al entorno la energía introducida por las primeras compuertas, así que el estado final de cada iteración se aproxima a la aplicación de sólo las últimas compuertas de la iteración al estado base.
+En el caso con pérdidas, presentado en la Figura \ref{fig:instanylossy}, se observa que el PageRank cuántico es constante. Esto se debe a lo larga que es cada iterción. En el tiempo que realiza una iteración, los qubits ya le han entregado al entorno la energía introducida por las primeras compuertas, así que el estado final de cada iteración se aproxima a la aplicación de sólo las últimas compuertas de la iteración al estado base.
 
 \begin{figure}[H]
     \centering

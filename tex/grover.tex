@@ -1,7 +1,6 @@
 \chapter{Algoritmo de Grover}
-%El algoritmo de Grover es un AC que encuentra con alta probabilidad la entrada única de una función de caja negra que produce un valor particular de salida, usando tan sólo $O(\sqrt{N})$ evaluaciones de la función, donde $N$ es el tamaño del dominio de la función. El análogo clásico de este algoritmo requiere $O(N)$ evaluaciones de la función, pues, el elemento correcto podría ser el $N$-ésimo en ser evaluado y se deben evaluar uno por uno. La aplicación directa de este algoritmo es como algoritmo de búsqueda en una base de datos. Sin embargo, su aplicación más eficiente es como subrutina en diversos procesos de optimización.
 
-El algoritmo de Grover es un AC que realiza una búsqueda en una secuencia no ordenada de datos con $N=2^n$ entradas. Clásicamente esta búsqueda tendría un orden de complejidad de $O(N)$, pues, como los datos no están ordenados, la cantidad promedio de evaluaciones que se deben realizar crece linealmente con la cantidad de entradas. En el caso del algoritmo de Grover, la complejidad de la búsqueda es de $O(\sqrt{N})$, pues se requieren aproximadamente $\frac{\pi\sqrt{N}}{4}$ iteraciones para hallar la entrada deseada. En cuanto a la cantidad de qubits requeridos, se necesitan $O(\log_2 N)$ qubits, pues se debe realizar un estado superpuesto donde cada componente de la superposición represente una entrada de la secuencia de datos.
+El algoritmo de Grover [ref], es un AC que realiza una búsqueda en una secuencia no ordenada de datos con $N=2^n$ entradas. Clásicamente esta búsqueda tendría un orden de complejidad de $O(N)$, pues, como los datos no están ordenados, la cantidad promedio de evaluaciones que se deben realizar crece linealmente con la cantidad de entradas. En el caso del algoritmo de Grover, la complejidad de la búsqueda es de $O(\sqrt{N})$, pues se requieren aproximadamente $\frac{\pi\sqrt{N}}{4}$ iteraciones para hallar la entrada deseada [ref]. En cuanto a la cantidad de qubits requeridos, se necesitan $O(\log_2 N)$ qubits, pues se debe realizar un estado superpuesto donde cada componente de la superposición represente una entrada de la secuencia de datos.
 
 Supongamos que la secuencia de datos no ordenada tiene la siguiente función asociada:
 
@@ -35,7 +34,7 @@ Además de éste, se necesita otro operador de reflexión, $U_s$, el cual realiz
 U_s = 2 \ketbra{s}{s} - \mathds{1}
 \end{equation}
 
-Veamos lo que sucede al aplicar esta secuencia de rotaciones sobre el estado $\ket{s}$:
+Al producto de estas dos rotaciones $U_s U_\omega$ se le conoce como operador de difusión. Veamos lo que sucede al aplicar el operador de difusión sobre el estado $\ket{s}$:
 
 \begin{multline}
     U_\omega \ket{s}
@@ -44,6 +43,8 @@ Veamos lo que sucede al aplicar esta secuencia de rotaciones sobre el estado $\k
     = \ket{s} - \frac{2}{\sqrt{N}} \ketbra{\omega}{\omega} \sum\limits_{x=0}^{N-1} \ket{x}
     = \ket{s} - \frac{2}{\sqrt{N}} \ket{\omega}
 \end{multline}
+
+Similarmente podemos observar que
 
 \begin{multline}
     U_s (\ket{s} - \frac{2}{\sqrt{N}} \ket{\omega})
@@ -68,13 +69,15 @@ Ahora veamos lo que sucede al aplicar esta secuencia de rotaciones sobre el esta
     = -\frac{2}{\sqrt{N}} \ket{s} + \ket{\omega}
 \end{equation}
 
-Se observa que al aplicar $U_s U_\omega$ sobre $\ket{s}$, se amplifica la componente de $\ket{\omega}$ en la superposición de $\frac{1}{\sqrt{N}}$ a $\frac{3N-4}{N \sqrt{N}}$. Es decir que la probabilidad de medir el valor deseado crece de $\frac{1}{N}$ a $9 (1-\frac{4}{3N}) \frac{1}{N}$.
+Se observa así, que al aplicar $U_s U_\omega$ sobre $\ket{s}$, se amplifica la componente de $\ket{\omega}$ en la superposición de $\frac{1}{\sqrt{N}}$ a $\frac{3N-4}{N \sqrt{N}}$. Es decir que la probabilidad de medir el valor deseado crece de $\frac{1}{N}$ a $9 (1-\frac{4}{3N}) \frac{1}{N}$.
 
 \begin{equation}
     \bra{\omega} U_s U_\omega \ket{s}
     = \frac{N-4}{N} \frac{1}{\sqrt{N}} + \frac{2}{\sqrt{N}}
     = \frac{3N-4}{N \sqrt{N}}
 \end{equation}
+
+Y la probabilidad cuántica será
 
 \begin{equation}
     p(\omega) = \abs{\bra{\omega} U_s U_\omega \ket{s}}^2
@@ -119,6 +122,8 @@ Ahora que conocemos una base del plano de rotación, podemos hayar el ángulo qu
     = \alpha \ket{s^\prime} - \beta \ket{\omega}
 \end{equation}
 
+De la misma forma
+
 \begin{multline}
     U_s (\alpha \ket{s^\prime} - \beta \ket{\omega})
     = (2 \ketbra{s}{s} - \mathds{1}) (\alpha \ket{s^\prime} - \beta \ket{\omega}) \\
@@ -138,7 +143,7 @@ De aquí se deduce que $\cos(\Delta\theta) = \frac{N-2}{N}$ y que $\sin(\Delta\t
     = 1
 \end{equation}
 
-Ahora escribimos las componentes de $\ket{s}$ en función del ángulo inicial $\theta_0$:
+Ahora podemos escribir las componentes de $\ket{s}$ en función del ángulo inicial $\theta_0$:
 
 \begin{align}
     \cos(\theta_0) &= \frac{\sqrt{N-1}}{\sqrt{N}} \\
@@ -166,12 +171,17 @@ Si tomamos $N \gg 1$ en (4.12), tenemos que:
     k_{max} &\approx \frac{\pi \sqrt{N}}{4}
 \end{align}
 
+En la Figura \ref{fig:groverdifusion} podemos entonces visualizar gráficamente la acción del operador difusión sobre $\ket{s}$.
+
 \begin{figure}[H]
 \centering \includegraphics[width=0.3\linewidth]{img/grover_geometry.png}
+\label{fig:groverdifusion}
 \caption{Interpretación geométrica del operador difusión}
 \end{figure}
 
 \section{El algoritmo}
+
+El circuito cuántico asociado al algoritmo de Grover tiene la siguiente representación:
 
 \begin{figure}[H]
 \[ \Qcircuit @C=1.4em @R=1.8em {
@@ -181,6 +191,8 @@ Si tomamos $N \gg 1$ en (4.12), tenemos que:
 } \]
 \caption{Circuito del algoritmo de Grover.}
 \end{figure}
+
+Dicho algoritmo se puede describir detalladamente en los siguientes pasos:
 
 \begin{enumerate}
     \item Preparar el estado fiducial.
@@ -199,7 +211,7 @@ A continuación estudiaremos el algoritmo de amplificación de amplitud, el cual
 
 \subsection{Algoritmo de amplificación de amplitud}
 
-Esta generalización fue desarrollada independientemente por Brassar y H̨øyer en 1997 \cite{Brassard} y por Grover en 1998 \cite{Grover_1998}. Con este algoritmo se pueden utilizar funciones oráculo que marquen 1 para más de una entrada de la base de datos en la cual se realizará la búsqueda. Entonces, sea $\mathcal{W}$ el conjunto de entradas a encontrar, tenemos la función oráculo:
+Esta generalización fue desarrollada independientemente por Brassar y H̨øyer en 1997 \cite{Brassard}, y por Grover en 1998 \cite{Grover_1998}. Con este algoritmo se pueden utilizar funciones oráculo que marquen 1 para más de una entrada de la base de datos en la cual se realizará la búsqueda. Entonces, sea $\mathcal{W}$ el conjunto de entradas a encontrar, tenemos la función oráculo:
 
 \begin{equation}
     f(x) =
@@ -223,19 +235,22 @@ Sea el estado inicial:
     \ket{\psi} = \sin(\theta) \ket{\psi_1} + \cos(\theta) \ket{\psi_0}
 \end{equation}
 
-Donde $\ket{\psi_1} = \frac{\Pi_\mathcal{W} \ket{\psi}}{\sin(\theta)}$ y $\sin(\theta) = \bra{\psi} \Pi_\mathcal{W} \ket{\psi}$. De aquí podemos hallar que $\ket{\psi_0} = \frac{(\mathds{1} - \Pi_\mathcal{W}) \ket{\psi}}{\cos(\theta)}$ y que $\cos(\theta) = \bra{\psi} (\mathds{1} - \Pi_\mathcal{W}) \ket{\psi}$.
+Donde $\ket{\psi_1} = \frac{\Pi_\mathcal{W} \ket{\psi}}{\sin(\theta)}$ y $\sin(\theta) = \bra{\psi} \Pi_\mathcal{W} \ket{\psi}$. Lo que nos conduce a precisar que $\ket{\psi_0} = \frac{(\mathds{1} - \Pi_\mathcal{W}) \ket{\psi}}{\cos(\theta)}$, y que $\cos(\theta) = \bra{\psi} (\mathds{1} - \Pi_\mathcal{W}) \ket{\psi}$.
 
 Ahora definamos los siguientes operadores de reflexión $U_\psi = (2 \ketbra{\psi}{\psi}$ y $ U_\mathcal{W} = \mathds{1})(\mathds{1} - 2 \Pi_\mathcal{W})$, estos son las generalizaciones de $U_s$ y $U_\omega$, del algoritmo de Grover, respectivamente. El producto de ellos, $U_\psi U_\mathcal{W}$ es un operador de rotación en el plano generado por $\ket{\psi_0}$ y $\ket{\psi_1}$, de la misma manera que $U_s U_\omega$ es un operador de rotación en el plano generado por $\ket{s^\prime}$ y $\ket{\omega}$. Ahora veamos el efecto de $U_\psi U_\mathcal{W}$ y el ángulo que rota este operador:
 
 \begin{multline}
-    U_\psi U_\mathcal{W} \ket{\psi} = (2 \ketbra{\psi}{\psi} - \mathds{1}) (\mathds{1} - 2 \Pi_\mathcal{W}) \ket{\psi} = (2 \ketbra{\psi}{\psi} - \mathds{1}) [(\mathds{1} - \Pi_\mathcal{W}) - \Pi_\mathcal{W}] \ket{\psi} \\
-    = (2 \ketbra{\psi}{\psi} - \mathds{1}) (\cos(\theta) \ket{\psi_0} - \sin(\theta) \ket{\psi_1}) = (2 \ketbra{\psi}{\psi} - \mathds{1}) (\ket{\psi} - 2 \sin(\theta) \ket{\psi_1}) \\
-    = \ket{\psi} + (- 4 \sin^2(\theta) \ket{\psi} + 2 \sin(\theta) \ket{\psi_1}) = (3 - 4 \sin^2(\theta)) \sin(\theta) \ket{\psi_1} + (1 - 4 \sin^2(\theta)) \cos(\theta) \ket{\psi_0} \\
+    U_\psi U_\mathcal{W} \ket{\psi} = (2 \ketbra{\psi}{\psi} - \mathds{1}) (\mathds{1} - 2 \Pi_\mathcal{W}) \ket{\psi} \\
+    = (2 \ketbra{\psi}{\psi} - \mathds{1}) [(\mathds{1} - \Pi_\mathcal{W}) - \Pi_\mathcal{W}] \ket{\psi} \\
+    = (2 \ketbra{\psi}{\psi} - \mathds{1}) (\cos(\theta) \ket{\psi_0} - \sin(\theta) \ket{\psi_1}) \\
+    = (2 \ketbra{\psi}{\psi} - \mathds{1}) (\ket{\psi} - 2 \sin(\theta) \ket{\psi_1}) \\
+    = \ket{\psi} + (- 4 \sin^2(\theta) \ket{\psi} + 2 \sin(\theta) \ket{\psi_1}) \\
+    = (3 - 4 \sin^2(\theta)) \sin(\theta) \ket{\psi_1} + (1 - 4 \sin^2(\theta)) \cos(\theta) \ket{\psi_0} \\
     = \sin(3 \theta) \ket{\psi_1} + \cos(3 \theta) \ket{\psi_0}
     \label{eq:DTheta}
 \end{multline}
 
-Como se puede ver, el operador $U_\psi U_\mathcal{W}$ rota un ángulo de $2 \theta$. Por lo que si se aplica $k$ veces a $\ket{\psi}$, tendremos:
+Como se puede ver, el operador $U_\psi U_\mathcal{W}$ rota un ángulo de $\Delta\theta = 3\theta - \theta = 2 \theta$. Por lo que si se aplica $k$ veces a $\ket{\psi}$, después de un cálculo inductivo tendremos:
 
 \begin{equation}
     (U_\psi U_\mathcal{W})^k \ket{\psi} = \sin( (2 k + 1) \theta) \ket{\psi_1} + \cos( (2 k + 1) \theta) \ket{\psi_0}
@@ -248,15 +263,14 @@ De esta manera, el $k = k_max$ para el cual se obtiene la probabilidad máxima d
     \approx \sin(\frac{\pi}{2}) \ket{\psi_1} + \cos(\frac{\pi}{2}) \ket{\psi_0} = \ket{\psi_1}
 \end{multline}
 
-Mientras menor sea $\theta$, más tenderá $(U_\psi U_\mathcal{W})^{k_{max}} \ket{\psi}$ a $\ket{\psi_1}$, pero mayor será $k_{max}$.
+Mientras menor sea $\theta$, más tenderá asintóticamente $(U_\psi U_\mathcal{W})^{k_{max}} \ket{\psi}$ a $\ket{\psi_1}$, pero mayor será $k_{max}$.
 
 Como se puede ver, el algoritmo de amplificación de amplitud se puede utilizar como algoritmo de búsqueda con una cantidad arbitraria de estados objetivos y un estado inicial arbitrario, no sólo $\ket{s}$ como en el algoritmo de Grover. Sin embargo, este no es sólo un algoritmo de búsqueda, sino tambien un algoritmo de optimización. En este sentido, la amplificación de amplitud también se puede utilizar como subrutina para mejorar el resultado de otros algoritmos. Sea $U_\mathcal{A}$ el operador asociado a un algoritmo cuántico $\mathcal{A}$, entonces, tal que, partiendo del estado fiducial, retorne el estado $\ket{\psi}$. Es decir, $U_\mathcal{A} \ket{0} = \ket{\psi}$, entonces, podemos reescribir $U_\psi$ de la siguiente manera:
-
 \begin{equation}
     U_\psi = (2 \ketbra{\psi} - \mathds{1}) = (2 U_\mathcal{A} \ketbra{0} U_\mathcal{A}^\dagger - \mathds{1}) = U_\mathcal{A} (2 \ketbra{0} - \mathds{1}) U_\mathcal{A}^\dagger = U_\mathcal{A} U_0 U_\mathcal{A}^\dagger
 \end{equation}
 
-De esta manera, a cualquier algoritmo, que actúe sobre un espacio de Hilbert $\mathcal{H}$ que se pueda descomponer un espacio de estados buenos $\mathcal{H}_\mathcal{W}$ y un espacio de estados malos $\mathcal{H} \setminus \mathcal{H}_\mathcal{W}$, se le puede aplicar la amplificación de amplitud para mejorar su resultado.
+De esta manera, a cualquier algoritmo, que actúe sobre un espacio de Hilbert $\mathcal{H}$ que se pueda descomponer en un espacio de estados buenos $\mathcal{H}_\mathcal{W}$, y un espacio de estados malos $\mathcal{H} \setminus \mathcal{H}_\mathcal{W}$, se le puede aplicar la amplificación de amplitud para mejorar su resultado.
 
 Ahora consideremos el caso en el que $U_\mathcal{A} = H^{\otimes n}$, es decir, el caso en el que $\ket{\psi} = \ket{s}$. Este seria el caso particular del algoritmo de amplificación de amplitud en el que se utiliza el mismo estado inicial del algoritmo de Grover.
 
@@ -272,7 +286,7 @@ Si tomamos $N \gg W$, tendríamos que $\theta \approx \sqrt{\frac{W}{N}}$, enton
 
 \subsection{Algoritmo de Grover en un paso}
 
-En \cite{Grover_1997s} Grover propone una manera alternativa para ejecutar su algoritmo. En lugar de realizar $O(\sqrt{N})$ iteraciones, propone realizar una sola iteración en $\Omega(\sqrt{N \log(N)})$ sistemas identicos simultáneamente. Partiendo de la ecuación \ref{eq:prob1step}, la probabilidad de medir cada uno de los estados, cuando N es grande, luego de aplicar una iteración del algoritmo de Grover es aproximadamente:
+Grover \cite{Grover_1997s} propone una manera alternativa para ejecutar su algoritmo. \color{red}En lugar de realizar $O(\sqrt{N})$ iteraciones, propone realizar una sola iteración en $\Omega(\sqrt{N \log(N)})$ sistemas identicos simultáneamente.\color{black} Partiendo de la ecuación \ref{eq:prob1step}, la probabilidad de medir cada uno de los estados, cuando N es grande, luego de aplicar una iteración del algoritmo de Grover es aproximadamente:
 
 \begin{equation}
     p(x) \approx
@@ -284,15 +298,15 @@ En \cite{Grover_1997s} Grover propone una manera alternativa para ejecutar su al
 
 Así que con $\eta$ sistemas se tendrá, en promedio $9 \eta/N \pm O(\sqrt{\eta/N})$ medidas del valor deseado y $\eta/N \pm O(\sqrt{\eta/N})$ medidas de cualquiera de cada uno de los otros estados. La idea es tener suficientes sistemas para poder elegir con seguridad el valor que más se repita como el valor deseado. Por el teorema del límite central, la probabilidad de que una variable particular se desvíe más de $\pm \gamma \sqrt{\eta/N}$ de su valor esperado es menor que $e^{- \Omega(\gamma^2)}$. De esta manera, si $\eta = \Omega(N \log(N))$, entonces, con una probabilidad cercana a 1, el valor deseado ocurrirá con mayor frecuencia que cualquiera de los otros $N-1$.
 
-Este esquema también se puede aplicar al algoritmo de amplificación de amplitud, pero con una condición: Que la cantidad de estados marcados sea menor a $N/4$. Esto es porque no hay manera de diferenciar los $W$ estados deseados de los otros $N - W$. Entonces, si $W$ es cercano a $N/2$, resultará imposible identificar correctamente los estados deseados.
+Este esquema también se puede aplicar al algoritmo de amplificación de amplitud, pero con una condición: Que la cantidad de estados marcados sea menor a $N/4$. Esto es porque no hay manera de diferenciar los $W$ estados asociados a $\mathcal{W}$ deseados de los otros $N - W$. Entonces, si $W$ es cercano a $N/2$, resultará imposible identificar correctamente los estados deseados.
 
-Es importante mencionar que aunque esta versión del algoritmo se pueda ejecutar con una sola iteración, resulta menos eficiente que el algoritmo de Grover tradicional. Esto es porque esas $\Omega(N \log(N))$ mediciones necesitarán ser procesadas para hallar los valores más frecuentes, lo cual tendrá una complejidad temporal del mismo orden $\Omega(N \log(N))$, la cual es mayor a la complejidad temporal $O(\sqrt{N}$ de la versión tradicional del algoritmo. De esta forma, la única verdadera ventaja de esta variacíón estaría en el caso en que se tengan sistemas con tiempos de vida tales que no permitan realizar las iteraciones necessarias para ejecutar la versión tradicional del algoritmo de Grover.
+Es importante mencionar que aunque esta versión del algoritmo se pueda ejecutar con una sola iteración, resulta menos eficiente que el algoritmo de Grover tradicional. Esto es porque esas $\Omega(N \log(N))$ mediciones necesitarán ser procesadas para hallar los valores más frecuentes, lo cual tendrá una complejidad temporal del mismo orden $\Omega(N \log(N))$, la cual es mayor a la complejidad temporal $O(\sqrt{N})$ de la versión tradicional del algoritmo. De esta forma, la única verdadera ventaja de esta variacíón estaría en el caso en que se tengan sistemas con tiempos de vida tales que no permitan realizar las iteraciones necessarias para ejecutar la versión tradicional del algoritmo de Grover.
 
 \subsection{Optimización del algoritmo de Grover}
 
-En \cite{Garg} Garg y Pande proponen una optimización del algoritmo de Grover, mezclando el algoritmo de Grover tradicional y el algoritmo de Grover de un paso. La idea de ellos es ejecutar el algoritmo en múltiples sistemas idénticos, como en el algoritmo de un paso, pero realizar más de una iteración, como en el algoritmo tradicional. De esta manera, reducen la cantidad $\eta$ de sistemas necesarios y la cantidad $k$ de iteraciones necesarias. Ellos hayan que tomando $\eta = k$, entonces sólo se necestian $O(\sqrt[3]{N})$.
+Garg y Pande \cite{Garg} proponen una optimización del algoritmo de Grover, mezclando el algoritmo de Grover tradicional y el algoritmo de Grover de un paso. La idea de ellos es ejecutar el algoritmo en múltiples sistemas idénticos, como en el algoritmo de un paso, pero realizar más de una iteración, como en el algoritmo tradicional. De esta manera, reducen la cantidad $\eta$ de sistemas necesarios y la cantidad $k$ de iteraciones necesarias. Ellos hayan que tomando $\eta = k$, entonces sólo se necestian $O(\sqrt[3]{N})$.
 
-Partiendo de \ref{eq:sinTheta0} y \ref{eq:DTheta}, sabemos que en cada iteración de Grover, cuando $N$ es grande, se rota un ángulo de aproximadamente $2/\sqrt{N}$ y que el ángulo inicial es aproximadamente $1/\sqrt{N}$. Así que luego de $k$ iteraciones, se tendrá un ángulo de aproximadamente $(2k + 1)/\sqrt{N}$. Por lo tanto, la probabilidad de medir cada estado será:
+Partiendo de (\ref{eq:sinTheta0}) y (\ref{eq:DTheta}), sabemos que en cada iteración de Grover, cuando $N$ es grande, se rota un ángulo de aproximadamente $2/\sqrt{N}$ y que el ángulo inicial es aproximadamente $1/\sqrt{N}$. Así que luego de $k$ iteraciones, se tendrá un ángulo de aproximadamente $(2k + 1)/\sqrt{N}$. Por lo tanto, la probabilidad de medir cada estado será:
 
 \begin{equation}
     p(x) \approx
@@ -308,15 +322,15 @@ Finalmente, la parte cuántica de este algoritmo tiene una complejidad temporal 
 
 \section{Simulaciones}
 
-Se realizaron simulaciones del algoritmo de Grover con $\ket{\omega} = \ket{0000}$, $\ket{\omega} = \ket{0110}$ y $\ket{\omega} = \ket{1111}$. También se realizon simulaciones del algoritmo de amplificación de amplitud con $\mathcal{W} = \{9, 13\} = \{1001_2, 1101_2 \}$ y $\mathcal{W} = \{4, 5, 12, 13\} = \{0100_2, 0101_2, 1100_2, 1101_2\}$.
+Se realizaron simulaciones del algoritmo de Grover con $\ket{\omega} = \ket{0000}$, $\ket{\omega} = \ket{0110}$ y $\ket{\omega} = \ket{1111}$. También se realizaron simulaciones del algoritmo de amplificación de amplitud con $\mathcal{W} = \{9, 13\} = \{1001_2, 1101_2 \}$ y $\mathcal{W} = \{4, 5, 12, 13\} = \{0100_2, 0101_2, 1100_2, 1101_2\}$.
 
 Un conjunto de las simulaciones se ha realizado en Wolfram Mathematica, implementando los operadores, es decir $U_{\omega}$, $U_\mathcal{W}$, $U_s$ y la transformada de Hadamard, directamente, de manera matricial, de acuerdo a las definiciones dadas anteriormente. Otro conjunto de las simulaciones ha realizado en Python, definiendo todos los operadores y transformaciones en base a sus construcciones circuitales, a partir de las compuertas nativas de los transmones, resolviendo la ecuación maestra del sistema al aplicar cada compuerta nativa. Al primer conjunto lo llamaremos simulaciones matemáticas, y al segundo, simulaciones circuitales. El código todas las simulaciones de este capítulo se encuentra en el apéndice \ref{ch:grovercod}.
 
 En el caso de la simulaciones matemáticas, sólo se ha simulado el caso sin relajación. Por otro lado, en el caso de la simulaciones circuitales, se ha simulado el sistema tanto sin relajación, como con relajación. En el caso del sistema con relajación, se ha utilizado la ecuación maestra de Lindblad con los operadores de colapso $\sigma_{-_i}$ y tasa de decaimiento $\gamma = 25KHz$.
 
-Como el espacio de Hilbert del sistema en el que sea ejecutado el algoritmo es de 16 dimensiones, ya que es de cuatro qubits, se necesitan $\lfloor \frac{\pi \sqrt{16}}{4} \rfloor = 3$ iteraciones para tener la máxima probabilidad de medir el estado deseado. Sin embargo, la simulación se ha realizado con 7 iteraciones, para apreciar la naturaleza oscilatoria de este algoritmo. Recordemos que este algoritmo consiste en rotaciones en el plano generado por $\ket{\omega}$ y $\ket{s^\prime}$, es decir, que si se aplican más de 3 rotaciones, la probabilidad de éxito debería disminuir, hasta que el estado del sistema se alinee con $- \ket{s^\prime}$, volver a aumentar hasta llegar a $- \ket{\omega}$, disminuir hasta pasar por $\ket{s^\prime}$, pasar de nuevo por el estado inicial $\ket{s}$ y repetirse el ciclo. La hipotesis es que veremos aproximadamente un período de sinusoide muestreada, con alrededor de seis muestras por período, en la gráfica de la evolución de la probabilidad de medir $\ket{\omega}$, ya que si luego de tres iteraciones se llega al punto de probabilidad máxima, alrededor de la sexta iteración se debe llegar al punto de probabilidad mínima y en la séptima volvería a aumentar.
+Como el espacio de Hilbert del sistema en el que sea ejecutado el algoritmo es de 16 dimensiones, ya que es de cuatro qubits, se necesitan $\lfloor \frac{\pi \sqrt{16}}{4} \rfloor = 3$ iteraciones para tener la máxima probabilidad de medir el estado deseado. Sin embargo, la simulación se ha realizado con 7 iteraciones, para apreciar la naturaleza oscilatoria de este algoritmo. Recordemos que este algoritmo consiste en rotaciones en el plano generado por $\ket{\omega}$ y $\ket{s^\prime}$, es decir, que si se aplican más de 3 rotaciones, la probabilidad de éxito debería disminuir, hasta que el estado del sistema se alinee con $- \ket{s^\prime}$, volver a aumentar hasta llegar a $- \ket{\omega}$, disminuir hasta pasar por $\ket{s^\prime}$, pasar de nuevo por el estado inicial $\ket{s}$, y repetirse otra vez el ciclo. La hipotesis es que veremos aproximadamente un período de sinusoide muestreada, con alrededor de seis muestras por período, en la gráfica de la evolución de la probabilidad de medir $\ket{\omega}$, ya que si luego de tres iteraciones se llega al punto de probabilidad máxima, alrededor de la sexta iteración se debe llegar al punto de probabilidad mínima y en la séptima volvería a aumentar.
 
-En la figura \ref{fig:groverlosslesscomp1111} se puede observar la gráfica de la evolución de la probabilidad de medir cada estado en cada iteración del algoritmo de Grover con $\ket{\omega} = \ket{1111}$. Como se puede observar, ambas figuras son bastante similares. La fidelidad entre los estados finales de ambas simulaciones es 0.999875. Además, se ha confirmado la hipotesis de que la evolución de la probabilidad de medir $\ket{1111}$ tiene forma sinusoidal.
+En la Figura \ref{fig:groverlosslesscomp1111} se puede observar la gráfica de la evolución de la probabilidad de medir cada estado en cada iteración del algoritmo de Grover con $\ket{\omega} = \ket{1111}$. Como se puede observar, ambas figuras son bastante similares. La fidelidad entre los estados finales de ambas simulaciones es 0.999875. Además, se ha confirmado la hipotesis de que la evolución de la probabilidad de medir $\ket{1111}$ tiene forma sinusoidal.
 
 \begin{figure}[H]
     \centering
@@ -334,11 +348,11 @@ En la figura \ref{fig:groverlosslesscomp1111} se puede observar la gráfica de l
     \label{fig:groverlosslesscomp1111}
 \end{figure}
 
-Ahora, compararemos los resultados de la simulación circuital con y sin relajación. Como se puede ver en la figura \ref{fig:groverloss}, en el caso con relajación, los estados que no contienen el valor deseado dejan de tener todos la misma probabilidad. Los estados que involucran el estado base ganan probabilidad debido a la relajación de los qubits. La fidelidad entre los estados resultantes de los casos con y sin relajación es de 0.250818.
+Ahora, compararemos los resultados de la simulación circuital con y sin relajación. Como se puede ver en la Figura \ref{fig:groverloss}, en el caso con relajación, los estados que no contienen el valor deseado dejan de tener todos la misma probabilidad. Los estados que involucran el estado base ganan probabilidad debido a la relajación de los qubits. La fidelidad entre los estados resultantes de los casos con y sin relajación es de 0.250818.
 
-Además, en el caso con relajación, la probabilidad de medir el estado deseado depende de cuál sea este estado. Mientras más particiones en $\ket{1}$ contenga este estado, peor será el efecto de la relajación en el algoritmo. Esto ocurre porque el algoritmo debe llevar estas particiones a estado excitados, es decir, a estados de energías superiores y esto es energía que el entorno absorbe por efecto Purcell. Las particiones en el estado $\ket{0}$ están en su estado base y no se ven afectadas por este fenómeno, pues este es su estado de mínima energía. Esto se ve reflejado en las siguientes figuras.
+Además, en el caso con relajación, la probabilidad de medir el estado deseado depende de cuál sea este estado. Mientras más particiones en $\ket{1}$ contenga este estado, peor será el efecto de la relajación en el algoritmo. Esto ocurre porque el algoritmo debe llevar estas particiones a estados excitados, es decir, a estados de energías superiores, y esto es energía que el entorno absorbe por efecto Purcell [ref]. Las particiones en el estado $\ket{0}$ están en su estado base y no se ven afectadas por este fenómeno, pues este es su estado de mínima energía. Esto se ve reflejado en las siguientes figuras.
 
-En la figura \ref{fig:groverloss1111}, se tiene $\ket{\omega} = \ket{1111}$, así que este es el caso en el que el entorno tiene el mayor efecto sobre el algoritmo, pues es el caso en el que el sistema tiene las mayores energías. Por otro lado, la figura \ref{fig:groverloss0000} presenta el caso en el que $\ket{\omega} = \ket{0000}$, este es el caso en el que el entorno tiene el menor efecto sobre el algoritmo, pues es el caso en el que el sistema tiene las menores energías. La figura \ref{fig:groverloss0110} presenta el caso en el $\ket{\omega} = \ket{0110}$. Este es un caso intermedio y el sistema tiene un efecto distinto sobre cada partición.
+En la Figura \ref{fig:groverloss1111}, se tiene $\ket{\omega} = \ket{1111}$, así que este es el caso en el que el entorno tiene el mayor efecto sobre el algoritmo, pues es el caso en el que el sistema tiene las mayores energías. Por otro lado, la Figura \ref{fig:groverloss0000} presenta el caso en el que $\ket{\omega} = \ket{0000}$, este es el caso en el que el entorno tiene el menor efecto sobre el algoritmo, pues es el caso en el que el sistema tiene las menores energías. La Figura \ref{fig:groverloss0110} presenta el caso en el $\ket{\omega} = \ket{0110}$. Este es un caso intermedio y el sistema tiene un efecto distinto sobre cada partición.
 
 El tiempo de vida de los qubits no es suficiente para ejecutar el algoritmo de Grover en su forma tradicional. Esto requeriría tres iteraciones, pero para ese momento, el estado deseado ya no es el más probable, debido a la decoherencia. El único caso en el que el estado deseado sigue siendo el más probable luego de la tercer iteración es el caso en el que este es el estado base. Sin embargo, en todos los casos, la probabilidad máxima de medir el estado correcto ocurre en la primera iteración. Debido a esto, resulta mejor utilizar el algoritmo de Grover en un paso. En cuanto a la versión optimizada, como nuestro sistema tiene cuatro qubits, $N = 16$, el error introducido por las aproximaciones realizadas en el desarrollo de este algoritmo es demasiado grande. La cantidad de iteraciones y subsistemas necesarios estaría alrededor de $\sqrt[3]{N} = 2.519842$, lo cual está en el mismo orden que 1 y sería equivalente a aplicar el algoritmo de Grover en un paso, que, debido a la corto tiempo de vida de los qubits, es la única variante de este algoritmo que es realizable en este sistema.
 
@@ -366,9 +380,9 @@ El tiempo de vida de los qubits no es suficiente para ejecutar el algoritmo de G
     \label{fig:groverloss}
 \end{figure}
 
-Ahora veamos los casos en los que se tiene más de un estado deseado, es decir, el algoritmo de amplificación de amplitud. La figura \ref{fig:groverlosslesscomp2} muestra el caso en el que se tienen dos estados deseados, sin relajación. Las graficas obtenidas de la simulación matematica y la simulación circuital son idénticas. Lo mismo ocurre en la figura \ref{fig:groverlosslesscomp3} con el caso en el que se han seleccionado cuatro estados deseados.
+Ahora veamos los casos en los que se tiene más de un estado deseado, es decir, el algoritmo de amplificación de amplitud. La Figura \ref{fig:groverlosslesscomp2} muestra el caso en el que se tienen dos estados deseados, sin relajación. Las graficas obtenidas de la simulación matematica y la simulación circuital son idénticas. Lo mismo ocurre en la Figura \ref{fig:groverlosslesscomp3} con el caso en el que se han seleccionado cuatro estados deseados.
 
-La cantidad de iteraciones necesarias en el caso de dos estados deseados es $\lfloor \frac{\pi}{4} \sqrt{\frac{16}{2}} \rfloor = \rfloor 2.221441 \lfloor = 2$. Mientras que en el caso de cuatro estados deseados es $\lfloor \frac{\pi}{4} \sqrt{\frac{16}{4}} \rfloor = \lfloor \pi/2 \rfloor = 1$. Estos valores se confirman viendo las gráficas. En la figura \ref{fig:groverlosslesscomp2}, correspondiente al caso de $W = 2$, el pico de mayor probabilidad para los dos estados deseados se encuentra en la segunda iteración. Mientras que en la figura \ref{fig:groverlosslesscomp3}, correspondiente al caso de cuatro estados deseados, el pico de máxima probabilidad se encuentra luego de la primera iteración. Aumentar el tamaño del conjunto de estados deseados tiene el efecto de aumentar la frecuencia de las oscilaciones generadas por este algoritmo.
+La cantidad de iteraciones necesarias en el caso de dos estados deseados es $\lfloor \frac{\pi}{4} \sqrt{\frac{16}{2}} \rfloor = \rfloor 2.221441 \lfloor = 2$. Mientras que en el caso de cuatro estados deseados es $\lfloor \frac{\pi}{4} \sqrt{\frac{16}{4}} \rfloor = \lfloor \pi/2 \rfloor = 1$. Estos valores se confirman viendo las gráficas. En la Figura \ref{fig:groverlosslesscomp2}, correspondiente al caso de $W = 2$, el pico de mayor probabilidad para los dos estados deseados se encuentra en la segunda iteración. Mientras que en la Figura \ref{fig:groverlosslesscomp3}, correspondiente al caso de cuatro estados deseados, el pico de máxima probabilidad se encuentra luego de la primera iteración. Aumentar el tamaño del conjunto de estados deseados tiene el efecto de aumentar la frecuencia de las oscilaciones generadas por este algoritmo.
 
 \begin{figure}[H]
     \centering
@@ -402,7 +416,7 @@ La cantidad de iteraciones necesarias en el caso de dos estados deseados es $\lf
     \label{fig:groverlosslesscomp3}
 \end{figure}
 
-En la figura \ref{fig:groverlosscomp2} se presentan los resultados de la simulaciones con relajación del algoritmo de amplificación de amplitud. Se nota que en estos casos se logran tener más iteraciones antes de que la decoherencia haga irreconocibles los estados deseados. Esto ocurre porque estos casos fueron elegidos tal que los operadores de reflexión utilizados $U_\mathcal{W}$ involucren menos qubits de control que los operadores $U_\omega$. En consecuencia, cada iteración es más corta y se pueden realizar más iteraciones en el tiempo de vida de los qubits.
+En la Figura \ref{fig:groverlosscomp2} se presentan los resultados de la simulaciones con relajación del algoritmo de amplificación de amplitud. Se nota que en estos casos se logran tener más iteraciones antes de que la decoherencia haga irreconocibles los estados deseados. Esto ocurre porque estos casos fueron elegidos tal que los operadores de reflexión utilizados $U_\mathcal{W}$ involucren menos qubits de control que los operadores $U_\omega$. En consecuencia, cada iteración es más corta y se pueden realizar más iteraciones en el tiempo de vida de los qubits.
 
 \begin{figure}[H]
     \centering

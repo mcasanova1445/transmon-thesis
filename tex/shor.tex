@@ -1,9 +1,8 @@
 \chapter{Algoritmo de Shor}
 
-%P.W. Shor SIAM I. Comput. 26, 1484-1509 (1997)
-El algoritmo de Shor es un algoritmo cuántico de factorización de enteros. Dado un entero $N=p \times q$, donde $p$ y $q$ son primos, el algoritmo de Shor encuentra $p$ y $q$ en $O((\log(N))^3)$ pasos, publicado en 1997 por Peter Shor. El algoritmo clásico más eficiente para factorizar enteros es la cibra general del cuerpo de números y funciona con una complejidad heurística de $O(e^{(\sqrt[3]{\frac{64}{9}}+o(1))(\ln(N))^{\frac{1}{3}}(\ln(\ln(N)))^{\frac{2}{3}}})$. Por su capacidad de factorizar números semiprimos, el algoritmo de Shor es capaz de violar el cifrado RSA y el protocolo Diffie-Hellman de intercambio de llaves, sobre los cuáles se basa virtualmente toda la criptografía actual.
+El algoritmo de Shor es un algoritmo cuántico de factorización de enteros. Dado un entero $N=p \times q$, donde $p$ y $q$ son primos, el algoritmo de Shor encuentra $p$ y $q$ en $O((\log(N))^3)$ pasos, publicado en 1997 por Peter Shor [ref]. El algoritmo clásico más eficiente para factorizar enteros es la cibra general del cuerpo de números y funciona con una complejidad heurística de $O(e^{(\sqrt[3]{\frac{64}{9}}+o(1))(\ln(N))^{\frac{1}{3}}(\ln(\ln(N)))^{\frac{2}{3}}})$. Por su capacidad de factorizar números semiprimos, el algoritmo de Shor es capaz de violar el cifrado RSA [ref] y el protocolo Diffie-Hellman de intercambio de llaves, sobre los cuáles se basa virtualmente toda la criptografía actual.
 
-El algoritmo de Shor está basado en el algoritmo de estimación de orden, el cuál es una aplicación del algoritmo de estimación de fase. Éste último permite encontrar la fase $\phi$ del autovalor $e^i \phi$ asociado a algún autoestado $\ket{u}$ de un operador unitario U. El algoritmo de estimación de orden utiliza esta estimación para hallar el orden $r>0$ tal que $a^r \equiv 1 \mod m$, a partir del operador unitario de multiplicación modular.
+El algoritmo de Shor está basado en el algoritmo de estimación de orden, el cuál es una aplicación del algoritmo de estimación de fase [ref]. Éste último permite encontrar la fase $\phi$ del autovalor $e^{i \phi}$ asociado a algún autoestado $\ket{u}$ de un operador unitario U. El algoritmo de estimación de orden utiliza esta estimación para hallar el orden $r>0$ tal que $a^r \equiv 1 \mod m$, a partir del operador unitario de multiplicación modular.
 
 \section{Transformada cuántica de Fourier}
 
@@ -19,21 +18,21 @@ Aplica la transformada
     \ket{x} \rightarrow K(x,y) \ket{y}
 \end{equation}
 
-Donde $K(x,y)$ se conoce como el kernel de la transformada.
+Donde $K(x,y)$ se conoce como el Kernel de la transformada.
 
-Una de las transformadas integrales cuánticas más importantes es la tranformada cuántica de Fourier. Sea $\omega_n$ la n-ésima raíz primitiva de la unidad:
+Una de las transformadas integrales cuánticas más importantes es la tranformada cuántica de Fourier (QFT). Sea $\omega_n$ la n-ésima raíz primitiva de la unidad:
 
 \begin{equation}
     \omega_n = e^{2\pi i/N}
 \end{equation}
 
-Donde $N = 2^n$. El número complejo $\omega_n$ define el kernel K como:
+Donde $N = 2^n$. El número complejo $\omega_n$ define el Kernel K como:
 
 \begin{equation}
     K(x,y) = \frac{1}{\sqrt{N}} \omega_n^{x y}
 \end{equation}
 
-La transformada integral discreta con el kernel K,
+La transformada integral discreta con el Kernel K,
 
 \begin{equation}
     \tilde{f}(y) = \frac{1}{\sqrt{N}} \sum\limits_x \omega^{-x y} f(x)
@@ -41,7 +40,7 @@ La transformada integral discreta con el kernel K,
 
 se llama la transformada discreta de Fourier (DFT).
 
-El kernel K es unitario ya que:
+El Kernel K es unitario ya que:
 
 \begin{multline}
     (K K^\dagger)(x,y) = \bra{x} K K^\dagger \ket{y}
@@ -52,9 +51,9 @@ El kernel K es unitario ya que:
     = \delta_{x y}
 \end{multline}
 
-La transformada integral cuántica definida con este kernel se llama transformada cuántica de Fourier.
+La transformada integral cuántica definida con este Kernel se llama QFT.
 
-El kernel para $n = 1$ es:
+El Kernel para $n = 1$ es:
 
 \begin{equation}
     K_1 = \frac{1}{\sqrt{2}}
@@ -96,7 +95,7 @@ La QFT inversa está dada por:
 
 \section{Estimación de fase}
 
-Asumamos que tenemos un operador U, con autoestados $\ket{u}$ de dimensión L, y con autovalore complejos desconocidos $\lambda_\phi = e^{2 i \pi \phi}$, donde $\phi$ es un número real tal que $0 \leq \phi \leq 1$, a ser determinado.
+Asumamos que tenemos un operador U, con autoestados $\ket{u}$ de dimensión L, y con autovalores complejos desconocidos $\lambda_\phi = e^{2 i \pi \phi}$, donde $\phi$ es un número real tal que $0 \leq \phi \leq 1$, a ser determinado.
 
 Asumamos también que somos capaces de construir una familia de operadores $CU^p$, donde $p = 2^0, 2^1, 2^2, ..., 2^{k-1}$
 
@@ -154,7 +153,7 @@ Como se puede ver, $CU^j \ket{n} \otimes \ket{u} = e^{i n 2\pi \phi} \ket{n} \ot
     CU^j \ket{s} \otimes \ket{u} = CU^j \frac{1}{\sqrt{2^K}} \sum\limits_k \ket{k} \otimes \ket{u} = \frac{1}{\sqrt{2^K}} \sum\limits_k e^{i k 2\pi \phi} \ket{k} \otimes \ket{u}
 \end{equation}
 
-Ahora, se aplica la transformada cuántica inversa de Fourier al primer registro.
+Ahora, se aplica la QFT inversa al primer registro.
 
 \begin{equation}
     QFT^\dagger = \frac{1}{\sqrt{2^K}} \sum\limits_x\sum\limits_k e^{-i 2\pi k x / 2^K} \ketbra{x}{k}
@@ -174,11 +173,7 @@ La probabilidad de medir x a la salida del registro será:
     p(x) = \abs{(\bra{x} \otimes \bra{u}) \ket{\psi_{output}}}^2 = \frac{1}{4^K} \abs{\frac{1 - e^{i 2\pi (\phi - \frac{x}{2^K})2^K}}{1 - e^{i 2\pi (\phi - \frac{x}{2^K})}}}^2 = \frac{1}{4^{K}} \frac{\sin^2(\pi (\phi - \frac{x}{2^K}) 2^K)}{\sin^2(\pi (\phi - \frac{x}{2^K}))}
 \end{equation}
 
-La medida de x con probabilidad asociada $p(x)$, corresponde a la estimación de fase $\tilde{\phi} = \frac{x}{2^K}$. La probabilidad es máxima cuando $\delta = \phi - \tilde{\phi}$ es mínima.
-
-$p(n) = \frac{1}{4^K} \frac{\sin^2(\pi \delta 2^K)}{\sin^2(\pi \delta)}$ si $K$ es grande $\rightarrow$ %Graf
-
-La probabilidad p(n) decae rápidamente a cero cuando el error $\delta$ se aleja del mínimo.
+La medida de x con probabilidad asociada $p(x)$, corresponde a la estimación de fase $\tilde{\phi} = \frac{x}{2^K}$. La probabilidad es máxima cuando $\delta = \phi - \tilde{\phi}$ es mínima. La probabilidad $p(n)$ decae rápidamente a cero cuando el error $\delta$ se aleja del mínimo.
 
 \section{Estimación de orden}
 
@@ -207,7 +202,7 @@ Dado $m \in \mathds{N}$, se dice que $a,b \in \mathds{Z}$ son congruentes módul
  
 Ejemplo:
 
- Sea $x = 4, N = 13 \rightarrow 4^p = 13 q + R \qquad 4^p \mod 13 = R$
+ Sea $x = 4$ y $N = 13$ entonces $4^p = 13 q + R$ obteniendo $4^p \mod 13 = R$
 
  \[\begin{matrix}
          p  &   4^p & 4^p = 13 q                         + R    &   R   \\
@@ -233,9 +228,7 @@ Ejemplo:
 
  Como podemos ver el período es r=6, el cual corresponde al menor r entero distinto de cero para el cual se cumple $4^r=1 \mod 13$ con r=6
 
- $\therefore 4^6 = 1 \mod 13$
-
- %Como podemos ver en la tabla (TABLA), la función $f(x) = a^x mod N$ es periódica. Dado que $a^0 = 1$ y las relaciones de congruencia, el período de esta función es igual al orden de $r$ de $a$. Sin implementamos esta función en un operador cuántico, podríamos crear un estado que contenga esta periodicidad y utilizar la transformada inversa de Fourier para hallar el período $r$. Esto es exactamente lo que se hace al ejecutar el algoritmo de estimación de fase con un operador $U$ tal que $ U \ket{y} = \ket{x y \mod N}.
+ $$\therefore 4^6 = 1 \mod 13$$
 
 Analicemos como la estimación de fase hace posible determinar r, el orden de $x \mod N$, con alta probabilidad y precisión. Primero necesitamos introducir el operador U y sus correspondientes autovectores y autovalores.
 
@@ -279,7 +272,7 @@ Con este paso entendido vamos ahora a analizar el circuito para determinar el or
             \ket{\psi_3} = \sum\limits_{s=0}^{r-1}\sum_{k=0}^{M-1} \frac{1}{\sqrt{M}} e^{2 i \pi k s/r} \ket{k} \otimes \frac{1}{\sqrt{r}} \ket{u_s}
         \end{equation}
 
-    \item Aplicamos la transformada inversa de Fourier al primer registro, nos queda:
+    \item Aplicamos la QFT inversa al primer registro, y nos queda:
         \begin{equation}
             \ket{\psi_4} = (QFT^\dagger \otimes \mathds{1}) \ket{\psi_3} = \frac{1}{\sqrt{r}} \sum\limits_{s=0}^{r-1} \ket{\tilde{\psi}_s} \otimes \ket{u_s}
         \end{equation}
@@ -291,9 +284,7 @@ Finalmente, al medir el primer registro, proyectamos la superposición que confo
     p(s) = |(\bra{\tilde{\psi}_s} \otimes \bra{u_s}) \ket{\psi_4}|^2 = \frac{1}{r}
 \end{equation}
 
-lo que nos da $\frac{s}{r}$ correspondiendo a la estimación de fase $\tilde{\psi} = \frac{s}{r}$
-
-Ahora aplicamos el algoritmo clásico de fracciones continuas y determinamos los coprimos.
+lo que nos da $\frac{s}{r}$ correspondiendo a la estimación de fase $\tilde{\psi} = \frac{s}{r}$. Ahora aplicamos el algoritmo clásico de fracciones continuas y determinamos los coprimos.
 
 \section{Expansión en fracciones contínuas}
 
@@ -371,7 +362,7 @@ Se han realizado simulaciones del algoritmo de Shor factorizando el número 15 y
 
 Se ha elegido el número 7 para crear el operador unitario de multiplicación modular $U_{7,15}$. Este número cumple las condiciones de ser menor que 15, de ser impar y de ser coprimo con 15.
 
-En la figura \ref{fig:shor15} se puede observar la distribución de probabilidad de la estimación de fase del operador de multiplicación por 7, módulo 15. Como se puede observar, en el caso de la simulación circuital, las estimaciones incorrectas tienen probabilidades distintas de cero. Por otro lado, la fidelidad entre los estados finales de ambas simulaciones es 0.363599.
+En la Figura \ref{fig:shor15} se puede observar la distribución de probabilidad de la estimación de fase del operador de multiplicación por 7, módulo 15. Como se puede observar, en el caso de la simulación circuital, las estimaciones incorrectas tienen probabilidades distintas de cero. Por otro lado, la fidelidad entre los estados finales de ambas simulaciones es 0.363599.
 
 \begin{figure}[H]
     \centering
@@ -406,9 +397,7 @@ Entonces, tenemos las siguientes estimaciones de fase: $0 \times 2\pi$, $0.25 \t
             \tilde{\varphi} = 0 + \cfrac{1}{4}
         \end{equation}
         
-        De donde recuperamos el número racional $1/4$, de donde el orden estimado es $r = 4$.
-
-        Como $r$ es par, $7^{4}\mod 15 \equiv 1$ y $7^{4/2}\mod 15 \equiv 4\mod 15 \not\equiv -1\mod 15$, podemos continuar y hallar la siguiente factorización:
+        De donde recuperamos el número racional $1/4$, de donde el orden estimado es $r = 4$. Como $r$ es par, $7^{4}\mod 15 \equiv 1$ y $7^{4/2}\mod 15 \equiv 4\mod 15 \not\equiv -1\mod 15$, podemos continuar y hallar la siguiente factorización:
 
         \begin{equation}
             15 = GCD(7^{4/2} + 1, 15) \times GCD(7^{4/2} - 1, 15) = GCD(50, 15) \times GCD(48, 15) = 5 \times 3
@@ -424,9 +413,7 @@ Entonces, tenemos las siguientes estimaciones de fase: $0 \times 2\pi$, $0.25 \t
             \tilde{\varphi} = 0 + \cfrac{1}{2}
         \end{equation}
         
-        De donde recuperamos el número racional $1/2$, de donde el orden estimado es $r = 2$.
-
-        El orden $r$ es par y $7^{2/2}\mod 15 \equiv 7\mod 15 \not\equiv -1\mod 15$, pero $7^2\mod 15 \equiv 4\mod 15 \not\equiv 1\mod 15$, así que el algoritmo nos indica que volvamos al primer paso.
+        De donde recuperamos el número racional $1/2$, de donde el orden estimado es $r = 2$. El orden $r$ es par y $7^{2/2}\mod 15 \equiv 7\mod 15 \not\equiv -1\mod 15$, pero $7^2\mod 15 \equiv 4\mod 15 \not\equiv 1\mod 15$, así que el algoritmo nos indica que volvamos al primer paso.
 
         Este caso ocurre con 0.25 de probabilidad en la simulación matemática y con 0.179174 de probabilidad en la simulación circuital.
 
@@ -438,9 +425,7 @@ Entonces, tenemos las siguientes estimaciones de fase: $0 \times 2\pi$, $0.25 \t
             \tilde{\varphi} = 0 + \cfrac{1}{1 + \cfrac{1}{3}}
         \end{equation}
         
-        De donde recuperamos el número racional $3/4$, de donde el orden estimado es $r = 4$. Entonces, este caso es similiar al de $\tilde{\varphi} = 0.25$ y se tienen los factores 5 y 3.
-
-        Este caso ocurre con 0.25 de probabilidad en la simulación matemática y con 0.184898 de probabilidad en la simulación circuital.
+        De donde recuperamos el número racional $3/4$, de donde el orden estimado es $r = 4$. Entonces, este caso es similiar al de $\tilde{\varphi} = 0.25$ y se tienen los factores 5 y 3. Este caso ocurre con 0.25 de probabilidad en la simulación matemática y con 0.184898 de probabilidad en la simulación circuital.
 
     \item El resto de los casos:
 
@@ -455,7 +440,7 @@ En total, tenemos que se logra factorizar el número 15 ejecutando el algoritmo 
 
 Se ha elegido el número 3 para crear el operador unitario de multiplicación modular $U_{3,8}$. Este número cumple las condiciones de ser menor que 8, de ser impar y de ser coprimo con 8. El número 8 sin embargo, es par, así que, siguiendo estrictamente el algoritmo, se tendría la factorización con el número 2 y finalizaría el algoritmo. Sin embargo, como 15 es el único número compuesto, no par y no cuadrado que se puede escribir con cuatro bits, aplicaremos la etapa cuántica de todas maneras.
 
-En la figura \ref{fig:shor8} se puede observar la distribución de probabilidad de la estimación de fase del operador de multiplicación por 3, módulo 8. Como se puede observar, en el caso de la simulación circuital, las estimaciones incorrectas tienen probabilidades distintas de cero. Por otro lado, la fidelidad entre los estados finales de ambas simulaciones es 0.390136.
+En la Figura \ref{fig:shor8} se puede observar la distribución de probabilidad de la estimación de fase del operador de multiplicación por 3, módulo 8. Como se puede observar, en el caso de la simulación circuital, las estimaciones incorrectas tienen probabilidades distintas de cero. Por otro lado, la fidelidad entre los estados finales de ambas simulaciones es 0.390136.
 
 \begin{figure}[H]
     \centering
@@ -490,9 +475,7 @@ Entonces, tenemos las siguientes estimaciones de fase: $0 \times 2\pi$ y $0.5 \t
             \tilde{\varphi} = 0 + \cfrac{1}{2}
         \end{equation}
         
-        De donde recuperamos el número racional $1/2$, de donde el orden estimado es $r = 2$.
-
-        Como $r$ es par, $3^{2}\mod 8 \equiv 1$ y $3^{3/2}\mod 8 \equiv 3\mod 8 \not\equiv -1\mod 8$, podemos continuar y hallar los siguientes factores:
+        De donde recuperamos el número racional $1/2$, de donde el orden estimado es $r = 2$. Como $r$ es par, $3^{2}\mod 8 \equiv 1$ y $3^{3/2}\mod 8 \equiv 3\mod 8 \not\equiv -1\mod 8$, podemos continuar y hallar los siguientes factores:
 
         Este caso ocurre con 0.5 de probabilidad en la simulación matemática y con 0.1585 de probabilidad en la simulación circuital.
 

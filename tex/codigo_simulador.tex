@@ -2,9 +2,9 @@
 
 \section{Wolfram Mathematica}
 
-Este código se realizó con la intensión de poder ver las matrices asociadas a las compuertas programadas en Python y corregir los posibles errores que pudiera haber en dichas compuertas durante su desarrollo.
+Este código se realizó en el software Wolfram Mathematica 11.0 con la intención de poder crear las matrices asociadas a las compuertas programadas en Python, y corregir los posibles errores que pudiera haber en dichas compuertas durante su desarrollo.
 
-Primero se definen los parámetros del sistema, como la frecuencia de resonancia de los qubits y las constantes de acoplamiento.
+Primero, se definen los parámetros del sistema, como la frecuencia de resonancia de los qubits y las constantes de acoplamiento.
 
 \begin{doublespace}
 \noindent\(\pmb{\text{$\omega $r}=2\pi  10.0;}\\
@@ -341,7 +341,7 @@ n = a.dag() * a
 Id_r = qeye(N)
 \end{verbatim}
 
-La función qop\_part devuelve la matriz asociada al operador solicitado y se utiliza como parte de la función qop para realizar el producto tensorial de este operador con los operadores de identidad necesarios para retornar el operador que actúe en el qubit solicitado.
+La función qop\_part devuelve la matriz asociada al operador solicitado, y se utiliza como parte de la función qop para realizar el producto tensorial de este operador, con los operadores de identidad necesarios para retornar el operador que actúe en el qubit solicitado.
 
 La lista c\_ops es la lista de los operadores de colapso de los qubits. En el caso sin pérdidas, esta lista es vacía. En el caso con pérdidas contiene los operadores $\sigma_-$ de cada qubit.
 
@@ -366,7 +366,7 @@ def qop(operator, target):
 c_ops = []
 \end{verbatim}
 
-Las siguientes funciones son funciones para utilizar como coeficientes dependientes del tiempo en los Hamiltonianos.
+Las siguientes funciones son funciones para utilizar como coeficientes dependientes del tiempo en los Hamiltonianos:
 
 \begin{verbatim}
 def ksi_t(t, args):

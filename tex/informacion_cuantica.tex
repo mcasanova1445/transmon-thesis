@@ -1,20 +1,20 @@
 \chapter{Información cuántica}
 
-En esta sección introduciremos las bases matemáticas fundamentales para empezar a trabajar con la Teoría de Información Cuántica. Se dará una breve introducción a la notación de Dirac y su aplicación en la mecánica cuántica (QM, por sus siglas en inglés). Una vez establecidas las bases matemáticas se describirán los Postulados de la Mecánica Cuántica: Descripción del estado de un sistema, descripción de cantidades físicas, medición de cantidades físicas, colapso del estado cuántico, evolución temporal, postulado de simetrización y variables de espín. Se definirá el entrelazamiento cuántico, su importancia en el cómputo cuántico y los sistemas de dos niveles. Finalmente, explicaremos las bases de la computación cuántica y daremos una introducción a los sistemas cuánticos abiertos y el Lindbladiano.
+En esta sección introduciremos las bases matemáticas fundamentales para empezar a trabajar con la Teoría de Información Cuántica. Se dará una breve introducción a la notación de Dirac y su aplicación en la Mecánica Cuántica (QM). Una vez establecidas las bases matemáticas se describirán los Postulados de la QM: Descripción del estado de un sistema, descripción de cantidades físicas, medición de cantidades físicas, colapso del estado cuántico, evolución temporal, postulado de simetrización y variables de espín. Se definirá el entrelazamiento cuántico, su importancia en el cómputo cuántico y los sistemas de dos niveles. Finalmente, explicaremos las bases de la computación cuántica y daremos una introducción a los sistemas cuánticos abiertos y el Lindbladiano.
 
 \section{Operadores lineales}
 
-Un operador $A: \mathcal{V}_1 \rightarrow \mathcal{V}_2$ es lineal si para todo par de vectores $v, w \in \mathcal{V}_1$ y para un escalar $\alpha$, se cumple que
+Un operador $\hat{A}: \mathcal{V}_1 \rightarrow \mathcal{V}_2$ es lineal si para todo par de vectores $\mathbf{v}, \mathbf{w} \in \mathcal{V}_1$ y para un escalar $\alpha$, se cumple que
 
 \begin{align}
-    A (v + w) &= A v + A w \\
-    A (\alpha v) &= \alpha A v
+    \hat{A} (\mathbf{v} + \mathbf{w}) &= \hat{A} \mathbf{v} + \hat{A} \mathbf{w} \\
+    \hat{A} (\alpha \mathbf{v}) &= \alpha \hat{A} \mathbf{v} .
 \end{align}
 
-En mecánica cuántica se utiliza extensamente la transpuesta hermítica o transpuesta conjugada $A^\dagger$ de operadores lineales $A$. En la representación matricial $[A]_{ij}$ de los operadores lineales $A$, la transpuesta hermítica se define de la siguiente manera
+En QM se utiliza extensamente la transpuesta hermítica o transpuesta conjugada $\hat{A}^\dagger$ de operadores lineales $\hat{A}$. En la representación matricial $[A_{ij}]$ de los operadores lineales $\hat{A}$, la transpuesta hermítica se define de la siguiente manera
 
 \begin{equation}
-    A^\dagger = ([A]_{ij}^T)^* = [A]_{ji}^*
+    \hat{A}^\dagger = ([A_{ij}]^T)^* = [A_{ji}]^* ,
 \end{equation}
 
 Donde $\cdot^*$ representa el complejo conjugado de cada una de las entradas de la matriz y $\cdot^T$ representa la transpuesta de la matriz.
@@ -28,122 +28,122 @@ La delta de Kronecker $\delta_{ij}$ es un símbolo que representa dos posibles v
     \begin{cases}
         1 & \text{si } i = j \\
         0 & \text{si } i \neq j
-    \end{cases}
+    \end{cases} .
 \end{equation}
 
 Dado que el símbolo sólo es diferente de cero cuando sus índices son iguales, las sumas que incluyen la delta de Kronecker pueden ser simplificadas fácilmente.
 
-\begin{equation*}
-    \sum\limits_j \delta_{ij} B_j = 0 B_1 + 0 B_2 + ... + 1 B_n + ... = B_n
-\end{equation*}
+\begin{equation}
+    \sum\limits_j \delta_{ij} B_j = 0 B_1 + 0 B_2 + ... + 1 B_n + ... = B_n .
+\end{equation}
 
-En varios de los cálculos de este libro aparecerán sumas de este tipo. La delta de Kronecker también es importante porque el operador identidad se puede definir a partir de ella, de la siguiente manera:
+En varios de los cálculos de este libro aparecerán sumas de este tipo. La delta de Kronecker también es importante porque el operador identidad se puede definir a partir de ella, de la siguiente manera
 
 \begin{equation}
-    \mathds{1} = [\delta_ij]_{ij}
+    \mathds{1} = [\delta_{ij}] .
 \end{equation}
 
 \section{Operadores hermíticos}
 
-Los operadores hermíticos $H$ son operadores tales que
+Los operadores hermíticos $\hat{H}$ son operadores tales que
 
 \begin{equation}
-    H = H^\dagger
+    \hat{H} = \hat{H}^\dagger .
 \end{equation}
 
-Es decir, H es un operador hermítico si es igual a su transpuesta hermítica. Estos operadores cumplen con la propiedad de que todos sus autovalores son reales. En la representación matricial, los operadores hermíticos corresponden a matrices cuadradas cuyos elementos de la diagonal son reales y los términos fuera de la diagonal inferiores son el conjugado complejo de los términos fuera de la diagonal superiores. Todo operador hermítico puede ser diagonalizado con un operador unitario.
+Es decir, $\hat{H}$ es un operador hermítico si es igual a su transpuesta conjugada. Estos operadores cumplen con la propiedad de que todos sus autovalores son reales. En la representación matricial, los operadores hermíticos corresponden a matrices cuadradas cuyos elementos de la diagonal son reales, y los términos fuera de la diagonal inferiores son el conjugado complejo de los términos fuera de la diagonal superiores. Todo operador hermítico puede ser diagonalizado con un operador unitario.
 
 \begin{equation}
-    H = U D U^\dagger
+    \hat{H} = \hat{U} \hat{D} \hat{U}^\dagger .
 \end{equation}
 
 \section{Operadores unitarios}
 
-Un operador unitario $U$ es un operador tal que
+Un operador unitario $\hat{U}$ es un operador tal que
 
 \begin{equation}
-    U U^\dagger = U^\dagger U = \mathds{1}
+    \hat{U} \hat{U}^\dagger = \hat{U}^\dagger \hat{U} = \mathds{1} .
 \end{equation}
 
-Es decir, un operador unitario $U$ es aquel cuya inversa es igual a su transpueta hermítica. Los operadores unitarios tienen determinantes de módulo igual a 1. Si el determinante de un operador unitario es real y positivo, es decir, igual a 1, entonces el operador es un operador unitario especial. Los operadores unitarios pueden ser escritos en función de operadores hermíticos de la siguiente manera:
+Es decir, un operador unitario $\hat{U}$ es aquel cuya inversa es igual a su transpueta hermítica. Los operadores unitarios tienen determinantes de módulo igual a 1. Si el determinante de un operador unitario es real y positivo, es decir, igual a 1, entonces el operador es un operador unitario especial. Los operadores unitarios pueden ser escritos en función de operadores hermíticos de la siguiente manera:
 
 \begin{equation}
-    U = e^{iH}
+    \hat{U} = e^{i\hat{H}} ,
 \end{equation}
 
-Los operadores unitarios, además, preservan las trazas y las normas. Es decir:
+Donde $\hat{U}$ es un operador unitario y $\hat{H}$ es un operador hermítico. Los operadores unitarios, además, preservan las trazas y las normas. Es decir:
 
 \begin{align}
-    \norm{U v} &= \norm{v} \\
-    Tr(U A) &= Tr(A)
+    \norm{\hat{U} \mathbf{v}} &= \norm{\mathbf{v}} \\
+    Tr(\hat{U} \hat{A}) &= Tr(\hat{A}) .
 \end{align}
 
 Todo operador unitario puede ser diagonalizado con otro operador unitario.
 
 \begin{equation}
-    U = V D V^\dagger
+    \hat{U} = \hat{V} \hat{D} \hat{V}^\dagger .
 \end{equation}
 
 \section{Conmutador y anticonmutador}
 
-Estas son operaciones comunes en la mecánica cuántica y revelan propiedades importantes de los operadores involucrados. Sean dos operadores $A$ y $B$, entonces definimos:
+Estas son operaciones comunes en la QM y revelan propiedades importantes de los operadores involucrados. Sean dos operadores $\hat{A}$ y $\hat{B}$, entonces definimos:
 
 \begin{enumerate}
     \item Conmutador:
 
         \begin{equation}
-            [A,B] = A B - B A
+            [\hat{A},\hat{B}] = \hat{A} \hat{B} - \hat{B} \hat{A} .
         \end{equation}
 
     \item Anticonmutador:
 
         \begin{equation}
-            \{A,B\} = A B + B A
+            \{A,B\} = A B + B A .
         \end{equation}
 \end{enumerate}
 
-Si $[A,B] = 0$, A y B conmutan entre sí, pues $AB = BA$. De igual manera, si $\{A,B\} = 0$, se dice que anticonmutan, ya que $AB = -BA$. Si dos operadores conmutan, ellos realizarán la misma transformación compuesta sin importar el orden en que se apliquen. Si dos operadores anticonmutan, invertir el orden en el que se aplican introduce una fase de $\pi$.
+Si $[\hat{A},\hat{B}] = 0$, $\hat{A}$ y $\hat{B}$ conmutan entre sí, pues $\hat{A}\hat{B} = \hat{B}\hat{A}$. De igual manera, si $\{\hat{A},\hat{B}\} = 0$, se dice que anticonmutan, ya que $\hat{A}\hat{B} = -\hat{B}\hat{A}$. Si dos operadores conmutan, ellos realizarán la misma transformación compuesta sin importar el orden en que se apliquen. Si dos operadores anticonmutan, invertir el orden en el que se aplican introduce una fase de $\pi$.
 
 \begin{align}
-    [A,B] &= 0 \implies A B = B A \\
-    \{A,B\} &= 0 \implies A B = - B A
+    [\hat{A},\hat{B}] &= 0 \implies \hat{A} \hat{B} = \hat{B} \hat{A} \\
+    \{\hat{A},\hat{B}\} &= 0 \implies \hat{A} \hat{B} = - \hat{B} \hat{A} .
 \end{align}
 
-Como ejemplo de la importancia del conmutador y el anticonmutador, consideremos la transformación $\mathcal{E}_U(H) = U H U^\dagger$, donde $U$ es un operador unitario, entonces, si $[H,U] = 0$, resulta que
+Como ejemplo de la importancia del conmutador y el anticonmutador, consideremos la transformación $\mathcal{E}_U(\hat{H}) = \hat{U} \hat{H} \hat{U}^\dagger$, donde $\hat{U}$ es un operador unitario y $\hat{H}$ es un operador lineal tal que $[\hat{H},\hat{U}] = 0$, resulta que
 
 \begin{equation}
-    \mathcal{E}_U(H) = U H U^\dagger = H U U^\dagger = H \mathds{1} = H
+    \mathcal{E}_U(\hat{H}) = \hat{U} \hat{H} \hat{U}^\dagger = \hat{H} \hat{U} \hat{U}^\dagger = \hat{H} \mathds{1} = \hat{H} .
 \end{equation}
 
-Es decir, $H$ es simétrico o invariante con respecto a $\mathcal{E}_U(H)$. Por otro lado, si $\{H,U\} = 0$, entonces
+Es decir, $\hat{H}$ es simétrico o invariante con respecto a $\mathcal{E}_U(\hat{H})$. Por otro lado, si $\{\hat{H},\hat{U}\} = 0$, entonces
 
 \begin{equation}
-    \mathcal{E}_U(H) = U H U^\dagger = - H U U^\dagger = - H \mathds{1} = - H
+    \mathcal{E}_U(\hat{H}) = \hat{U} \hat{H} \hat{U}^\dagger = - \hat{H} \hat{U} \hat{U}^\dagger = - \hat{H} \mathds{1} = - \hat{H} .
 \end{equation}
 
-Es decir, $H$ es antisimétrico con respecto a $\mathcal{E}_U(H)$. En otras palabras, $\mathcal{E}_U(H)$ invierte la fase de $H$.
+Es decir, $\hat{H}$ es antisimétrico con respecto a $\mathcal{E}_U(\hat{H})$. En otras palabras, $\mathcal{E}_U(\hat{H})$ invierte la fase de $\hat{H}$.
 
 \section{Espacios de Hilbert}
 
 Sea $\mathcal{V}$ un espacio vectorial, real o complejo, y consideremos una función $\norm{\cdot}: \mathcal{V} \rightarrow \mathds{R}$ que denominaremos norma si satisface los siguientes axiomas:
 
 \begin{enumerate}
-    \item Positividad: La norma es una función definida positiva, es decir, para cualquier vector $v \in \mathcal{V}$ se cumple que
+    \item Positividad: La norma es una función definida positiva, es decir, para cualquier vector $\mathbf{v} \in \mathcal{V}$ se cumple que
 
         \begin{equation}
-            \norm{v} \geq 0
+            \norm{\mathbf{v}} \geq 0
         \end{equation}
 
-    \item Escalamiento: Sea $\lambda$ un escalar arbitrario de $\mathcal{V}$, es decir, un número real o complejo, según aplique. Consideremos un vector $v \in \mathcal{V}$, entonces se cumple que
+    \item Escalamiento: Sea $\lambda$ un escalar arbitrario de $\mathcal{V}$, es decir, un número real o complejo, según aplique. Consideremos un vector $\mathbf{v} \in \mathcal{V}$, entonces se cumple que
 
         \begin{equation}
-            \norm{\lambda v} = \abs{\lambda} \norm{v}
+            \norm{\lambda \mathbf{v}} = \abs{\lambda} \norm{\mathbf{v}}
         \end{equation}
 
-    \item Desigualdad triangular: La suma de la norma de dos vectores cualesquiera $v, w \in \mathcal{V}$ siempre es mayor o igual que la suma de la norma de estos, siendo igual en el caso en el caso en que estos vectores son paralelos.
+    \item Desigualdad triangular: La suma de la norma de dos vectores cualesquiera $\mathbf{v}, \mathbf{w} \in \mathcal{V}$ siempre es mayor o igual que la suma de la norma de estos, siendo igual en el caso en el caso en que estos vectores son paralelos.
 
         \begin{equation}
-            \norm{v + w} \leq \norm{v} + \norm{w}
+            \norm{\mathbf{v} + \mathbf{w}} \leq \norm{\mathbf{v}} + \norm{\mathbf{w}}
         \end{equation}
 
 \end{enumerate}
@@ -153,34 +153,34 @@ La estructura algebraica $\mathcal{N} = \{\mathcal{V}, \norm{\cdot}\}$ compuesta
 Sea $\mathit{V}$ un espacio vectorial complejo y la función $\langle \cdot | \cdot \rangle: \mathit{V} \times \mathit{V} \rightarrow \mathds{C}$ una función sesquilineal, positiva, no degenerada y simétrica respecto a la conjugación compleja, entonces diremos que esta función define un producto escalar. La propiedad de sesquilinealidad se refiere a que el funcional $\langle \cdot | \cdot \rangle$ es antilineal en el primer argumento y lineal en el segundo. En concreto, la sesquilinealidad satisface la siguiente igualdad
 
 \begin{equation}
-    \langle \sum_i \alpha_i v_i | \sum_j \beta_j w_j \rangle = \sum_i \sum_j \alpha_i^* \beta_j \langle v_i | w_j \rangle
+    \langle \sum_i \alpha_i \mathbf{v}_i | \sum_j \beta_j \mathbf{w}_j \rangle = \sum_i \sum_j \alpha_i^* \beta_j \langle \mathbf{v}_i | \mathbf{w}_j \rangle
 \end{equation}
 
-La propiedad de positividad se refiere a que $\langle v | v \rangle > 0$ para cualquier $v \in \mathit{V}$ no nulo. La propiedad de no degenerado se refiere a que un único vector cumple la relación $\langle w | w \rangle$, el cual es el vector nulo. La propiedad de simetría ante la cojugación compleja se refiere a que el producto escalar satisface la siguiente propiedad
+La propiedad de positividad se refiere a que $\langle \mathbf{v} | \mathbf{v} \rangle > 0$ para cualquier $\mathbf{v} \in \mathit{V}$ no nulo. La propiedad de no degenerado se refiere a que un único vector cumple la relación $\langle \mathbf{w} | \mathbf{w} \rangle$, el cual es el vector nulo. La propiedad de simetría ante la cojugación compleja se refiere a que el producto escalar satisface la siguiente propiedad
 
 \begin{equation}
-    \langle v | w \rangle = \langle w | v \rangle^*
+    \langle \mathbf{v} | \mathbf{w} \rangle = \langle \mathbf{w} | \mathbf{v} \rangle^*
 \end{equation}
 
 La estructura algebraica $\mathcal{P} = \{\mathit{V}, \langle \cdot | \cdot \rangle\}$ compuesta por un espacio vectorial $\mathit{V}$ y un producto escalar $\langle \cdot | \cdot \rangle$ recibe el nombre de espacio de pre-Hilbert. Estos espacios son considerados como casos particulares de espacios normados, ya que la norma es inducida por el producto escalar de la siguiente manera
 
 \begin{equation}
-    \norm{v} = \sqrt{\langle v | v \rangle} \quad \forall v \in \mathit{V}
+    \norm{\mathbf{v}} = \sqrt{\langle \mathbf{v} | \mathbf{v} \rangle} \quad \forall \mathbf{v} \in \mathit{V}
 \end{equation}
 
 Ahora introduciremos otros conceptos necesarios para definir un espacio de Hilbert:
 
 \begin{enumerate}
-    \item Convergencia fuerte: Sea $\{v_n\}^{n \in N}$ una sucesión cualquiera en un espacio normado $\mathcal{N}$, diremos que diche sucesión converge fuertemente a un vector $v \in \mathcal{V}$ siempre que
+    \item Convergencia fuerte: Sea $\{\mathbf{v}_n\}^{n \in N}$ una sucesión cualquiera en un espacio normado $\mathcal{N}$, diremos que diche sucesión converge fuertemente a un vector $v \in \mathcal{V}$ siempre que
 
         \begin{equation}
-            \lim_{n \to \infty} \norm{v_n - v} = 0
+            \lim_{n \to \infty} \norm{\mathbf{v}_n - \mathbf{v}} = 0
         \end{equation}
 
-    \item Convergencia débil: Sea $\{v_n\}^{n \in N}$ una sucesión cualquiera en un espacio de pre-Hilbert $\mathcal{P}$, diremos que dicha sucesión converge débilmente a un vector $v \in \mathit{V}$ siempre que
+    \item Convergencia débil: Sea $\{\mathbf{v}_n\}^{n \in N}$ una sucesión cualquiera en un espacio de pre-Hilbert $\mathcal{P}$, diremos que dicha sucesión converge débilmente a un vector $\mathbf{v} \in \mathit{V}$ siempre que
 
         \begin{equation}
-            \lim_{n \to \infty} \langle v_n | w \rangle = \langle v | w \rangle
+            \lim_{n \to \infty} \langle \mathbf{v}_n | \mathbf{w} \rangle = \langle \mathbf{v} | \mathbf{w} \rangle
         \end{equation}
 
         Resulta  claro que la convergencia débil no implica la convergencia fuerte, pero la convergencia fuerte sí implica la convergencia débil.
@@ -189,20 +189,20 @@ Ahora introduciremos otros conceptos necesarios para definir un espacio de Hilbe
 El ordenamiento de una sucesión puede ser un factor determinante para su convergencia. Las sucesiones de Cauchy son aquellas en las que el ordenamiento no afecta la convergencia. Es decir, son aquellas sucesiones que cumplen que
 
 \begin{equation}
-    \lim_{n,m \to \infty} \norm{v_n - v_m} = 0
+    \lim_{n,m \to \infty} \norm{\mathbf{v}_n - \mathbf{v}_m} = 0
 \end{equation}
 
-Todas las sucesiones fuertemente convergentes son de Cauchy, sin embargo, en general, lo recíproco no es cierto. La razón es que en algunas sucesiones en $\mathcal{N}$ convergen a un vector que no pertenece a $\mathcal{N}$. Un espacio normado es completo si toda sucesión de Cauchy converge fuertemente en él. Todo espacio normado $\mathcal{N}$ y completo recibe el nombre de espacio de Banach $\mathcal{B}$ y todo espacio de pre-Hilbert $\mathcal{P}$ y completo recibe el nombre de espacio de Hilbert $\mathcal{H}$.
+Todas las sucesiones fuertemente convergentes son de Cauchy, sin embargo, en general, lo recíproco no es cierto. La razón es que en algunas sucesiones en $\mathcal{N}$ convergen a un vector que no pertenece a $\mathcal{N}$. Un espacio normado es completo si toda sucesión de Cauchy converge fuertemente en él. Todo espacio normado $\mathcal{N}$ y completo recibe el nombre de espacio de Banach $\mathcal{B}$, y todo espacio de pre-Hilbert $\mathcal{P}$ y completo recibe el nombre de espacio de Hilbert $\mathcal{H}$.
 
 Finalmente, un espacio de Hilbert separable es aquel cuya base puede ser generado por una base contable. Una base contable es una base con la cardinalidad de algún subconjunto de los números naturales. En otras palabra, es una base cuyos elementos se pueden contar o enumerar. Esto implica que una base contable debe ser finita o infinita discreta.
 
 \section{Estados cuánticos}
 
-Un sistema físico es aquel que consta de fuentes y campos que posiblemente interactúan entre sí, y a partir del cual será posible extraer o transmitir algún tipo de información. Aquellas propiedades de un sistema físico que sean susceptibles a la medida reciben el nombre de observables o magnitudes físicas. No todas las propiedades de un sistema físico son independientes, unas se pueden describir en función de las otras y el conjunto minimal de observables necesarios para describir todas las propiedades del sistema se conoce como conjunto irreducible de observables (CIO) u observables fundamentales (OF). El conjunto de medidas realizadas sobre el CIO puede ser representado como coordenadas de un espacio vectorial, al cual llamaremos espacio de estado; de manera qeu los estados del sistema serán caracterizados a partir de puntos en dicho espacio.
+Un sistema físico es aquel que consta de fuentes y campos que interactúan entre sí, y a partir del cual será posible extraer o transmitir algún tipo de información. Aquellas propiedades de un sistema físico que sean susceptibles a la medida reciben el nombre de observables o magnitudes físicas. No todas las propiedades de un sistema físico son independientes, unas se pueden describir en función de las otras y el conjunto minimal de observables necesarios para describir todas las propiedades del sistema se conoce como conjunto irreducible de observables (CIO) u observables fundamentales (OF). El conjunto de medidas realizadas sobre el CIO puede ser representado como coordenadas de un espacio vectorial, al cual llamaremos espacio de estado; de manera que los estados del sistema serán caracterizados a partir de puntos en dicho espacio.
 
-En la mecánica cuántica, a todo sistema físico se le hace corresponder un espacio de Hilbert $\mathcal{H}$, complejo y separable. A cada observable $\mathcal{A}$ del sistema le corresponde un operador hermítico $\hat{A}$, cuyos autovalores son los valores que pueden resultar de una medida de $\mathcal{A}$. No todos los operadores hermíticos corresponden a un observable, pero el recíproco sí es cierto. En partícular, es de interés el Hamiltoniano $\hat{H}$, el cual es el operador asociado a la energía del sistema.
+En la QM, a todo sistema físico se le hace corresponder un espacio de Hilbert $\mathcal{H}$, complejo y separable. A cada observable $\mathcal{A}$ del sistema le corresponde un operador hermítico $\hat{A}$, cuyos autovalores son los valores que pueden resultar de una medida de $\mathcal{A}$. No todos los operadores hermíticos corresponden a un observable, pero el recíproco sí es cierto. En partícular, es de interés el Hamiltoniano $\hat{H}$, el cual es el operador asociado a la energía del sistema.
 
-La notación bra-ket es la notación estándar en la mecánica cuántica para describir estados cuánticos. Un ket $\ket{\psi}$ representa el vector del estado $\psi$. En la representación matricial, un ket es un vector columna unitario. Un uso de los kets $\ket{i}$ es representar vectores con una única entrada no nula e igual a 1, en la posición $i+1$. Es importante resaltar que los kets son más generales que los vectores columna y que no necesariamente tienen esta representación, por ejemplo, en el caso en el que $\psi$ representa una variable continua. En el caso de la computación cuántica, se utilizan los kets $\ket{0}$ y $\ket{1}$ para describir los qubits en la base computacional. Este par de estados sería el equivalente a los bits 0 y 1 en la computación clásica. En su representación matricial, los kets $\ket{0}$ y $\ket{1}$ se representan de la siguiente manera:
+La notación bra-ket es la notación estándar en la QM para describir estados cuánticos. Un ket $\ket{\psi}$ representa un vector único asociado al estado $\psi$. En la representación matricial, un ket es un vector columna unitario. Un uso de los kets $\ket{i}$ es representar vectores con una única entrada no nula e igual a 1, en la posición $i+1$. Es importante resaltar que los kets son más generales que los vectores columna y que no necesariamente tienen esta representación, por ejemplo, en el caso en el que $\psi$ representa una variable continua. En el caso de la computación cuántica, se utilizan los kets $\ket{0}$ y $\ket{1}$ para describir los qubits en la base computacional. Este par de estados sería el equivalente a los bits 0 y 1 en la computación clásica. En su representación matricial, los kets $\ket{0}$ y $\ket{1}$ se representan de la siguiente manera:
 
 \[\ket{0} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}\]
 
@@ -221,7 +221,7 @@ El producto interno de kets es el producto de un bra seguido de un ket $\braket{
     (\braket{\phi}{\psi})^\dagger &= \braket{\psi}{\phi} = z^*
 \end{align}
 
-El producto externo es el producto de un ket seguido de un bra $ketbra{\phi}{\psi}$. El resultado es un proyector que toma la componente en $\ket{\psi}$ de un estado cuántico y la convierte en $\ket{\phi}$. Ejemplos:
+El producto externo es el producto de un ket seguido de un bra $\ketbra{\phi}{\psi}$. El resultado es un proyector que toma la componente en $\ket{\psi}$ de un estado cuántico y la convierte en $\ket{\phi}$. Ejemplos:
 
 \begin{align*}
     \ketbra{0}{0} &= \begin{pmatrix} 1 \\ 0 \end{pmatrix} \begin{pmatrix} 1 & 0 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \\
@@ -234,21 +234,21 @@ El producto externo es el producto de un ket seguido de un bra $ketbra{\phi}{\ps
 Este producto cumple con las siguientes propiedades:
 
 \begin{align}
-    \ketbra{\phi}{\psi} &= \Pi \\
-    (\ketbra{\phi}{\psi})^\dagger &= \ketbra{\psi}{\phi} = \Pi^\dagger
+    \ketbra{\phi}{\psi} &= \hat{\Pi} \\
+    (\ketbra{\phi}{\psi})^\dagger &= \ketbra{\psi}{\phi} = \hat{\Pi}^\dagger
 \end{align}
 
-El operador $\Pi$ que consiste de un producto exterior se conoce como proyector. La aplicación de un proyector $\ketbra{\psi}{\phi}$ sobre un estado $\ket{\varphi}$ es equivalente a la multiplicación del escalar $c = \braket{\phi}{\varphi}$ al estado $\psi$.
+El operador $\hat{\Pi}$ que consiste de un producto exterior se conoce como proyector. La aplicación de un proyector $\ketbra{\psi}{\phi}$ sobre un estado $\ket{\varphi}$ es equivalente a la multiplicación del escalar $c = \braket{\phi}{\varphi}$ al estado $\psi$.
 
 \begin{equation}
     \ketbra{\psi}{\phi} \ket{\varphi} = \braket{\phi}{\varphi} \ket{\psi} = c \ket{\psi}
 \end{equation}
 
-Si además, el proyector es tal que $\ket{\psi} = \bra{\phi}^\dagger$, es decir: $\Pi = \ketbra{\psi}{\psi}$, entonces se cumple también que:
+Si además, el proyector es tal que $\psi = \phi$, es decir: $\hat{\Pi} = \ketbra{\psi}{\psi}$, entonces se cumple también que:
 
 \begin{align}
-    \Pi^2 &= \ketbra{\psi}{\psi} \ketbra{\psi}{\psi} = 1 \ketbra{\psi}{\psi} = \Pi \\
-    \Pi^\dagger &= (\ketbra{\psi}{\psi})^\dagger = \ketbra{\psi}{\psi} = \Pi
+    \hat{\Pi}^2 &= \ketbra{\psi}{\psi} \ketbra{\psi}{\psi} = 1 \ketbra{\psi}{\psi} = \hat{\Pi} \\
+    \hat{\Pi}^\dagger &= (\ketbra{\psi}{\psi})^\dagger = \ketbra{\psi}{\psi} = \hat{\Pi}
 \end{align}
 
 La notación de Dirac se relaciona con el formalismo de funciones de onda de la siguiente manera:
@@ -281,7 +281,7 @@ Las matrices densidad tienen las siguientes propiedades:
     \item Autovalores no negativos: $\rho \ket{\lambda_i} = \lambda_i \ket{\lambda_i}, \quad \lambda_i \geq 0$
 \end{enumerate}
 
-Las matrices densidad asociadas a un estado puro o mixto se pueden intentificar con la traza del cuadrado de la matriz densidad:
+Las matrices densidad asociadas a un estado puro, o mixto, se pueden intentificar con la traza del cuadrado de la matriz densidad:
 
 \begin{enumerate}
     \item Estado puro: $Tr(\rho^2) = 1$
@@ -308,7 +308,7 @@ Mientras que el estado de mezcla clásica $\rho = (\rho_0 + \rho_1)/2$ tiene la 
     \end{pmatrix}
 \end{equation}
 
-Como se puede ver, ambos estados tienen probabilidad $1/2$ de encontrarse en $\ket{0}$ o en $\ket{1}$ que son los estados de la base. Sin embargo, en el primer estado, esto se debe a que es un único estado cuántico con superposición coherente. Mientras que en el segundo estado esto se debe a que es un estado mezcla de dos estados cuánticos, decoherente. Este es un buen momento para notar la diferencia entre un estado mixto y estado coherente, pues un estado mezcla también puede ser coherente.
+Como se puede ver, ambos estados tienen probabilidad $1/2$ de encontrarse en $\ket{0}$ o en $\ket{1}$ que son los estados de la base. Sin embargo, en el primer estado, esto se debe a que es un único estado cuántico con superposición coherente. Mientras que en el segundo estado esto se debe a que es un estado mezcla de dos estados cuánticos, es decoherente. Este es un buen momento para notar la diferencia entre un estado mixto y estado coherente, pues un estado mezcla también puede ser coherente.
 
 Tomemos los mismos estados $\rho_1$ y $\rho_2$ anteriores y construyamos el estado
 
@@ -334,7 +334,7 @@ Donde $i$ es la unidad imaginaria $\sqrt{-1}$, $\hbar$ es la constante de Planck
     i \hbar \dot{\rho}(t) = [\hat{H}, \rho(t)]
 \end{equation}
 
-La mecánica cuántica es una teoría probabilística. Los vectores de estado se construyen con amplitudes complejas de probabilidad asociadas a cada elemento de la base del espacio de Hilbert $\mathcal{H}$ y las matrices densidad a partir de probabilidades asociadas a cada estado que compone la mezcla. En la mecánica cuántica, una partícula puede encontrarse en cualquier parte del universo, en cualquier momento con, con cualquier energía, de acuerdo a cierta distribución de probabilidad. Sea $\ket{u}$ un autoestado del operador hermítico, asociado a un observable $\mathcal{A}$. Entonces, la función de distribución de probabilidad de $\mathcal{A}$ asociada al estado $\ket{\psi}$ es la siguiente:
+La QM es una teoría probabilística. Los vectores de estado se construyen con amplitudes complejas de probabilidad asociadas a cada elemento de la base del espacio de Hilbert $\mathcal{H}$, y las matrices densidad a partir de probabilidades asociadas a cada estado que compone la mezcla. En la QM, una partícula puede encontrarse en cualquier parte del universo, en cualquier momento con, con cualquier energía, de acuerdo a cierta distribución de probabilidad. Sea $\ket{u}$ un autoestado del operador hermítico, asociado a un observable $\mathcal{A}$. Entonces, la función de distribución de probabilidad de $\mathcal{A}$ asociada al estado $\ket{\psi}$ es la siguiente:
 
 \begin{equation}
     f_\mathcal{A}(u) = \abs{\braket{u}{\psi}}^2
@@ -359,7 +359,7 @@ El valor esperado $\langle \mathcal{A} \rangle$ del mismo observable $\mathcal{A
 \begin{align}
     \langle \mathcal{A} \rangle &= \bra{\psi} \hat{A} \ket{\psi} \\
     \langle \mathcal{A} \rangle &= \sum\limits_i \bra{\psi_i} \hat{A} \ket{\psi_i} \\
-    \langle \mathcal{A} \rangle &= Tr(\hat{A} \rho) \\
+    \langle \mathcal{A} \rangle &= Tr(\hat{A} \rho)
 \end{align}
 
 \section{Sistemas multipartitos}
@@ -473,15 +473,15 @@ La operación inversa del producto tensorial, para obtener $\mathcal{H}_A$ o $\m
 La traza parcial se define de la siguiente manera:
 
 \begin{equation}
-    Tr_A(\rho_{A B}) = \sum\limits_i (\bra{i}_A \otimes \mathds{1}_B) \rho (\ket{i}_A \otimes \mathds{1}_B)
+    Tr_A(\rho_{A B}) = \sum\limits_i (_A\bra{i} \otimes \mathds{1}_B) \rho (\ket{i}_A \otimes \mathds{1}_B)
 \end{equation}
 
-Esta traza elimina la porción de $\rho_{A B}$ perteneciente a $\mathcal{H}_A$. Si pudiesemos escribir $\rho_{A B} = \rho{A} \otimes \rho{B}$ (este no siempre es el caso, más información en la sección siguiente), entonces $Tr_A(\rho_{A B}) = \rho_B$
+Esta traza elimina la porción de $\rho_{A B}$ perteneciente a $\mathcal{H}_A$. Si pudiesemos escribir $\rho_{A B} = \rho_A \otimes \rho_B$, entonces $Tr_A(\rho_{A B}) = \rho_B$
 
 En caso que se quiera tener $\rho_A$ en lugar de $\rho_B$, entonces tenemos que tomar la traza parcial de la partición B, en lugar de la partición A, de la siguiente manera:
 
 \begin{equation}
-    Tr_B(\rho_{A B}) = \sum\limits_i (\mathds{1}_A \otimes \bra{i}_B) \rho (\mathds{1}_A \otimes \ket{i}_B)
+    Tr_B(\rho_{A B}) = \sum\limits_i (\mathds{1}_A \otimes _B\bra{i}) \rho (\mathds{1}_A \otimes \ket{i}_B)
 \end{equation}
 
 Para entender mejor la traza parcial, recordemos la definición de la traza normal:
@@ -490,7 +490,7 @@ Para entender mejor la traza parcial, recordemos la definición de la traza norm
     Tr(\rho) = \sum\limits_i \bra{i} \rho \ket{i}
 \end{equation}
 
-El par $\bra{i} \ket{i}$ lo que hace es seleccionar el i-ésimo elemento de la diagonal de la matriz $\rho$, entonces es la suma de todas las poblaciones en cada estado $\ket{i}$ de la base de $\mathcal{H}$ y mapea este espacio de Hilbert a uno escalar (en el caso de las matrices densidad, las mapea al número 1, por la normalización de las probabilidades). La traza parcial hace algo similar, solo que sólo sobre las poblaciones de $\mathcal{H}_A$ o de $\mathcal{H}_B$, dejando a la otra partición intacta. Es decir, el efecto de la traza y de las trazas parciales sobre una matriz densidad es, en resumen, el siguiente:
+El par $\bra{i} \ket{i}$ lo que hace es seleccionar el i-ésimo elemento de la diagonal de la matriz $\rho$, entonces es la suma de todas las poblaciones en cada estado $\ket{i}$ de la base de $\mathcal{H}$ y mapea este espacio de Hilbert a uno escalar (en el caso de las matrices densidad, las mapea al número 1, por la normalización de las probabilidades). La traza parcial hace algo similar, solo que se aplica sobre la información de las particiones de $\mathcal{H}_A$ o de $\mathcal{H}_B$, dejando a la otra partición intacta. Es decir, el efecto de la traza y de las trazas parciales sobre una matriz densidad es, en resumen, el siguiente:
 
 \begin{enumerate}
     \item $Tr(\rho_{A B}) = 1$, donde $\rho \in \mathcal{H}_A \otimes \mathcal{H}_B$
@@ -507,7 +507,7 @@ Finalmente, comparemos algunos de los aspectos del producto tensorial y de la tr
 
 \section{Postulados de la mecánica cuántica}
 
-La mecánica cuántica que fundamenta la teoría de información cuántica se describe formalmente con los siguientes postulados desarrollados por la escuela de Copenhague a lo largo de todo el siglo XX \cite{Galindo_1990}.
+La QM que fundamenta la teoría de información cuántica se describe formalmente con los siguientes postulados desarrollados por la escuela de Copenhague a lo largo de todo el siglo XX \cite{Galindo_1990}.
 
 \begin{enumerate}
     \item La descripción de un sistema físico en QM está dada en términos de los elementos de un espacio de Hilbert complejo separable asociado al sistema físico. En cada instante de tiempo $t$, un estado puro del sistema se representa por el vector unitario $\ket{\psi(t)}$ en el espacio de Hilbert correspondiente. Tal vector se llama vector de estado o ket.
@@ -591,11 +591,13 @@ Si se toma la traza parcial de un estado enterlazado puro, el resultado es un es
 
 De aquí surge la siguiente clasificación de los estados cuánticos:
 
+\color{red}
 \begin{enumerate}
     \item Estado producto: $\rho = \rho_A \otimes \rho_B$
     \item Estado separable: $\rho = \sum\limits_{i j} p_{i j} (\rho_{A_i} \otimes \rho_{B_j})$
     \item Estado entrelazado: $\rho \neq \sum\limits_{i j} p_{i j} (\rho_{A_i} \otimes \rho_{B_j})$
 \end{enumerate}
+\color{black}
 
 \section{Qubits}
 Un qubit es un sistema físico de dos niveles, es decir, es un objeto cuyo estado es un elemento del espacio de Hilbert de dimensión $\dim (\mathcal{H})=2$ y puede ser escrito de la siguiente manera: $ \ket{\psi} = \alpha \ket{0} + \beta \ket{1} $, donde $ \{ \ket{0},\ket{1} \} $ forma una base de $\mathcal{H}$ y donde $ \alpha $ y $ \beta $ son números complejos, tales que $ | \alpha |^2 + | \beta |^2 = 1 $, conocidos como amplitudes de probabilidad.
@@ -648,7 +650,7 @@ Todas las operaciones de un qubit se pueden ver como rotaciones en la esfera de 
 
 \section{Matrices de Pauli}
 
-Estas matrices son de especial importancia en la mecánica cuántica y representan el spin de una partícula. Ellas son:
+Estas matrices son de especial importancia en la QM y representan el spin de una partícula. Ellas son:
 
 \begin{align}
     \sigma_x &=
@@ -1291,7 +1293,7 @@ Las compuertas multiqubit involucran interacción entre los qubits.
 
 \subsection{Compuerta CNOT}
 
-La compuerta CNOT o \textit{controlled-NOT} es un ejemplo de una compuerta condicionada. De hecho, es la compuerta X condicionada. Ella recibe dos qubits de entrada, un \textit{control} y un \textit{target}. Si el qubit de control es $\ket{0}$ se aplica $\mathds{1}$ sobre el qubit objetivo y si el qubit de control es $\ket{1}$, se aplica X sobre el qubit objetivo. Esta compuerta se puede escribir en función de proyectores en la partición del qubit de control de la siguiente manera: $\text{CNOT} =\Pi_0 \otimes \mathds{1} + \Pi_1 \otimes \text{X}$.
+La compuerta CNOT, o \textit{controlled-NOT}, es un ejemplo de una compuerta condicionada. De hecho, es la compuerta X condicionada. Ella recibe dos qubits de entrada, un \textit{control} y un \textit{target}. Si el qubit de control es $\ket{0}$ se aplica $\mathds{1}$ sobre el qubit objetivo y si el qubit de control es $\ket{1}$, se aplica X sobre el qubit objetivo. Esta compuerta se puede escribir en función de proyectores en la partición del qubit de control de la siguiente manera: $\text{CNOT} =\Pi_0 \otimes \mathds{1} + \Pi_1 \otimes \text{X}$.
 
 \begin{minipage}{0.5\textwidth}
 \[
@@ -1561,7 +1563,7 @@ Para construir un computador cuántico, se deben cumplir las siguientes condicio
 
 \section{Fidelidad}
 
-La fidelidad de dos distribuciones de probabilidad $\{p_x\}$ y $\{q_x\}$ es una medida de distancia entre ellas y se define como:
+La fidelidad de dos distribuciones clasicas de probabilidad $\{p_x\}$ y $\{q_x\}$ es una medida de distancia entre ellas, y se define como:
 
 \begin{equation}
     F(p_x, q_x) = \sum\limits_x \sqrt{p_x q_x}
@@ -1569,11 +1571,15 @@ La fidelidad de dos distribuciones de probabilidad $\{p_x\}$ y $\{q_x\}$ es una 
 
 Cuando las distribuciones $\{p_x\}$ y $\{q_x\}$ son idénticas, la fidelidad entre ellas es igual a 1. La interpretación geométrica de la fidelidad es que esta es el producto interno de dos vectores de componentes $\sqrt{p_x}$ y $\sqrt{q_x}$, que yacen en la esfera unitaria.
 
-En el caso de los estados cuánticos, la fidelidad toma la siguiente forma:
+En el caso de los estados cuánticos, la fidelidad toma la siguiente forma [ref]
 
 \begin{equation}
     F(\rho, \sigma) = Tr(\sqrt{\rho^{1/2} \sigma \rho^{1/2}})
 \end{equation}
+
+\color{red}
+La raiz de un operador se determina, a partir de su descomposición espectral, de ...
+\color{black}
 
 En ciertos casos especiales, la fidelidad se puede simplificar de las siguientes maneras:
 
@@ -1601,7 +1607,7 @@ En ciertos casos especiales, la fidelidad se puede simplificar de las siguientes
 
 \section{Medidas proyectivas}
 
-El esquema de medidas proyectivas, también llamadas medidas de von Neumann, se encuentra formado por proyectores ortogonales asociados a la medida espectral de un observable \cite{sttiwuer}. Este esquema es la medida por excelencia utilizada por los físicos, ya que está directamente asociada a la medición de una propiedad del sistema o un conjunto compatible de ellas, y tales propiedades son caracterizadas a través de operadores autoadjuntos. Esta medida fue empleada por von Neumann para descomponer a los observables de un sistema cuántico en una combinación lineal de proyectores, donde cada proyector está a asociado a lso subespacios $\mathcal{M}_\lambda$ que son dejados invariantes por el operador en cuestión y, los coeficientes de la combinación lineal corresponden a los posibles valores que arroja el observable tras una medición. En este esquema, la probabilidad $P_\lambda(p)$ de obtener un valor $\lambda \in \Delta$ después de medir el observable en cuestión en el estado $\hat{\rho}$ viene dada por el valor medio del proyector $\hat{\Pi}_{\mathcal{M}_\lambda}$ asociado al autovalor $\lambda$, mientras que el estado después de la medida viene dado por el autovector correspondiente a dicho autovalor. En este caso, las medidas proyectivas vienen dadas por
+El esquema de medidas proyectivas, también llamadas medidas de von Neumann, se encuentra formado por proyectores ortogonales asociados a la medida espectral de un observable \cite{sttiwuer}. Este esquema es uno de los tipos de medidas de uso más común, ya que está directamente asociada a la medición de una propiedad del sistema o un conjunto compatible de ellas, y tales propiedades son caracterizadas a través de operadores autoadjuntos. Esta medida fue empleada por von Neumann para descomponer a los observables de un sistema cuántico en una combinación lineal de proyectores, donde cada proyector está a asociado a lso subespacios $\mathcal{M}_\lambda$ que son dejados invariantes por el operador en cuestión y, los coeficientes de la combinación lineal corresponden a los posibles valores que arroja el observable tras una medición. En este esquema, la probabilidad $P_\lambda(p)$ de obtener un valor $\lambda \in \Delta$ después de medir el observable en cuestión en el estado $\hat{\rho}$ viene dada por el valor medio del proyector $\hat{\Pi}_{\mathcal{M}_\lambda}$ asociado al autovalor $\lambda$, mientras que el estado después de la medida viene dado por el autovector correspondiente a dicho autovalor. En este caso, las medidas proyectivas vienen dadas por
 
 \begin{equation}
     \begin{array}{r}
@@ -1654,7 +1660,7 @@ Dada la matriz de densidad $\rho(t_0)$, tomando la traza parcial en $B$ en el ti
 
 Si el operador de evolución no puede ser factorizado de la manera $U(t_1, t_0) = U_A(t_1, t_0) \otimes U_B(t_1, t_0)$, entonces los sistemas $A$ y $B$ están iteractuando e intercambian energía e información entre ellos, es decir, son sistemas cuánticos abiertos.
 
-Ahora, ¿qué pasa si queremos estudiar sólo la dinámica de $\rho_A$?, a pesar de saber que no podemos factorizar $U(t_1, t_0)$ en dos particiones. Este problema se soluciona desarrollando un mapa dinámico que actúe en $\mathcal{H}_A$ que transforme los estados del subsistema $A$ del tiempo $t_0$ al tiempo $t_1$.
+Ahora, ?`qué pasa si queremos estudiar sólo la dinámica de $\rho_A$?, a pesar de saber que no podemos factorizar $U(t_1, t_0)$ en dos particiones. Este problema se soluciona desarrollando un mapa dinámico que actúe en $\mathcal{H}_A$ que transforme los estados del subsistema $A$ del tiempo $t_0$ al tiempo $t_1$.
 
 \begin{equation}
     \mathcal{E}_{(t_1, t_0)} : \rho_A(t_0) \rightarrow \rho_A(t_1)
@@ -1699,7 +1705,7 @@ Hemos escrito el mapa dinámico de manera homogenea y ahora $K_{ij}$ depende de 
     \mathcal{E}_{(t_1, t_0)}[\rho_A] = Tr_2[U_{SWAP} \rho_A(t_0) \otimes \rho_A(t_1) U_{SWAP}^\dagger] = \rho_A(t_1)
 \end{equation}
 
-Aquí $U_{SWAP}$ representa el operdor SWAP entre las particiones 1 y 2, tal que $U_{SWAP} (\rho \otimes \sigma) U_{SWAP}^\dagger$. Así, $\rho_A(t_1)$ pasa a la partición 1 y es el resultado de la traza parcial. Entonces, si utilizamos la descomposición espectral de $\rho_A{t_1}$ tendremos
+Aquí $U_{SWAP}$ representa el operador SWAP entre las particiones 1 y 2, tal que $U_{SWAP} (\rho \otimes \sigma) U_{SWAP}^\dagger$. Así, $\rho_A(t_1)$ pasa a la partición 1 y es el resultado de la traza parcial. Entonces, si utilizamos la descomposición espectral de $\rho_A(t_1)$ tendremos
 
 \begin{equation}
     \begin{array}{r c l}
@@ -1715,7 +1721,7 @@ Donde $K_{ij}(t_1, t_0, \rho_A) = \sqrt{\lambda_i} \bra{\lambda_j} U_{SWAP} \ket
 Un mapa dinámico universal es aquel que es independiente del estado al que se aplica. Los operadores $K_{ij}(t_1, t_0)$ que lo conforman se conocen como operadores de Krauss. Los mapas dinámicos universales son completamente positivos y los operadores de Krauss cumplen la siguiente propiedad
 
 \begin{equation}
-    \sum_{ij} K_{ij}^\dagger(t_1, t_0) K_{ij}(t_1, t_0) = \mathds(1)
+    \sum_{ij} K_{ij}^\dagger(t_1, t_0) K_{ij}(t_1, t_0) = \mathds{1}
 \end{equation}
 
 Decimos que un sistema tiene evolución markoviana cuando su evolución puede ser descrita por mapas dinámicos universales tales componibles de la siguiente manera:

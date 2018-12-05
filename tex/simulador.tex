@@ -1,7 +1,7 @@
-\chapter{El simulador}
+\chapter{El simulador de compuertas cuánticas en transmones}
 \label{ch:simulador}
 
-El simulador se construyó utilizando la librería Qutip 4.2 de Python 3.6. Esta es una librería que incluye varias herramientas para realizar simulaciones de sistemas mecánico cuánticos, entre ellas, un solucionador de ecuaciones maestras. El funcionamiento básico del simulador desarrollado es el siguiente:
+El simulador de compuertas cuánticas en transmones se desarrolló en Python 3.6, utilizando la librería Qutip 4.2. Esta es una librería que incluye varias herramientas para realizar simulaciones de sistemas mecánico cuánticos, entre ellas, un solucionador de ecuaciones maestras. El funcionamiento básico del simulador desarrollado es el siguiente:
 
 \begin{enumerate}
     \item Leer estado inicial
@@ -10,7 +10,7 @@ El simulador se construyó utilizando la librería Qutip 4.2 de Python 3.6. Esta
     \item Retornar solución
 \end{enumerate}
 
-De esta manera se simulan las compuertas naturales de los transmones. Luego, a partir de estas se construyen todas las demás compuertas que se necesitaran para construir un conjunto de compuertas cuánticas con el cual poder ejecutar los algoritmos de Grover, Shor y PageRank.
+De esta manera, se simulan las compuertas naturales de los transmones. Luego, a partir de estas se construyen todas las demás compuertas que se necesitaran para construir un conjunto de compuertas cuánticas con el cual poder ejecutar los algoritmos de Grover, Shor y PageRank.
 
 Se simularon dos sistemas distintos, uno de cuatro qubits y otro de ocho qubits. El diseño original era el de cuatro qubits, con él se realizaron las simulaciones del algoritmo de Grover y del PageRank. Sin embargo, el algoritmo de Shor requiere de al menos ocho qubits para factorizar el número compuesto impar más pequeño: el número 15. Posteriormente también se realizo una generalización del simulador para poder trabajar con sistemas de n qubits.
 
@@ -59,7 +59,7 @@ Como se vio en el capítulo anterior, en los transmones se puede ejecutar de man
 
 \subsection{Rx y Ry}
 
-Estas compuertas se logran realizan un pulso gaussiano de microondas en fase (Rx) o en cuadratura (Ry). Se han elegido pulsos de 10ns de duración, truncados en $\pm 3 \sigma$.
+Estas compuertas se logran, aplicando un pulso gaussiano de microondas en fase (Rx), o en cuadratura (Ry). Se han elegido pulsos de 10ns de duración, truncados en $\pm 3 \sigma$.
 
 \begin{equation}
     \xi(t) = A \Pi\left(\frac{t-\mu}{6\sigma}\right) \frac{1}{\sqrt{2 \pi \sigma^2}} e^{-\frac{(x-\mu)^2}{2 \sigma^2}}
@@ -114,6 +114,10 @@ Donde $\mu = 5ns$, $\sigma = \frac{5}{3} ns$, $\Pi(t)$ es la función rectangula
 Esta compuerta se logra aplicando un campo magnético tal que la frecuencia de resonancia de los dos qubits deseados se mueva a $\omega_{swap} = 9GHz$. Esta interacción se deja durante $\frac{\pi}{2 J}$, donde $J = \abs{\frac{g_1 g_2}{\Delta_{swap}}}$ y $\Delta_{swap} = \omega_{swap} - \omega_r$. Esto es, esta interacción se deja por 25ns.
 
 Si se desea realizar la compuerta $\sqrt{iSWAP}$, se debe dejar la misma interacción por sólo 12.5ns, que es la mitad del tiempo.
+
+\color{red}
+Explicar que la figura no está vacía sino que la probabilidad de ocupación está en cero
+\color{black}
 
 \begin{figure}[H]
     \centering
@@ -248,10 +252,15 @@ Esta compuerta se realiza aplicando una transformación a Rx tal que el eje de r
     \end{pmatrix}
 \end{multline}
 
+Es decir,
+
 \[
 \Qcircuit @C=1.4em @R=1.8em {
 & \qw & \gate{Rz({\theta})} & \qw 
 }\]
+
+Es equivalente a
+
 \[\Qcircuit @C=1.4em @R=1.8em {
 & \qw & \gate{Ry(\frac{\pi}{2})} & \gate{Rx({\theta})} & \gate{Ry(\frac{-\pi}{2})} & \qw 
 }
@@ -322,10 +331,20 @@ Sólo que en nuestro caso, X también agrega una fase global de $-i$.
 
 Esta compuerta se realizó siguiendo el esquema de Schuch y Siewert \cite{schuch}. De esta manera se logra la compuerta CNOT, módulo una fase global de $\frac{-1-i}{\sqrt{2}}$.
 
+\begin{equation}
+    CNOT =
+    \begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 0 & 1 \\
+        0 & 0 & 1 & 0
+    \end{pmatrix}
+\end{equation}
+
 \[
 \Qcircuit @C=1.4em @R=1.8em {
-& \qw & \ctrl{1} & \qw \\
-& \qw & \targ    & \qw 
+& \ctrl{1} & \qw \\
+& \targ    & \qw 
 }\]
 \[
 \Qcircuit @C=0.4em @R=0.6em {
@@ -338,10 +357,20 @@ Esta compuerta se realizó siguiendo el esquema de Schuch y Siewert \cite{schuch
 
 Esta compuerta se realiza con una secuencia de CNOTs.
 
+\begin{equation}
+    SWAP =
+    \begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 0 & 1
+    \end{pmatrix}
+\end{equation}
+
 \[
 \Qcircuit @C=1.4em @R=1.8em {
-& \qw & \qswap     & \qw \\
-& \qw & \qswap\qwx & \qw 
+& \qswap     & \qw \\
+& \qswap\qwx & \qw 
 }\]
 \[\Qcircuit @C=1.4em @R=1.8em {
 & \qw & \ctrl{1} & \targ     & \ctrl{1} & \qw \\
@@ -351,33 +380,43 @@ Esta compuerta se realiza con una secuencia de CNOTs.
 
 \subsection{Compuertas condicionales generales}
 
-Barenco et al \cite{barenco} demostraron que con la compuerta CNOT y compuertas de un qubit se puede realizar cualquier compuerta condicional bipartita de la siguiente manera:
+Barenco y colaboradores \cite{barenco} demostraron que con la compuerta CNOT y compuertas de un qubit se puede realizar cualquier compuerta condicional bipartita
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
 & \ctrl{1} & \qw \\
 & \gate{U} & \qw 
 }\]
+
+De la siguiente manera
+
 \[\Qcircuit @C=1.4em @R=1.8em {
 & \qw      & \ctrl{1} & \qw      & \ctrl{1} & \qw      & \qw \\
 & \gate{A} & \targ    & \gate{B} & \targ    & \gate{C} & \qw \\
 } 
 \]
 
-Donde $C X B X A = U$ y $C B A = \mathds{1}$.
+Donde $A$, $B$ y $C$ deben cumplir las siguentes dos condiciones
 
-Siguiendo este esquema se construyó CRy y CRz.
+\begin{align}
+    C X B X A = U \\
+    C B A = \mathds{1} .
+\end{align}
+
+Siguiendo este esquema se construyó CRy.
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
-& \qw & \ctrl{1} & \qw \\
-& \qw & \gate{Ry(\theta)} & \qw 
+& \ctrl{1} & \qw \\
+& \gate{Ry(\theta)} & \qw 
 }\]
 \[\Qcircuit @C=1.4em @R=1.8em {
 & \qw & \qw                         & \ctrl{1} & \qw                          & \ctrl{1} & \qw \\
 & \qw & \gate{Ry(\frac{\theta}{2})} & \targ    & \gate{Ry(\frac{-\theta}{2})} & \targ    & \qw 
 } 
 \]
+
+De la misma manera se obtuvo CRz.
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
@@ -390,7 +429,7 @@ Siguiendo este esquema se construyó CRy y CRz.
 } 
 \]
 
-Barenco et al. también presentan un método para agregar más qubits de control a una compuerta condicional:
+Barenco y colaboradores también propusieron un método para agregar más qubits de control a una compuerta condicional:
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
@@ -405,7 +444,7 @@ Barenco et al. también presentan un método para agregar más qubits de control
 } 
 \]
 
-De esta manera se construyó: CCRy, CCCRy, CCRz y CCCRz.
+Es importante resaltar que cuando $U = X$ se obtiene la compuerta de Toffoli. De esta manera se construyó: CCRy, CCCRy, CCRz y CCCRz.
 
 \[
 \Qcircuit @C=1.4em @R=1.8em {
@@ -463,7 +502,7 @@ De esta manera se construyó: CCRy, CCCRy, CCRz y CCCRz.
 } 
 \]
 
-También se contruyó parcialmente de esta manera la compuerta de Toffoli, CCCNOT y CCCCNOT, sin embargo, debido a la fase global que queda al contruir X, Y y Z a partir de Rx, Ry y Rz, hace falta una componente adicional para poder construir estas compuertas. Esto ocurre porque la fase global también queda condicionada y deja de ser global. Para ilustrar mejor este detalle, tomemos como ejemplo el caso de Toffoli. Siguiendo el esquema anterior se llega a:
+También se contruyó parcialmente de esta manera la compuerta de Toffoli, CCCNOT y CCCCNOT, sin embargo, debido a la fase global que queda al realizar X, Y y Z a partir de Rx, Ry y Rz, hace falta una componente adicional para poder construir estas compuertas. Esto ocurre porque la fase global también queda condicionada y deja de ser global. Para ilustrar mejor este detalle, tomemos como ejemplo el caso de Toffoli. Siguiendo el esquema anterior se llega a:
 
 \begin{equation}
     Toffoli^\prime =
@@ -497,33 +536,27 @@ En lugar de:
     \end{pmatrix}
 \end{equation}
 
-Barenco et al. proponen métodos alternativos para lograr aproximaciones de esta compuerta, pero todas ellas introducen fases locales (sólo que de $\pi$ en lugar de $-\pi/2$), lo cual convierte a la compuerta en una completamente distinta. Es por esto que he desarrollado la compuerta de fase condicional y un método para eliminar la fase local que introduce la compuerta $Toffoli^\prime$.
+Barenco et al. proponen métodos alternativos para lograr aproximaciones de esta compuerta, pero todas ellas introducen fases locales (sólo que de $\pi$ en lugar de $-\pi/2$), lo cual convierte a la compuerta en una completamente distinta. Es por esto que en este trabajo se ha desarrollado la compuerta de fase condicional y un método para eliminar la fase local que introduce la compuerta $Toffoli^\prime$.
 
 \subsection{CP}
 
-Rz y la compuerta de cambio de fase P son completamente equivalentes cuando actuan como compuertas de un qubit, pues la única diferencia entre ellas es una fase global. Sin embargo, cuando se condicionan, dejan de ser equivalentes.
+Rz, y la compuerta de cambio de fase P, son completamente equivalentes cuando actuan como compuertas de un qubit, pues la única diferencia entre ellas es una fase global. Sin embargo, cuando se condicionan, dejan de ser equivalentes.
 
-\begin{equation}
-    P_\theta = 
+\begin{align}
+    P_\theta &= 
     \begin{pmatrix}
         1 & 0 \\
         0 & e^{i \theta}
     \end{pmatrix} = 
-    e^{i \theta/2} Rz(\theta)
-\end{equation}
-
-\begin{equation}
-    CRz(\theta) = 
+    e^{i \theta/2} Rz(\theta) \\
+    CRz(\theta) &= 
     \begin{pmatrix}
         1 & 0 & 0 & 0 \\
         0 & 1 & 0 & 0 \\
         0 & 0 & e^{-i \theta/2} & 0 \\
         0 & 0 & 0 & e^{i \theta/2}
-    \end{pmatrix}
-\end{equation}
-
-\begin{equation}
-    CP_\theta = 
+    \end{pmatrix} \\
+    CP_\theta &= 
     \begin{pmatrix}
         1 & 0 & 0 & 0 \\
         0 & 1 & 0 & 0 \\
@@ -531,9 +564,9 @@ Rz y la compuerta de cambio de fase P son completamente equivalentes cuando actu
         0 & 0 & 0 & e^{i \theta}
     \end{pmatrix} \neq
     e^{i \theta/2} CRz(\theta)
-\end{equation}
+\end{align}
 
-Se puede construir un sistema de ecuaciones con las fases introducidas por $Rz(\theta_1) \otimes \mathds{1}$, $\mathds{1} \otimes Rz(\theta_2)$, $CRz_1(\theta_3)$ y $CRz_0(\theta_4)$, donde $CRz_0$ y $CRz_1$ son la compuerta CRz con el qubit de la partición 1 y el qubit de la partición 0 como target, respectivamente.
+Se puede construir un sistema de ecuaciones con las fases introducidas por $Rz(\theta_1) \otimes \mathds{1}$, $\mathds{1} \otimes Rz(\theta_2)$, $CRz_1(\theta_3)$ y $CRz_0(\theta_4)$, donde $CRz_0$ y $CRz_1$ son la compuerta CRz con el qubit de la partición 1 y el qubit de la partición 0 como target, respectivamente, tal que:
 
 \begin{multline}
     CRz_0(\theta_4) CRz_1(\theta_3) (\mathds{1} \otimes Rz(\theta_2)) (Rz(\theta_1) \otimes \mathds{1}) = \\
@@ -542,7 +575,7 @@ Se puede construir un sistema de ecuaciones con las fases introducidas por $Rz(\
         0 & e^{i(-\theta_1+\theta_2-\theta_4)/2} & 0 & 0 \\
         0 & 0 & e^{i(\theta_1 - \theta_2 - \theta_3)/2} & 0 \\
         0 & 0 & 0 & e^{i(\theta_1 + \theta_2 + \theta_3 + \theta_4)/2} \\
-    \end{pmatrix}
+    \end{pmatrix} ,
 \end{multline}
 
 Donde se quiere que:
