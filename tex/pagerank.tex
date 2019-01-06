@@ -1,6 +1,6 @@
 \chapter{Google PageRank}
 
-El algoritmo de PageRank fue desarrollado en 1996 en la Universidad de Stanford por Larry Page y Sergey Brin [ref], los cuales fueron los fundadores de Google.
+El algoritmo de PageRank fue desarrollado en 1996 en la Universidad de Stanford por Larry Page y Sergey Brin \cite{Brin_1998}, los cuales fueron los fundadores de Google.
 
 Este algoritmo se basa en la idea de que sitios web importantes tienen muchos vínculos que apuntan hacia ellos, lo que conduce a pensar en la web como una red ponderada orientada. Existen muchos otros algoritmos, algunos más eficientes, pero la importancia de PageRank se sustenta en el poder económico de Google.
 
@@ -62,17 +62,7 @@ M = \begin{pmatrix}
 \end{matrix}
 \]
 
-Estas sumas representan el número de links que salen del nodo o vértice de la página $p_j$, es decir: 
-
-\color{red}
-$I(p_j) \equiv \text{Importancia de la página j}$
-
-$\mathrm{outdeg}(p_j) \equiv \text{número de links que salen de la página } p_j$
-
-$I(p_i) \equiv \sum\limits_{j \in B_i} \frac{I(p_j}{\mathrm{outdeg}(p_j)}$
-
-$B_i \equiv \text{conjunto de páginas qeu son linkeadas}$
-\color{black}
+Estas sumas representan el número de links que salen del nodo o vértice de la página $p_j$.
 
 \item Dividimos cada elemento de M por la suma de los elementos de la columna a la cual corresponde y llamaremos a la nueva matriz obtenida $M^\prime$
 
@@ -132,7 +122,7 @@ Surgen varios problemas:
   \item No se encuentra $\lambda = 1$ en la mayoría de los casos.
 \end{enumerate}
 
-Por esta razón, un remedio (Patching) del algoritmo de PageRank fue el método de las potencias [ref], en el cual la matriz hiperenlace
+Por esta razón, un remedio (Patching) del algoritmo de PageRank fue el método de las potencias \cite{Paparo_2012}, en el cual la matriz hiperenlace
 
 \[
 H_{ij} \equiv \begin{cases}
@@ -231,31 +221,27 @@ Propiedades de G:
 
 \section{Interpretación como una caminata aleatoria}
 
-La asignación de valores de importancia, se puede replantear como la probabilidad de encontrar un caminante aleatorio en cierto nodo del grafo.
+La asignación de valores de importancia, se puede replantear como la probabilidad de encontrar un caminante aleatorio en cierto nodo del grafo. En este contexto, tendremos que la probabilidad de encontrar el caminante en el nodo $i$, en el paso $n+1$ de la caminata es
 
-\color{red}
-\begin{minipage}{0.5\linewidth}
-Del proceso:
-\begin{align*}
-& Pr(x^{(n+1)}=p_i) \\
-& =\sum\limits_j G_{i j} Pr(x^{(n)}=p_j)
-\end{align*}
-\end{minipage}
-\begin{minipage}{0.5\linewidth}
-De la ley de probabilidad total:
-\begin{align*}
-& Pr(x^{(n+1)}=p_i) \\
-& =\sum\limits_j Pr(x^{(n+1)}=p_i|x^{(n)}=p_j) Pr(x^{(n)}=p_j)
-\end{align*}
-\end{minipage}
-\[
-\implies G_{i j} = Pr(x^{(n+1)}=p_i | x^{(n)}=p_j)
-\]
-\color{black}
+\begin{equation}
+    Pr(x^{(n+1)}=p_i) = \sum\limits_j G_{i j} Pr(x^{(n)}=p_j) .
+\end{equation}
+
+Utilizando la ley de probabilidad total,
+
+\begin{align}
+    Pr(x^{(n+1)}=p_i) = \sum\limits_j Pr(x^{(n+1)}=p_i|x^{(n)}=p_j) Pr(x^{(n)}=p_j) ,
+\end{align}
+
+Podemos demostrar que $G_{i j}$ es la probabilidad de que el caminante, dado que está en el nodo $j$, en el paso $n$, pase al nodo $i$, en el paso $n+1$:
+
+\begin{equation}
+    G_{i j} = Pr(x^{(n+1)}=p_i | x^{(n)}=p_j) .
+\end{equation}
 
 En el contexto del Internet, $G_{i j}$ es la probabilidad de que cierto internauta, que se encuentra en la página $p_i$, entre en la página $p_j$. El factor $\alpha E_{i j}$ es la probabilidad de que lo haga presionando un enlace presente en $p_i$, mientras que $\frac{1-\alpha}{N} \mathds{I}$ es la probabilidad de que lo haga introduciendo la URL directamente.
 
-El factor de amortiguamiento es libre y debe ser calibrado. Se suela usar $\alpha = 0.85$ [ref]
+El factor de amortiguamiento es libre y debe ser calibrado. Se suela usar $\alpha = 0.85$ \cite{Paparo_2012}
 
 \section{Cuantizando las caminatas aleatorias}
 
@@ -285,14 +271,14 @@ La forma obvia y directa de cuantizar una caminata aleatoria sería sustituir el
 \end{tabular}
 \end{figure}
 
-Esto nos obliga a buscar maneras alternativas de cuantizar las caminatas aleatorias. La cadena anterior se podría cuantizar agregando un espacio ``moneda'' al espacio de Hilbert generado por $\{\ket{i}\}$. En este caso, el operador de difusión se interpreta como ``lanzar la moneda'' para decidir en qué dirección ir [ref].
+Esto nos obliga a buscar maneras alternativas de cuantizar las caminatas aleatorias. La cadena anterior se podría cuantizar agregando un espacio ``moneda'' al espacio de Hilbert generado por $\{\ket{i}\}$. En este caso, el operador de difusión se interpreta como ``lanzar la moneda'' para decidir en qué dirección ir \cite{Wong_2017}.
 
 \begin{align*}
 U = \sqrt{p} \ketbra{i+1}{i} \otimes \ketbra{c}{c} + \sqrt{1-p}
 \ketbra{i-p}{i} \otimes \ketbra{s}{s} \\
 U^\dagger = \sqrt{p} \ketbra{i}{i+1} \otimes \ketbra{c}{c} + \sqrt{1-p}
 \ketbra{i}{i-p} \otimes \ketbra{s}{s} \\
-U U^\dagger = p \ketbra{i+1}{i+1} \otimes \ketbra{c}{c} + (1-p) \ketbra{i-1}{i-1} \otimes \ketbra{s}{s}
+U U^\dagger = p \ketbra{i+1}{i+1} \otimes \ketbra{c}{c} + (1-p) \ketbra{i-1}{i-1} \otimes \ketbra{s}{s} .
 \end{align*}
 
 Al realizar la suma sobre $i$ se tiene $\mathds{1}$, como se deseaba. Sin embargo, esta solución toavía no es satisfactoria, pues exige que $p_{i j}=\frac{1}{outdeg(j)}$ para que $U U^\dagger=\mathds{1}$.
@@ -303,7 +289,7 @@ Casi todas las cuantizaciones cometen estos dos pecados, aumentar la dimensión 
 
 Existe un tipo particular de caminatas aleatorias conocido como caminatas bipartitas. En éstas se tiene dos conjuntos de nodos y sólo ocurren transiciones entre los dos conjuntos, no dentro del mismo.
 
-Szegedy desarrolló una cuantización de estas caminatas. Para esto utilizó operadores de reflexión ($W = \mathds{1} - 2 \ketbra{w}{w}$, similares a los utilizados en el algoritmo de Grover [ref]). Aprovechándose del hecho de que un par de reflexiones equivale a una rotación (como en el algoritmo de Grover), creó el siguiente operador de evolución de la caminata: $U = (\mathds{1} - 2 B)(\mathds{1} - 2 A)$, donde A es el proyector sobre las transiciones de la primera partición a la segunda, y B de la segunda a la primera.
+Szegedy desarrolló una cuantización de estas caminatas. Para esto utilizó operadores de reflexión ($W = \mathds{1} - 2 \ketbra{w}{w}$, similares a los utilizados en el algoritmo de Grover \cite{Magniez_2011}). Aprovechándose del hecho de que un par de reflexiones equivale a una rotación (como en el algoritmo de Grover), creó el siguiente operador de evolución de la caminata: $U = (\mathds{1} - 2 B)(\mathds{1} - 2 A)$, donde A es el proyector sobre las transiciones de la primera partición a la segunda, y B de la segunda a la primera.
 
 \begin{minipage}{0.5\linewidth}
 \begin{align*}
@@ -314,13 +300,12 @@ A &= \sum\limits_i \ketbra{\psi_i}{\psi_i}
 \begin{minipage}{0.5\linewidth}
 \begin{align*}
 \ket{\psi_i} &= \sum\limits_i \sqrt{p_{i j}} \ket{i}_1 \otimes \ket{i}_2 \\
-B &= \sum\limits_j \ketbra{\phi_j}{\phi_j}
+B &= \sum\limits_j \ketbra{\phi_j}{\phi_j} .
 \end{align*}
 \end{minipage}
 
 Si tomamos un grafo cualquiera y lo duplicamos en la forma de un grafo bipartito con ambas particiones iguales y transiciones iguales en ambos sentidos, podemos cuantizar cualquier tipo de caminata. Sólo hay que pagar el precio de duplicar el espacio de Hilbert generado por $\{\ket{i}\}$: $\mathcal{H}^\prime = \mathcal{H} \otimes \mathcal{H}$.
 
-% INSERTAR EJEMPLO AQUÍ
 \begin{figure}[h]
 \begin{tabular}{c c c}
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt,thick]
@@ -372,25 +357,26 @@ A - \mathds{1}) = [S (2 A - \mathds{1})]^2
 Donde $S$ es el operador SWAP, $S = \sum\limits_{i j} \ketbra{j i}{i j}$. Tomando $W = (2 A - \mathds{1})$, el operador de difusión es
 
 \begin{equation}
-    U = (S W)^2
+    U = (S W)^2 .
 \end{equation}
 
 \section{PageRank Cuántico}
 
-Finalmente, procedemos a cuántizar el algoritmo de PageRank. Partimos del hecho de que el algoritmo de PageRank se puede formular como una caminata algeatoria, cuya matriz de probabilidades es la matriz de Google, G. Entonces seguimos el procedimiento de Szegedy [ref], sustituyendo $p_{i j}$ por $G_{i j}$.
+Finalmente, procedemos a cuántizar el algoritmo de PageRank. Partimos del hecho de que el algoritmo de PageRank se puede formular como una caminata algeatoria, cuya matriz de probabilidades es la matriz de Google, G. Entonces seguimos el procedimiento de Szegedy \cite{Paparo_2012, Santos_2016}, sustituyendo $p_{i j}$ por $G_{i j}$.
 
-Ahora, definimos el valor de PageRank cuántico en el paso $m$ como:
+Ahora, definimos el valor de PageRank cuántico del nodo $i$ en el paso $m$ como el valor de la medida proyectiva sobre $\ket{i}_2$ del estado resultante de realizar $m$ pasos de una caminata cuántica de Szegedy
 
-\color{red}
-\begin{align*}
-I_q(P_i,m) &= \ket{U^{\dagger m}(\mathds{1} \otimes \ketbra{i}{i})} \\
-\ket{\psi_0} &= \frac{1}{\sqrt{N}} \sum\limits_i \ket{\psi_i}
-\end{align*}
-\color{black}
+\begin{equation}
+    I_q(P_i,m) =  Tr((\mathds{1} \otimes \ketbra{i}{i}) U^m \ketbra{\psi_0} U^{\dagger m}) .
+\end{equation}
 
-Esto equivale a realizar $m$ pasos de la caminata con $\ket{\psi_0}$ como estado inicial y realizar una medida proyeciva sobre $\ket{i}_2$.
+Partiendo del estado inicial dado por la superposición uniforme de los estados asociados a los nodos del grafo, con fases reales, descrito por la siguiente ecuación
 
-Nota: $I_q$ no converge, sino que oscila, así que se toma el centro de las oscilaciones como la medida de importancia de las páginas. Esto se hace promediando $I_q$ sobre $m$: $\langle I_q(P_i) \rangle = \frac{1}{M} \sum\limits_{m=0}^{M-1} I_q(P_i,m)$ 
+\begin{equation}
+    \ket{\psi_0} = \frac{1}{\sqrt{N}} \sum\limits_i \ket{\psi_i} .
+\end{equation}
+
+$I_q$ no converge, sino que oscila, así que se toma el centro de las oscilaciones como la medida de importancia de las páginas. Esto se hace promediando $I_q$ sobre $m$: $\langle I_q(P_i) \rangle = \frac{1}{M} \sum\limits_{m=0}^{M-1} I_q(P_i,m)$ 
 
 \section{Circuitos de las caminatas cuánticas de Szegedy}
 
@@ -399,7 +385,7 @@ Loke y Wang \cite{loke} proponen un esquema para construir eficientemente algori
 Sea el operador de reflexión del operador de difusión
 
 \begin{equation}
-    W = 2 \sum\limits_i \ketbra{\psi_i}{\psi_i} - \mathds{1} = 2 \sum\limits_i \ketbra{i}{i} \otimes \ketbra{\psi_i^\prime}{\psi_i^\prime} - \mathds{1}
+    W = 2 \sum\limits_i \ketbra{\psi_i}{\psi_i} - \mathds{1} = 2 \sum\limits_i \ketbra{i}{i} \otimes \ketbra{\psi_i^\prime}{\psi_i^\prime} - \mathds{1} ,
 \end{equation}
 
 Donde $\ket{\psi_i^\prime} = \sum\limits_j \sqrt{p_{j i}} \ket{j}_2$
@@ -430,13 +416,13 @@ Lo cual se puede implementar fácilmente con compuertas de fase controladas, ya 
         \begin{pmatrix}
             \sqrt{0.8875} \\ \sqrt{0.8875} \\ \sqrt{0.8875} \\ \sqrt{0.0375}
         \end{pmatrix}
-    \end{array}
+    \end{array} .
 \end{equation}
 
 Entonces, el operador de permutación
 
 \begin{equation}
-    T = X(1) \text{CNOT}(1, 0)
+    T = X(1) \text{CNOT}(1, 0) ,
 \end{equation}
 
 Permite transformar $\ket{\psi_1^\prime},\ket{\psi_2^\prime},\ket{\psi_3^\prime}$ en $\ket{\psi_0^\prime}$ de la siguiente manera:
@@ -444,7 +430,7 @@ Permite transformar $\ket{\psi_1^\prime},\ket{\psi_2^\prime},\ket{\psi_3^\prime}
 \begin{equation}
     \begin{array}{cc}
         \ket{\psi_0^\prime} = T^\dagger \ket{\psi_1^\prime} = T^3 \ket{\psi_1^\prime} = T^2 \ket{\psi_2^\prime} = T \ket{\psi_3^\prime}
-    \end{array}
+    \end{array} .
 \end{equation}
 
 \begin{figure}[H]
@@ -467,7 +453,7 @@ Luego, siguiendo esta idea, $K_i = K_b^\dagger T_i$, donde $K_b^\dagger \ket{\ps
 \gategroup{2}{3}{2}{8}{1.5em}{_\}}
 } 
 \]
-\caption[Circuito de Loke [ref] para las caminatas cuánticas de Szegedy]{Circuito de Loke para las caminatas cuánticas de Szegedy}
+\caption[Circuito de Loke \cite{loke} para las caminatas cuánticas de Szegedy]{Circuito de Loke para las caminatas cuánticas de Szegedy}
 \label{fig:lokecircuit}
 \end{figure}
 
@@ -489,7 +475,7 @@ Todos los coeficientes de los estados involucrados en el algoritmo de PageRank s
 En lo que sigue se considerará $\ket{b} = \ket{0}$ y que los grafos son de cuatro nodos. De esta manera, podemos asumir que
 
 \begin{equation}
-    K_i = CRy_n(0,1,\theta_{11}) CRy_b(0,1,\theta_{10}) Ry(0,\theta_{00})
+    K_i = CRy_n(0,1,\theta_{11}) CRy_b(0,1,\theta_{10}) Ry(0,\theta_{00}) .
 \end{equation}
 
 \begin{figure}[H]
@@ -503,7 +489,7 @@ En lo que sigue se considerará $\ket{b} = \ket{0}$ y que los grafos son de cuat
 Entonces, para hallar $K_i$, debemos resolver la siguiente ecuación y hallar $\theta_{11}, \theta_{10}, \theta_{00}$
 
 \begin{equation}
-    CRy_n(0,1,\theta_{11}) CRy_b(0,1,\theta_{10}) Ry(0,\theta_{00}) \ket{0} = \ket{\phi_{r_i}}
+    CRy_n(0,1,\theta_{11}) CRy_b(0,1,\theta_{10}) Ry(0,\theta_{00}) \ket{0} = \ket{\phi_{r_i}} .
 \end{equation}
 
 Sin embargo, esto conduce a un sistema de cuatro ecuaciones y tres variables. Para poder resolver este sistema por métodos numéricos se modifica la ecuación de la siguiente manera, sabiendo que $\theta_x$ debe ser $n 2\pi$, donde $n$ es entero, quedándonos
@@ -512,7 +498,7 @@ Sin embargo, esto conduce a un sistema de cuatro ecuaciones y tres variables. Pa
     \cos(\frac{\theta_{00}}{2}) \cos(\frac{\theta_{10}}{2}) &= \sqrt{G_1} \\
     \cos(\frac{\theta_{00}}{2}) \sin(\frac{\theta_{10}}{2}) &= \sqrt{G_2} \\
     \cos(\frac{\theta_{11}}{2}) \sin(\frac{\theta_{00}}{2}) &= \sqrt{G_3} \\
-    \sin(\frac{\theta_{00}}{2}) \sin(\frac{\theta_{11}}{2}) &= \sqrt{G_4}
+    \sin(\frac{\theta_{00}}{2}) \sin(\frac{\theta_{11}}{2}) &= \sqrt{G_4} .
 \end{align}
 
 Esto se puede solucionar recordando la normalización de los estados cuánticos y de las matrices estocásticas, entonces, sabemos que $G_4 = 1 - (G_1 + G_2 + G_3)$. Por lo que podemos reducir el sistema de ecuaciones a uno de tres variables
@@ -522,7 +508,7 @@ Esto se puede solucionar recordando la normalización de los estados cuánticos 
     \label{eq:crot1} \\
     \cos(\frac{\theta_{00}}{2}) \sin(\frac{\theta_{10}}{2}) &= \sqrt{G_2}
     \label{eq:crot2} \\
-    \cos(\frac{\theta_{11}}{2}) \sin(\frac{\theta_{00}}{2}) &= \sqrt{G_3}
+    \cos(\frac{\theta_{11}}{2}) \sin(\frac{\theta_{00}}{2}) &= \sqrt{G_3} .
 \end{align}
 
 Sumando (\ref{eq:crot1}) y (\ref{eq:crot2}), y aplicando $\cos^2(\theta) + \sin^2(\theta) = 1$, se tiene:
@@ -532,7 +518,7 @@ Sumando (\ref{eq:crot1}) y (\ref{eq:crot2}), y aplicando $\cos^2(\theta) + \sin^
     \label{eq:crot3} \\
     \cos^2(\frac{\theta_{00}}{2}) &= G_1 + G_2
     \label{eq:crot4} \\
-    \cos^2(\frac{\theta_{11}}{2}) \sin^2(\frac{\theta_{00}}{2}) &= G_3
+    \cos^2(\frac{\theta_{11}}{2}) \sin^2(\frac{\theta_{00}}{2}) &= G_3 .
     \label{eq:crot5}
 \end{align}
 
@@ -541,7 +527,7 @@ Ahora, sustituyendo (\ref{eq:crot4}) en (\ref{eq:crot3}) y (\ref{eq:crot5}), y v
 \begin{align}
     \cos^2(\frac{\theta_{10}}{2}) &= \frac{G_1}{G_1 + G_2} \\
     \cos^2(\frac{\theta_{00}}{2}) &= G_1 + G_2 \\
-    \cos^2(\frac{\theta_{11}}{2}) &= \frac{G_3}{1-(G_1 + G_2)}
+    \cos^2(\frac{\theta_{11}}{2}) &= \frac{G_3}{1-(G_1 + G_2)} .
 \end{align}
 
 Finalmente, se tiene que los ángulos de las rotaciones deben ser:
@@ -549,7 +535,7 @@ Finalmente, se tiene que los ángulos de las rotaciones deben ser:
 \begin{align}
     \theta_{00} &= 2 \cos^{-1}\left(\sqrt{G_1 + G_2}\right) \\
     \theta_{10} &= 2 \cos^{-1}\left(\sqrt{\frac{G_1}{G_1 + G_2}}\right) \\
-    \theta_{11} &= 2 \cos^{-1}\left(\sqrt{\frac{G_3}{1 - (G_1 + G_2)}}\right)
+    \theta_{11} &= 2 \cos^{-1}\left(\sqrt{\frac{G_3}{1 - (G_1 + G_2)}}\right) .
 \end{align}
 
 \section{Simulaciones}
@@ -714,7 +700,7 @@ En el caso del PageRank promedio, en la Figura \ref{fig:meanstarlossless} podemo
     \label{fig:meanstarlossless}
 \end{figure}
 
-Ahora, compararemos los resultados de la simulación circuital con y sin pérdidas. Como se puede ver en la figura (FIGURA), en el caso con pérdidas, <++>
+Ahora, compararemos los resultados de la simulación circuital con y sin pérdidas. Como se puede ver en la Figura \ref{fig:inststarlossy}, en el caso con pérdidas, el PageRank cuántico es constante. Esto se debe a lo larga que es cada iteración del algoritmo. En el tiempo que realiza una iteración, los qubits ya le han entregado al entorno la energía introducida por las primeras compuertas, así que el estado final de cada iteración se aproxima a la aplicación de sólo las últimas compuertas de la iteración al estado base.
 
 \begin{figure}[H]
     \centering
@@ -734,12 +720,12 @@ Ahora, compararemos los resultados de la simulación circuital con y sin pérdid
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[m]{0.45\textwidth}
+    \begin{subfigure}[m]{0.9\textwidth}
         \centering
         \includegraphics[width=0.9\linewidth]{img/star-mean-lossless.eps}
         \caption{Sin relajación}
     \end{subfigure}
-    \begin{subfigure}[m]{0.45\textwidth}
+    \begin{subfigure}[m]{0.9\textwidth}
         \centering
         \includegraphics[width=0.9\linewidth]{img/star-mean-lossy.eps}
         \caption{Con relajación}

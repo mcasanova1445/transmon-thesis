@@ -46,15 +46,15 @@ Se han elegido parámetros típicos de los sistemas de qubits\cite{blais}.
 Como se vio en el capítulo anterior, en los transmones se puede ejecutar de manera natural las compuertas Rx, Ry e iSWAP. Estas compuertas se implementan en el simulador y es a partir de ellas que se contruyen todas las demás.
 
 \begin{equation}
-    H_{R_x} = -\frac{1}{2} \sum\limits_i \Delta_{q_i} \sigma_{z_i} + \xi(t) \sigma_{x_{target}}
+    H_{R_x} = -\frac{1}{2} \sum\limits_i \Delta_{q_i} \sigma_{z_i} + \xi(t) \sigma_{x_{target}} ,
 \end{equation}
 
 \begin{equation}
-    H_{R_y} = -\frac{1}{2} \sum\limits_i \Delta_{q_i} \sigma_{z_i} + \xi(t) \sigma_{y_{target}}
+    H_{R_y} = -\frac{1}{2} \sum\limits_i \Delta_{q_i} \sigma_{z_i} + \xi(t) \sigma_{y_{target}} ,
 \end{equation}
 
 \begin{equation}
-    H_{iSWAP} = \frac{g_1 g_2}{\Delta_{swap}} (\sigma_{+_1} \sigma_{-_2} + \sigma_{-_1} \sigma_{+_2})
+    H_{iSWAP} = \frac{g_1 g_2}{\Delta_{swap}} (\sigma_{+_1} \sigma_{-_2} + \sigma_{-_1} \sigma_{+_2}) .
 \end{equation}
 
 \subsection{Rx y Ry}
@@ -62,7 +62,7 @@ Como se vio en el capítulo anterior, en los transmones se puede ejecutar de man
 Estas compuertas se logran, aplicando un pulso gaussiano de microondas en fase (Rx), o en cuadratura (Ry). Se han elegido pulsos de 10ns de duración, truncados en $\pm 3 \sigma$.
 
 \begin{equation}
-    \xi(t) = A \Pi\left(\frac{t-\mu}{6\sigma}\right) \frac{1}{\sqrt{2 \pi \sigma^2}} e^{-\frac{(x-\mu)^2}{2 \sigma^2}}
+    \xi(t) = A \Pi\left(\frac{t-\mu}{6\sigma}\right) \frac{1}{\sqrt{2 \pi \sigma^2}} e^{-\frac{(x-\mu)^2}{2 \sigma^2}} ,
 \end{equation}
 
 Donde $\mu = 5ns$, $\sigma = \frac{5}{3} ns$, $\Pi(t)$ es la función rectangular, $A = \frac{\theta}{N}$ y $N = 0.9973$ es una constante de normalización. De esta manera se tiene el pulso gaussiano truncado deseado de 0ns a 10ns, cuya área bajo la curva sea igual al ángulo $\theta$ de la rotación.
@@ -115,9 +115,7 @@ Esta compuerta se logra aplicando un campo magnético tal que la frecuencia de r
 
 Si se desea realizar la compuerta $\sqrt{iSWAP}$, se debe dejar la misma interacción por sólo 12.5ns, que es la mitad del tiempo.
 
-\color{red}
-Explicar que la figura no está vacía sino que la probabilidad de ocupación está en cero
-\color{black}
+Es importante mencionar que la Figura \ref{fig:iswapsqrtiswap00} no está vacía, sino que la probabilidad de ocupación de ambos qubits es constante e igual a cero. Esta Figura refleja como las compuertas $iSWAP$ e $\sqrt{iSWAP}$ dejan invariantes a los pares de qubits que se encuentran en el mismo estado.
 
 \begin{figure}[H]
     \centering
@@ -196,7 +194,7 @@ Como tenemos $Rx(\theta)$, basta con hacer $\theta = \pi$ para realizar X, módu
     -i \begin{pmatrix}
         0 & 1 \\
         1 & 0
-    \end{pmatrix}
+    \end{pmatrix} .
 \end{equation}
 
 \subsection{Y}
@@ -216,7 +214,7 @@ Como tenemos $Ry(\theta)$, basta con hacer $\theta = \pi$ para realizar Y, módu
     -i \begin{pmatrix}
         0 & -i \\
         i & 0
-    \end{pmatrix}
+    \end{pmatrix} .
 \end{equation}
 
 \[
@@ -283,7 +281,7 @@ Ahora, con Rz, se puede realizar Z haciendo $\theta = \pi$, módulo una fase glo
     -i \begin{pmatrix}
         1 & 0 \\
         0 & -1
-    \end{pmatrix}
+    \end{pmatrix} .
 \end{equation}
 
 \[
@@ -313,7 +311,7 @@ Esta compuerta transforma la base X en la base Z y se realiza con $Ry(\pi/2)$ se
     \begin{pmatrix}
         \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
         \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}
-    \end{pmatrix}
+    \end{pmatrix} .
 \end{equation}
 
 Sólo que en nuestro caso, X también agrega una fase global de $-i$.
@@ -338,7 +336,7 @@ Esta compuerta se realizó siguiendo el esquema de Schuch y Siewert \cite{schuch
         0 & 1 & 0 & 0 \\
         0 & 0 & 0 & 1 \\
         0 & 0 & 1 & 0
-    \end{pmatrix}
+    \end{pmatrix} .
 \end{equation}
 
 \[
@@ -364,7 +362,7 @@ Esta compuerta se realiza con una secuencia de CNOTs.
         0 & 0 & 1 & 0 \\
         0 & 1 & 0 & 0 \\
         0 & 0 & 0 & 1
-    \end{pmatrix}
+    \end{pmatrix} .
 \end{equation}
 
 \[
@@ -516,7 +514,7 @@ También se contruyó parcialmente de esta manera la compuerta de Toffoli, CCCNO
         0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
         0 & 0 & 0 & 0 & 0 & 0 & 0 & -i \\
         0 & 0 & 0 & 0 & 0 & 0 & -i & 0
-    \end{pmatrix}
+    \end{pmatrix} .
 \end{equation}
 
 En lugar de:
@@ -533,7 +531,7 @@ En lugar de:
         0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
         0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\
         0 & 0 & 0 & 0 & 0 & 0 & 1 & 0
-    \end{pmatrix}
+    \end{pmatrix} .
 \end{equation}
 
 Barenco et al. proponen métodos alternativos para lograr aproximaciones de esta compuerta, pero todas ellas introducen fases locales (sólo que de $\pi$ en lugar de $-\pi/2$), lo cual convierte a la compuerta en una completamente distinta. Es por esto que en este trabajo se ha desarrollado la compuerta de fase condicional y un método para eliminar la fase local que introduce la compuerta $Toffoli^\prime$.
@@ -563,7 +561,7 @@ Rz, y la compuerta de cambio de fase P, son completamente equivalentes cuando ac
         0 & 0 & 1 & 0 \\
         0 & 0 & 0 & e^{i \theta}
     \end{pmatrix} \neq
-    e^{i \theta/2} CRz(\theta)
+    e^{i \theta/2} CRz(\theta) .
 \end{align}
 
 Se puede construir un sistema de ecuaciones con las fases introducidas por $Rz(\theta_1) \otimes \mathds{1}$, $\mathds{1} \otimes Rz(\theta_2)$, $CRz_1(\theta_3)$ y $CRz_0(\theta_4)$, donde $CRz_0$ y $CRz_1$ son la compuerta CRz con el qubit de la partición 1 y el qubit de la partición 0 como target, respectivamente, tal que:
@@ -584,7 +582,7 @@ Donde se quiere que:
     (-\theta_1 - \theta_2)/2 &= \phi \\
     (-\theta_1+\theta_2-\theta_4)/2 &= \phi \\
     (\theta_1 - \theta_2 - \theta_3)/2 &= \phi \\
-    (\theta_1 + \theta_2 + \theta_3 + \theta_4)/2 &= \phi + \theta
+    (\theta_1 + \theta_2 + \theta_3 + \theta_4)/2 &= \phi + \theta .
 \end{align}
 
 Esto se logra tomando:
@@ -609,7 +607,7 @@ Esto se logra tomando:
         0 & 1 & 0 & 0 \\
         0 & 0 & 1 & 0 \\
         0 & 0 & 0 & e^{i \theta} \\
-    \end{pmatrix}
+    \end{pmatrix} .
 \end{multline}
 
 Esta compuerta agrega una fase de $e^{i \theta}$ al ket $\ket{11}$. Con este mismo método también se pueden construir versiones de esta compuerta que agreguen la misma fase a los kets $\ket{00}$, $\ket{01}$, $\ket{10}$.

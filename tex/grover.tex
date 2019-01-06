@@ -1,6 +1,6 @@
 \chapter{Algoritmo de Grover}
 
-El algoritmo de Grover [ref], es un AC que realiza una búsqueda en una secuencia no ordenada de datos con $N=2^n$ entradas. Clásicamente esta búsqueda tendría un orden de complejidad de $O(N)$, pues, como los datos no están ordenados, la cantidad promedio de evaluaciones que se deben realizar crece linealmente con la cantidad de entradas. En el caso del algoritmo de Grover, la complejidad de la búsqueda es de $O(\sqrt{N})$, pues se requieren aproximadamente $\frac{\pi\sqrt{N}}{4}$ iteraciones para hallar la entrada deseada [ref]. En cuanto a la cantidad de qubits requeridos, se necesitan $O(\log_2 N)$ qubits, pues se debe realizar un estado superpuesto donde cada componente de la superposición represente una entrada de la secuencia de datos.
+El algoritmo de Grover \cite{Grover_1996}, es un AC que realiza una búsqueda en una secuencia no ordenada de datos con $N=2^n$ entradas. Clásicamente esta búsqueda tendría un orden de complejidad de $O(N)$, pues, como los datos no están ordenados, la cantidad promedio de evaluaciones que se deben realizar crece linealmente con la cantidad de entradas. En el caso del algoritmo de Grover, la complejidad de la búsqueda es de $O(\sqrt{N})$, pues se requieren aproximadamente $\frac{\pi\sqrt{N}}{4}$ iteraciones para hallar la entrada deseada \cite{Grover_1996}. En cuanto a la cantidad de qubits requeridos, se necesitan $O(\log_2 N)$ qubits, pues se debe realizar un estado superpuesto donde cada componente de la superposición represente una entrada de la secuencia de datos.
 
 Supongamos que la secuencia de datos no ordenada tiene la siguiente función asociada:
 
@@ -9,7 +9,7 @@ Supongamos que la secuencia de datos no ordenada tiene la siguiente función aso
     \begin{cases}
         1 & \text{si } x = \omega \\
         0 & \text{si } x \neq \omega
-    \end{cases}
+    \end{cases} ,
 \end{equation}
 
 Donde $\omega$ es el dato que se desea encontrar. Esta función devuelve 1 si se evalua la entrada que almacena el dato deseado y 0 en cualquier otro caso.
@@ -25,13 +25,13 @@ El algoritmo de Grover se basa en la disponibilidad de un operador cuántico, ll
 \end{equation}
 
 \begin{equation}
-U_\omega = \mathds{1} - 2 \ketbra{\omega}{\omega}
+U_\omega = \mathds{1} - 2 \ketbra{\omega}{\omega} .
 \end{equation}
 
 Además de éste, se necesita otro operador de reflexión, $U_s$, el cual realiza una reflexión alrededor del estado de superposición uniforme $\ket{s} = \frac{1}{\sqrt{N}} \sum\limits_{x=0}^{N-1} \ket{x}$. Así, por el hecho de la geometría plana elemental de que el producto de dos reflexiones es una rotación, se logra aproximar el estado del sistema al estado asociado a la entrada deseada.
 
 \begin{equation}
-U_s = 2 \ketbra{s}{s} - \mathds{1}
+U_s = 2 \ketbra{s}{s} - \mathds{1} .
 \end{equation}
 
 Al producto de estas dos rotaciones $U_s U_\omega$ se le conoce como operador de difusión. Veamos lo que sucede al aplicar el operador de difusión sobre el estado $\ket{s}$:
@@ -41,7 +41,7 @@ Al producto de estas dos rotaciones $U_s U_\omega$ se le conoce como operador de
     = (\mathds{1} - 2 \ketbra{\omega}{\omega}) \ket{s}
     = \ket{s} - 2 \ketbra{\omega}{\omega} \ket{s} \\
     = \ket{s} - \frac{2}{\sqrt{N}} \ketbra{\omega}{\omega} \sum\limits_{x=0}^{N-1} \ket{x}
-    = \ket{s} - \frac{2}{\sqrt{N}} \ket{\omega}
+    = \ket{s} - \frac{2}{\sqrt{N}} \ket{\omega} .
 \end{multline}
 
 Similarmente podemos observar que
@@ -51,7 +51,7 @@ Similarmente podemos observar que
     = (2 \ketbra{s}{s} - \mathds{1}) (\ket{s} - \frac{2}{\sqrt{N}} \ket{\omega}) \\
     = 2 (\ket{s} - \frac{4}{N} \ket{s}) - (\ket{s} - \frac{2}{\sqrt{N}} \ket{\omega})
     = \ket{s} - \frac{4}{N} \ket{s} + \frac{2}{\sqrt{N}} \ket{\omega} \\
-    = \frac{N-4}{N} \ket{s} + \frac{2}{\sqrt{N}} \ket{\omega}
+    = \frac{N-4}{N} \ket{s} + \frac{2}{\sqrt{N}} \ket{\omega} .
 \end{multline}
 
 Ahora veamos lo que sucede al aplicar esta secuencia de rotaciones sobre el estado $\ket{\omega}$:
@@ -66,7 +66,7 @@ Ahora veamos lo que sucede al aplicar esta secuencia de rotaciones sobre el esta
 \begin{equation}
     U_s (-\ket{\omega})
     = (2 \ketbra{s}{s} - \mathds{1}) (-\ket{\omega})
-    = -\frac{2}{\sqrt{N}} \ket{s} + \ket{\omega}
+    = -\frac{2}{\sqrt{N}} \ket{s} + \ket{\omega} .
 \end{equation}
 
 Se observa así, que al aplicar $U_s U_\omega$ sobre $\ket{s}$, se amplifica la componente de $\ket{\omega}$ en la superposición de $\frac{1}{\sqrt{N}}$ a $\frac{3N-4}{N \sqrt{N}}$. Es decir que la probabilidad de medir el valor deseado crece de $\frac{1}{N}$ a $9 (1-\frac{4}{3N}) \frac{1}{N}$.
@@ -74,7 +74,7 @@ Se observa así, que al aplicar $U_s U_\omega$ sobre $\ket{s}$, se amplifica la 
 \begin{equation}
     \bra{\omega} U_s U_\omega \ket{s}
     = \frac{N-4}{N} \frac{1}{\sqrt{N}} + \frac{2}{\sqrt{N}}
-    = \frac{3N-4}{N \sqrt{N}}
+    = \frac{3N-4}{N \sqrt{N}} .
 \end{equation}
 
 Y la probabilidad cuántica será
@@ -82,7 +82,7 @@ Y la probabilidad cuántica será
 \begin{equation}
     p(\omega) = \abs{\bra{\omega} U_s U_\omega \ket{s}}^2
     = \frac{(3N-4)^2}{N^3}
-    = 9 (1-\frac{4}{3N}) \frac{1}{N}
+    = 9 (1-\frac{4}{3N}) \frac{1}{N} .
     \label{eq:prob1step}
 \end{equation}
 
@@ -103,13 +103,13 @@ Para hallar $k_{max}$, veamos el ángulo que se rota con cada aplicación de $U_
 
 \begin{equation}
     \ket{s^\prime} = \frac{1}{N-1} \sum\limits_{x \neq \omega} \ket{x}
-               = \frac{\sqrt{N}}{\sqrt{N-1}}\ket{s} - \frac{1}{\sqrt{N-1}} \ket{\omega}
+               = \frac{\sqrt{N}}{\sqrt{N-1}}\ket{s} - \frac{1}{\sqrt{N-1}} \ket{\omega} .
 \end{equation}
 
 Los estados $\ket{s^\prime}$ y $\ket{\omega}$ son ortonormales, $\braket{s^\prime}{\omega} = 0$, por lo que generan un espacio bidimensional de Hilbert. Este espacio contiene a $\ket{s}$, pues:
 
 \begin{equation}
-    \ket{s} = \frac{\sqrt{N-1}}{\sqrt{N}}\ket{s^\prime} + \frac{1}{\sqrt{N}}\ket{\omega}
+    \ket{s} = \frac{\sqrt{N-1}}{\sqrt{N}}\ket{s^\prime} + \frac{1}{\sqrt{N}}\ket{\omega} .
 \end{equation}
 
 Además, se ha visto que $U_s U_\omega \ket{s}$ y $U_s U_\omega \ket{\omega}$ se escriben en función de sólo $\ket{s}$ y $\ket{\omega}$. Así que podemos inducir que $(U_s U_\omega)^k \ket{s}$ pertenece al espacio generado por $\{\ket{s^\prime}, \ket{\omega}\}$, donde $k \in \{0, 1, 2, ...\}$. Esto indica que este espacio contiene al plano en el que se realizan las rotaciones $U_s U_\omega$.
@@ -119,7 +119,7 @@ Ahora que conocemos una base del plano de rotación, podemos hayar el ángulo qu
 \begin{equation}
     U_\omega \ket{\psi}
     = (\mathds{1} - 2 \ketbra{\omega}{\omega}) (\alpha \ket{s^\prime} + \beta \ket{\omega})
-    = \alpha \ket{s^\prime} - \beta \ket{\omega}
+    = \alpha \ket{s^\prime} - \beta \ket{\omega} .
 \end{equation}
 
 De la misma forma
@@ -131,7 +131,7 @@ De la misma forma
     = \alpha \left((2\frac{N-1}{N} - 1) \ket{s^\prime} + 2\frac{\sqrt{N-1}}{N}\ket{\omega}\right)
     - \beta \left(\frac{2\sqrt{N-1}}{N}\ket{s^\prime} + (\frac{2}{N}-1)\ket{\omega}\right) \\
     = (\alpha \frac{N-2}{N} - \beta \frac{2\sqrt{N-1}}{N}) \ket{s^\prime}
-    + (\alpha\ 2\frac{\sqrt{N-1}}{N} + \beta  \frac{N-2}{N}) \ket{\omega} \\
+    + (\alpha\ 2\frac{\sqrt{N-1}}{N} + \beta  \frac{N-2}{N}) \ket{\omega} .
 \end{multline}
 
 De aquí se deduce que $\cos(\Delta\theta) = \frac{N-2}{N}$ y que $\sin(\Delta\theta) = 2\frac{\sqrt{N-1}}{N}$. De hecho, se comprueba que:
@@ -140,43 +140,43 @@ De aquí se deduce que $\cos(\Delta\theta) = \frac{N-2}{N}$ y que $\sin(\Delta\t
     \cos^2(\Delta\theta)+\sin^2(\Delta\theta)
     = \frac{(N-2)^2}{N^2} + 4\frac{N-1}{N^2}
     = \frac{N^2-4N+4}{N^2} + 4\frac{N-1}{N^2}
-    = 1
+    = 1 .
 \end{equation}
 
 Ahora podemos escribir las componentes de $\ket{s}$ en función del ángulo inicial $\theta_0$:
 
 \begin{align}
     \cos(\theta_0) &= \frac{\sqrt{N-1}}{\sqrt{N}} \\
-    \sin(\theta_0) &= \frac{1}{\sqrt{N}}
+    \sin(\theta_0) &= \frac{1}{\sqrt{N}} .
     \label{eq:sinTheta0}
 \end{align}
 
 Finalmente, lo que se quiere es que:
 
 \begin{equation}
-    \theta_0 + k \Delta\theta \to \frac{\pi}{2}
+    \theta_0 + k \Delta\theta \to \frac{\pi}{2} .
 \end{equation}
 
 Es decir, que:
 
 \begin{align}
     \cos^{-1}(\frac{\sqrt{N-1}}{\sqrt{N}}) + k\cos^{-1}(\frac{N-2}{N}) &\to \frac{\pi}{2} \\
-    \sin^{-1}(\frac{1}{\sqrt{N}}) + k\sin^{-1}(2\frac{\sqrt{N-1}}{N}) &\to \frac{\pi}{2}
+    \sin^{-1}(\frac{1}{\sqrt{N}}) + k\sin^{-1}(2\frac{\sqrt{N-1}}{N}) &\to \frac{\pi}{2} .
 \end{align}
 
 Si tomamos $N \gg 1$ en (4.12), tenemos que:
 
 \begin{align}
     2k \frac{1}{\sqrt{N}} &\to \frac{\pi}{2} \\
-    k_{max} &\approx \frac{\pi \sqrt{N}}{4}
+    k_{max} &\approx \frac{\pi \sqrt{N}}{4} .
 \end{align}
 
 En la Figura \ref{fig:groverdifusion} podemos entonces visualizar gráficamente la acción del operador difusión sobre $\ket{s}$.
 
 \begin{figure}[H]
 \centering \includegraphics[width=0.3\linewidth]{img/grover_geometry.png}
-\label{fig:groverdifusion}
 \caption{Interpretación geométrica del operador difusión}
+\label{fig:groverdifusion}
 \end{figure}
 
 \section{El algoritmo}
@@ -218,13 +218,13 @@ Esta generalización fue desarrollada independientemente por Brassar y H̨øyer 
     \begin{cases}
         1 & \text{si } x \in \mathcal{W} \\
         0 & \text{si } x \not\in \mathcal{W}
-    \end{cases}
+    \end{cases} .
 \end{equation}
 
 Ahora sea el proyector $\Pi_\mathcal{W}$ tal que proyecte los estados del espacio de Hilbert $\mathcal{H}$ asociado a la base de datos en el espacio de Hilbert generado por los estados objetivos $\mathcal{H}_\mathcal{W}$:
 
 \begin{equation}
-    \Pi_\mathcal{W} = \sum\limits_k \ketbra{\omega_k}{\omega_k}
+    \Pi_\mathcal{W} = \sum\limits_k \ketbra{\omega_k}{\omega_k} .
 \end{equation}
 
 Donde los estados $\ket{\omega_k}$ son los estados asociados a las entradas de la base de datos pertenecientes a $\mathcal{W}$.
@@ -232,7 +232,7 @@ Donde los estados $\ket{\omega_k}$ son los estados asociados a las entradas de l
 Sea el estado inicial:
 
 \begin{equation}
-    \ket{\psi} = \sin(\theta) \ket{\psi_1} + \cos(\theta) \ket{\psi_0}
+    \ket{\psi} = \sin(\theta) \ket{\psi_1} + \cos(\theta) \ket{\psi_0} ,
 \end{equation}
 
 Donde $\ket{\psi_1} = \frac{\Pi_\mathcal{W} \ket{\psi}}{\sin(\theta)}$ y $\sin(\theta) = \bra{\psi} \Pi_\mathcal{W} \ket{\psi}$. Lo que nos conduce a precisar que $\ket{\psi_0} = \frac{(\mathds{1} - \Pi_\mathcal{W}) \ket{\psi}}{\cos(\theta)}$, y que $\cos(\theta) = \bra{\psi} (\mathds{1} - \Pi_\mathcal{W}) \ket{\psi}$.
@@ -246,28 +246,28 @@ Ahora definamos los siguientes operadores de reflexión $U_\psi = (2 \ketbra{\ps
     = (2 \ketbra{\psi}{\psi} - \mathds{1}) (\ket{\psi} - 2 \sin(\theta) \ket{\psi_1}) \\
     = \ket{\psi} + (- 4 \sin^2(\theta) \ket{\psi} + 2 \sin(\theta) \ket{\psi_1}) \\
     = (3 - 4 \sin^2(\theta)) \sin(\theta) \ket{\psi_1} + (1 - 4 \sin^2(\theta)) \cos(\theta) \ket{\psi_0} \\
-    = \sin(3 \theta) \ket{\psi_1} + \cos(3 \theta) \ket{\psi_0}
+    = \sin(3 \theta) \ket{\psi_1} + \cos(3 \theta) \ket{\psi_0} .
     \label{eq:DTheta}
 \end{multline}
 
 Como se puede ver, el operador $U_\psi U_\mathcal{W}$ rota un ángulo de $\Delta\theta = 3\theta - \theta = 2 \theta$. Por lo que si se aplica $k$ veces a $\ket{\psi}$, después de un cálculo inductivo tendremos:
 
 \begin{equation}
-    (U_\psi U_\mathcal{W})^k \ket{\psi} = \sin( (2 k + 1) \theta) \ket{\psi_1} + \cos( (2 k + 1) \theta) \ket{\psi_0}
+    (U_\psi U_\mathcal{W})^k \ket{\psi} = \sin( (2 k + 1) \theta) \ket{\psi_1} + \cos( (2 k + 1) \theta) \ket{\psi_0} .
 \end{equation}
 
 De esta manera, el $k = k_max$ para el cual se obtiene la probabilidad máxima de medir un elemento de $\mathcal{H}_\mathcal{W}$, es decir, el $k$ que maximiza la amplitud de probabilidad de la componente $\ket{\psi_1}$ de $\ket{\psi}$, es $\lfloor \frac{\pi}{4 \theta} \rfloor$. Así:
 
 \begin{multline}
     (U_\psi U_\mathcal{W})^{k_{max}} \ket{\psi} = \sin( (2 \lfloor \frac{\pi}{4 \theta} \rfloor + 1) \theta) \ket{\psi_1} + \cos( (2 \lfloor \frac{\pi}{4 \theta} \rfloor + 1) \theta) \ket{\psi_0} \\
-    \approx \sin(\frac{\pi}{2}) \ket{\psi_1} + \cos(\frac{\pi}{2}) \ket{\psi_0} = \ket{\psi_1}
+    \approx \sin(\frac{\pi}{2}) \ket{\psi_1} + \cos(\frac{\pi}{2}) \ket{\psi_0} = \ket{\psi_1} .
 \end{multline}
 
 Mientras menor sea $\theta$, más tenderá asintóticamente $(U_\psi U_\mathcal{W})^{k_{max}} \ket{\psi}$ a $\ket{\psi_1}$, pero mayor será $k_{max}$.
 
 Como se puede ver, el algoritmo de amplificación de amplitud se puede utilizar como algoritmo de búsqueda con una cantidad arbitraria de estados objetivos y un estado inicial arbitrario, no sólo $\ket{s}$ como en el algoritmo de Grover. Sin embargo, este no es sólo un algoritmo de búsqueda, sino tambien un algoritmo de optimización. En este sentido, la amplificación de amplitud también se puede utilizar como subrutina para mejorar el resultado de otros algoritmos. Sea $U_\mathcal{A}$ el operador asociado a un algoritmo cuántico $\mathcal{A}$, entonces, tal que, partiendo del estado fiducial, retorne el estado $\ket{\psi}$. Es decir, $U_\mathcal{A} \ket{0} = \ket{\psi}$, entonces, podemos reescribir $U_\psi$ de la siguiente manera:
 \begin{equation}
-    U_\psi = (2 \ketbra{\psi} - \mathds{1}) = (2 U_\mathcal{A} \ketbra{0} U_\mathcal{A}^\dagger - \mathds{1}) = U_\mathcal{A} (2 \ketbra{0} - \mathds{1}) U_\mathcal{A}^\dagger = U_\mathcal{A} U_0 U_\mathcal{A}^\dagger
+    U_\psi = (2 \ketbra{\psi} - \mathds{1}) = (2 U_\mathcal{A} \ketbra{0} U_\mathcal{A}^\dagger - \mathds{1}) = U_\mathcal{A} (2 \ketbra{0} - \mathds{1}) U_\mathcal{A}^\dagger = U_\mathcal{A} U_0 U_\mathcal{A}^\dagger .
 \end{equation}
 
 De esta manera, a cualquier algoritmo, que actúe sobre un espacio de Hilbert $\mathcal{H}$ que se pueda descomponer en un espacio de estados buenos $\mathcal{H}_\mathcal{W}$, y un espacio de estados malos $\mathcal{H} \setminus \mathcal{H}_\mathcal{W}$, se le puede aplicar la amplificación de amplitud para mejorar su resultado.
@@ -279,21 +279,21 @@ Ahora consideremos el caso en el que $U_\mathcal{A} = H^{\otimes n}$, es decir, 
     \ket{\psi_1} &= \frac{1}{\sqrt{W}} \sum\limits_{i \in \mathcal{W}} \ket{i} \\
     \sin{\theta} &= \sqrt{\frac{W}{N}} \\
     \ket{\psi_0} &= \frac{1}{\sqrt{N-W}} \sum\limits_{j \not\in \mathcal{W}} \ket{j} \\
-    \cos{\theta} &= \sqrt{\frac{N-W}{N}}
+    \cos{\theta} &= \sqrt{\frac{N-W}{N}} .
 \end{align}
 
 Si tomamos $N \gg W$, tendríamos que $\theta \approx \sqrt{\frac{W}{N}}$, entonces $k_{max} \approx \frac{\pi}{4} \sqrt{\frac{N}{W}}$. Es interesante notar que mientras más estados buenos haya, menos iteraciones se necesitan. Pero a cambio, para hallar todos esos estados buenos, se debe ejecutar el algoritmo más veces. En caso de que $\mathcal{W}$ sea de dimensión 1, se recuperaría exactamente el algoritmo de Grover.
 
 \subsection{Algoritmo de Grover en un paso}
 
-Grover \cite{Grover_1997s} propone una manera alternativa para ejecutar su algoritmo. \color{red}En lugar de realizar $O(\sqrt{N})$ iteraciones, propone realizar una sola iteración en $\Omega(\sqrt{N \log(N)})$ sistemas identicos simultáneamente.\color{black} Partiendo de la ecuación \ref{eq:prob1step}, la probabilidad de medir cada uno de los estados, cuando N es grande, luego de aplicar una iteración del algoritmo de Grover es aproximadamente:
+Grover \cite{Grover_1997s} propone una manera alternativa para ejecutar su algoritmo. En lugar de realizar $O(\sqrt{N})$ iteraciones del algoritmo, en un sólo sistema cuántico, y medir el estado del sistema una sóla vez, propone utilizar varios sistemas cuánticos, ejecutar el algoritmo en cada uno de estos sistemas, pero realizar sólo una iteración antes de medir cada sistema. Partiendo de la ecuación \ref{eq:prob1step}, la probabilidad de medir cada uno de los estados, cuando N es grande, luego de aplicar una iteración del algoritmo de Grover es aproximadamente:
 
 \begin{equation}
     p(x) \approx
     \begin{cases}
         \frac{9}{N} & \text{si } x = \omega \\
         \frac{1}{N} & \text{si } x \neq \omega
-    \end{cases}
+    \end{cases} .
 \end{equation}
 
 Así que con $\eta$ sistemas se tendrá, en promedio $9 \eta/N \pm O(\sqrt{\eta/N})$ medidas del valor deseado y $\eta/N \pm O(\sqrt{\eta/N})$ medidas de cualquiera de cada uno de los otros estados. La idea es tener suficientes sistemas para poder elegir con seguridad el valor que más se repita como el valor deseado. Por el teorema del límite central, la probabilidad de que una variable particular se desvíe más de $\pm \gamma \sqrt{\eta/N}$ de su valor esperado es menor que $e^{- \Omega(\gamma^2)}$. De esta manera, si $\eta = \Omega(N \log(N))$, entonces, con una probabilidad cercana a 1, el valor deseado ocurrirá con mayor frecuencia que cualquiera de los otros $N-1$.
@@ -313,7 +313,7 @@ Partiendo de (\ref{eq:sinTheta0}) y (\ref{eq:DTheta}), sabemos que en cada itera
     \begin{cases}
         \frac{(2k + 1)^2}{N} & \text{si } x = \omega \\
         \frac{1}{N} & \text{si } x \neq \omega
-    \end{cases}
+    \end{cases} .
 \end{equation}
 
 Si realizamos esto en $\eta$ sistemas idénticos, entonces, mediremos el valor deseado $\eta (2k + 1)^2 / N \pm O(\sqrt{\eta k^2/N})$ veces y cada otro estado $\eta / N \pm O(\sqrt{\eta k^2/N})$ veces. Si tomamos $\eta = k$, entonces, mediremos $\omega$ alrededor de $k (2k + 1)^2 / N \pm O(\sqrt{k^3/N})$ veces. Ahora, si tomamos $k$ en el orden de $O(\sqrt[3]{N})$, tendremos $\omega$ alrededor de $\sqrt[3]{N} ( 2 \sqrt[3]{N} + 1)^2 \pm O(1)$ veces. Como $N$ es grande, podemos hacer la aproximación $2 \sqrt[3]{N} + 1 \approx 2 \sqrt[3]{N}$ y entonces, tendremos $\omega$ alrededor de $4 \pm O(1)$ veces. Mientras que todos los otros valores ocurriran sólo $N^{-2/3} \pm O(1)$ veces cada uno. Así que, el estado medido con mayor frecuencia ha de ser, con seguridad, el estado deseado.
@@ -350,7 +350,7 @@ En la Figura \ref{fig:groverlosslesscomp1111} se puede observar la gráfica de l
 
 Ahora, compararemos los resultados de la simulación circuital con y sin relajación. Como se puede ver en la Figura \ref{fig:groverloss}, en el caso con relajación, los estados que no contienen el valor deseado dejan de tener todos la misma probabilidad. Los estados que involucran el estado base ganan probabilidad debido a la relajación de los qubits. La fidelidad entre los estados resultantes de los casos con y sin relajación es de 0.250818.
 
-Además, en el caso con relajación, la probabilidad de medir el estado deseado depende de cuál sea este estado. Mientras más particiones en $\ket{1}$ contenga este estado, peor será el efecto de la relajación en el algoritmo. Esto ocurre porque el algoritmo debe llevar estas particiones a estados excitados, es decir, a estados de energías superiores, y esto es energía que el entorno absorbe por efecto Purcell [ref]. Las particiones en el estado $\ket{0}$ están en su estado base y no se ven afectadas por este fenómeno, pues este es su estado de mínima energía. Esto se ve reflejado en las siguientes figuras.
+Además, en el caso con relajación, la probabilidad de medir el estado deseado depende de cuál sea este estado. Mientras más particiones en $\ket{1}$ contenga este estado, peor será el efecto de la relajación en el algoritmo. Esto ocurre porque el algoritmo debe llevar estas particiones a estados excitados, es decir, a estados de energías superiores, y esto es energía que el entorno absorbe por efecto Purcell \cite{Haroche_1989}. El efecto Purcell describe cómo la tasa de emisión espontanea de un sistema cuántico se ve alterada por el entorno del sistema. Las particiones en el estado $\ket{0}$ están en su estado base y no se ven afectadas por este fenómeno, pues este es su estado de mínima energía. Esto se ve reflejado en las siguientes figuras.
 
 En la Figura \ref{fig:groverloss1111}, se tiene $\ket{\omega} = \ket{1111}$, así que este es el caso en el que el entorno tiene el mayor efecto sobre el algoritmo, pues es el caso en el que el sistema tiene las mayores energías. Por otro lado, la Figura \ref{fig:groverloss0000} presenta el caso en el que $\ket{\omega} = \ket{0000}$, este es el caso en el que el entorno tiene el menor efecto sobre el algoritmo, pues es el caso en el que el sistema tiene las menores energías. La Figura \ref{fig:groverloss0110} presenta el caso en el $\ket{\omega} = \ket{0110}$. Este es un caso intermedio y el sistema tiene un efecto distinto sobre cada partición.
 
