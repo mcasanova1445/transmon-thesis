@@ -49,20 +49,20 @@
 \begin{frame}
     \frametitle{Objetivos}
 
-Objetivo General:
- Diseñar y simular PC que implementen los AC de Grover, Shor y Google
-Cuántico.
-Objetivos Específicos:
-1) Construir la representación circuital cuántica de los AC de Grover, Shor y de Google Cuántico.
-2) Diseñar arquitecturas superconductoras controlables por microondas basadas en transmones.
-3) Hallar las respectivas secuencias de pulsos, que son necesarios para generar con transmones la
-representación circuital cuántica de los tres AC considerados.
-4) Simular en Mathematica, en forma algebraica, cada una de las arquitecturas de CC consideradas,
-permitiendo así obtener expresiones lo mas simplificadas posibles de los procesos cuánticos considerados.
-5) Simular en Python, de forma numérica, el operador evolución de cada una de los compuertas de los CC
-estudiados, y generalizar dicha simulación a cada una de las arquitecturas superconductoras.
-6) Analizar los resultados obtenidos, mostrando que ventajas ofrecen las mejoras consideradas en el
-diseño de los CC creados para cada uno de los AC estudiados en el presente trabajo.
+    Objetivo General:
+     Diseñar y simular PC que implementen los AC de Grover, Shor y Google
+    Cuántico.
+
+    Objetivos Específicos:
+    \begin{enumerate}
+        \item Construir la representación circuital cuántica de los AC de Grover, Shor y de Google Cuántico.
+        \item Diseñar arquitecturas superconductoras controlables por microondas basadas en transmones.
+        \item Hallar las respectivas secuencias de pulsos, que son necesarios para generar con transmones la representación circuital cuántica de los tres AC considerados.
+        \item Simular en Mathematica, en forma algebraica, cada una de las arquitecturas de CC consideradas, permitiendo así obtener expresiones lo mas simplificadas posibles de los procesos cuánticos considerados.
+        \item Simular en Python, de forma numérica, el operador evolución de cada una de los compuertas de los CC estudiados, y generalizar dicha simulación a cada una de las arquitecturas superconductoras.
+        \item Analizar los resultados obtenidos, mostrando que ventajas ofrecen las mejoras consideradas en el diseño de los CC creados para cada uno de los AC estudiados en el presente trabajo.
+    \end{enumerate}
+
 \end{frame}
 
 \section{Información cuántica}
@@ -70,150 +70,204 @@ diseño de los CC creados para cada uno de los AC estudiados en el presente trab
 \begin{frame}
     \frametitle{Espacios de Hilbert}
 
-Un espacio de Hilbert es un espacio lineal real o complejo con un producto interno que también define un espacio normado completo.
+    Un espacio de Hilbert es un espacio lineal real o complejo con un producto interno que también define un espacio normado completo.
 
-- Producto interno
-- Normado
-- Completo: Todas las sucesiones de Cauchy convergen fuertemente.
-    * Sucesiones de Cauchy: Aquellas en las que el ordenamiento no afecta la convergencia.
-- Separable: Tiene bases contables.
+    \begin{enumerate}
+        \item Producto interno
+        \item Normado
+        \item Completo: Todas las sucesiones de Cauchy convergen fuertemente.
+            \begin{enumerate}
+                \item Sucesiones de Cauchy: Aquellas en las que el ordenamiento no afecta la convergencia.
+            \end{enumerate}
+        \item Separable: Tiene bases contables.
+    \end{enumerate}
 
 \end{frame}
 
 \begin{frame}
     \frametitle{Operadores}
 
-- Operadores hermíticos $U = U^\dagger$
-    * Autovalores reales
-    * Diagonal real
-    * Diagonalizable
+    \begin{enumerate}
+        \item Operadores hermíticos $U = U^\dagger$
+            \begin{enumerate}
+                \item Autovalores reales
+                \item Diagonal real
+                \item Diagonalizable
+            \end{enumerate}
 
-- Operadores unitarios: $U U^\dagger = \mathds{1}$
-    * Determinante de módulo igual a la unidad
-    * Preserva normas y trazas
-    * Diagonalizable
+        \item Operadores unitarios: $U U^\dagger = \mathds{1}$
+            \begin{enumerate}
+                \item Determinante de módulo igual a la unidad
+                \item Preserva normas y trazas
+                \item Diagonalizable
+            \end{enumerate}
+    \end{enumerate}
 
 \end{frame}
 
 \begin{frame}
     \frametitle{Estados cuánticos}
 
-- Estados puros: $\ket{\psi}$
-
-- Estados mixtos: $\rho$
+    \begin{enumerate}
+        \item Estados puros: $\ket{\psi}$
+            \begin{enumerate}
+                \item Vector unitario
+            \end{enumerate}
+        \item Estados mixtos: $\rho$
+            \begin{enumerate}
+                \item Matriz hermítica
+                \item Traza igual a la unidad
+                \item Autovalores no negativos
+            \end{enumerate}
+    \end{enumerate}
 
 \end{frame}
 
 \begin{frame}
     \frametitle{Sistemas multipartitos}
 
-$\mathcal{H} = \mathcal{H}_1 \mathcal{H}_2$
+    \begin{align}
+        \mathcal{H} &= \mathcal{H}_1 \otimes \mathcal{H}_2 \\
+        \rho_B &= Tr_A(\rho_{AB})
+    \end{align}
 
-$\rho_B = Tr_A(\rho_{AB})$
 
 \end{frame}
 
 \begin{frame}
     \frametitle{Qubits y esfera de Bloch}
 
-Los qubits son la unidad básica de información cuántica.
+    Los qubits son la unidad básica de información cuántica.
 
-$\ket{0} = \begin{pmatrix}1 \\ 0\end{pmatrix}, \quad \ket{1} = \begin{pmatrix}0 \\ 1\end{pmatrix}$
+    \begin{align}
+        \ket{0} &= \begin{pmatrix}1 \\ 0\end{pmatrix}, \quad \ket{1} = \begin{pmatrix}0 \\ 1\end{pmatrix} \\
+        \ket{\psi} &= \alpha \ket{0} + \beta \ket{1}, \quad \alpha, \beta \in \mathds{C}
+    \end{align}
 
-$\ket{\psi} = \alpha \ket{0} + \beta \ket{1}, \quad \alpha, \beta \in \mathds{C}$
+    \begin{figure}[H]
+        \center
+        \begin{blochsphere}[radius=1.2cm,tilt=15,rotation=-20,opacity=0.05]
+            \drawBallGrid[style={opacity=0.1}]{30}{30}
 
-Esfera de Bloch:
+            \drawGreatCircle[style={dashed,opacity=0.5}]{0}{0}{0}
+            \drawGreatCircle[style={dashed,opacity=0.5}]{90}{0}{0}
+            \drawGreatCircle[style={dashed,opacity=0.5}]{90}{90}{0}
+            \drawAxis{0}{0}
+            \drawAxis{90}{0}
+            \drawAxis{90}{90}
 
-\begin{figure}[H]
-    \center
-    \begin{blochsphere}[radius=3cm,tilt=15,rotation=-20,opacity=0.05]
-        \drawBallGrid[style={opacity=0.1}]{30}{30}
+            %\drawRotationRight[scale=1.3,style={red}]{-90}{0}{0}{15}
 
-        \drawGreatCircle[style={dashed,opacity=0.5}]{0}{0}{0}
-        \drawGreatCircle[style={dashed,opacity=0.5}]{90}{0}{0}
-        \drawGreatCircle[style={dashed,opacity=0.5}]{90}{90}{0}
-        \drawAxis{0}{0}
-        \drawAxis{90}{0}
-        \drawAxis{90}{90}
+            \labelLatLon{up}{90}{0};
+            \labelLatLon{down}{-90}{90};
+            \node[above] at (up) {{\tiny $\hat{z} = \ket{0}$ }};
+            \node[below] at (down) {{\tiny $-\hat{z} = \ket{1}$}};
 
-        %\drawRotationRight[scale=1.3,style={red}]{-90}{0}{0}{15}
+            \labelLatLon{yp}{0}{0};
+            \labelLatLon{ym}{0}{180};
+            \node[right] at (yp) {{\tiny $\hat{y} = \ket{\circlearrowleft} = \frac{\ket{0} + i \ket{1}}{\sqrt{2}}$ }};
+            \node[left] at (ym) {{\tiny $-\hat{y} = \ket{\circlearrowright} = \frac{\ket{0} - i \ket{1}}{\sqrt{2}}$ }};
 
-        \labelLatLon{up}{90}{0};
-        \labelLatLon{down}{-90}{90};
-        \node[above] at (up) {{\tiny $\hat{z} = \ket{0}$ }};
-        \node[below] at (down) {{\tiny $-\hat{z} = \ket{1}$}};
+            \labelLatLon{xp}{0}{90};
+            \labelLatLon{xm}{0}{-90};
+            \node[below] at (xp) {{\tiny $\hat{x} = \ket{+} = \frac{\ket{0} + \ket{1}}{\sqrt{2}}$ }};
+            \node[above] at (xm) {{\tiny $-\hat{x} = \ket{-} = \frac{\ket{0} - \ket{1}}{\sqrt{2}}$ }};
 
-        \labelLatLon{yp}{0}{0};
-        \labelLatLon{ym}{0}{180};
-        \node[right] at (yp) {{\tiny $\hat{y} = \ket{\circlearrowleft} = \frac{\ket{0} + i \ket{1}}{\sqrt{2}}$ }};
-        \node[left] at (ym) {{\tiny $-\hat{y} = \ket{\circlearrowright} = \frac{\ket{0} - i \ket{1}}{\sqrt{2}}$ }};
-
-        \labelLatLon{xp}{0}{90};
-        \labelLatLon{xm}{0}{-90};
-        \node[below] at (xp) {{\tiny $\hat{x} = \ket{+} = \frac{\ket{0} + \ket{1}}{\sqrt{2}}$ }};
-        \node[above] at (xm) {{\tiny $-\hat{x} = \ket{-} = \frac{\ket{0} - \ket{1}}{\sqrt{2}}$ }};
-
-        \drawStateLatLon{psi}{20}{40}
-        \node[right] at (psi) {{\tiny $\ket{\psi}$ }};
-    \end{blochsphere}
-    \caption{Esfera de Bloch}
-    \label{fig:bloch}
-\end{figure}
+            \drawStateLatLon{psi}{20}{40}
+            \node[right] at (psi) {{\tiny $\ket{\psi}$ }};
+        \end{blochsphere}
+        \caption{Esfera de Bloch}
+        \label{fig:bloch}
+    \end{figure}
 
 \end{frame}
 
 \begin{frame}
     \frametitle{Ecuación de Schrödinger}
 
-Esta ecuación describe la evolución de los estados cuánticos puros.
+    Esta ecuación describe la evolución de los estados cuánticos puros.
 
-$i \hbar \frac{d}{dt} \ket{\psi(t)} = \hat{H} \ket{\psi(t)}$
+    \begin{equation}
+        i \hbar \frac{d}{dt} \ket{\psi(t)} = \hat{H} \ket{\psi(t)}
+    \end{equation}
 
-Para estados mixtos se utiliza la ecuación de Liouville-von Neumann.
+    Para estados mixtos se utiliza la ecuación de Liouville-von Neumann.
 
-$i \hbar \dot{\rho}(t) = [\hat{H}, \rho(t)]$
+    \begin{equation}
+        i \hbar \dot{\rho}(t) = [\hat{H}, \rho(t)]
+    \end{equation}
 
 \end{frame}
 
 \begin{frame}
     \frametitle{Postulados de la mecánica cuántica}
 
-\begin{enumerate}
-    \item La descripción de un sistema físico en QM está dada en términos de los elementos de un espacio de Hilbert complejo separable asociado al sistema físico. En cada instante de tiempo $t$, un estado puro del sistema se representa por el vector unitario $\ket{\psi(t)}$ en el espacio de Hilbert correspondiente. Tal vector se llama vector de estado o ket.
-    \item Todo observable de un sistema físico está representado en el formalismo de QM por un operador lineal hermítico el cual actúa en el espacio de Hilbert asociado con el sistema físico en consideración.
-    \item Si un sistema físico está en un estado descrito por un vector normalizado $\ket{\psi}$ o una matriz densidad $\rho$, la probabilidad de obtener un valor $\lambda$ al medir un observable $\mathcal{A}$ está dada por 
-        
-        \begin{align}
-            p(\lambda) &= \sum\limits_i^{g_n} \abs{\braket{\lambda_i}{\psi}}^2 \\
-            p(\lambda) &= Tr(\Pi_\lambda \rho) ,
-        \end{align}
+    \begin{enumerate}
+        \item La descripción de un sistema físico en QM está dada en términos de los elementos de un espacio de Hilbert complejo separable asociado al sistema físico. En cada instante de tiempo $t$, un estado puro del sistema se representa por el vector unitario $\ket{\psi(t)}$ en el espacio de Hilbert correspondiente. Tal vector se llama vector de estado o ket.
+        \item Todo observable de un sistema físico está representado en el formalismo de QM por un operador lineal hermítico el cual actúa en el espacio de Hilbert asociado con el sistema físico en consideración.
+    \end{enumerate}
+\end{frame}
 
-        Donde $g_n$ es el grado de degeneración de $\hat{A}$ en $\lambda$, es decir, la cantidad de autoestados asociados a este mismo autovalores, $\ket{\lambda_i}$ son los autoestados asociados a $\lambda$ y el proyector $\Pi_\lambda$ es $\Pi_\lambda = \sum_i^{g_n} \ketbra{\lambda_i}$.
+\begin{frame}
+    \frametitle{Postulados de la mecánica cuántica}
 
-    \item Si un sistema físico está en el estado $\ket{\psi}$ o $\rho$, el estado resultante luego de una medida ideal del observable $\mathcal{A}$ está dado por
+    \begin{enumerate}
+        \setcounter{enumi}{2}
+        \item Si un sistema físico está en un estado descrito por un vector normalizado $\ket{\psi}$ o una matriz densidad $\rho$, la probabilidad de obtener un valor $\lambda$ al medir un observable $\mathcal{A}$ está dada por 
+            
+            \begin{align}
+                p(\lambda) &= \sum\limits_i^{g_n} \abs{\braket{\lambda_i}{\psi}}^2 \\
+                p(\lambda) &= Tr(\Pi_\lambda \rho) ,
+            \end{align}
 
-        \begin{align}
-            \ket{\psi} &\rightarrow \frac{\Pi_\lambda \ket{\psi}}{\sqrt{\bra{\psi} \Pi_\lambda \ket{\psi}}} \\
-            p(\lambda) &\rightarrow \frac{\mathcal{E}_\lambda(\rho)}{Tr(\Pi_\lambda \rho)} ,
-        \end{align}
+            Donde $g_n$ es el grado de degeneración de $\hat{A}$ en $\lambda$, es decir, la cantidad de autoestados asociados a este mismo autovalores, $\ket{\lambda_i}$ son los autoestados asociados a $\lambda$ y el proyector $\Pi_\lambda$ es $\Pi_\lambda = \sum_i^{g_n} \ketbra{\lambda_i}$.
+    \end{enumerate}
+\end{frame}
 
-        Donde el mapa $\mathcal{E}_\lambda(\rho) = \sum_i^{g_n} \ketbra{\lambda_i} \rho \ketbra{\lambda_i}$.
+\begin{frame}
+    \frametitle{Postulados de la mecánica cuántica}
 
-    \item En un intervalo de tiempo entre dos medidas consecutivas, los estados puros de un sistema continuan siendo puros, y existen kets $\ket{\psi(t)}$ tales qeu la evolución del estado del sistema está dada por la ecuación de Schrödinger
+    \begin{enumerate}
+        \setcounter{enumi}{3}
+        \item Si un sistema físico está en el estado $\ket{\psi}$ o $\rho$, el estado resultante luego de una medida ideal del observable $\mathcal{A}$ está dado por
 
-        \begin{equation}
-            i \hbar \frac{d}{dt} \ket{\psi(t)} = \hat{H}(t) \ket{\psi(t)} ,
-        \end{equation}
+            \begin{align}
+                \ket{\psi} &\rightarrow \frac{\Pi_\lambda \ket{\psi}}{\sqrt{\bra{\psi} \Pi_\lambda \ket{\psi}}} \\
+                p(\lambda) &\rightarrow \frac{\mathcal{E}_\lambda(\rho)}{Tr(\Pi_\lambda \rho)} ,
+            \end{align}
 
-        Donde $\hat{H}(t)$ es un observable llamado Hamiltoniano, el cual representa la energía del sistema. Los obervables del sistema se representan por operadores que son constantes en el tiempo, a menos que los dispositivos de medida cambien en el tiempo, en tal caso, los operadores deberán contener dichos cambios.
-    \item Para un sistema físico en el cual las coordenadas cartesianas son $q_1, q_2, ... , q_N$, con los correspondientes momenta conjugados $p_1, p_2, ... , p_N$, los operadores $X$ y $P$, los cuales representan estos observables en QM, deben satisfacer las relaciones de conmutación
+            Donde el mapa $\mathcal{E}_\lambda(\rho) = \sum_i^{g_n} \ketbra{\lambda_i} \rho \ketbra{\lambda_i}$.
+    \end{enumerate}
+\end{frame}
 
-        \begin{equation}
-            [X_r, X_a] = 0, [P_r, P_a] = 0, [X_r, P_a] = i \hbar \delta_{ra} .
-        \end{equation}
+\begin{frame}
+    \frametitle{Postulados de la mecánica cuántica}
 
-        Si el sistema tiene un observable cuya expresión clásica es $A(q_1, ... , q_N, p_1, ... , p_N; t)$, la aplicación usual en QM del operador correspondiente se obtiene sustituyendo las variables $q_r$ y $p_a$ por los operadores $X_r$ y $P_a$, respectivamente.
-\end{enumerate}
+    \begin{enumerate}
+        \setcounter{enumi}{4}
+        \item En un intervalo de tiempo entre dos medidas consecutivas, los estados puros de un sistema continuan siendo puros, y existen kets $\ket{\psi(t)}$ tales qeu la evolución del estado del sistema está dada por la ecuación de Schrödinger
+
+            \begin{equation}
+                i \hbar \frac{d}{dt} \ket{\psi(t)} = \hat{H}(t) \ket{\psi(t)} ,
+            \end{equation}
+
+            Donde $\hat{H}(t)$ es un observable llamado Hamiltoniano, el cual representa la energía del sistema. Los obervables del sistema se representan por operadores que son constantes en el tiempo, a menos que los dispositivos de medida cambien en el tiempo, en tal caso, los operadores deberán contener dichos cambios.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Postulados de la mecánica cuántica}
+
+    \begin{enumerate}
+        \setcounter{enumi}{5}
+        \item Para un sistema físico en el cual las coordenadas cartesianas son $q_1, q_2, ... , q_N$, con los correspondientes momenta conjugados $p_1, p_2, ... , p_N$, los operadores $X$ y $P$, los cuales representan estos observables en QM, deben satisfacer las relaciones de conmutación
+
+            \begin{equation}
+                [X_r, X_a] = 0, [P_r, P_a] = 0, [X_r, P_a] = i \hbar \delta_{ra} .
+            \end{equation}
+
+            Si el sistema tiene un observable cuya expresión clásica es $A(q_1, ... , q_N, p_1, ... , p_N; t)$, la aplicación usual en QM del operador correspondiente se obtiene sustituyendo las variables $q_r$ y $p_a$ por los operadores $X_r$ y $P_a$, respectivamente.
+    \end{enumerate}
 
 \end{frame}
 
@@ -231,8 +285,6 @@ $i \hbar \dot{\rho}(t) = [\hat{H}, \rho(t)]$
 \begin{frame}
     \frametitle{Circuitos cuánticos}
 
-    Circuito de ejemplo
-
     \[
         \Qcircuit @C=1.4em @R=1.8em {
             \lstick{\ket{0}} & \gate{U}  & \ctrl{2} & \qw        & \gate{U}   & \qw & \qw    \\
@@ -246,51 +298,344 @@ $i \hbar \dot{\rho}(t) = [\hat{H}, \rho(t)]$
 \begin{frame}
     \frametitle{Compuertas cuánticas}
 
-Compuertas con matrices
-
-\end{frame}
-
-\begin{frame}
-    \frametitle{Criterios de Di Vincenzo}
-
-    Di Vincenzo propuso los siguientes criterios para la construcción de un computador cuántico:
-
     \begin{enumerate}
-        \item Un sistema físico escalable con qubits caracterizados.
-        \item La habilidad de inicializar el estado de los qubits en un estado fiducial simples.
-        \item Tiempos de coherencia relevantes largos.
-        \item Un conjunto universal de compuertas cuánticas.
-        \item La capacidad de medir qubits en específico.
+        \item Compuerta identidad
+            
+            \begin{minipage}{0.5\textwidth}
+            \[
+                \Qcircuit @C=1.4em @R=1.8em {
+                & \gate{I} & \qw
+                }
+            \]
+            \end{minipage}
+            \begin{minipage}{0.5\textwidth}
+            \[
+                I = 
+                \begin{pmatrix}
+                1 & 0 \\
+                0 & 1
+                \end{pmatrix}
+            \]
+            \end{minipage}
+
+        \item Compuerta X
+
+            \begin{minipage}{0.5\textwidth}
+            \[
+                \Qcircuit @C=1.4em @R=1.8em {
+                & \gate{X} & \qw
+                }
+            \]
+            \end{minipage}
+            \begin{minipage}{0.5\textwidth}
+            \[
+                X =
+                \begin{pmatrix}
+                0 & 1 \\
+                1 & 0
+                \end{pmatrix}
+            \]
+            \end{minipage}
+
+        \item Compuerta Z
+
+            \begin{minipage}{0.5\textwidth}
+            \[
+                \Qcircuit @C=1.4em @R=1.8em {
+                & \gate{Z} & \qw
+                }
+            \]
+            \end{minipage}
+            \begin{minipage}{0.5\textwidth}
+            \[
+                Z =
+                \begin{pmatrix}
+                1 & 0 \\
+                0 & -1
+                \end{pmatrix}
+            \]
+            \end{minipage}
+
+        \item Compuerta Y
+
+            \begin{minipage}{0.5\textwidth}
+            \[
+                \Qcircuit @C=1.4em @R=1.8em {
+                & \gate{Y} & \qw
+                }
+            \]
+            \end{minipage}
+            \begin{minipage}{0.5\textwidth}
+            \[
+                Y =
+                \begin{pmatrix}
+                0 & -i \\
+                i & 0
+                \end{pmatrix}
+            \text{ ó }
+                Y =
+                \begin{pmatrix}
+                0 & 1 \\
+                -1 & 0
+                \end{pmatrix}
+            \]
+            \end{minipage}
+
+        \item Compuerta de Hadamard
+
+            \begin{minipage}{0.5\textwidth}
+                \[
+                    \Qcircuit @C=1.4em @R=1.8em {
+                    & \gate{H} & \qw
+                    }
+                \]
+            \end{minipage}
+            \begin{minipage}{0.5\textwidth}
+                \[
+                    H = 
+                    \frac{1}{\sqrt{2}}
+                    \begin{pmatrix}
+                        1 & 1 \\
+                        1 & -1
+                    \end{pmatrix}
+                \]
+            \end{minipage}
+
+        \item Compuerta de cambio de fase
+
+            \begin{minipage}{0.5\textwidth}
+            \[
+                \Qcircuit @C=1.4em @R=1.8em {
+                & \gate{P_{\phi}} & \qw
+                }
+            \]
+            \end{minipage}
+            \begin{minipage}{0.5\textwidth}
+            \[
+                P_\phi =
+                \begin{pmatrix}
+                1 & 0 \\
+                0 & e^{i \phi}
+                \end{pmatrix}
+            \]
+            \end{minipage}
+
+        \item Compuertas de rotación
+
+            \[
+            R(\theta,\hat{r}) = e^{i \frac{\theta}{2} \vec{\sigma} \cdot \hat{r}} =
+            \begin{pmatrix}
+            \cos(\frac{\theta}{2}) + i z \sin(\frac{\theta}{2}) & \sin(\frac{\theta}{2}) (i x + y) \\
+            \sin(\frac{\theta}{2}) (i x - y) & \cos(\frac{\theta}{2}) - i z \sin(\frac{\theta}{2})
+            \end{pmatrix}
+            \]
+
+            Donde $\hat{r}$ es el vector unitario asociado al eje de la rotación, $\theta$ es el ángulo que se rota y $\vec{\sigma}$ es el vector de las matrices de Pauli $(\sigma_x, \sigma_y, \sigma_z)$.
+
+            Si $\hat{r} = (1,0,0)$, se tiene la rotación general sobre X.
+
+            \[
+            R_x(\theta) =
+            \begin{pmatrix}
+            \cos(\frac{\theta}{2}) & i \sin(\frac{\theta}{2}) \\
+            i\sin(\frac{\theta}{2}) & \cos(\frac{\theta}{2})
+            \end{pmatrix}
+            \]
+
+            Si $\hat{r} = (0,1,0)$, se tiene la rotación general sobre Y.
+
+            \[
+            R_y(\theta) =
+            \begin{pmatrix}
+            \cos(\frac{\theta}{2}) & \sin(\frac{\theta}{2}) \\
+            -\sin(\frac{\theta}{2}) & \cos(\frac{\theta}{2})
+            \end{pmatrix}
+            \]
+
+            Si $\hat{r} = (0,0,1)$, se tiene la rotación general sobre Z.
+
+            \[
+            R_z(\theta) =
+            \begin{pmatrix}
+            e^{i \frac{\theta}{2}} & 0 \\
+            0 & e^{-i \frac{\theta}{2}}
+            \end{pmatrix}
+            \]
+
+            \begin{figure}[H]
+                \centering
+                \begin{subfigure}[m]{0.32\textwidth}
+                \centering
+                    \begin{blochsphere}[radius=1.5cm,tilt=15,rotation=-20,opacity=0.05]
+                        \drawBallGrid[style={opacity=0.1}]{30}{30}
+
+                        \drawGreatCircle[style={dashed,opacity=0.5}]{0}{0}{0}
+                        \drawGreatCircle[style={dashed,opacity=0.5}]{90}{0}{0}
+                        \drawGreatCircle[style={dashed,opacity=0.5}]{90}{90}{0}
+                        \drawAxis{0}{0}
+                        \drawAxis{90}{0}
+                        \drawAxis[style={green}]{90}{90}
+
+                        \drawRotationRight[scale=1.3,style={red}]{90}{90}{0}{15}
+                    \end{blochsphere}
+                    \caption{Rx}
+                \end{subfigure}
+                \begin{subfigure}[m]{0.32\textwidth}
+                \centering
+                    \begin{blochsphere}[radius=1.5cm,tilt=15,rotation=-20,opacity=0.05]
+                        \drawBallGrid[style={opacity=0.1}]{30}{30}
+
+                        \drawGreatCircle[style={dashed,opacity=0.5}]{0}{0}{0}
+                        \drawGreatCircle[style={dashed,opacity=0.5}]{90}{0}{0}
+                        \drawGreatCircle[style={dashed,opacity=0.5}]{90}{90}{0}
+                        \drawAxis{0}{0}
+                        \drawAxis[style={green}]{90}{0}
+                        \drawAxis{90}{90}
+
+                        \drawRotationRight[scale=1.3,style={red}]{90}{0}{0}{15}
+                    \end{blochsphere}
+                    \caption{Ry}
+                \end{subfigure}
+                \begin{subfigure}[m]{0.32\textwidth}
+                    \centering
+                    \begin{blochsphere}[radius=1.5cm,tilt=15,rotation=-20,opacity=0.05]
+                        \drawBallGrid[style={opacity=0.1}]{30}{30}
+
+                        \drawGreatCircle[style={dashed,opacity=0.5}]{0}{0}{0}
+                        \drawGreatCircle[style={dashed,opacity=0.5}]{90}{0}{0}
+                        \drawGreatCircle[style={dashed,opacity=0.5}]{90}{90}{0}
+                        \drawAxis[style={green}]{0}{0}
+                        \drawAxis{90}{0}
+                        \drawAxis{90}{90}
+
+                        \drawRotationRight[scale=1.3,style={red}]{0}{0}{0}{15}
+                    \end{blochsphere}
+                    \caption{Rz}
+                \end{subfigure}
+                \caption{Compuertas Rx, Ry y Rz en la esfera de Bloch}
+                \label{fig:blochr}
+            \end{figure}
+
+            Para realizar cualquier rotación en la esfera de Bloch, basta con poder realizar rotaciones generales sobre dos ejes ortogonales de ella. A partir de secuencias tres rotaciones alrededor de estos dos ejes se puede realizar cualquier rotación alrededor de cualquier otro eje. Por ejemplo, las rotaciones alrededor de X, en función de rotaciones alrededor de Y y Z se realizan de la siguiente manera:
+
+            \[
+                R_x(\theta) = R_z(\frac{\pi}{2}) R_y(\theta) R_z(\frac{-\pi}{2})
+            \]
+
+        \item Compuerta CNOT
+
+            \begin{minipage}{0.5\textwidth}
+            \[
+            \Qcircuit @C=1.4em @R=1.8em {
+            & \ctrl{1} & \qw \\
+            & \targ & \qw \\
+            }
+            \]
+            \end{minipage}
+            \begin{minipage}{0.5\textwidth}
+            \[
+                CNOT =
+                \begin{pmatrix}
+                1 & 0 & 0 & 0 \\
+                0 & 1 & 0 & 0 \\
+                0 & 0 & 0 & 1 \\
+                0 & 0 & 1 & 0
+                \end{pmatrix}
+            \]
+            \end{minipage}
+
+        \item Compuerta SWAP
+
+            \begin{minipage}{0.5\textwidth}
+            \[
+                \Qcircuit @C=1.4em @R=1.8em {
+                & \qswap & \qw \\
+                & \qswap \qwx & \qw \\
+                }
+            \]
+            \end{minipage}
+            \begin{minipage}{0.5\textwidth}
+            \[
+                SWAP =
+                \begin{pmatrix}
+                1 & 0 & 0 & 0 \\
+                0 & 0 & 1 & 0 \\
+                0 & 1 & 0 & 0 \\
+                0 & 0 & 0 & 1
+                \end{pmatrix}
+            \]
+            \end{minipage}
+
+        \item Compuerta de Toffoli
+
+            \begin{minipage}{0.5\textwidth}
+            \[
+            \Qcircuit @C=1.4em @R=1.8em {
+            & \ctrl{1} & \qw \\
+            & \ctrl{1} & \qw \\
+            & \targ & \qw \\
+            }
+            \]
+            \end{minipage}
+            \begin{minipage}{0.5\textwidth}
+            \[
+            \begin{pmatrix}
+            1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+            0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+            0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+            0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+            0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+            0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+            0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\
+            0 & 0 & 0 & 0 & 0 & 0 & 1 & 0
+            \end{pmatrix}
+            \]
+            \end{minipage}
     \end{enumerate}
 
-\end{frame}
+    \end{frame}
 
-\begin{frame}
-    \frametitle{Fidelidad}
+    \begin{frame}
+        \frametitle{Criterios de Di Vincenzo}
 
-La fidelidad es una medida de distancia entre estados cuánticos. Dos estados idénticos tendrán una fidelidad igual a 1, mientras que dos estados ortogonales tendrán una fidelidad de 0.
+        Di Vincenzo propuso los siguientes criterios para la construcción de un computador cuántico:
 
-\begin{equation}
-    F(\rho, \sigma) = Tr(\sqrt{\rho^{1/2} \sigma \rho^{1/2}})
-\end{equation}
+        \begin{enumerate}
+            \item Un sistema físico escalable con qubits caracterizados.
+            \item La habilidad de inicializar el estado de los qubits en un estado fiducial simples.
+            \item Tiempos de coherencia relevantes largos.
+            \item Un conjunto universal de compuertas cuánticas.
+            \item La capacidad de medir qubits en específico.
+        \end{enumerate}
 
-\end{frame}
+    \end{frame}
 
-\begin{frame}
-    \frametitle{Medidas proyectivas}
+    \begin{frame}
+        \frametitle{Fidelidad}
 
-\end{frame}
+        La fidelidad es una medida de distancia entre estados cuánticos. Dos estados idénticos tendrán una fidelidad igual a 1, mientras que dos estados ortogonales tendrán una fidelidad de 0.
 
-\begin{frame}
-    \frametitle{Sistemas cuánticos abiertos}
+        \begin{equation}
+            F(\rho, \sigma) = Tr(\sqrt{\rho^{1/2} \sigma \rho^{1/2}})
+        \end{equation}
 
-En la mecánica cuántica de sistemas abiertos con evolución markoviana, la ecuación de Schrödinger toma la siguiente forma más general, conocida como Lindbladiano.
+    \end{frame}
 
-\begin{equation}
-    \dot{\rho}(t) = -i [\hat{H}, \rho(t)] + \sum_k \gamma_k [V_k \rho(t) V_k^\dagger - \frac{1}{2} \{V_k^\dagger V_k, \rho(t)\}]
-\end{equation}
+    \begin{frame}
+        \frametitle{Medidas proyectivas}
 
-\end{frame}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Sistemas cuánticos abiertos}
+
+        En la mecánica cuántica de sistemas abiertos con evolución markoviana, la ecuación de Schrödinger toma la siguiente forma más general, conocida como Lindbladiano.
+
+        \begin{equation}
+            \dot{\rho}(t) = -i [\hat{H}, \rho(t)] + \sum_k \gamma_k [V_k \rho(t) V_k^\dagger - \frac{1}{2} \{V_k^\dagger V_k, \rho(t)\}]
+        \end{equation}
+
+    \end{frame}
 
 \section{Superconductividad}
 
@@ -308,60 +653,53 @@ En la mecánica cuántica de sistemas abiertos con evolución markoviana, la ecu
 \begin{frame}
     \frametitle{Efecto Josephson}
 
-\justify
-Se tienen dos placas superconductoras A y B, separadas por un aislante.
-Las funciones de onda de las placas superconductoras son:
-$\psi_A = \sqrt{\rho_1} e^{i \phi_1}, \psi_B = \sqrt{\rho_2} e^{i \phi_2}$ 
+    \justify
+    Se tienen dos placas superconductoras A y B, separadas por un aislante. Las funciones de onda de las placas superconductoras son:
+    $\psi_A = \sqrt{\rho_1} e^{i \phi_1}, \psi_B = \sqrt{\rho_2} e^{i \phi_2}$ 
 
-\justify
-En principio, no debería haber conducción entre ambas placas.
-Sin embargo, ese no es el caso. Por el efecto tunel, una supercorriente (corriente
-sin disipación) de pares de Cooper (pares de electrones con spines opuestos)
-pueden pasar de una placa a la otra sin disipación.
+    \justify
+    Por el efecto tunel, una supercorriente (corriente sin disipación) de pares de Cooper (pares de electrones con spines opuestos) pueden pasar de una placa a la otra sin disipación.
 
-\begin{align}
-    V_J &= \frac{\hbar}{2e} \frac{d\delta}{dt} \\
-    I_J &= I_0 \sin(\delta)
-\end{align}
+    \begin{align}
+        V_J &= \frac{\hbar}{2e} \frac{d\delta}{dt} \\
+        I_J &= I_0 \sin(\delta)
+    \end{align}
 
-\justify
-Donde $\delta=\phi_2-\phi_1$ es la diferencia de fase entre las dos placas superconductoras.
+    \justify
+    Donde $\delta=\phi_2-\phi_1$ es la diferencia de fase entre las dos placas superconductoras.
 
 \end{frame}
 
 \begin{frame}
     \frametitle{Efecto Josephson DC y AC}
 
-* Efecto Josephson DC
+    \begin{enumerate}
+        \item Efecto Josephson DC
+            Si las placas se encuentran sin alimentación, entonces correrá una supercorriente constante a través de ellas.
 
-\justify
-Si las placas se encuentran sin alimentación, entonces correrá una
-supercorriente constante a través de ellas.
-
-* Efecto Josephson AC
-
-\justify
-Si las placas se alimentan con un voltaje DC externo, entonces la diferencia
-de fase entre ellas variará linealmente con el tiempo y habrá una corriente AC
+        \item Efecto Josephson AC
+            Si las placas se alimentan con un voltaje DC externo, entonces la diferencia de fase entre ellas variará linealmente con el tiempo y habrá una corriente AC
 a través de ellas.
+    \end{enumerate}
 
 \end{frame}
 
 \begin{frame}
     \frametitle{Energía e inductancia de Josephson}
 
-$$E_J = \int I_0 \sin(\delta) \frac{\hbar}{2e} \frac{d\delta}{dt} dt
- = \frac{\hbar I_0}{2e} \int \sin(\delta) dt
- = - \frac{\hbar I_0}{2e} \cos(\delta)$$
+    \begin{equation}
+        E_J = \int I_0 \sin(\delta) \frac{\hbar}{2e} \frac{d\delta}{dt} dt
+         = \frac{\hbar I_0}{2e} \int \sin(\delta) dt
+         = - \frac{\hbar I_0}{2e} \cos(\delta)
+     \end{equation}
 
-$\frac{dI_J}{dt} = I_0 \cos(\delta) \frac{d \delta}{dt} = I_0 \cos(\delta)
- \frac{2e}{\hbar} V_J$
-
-$$L_J = \frac{\hbar}{2e I_0 \cos(\delta)}$$
-
-$E_C = \frac{(2e)^2}{2C}$
-
-$E_L = \frac{\hbar^2}{(2e)^2L}$
+     \begin{align}
+         \frac{dI_J}{dt} &= I_0 \cos(\delta) \frac{d \delta}{dt} = I_0 \cos(\delta)
+          \frac{2e}{\hbar} V_J \\
+         L_J &= \frac{\hbar}{2e I_0 \cos(\delta)} \\
+         E_C &= \frac{(2e)^2}{2C} \\
+         E_L &= \frac{\hbar^2}{(2e)^2L}
+     \end{align}
 
 \end{frame}
 
