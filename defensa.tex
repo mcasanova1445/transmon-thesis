@@ -380,7 +380,14 @@
                 \end{pmatrix}
             \]
             \end{minipage}
+    \end{enumerate}
 
+\end{frame}
+
+\begin{frame}
+    \frametitle{Compuertas cuánticas}
+
+    \begin{enumerate}
         \item Compuerta de Hadamard
 
             \begin{minipage}{0.45\textwidth}
@@ -430,10 +437,15 @@
             \end{pmatrix}
             \]
 
-            Donde $\hat{r}$ es el vector unitario asociado al eje de la rotación, $\theta$ es el ángulo que se rota y $\vec{\sigma}$ es el vector de las matrices de Pauli $(\sigma_x, \sigma_y, \sigma_z)$.
+    \end{enumerate}
 
-            Si $\hat{r} = (1,0,0)$, se tiene la rotación general sobre X.
+\end{frame}
 
+\begin{frame}
+    \frametitle{Compuertas cuánticas}
+
+    \begin{enumerate}
+        \item Rotación en X
             \[
             R_x(\theta) =
             \begin{pmatrix}
@@ -442,8 +454,7 @@
             \end{pmatrix}
             \]
 
-            Si $\hat{r} = (0,1,0)$, se tiene la rotación general sobre Y.
-
+        \item Rotación en Y
             \[
             R_y(\theta) =
             \begin{pmatrix}
@@ -452,8 +463,7 @@
             \end{pmatrix}
             \]
 
-            Si $\hat{r} = (0,0,1)$, se tiene la rotación general sobre Z.
-
+        \item Rotación en Z
             \[
             R_z(\theta) =
             \begin{pmatrix}
@@ -462,66 +472,77 @@
             \end{pmatrix}
             \]
 
-            \begin{figure}[H]
-                \centering
-                \begin{subfigure}[m]{0.32\textwidth}
-                \centering
-                    \begin{blochsphere}[radius=1.5cm,tilt=15,rotation=-20,opacity=0.05]
-                        \drawBallGrid[style={opacity=0.1}]{30}{30}
+    \end{enumerate}
 
-                        \drawGreatCircle[style={dashed,opacity=0.5}]{0}{0}{0}
-                        \drawGreatCircle[style={dashed,opacity=0.5}]{90}{0}{0}
-                        \drawGreatCircle[style={dashed,opacity=0.5}]{90}{90}{0}
-                        \drawAxis{0}{0}
-                        \drawAxis{90}{0}
-                        \drawAxis[style={green}]{90}{90}
+\end{frame}
 
-                        \drawRotationRight[scale=1.3,style={red}]{90}{90}{0}{15}
-                    \end{blochsphere}
-                    \caption{Rx}
-                \end{subfigure}
-                \begin{subfigure}[m]{0.32\textwidth}
-                \centering
-                    \begin{blochsphere}[radius=1.5cm,tilt=15,rotation=-20,opacity=0.05]
-                        \drawBallGrid[style={opacity=0.1}]{30}{30}
+\begin{frame}
+    \frametitle{Compuertas cuánticas}
 
-                        \drawGreatCircle[style={dashed,opacity=0.5}]{0}{0}{0}
-                        \drawGreatCircle[style={dashed,opacity=0.5}]{90}{0}{0}
-                        \drawGreatCircle[style={dashed,opacity=0.5}]{90}{90}{0}
-                        \drawAxis{0}{0}
-                        \drawAxis[style={green}]{90}{0}
-                        \drawAxis{90}{90}
+    \begin{equation}
+        R_x(\theta) = R_z(\frac{\pi}{2}) R_y(\theta) R_z(\frac{-\pi}{2})
+    \end{equation}
 
-                        \drawRotationRight[scale=1.3,style={red}]{90}{0}{0}{15}
-                    \end{blochsphere}
-                    \caption{Ry}
-                \end{subfigure}
-                \begin{subfigure}[m]{0.32\textwidth}
-                    \centering
-                    \begin{blochsphere}[radius=1.5cm,tilt=15,rotation=-20,opacity=0.05]
-                        \drawBallGrid[style={opacity=0.1}]{30}{30}
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}[m]{0.3\textwidth}
+        \centering
+            \begin{blochsphere}[radius=1cm,tilt=15,rotation=-20,opacity=0.05]
+                \drawBallGrid[style={opacity=0.1}]{30}{30}
 
-                        \drawGreatCircle[style={dashed,opacity=0.5}]{0}{0}{0}
-                        \drawGreatCircle[style={dashed,opacity=0.5}]{90}{0}{0}
-                        \drawGreatCircle[style={dashed,opacity=0.5}]{90}{90}{0}
-                        \drawAxis[style={green}]{0}{0}
-                        \drawAxis{90}{0}
-                        \drawAxis{90}{90}
+                \drawGreatCircle[style={dashed,opacity=0.5}]{0}{0}{0}
+                \drawGreatCircle[style={dashed,opacity=0.5}]{90}{0}{0}
+                \drawGreatCircle[style={dashed,opacity=0.5}]{90}{90}{0}
+                \drawAxis{0}{0}
+                \drawAxis{90}{0}
+                \drawAxis[style={green}]{90}{90}
 
-                        \drawRotationRight[scale=1.3,style={red}]{0}{0}{0}{15}
-                    \end{blochsphere}
-                    \caption{Rz}
-                \end{subfigure}
-                \caption{Compuertas Rx, Ry y Rz en la esfera de Bloch}
-                \label{fig:blochr}
-            \end{figure}
+                \drawRotationRight[scale=1.3,style={red}]{90}{90}{0}{15}
+            \end{blochsphere}
+            \caption{Rx}
+        \end{subfigure}
+        \begin{subfigure}[m]{0.3\textwidth}
+        \centering
+            \begin{blochsphere}[radius=1cm,tilt=15,rotation=-20,opacity=0.05]
+                \drawBallGrid[style={opacity=0.1}]{30}{30}
 
-            Para realizar cualquier rotación en la esfera de Bloch, basta con poder realizar rotaciones generales sobre dos ejes ortogonales de ella. A partir de secuencias tres rotaciones alrededor de estos dos ejes se puede realizar cualquier rotación alrededor de cualquier otro eje. Por ejemplo, las rotaciones alrededor de X, en función de rotaciones alrededor de Y y Z se realizan de la siguiente manera:
+                \drawGreatCircle[style={dashed,opacity=0.5}]{0}{0}{0}
+                \drawGreatCircle[style={dashed,opacity=0.5}]{90}{0}{0}
+                \drawGreatCircle[style={dashed,opacity=0.5}]{90}{90}{0}
+                \drawAxis{0}{0}
+                \drawAxis[style={green}]{90}{0}
+                \drawAxis{90}{90}
 
-            \[
-                R_x(\theta) = R_z(\frac{\pi}{2}) R_y(\theta) R_z(\frac{-\pi}{2})
-            \]
+                \drawRotationRight[scale=1.3,style={red}]{90}{0}{0}{15}
+            \end{blochsphere}
+            \caption{Ry}
+        \end{subfigure}
+        \begin{subfigure}[m]{0.3\textwidth}
+            \centering
+            \begin{blochsphere}[radius=1cm,tilt=15,rotation=-20,opacity=0.05]
+                \drawBallGrid[style={opacity=0.1}]{30}{30}
 
+                \drawGreatCircle[style={dashed,opacity=0.5}]{0}{0}{0}
+                \drawGreatCircle[style={dashed,opacity=0.5}]{90}{0}{0}
+                \drawGreatCircle[style={dashed,opacity=0.5}]{90}{90}{0}
+                \drawAxis[style={green}]{0}{0}
+                \drawAxis{90}{0}
+                \drawAxis{90}{90}
+
+                \drawRotationRight[scale=1.3,style={red}]{0}{0}{0}{15}
+            \end{blochsphere}
+            \caption{Rz}
+        \end{subfigure}
+        \caption{Compuertas Rx, Ry y Rz en la esfera de Bloch}
+        \label{fig:blochr}
+    \end{figure}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Compuertas cuánticas}
+
+    \begin{enumerate}
         \item Compuerta CNOT
 
             \begin{minipage}{0.45\textwidth}
@@ -565,7 +586,14 @@
                 \end{pmatrix}
             \]
             \end{minipage}
+    \end{enumerate}
 
+\end{frame}
+
+\begin{frame}
+    \frametitle{Compuertas cuánticas}
+
+    \begin{enumerate}
         \item Compuerta de Toffoli
 
             \begin{minipage}{0.45\textwidth}
@@ -593,49 +621,56 @@
             \end{minipage}
     \end{enumerate}
 
-    \end{frame}
+\end{frame}
 
-    \begin{frame}
-        \frametitle{Criterios de Di Vincenzo}
+\begin{frame}
+    \frametitle{Criterios de Di Vincenzo}
 
-        Di Vincenzo propuso los siguientes criterios para la construcción de un computador cuántico:
+    Di Vincenzo propuso los siguientes criterios para la construcción de un computador cuántico:
 
-        \begin{enumerate}
-            \item Un sistema físico escalable con qubits caracterizados.
-            \item La habilidad de inicializar el estado de los qubits en un estado fiducial simples.
-            \item Tiempos de coherencia relevantes largos.
-            \item Un conjunto universal de compuertas cuánticas.
-            \item La capacidad de medir qubits en específico.
-        \end{enumerate}
+    \begin{enumerate}
+        \item Un sistema físico escalable con qubits caracterizados.
+        \item La habilidad de inicializar el estado de los qubits en un estado fiducial simples.
+        \item Tiempos de coherencia relevantes largos.
+        \item Un conjunto universal de compuertas cuánticas.
+        \item La capacidad de medir qubits en específico.
+    \end{enumerate}
 
-    \end{frame}
+\end{frame}
 
-    \begin{frame}
-        \frametitle{Fidelidad}
+\begin{frame}
+    \frametitle{Fidelidad}
 
-        La fidelidad es una medida de distancia entre estados cuánticos. Dos estados idénticos tendrán una fidelidad igual a 1, mientras que dos estados ortogonales tendrán una fidelidad de 0.
+    La fidelidad es una medida de distancia entre estados cuánticos. Dos estados idénticos tendrán una fidelidad igual a 1, mientras que dos estados ortogonales tendrán una fidelidad de 0.
 
-        \begin{equation}
-            F(\rho, \sigma) = Tr(\sqrt{\rho^{1/2} \sigma \rho^{1/2}})
-        \end{equation}
+    \begin{equation}
+        F(\rho, \sigma) = Tr(\sqrt{\rho^{1/2} \sigma \rho^{1/2}})
+    \end{equation}
 
-    \end{frame}
+\end{frame}
 
-    \begin{frame}
-        \frametitle{Medidas proyectivas}
+\begin{frame}
+    \frametitle{Medidas proyectivas}
 
-    \end{frame}
+    \begin{equation}
+        \begin{array}{r}
+        MP_s = \{\hat{\Pi}_m: \mathcal{H} \rightarrow \mathcal{M}_{\lambda_m} \subseteq \mathcal{H} \text{ tal que } \hat{\Pi}_m \hat{\Pi}_n = \delta_{m,n} \hat{\Pi_m}, \\
+        \sum\limits_m \hat{\Pi}_m = \mathds{1}, P_{\lambda_m}(\rho) = (\hat{\Pi}_m)_\rho \text{ y } \rho_{\lambda_m} \xrightarrow{\text{colapso}} \hat{\Pi}_m\} .
+        \end{array}
+    \end{equation}
 
-    \begin{frame}
-        \frametitle{Sistemas cuánticos abiertos}
+\end{frame}
 
-        En la mecánica cuántica de sistemas abiertos con evolución markoviana, la ecuación de Schrödinger toma la siguiente forma más general, conocida como Lindbladiano.
+\begin{frame}
+    \frametitle{Sistemas cuánticos abiertos}
 
-        \begin{equation}
-            \dot{\rho}(t) = -i [\hat{H}, \rho(t)] + \sum_k \gamma_k [V_k \rho(t) V_k^\dagger - \frac{1}{2} \{V_k^\dagger V_k, \rho(t)\}]
-        \end{equation}
+    En la mecánica cuántica de sistemas abiertos con evolución markoviana, la ecuación de Schrödinger toma la siguiente forma más general, conocida como Lindbladiano.
 
-    \end{frame}
+    \begin{equation}
+        \dot{\rho}(t) = -i [\hat{H}, \rho(t)] + \sum_k \gamma_k [V_k \rho(t) V_k^\dagger - \frac{1}{2} \{V_k^\dagger V_k, \rho(t)\}]
+    \end{equation}
+
+\end{frame}
 
 \section{Superconductividad}
 
@@ -687,13 +722,10 @@ a través de ellas.
 \begin{frame}
     \frametitle{Energía e inductancia de Josephson}
 
-    \begin{equation}
-        E_J = \int I_0 \sin(\delta) \frac{\hbar}{2e} \frac{d\delta}{dt} dt
-         = \frac{\hbar I_0}{2e} \int \sin(\delta) dt
-         = - \frac{\hbar I_0}{2e} \cos(\delta)
-     \end{equation}
-
      \begin{align}
+         E_J &= \int I_0 \sin(\delta) \frac{\hbar}{2e} \frac{d\delta}{dt} dt
+         = \frac{\hbar I_0}{2e} \int \sin(\delta) dt
+         = - \frac{\hbar I_0}{2e} \cos(\delta) \\
          \frac{dI_J}{dt} &= I_0 \cos(\delta) \frac{d \delta}{dt} = I_0 \cos(\delta)
           \frac{2e}{\hbar} V_J \\
          L_J &= \frac{\hbar}{2e I_0 \cos(\delta)} \\
@@ -711,22 +743,28 @@ Primero, reescribimos el Hamiltoniano del circuito LC en términos de la
 cantidad de pares de Cooper y de la diferencia de fase en los extremos
 del inductor, en lugar de la carga y el flujo
 
-$$\hat{H} = \frac{(2e)^2}{2C} \hat{n}^2 + \frac{\hbar^2}{(2e)^2L} 
- \frac{\hat{\delta^2}}{2}$$
+\begin{equation}
+    \hat{H} = \frac{(2e)^2}{2C} \hat{n}^2 + \frac{\hbar^2}{(2e)^2L} 
+ \frac{\hat{\delta^2}}{2}
+\end{equation}
 
 De aquí $\hat{q}=2e\hat{n}$ y $\hat{\phi}=\frac{\hbar}{2e}\hat{\delta}$
 
 Ahora introducimos el término de la unión Josephson
 
-$\hat{H} = \frac{(2e)^2}{2C} (\hat{n}-n_g)^2 + \frac{\hbar^2}{(2e)^2L} 
- \frac{\hat{(\delta-\delta_e)^2}}{2} - \frac{\hbar I_0}{2e} \cos(\delta)
- = E_C (\hat{n}-n_g)^2 + E_L \frac{(\hat{\delta}-\delta_e)^2}{2}
- - E_{J0} \cos(\hat{\delta})$
+\begin{equation}
+    \begin{array}{r c l}
+        \hat{H} &=& \frac{(2e)^2}{2C} (\hat{n}-n_g)^2 + \frac{\hbar^2}{(2e)^2L} 
+ \frac{\hat{(\delta-\delta_e)^2}}{2} - \frac{\hbar I_0}{2e} \cos(\delta) \\
+ &=& E_C (\hat{n}-n_g)^2 + E_L \frac{(\hat{\delta}-\delta_e)^2}{2}
+ - E_{J0} \cos(\hat{\delta})
+     \end{array}
+\end{equation}
 
- \end{frame}
- 
- \begin{frame}
-     \frametitle{Ecuación de Schrödinger del circuito LCJ}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Ecuación de Schrödinger del circuito LCJ}
 
 \justify
 Para describir el sistema en términos de la ecuación de Schrödinger en
