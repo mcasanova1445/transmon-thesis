@@ -53,3 +53,38 @@ Como podemos observar el cambio tecnológico que se avecina, puede colocar a muc
 Es por esta razón que se propone el presente trabajo de grado. En Venezuela no existe actualmente ningún desarrollo de tecnologías cuánticas, ni en Ingeniería Electrónica, ni en la Física aplicada. Por otro lado, debido a la realidad país actual, es imposible crear ningún computador cuántico, ni superconductor ni en base a tecnologías de silicón, diamante, puntos cuánticos, trampa de iones, átomos neutros, etc \cite{Nakahara_2008}. Sin embargo, si poseemos el nivel teórico para diseñar y simular arquitecturas superconductoras basadas en transmones, de computadores cuánticos que puedan realizar funciones específicas de aplicación directa tanto comerciales como de investigación básica.  Este trabajo sería pionero en Venezuela, y los logros obtenidos motivarán a la Universidad Simón Bolívar para continuar realizando otros trabajos de grado (Pregrado, Maestría y Doctorado), capaces de generar temas de investigación, e implementar aplicaciones industriales que permitan en un futuro no lejano alcanzar una masa crítica de Ingenieros y Físicos capaces de permitir la actualización e inclusión del país en estas nuevas tecnologías de frontera.
 
 En resumen, en el presente trabajo de grado se diseñaron y simularon procesadores cuánticos capaces de implementar los algoritmos cuánticos de Grover, Shor y Google Cuántico.
+
+La estructura de este trabajo es la siguiente:
+
+\begin{enumerate}
+    \item Introducción
+
+    \item Información cuántica: Este capítulo es una revisión bibliográfica de las bases de la teoría de información cuántica necesarias para entender los algoritmos cuánticos y las simulaciones realizadas.
+
+    \item Superconductividad: Este capítulo es una revisión bibliográfica, siguiendo el hilo desde los primeros hechos experimentales de la superconductividad y la teoría BCS, hasta las compuertas cuánticas en transmones.
+
+    \item El simulador de compuertas cuánticas en transmones: Este capítulo explica el funcionamiento del simulador desarrollado y cómo se ha construido el conjunto de compuertas cuánticas disponibles para el procesador cuántico simulado, a partir de las compuertas nativas de los transmones.
+
+    \item Algoritmo de Grover: La primera parte de este capítulo es una revisión bibliográfica del algoritmo de búsqueda de Grover y sus variaciones. La segunda parte es el análisis de los resultados de las simulaciones realizadas de este algoritmo, tanto para un sistema cerrado, como para un sistema abierto.
+
+    \item Algoritmo de Shor: La primera parte de este capítulo es una revisión bibliográfica del algoritmo de factorización de Shor. La segunda parte es el análisis de los resultados de las simulaciones realizadas de este algoritmo.
+
+    \item Google PageRank: La primera parte de este capítulo es una revisión bibliográfica del algoritmo de medida de centralidad en grafos, PageRank, su cuantización y la construcción de los circuitos de este algoritmo. Sin embargo, con respecto a los circuitos, en la literatura sólo se encuentra un método para simplificar la implementación de los operadores necesarios, más no la forma explícita de estos circuitos para grafos arbitrarios. Para poder realizar las simulaciones, se ha hallado la forma explícita de estos circuitos para todo grafo arbitrario de cuatro nodos, que son el tipo de grafos que soporta el procesador simulado. Finalmente, la última parte es el análisis de los resultados de las simulaciones realizadas de este algoritmo, tanto para un sistema cerrado, como para un sistema abierto.
+
+    \item Conclusiones
+
+    \item Apéndices:
+        \begin{enumerate}
+
+            \item Cálculos de Hamiltonianos: En este apédice se realiza el cálculo del Hamiltoniano efectivo de los transmones, a partir del cual se generan las compuertas cuánticas del procesador.
+
+            \item Código del simulador: En este apéndice se presenta el código comentado y explicado del simulador y de la implementación de las compuertas cuánticas desarrolladas.
+
+            \item Códigos de la simulación del algoritmo de Grover: En este apéndice se presenta el código comentado y explicado del algoritmo de Grover, para cada uno de los casos simulados.
+
+            \item Códigos de la simulación del algoritmo de Shor: En este apéndice se presenta el código comentado y explicado del algoritmo de Shor, para cada uno de los casos simulados.
+
+            \item Códigos de la simulación del algoritmo de PageRank: En este apéndice se presenta el código comentado y explicado del algoritmo de PageRank, para cada uno de los casos simulados.
+
+        \end{enumerate}
+\end{enumerate}
